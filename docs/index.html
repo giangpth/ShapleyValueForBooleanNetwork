@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ProMI</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- <script src="lib/d3.js"></script> -->
+    </head>
+
+    <body>
+        <!-- <canvas id = "mycanvas" width = "1200" height="900" style="top:30px;left:0px" display="inline">
+        </canvas> -->
+        <div id ='introdiv' class ="introdiv" onclick="location.href='index.html'">
+            <h1 class="title" style = "margin-left: 20%; margin-right: 20%;">
+                <br></br>
+                Shapley value for Boolean network: A propagation method
+            </h1>
+            <h2 class="subtitle" >
+                University of Pisa
+            </h2>
+        </div>
+
+        <div id = "bardiv">
+           <div id = "workflow" onclick="location.href='workflow.html'; style.background='lightblue'" 
+            onmouseover="style.background='dodgerblue'" 
+            onmouseout="style.background='lightblue'">
+            <h1 style="font-size: 20px; margin-top: 10px;">
+                Workflow
+            </h1>
+           </div>
+           <div id="data" onclick="location.href='data.html'; style.background='lightblue'" 
+           onmouseover="style.background='dodgerblue'" 
+           onmouseout="style.background='lightblue'">
+            <h1 style="font-size: 20px; margin-top: 10px;">
+                Data
+            </h1>
+           </div>
+           <div id="code" onclick="location.href='code.html'; style.background='lightblue'" 
+           onmouseover="style.background='dodgerblue'" 
+           onmouseout="style.background='lightblue'">
+            <h1 style="font-size: 20px; margin-top: 10px;">
+                Use
+            </h1>
+           </div>
+           <div id="result" onclick="location.href='result.html'; style.background='lightblue'" 
+           onmouseover="style.background='dodgerblue'" 
+           onmouseout="style.background='lightblue'">
+            <h1 style="font-size: 20px; margin-top: 10px;">
+                Result
+            </h1>
+           </div>
+           <div id="contact" onclick="location.href='contact.html'; style.background='lightblue'" 
+           onmouseover="style.background='dodgerblue'" 
+           onmouseout="style.background='lightblue'">
+            <h1 style="font-size: 20px; margin-top: 10px;">
+                Contact
+            </h1>
+           </div>
+        </div>
+        <div id="abstract">
+            <h1 class="section">
+                Abstract
+            </h1>
+            <p style="font-size: 24px; text-align: justify; margin-left: 20%; margin-right: 20%;">
+            <b>Background:</b> Proteins are frequently affected by mutations with consequences on 
+            their structure’s stability, functionality, and binding affinity towards ligands, 
+            with important biological effects. Molecular Dynamics Simulation (MDS) is one of 
+            the most effective tools to in silico predict the binding affinity changes upon 
+            aminoacidic mutations. A fundamental requirement to conduct this analysis is the 
+            availability of the three-dimensional structures of the wild-type (wt) and mutated 
+            protein isoforms. Until now, crystallographic models have been mostly used. Recently, 
+            with the development of AlphaFold2, protein structure predictions with high model 
+            accuracy are possible. In this study, an automated computational workflow to compute 
+            the difference in the binding free energy between the wt and the mutated protein using 
+            AlphaFold2 is proposed. The workflow consists of generating the AlphaFold models for 
+            the wt and mutated proteins and studying their interaction with ligands using MDS to 
+            calculate the difference in binding free energy and infer the mutation effect on binding 
+            affinity. To evaluate the workflow confidence, two accuracy predictors are proposed: 
+            the distance between computed affinities of mutant and wt proteins 
+            (i.e. &Delta;&Delta;G = |&Delta; G <sub>mutant</sub> - &Delta; G<sub>wt</sub>|), and an accuracy 
+            evaluation of the wt proteins models predicted with AlphaFold2 based on the analysis 
+            of side chains orientation. <br>
+            <b>Results: </b>We observed how AlphaFold’s models coupled with MDS can be used in 
+            binding affinity measurements with an accuracy comparable to that obtained by using 
+            crystallographic structures. The workflow is validated through results obtained by using 
+            crystallographic structures on a benchmark constituted by proteins in complexes with 
+            small ligands, cofactors, and ions, with a high variability of applications. The side chains 
+            orientation parameter has been identified as an important workflow confidence 
+            estimator because, even though the high accuracy of AlphaFold2 predictions, side 
+            chains orientation in predicted wt proteins can significantly differ from the 
+            crystallographic models, with considerable effects on binding affinity calculations. <br>
+            <b>Conclusion:</b> The proposed automated computational workflow successfully integrates 
+            AlphaFold2 with MDS for in silico predicting protein-ligand binding affinity. Thus, 
+            AlphaFold’s models can be beneficial in studying the effect of mutations on binding 
+            affinity even for proteins with unavailable crystallographic structures. 
+            </p>
+        </div>
+    </body>
+</html>
+
