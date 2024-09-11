@@ -5,7 +5,11 @@ import hashlib
 import json
 import math
 import copy 
-from booleanFormulaParser import parseFormula, deleteSomeNodes, getResult
+from booleanFormulaParser import parseFormula, getResult, toBinaryFormulas, convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, limitGraphAfterNode
+import networkx as nx
+from pyvis.network import Network
+from datetime import datetime
+import timeit
 
 
 def dict_hash(dictionary: Dict[str, Any]) -> str:
@@ -22,8 +26,16 @@ def parseArguments():
     parser = ap.ArgumentParser(description='Input the expression file and ')
     parser.add_argument('-e', '--expression', type=str, help="path to expression file", required=True)
     parser.add_argument('-o', '--output', type=str, help='list of interested components to examine')
+    parser.add_argument('-k', '--knockout', help='Perform knockout or not', \
+                        action='store_true')
+    parser.add_argument('-b', '--binary', help='Work with binary network or not', \
+                        action='store_true')
+    parser.add_argument('-a', '--acyclic', help='Extract acyclic network with respect to output node', \
+                        action='store_true')
     parser.add_argument('-d', '--debug', help="Print log to debug or not", \
                         action='store_true')
+
+
     return parser
 
 def readfile(path, debug=False):
@@ -48,6 +60,8 @@ def getSpeciesName(lines, debug=False):
         coms = line.split()
         for com in coms:
             if com != '(' and com != ')' and com != 'AND' and com != 'OR' and com != 'NOT' and com != '=':
+                if '-' in com: # this is for excluding '-' in the formulas which is confusing for the compiler 
+                    com = com.replace('-','_')
                 species.add(com)
     if debug:
         print("----GET SPECIES----")
@@ -57,7 +71,7 @@ def getSpeciesName(lines, debug=False):
 def genSpecies(speciesnames, debug=False):
     species = dict()
     for s in speciesnames:
-        species[s] = None
+        species[s] = False
     return species
 
 def getInputNames(lines, speciesnames, debug=False):
@@ -67,6 +81,8 @@ def getInputNames(lines, speciesnames, debug=False):
         coms = line.split('=') 
         # print(coms)
         for tem in coms[0].split():
+            if '-' in tem: # this is for excluding '-' in the formulas which is confusing for the compiler 
+                tem = tem.replace('-','_')
             dep.add(tem)
     # print(len(dep))
     input = speciesnames - dep
@@ -77,7 +93,7 @@ def getInputNames(lines, speciesnames, debug=False):
     return input
 
 def getFormula (lines, debug=False):
-    allfor = [] 
+    allfor = []
     for line in lines:
         formula = dict()
         line = line.replace(" AND ", " and ")
@@ -85,8 +101,20 @@ def getFormula (lines, debug=False):
         line = line.replace(" NOT ", " not ")
         sides = line.split('=')
         assert len(sides) == 2, print("There is none or more than 1 equal sign in the formula")
-        formula['left'] = sides[0].strip()
-        formula['right'] = sides[1].strip()
+
+        # this is for excluding '-' in the formulas which is confusing for the compiler 
+        left = sides[0].strip()
+        right = sides[1].strip()
+
+        if '-' in left:  # this is for excluding '-' in the formulas which is confusing for the compiler 
+            left = left.replace('-', '_')
+
+        if '-' in right:  # this is for excluding '-' in the formulas which is confusing for the compiler 
+            right = right.replace('-', '_')
+
+        formula['left'] = left
+        formula['right'] = right
+        # formula[left] = right 
         allfor.append(formula)
     return allfor 
 
@@ -133,8 +161,46 @@ def genInput(species, inputnames, debug=False):
     #         #     print("There is no key named {}".format(name))
     # return [teminp]
 
+# test the correctness of the function toBinaryNetwork      
+def simBinaryNetwork(biformulas, inputnames, speciesnames, debug=False, maxstep=1000):
+    print("----Simulate binary network----")
+    species = genSpecies(speciesnames, debug) # take list the names of all the species and set them to be None 
+    inputstates = genInput(species, inputnames, debug) # each inputstate contains all species, input species are set to a certain value 
+
+    outputs = []
+    for inputstate in inputstates:
+        output = getOutput(biformulas, inputstate, True, 1000, debug) 
+        outputs.append(output)
+
+    return outputs 
+
+    # run the simulation with the binary network 
 
 def sim1step(formulas, inputstate, debug=False):
+    for spe in inputstate.keys():
+        command = str(spe) + ' = ' + str(inputstate[spe])
+        exec (command)
+    
+    for term, biformula in formulas.items():
+        # print(term, biformula)
+        res = getResult(biformula, inputstate, debug)
+        command = str(term) + '_tem_ = ' + str(res)
+        exec(command)
+    
+    for term, biformula in formulas.items():
+        command = str(term) + ' = ' + str(term) + '_tem_'
+        exec (command)
+
+    for spe in list(inputstate):
+        command = 'inputstate[\'' + str(spe) + '\'] = ' + str(spe)
+        # print (command)
+        exec (command)
+    return inputstate
+
+
+    
+
+def sim1bistep(biformulas, inputstate, debug=False):
     # run command to declare all the variables 
     for spe in inputstate.keys():
         # print(spe)
@@ -144,18 +210,16 @@ def sim1step(formulas, inputstate, debug=False):
     
 
     # run all the formulas with a copy of the variables 
-    for formula in formulas:
+    for formula in biformulas:
         # formula['right'].display()
         # command = formula['left'] + '_tem_ = ' + formula['right'] 
-        res = getResult(formula['right'], inputstate, debug)
-        command = formula['left'] + '_tem_ = ' + str(res)
+        res = getResult(formula['formula'], inputstate, debug)
+        command = formula['term'] + '_tem_ = ' + str(res)
         exec(command)
 
-    # STAT6_tem_ = None
-
     # assign new value to real variables taking from value of copy variables
-    for formula in formulas:
-        command = formula['left'] + ' = ' + formula['left'] + '_tem_'
+    for formula in biformulas:
+        command = formula['term'] + ' = ' + formula['term'] + '_tem_'
         exec(command)
         # print(command)
     
@@ -175,15 +239,69 @@ def merge2states(state1, state2, debug=False):
 
 # inputstate is a list of all species with the predefine value for input species
 # this function is the simulation process 
-def getOutput(formulas, inputstate, debug=False, maxStep = 10000) -> dict: 
+def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False) -> dict: 
     oldstate = dict()
     numstep = 0
+
+    # toshow is to test 
+    # toshow = True
+    # for spe, value in inputstate.items():
+    #     if spe in ['TGFb', 'IFNg_e', 'TCR', 'IL6_e']:
+    #         if not value:
+    #             toshow = False
+    #     else:
+    #         if value:
+    #             toshow = False 
+    
+    # toshow = False 
+
     for _ in range(maxStep):
         numstep += 1
-        inputstate = sim1step(formulas, inputstate, debug)
+        if isbi:
+            inputstate = sim1bistep(formulas, inputstate, debug)
+        else:
+            inputstate = sim1step(formulas, inputstate, debug)
         hash = dict_hash(inputstate)
 
 
+        if hash not in oldstate:
+            oldstate[hash] = numstep
+        else:
+            # if debug:
+            #     print("Number of iteration {} and first loop point is {}".format(numstep, oldstate[hash]))
+
+            # merge all the state inside the loop 
+            returnstate = copy.deepcopy(inputstate)
+            for i in range(numstep-oldstate[hash] - 1):
+                if isbi:
+                    inputstate = sim1bistep(formulas, inputstate, debug)
+                else:
+                    inputstate = sim1step(formulas, inputstate, debug)
+                returnstate = merge2states(returnstate, inputstate)
+            # if toshow:
+            #     print("Converge at step {}".format(numstep)) 
+            #     print(returnstate)
+            return returnstate 
+    # print(type(inputstate))
+    print("Cannot converge after {} steps".format(maxStep))
+    return inputstate 
+
+def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  maxStep=1000, debug=False) -> dict:
+    oldstate = dict()
+    numstep = 0
+    for _ in range(maxStep): 
+        numstep += 1
+        if isbi:
+            inputstate = sim1bistep(formulas, inputstate, debug)
+        else:
+            inputstate = sim1step(formulas, inputstate, debug)
+        # reset knockedout node = False 
+
+        for node in knockoutlist:
+            inputstate[node] = False
+
+        hash = dict_hash(inputstate)
+        
         if hash not in oldstate:
             oldstate[hash] = numstep
         else:
@@ -193,11 +311,15 @@ def getOutput(formulas, inputstate, debug=False, maxStep = 10000) -> dict:
             # merge all the state inside the loop 
             returnstate = copy.deepcopy(inputstate)
             for i in range(numstep-oldstate[hash] - 1):
-                inputstate = sim1step(formulas, inputstate, debug)
+                if isbi:
+                    inputstate = sim1bistep(formulas, inputstate, debug)
+                else:
+                    inputstate = sim1step(formulas, inputstate, debug)
                 returnstate = merge2states(returnstate, inputstate)
             return returnstate 
     # print(type(inputstate))
     return inputstate 
+
 
 def subsets(s):  
     if len(s) == 0:  
@@ -239,8 +361,8 @@ def extractPhe(inputnames, outputnames, outputstates, inputstates=None, debug=Fa
             else:
                 statisticgen[frozengen] += 1
 
-        print (statistic)
-        print(statisticgen)
+        # print (statistic)
+        # print(statisticgen)
     else:
         print("Impure input")
         assert len(inputstates) == len(outputstates), "Different length of input and output states"
@@ -278,8 +400,66 @@ def extractPhe(inputnames, outputnames, outputstates, inputstates=None, debug=Fa
     return genphe
 
 
+def calKnockoutShapleyForInput(genphe, inputnames, outputnames, v = False ,debug=False):
+    ids = list([i for i in range(len(inputnames))])
+    # print(ids)
+    allsets = subsets(ids)
+
+    # calculate for each output component
+    shapss = dict()
+    for outname in outputnames:
+        shaps = dict()  
+        # for each input component
+        for inname in inputnames: # the knockout one 
+            map = dict() 
+            for i in range(len(inputnames)):
+                map[i] = list(inputnames)[i]
+
+            sum = 0
+            for oneset in allsets:
+                phenotem = set() 
+                for e in oneset:
+                    phenotem.add(map[e])
+                pheintact = frozenset(phenotem)
+                pheknockout = frozenset(phenotem - {inname})
+                try: 
+                    v_intact = 0
+                    v_knockout = 0
+                    if outname in genphe[pheintact]:
+                        v_intact = 1
+                    if outname in genphe[pheknockout]:
+                        v_knockout = 1
+                    
+                    gain = v_intact - v_knockout
+                    weightgain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
+                    sum += weightgain
+                except:
+                    continue
+                
+            shap = sum/(math.factorial(len(inputnames))) # this one is when divided by N! 
+            # print(shap)
+            shaps[inname] = round(shap, 3)
+        shapss[outname] = shaps
+    return shapss
+
+
+def getBiOutputFromOriOutputs(orioutputs, biformulas, debug=False):
+    print("Get psuedo binary output from ordinary output")
+    bioutputs = []
+    for output in orioutputs: 
+        thisbioutput = copy.deepcopy(output)
+        # print (output)
+        for term, formula in biformulas.items():
+            if term not in thisbioutput:
+                value = getResult(formula, thisbioutput, debug) 
+                thisbioutput[term] = value 
+        bioutputs.append(thisbioutput)
+            # print(term)
+            # formula.display()  
+    return bioutputs
+
 # calculate original shapley value based on simulation result 
-def calOriShapleyInput(genphe, inputnames, outputnames, debug=False):
+def calOriShapleyValue(genphe, inputnames, outputnames, v = False ,debug=False):
     ids = list([i for i in range(len(inputnames) - 1)])
     # print(ids)
     allsets = subsets(ids)
@@ -309,19 +489,23 @@ def calOriShapleyInput(genphe, inputnames, outputnames, debug=False):
 
                 pheyes = frozenset(phenotem)
                 
-                # calculate gain, gain = v(pheon) - v(pheyes)
+                # calculate gain, gain = v(pheyes) - v(pheno)
                 # v(S) = 1 if outname is presence, v(S) = 0 if outname is not presence 
                 # v_pheno = genphe[pheno] 
                 try:
-                    if outname in genphe[pheno]: 
-                        v_pheno = 1
-                    else:
-                        v_pheno = 0
+                    if not v:
+                        if outname in genphe[pheno]: 
+                            v_pheno = 1
+                        else:
+                            v_pheno = 0
 
-                    if outname in genphe[pheyes]:
-                        v_pheyes = 1
+                        if outname in genphe[pheyes]:
+                            v_pheyes = 1
+                        else:
+                            v_pheyes = 0
                     else:
-                        v_pheyes = 0
+                        v_pheno = genphe[pheno]
+                        v_pheyes = genphe[pheyes]
 
                     gain = v_pheyes - v_pheno
                     weightgain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset) - 1)
@@ -334,458 +518,562 @@ def calOriShapleyInput(genphe, inputnames, outputnames, debug=False):
             shaps[inname] = round(shap, 3)
         shapss[outname] = shaps
     return shapss
-        
-
-def propagate1step(formulas, state, debug=False):
-    for spe in state.keys():
-        command = str(spe) + ' = ' + str(state[spe])
-        # print(command)
-        exec(command)
-        
-    for formula in formulas:
-        formula['right'] = formula['right'].replace(' or ', ' + ')
-        formula['right'] = formula['right'].replace(' OR ', ' + ')
-        formula['right'] = formula['right'].replace(' and ', ' + ')
-        formula['right'] = formula['right'].replace(' AND ', ' + ')
-        formula['right'] = formula['right'].replace(' NOT ', ' - ')
-        formula['right'] = formula['right'].replace(' not ', ' - ')
-
-        command = formula['left'] + '_tem_ = ' + formula['right']
-        # print(command)
-        exec(command)
-        
-    for formula in formulas:
-        command = formula['left'] + ' = ' + formula['left'] + '_tem_'
-        # print(command)
-        exec(command)
-        
-    for spe in list(state):
-        command = 'state[\'' + str(spe) + '\'] = ' + str(spe)
-        # print(command)
-        exec(command)
-    return state
+              
+def genTableFromOutput(outputs, inputnames, debug=False):
+    for line in outputs:
+        # print(line)
+        # each line is a dictionary with keys are name of species and value is true or false
+        size = 0
+        for input in inputnames:
+            if line[input]:
+                size += 1
+        line['SIZE'] = size
+        line['PROP'] = math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames))
+    if debug:
+        print(outputs)
+    return outputs
 
 
-def propagateSV(SVs, species, formulas, debug=False, maxStep=1000):
-    ress = []
-    for sv in SVs:
-        res = {}
-        # print(sv)
-        inputs = SVs[sv]
-        # print(input)
-        speciescopy = copy.deepcopy(species)
-        for spe in speciescopy:
-            if spe in inputs:
-                speciescopy[spe] = SVs[sv][spe]
-            else:
-                speciescopy[spe] = 0
-        # for input in inputs:
-        #     # print(input)
-        #     speciescopy[input] = SVs[sv][input]
-        print(speciescopy)
-        oldstate = dict()
-        numstep = 0
-        for _ in range(maxStep):
-            numstep += 1
-            speciescopy = propagate1step(formulas, speciescopy, debug)
-            print(speciescopy)
-            hash = dict_hash(speciescopy)
-            if hash not in oldstate:
-                oldstate[hash] = numstep
-            else:
-                if debug:
-                    print("Number of iteration {} and first loop point is {}".format(numstep, oldstate[hash]))
-                returnstate = copy.deepcopy(speciescopy)
-                for i in range(numstep-oldstate[hash] - 1):
-                    print(i)
-                ress.append(returnstate)
-                break
-        
-
-def main_one_step():
+def main():
     parser = parseArguments()
     args= vars(parser.parse_args())
     if len(args) < 2:
         parser.print_help()
     else:
         debug = args['debug']
+        isko = args['knockout']
+        isbi = args['binary']
+        isacyclic = args['acyclic']
         exp = args['expression']
         strouts = args['output'].split()
         outputnames = set()
         for strout in strouts:
             outputnames.add(strout)
-        if debug:
-            print("The expression file is {}".format(exp))
-            print("The interested output is: ")
-            print(outputnames)
 
+        print("The expression file is {}".format(exp))
+        print("The interested output is: ")
+        print(outputnames)
+        if isko:
+            print("Perform normal procedure for input and knockout procedure for intermediate nodes")
+        else:
+            print("Perform only normal procedure")
+        # now read the expression file and take the string formulas from this 
         lines = readfile(exp, debug)
-        speciesnames = getSpeciesName(lines, debug) # set of species names 
+
+        speciesnames = getSpeciesName(lines, debug) # get species names 
+        print("List of all species:")
+        print(speciesnames)
+
         if not outputnames.issubset(speciesnames):
             print("The list of interested output is not a subset of species")
             return -1
-        species = genSpecies(speciesnames, debug) # dictionary of species with state None 
-        print("---SPECIES---")
-        print(species)
-        inputnames = getInputNames(lines, speciesnames, debug) # set of names of input nodes 
-        inputstates = genInput(species, inputnames, debug) # list of all possible input combinations 
         
-        # print("----Generated inputstates----")
-        # print(inputstates)
-
+        inputnames = getInputNames(lines, speciesnames, debug)
         print("-----Input names-----")
         print(inputnames)
 
         internames = speciesnames.difference(inputnames).difference(outputnames)
         print("----Intermediate nodes-----")
-        print(internames)
+        print(internames) 
 
         print("----Getting boolean formulas-----")
-        strformulas = getFormula(lines, debug)
-        formulas = []
-        for formula in strformulas:
-            root = parseFormula(formula, debug)
-            root.display() 
-            thisfor = {'left': formula['left'], 'right': root}
-            formulas.append(thisfor)
-        
-        print("----Simulate the network with all possible combinations of inputs-----")
-        # print(all)
-        outputs = [] # list of output states 
-        
-        inputstatescopy = copy.deepcopy(inputstates)
-
-        for inputstate in inputstatescopy:
-            # print (inputstate)
-            output = getOutput(formulas, inputstate, debug, 1000)
-            outputs.append(output)
-            # print(output)
-            # print('\n')
-
-        # print("-----Output------")
-        # for output in outputs:
-        #     print(output)
-
-        genphe = extractPhe(inputnames, outputnames, outputs, None)
-        interphe = extractPhe(internames, outputnames, outputs)
-        shaps = calOriShapleyInput(genphe, inputnames, outputnames)
-        intershaps = calOriShapleyInput(interphe, internames, outputnames)
-        print("-----Shape for input with input simulation----")
-        print("----Input shapley value-----")
-        for item in shaps.items():
-            print(item)     
-
-        print("----Intermediate shapley value-----")
-        for item in intershaps.items():
-            print(item) 
-        
-        print("------------------------------------------------------------------------------------------------------")
-        print("\n")
-        print("----- Now simulate with intermediate nodes as input-----")
-        intercoms = genInput(species, internames, debug) 
-        
-        print("----New boolean formulas excluding input nodes-----")
-        print("After excluding {}".format(inputnames))
-        newformulas = []
-        for formula in strformulas:
-            root = parseFormula(formula, debug)
-            deleteSomeNodes(root, inputnames)
-            # print("After excluding {}".format(inputnames))
-            if root and root.val: # dont add None formula
-                thisfor = {'left': formula['left'], 'right': root}
-                newformulas.append(thisfor)
-                print("Added")
+        strformulas = getFormula(lines, debug) # list of formulas in strings 
+        # formulas = [] # list of formulas in nodes 
+        formulas = dict() 
+        for strformula in strformulas:
+            root = parseFormula(strformula, debug)
+            if debug:
+                print("Parsing formula for {}".format(strformula['left']))
                 root.display()
-
-
-        interoutputs = [] # list of output states 
-        intercomcopy1 = copy.deepcopy(intercoms)
-        for intercom in intercomcopy1:
-            # print (intercom)
-            interoutput = getOutput(newformulas, intercom, debug, 1000)
-            # print(interoutput)
-            interoutputs.append(interoutput)
-            # print('\n')
-
-        # one step simulation
-        onestepoutput = []
-        intercomcopy2 = copy.deepcopy(intercoms)
-        for intercom in intercomcopy2:
-            out = sim1step(newformulas, intercom)
-            onestepoutput.append(out)
+                print("\n")
+            # root.display() 
+            # thisfor = {formula['left']: root}
+            # formulas.append(thisfor)
+            formulas[strformula['left']] = root 
         
-        onlyinterphe = extractPhe(internames, outputnames, interoutputs, onestepoutput)
-        # print("----Only interphe----")
-        # for tem in onlyinterphe.items():
-        #     print(tem)
-
-        onlyintershapss = calOriShapleyInput(onlyinterphe, internames, outputnames)
-        print("----Only intermediate shapley value-----")
-        for item in onlyintershapss.items():
-            print(item) 
+        # get the network of the original model
+        orinet = convertBooleanFormulas2Network(formulas, inputnames, speciesnames, "network", debug)
         
+        # the function returns the simulation output 
+        orioutputs = workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, formulas, isko, debug)
 
+        if isacyclic:
+            # now do the limiting procedure for each output node 
+            workwithLimitedNetwork(orinet, inputnames, internames, outputnames, speciesnames, False, formulas,debug)
         
-def main_one_step_2():
-    parser = parseArguments()
-    args= vars(parser.parse_args())
-    if len(args) < 2:
-        parser.print_help()
-    else:
-        debug = args['debug']
-        exp = args['expression']
-        strouts = args['output'].split()
-        outputnames = set()
-        for strout in strouts:
-            outputnames.add(strout)
-        if debug:
-            print("The expression file is {}".format(exp))
-            print("The interested output is: ")
-            print(outputnames)
-
-        lines = readfile(exp, debug)
-        speciesnames = getSpeciesName(lines, debug) # set of species names 
-        if not outputnames.issubset(speciesnames):
-            print("The list of interested output is not a subset of species")
-            return -1
-        species = genSpecies(speciesnames, debug) # dictionary of species with state None 
-        print("---SPECIES---")
-        print(species)
-        inputnames = getInputNames(lines, speciesnames, debug) # set of names of input nodes 
-        inputstates = genInput(species, inputnames, debug) # list of all possible input combinations 
         
-        # print("----Generated inputstates----")
-        # print(inputstates)
-
-        print("-----Input names-----")
-        print(inputnames)
-
-        internames = speciesnames.difference(inputnames).difference(outputnames)
-        print("----Intermediate nodes-----")
-        print(internames)
-
-        print("----Getting boolean formulas-----")
-        strformulas = getFormula(lines, debug)
-        formulas = []
-        for formula in strformulas:
-            root = parseFormula(formula, debug)
-            root.display() 
-            thisfor = {'left': formula['left'], 'right': root}
-            formulas.append(thisfor)
-        
-        print("----Simulate the network with all possible combinations of inputs-----")
-        # print(all)
-        outputs = [] # list of output states 
-        
-        inputstatescopy = copy.deepcopy(inputstates)
-
-        for inputstate in inputstatescopy:
-            # print (inputstate)
-            output = getOutput(formulas, inputstate, debug, 1000)
-            outputs.append(output)
-            # print(output)
-            # print('\n')
-
-        # print("-----Output------")
-        # for output in outputs:
-        #     print(output)
-        inputstatescopy2 = copy.deepcopy(inputstates)
-        outsonestep = []
-
-        for inputstate in inputstatescopy2:
-            out = sim1step(formulas, inputstate)
-            outsonestep.append(out)
-        
-
-        genphe = extractPhe(inputnames, outputnames, outputs, None)
-        interphe = extractPhe(internames, outputnames, outputs, outsonestep)
-        shaps = calOriShapleyInput(genphe, inputnames, outputnames)
-        intershaps = calOriShapleyInput(interphe, internames, outputnames)
-        print("-----Shape for input with input simulation----")
-        print("----Input shapley value-----")
-        for item in shaps.items():
-            print(item)     
-
-        print("----Intermediate shapley value-----")
-        for item in intershaps.items():
-            print(item) 
-        
-        print("------------------------------------------------------------------------------------------------------")
-        print("\n")
-        print("----- Now simulate with intermediate nodes as input-----")
-        intercoms = genInput(species, internames, debug) 
-        
-        print("----New boolean formulas excluding input nodes-----")
-        print("After excluding {}".format(inputnames))
-        newformulas = []
-        for formula in strformulas:
-            root = parseFormula(formula, debug)
-            deleteSomeNodes(root, inputnames)
-            # print("After excluding {}".format(inputnames))
-            if root and root.val: # dont add None formula
-                thisfor = {'left': formula['left'], 'right': root}
-                newformulas.append(thisfor)
-                print("Added")
-                root.display()
+        if isbi:
+            print("------Now working with the binary network-------")
+            workwithbinarynetwork(formulas, inputnames, outputnames, speciesnames, "binetwork", isko, debug)
 
 
-        interoutputs = [] # list of output states 
-        intercomcopy1 = copy.deepcopy(intercoms)
-        for intercom in intercomcopy1:
-            # print (intercom)
-            interoutput = getOutput(newformulas, intercom, debug, 1000)
-            # print(interoutput)
-            interoutputs.append(interoutput)
-            # print('\n')
-
-        # one step simulation
-        onestepoutput = []
-        intercomcopy2 = copy.deepcopy(intercoms)
-        for intercom in intercomcopy2:
-            out = sim1step(newformulas, intercom)
-            onestepoutput.append(out)
-        
-        onlyinterphe = extractPhe(internames, outputnames, interoutputs, onestepoutput)
-        # print("----Only interphe----")
-        # for tem in onlyinterphe.items():
-        #     print(tem)
-
-        onlyintershapss = calOriShapleyInput(onlyinterphe, internames, outputnames)
-        print("----Only intermediate shapley value-----")
-        for item in onlyintershapss.items():
-            print(item) 
-        
+def workwithLimitedNetwork(orinet, inputnames, internames, outputnames, speciesnames, isko, formulas, debug):
+    print("Work with the minimum spanning tree extracted from the network with respect to output {}".format(outputnames))
+    for outputname in outputnames:
+        print("--------Now limit the network to output {}-------".format(outputname))
+        temformulas = copy.deepcopy(formulas)
+        limitGraphAfterNode(orinet, inputnames, outputname, temformulas, debug=True)
+        workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, temformulas, isko, debug)
 
 
-
-def main_first_attempt():
-    parser = parseArguments()
-    args= vars(parser.parse_args())
-    if len(args) < 2:
-        parser.print_help()
-    else:
-        debug = args['debug']
-        exp = args['expression']
-        strouts = args['output'].split()
-        outputnames = set()
-        for strout in strouts:
-            outputnames.add(strout)
-        if debug:
-            print("The expression file is {}".format(exp))
-            print("The interested output is: ")
-            print(outputnames)
-
-        lines = readfile(exp, debug)
-        speciesnames = getSpeciesName(lines, debug) # set of species names 
-        if not outputnames.issubset(speciesnames):
-            print("The list of interested output is not a subset of species")
-            return -1
-        species = genSpecies(speciesnames, debug) # dictionary of species with state None 
-        print("---SPECIES---")
-        print(species)
-        inputnames = getInputNames(lines, speciesnames, debug) # set of names of input nodes 
-        inputstates = genInput(species, inputnames, debug) # list of all possible input combinations 
-
-        print("-----Input names-----")
-        print(inputnames)
-
-        internames = speciesnames.difference(inputnames).difference(outputnames)
-        print("----Intermediate nodes-----")
-        print(internames)
-
-        # print("-----Input states-----")
-        # print(inputstates)
-
-        print("----Getting boolean formulas-----")
-        strformulas = getFormula(lines, debug)
-        formulas = []
-        for formula in strformulas:
-            root = parseFormula(formula, debug)
-            root.display() 
-            thisfor = {'left': formula['left'], 'right': root}
-            formulas.append(thisfor)
-            
+def workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, formulas, isko, debug):
+    species = genSpecies(speciesnames, debug)
+    inputstates = genInput(species, inputnames, debug)
+    cloneinputstates = copy.deepcopy(inputstates)
     
+    # now show the network 
+    
+
+    outputs = []
+    for inputstate in cloneinputstates:
+        output = getOutput(formulas, inputstate, False, 1000, debug)
+        outputs.append(output)
+    table = genTableFromOutput(outputs, inputnames)
+
+    genphe = extractPhe(inputnames, outputnames, outputs)
+    shapss = calKnockoutShapleyForInput(genphe, inputnames, outputnames)
+
+    for outname in outputnames:
+        outshap = 0
+        for line in table:
+            if line[outname]:
+                outshap += line['PROP']
+        shapss[outname][outname] = round(outshap,3)
+
+    
+    print("----Input shapley value-----")
+    for item in shapss.items():
+        print(item)   
+        print('\n')
+    
+    if isko:
+        print("-------Now perform the knockout procedure-------")
         
-        print("----Simulate the network with all possible combinations of inputs-----")
-        # print(all)
-        outputs = [] # list of output states 
-        for inputstate in inputstates:
-            # print (inputstate)
-            output = getOutput(formulas, inputstate, debug, 1000)
-            outputs.append(output)
-            # print(output)
-            # print('\n')
+        # can use the inputstates 
+        vs = {}
+        for internode in internames:
+            if internode not in outputnames:
+                print("Knockout {}".format(internode))
+                clone2inputstates = copy.deepcopy(inputstates)
+                koouputs = []
+                for inputstate in clone2inputstates:
+                    output = getKnockoutOutput(formulas, inputstate, [internode], False, 1000, False)
+                    koouputs.append(output)
+                kogenphe = extractPhe(inputnames, outputnames, koouputs)
+                vs[internode] = kogenphe 
+        for outname in outputnames:
+            shaps = calknockoutShapleyValue(genphe, vs, outname, len(inputnames))
+            print("----KNOCKOUT VALUE for output {}----".format(outname))
+            print(shaps)
+            print("\n")
 
-        # print("-----Output------")
-        # for output in outputs:
-        #     print(output)
+    return outputs
+     
+def getknockoutlist(intercom, internames):
+    knockouts = []
+    for name in internames:
+        if not intercom[name]:
+            knockouts.append(name)
+    return knockouts 
 
-        genphe = extractPhe(inputnames, outputnames, outputs)
-        interphe = extractPhe(internames, outputnames, outputs)
+def calknockoutShapleyValue(intactgenphe, knockoutgenphes, output, numinput, debug=False):
+    # print("Intact genphe")
+    # print (intactgenphe)
+    shaps = {}
+    # for each intermediate node 
+    for internode, genphes in knockoutgenphes.items():
+        v = 0
+        numrows = 0
+        absgain = 0
+        for gen, phe in genphes.items():
+            # print(gen, phe)
+            s = len(gen)
+            gain = 0
+            try:
+                intactphe = intactgenphe[gen]
+                # print("Intact phe")
+                # print(intactphe)
+                pheyes = 0
+                pheno = 0
+                try:
+                    if output in intactphe:
+                        pheyes = 1
+                    if output in phe:
+                        pheno = 1
+                    gain = pheyes - pheno
+                    if gain != 0:
+                        numrows += 1
+                    weightgain = gain * math.factorial(s) * math.factorial(numinput - s)
+                    v += weightgain
+                    absgain += abs(weightgain)
+                except:
+                    assert False, "Cannot find {} in the output set".format(output)
+            except:
+                assert False, "Cannot find the set {} for the intact network".format(gen)
+        shaps[internode] = round(v/math.factorial(numinput),3)
+        absgain = absgain/math.factorial(numinput)
+        print("{} contributes to {} coalitions with the absolute value of {}".format(internode, numrows, absgain))
+        if numrows != 0:
+            print("The average is {} \n".format(round (absgain/numrows),3))
+        else:
+            print("")
+    return shaps 
 
-        # print("----Genphe----")
-        # for tem in genphe.items():
-        #     print(tem)
 
-        # print("----Interphe----")
-        # for tem in interphe.items():
-        #     print(tem)
-
-        shapss = calOriShapleyInput(genphe, inputnames, outputnames)
-        intershapss = calOriShapleyInput(interphe, internames, outputnames)
-
-        print("----Input shapley value-----")
-        for item in shapss.items():
-            print(item)     
-
-        print("----Intermediate shapley value-----")
-        for item in intershapss.items():
-            print(item) 
-
-        print("\n\n")
-        print("----Simulate the network with all possible combinations of intermediate nodes----")
-        intercoms = genInput(species, internames, debug)
-        # print(intercom)
+def getedges(left, root, net):
+    if (root.right is None) and (root.left is None): # leave node  
+        if root.parent and root.parent.val == "AND":
+            net.add_edge (root.val, left, color='#008000', type='arrow', width=3) 
+        elif root.parent and root.parent.val == "NOT":
+            net.add_edge(root.val, left, color ="#FF0000", type='bar', width=3)
+        else: 
+            net.add_edge(root.val, left, color ='#808080', type='arrow', width=3)
+        # print("Add edge {} {}".format(root.val, left))
+    else:
+        if root.right:
+            getedges(left, root.right, net) 
+        if root.left:
+            getedges(left, root.left, net)
         
-        print("----New boolean formulas excluding input nodes-----")
-        print("After excluding {}".format(inputnames))
-        newformulas = []
-        for formula in strformulas:
-            root = parseFormula(formula, debug)
-            deleteSomeNodes(root, inputnames)
-            # print("After excluding {}".format(inputnames))
-            if root and root.val: # dont add None formula
-                thisfor = {'left': formula['left'], 'right': root}
-                newformulas.append(thisfor)
-                print("Added")
-                root.display()
-            print("\n\n\n")
 
-        interoutputs = [] # list of output states 
-        for intercom in intercoms:
-            # print (intercom)
-            interoutput = getOutput(newformulas, intercom, debug, 1000)
-            # print(interoutput)
-            interoutputs.append(interoutput)
-            # print('\n')
 
-        # for tem in interoutputs:
-        #     print(interoutputs)
+def graphicRepresentation(speciesnames, inputnames, outputnames, formulas, filename, shaps = None, debug=False):
+    net = nx.DiGraph()
+    for speciesname in speciesnames:
+        if speciesname in outputnames:
+            net.add_node(speciesname, label=speciesname, color='#FFFF00')
+        elif speciesname in inputnames:
+            net.add_node(speciesname, label=speciesname, color='#0000FF')
+        else:
+            net.add_node(speciesname, label=speciesname)
+    for formula in formulas:
+        root = formula['right'] 
+        left = formula['left']
+
+        getedges(left, root, net)
+
+    nt = Network(directed=True)
+    nt.from_nx(net)
+    # nt.toggle_physics(False)
+    nt.show(str(filename)+str(".html"), notebook=False)
+    return net 
+
+def findConstraints(net, output, formulas, debug = False):
+    # convert formulas from list to dictionary
+    fordict = copy.deepcopy(formulas)
+    # for term, formula in formulas.items():
+    #     # fordict[formula['left']] = formula['right']
+    #     fordict[term] = formula
+    # if debug:
+    #     print("Formulas are converted to dictionary form")
+    #     # print(fordict)
+
+    # traverse the graph from the output to the top to get the filter list of all the nodes 
+    filters = dict()
+    filters[output] = dict()
+
+    curs = [output] # curs is a list of nodes at the same level (layer)
+    while curs:
+        if debug:
+            print("Current layer includes {}".format(curs))
+        nextlayer = []
+        for i in range(len(curs)):
+            cur = curs.pop(0) 
+            print("Working with {}".format(cur))
+            # find constraints for the parent nodes of the current node
+            inedges = list(net.in_edges(cur))
+            num = len(inedges) # can be only 1 or 2 because of binary tree 
+            assert num <= 2, print("Propagate function only supports binary tree at the moment")
+            if num == 2: # filter is needed only in case of binary operators 
+                edge1 = inedges.pop(0)
+                edge2 = inedges.pop(0)
+                com1 = edge1[0]
+                com2 = edge2[0]
+
+                # check if parent nodes influences multiple nodes from this current layer
+                # need to release all the contraints inherit for the dependent node
+                if com1 in filters:
+                    print(com1, ":", filters[com1])
+                    if cur in filters[com1]:
+                        filters[com1].pop(cur)
+
+                if com2 in filters:
+                    print(com2, ":", filters[com2])
+                    if cur in filters[com2]:
+                        filters[com2].pop(cur)
+
+                op = fordict[cur].val
+                if debug:
+                    print(com1, op, com2)
+                if op.upper() == "AND":
+                    if com1 not in filters:
+                        filters[com1] = copy.deepcopy(filters[cur])
+                    filters[com1][com2] = True
+
+                    if com2 not in filters:
+                        filters[com2] = copy.deepcopy(filters[cur])
+                    filters[com2][com1] = True
+
+                elif op.upper() == "OR":
+                    if com1 not in filters:
+                        filters[com1] = copy.deepcopy(filters[cur])
+                    filters[com1][com2] = False
+                    
+                    if com2 not in filters:
+                        filters[com2] = copy.deepcopy(filters[cur])
+                    filters[com2][com1] = False
         
-        onlyinterphe = extractPhe(internames, outputnames, interoutputs)
-        print("----Only interphe----")
-        for tem in onlyinterphe.items():
-            print(tem)
+                if com1 not in nextlayer:
+                    nextlayer.append(com1)
+                if com2 not in nextlayer:
+                    nextlayer.append(com2)
+            elif num == 1:
+                onlyedge = inedges.pop(0)
+                onlycom = onlyedge[0]
 
-        onlyintershapss = calOriShapleyInput(onlyinterphe, internames, outputnames)
-        print("----Only intermediate shapley value-----")
-        for item in onlyintershapss.items():
-            print(item) 
+                if onlycom in filters:
+                    print(filters[onlycom])
+                    if cur in filters[onlycom]:
+                        filters[onlycom].pop(cur)
 
-        
+                if onlycom not in filters:
+                    filters[onlycom] = copy.deepcopy(filters[cur])
 
+                if onlycom not in nextlayer:
+                    nextlayer.append(onlycom)
+                
+            else:
+                print("Reach node {} without in-comming edges".format(cur))
+                continue 
+        curs = nextlayer
+
+    if debug:
+        for id, item in filters.items():
+            print(id,":", item)
+
+    return filters
+
+
+
+# propagate function for binary tree 
+def propagate(net, shaps, output, simtable, formulas, genphe, debug=False):
+    
+    filters = findConstraints(net, output, formulas, True)
+    
+    values = dict()
+    for item in  shaps[output].items():
+        # print(item)
+        values[item[0]] = dict()
+        values[item[0]]['lb'] = shaps[output][item[0]]
+        values[item[0]]['ub'] = shaps[output][item[0]]
+    # print(values)
+
+    print("-----PROPAGATE------")
+    # formulas should be ordered accordingly to layers and follow binary tree format 
+    for formula in formulas:
+        left = formula['left']
+        if left != output:
+            right = formula['right']
+
+            neg = False 
+            coms = []
+            if right.val != "NOT":
+                if right.right:
+                    op = right.val
+                    print("Operator is {}".format(op))
+                else: 
+                    coms.append(right.val)
+            else:
+                print ("Not supporting NOT operator at the moment")
+                neg = True 
+                return 
+
+            # right.display()
+
+            # get component 
+            
+            if not neg: # binary root but still can be unary components 
+                if right.right: # binary
+                    coms.append(right.right.val)
+                    try:
+                        coms.append(right.left.val)
+                    except: 
+                        print("Incomplete formula")
+                else:
+                    print ("There is no right component")
+            
+            if debug:
+                print("Components are {}".format(coms))
+            
+            if len(coms) == 1: # the node to be propagated depends on only 1 node 
+                outedges = net.out_edges([coms[0]])
+                print (outedges)
+                if len(outedges) == 1: 
+                    print("Fully inherit")
+                    try:
+                        values[left] = values[coms[0]]
+                    except:
+                        values[left] = dict()
+                        values[left]['ub'] = values[output]['ub']
+                        values[left]['lb'] = 0
+                else: # the parent node influences more than one node 
+                        values[left] = dict()
+                        values[left]['ub'] = values[output]['ub']
+                        values[left]['lb'] = 0
+
+            elif len(coms) == 2: # binary operator 
+                outedges1 = net.out_edges(coms[0])
+                outedges2 = net.out_edges(coms[1])
+                print(outedges1)
+                print(outedges2)
+                if len(outedges1) == 1 and len(outedges2) == 1: # no branching from parent nodes 
+                    if op == "AND": # case of AND 
+                        if coms[0] in values:
+                            values[left] = values[coms[0]]
+                            if coms[1] not in values:
+                                values[coms[1]] = values[coms[0]]
+                        elif coms[1] in values:
+                            values[left] = values[coms[1]]
+                            values[coms[0]] = values[coms[1]]
+                        else:
+                            values[left] = dict()
+                            values[left]['ub'] = values[output]['ub']
+                            values[left]['lb'] = 0
+                    elif op == "OR": 
+                        values[left] = dict()
+                        # print(values[output])
+
+                        if coms[0] in values and coms[1] in values: # do normal OR propagate 
+                            # this bound is super loose 
+                            # values[left]['ub'] = values[output]['ub']
+                            # values[left]['lb'] = values[coms[0]]['lb'] + values[coms[1]]['lb']  
+
+                            # use constraints to compute value of left 
+                            # firstly need to find the constraint for left 
+                            constraints = filters[left]
+                            leftshap = 0
+                            for row in simtable:
+                                if row[left]:
+                                    satisfied = True
+                                    for node, cons in constraints.items():
+                                        if row[node] != cons:
+                                            satisfied = False
+                                    if satisfied:
+                                        leftshap += row['PROP']
+                            print("Pure OR operator, exact value of {} is {}".format(left, leftshap))
+                            values[left]['ub'] = leftshap
+                            values[left]['lb'] = leftshap
+
+                        elif coms[0] in values: # only know value of one parent (coms[0])
+                            values[left]['ub'] = values[output]['ub']
+                            values[left]['lb'] = values[coms[0]]['lb'] 
+                        elif coms[1] in values: # only know value of one parent (coms[1])
+                            values[left]['ub'] = values[output]['ub']
+                            values[left]['lb'] = values[coms[1]]['lb'] 
+                        else: # no information about any parent 
+                            values[left]['lb'] = 0
+                            values[left]['ub'] = values[output]['ub']
+                elif len(outedges1) + len(outedges2) == 3:
+                    if op == "AND":
+                        if len(outedges1) == 1:
+                            values[left] = values[coms[0]]
+                        else:
+                            values[left] = values[coms[1]]
+                    elif op == "OR":
+                        values[left] = dict()
+                        values[left]['ub'] = values[output]['ub']
+                        if len(outedges1) == 1:
+                            values[left]['lb'] = values[coms[0]]['lb']
+                        else:
+                            values[left]['lb'] = values[coms[1]]['lb'] 
+                else:
+                    values[left] = dict()
+                    values[left]['lb'] = 0
+                    if op == "AND":
+                        values[left]['ub'] = min(values[coms[0]]['ub'], values[coms[0]]['ub'])
+                    elif op == "OR":
+                        values[left]['ub'] = values[output]['ub']
+            else:
+                print("Still hasn't support more than 2 branches")
+    return values
+
+
+
+# do everything with binary network (convert, get speciesnames, simulate...)          
+def workwithbinarynetwork(formulas, inputnames, outputnames, orispeciesnames, networkname, isko = False, debug=False):
+    bistrformulas = toBinaryFormulas(formulas, True)
+
+    # to visualize the binary network
+    binet = convertBiBooleanFormulas2Network(bistrformulas, inputnames, orispeciesnames, "bi" + networkname, debug) 
+    
+    biformulas = [] 
+    bispeciesnames = set() 
+    # for term, bistrformula in bistrformulas.items():
+    for formula in bistrformulas:
+        term = formula['term']
+        bistrformula = formula['formula']
+        thisfor = {'left': term, "right": bistrformula}
+
+        thisbiformula = dict()
+        thisbiformula['term'] = term
+        thisbiformula['formula'] = parseFormula(thisfor, debug) 
+
+        biformulas.append(thisbiformula)
+
+        bispeciesnames.add(term)
+        coms = bistrformula.split()
+        for com in coms:
+            if com != '(' and com != ')' and com != 'AND' and com != 'OR' and com != 'NOT' and com != '=':
+                if '-' in com: # this is for excluding '-' in the formulas which is confusing for the compiler 
+                    com = com.replace('-','_')
+                bispeciesnames.add(com)
+
+    bispecies = genSpecies(bispeciesnames, debug)
+
+    biinternames = bispeciesnames.difference(inputnames).difference(outputnames)
+    if debug:
+        print("----Intermediate nodes-----")
+        print(biinternames)
+        print("----Intermediate nodes size is {}-----".format(len(biinternames)))
+    # simulate binary network 
+    realbioutputs = simBinaryNetwork(biformulas, inputnames, bispeciesnames, False)
+    intactbigenphe = extractPhe(inputnames, outputnames, realbioutputs)
+    if debug:
+        print(intactbigenphe)
+    
+    bikoinshapss = calKnockoutShapleyForInput(intactbigenphe, inputnames, outputnames)
+    print("-----Knockout Shapley value of input nodes in the binary network-----")
+    for out, item in bikoinshapss.items():
+        print(out, ":", item)
+
+    
+    if isko:
+        # now do the knockout procedure with the binary network 
+        print("-----Now do the knockout procedure with the binary network-----")
+
+        # first generate all possible input states 
+        inputstates = genInput(bispecies, inputnames, debug)
+        vs = {} # to store genphe of knockout network 
+        for internode in biinternames:
+            if internode not in outputnames:
+                print("Knockout {}".format(internode))
+                inputstatescopy = copy.deepcopy(inputstates)
+                kooutputs = []
+                for inputstate in inputstatescopy:
+                    output = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, debug)
+                    kooutputs.append(output)
+                    if debug:
+                        print(output)
+                
+                genphe = extractPhe(inputnames, outputnames, kooutputs)
+                vs[internode] = genphe
+
+        for outname in outputnames:
+            shaps = calknockoutShapleyValue(intactbigenphe, vs, outname, len(inputnames))
+            print("---- Binary KNOCKOUT VALUE for output {}----".format(outname))
+            print(shaps)
+            print("\n")
+               
             
 if __name__ == "__main__":
-    main_one_step_2()
-
+    main()
