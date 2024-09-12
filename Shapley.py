@@ -528,7 +528,7 @@ def genTableFromOutput(outputs, inputnames, debug=False):
             if line[input]:
                 size += 1
         line['SIZE'] = size
-        line['PROP'] = math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames))
+        line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),3)
     if debug:
         print(outputs)
     return outputs
@@ -595,7 +595,7 @@ def main():
         orinet = convertBooleanFormulas2Network(formulas, inputnames, speciesnames, "network", debug)
         
         # the function returns the simulation output 
-        orioutputs = workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, formulas, isko, debug)
+        orioutputs = workWithOriginalNetwork(orinet, inputnames, speciesnames, outputnames, internames, formulas, isko, debug)
 
         if isacyclic:
             # now do the limiting procedure for each output node 
@@ -613,16 +613,92 @@ def workwithLimitedNetwork(orinet, inputnames, internames, outputnames, speciesn
         print("--------Now limit the network to output {}-------".format(outputname))
         temformulas = copy.deepcopy(formulas)
         limitGraphAfterNode(orinet, inputnames, outputname, temformulas, debug=True)
-        workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, temformulas, isko, debug)
+        workWithOriginalNetwork(orinet, inputnames, speciesnames, outputnames, internames, temformulas, isko, debug)
+
+def propagatePreliminary(net, table, inputnames, inputstates, internames, outputnames, intactgenphe, formulas, debug=False):
+    andpropagatable = {'IL2R', 'IL2', 'IL21', 'IFNgR', 'IL18', 'IL4R', 'IL18R', 'IRAK'}
+    orpropagatable = {('IL4_e', 'IL4'), ('IL6', 'IL6_e')}
+    andpropagated = dict()
+    orpropagated = dict()
+    
+    setnotko = set()
+
+    for node in andpropagatable:
+        edges = net.out_edges(node)
+        if len(edges) != 1:
+            print("----Node named {} is not devoted-----".format(node))
+        else:
+            for edge in edges:
+                andpropagated[edge[1]] = edge[0]
+                setnotko.add(edge[1])
+    if debug:
+        print("List of node can be propagated by AND rule or identical relation")
+        print(andpropagated)
+
+    for (a1, a2) in orpropagatable:
+        a1edges = net.out_edges(a1)
+        a2edges = net.out_edges(a2)
+
+        if len(a1edges) != 1 or len(a2edges) != 1:
+            print("----Nodes named {} and {} are not devoted-----".format(a1, a2))
+        else:
+            a1child = None
+            a2child = None
+            for edge in a1edges:
+                a1child = edge[1]
+            for edge in a2edges:
+                a2child = edge[1]
+            if a1child != a2child:
+                print("----{} and {} do not have the same child----".format(a1, a2))
+            else:
+                orpropagated[a1child] = (a1, a2)
+                # setnotko.add(a1child) 
+    
+    if debug:
+        print("List of node can be propagated by OR rule")
+        print(orpropagated)
+        print("List of node can be propagated by OR rule")
+        print(orpropagated)
+        print("List of node not to knockout")
+        print(setnotko)
+    
+    # now do the knockout procedure with nodes cannot be propagated 
+    print("-------Now perform the knockout procedure-------")
+    
+    # can use the inputstates 
+    vs = {}
+    for internode in internames:
+        if internode not in outputnames and internode not in setnotko:
+            print("Knockout {}".format(internode))
+            clone2inputstates = copy.deepcopy(inputstates)
+            koouputs = []
+            for inputstate in clone2inputstates:
+                output = getKnockoutOutput(formulas, inputstate, [internode], False, 1000, False)
+                koouputs.append(output)
+            kogenphe = extractPhe(inputnames, outputnames, koouputs)
+            vs[internode] = kogenphe 
+
+    for outname in outputnames:
+        shaps = calknockoutShapleyValue(intactgenphe, vs, outname, len(inputnames))
+        # now do the or operator 
+        # for node, (a1, a2) in orpropagated.items():
+        #     if debug:
+        #         print("Propagate OR from {} and {} to {}".format(a1, a2, node))
+        #     propagetOR(table, node, a1, a2, outputnames, inputnames, formulas, True)
+
+        print("----KNOCKOUT VALUE for output {}----".format(outname))
+        print(shaps)
+        print("\n")
 
 
-def workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, formulas, isko, debug):
+            
+
+    # print(table)
+
+def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internames, formulas, isko, debug): 
     species = genSpecies(speciesnames, debug)
     inputstates = genInput(species, inputnames, debug)
     cloneinputstates = copy.deepcopy(inputstates)
-    
-    # now show the network 
-    
 
     outputs = []
     for inputstate in cloneinputstates:
@@ -646,6 +722,9 @@ def workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, f
         print(item)   
         print('\n')
     
+    # table is a list of dictionaries with keys are node name and value is value
+    propagatePreliminary(net, table, inputnames, inputstates, internames, outputnames, genphe, formulas, debug)
+
     if isko:
         print("-------Now perform the knockout procedure-------")
         
@@ -667,7 +746,7 @@ def workWithOriginalNetwork(inputnames, speciesnames, outputnames, internames, f
             print(shaps)
             print("\n")
 
-    return outputs
+    return table
      
 def getknockoutlist(intercom, internames):
     knockouts = []
@@ -677,8 +756,6 @@ def getknockoutlist(intercom, internames):
     return knockouts 
 
 def calknockoutShapleyValue(intactgenphe, knockoutgenphes, output, numinput, debug=False):
-    # print("Intact genphe")
-    # print (intactgenphe)
     shaps = {}
     # for each intermediate node 
     for internode, genphes in knockoutgenphes.items():
@@ -712,11 +789,11 @@ def calknockoutShapleyValue(intactgenphe, knockoutgenphes, output, numinput, deb
                 assert False, "Cannot find the set {} for the intact network".format(gen)
         shaps[internode] = round(v/math.factorial(numinput),3)
         absgain = absgain/math.factorial(numinput)
-        print("{} contributes to {} coalitions with the absolute value of {}".format(internode, numrows, absgain))
-        if numrows != 0:
-            print("The average is {} \n".format(round (absgain/numrows),3))
-        else:
-            print("")
+        # print("{} contributes to {} coalitions with the absolute value of {}".format(internode, numrows, absgain))
+        # if numrows != 0:
+        #     print("The average is {} \n".format(round (absgain/numrows),3))
+        # else:
+        #     print("")
     return shaps 
 
 
@@ -854,9 +931,58 @@ def findConstraints(net, output, formulas, debug = False):
     return filters
 
 
+def propagetOR(table, cur, A1name, A2name, outputnames, inputnames, formulas, debug=False):
+    # print(table) 
+    addedterm = dict()
+    for outname in outputnames:
+        addedterm[outname] = 0
+
+    count = 0
+    for row in table:
+
+        if row[A1name] and row[A2name]: 
+            count += 1
+            inputstate = copy.deepcopy(row)
+            del inputstate['SIZE']
+            del inputstate['PROP'] 
+
+            for node, val in inputstate.items():
+                if node not in inputnames:
+                    inputstate[node] = False 
+            
+            # now simulate with inputstate
+            inputstatea1a2 = copy.deepcopy(inputstate)
+            outputnoa1a2 = getKnockoutOutput(formulas, inputstatea1a2, [A1name, A2name], False, 1000, False) 
+
+            inputstatea1 = copy.deepcopy(inputstate)
+            outputnoa1 = getKnockoutOutput(formulas, inputstatea1, [A1name], False, 1000, False)
+
+
+            inputstatea2 = copy.deepcopy(inputstate)
+            outputnoa2 = getKnockoutOutput(formulas, inputstatea2, [A2name], False, 1000, False)
+
+            for outname in outputnames:
+                if outputnoa1a2[outname]: # if after knockout A1 and A2 we have input but having A1 and A2 we dont have input 
+                    if not row[outname] and not outputnoa1[outname] and not outputnoa2[outname]: 
+                        addedterm[outname] -= row['PROP']
+                else:
+                    if row[outname] and outputnoa1[outname] and outputnoa2[outname]:
+                        addedterm[outname] += row['PROP']
+
+    if debug:
+        print("Added term for OR operator of {} with each output is:".format(cur))
+        print(addedterm)
+        print("Number of rows needed to process: {}".format(count))
+        print("")
+
+            
+
+
+            
+
 
 # propagate function for binary tree 
-def propagate(net, shaps, output, simtable, formulas, genphe, debug=False):
+def propagateBinaryNetwork(net, shaps, output, simtable, formulas, genphe, debug=False):
     
     filters = findConstraints(net, output, formulas, True)
     
@@ -1076,4 +1202,7 @@ def workwithbinarynetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                
             
 if __name__ == "__main__":
+    start = timeit.default_timer()
     main()
+    print("-----------RUNNING TIME---------------")
+    print(timeit.default_timer() - start)

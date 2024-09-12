@@ -838,7 +838,7 @@ def arrangeLayers(net, inputnames, formulas, debug=False):
     # split the visualization space for each layer 
     assignednode = dict()
     for node in nodes:
-        net.nodes[node]['x'] = (net.nodes[node]['layer'] + 1)*100
+        net.nodes[node]['y'] = (net.nodes[node]['layer'] + 1)*100
         if net.nodes[node]['layer'] not in assignednode:
             assignednode[net.nodes[node]['layer']] = 1
         else:
@@ -849,7 +849,7 @@ def arrangeLayers(net, inputnames, formulas, debug=False):
             (assignednode[net.nodes[node]['layer']]/2) + 1000 - \
             100 * ((net.nodes[node]['layer']%2)*2 - 1)
         
-        net.nodes[node]['y'] = y
+        net.nodes[node]['x'] = y
         
     if debug:
         nodeswithdata = net.nodes(data=True)
