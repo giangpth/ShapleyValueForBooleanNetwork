@@ -406,7 +406,8 @@ def recShrinkFormula2Node(node, nodesyntacs, biformulas):
 
         newnode1 = left + node.val + right 
         newnode2 = right + node.val + left # for communitative properties of boolean formulas 
-        if newnode1 not in nodesyntacs and newnode2 not in nodesyntacs:
+        if newnode1 not in nodesyntacs and newnode2 not in nodesyntacs: 
+        # if 1: # to test cycle 
             nodename = "_XTR_" + str(len(nodesyntacs) + 1) + '_'
             nodesyntacs[newnode1] = nodename 
             biformulas[nodename] = (left + " " + node.val + " " + right).strip() 
@@ -439,6 +440,7 @@ def recShrinkFormula2Node(node, nodesyntacs, biformulas):
             print(right)
             newnode = node.val + right 
             if newnode not in nodesyntacs: 
+            # if 1: # to test cycle 
                 nodename = "_XTR_" + str(len(nodesyntacs) + 1) + '_'
                 nodesyntacs[newnode] = nodename 
                 biformulas[nodename] = (node.val + " " + right).strip() 
@@ -614,12 +616,14 @@ def toBinaryFormulas(formulas, debug=False):
         left = term 
         node = formula
         if debug:
+            print("{} = ".format(term))
             node.display()
         tem = recShrinkFormula2Node(node, nodesyntacs, biformulas)
         print("TEM: {} = {}".format(tem, biformulas[tem]))
         biformulas[left] = biformulas[tem]
         todel.add(tem)
-        # del biformulas[tem]
+        if debug:
+            print()
     
     notdel = set()
     for term, biformula in biformulas.items():
