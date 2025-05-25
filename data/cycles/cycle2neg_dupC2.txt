@@ -1,0 +1,16 @@
+_XTR_1_ =  A1 AND A2
+_XTR_2_ =  NOT D1_to_B1
+_XTR_3_ =  _XTR_2_ OR C3_to_B1
+B1 =  _XTR_1_ OR _XTR_3_
+_XTR_5_ =  A2 OR A3
+B2 =  _XTR_5_ AND D2_to_B2
+C1 =  B1 AND A3
+C2 =  B1 AND B2
+_XTR_9_ =  NOT B2
+C3 =  _XTR_9_ AND B1
+_XTR_11_ =  NOT C1
+D1 =  _XTR_11_ OR C2
+_XTR_13_ =  NOT C3
+D2 =  C2 OR _XTR_13_
+_XTR_15_ =  NOT D2
+E =  D1 AND _XTR_15_

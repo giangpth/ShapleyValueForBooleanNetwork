@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100%;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#0000FF", "id": "CIR", "label": "CIR", "labels": "CIR", "layer": 5, "shape": "dot", "size": 15, "x": 260.0, "y": 624}, {"color": "#0000FF", "id": "ptc", "label": "ptc", "labels": "ptc", "layer": 6, "shape": "dot", "size": 15, "x": 429.0, "y": 679}, {"color": "#0000FF", "id": "wg", "label": "wg", "labels": "wg", "layer": 6, "shape": "dot", "size": 15, "x": 325.0, "y": 729}, {"color": "#0000FF", "id": "hh", "label": "hh", "labels": "hh", "layer": 6, "shape": "dot", "size": 15, "x": 238.0, "y": 721}, {"color": "#0000FF", "id": "CIA", "label": "CIA", "labels": "CIA", "layer": 5, "shape": "dot", "size": 15, "x": 370.0, "y": 622}, {"color": "#FFFF00", "id": "SLP\n KO: -1.3333 | KI: 0.6667", "label": "SLP\n KO: -1.3333 | KI: 0.6667", "labels": "SLP", "layer": 0, "shape": "dot", "size": 15, "x": -8.0, "y": 75}, {"color": "#0000FF", "id": "en", "label": "en", "labels": "en", "layer": 1, "shape": "dot", "size": 15, "x": 318.0, "y": 230}, {"color": "#FFFF00", "id": "hh_e\n KO: 0.0 | KI: 0.0", "label": "hh_e\n KO: 0.0 | KI: 0.0", "labels": "hh_e", "layer": 0, "shape": "dot", "size": 15, "x": 104.0, "y": 80}, {"color": "#0000FF", "id": "PH", "label": "PH", "labels": "PH", "layer": 8, "shape": "dot", "size": 15, "x": 383.0, "y": 872}, {"color": "#0000FF", "id": "PTC_p", "label": "PTC_p", "labels": "PTC_p", "layer": 7, "shape": "dot", "size": 15, "x": 454.0, "y": 822}, {"color": "#0000FF", "id": "SMO", "label": "SMO", "labels": "SMO", "layer": 8, "shape": "dot", "size": 15, "x": 281.0, "y": 918}, {"color": "#0000FF", "id": "EN_p", "label": "EN_p", "labels": "EN_p", "layer": 2, "shape": "dot", "size": 15, "x": 319.0, "y": 290}, {"color": "#0000FF", "id": "ci", "label": "ci", "labels": "ci", "layer": 3, "shape": "dot", "size": 15, "x": 340.0, "y": 396}, {"color": "#0000FF", "id": "HH_p", "label": "HH_p", "labels": "HH_p", "layer": 7, "shape": "dot", "size": 15, "x": 207.0, "y": 827}, {"color": "#0000FF", "id": "CI_p", "label": "CI_p", "labels": "CI_p", "layer": 4, "shape": "dot", "size": 15, "x": 332.0, "y": 524}, {"color": "#0000FF", "id": "WG_p", "label": "WG_p", "labels": "WG_p", "layer": 7, "shape": "dot", "size": 15, "x": 333.0, "y": 824}, {"color": "#FFFF00", "id": "WG_e\n KO: 0.6667 | KI: -1.3333", "label": "WG_e\n KO: 0.6667 | KI: -1.3333", "labels": "WG_e", "layer": 0, "shape": "dot", "size": 15, "x": 217.0, "y": 103}, {"color": "#FFC0CB", "id": "wg_to_wg", "label": "wg_to_wg", "labels": "wg_to_wg", "layer": 0, "shape": "dot", "size": 25, "x": 316.0, "y": 81}, {"color": "#FFC0CB", "id": "PTC_p_to_CIA", "label": "PTC_p_to_CIA", "labels": "PTC_p_to_CIA", "layer": 0, "shape": "dot", "size": 25, "x": 423.0, "y": 110}, {"color": "#FFC0CB", "id": "PTC_p_to_CIR", "label": "PTC_p_to_CIR", "labels": "PTC_p_to_CIR", "layer": 0, "shape": "dot", "size": 25, "x": 569.0, "y": 84}, {"color": "#FFC0CB", "id": "PTC_p_to_PTC_p", "label": "PTC_p_to_PTC_p", "labels": "PTC_p_to_PTC_p", "layer": 0, "shape": "dot", "size": 25, "x": 670.0, "y": 126}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#FF0000", "from": "CIR", "to": "ptc", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "CIR", "to": "wg", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "CIR", "to": "hh", "width": 1}, {"arrows": "to", "color": "008000", "from": "CIA", "to": "ptc", "width": 1}, {"arrows": "to", "color": "008000", "from": "CIA", "to": "wg", "width": 1}, {"arrows": "to", "color": "008000", "from": "SLP\n KO: -1.3333 | KI: 0.6667", "to": "wg", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "SLP\n KO: -1.3333 | KI: 0.6667", "to": "en", "width": 1}, {"arrows": "to", "color": "008000", "from": "hh_e\n KO: 0.0 | KI: 0.0", "to": "CIA", "width": 1}, {"arrows": "to", "color": "008000", "from": "hh_e\n KO: 0.0 | KI: 0.0", "to": "PH", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "hh_e\n KO: 0.0 | KI: 0.0", "to": "CIR", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "hh_e\n KO: 0.0 | KI: 0.0", "to": "PTC_p", "width": 1}, {"arrows": "to", "color": "#808080", "from": "hh_e\n KO: 0.0 | KI: 0.0", "to": "SMO", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "EN_p", "to": "ptc", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "EN_p", "to": "ci", "width": 1}, {"arrows": "to", "color": "008000", "from": "EN_p", "to": "hh", "width": 1}, {"arrows": "to", "color": "#808080", "from": "hh", "to": "HH_p", "width": 1}, {"arrows": "to", "color": "#808080", "from": "ci", "to": "CI_p", "width": 1}, {"arrows": "to", "color": "#808080", "from": "wg", "to": "WG_p", "width": 1}, {"arrows": "to", "color": "008000", "from": "CI_p", "to": "CIA", "width": 1}, {"arrows": "to", "color": "008000", "from": "CI_p", "to": "CIR", "width": 1}, {"arrows": "to", "color": "#808080", "from": "ptc", "to": "PTC_p", "width": 1}, {"arrows": "to", "color": "008000", "from": "WG_e\n KO: 0.6667 | KI: -1.3333", "to": "en", "width": 1}, {"arrows": "to", "color": "008000", "from": "PTC_p", "to": "PH", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "PTC_p", "to": "SMO", "width": 1}, {"arrows": "to", "color": "#808080", "from": "en", "to": "EN_p", "width": 1}, {"arrows": "to", "color": {"color": "008000"}, "from": "wg_to_wg", "to": "wg", "width": 1}, {"arrows": "to", "color": {"color": "#FF0000"}, "from": "PTC_p_to_CIA", "to": "CIA", "width": 1}, {"arrows": "to", "color": {"color": "008000"}, "from": "PTC_p_to_CIR", "to": "CIR", "width": 1}, {"arrows": "to", "color": {"color": "008000"}, "from": "PTC_p_to_PTC_p", "to": "PTC_p", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

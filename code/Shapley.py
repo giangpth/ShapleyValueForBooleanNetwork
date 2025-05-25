@@ -5,7 +5,8 @@ import hashlib
 import json
 import math
 import copy 
-from booleanFormulaParser import parseFormula, getResult, toBinaryFormulas, convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, limitGraphAfterNode
+from booleanFormulaHandler import parseFormula, getResult, toBinaryFormulas, expandFunction, propagateFromTarget, expandFormula
+from networkHandler import convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, manipulateNetwork, showNetwork
 import networkx as nx
 from pyvis.network import Network
 from datetime import datetime 
@@ -13,6 +14,25 @@ import timeit
 import random 
 import shap 
 import numpy as np
+from collections import defaultdict
+
+def rank_dict_values(d):
+    # Sort items by value descending
+    sorted_items = sorted(d.items(), key=lambda x: -x[1])
+    
+    ranks = {}
+    current_rank = 1
+    last_value = None
+
+    for key, value in sorted_items:
+        if value != last_value:
+            last_value = value
+            ranks[key] = current_rank
+            current_rank += 1
+        else:
+            ranks[key] = current_rank - 1  # Same as previous rank
+    
+    return ranks
 
 def dict_hash(dictionary: Dict[str, Any]) -> str:
     """MD5 hash of a dictionary."""
@@ -21,7 +41,7 @@ def dict_hash(dictionary: Dict[str, Any]) -> str:
     # the same as {'b': 2, 'a': 1}
     encoded = json.dumps(dictionary, sort_keys=True).encode()
     dhash.update(encoded)
-    return dhash.hexdigest()
+    return dhash.hexdigest() 
 
 
 def parseArguments():
@@ -30,12 +50,17 @@ def parseArguments():
     parser.add_argument('-o', '--output', type=str, help='list of interested components to examine')
     parser.add_argument('-k', '--knockout', help='Perform knockout or not', \
                         action='store_true')
+    parser.add_argument('-i', '--knockin', help='Perform knockin or not', \
+                        action='store_true')
     parser.add_argument('-b', '--binary', help='Work with binary network or not', \
                         action='store_true')
     parser.add_argument('-a', '--acyclic', help='Extract acyclic network with respect to output node', \
                         action='store_true')
+    parser.add_argument('-p', '--propagate', help='Run propagation for binary network or not', \
+                        action='store_true')
     parser.add_argument('-d', '--debug', help="Print log to debug or not", \
                         action='store_true')
+    
 
 
     return parser
@@ -187,25 +212,8 @@ def genInput(species, inputnames, debug=False):
     
     return inputstates
 
-    # from now on to the end of the function is just to test 
-    # teminp = copy.deepcopy(species)
-    # for id, name in enumerate(inputnames):
-
-    #     teminp[name] = True
-    #         # try:
-    #             # print(name, id)
-    #         #     if com[id] == 1:
-    #         #         inp[name] = True
-    #         #     elif com[id] == 0:
-    #         #         inp[name] = False
-    #         #     else:
-    #         #         inp[name] = com[id]
-    #         # except KeyError:
-    #         #     print("There is no key named {}".format(name))
-    # return [teminp]
-
 # test the correctness of the function toBinaryNetwork      
-def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedinter, debug=False, maxstep=1000):
+def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedinter, debug=False, maxstep=1000, extranodes=None):
     print("----Simulate binary network----")
     species = genSpecies(speciesnames, debug) # take list the names of all the species and set them to be None 
     inputstates = genInput(species, inputnames, debug) # each inputstate contains all species, input species are set to a certain value 
@@ -213,15 +221,33 @@ def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedin
     # if debug:
         # print("Integer version of state of Binary network")
     decimalPairs = dict() 
+    if extranodes:
+        print("Extranodes are not empty, also need to assign value to extranodes")
+        for inputstate in inputstates:
+            for node in extranodes:
+                try:
+                    # print(node)
+                    rootname = node.split("_to_")[0] 
+                    if rootname not in inputstate:
+                        print("There is no node named {} as the root node of {}".format(rootname, node))
+                    inputstate[node] = inputstate[rootname]
+                except:
+                    print("Cannot find the root of the extra node {}".format(node)) 
+                    return
 
     outputs = []
     for inputstate in inputstates:
-        output = getOutput(biformulas, inputstate, True, 1000, debug) 
+        output = getOutput(biformulas, inputstate, True, 1000, debug, extranodes) 
+        
+        # this is to test the correctness of the getKnockoutOutput function 
+        # output = getKnockoutOutput(biformulas, inputstate, None, True, 1000, False, extranodes)
+        
         outputs.append(output)
         # if debug:
+            # print(inp, inter)
         inp, inter = toDecimal(output, sortedinput, sortedinter)
         decimalPairs[inp] = inter
-            # print(inp, inter)
+
 
 
     return outputs, decimalPairs
@@ -252,7 +278,7 @@ def sim1step(formulas, inputstate, debug=False):
 
     
 
-def sim1bistep(biformulas, inputstate, debug=False):
+def sim1bistep(biformulas, inputstate, debug=False, knockoutlist=None, isKnockin=False):
     # run command to declare all the variables 
     for spe in inputstate.keys():
         # print(spe)
@@ -260,27 +286,55 @@ def sim1bistep(biformulas, inputstate, debug=False):
         # print(command)
         exec(command)
     
+    if knockoutlist:
+        for knockoutnode in knockoutlist:
+            # print("Setting value of {} to False".format(knockoutnode))
+            if isKnockin:
+                inputstate[knockoutnode] = True
+            else: 
+                inputstate[knockoutnode] = False 
 
     # run all the formulas with a copy of the variables 
     for formula in biformulas:
         # formula['right'].display()
         # command = formula['left'] + '_tem_ = ' + formula['right'] 
         res = getResult(formula['formula'], inputstate, debug)
-        command = formula['term'] + '_tem_ = ' + str(res)
-        exec(command)
+
+        if "_XTR_" not in formula['term']: # for original node, run all the formulas then assign the value back after this 
+            command = formula['term'] + '_tem_ = ' + str(res)
+            # print(command)
+            exec(command)
+        else: # but for extra node added to binarize the network, assign value immediately, also update the value of '_XTR_' node in inputstate 
+            command = formula['term'] + ' = ' + str(res) 
+            # print(command)
+            exec(command)
+
+            updateinputstatecommand = 'inputstate[\'' + formula['term'] + '\'] = ' + str(res)
+            # print(updateinputstatecommand)
+            exec(updateinputstatecommand)
+            if knockoutlist:
+                if formula['term'] in knockoutlist:
+                    # print("Dont update value of {}, set to False/True".format(formula['term']))
+                    # set the value of this node to be False/True since it is knocked out/in 
+                    if isKnockin:
+                        inputstate[formula['term']] = True
+                    else:
+                        inputstate[formula['term']] = False 
+            
 
     # assign new value to real variables taking from value of copy variables
     for formula in biformulas:
-        command = formula['term'] + ' = ' + formula['term'] + '_tem_'
-        exec(command)
-        # print(command)
+        if "_XTR_" not in formula['term']: # now assign the value for the original node 
+            command = formula['term'] + ' = ' + formula['term'] + '_tem_'
+            exec(command)
+            # print(command)  
     
     # put back to inputstate to return 
     for spe in list(inputstate):
         command = 'inputstate[\'' + str(spe) + '\'] = ' + str(spe)
         # print(command)
         exec(command)
-    # exec("print(STAT6)")
+
     return inputstate
 
 def merge2states(state1, state2, debug=False):
@@ -291,17 +345,46 @@ def merge2states(state1, state2, debug=False):
 
 # inputstate is a list of all species with the predefine value for input species
 # this function is the simulation process 
-def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False) -> dict: 
+def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, extranodes=None) -> dict: 
     oldstate = dict()
     numstep = 0
-
+    # print("New inputstate")
     for _ in range(maxStep):
+        # print(dict(sorted(inputstate.items())))
         numstep += 1
         if isbi:
+            if extranodes:
+                for extranode in extranodes:
+                    try:
+                        rootname = extranode.split("_to_")[0] 
+                        if rootname not in inputstate:
+                            print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                        inputstate[extranode] = inputstate[rootname]
+                    except:
+                        print("Cannot find the root of the extra node {}".format(extranode)) 
+                        return
             inputstate = sim1bistep(formulas, inputstate, debug)
         else:
+            # here, if the list of extranodes is not None, 
+            # assign extranodes with the value of the root nodes
+            if extranodes:
+                for extranode in extranodes:
+                    try:
+                        rootname = extranode.split("_to_")[0] 
+                        if rootname not in inputstate:
+                            print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                        inputstate[extranode] = inputstate[rootname]
+                    except:
+                        print("Cannot find the root of the extra node {}".format(extranode)) 
+                        return
+
             inputstate = sim1step(formulas, inputstate, debug)
-        hash = dict_hash(inputstate)
+
+            # for extranode in extranodes:
+                # print("Extranode {} get value meanwhile rootnode have value {}")
+
+
+        hash = dict_hash(inputstate) 
 
 
         if hash not in oldstate:
@@ -314,8 +397,28 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False) 
             returnstate = copy.deepcopy(inputstate)
             for i in range(numstep-oldstate[hash] - 1):
                 if isbi:
+                    if extranodes:
+                        for extranode in extranodes:
+                            try:
+                                rootname = extranode.split("_to_")[0] 
+                                if rootname not in inputstate:
+                                    print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                                inputstate[extranode] = inputstate[rootname]
+                            except:
+                                print("Cannot find the root of the extra node {}".format(extranode)) 
+                                return
                     inputstate = sim1bistep(formulas, inputstate, debug)
                 else:
+                    if extranodes:
+                        for extranode in extranodes:
+                            try:
+                                rootname = extranode.split("_to_")[0] 
+                                if rootname not in inputstate:
+                                    print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                                inputstate[extranode] = inputstate[rootname]
+                            except:
+                                print("Cannot find the root of the extra node {}".format(extranode)) 
+                                return
                     inputstate = sim1step(formulas, inputstate, debug)
                 returnstate = merge2states(returnstate, inputstate)
             # if toshow:
@@ -326,40 +429,116 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False) 
     print("Cannot converge after {} steps".format(maxStep))
     return inputstate 
 
-def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  maxStep=1000, debug=False) -> dict:
+def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  \
+                      maxStep=1000, debug=False, extranodes = None, isKnockin=False) -> dict:
     oldstate = dict()
     numstep = 0
-    for _ in range(maxStep): 
+    # print("New inputstate")
+    if isKnockin:
+        for node in knockoutlist:
+            inputstate[node] = True
+               
+    for _ in range(maxStep):
+        # print(dict(sorted(inputstate.items())))
         numstep += 1
         if isbi:
-            inputstate = sim1bistep(formulas, inputstate, debug)
+            if extranodes:
+                for extranode in extranodes:
+                    try:
+                        rootname = extranode.split("_to_")[0] 
+                        if rootname not in inputstate:
+                            print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                        inputstate[extranode] = inputstate[rootname]
+                    except:
+                        print("Cannot find the root of the extra node {}".format(extranode)) 
+                        return
+            inputstate = sim1bistep(formulas, inputstate, debug, knockoutlist, isKnockin)
         else:
+            # here, if the list of extranodes is not None, 
+            # assign extranodes with the value of the root nodes
+            if extranodes:
+                for extranode in extranodes:
+                    try:
+                        rootname = extranode.split("_to_")[0] 
+                        if rootname not in inputstate:
+                            print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                        inputstate[extranode] = inputstate[rootname]
+                    except:
+                        print("Cannot find the root of the extra node {}".format(extranode)) 
+                        return
+
             inputstate = sim1step(formulas, inputstate, debug)
-        # reset knockedout node = False 
 
-        for node in knockoutlist:
-            inputstate[node] = False
+            # for extranode in extranodes:
+                # print("Extranode {} get value meanwhile rootnode have value {}")
 
-        hash = dict_hash(inputstate)
-        
+        if knockoutlist:
+            for node in knockoutlist:
+                if isKnockin:
+                    inputstate[node] = True
+                    # print("Setting {} is True as it is knocked in".format(node))
+                else:
+                    inputstate[node] = False
+                # print("Setting {} is False as it is knocked out".format(node))
+
+        hash = dict_hash(inputstate) 
+
+        # if 'CI_p' in knockoutlist or 'ci' in knockoutlist:
+        #     all_vars = sorted(inputstate.keys())
+        #     row = "".join(f"{var: <14}:{int(inputstate.get(var, False)): <2}" for var in all_vars)
+        #     print(numstep)
+        #     print(row)
+
         if hash not in oldstate:
             oldstate[hash] = numstep
         else:
-            if debug:
-                print("Number of iteration {} and first loop point is {}".format(numstep, oldstate[hash]))
+            # if debug:
+            #     print("Number of iteration {} and first loop point is {}".format(numstep, oldstate[hash]))
 
             # merge all the state inside the loop 
             returnstate = copy.deepcopy(inputstate)
             for i in range(numstep-oldstate[hash] - 1):
                 if isbi:
-                    inputstate = sim1bistep(formulas, inputstate, debug)
+                    if extranodes:
+                        for extranode in extranodes:
+                            try:
+                                rootname = extranode.split("_to_")[0] 
+                                if rootname not in inputstate:
+                                    print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                                inputstate[extranode] = inputstate[rootname]
+                            except:
+                                print("Cannot find the root of the extra node {}".format(extranode)) 
+                                return
+                    inputstate = sim1bistep(formulas, inputstate, debug, knockoutlist, isKnockin)
                 else:
+                    if extranodes:
+                        for extranode in extranodes:
+                            try:
+                                rootname = extranode.split("_to_")[0] 
+                                if rootname not in inputstate:
+                                    print("There is no node named {} as the root node of {}".format(rootname, extranode))
+                                inputstate[extranode] = inputstate[rootname]
+                            except:
+                                print("Cannot find the root of the extra node {}".format(extranode)) 
+                                return
                     inputstate = sim1step(formulas, inputstate, debug)
+                
+                if knockoutlist:
+                    for node in knockoutlist:
+                        if isKnockin:
+                            inputstate[node] = True
+                        else:
+                            inputstate[node] = False
+                        # print("Setting {} is False as it is knocked out".format(node))
+
                 returnstate = merge2states(returnstate, inputstate)
+            # if toshow:
+            #     print("Converge at step {}".format(numstep)) 
+            #     print(returnstate)
             return returnstate 
     # print(type(inputstate))
+    print("Cannot converge after {} steps".format(maxStep))
     return inputstate 
-
 
 def subsets(s):  
     if len(s) == 0:  
@@ -367,80 +546,44 @@ def subsets(s):
     x = subsets(s[:-1])  
     return x + [[s[-1]] + y for y in x] 
 
-def extractPhe(inputnames, outputnames, outputstates, inputstates=None, debug=False):
+def extractPhe(inputnames, outputnames, outputstates, debug=False):
     genphe = dict() 
     statistic = dict()
     statisticgen = dict()
-    if not inputstates: # take inputstates from outputstates in case of pure input, which will not change over the simulation 
-        print("Pure input")
-        for outputstate in outputstates:
-            gentem = set() # will be used as key
-            for name in inputnames:
-                if outputstate[name]:
-                    gentem.add(name)
-            gen = frozenset(gentem)
 
-            phe = set() # will be used as value 
-            for name in outputnames:
-                # print(name, outputstate[name])
-                if outputstate[name]:
-                    phe.add(name)
-            # print('')
-            genphe[gen] = phe
+    print("Pure input")
+    for outputstate in outputstates:
+        gentem = set() # will be used as key
+        for name in inputnames:
+            if outputstate[name]:
+                gentem.add(name)
+        gen = frozenset(gentem)
 
-            #from now on until the end of for loop is just for statistic purpose 
-            frozenphe = frozenset(phe)
-            if frozenphe not in statistic:
-                statistic[frozenphe] = 1
-            else:
-                statistic[frozenphe] += 1
+        phe = set() # will be used as value 
+        for name in outputnames:
+            # print(name, outputstate[name])
+            if outputstate[name]:
+                phe.add(name)
+        # print('')
+        genphe[gen] = phe
 
-            frozengen = frozenset(gen)
-            if frozengen not in statisticgen:
-                statisticgen[frozengen] = 1
-            else:
-                statisticgen[frozengen] += 1
+        #from now on until the end of for loop is just for statistic purpose 
+        frozenphe = frozenset(phe)
+        if frozenphe not in statistic:
+            statistic[frozenphe] = 1
+        else:
+            statistic[frozenphe] += 1
 
-        # print (statistic)
-        # print(statisticgen)
-    else:
-        print("Impure input")
-        assert len(inputstates) == len(outputstates), "Different length of input and output states"
-        for id, instate in enumerate (inputstates):
-            outstate = outputstates[id]
-
-            gentem = set ()
-            for name in inputnames:
-                if instate[name]:
-                    gentem.add(name)
-            gen = frozenset(gentem)
-
-            phe = set()
-            for name in outputnames:
-                if outstate[name]:
-                    phe.add(name)
-            genphe[gen] = phe
-
-            #from now on until the end of for loop is just for statistic purpose 
-            frozenphe = frozenset(phe)
-            if frozenphe not in statistic:
-                statistic[frozenphe] = 1
-            else:
-                statistic[frozenphe] += 1
-
-            frozengen = frozenset(gen)
-            if frozengen not in statisticgen:
-                statisticgen[frozengen] = 1
-            else:
-                statisticgen[frozengen] += 1
-
-        print (statistic)
-        print(statisticgen)
-
+        frozengen = frozenset(gen)
+        if frozengen not in statisticgen:
+            statisticgen[frozengen] = 1
+        else:
+            statisticgen[frozengen] += 1
     return genphe
 
 
-def calKnockoutShapleyForInput(genphe, inputnames, outputnames, v = False ,debug=False):
+def calKSV4Input(genphe, inputnames, outputnames, knockin=False, simtable = None, debug=False):
+    countedrows = dict()
     ids = list([i for i in range(len(inputnames))])
     # print(ids)
     allsets = subsets(ids)
@@ -451,17 +594,23 @@ def calKnockoutShapleyForInput(genphe, inputnames, outputnames, v = False ,debug
         shaps = dict()  
         # for each input component
         for inname in inputnames: # the knockout one 
+            countedrows[inname] = set()
             map = dict() 
             for i in range(len(inputnames)):
                 map[i] = list(inputnames)[i]
-
+            numrow = 0
             sum = 0
             for oneset in allsets:
                 phenotem = set() 
                 for e in oneset:
                     phenotem.add(map[e])
                 pheintact = frozenset(phenotem)
-                pheknockout = frozenset(phenotem - {inname})
+                if knockin:
+                    pheknockout = phenotem.union({inname})
+                    pheknockout = frozenset(pheknockout)
+                else: 
+                    pheknockout = frozenset(phenotem - {inname})
+                # print(pheintact, pheknockout)
                 try: 
                     v_intact = 0
                     v_knockout = 0
@@ -470,111 +619,81 @@ def calKnockoutShapleyForInput(genphe, inputnames, outputnames, v = False ,debug
                     if outname in genphe[pheknockout]:
                         v_knockout = 1
                     
-                    gain = v_intact - v_knockout
-                    weightgain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
-                    sum += weightgain
+                    gain  = v_intact - v_knockout
+                    weightedGain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
+                    sum += weightedGain
+                    if weightedGain != 0:
+                        numrow += 1
+                        for id, line in simtable.items():
+                            ok = True
+                            for input in inputnames:
+                                if input in pheintact:
+                                    if line[input] == False:
+                                        ok = False
+                                        break
+                                else:
+                                    if line[input] == True:
+                                        ok = False
+                                        break
+                            if ok:
+                                countedrows[inname].add(id)
+
                 except:
                     continue
-                
-            shap = sum/(math.factorial(len(inputnames))) # this one is when divided by N! 
-            # print(shap)
-            shaps[inname] = round(shap, 3)
+            shap = round(sum/(math.factorial(len(inputnames))),4)
+            shaps[inname] = shap
         shapss[outname] = shaps
-    return shapss
+    if simtable:
+        return shapss, countedrows
+    else:
+        return shapss
 
-
-def getBiOutputFromOriOutputs(orioutputs, biformulas, debug=False):
-    print("Get psuedo binary output from ordinary output")
-    bioutputs = []
-    for output in orioutputs: 
-        thisbioutput = copy.deepcopy(output)
-        # print (output)
-        for term, formula in biformulas.items():
-            if term not in thisbioutput:
-                value = getResult(formula, thisbioutput, debug) 
-                thisbioutput[term] = value 
-        bioutputs.append(thisbioutput)
-            # print(term)
-            # formula.display()  
-    return bioutputs
-
-# calculate original shapley value based on simulation result 
-def calOriShapleyValue(genphe, inputnames, outputnames, v = False ,debug=False):
-    ids = list([i for i in range(len(inputnames) - 1)])
-    # print(ids)
-    allsets = subsets(ids)
-
-    # calculate for each output component
-    shapss = dict()
-    for outname in outputnames:
-        shaps = dict()  
-        # for each input component
-        for inname in inputnames:
-            rest = list(inputnames - {inname})
-            # print(rest)
-            map = dict() 
-            for i in range(len(inputnames) - 1):
-                map[i] = rest[i]
-
-            sum = 0
-            for oneset in allsets:
-                phenotem = set() # subset without element i 
-                for e in oneset:
-                    phenotem.add(map[e])
-                # print(phe)
-                pheno = frozenset(phenotem)
-                
-                # then add also the considered element i 
-                phenotem.add(inname) # subset with element i 
-
-                pheyes = frozenset(phenotem)
-                
-                # calculate gain, gain = v(pheyes) - v(pheno)
-                # v(S) = 1 if outname is presence, v(S) = 0 if outname is not presence 
-                # v_pheno = genphe[pheno] 
-                try:
-                    if not v:
-                        if outname in genphe[pheno]: 
-                            v_pheno = 1
-                        else:
-                            v_pheno = 0
-
-                        if outname in genphe[pheyes]:
-                            v_pheyes = 1
-                        else:
-                            v_pheyes = 0
-                    else:
-                        v_pheno = genphe[pheno]
-                        v_pheyes = genphe[pheyes]
-
-                    gain = v_pheyes - v_pheno
-                    weightgain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset) - 1)
-                    sum += weightgain
-                except:
-                    continue
-            
-            shap = sum/(math.factorial(len(inputnames))) # this one is when divided by N! 
-            # print(shap)
-            shaps[inname] = round(shap, 3)
-        shapss[outname] = shaps
-    return shapss
               
-def genTableFromOutput(outputs, inputnames, sortedinput, sortedinter, debug=False):
+def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputnames, debug=False):
+    index = dict() # for each node, save the IDs of row that the node is TRUE
+    aindex = dict() # for each node, save the IDs of row that the node is TRUE
+    dictresult = dict()
+    for inter in sortedinter:
+        index[inter] = set()
+        aindex[inter] = set()
+    for input in inputnames:
+        index[input] = set()
+        aindex[input] = set()
+    for outputname in outputnames:
+        index[outputname] = set() 
+        aindex[outputname] = set() 
+    
     # print("Integer verson of output:")
-    for line in outputs:
+    for id, line in enumerate(simoutputs):
         # inp, inter = toDecimal(line, sortedinput, sortedinter)
         # print(inp, inter)
         # print(line)
         # each line is a dictionary with keys are name of species and value is true or false
+        
         size = 0
         for input in inputnames:
             if line[input]:
                 size += 1
         line['SIZE'] = size
-        line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),3)
-    if debug:
-        print(outputs)
-    return outputs
+        line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
+        for inter in sortedinter:
+            if line[inter]:
+                index[inter].add(id)
+            else:
+                aindex[inter].add(id)
+        for input in inputnames:
+            if line[input]:
+                index[input].add(id)
+            else:
+                aindex[input].add(id)
+        for outputname in outputnames: 
+            if line[outputname]:
+                index[outputname].add(id)
+            else:
+                aindex[outputname].add(id)
+
+        dictresult[id] = line
+    return dictresult, index, aindex 
 
 
 def main():
@@ -585,10 +704,12 @@ def main():
     else:
         debug = args['debug']
         isko = args['knockout']
+        iski = args['knockin']
         isbi = args['binary']
         isacyclic = args['acyclic']
         exp = args['expression']
         strouts = args['output'].split()
+        isprop = args['propagate']
         outputnames = set()
         for strout in strouts:
             outputnames.add(strout)
@@ -635,21 +756,65 @@ def main():
             # formulas.append(thisfor)
             formulas[strformula['left']] = root 
         
-        # get the network of the original model
-        orinet = convertBooleanFormulas2Network(formulas, inputnames, speciesnames, "network", debug)
+        # get the network of the original model, set acyclic = True to delete all the feedback arcs 
+        # orinet, anet, aformulas, extranodes = convertBooleanFormulas2Network(formulas, inputnames, \
+        #     speciesnames, "network", acyclic=isacyclic, debug=debug)
+        orinet, orifas = convertBooleanFormulas2Network(formulas, inputnames, \
+            speciesnames, "network", debug=debug)
+        
+        
+        # get the list of the extra node added to the network in case of cycle removement 
+        
+
+        # the function returns the simulation output 
+        oridecimalpairs, oriinputshapss = workWithOriginalNetwork(orinet, \
+            inputnames, speciesnames,outputnames, internames, formulas, isko, iski, debug)
 
         
-        # the function returns the simulation output 
-        orioutputs, oridecimalpairs, oriinputshapss = workWithOriginalNetwork(orinet, inputnames, speciesnames, outputnames, internames, formulas, isko, debug)
+        # print ("-----Simulation output is:----------")
+        # print(orioutputs)
+        # for row in orioutputs:
+        #     print(dict(sorted(row.items()))) 
 
-        for outputname in outputnames:
-            workWithSHAP(list(inputnames), speciesnames, outputname, formulas, debug)
+        # for outputname in outputnames:
+        #     workWithSHAP(list(inputnames), speciesnames, outputname, formulas, debug)
 
         if isacyclic:
+            print("----------WITH ACYCLIC FLAG-------------")
+            # get the acyclic network 
+            anet, aformulas, extranodes, nodes_layer = manipulateNetwork(orinet, inputnames, formulas, isacyclic, False, debug)
+            if debug:
+                for term, formula in aformulas.items():
+                    print("{} = ".format(term))
+                    formula.display()
+
             # now do the limiting procedure for each output node 
-            workwithLimitedNetwork(orinet, inputnames, internames, outputnames, speciesnames, False, formulas,debug)
-        
-        # Here is to calculate degree 
+            adecimalpairs, ashapss = workwithAcyclicNetwork(anet, \
+                inputnames, internames, outputnames, speciesnames, aformulas, extranodes, isko, isbi, iski, debug)
+            
+            acount = 0
+
+            for oriinp, oriinter in oridecimalpairs.items():
+                if oriinter != adecimalpairs[oriinp]:
+                    print(oriinp, oriinter, adecimalpairs[oriinp])
+                    acount += 1
+            print("Total number of differences is {}".format(acount))
+
+            if isbi: # convert the acyclic network to binary network 
+                print("-------------Now conver the acyclic network to the binary network---------------")
+                sortedinput, sortedinter = getOrderedList(inputnames, internames, True)
+                bidecimalpairs = workwithBinaryNetwork(aformulas, inputnames, outputnames, \
+                    speciesnames, "abinetwork", sortedinput, sortedinter, isko, iski, debug, extranodes, isprop)
+                bicount = 0
+                for ainp, ainter, in adecimalpairs.items():
+                    if ainter != bidecimalpairs[ainp]:
+                        print(ainp, ainter, bidecimalpairs[ainp])
+                        bicount += 1
+                print("Total number of differences between anetwork and binetwork is {}".format(bicount))
+
+
+        '''
+        # Here is to calculate degree  
         print("------Degree-------")
         btness = nx.degree(orinet)
         print(btness)
@@ -668,20 +833,9 @@ def main():
             # pagerank = nx.pagerank(orinet, personalization=pagerankseed)
             pagerank = nx.pagerank(orinet)
             print(pagerank)
-        
-        if isbi:
-            print("------Now working with the binary network-------")
-            sortedinput, sortedinter = getOrderedList(inputnames, internames, True)
+        '''
 
-            bidecimalpairs = workwithBinaryNetwork(formulas, inputnames, outputnames, speciesnames, "binetwork", sortedinput, sortedinter, isko, debug)
 
-            count = 0
-            for oriinp, oriinter in oridecimalpairs.items():
-                if oriinter != bidecimalpairs[oriinp]:
-                    print(oriinp, oriinter, bidecimalpairs[oriinp])
-                    count += 1
-            
-            print("Total number of differences is {}".format(count))
 
 # a wrapper for SHAP, taking a dataset of samples and computes the output of the model for those samples
 class BNmodel:
@@ -719,121 +873,58 @@ class BNmodel:
             # else:
             #     outputs.append(0)
         return outputs
-    # def predict(self, inputs): # input is a list 
-    #     print(inputs.shape)
-    #     outputs = [np.zeros(1)]
-    #     print(outputs.shape)
 
-    #     print(len(outputs))
-    #     print(len(inputs[0]))
-    #     for input in inputs:
-    #         # print(inputs[i])
-    #         print(input)
-    #         inputstate = copy.deepcopy(self.species)
-    #         for j in range(len(inputs[0])):
-    #             if input[j] == 1:
-    #                 inputstate[self.map[j]] = True
-    #             if inputs[input][j] == 0:
-    #                 inputstate[self.map[j]] = False
-    #         # print(inputstate)
-    #         output = getOutput(self.formulas, inputstate, False, 1000, False)
-    #         # print(output)
-    #         if output[self.outputname]:
-    #             outputs[input][0] = 1
-    #         else:
-    #             outputs[input][0] = 0
+def workwithAcyclicNetwork(anet, inputnames, internames, outputnames, speciesnames, aformulas, extranodes, isko, isbi, iski, debug):
+    species = genSpecies(speciesnames, debug)
+    inputstates = genInput(species, inputnames, debug)
+
+    sortedinput, sortedinter = getOrderedList(inputnames, internames, True)
+    decimalPairs = dict()
+    koinshapss = None 
+
+    # initial the extranode with the value of the node it reflect 
+    for inputstate in inputstates:
+        for node in extranodes:
+            try:
+                # print(node)
+                rootname = node.split("_to_")[0] 
+                if rootname not in inputstate:
+                    print("There is no node named {} as the root node of {}".format(rootname, node))
+                inputstate[node] = inputstate[rootname]
+            except:
+                print("Cannot find the root of the extra node {}".format(node)) 
+                return
+
+    cloneinputstates = copy.deepcopy(inputstates)
+
+    outputs = []
+    for inputstate in cloneinputstates:
+        output = getOutput(aformulas, inputstate, False, 1000, False, extranodes) 
+        outputs.append(output)
+        inp, inter = toDecimal(output, sortedinput, sortedinter)
+        decimalPairs[inp] = inter
 
 
+    genphe = extractPhe(inputnames, outputnames, outputs)
+    koinshapss = calKSV4Input(genphe, inputnames, outputnames)
 
-
-def workwithLimitedNetwork(orinet, inputnames, internames, outputnames, speciesnames, isko, formulas, debug):
-    print("Work with the minimum spanning tree extracted from the network with respect to output {}".format(outputnames))
-    for outputname in outputnames:
-        print("--------Now limit the network to output {}-------".format(outputname))
-        temformulas = copy.deepcopy(formulas)
-        limitGraphAfterNode(orinet, inputnames, outputname, temformulas, debug=True)
-        workWithOriginalNetwork(orinet, inputnames, speciesnames, outputnames, internames, temformulas, isko, debug)
-
-def propagatePreliminary(net, table, inputnames, inputstates, internames, outputnames, intactgenphe, formulas, debug=False):
-    andpropagatable = {'IL2R', 'IL2', 'IL21', 'IFNgR', 'IL18', 'IL4R', 'IL18R', 'IRAK'}
-    orpropagatable = {('IL6', 'IL6_e'), ('IL4', 'IL4_e')}
-    andpropagated = dict()
-    orpropagated = dict()
-    
-    setnotko = set()
-
-    for node in andpropagatable:
-        edges = net.out_edges(node)
-        if len(edges) != 1:
-            print("----Node named {} is not devoted-----".format(node))
-        else:
-            for edge in edges:
-                andpropagated[edge[1]] = edge[0]
-                setnotko.add(edge[1])
-    if debug:
-        print("List of node can be propagated by AND rule or identical relation")
-        print(andpropagated)
-
-    for (a1, a2) in orpropagatable:
-        a1edges = net.out_edges(a1)
-        a2edges = net.out_edges(a2)
-
-        if len(a1edges) != 1 or len(a2edges) != 1:
-            print("----Nodes named {} and {} are not devoted-----".format(a1, a2))
-        else:
-            a1child = None
-            a2child = None
-            for edge in a1edges:
-                a1child = edge[1]
-            for edge in a2edges:
-                a2child = edge[1]
-            if a1child != a2child:
-                print("----{} and {} do not have the same child----".format(a1, a2))
-            else:
-                orpropagated[a1child] = (a1, a2)
-                # setnotko.add(a1child) 
-    
-    if debug:
-        print("List of node can be propagated by OR rule")
-        print(orpropagated)
-        print("List of node can be propagated by OR rule")
-        print(orpropagated)
-        print("List of node not to knockout")
-        print(setnotko)
-    
-    # now do the knockout procedure with nodes cannot be propagated 
-    print("-------Now perform the knockout procedure-------")
-
-    for node, (a1, a2) in orpropagated.items():
-        if debug:
-            print("Propagate OR from {} and {} to {}".format(a1, a2, node))
-        propagetOR(table, node, a1, a2, outputnames, inputnames, formulas, True)
+    kiinshapss = None
+    if iski: 
+        kiinshapss = calKSV4Input(genphe, inputnames, outputnames, True)
 
     
-    # can use the inputstates 
-    vs = {}
-    for internode in internames:
-        if internode not in outputnames and internode not in setnotko:
-            print("Knockout {}".format(internode))
-            clone2inputstates = copy.deepcopy(inputstates)
-            koouputs = []
-            for inputstate in clone2inputstates:
-                output = getKnockoutOutput(formulas, inputstate, [internode], False, 1000, False)
-                koouputs.append(output)
-            kogenphe = extractPhe(inputnames, outputnames, koouputs)
-            vs[internode] = kogenphe 
+    print("----Input shapley value of acyclic network-----")
+    for item in koinshapss.items():
+        print(item)   
+        print('\n')
 
     for outname in outputnames:
-        shaps = calknockoutShapleyValue(intactgenphe, vs, outname, len(inputnames))
-        # now do the or operator 
-        for node, (a1, a2) in orpropagated.items():
-            if debug:
-                print("Propagate OR from {} and {} to {}".format(a1, a2, node))
-            propagetOR(table, node, a1, a2, outputnames, inputnames, formulas, True)
+        if kiinshapss:
+            showNetwork(anet, outname, koinshapss[outname], kiinshapss[outname], None, None, "acyclic.html")
+        else:
+            showNetwork(anet, outname, koinshapss[outname], kiinshapss, None, None, "acyclic.html")
+    return decimalPairs, koinshapss
 
-        print("----KNOCKOUT VALUE for output {}----".format(outname))
-        print(shaps)
-        print("\n")
 
 def genRandomInputForSHAP(numfeature, numsample):
     inputs = []
@@ -895,7 +986,8 @@ def workWithSHAP(inputnames, speciesnames, outputname, formulas, debug):
 
 
 
-def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internames, formulas, isko, debug): 
+def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internames, \
+                            formulas, isko, iski, debug): 
     species = genSpecies(speciesnames, debug)
     inputstates = genInput(species, inputnames, debug)
     cloneinputstates = copy.deepcopy(inputstates)
@@ -906,35 +998,29 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
 
     outputs = []
     for inputstate in cloneinputstates:
-        output = getOutput(formulas, inputstate, False, 1000, debug)
+        output = getOutput(formulas, inputstate, False, 1000, debug)        
         outputs.append(output)
         inp, inter = toDecimal(output, sortedinput, sortedinter) 
         decimalPairs[inp] = inter 
 
-    table = genTableFromOutput(outputs, inputnames, sortedinput, sortedinter)
-
     genphe = extractPhe(inputnames, outputnames, outputs)
-    shapss = calKnockoutShapleyForInput(genphe, inputnames, outputnames)
-
-    for outname in outputnames:
-        outshap = 0
-        for line in table:
-            if line[outname]:
-                outshap += line['PROP']
-        shapss[outname][outname] = round(outshap,3)
+    koinputshapss = calKSV4Input(genphe, inputnames, outputnames)
+    kiinputshapss = calKSV4Input(genphe, inputnames, outputnames, True)
 
     
-    print("----Input shapley value-----")
-    for item in shapss.items():
-        print(item)   
+    print("----Input knockout shapley value-----")
+    for item in koinputshapss.items():
+        print((item))
         print('\n')
     
-    # table is a list of dictionaries with keys are node name and value is value
-    # propagatePreliminary(net, table, inputnames, inputstates, internames, outputnames, genphe, formulas, debug)
-
+    print("----Input knockIN shapley value-----")
+    for item in kiinputshapss.items():
+        print((item))
+        print('\n') 
+   
+    koshaps, kishaps = None, None
     if isko:
-        print("-------Now perform the knockout procedure-------")
-        
+        print("-------Now perform the knockout procedure to original network-------")
         # can use the inputstates 
         vs = {}
         for internode in internames:
@@ -947,105 +1033,109 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
                     koouputs.append(output)
                 kogenphe = extractPhe(inputnames, outputnames, koouputs)
                 vs[internode] = kogenphe 
+        # for outname in outputnames:
+        koshaps, korows = calKSV(genphe, vs, outputnames, len(inputnames))
         for outname in outputnames:
-            shaps = calknockoutShapleyValue(genphe, vs, outname, len(inputnames))
             print("----KNOCKOUT VALUE for output {}----".format(outname))
-            print(shaps)
+            print(dict(sorted(koshaps[outname].items())))
+            print("\n")
+    
+    if iski:
+        print("-------Now perform the KNOCKIN procedure to intermediate nodes-------")
+        vski = {}
+        for internode in internames:
+            if internode not in outputnames:
+                print("Knockin {}".format(internode))
+                clone3inputstates = copy.deepcopy(inputstates)
+                kiouputs = []
+                for inputstate in clone3inputstates:
+                    output = getKnockoutOutput(formulas, inputstate, [internode],\
+                                                False, 1000, False, None, True)
+                    kiouputs.append(output)
+                kigenphe = extractPhe(inputnames, outputnames, kiouputs)
+                vski[internode] = kigenphe 
+        
+        kishaps, kirows = calKSV(genphe, vski, outputnames, len(inputnames))
+        for outname in outputnames:
+            print("----KNOCKIN VALUE for output {}----".format(outname))
+            print(dict(sorted(kishaps.items())))
             print("\n")
 
-    return table, decimalPairs, shapss
+    for outname in outputnames:
+        if koshaps and kishaps:
+            showNetwork(net, outname, koinputshapss[outname], kiinputshapss[outname], \
+                    koshaps[outname], kishaps[outname], "original.html")
+        else:
+            showNetwork(net, outname, koinputshapss[outname], kiinputshapss[outname], \
+                    None, None, "original.html")
+    return decimalPairs, koinputshapss
      
-def getknockoutlist(intercom, internames):
-    knockouts = []
-    for name in internames:
-        if not intercom[name]:
-            knockouts.append(name)
-    return knockouts 
 
-
-
-def calknockoutShapleyValue(intactgenphe, knockoutgenphes, output, numinput, debug=False):
-    shaps = {}
-    # for each intermediate node 
-    for internode, genphes in knockoutgenphes.items():
-        v = 0
-        numrows = 0
-        absgain = 0
-        for gen, phe in genphes.items():
-            # print(gen, phe)
-            s = len(gen)
-            gain = 0
-            try:
+def calKSV(intactgenphe, knockoutgenphes, outputnames, numinput, simtable=None, inputnames=None, debug=False):
+    countedrow = dict()
+    shapss = dict()
+    for output in outputnames:
+        shaps = {}
+        # for each intermediate node 
+        for internode, genphes in knockoutgenphes.items():
+            countedrow[internode] = set()
+            # print("Working with {}".format(internode))
+            sum = 0
+            numrow = 0
+            for gen, phe in genphes.items():
+                # rowid += 1
+                # print(gen, phe)
+                s = len(gen)
+                gain = 0
+                # try:
                 intactphe = intactgenphe[gen]
                 # print("Intact phe")
                 # print(intactphe)
                 pheyes = 0
                 pheno = 0
-                try:
-                    if output in intactphe:
-                        pheyes = 1
-                    if output in phe:
-                        pheno = 1
-                    gain = pheyes - pheno
-                    if gain != 0:
-                        numrows += 1
-                    weightgain = gain * math.factorial(s) * math.factorial(numinput - s)
-                    v += weightgain
-                    absgain += abs(weightgain)
-                except:
-                    assert False, "Cannot find {} in the output set".format(output)
-            except:
-                assert False, "Cannot find the set {} for the intact network".format(gen)
-        shaps[internode] = round(v/math.factorial(numinput),3)
-        absgain = absgain/math.factorial(numinput)
-        # print("{} contributes to {} coalitions with the absolute value of {}".format(internode, numrows, absgain))
-        # if numrows != 0:
-        #     print("The average is {} \n".format(round (absgain/numrows),3))
-        # else:
-        #     print("")
-    return shaps 
+                # try:
+                if output in intactphe:
+                    pheyes = 1
+                if output in phe:
+                    pheno = 1
+                gain = pheyes - pheno
 
-
-def getedges(left, root, net):
-    if (root.right is None) and (root.left is None): # leave node  
-        if root.parent and root.parent.val == "AND":
-            net.add_edge (root.val, left, color='#008000', type='arrow', width=3) 
-        elif root.parent and root.parent.val == "NOT":
-            net.add_edge(root.val, left, color ="#FF0000", type='bar', width=3)
-        else: 
-            net.add_edge(root.val, left, color ='#808080', type='arrow', width=3)
-        # print("Add edge {} {}".format(root.val, left))
+                weightedgain = gain * math.factorial(s) * math.factorial(numinput - s)
+                sum += weightedgain
+                if weightedgain != 0 and simtable:
+                    numrow += 1
+                    for id, line in simtable.items():
+                        ok = True
+                        for input in inputnames:
+                            if input in gen:
+                                if not line[input]:
+                                    ok = False
+                                    break
+                            if input not in gen:
+                                if line[input]:
+                                    ok = False
+                                    break
+                        if ok:
+                            countedrow[internode].add(id)
+                            # if internode == 'CI_p' or internode == 'ci':
+                            #     print(knockoutgenphes[internode])
+                # except:
+                    # assert False, "Cannot find {} in the output set".format(output)
+                # except:
+                    # assert False, "Cannot find the set {} for the intact network".format(gen)
+            print("Number of rows for {} is {}".format(internode, numrow))
+            shaps[internode] = round(sum/math.factorial(numinput),4)
+        shapss[output] = shaps
+    if simtable:
+        return shapss, countedrow
     else:
-        if root.right:
-            getedges(left, root.right, net) 
-        if root.left:
-            getedges(left, root.left, net)
+        return shapss, None
+
         
-
-
-def graphicRepresentation(speciesnames, inputnames, outputnames, formulas, filename, shaps = None, debug=False):
-    net = nx.DiGraph()
-    for speciesname in speciesnames:
-        if speciesname in outputnames:
-            net.add_node(speciesname, label=speciesname, color='#FFFF00')
-        elif speciesname in inputnames:
-            net.add_node(speciesname, label=speciesname, color='#0000FF')
-        else:
-            net.add_node(speciesname, label=speciesname)
-    for formula in formulas:
-        root = formula['right'] 
-        left = formula['left']
-
-        getedges(left, root, net)
-
-    nt = Network(directed=True)
-    nt.from_nx(net)
-    # nt.toggle_physics(False)
-    nt.show(str(filename)+str(".html"), notebook=False)
-    return net 
-
 def findConstraints(net, output, formulas, debug = False):
+    print("\nFinding constraints for output {}".format(output))
     # convert formulas from list to dictionary
+    # formulas pass here is a list of string
     fordict = copy.deepcopy(formulas)
     # for term, formula in formulas.items():
     #     # fordict[formula['left']] = formula['right']
@@ -1065,7 +1155,7 @@ def findConstraints(net, output, formulas, debug = False):
         nextlayer = []
         for i in range(len(curs)):
             cur = curs.pop(0) 
-            print("Working with {}".format(cur))
+            # print("Working with {}".format(cur))
             # find constraints for the parent nodes of the current node
             inedges = list(net.in_edges(cur))
             num = len(inedges) # can be only 1 or 2 because of binary tree 
@@ -1079,15 +1169,23 @@ def findConstraints(net, output, formulas, debug = False):
                 # check if parent nodes influences multiple nodes from this current layer
                 # need to release all the contraints inherit for the dependent node
                 if com1 in filters:
-                    print(com1, ":", filters[com1])
+                    # print(com1, ":", filters[com1])
                     if cur in filters[com1]:
                         filters[com1].pop(cur)
 
                 if com2 in filters:
-                    print(com2, ":", filters[com2])
+                    # print(com2, ":", filters[com2])
                     if cur in filters[com2]:
                         filters[com2].pop(cur)
+                
+                # if fordict[cur] is a string, convert to Node 
+                if isinstance(fordict[cur], str):
+                    temdict = dict()
+                    temdict['right'] = fordict[cur]
+                    temdict['left'] = cur
+                    fordict[cur] = parseFormula(temdict, debug) 
 
+                            
                 op = fordict[cur].val
                 if debug:
                     print(com1, op, com2)
@@ -1113,7 +1211,7 @@ def findConstraints(net, output, formulas, debug = False):
                     nextlayer.append(com1)
                 if com2 not in nextlayer:
                     nextlayer.append(com2)
-            elif num == 1:
+            elif num == 1: 
                 onlyedge = inedges.pop(0)
                 onlycom = onlyedge[0]
 
@@ -1139,271 +1237,611 @@ def findConstraints(net, output, formulas, debug = False):
 
     return filters
 
-
-def propagetOR(table, cur, A1name, A2name, outputnames, inputnames, formulas, debug=False):
-    # print(table) 
-    addedterm = dict()
-    for outname in outputnames:
-        addedterm[outname] = 0
-    count = 0
-    for row in table:
-
-        if row[A1name] and row[A2name]: 
-            count += 1
-            # print("ROW:", row)
-            inputstate = copy.deepcopy(row)
-            del inputstate['SIZE'] 
-            del inputstate['PROP'] 
-
-            for node, val in inputstate.items():
-                if node not in inputnames:
-                    inputstate[node] = False 
-            
-            # now simulate with inputstate
-            inputstatea1a2 = copy.deepcopy(inputstate)
-            outputnoa1a2 = getKnockoutOutput(formulas, inputstatea1a2, [A1name, A2name], False, 1000, False) 
-
-            # inputstatea1 = copy.deepcopy(inputstate)
-            # outputnoa1 = getKnockoutOutput(formulas, inputstatea1, [A1name], False, 1000, False)
-
-
-            # inputstatea2 = copy.deepcopy(inputstate)
-            # outputnoa2 = getKnockoutOutput(formulas, inputstatea2, [A2name], False, 1000, False)
-
-            for outname in outputnames:
-                print("Before {}, after {}".format(row[outname], outputnoa1a2[outname]))
-                if row[outname] != outputnoa1a2[outname]:
-                    print("CHANGED") 
-                if row[outname]:
-                    addedterm[outname] -= row["PROP"]
-                else:
-                    addedterm[outname] += row["PROP"]
-
-                # if outputnoa1a2[outname]: # if after knockout A1 and A2 we have input but having A1 and A2 we dont have input 
-                #     # if not row[outname] and not outputnoa1[outname] and not outputnoa2[outname]: 
-                #     #     addedterm[outname] -= row['PROP']
-                #     # print("OUTPUT:", outputnoa1a2)
-                #     if not row[outname]:
-                #         print("Change from {} to {}".format(row[outname], outputnoa1a2[outname]))
-                #         print(outputnoa1a2)
-                # else:
-                #     # print("OUTPUT:", outputnoa1a2)
-                #     # if row[outname] and outputnoa1[outname] and outputnoa2[outname]:
-                #     #     addedterm[outname] += row['PROP']
-                #     if row[outname]:
-                #         print("Change from {} to {}".format(row[outname], outputnoa1a2[outname]))
-                #         print(outputnoa1a2)
-
-    if debug:
-        print("Added term for OR operator of {} with each output is:".format(cur))
-        print(addedterm)
-        print("Number of rows needed to process: {}".format(count))
-        print("")
-
-            
-
-
-            
-
-
-# propagate function for binary tree 
-def propagateBinaryNetwork(net, shaps, output, simtable, formulas, genphe, debug=False):
-    
-    filters = findConstraints(net, output, formulas, True)
-    
-    values = dict()
-    for item in  shaps[output].items():
-        # print(item)
-        values[item[0]] = dict()
-        values[item[0]]['lb'] = shaps[output][item[0]]
-        values[item[0]]['ub'] = shaps[output][item[0]]
-    # print(values)
-
-    print("-----PROPAGATE------")
-    # formulas should be ordered accordingly to layers and follow binary tree format 
-    for formula in formulas:
-        left = formula['left']
-        if left != output:
-            right = formula['right']
-
-            neg = False 
-            coms = []
-            if right.val != "NOT":
-                if right.right:
-                    op = right.val
-                    print("Operator is {}".format(op))
-                else: 
-                    coms.append(right.val)
+def enrichfilter(op, nodetofilter, onenode, index, aindex, extranodes, countedchild, allrows, indirect=False):
+    print("---FILTERING---")
+    if op == 'OR':
+        if indirect:
+            print("INDRIRECT, do not filter")
+            pass
+        else:
+            if nodetofilter not in extranodes:
+                # print("NOT EXTRANODE")
+                childrows = aindex[nodetofilter]
+                # countedchild[onenode] = childrows
+                print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, onenode, op))
+                allrows = allrows.intersection(childrows)
+                print("Rows after filter are {}".format(sorted(list(allrows))))
             else:
-                print ("Not supporting NOT operator at the moment")
-                neg = True 
-                return 
-
-            # right.display()
-
-            # get component 
-            
-            if not neg: # binary root but still can be unary components 
-                if right.right: # binary
-                    coms.append(right.right.val)
-                    try:
-                        coms.append(right.left.val)
-                    except: 
-                        print("Incomplete formula")
+                # print("EXTRANODE")
+                coms = nodetofilter.split("_to_")
+                if len(coms) == 2 and coms[0] == coms[1]:
+                    print("{} is selfloop, do not count it".format(nodetofilter))
                 else:
-                    print ("There is no right component")
-            
-            if debug:
-                print("Components are {}".format(coms))
-            
-            if len(coms) == 1: # the node to be propagated depends on only 1 node 
-                outedges = net.out_edges([coms[0]])
-                print (outedges)
-                if len(outedges) == 1: 
-                    print("Fully inherit")
-                    try:
-                        values[left] = values[coms[0]]
-                    except:
-                        values[left] = dict()
-                        values[left]['ub'] = values[output]['ub']
-                        values[left]['lb'] = 0
-                else: # the parent node influences more than one node 
-                        values[left] = dict()
-                        values[left]['ub'] = values[output]['ub']
-                        values[left]['lb'] = 0
-
-            elif len(coms) == 2: # binary operator 
-                outedges1 = net.out_edges(coms[0])
-                outedges2 = net.out_edges(coms[1])
-                print(outedges1)
-                print(outedges2)
-                if len(outedges1) == 1 and len(outedges2) == 1: # no branching from parent nodes 
-                    if op == "AND": # case of AND 
-                        if coms[0] in values:
-                            values[left] = values[coms[0]]
-                            if coms[1] not in values:
-                                values[coms[1]] = values[coms[0]]
-                        elif coms[1] in values:
-                            values[left] = values[coms[1]]
-                            values[coms[0]] = values[coms[1]]
-                        else:
-                            values[left] = dict()
-                            values[left]['ub'] = values[output]['ub']
-                            values[left]['lb'] = 0
-                    elif op == "OR": 
-                        values[left] = dict()
-                        # print(values[output])
-
-                        if coms[0] in values and coms[1] in values: # do normal OR propagate 
-                            # this bound is super loose 
-                            # values[left]['ub'] = values[output]['ub']
-                            # values[left]['lb'] = values[coms[0]]['lb'] + values[coms[1]]['lb']  
-
-                            # use constraints to compute value of left 
-                            # firstly need to find the constraint for left 
-                            constraints = filters[left]
-                            leftshap = 0
-                            for row in simtable:
-                                if row[left]:
-                                    satisfied = True
-                                    for node, cons in constraints.items():
-                                        if row[node] != cons:
-                                            satisfied = False
-                                    if satisfied:
-                                        leftshap += row['PROP']
-                            print("Pure OR operator, exact value of {} is {}".format(left, leftshap))
-                            values[left]['ub'] = leftshap
-                            values[left]['lb'] = leftshap
-
-                        elif coms[0] in values: # only know value of one parent (coms[0])
-                            values[left]['ub'] = values[output]['ub']
-                            values[left]['lb'] = values[coms[0]]['lb'] 
-                        elif coms[1] in values: # only know value of one parent (coms[1])
-                            values[left]['ub'] = values[output]['ub']
-                            values[left]['lb'] = values[coms[1]]['lb'] 
-                        else: # no information about any parent 
-                            values[left]['lb'] = 0
-                            values[left]['ub'] = values[output]['ub']
-                elif len(outedges1) + len(outedges2) == 3:
-                    if op == "AND":
-                        if len(outedges1) == 1:
-                            values[left] = values[coms[0]]
-                        else:
-                            values[left] = values[coms[1]]
-                    elif op == "OR":
-                        values[left] = dict()
-                        values[left]['ub'] = values[output]['ub']
-                        if len(outedges1) == 1:
-                            values[left]['lb'] = values[coms[0]]['lb']
-                        else:
-                            values[left]['lb'] = values[coms[1]]['lb'] 
-                else:
-                    values[left] = dict()
-                    values[left]['lb'] = 0
-                    if op == "AND":
-                        values[left]['ub'] = min(values[coms[0]]['ub'], values[coms[0]]['ub'])
-                    elif op == "OR":
-                        values[left]['ub'] = values[output]['ub']
+                    childrows = aindex[nodetofilter]
+                    # countedchild[onenode] = childrows
+                    print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, onenode, op))
+                    allrows = allrows.intersection(childrows)
+                    print("Rows after filter are {}".format(sorted(list(allrows))))
+    elif op == 'AND':
+        if nodetofilter not in extranodes:
+            # print("NOT EXTRANODE")
+            childrows = index[nodetofilter]
+            # countedchild[onenode] = childrows
+            print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, onenode, op))
+            allrows = allrows.intersection(childrows)
+            print("Rows after filter are {}".format(sorted(list(allrows))))
+        else:
+            # print("EXTRANODE")
+            coms = nodetofilter.split("_to_")
+            if len(coms) == 2 and coms[0] == coms[1]:
+                print("{} is selfloop, do not count it".format(nodetofilter))
             else:
-                print("Still hasn't support more than 2 branches")
-    return values
-
-def checkAttractors(firstfile, secondfile, debug=False):
-    # process first file 
-    lines1 = readfile(firstfile, debug)
-    speciesnames1 = getSpeciesName(lines1, debug)
-    inputnames1 = getInputNames(lines1, speciesnames1, debug)
-
-    # process second file 
-    lines2 = readfile(secondfile, debug)
-    speciesnames2 = getSpeciesName(lines2, debug)
-    inputnames2 = getInputNames(lines2, speciesnames2, debug)
-
-    if speciesnames1 != speciesnames2:
-        print("Different sets of species ")
-        return -1
+                childrows = index[nodetofilter]
+                # countedchild[onenode] = childrows
+                print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, onenode, op))
+                allrows = allrows.intersection(childrows)
+                print("Rows after filter are {}".format(sorted(list(allrows))))
+    else:
+        print("Do not support {} operator".format(op))
     
-    if inputnames1 != inputnames2: 
-        print("Different input sets ")
-        return -1 
+    return allrows
     
-    strformulas1 = getFormula(lines1, debug)
-    strformulas2 = getFormula(lines2, debug) 
+                                      
+def processBranching(net, toconvergenode, carryon, countedrowsofnodes, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, convergedpairs):
+    if toconvergenode in carryon:
+        des = nx.descendants(net, toconvergenode)
+        desincluded = copy.deepcopy(des)
+        desincluded.add(toconvergenode)
+        print("BRANCHING: Node {} has branching having desendants {}".format(toconvergenode, desincluded))
+        countedpairs = set()
 
-    formulas1 = dict() 
-    for strformula in strformulas1:
-        root = parseFormula(strformula, debug)
-        if debug:
-            print("Parsing formula for {}".format(strformula['left']))
-            root.display()
-            print("\n")
-        # root.display() 
-        # thisfor = {formula['left']: root}
-        # formulas.append(thisfor)
-        formulas1[strformula['left']] = root  
+        print("Checking convergence for the pairs {}".format(carryon[toconvergenode]))
+        for pair in carryon[toconvergenode]:
+            left, right = pair[0], pair[1] 
+            if left in desincluded and right in desincluded:
+                countedpairs.add(pair) 
+                
+        if len(countedpairs) > 0:
+            print("Need convergence of the pairs {}".format(countedpairs))
+        else:
+            print("No pair to converge, continue")
+            return
+        for pair in countedpairs:
+            print("PAIR {}: {}".format(pair, rowsofpairs[pair]))
+            if toconvergenode not in convergedpairs:
+                convergedpairs[toconvergenode] = set()
+            if pair in convergedpairs[toconvergenode]:
+                print("Already counted the pair {}, continue".format(pair))
+                continue
+            convergedpairs[toconvergenode].add(pair)
+            # carryon[toconvergenode].remove(pair) # remove the pair that is already counted since any pair that is already converged to a node will not be carried on 
+            ornode = resofpairs[pair] # get node resulted by the pair 
+            countedchild = dict() # key are childs, value is the rows counted by the current node to this child 
+            paths = nx.all_simple_paths(net, source=toconvergenode, target=ornode)
 
-    formulas2 = dict() 
-    for strformula in strformulas2:
-        root = parseFormula(strformula, debug)
-        if debug:
-            print("Parsing formula for {}".format(strformula['left']))
-            root.display()
-            print("\n")
-        # root.display() 
-        # thisfor = {formula['left']: root}
-        # formulas.append(thisfor)
-        formulas2[strformula['left']] = root  
+            us = set ()
+            for path in paths:
+                us.update(path)
+            # print("To check set for node {} to {} is {}".format(toconvergenode, ornode, us))
 
+            orrows = copy.deepcopy(rowsofpairs[pair]) # get rows counted by the pair, this time is only to pass to enrichfilter to test 
+
+            tocheck = list(us) 
+            # print("Initial to check list for node {} to {} is {}".format(toconvergenode, ornode, tocheck))
+            while tocheck:
+                onenode = tocheck.pop(0)
+                try:
+                    form = formulas[onenode]
+                except:
+                    print("Pass the input node {}".format(onenode))
+                    continue
+                op = form.val
+                if op == 'OR' or op == 'AND':
+                    if form.right.val in desincluded and form.left.val in desincluded:
+                        if form.right.val not in us:
+                            tocheck.append(form.right.val)
+                            us.add(form.right.val)
+                        if form.left.val not in us:
+                            tocheck.append(form.left.val)
+                            us.add(form.left.val)
+                    elif form.right.val in desincluded and form.left.val not in desincluded:
+                        nodepartner = form.left.val
+                        orrows = enrichfilter(op, nodepartner, onenode, index, aindex, extranodes, countedchild, orrows)
+                    elif form.right.val not in desincluded and form.left.val in desincluded:
+                        nodepartner = form.right.val
+                        orrows = enrichfilter(op, nodepartner, onenode, index, aindex, extranodes, countedchild, orrows)
+                    else:
+                        print("Both parents {} and {} of node {} are not in descendants".format(form.left.val, form.right.val, onenode))
+                        
+                else:
+                    print("Unary operator, do not concern")
+                    
+            orrows = rowsofpairs[pair] # redeclare rows counted by the pair 
+            print("All rows counted by the pair {} {}".format(pair, orrows))
+            print("Need to intersect with the rows counted by the node {}: {} ".format(ornode, countedrowsofnodes[ornode]))
+            orrows = orrows.intersection(countedrowsofnodes[ornode]) # visited[ornode] is the rows counted by the node resulted by the pair
+            if countedchild:
+                for child, rows in countedchild.items():
+                    # print("Child {} has rows {}".format(child, rows))
+                    orrows = orrows.intersection(rows)
+            print(f"Rows of pair {pair} that really account to converge node {toconvergenode} are {orrows}")
+            # add this row to the value of the node  
+            if toconvergenode not in countedrowsofnodes:
+                countedrowsofnodes[toconvergenode] = set()
+            countedrowsofnodes[toconvergenode].update(orrows)
+        print("After BRANCHING, the row for node {} is {}".format(toconvergenode, countedrowsofnodes[toconvergenode]))
+    else:
+        print("No carryon pair to converge to node {}".format(toconvergenode))
     
+def processBranching_v3(net, toconvergenode, carryon, countedrowsofnodes, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, convergedpairs):
+    if toconvergenode in carryon:
+        des = nx.descendants(net, toconvergenode)
+        desincluded = copy.deepcopy(des)
+        desincluded.add(toconvergenode)
+        print("---BRANCHING---\nNode {} has branching having desendants {}".format(toconvergenode, desincluded))
+        countedpairs = set()
+
+        print("Checking convergence for the pairs {}".format(carryon[toconvergenode]))
+        for pair in carryon[toconvergenode]:
+            if pair[0] in des and pair[1] in des:
+                countedpairs.add(pair) 
+
+        if len(countedpairs) > 0:
+            print("PAIRS TO CONVERGED: \n{}".format(countedpairs))
+        else:
+            print("NO PAIR TO CONVERGE, continue")
+            return
+
+        for pair in countedpairs:
+            if toconvergenode not in convergedpairs:
+                convergedpairs[toconvergenode] = set()
+            if pair in convergedpairs[toconvergenode]:
+                print("Already counted the pair {}, continue".format(pair))
+                continue
+            convergedpairs[toconvergenode].add(pair)
+            print("ROWS carried by pair {}: \n {}".format(pair, sorted(list(rowsofpairs[pair]))))
+            # now get resulted node and operator
+            resnode = resofpairs[pair] 
+            rootform = formulas[resnode]
+            rootop = rootform.val
+            tocheck = [resnode] 
+            alreadychecked = set()
+            countedrows = rowsofpairs[pair] # get rows counted by the pair, this time is only to pass to enrichfilter to test
+            while tocheck:
+                node_ = tocheck.pop(0)
+                if node_ in alreadychecked:
+                    continue
+                alreadychecked.add(node_)
+                if node_ == toconvergenode:
+                    continue
+
+                try:
+                    form = formulas[node_]
+                except:
+                    print("Pass the input node {}".format(node_))
+                    continue
+
+                op = form.val
+                if op == 'OR' or op == 'AND': # binary operator 
+                    left = form.left.val
+                    right = form.right.val
+                    if left in desincluded and right in desincluded:
+                        print("BOTH parents {} and {} of node {} are in descendants".format(left, right, node_)) 
+                        # if operator is or, both parents need to be checked 
+                        if op == 'OR':
+                            if left not in alreadychecked:
+                                tocheck.append(left)
+                            if right not in alreadychecked:
+                                tocheck.append(right)
+                        # if operator is and, only one parent involve in a next AND operator need to be checked
+                        if op == 'AND':
+                            try:
+                                leftform = formulas[left]
+                                leftop = leftform.val
+                                if leftop == 'AND':
+                                    if left not in alreadychecked:
+                                        tocheck.append(left)
+                            except:
+                                print("Pass the input node {}".format(left))
+                                continue
+                            try: 
+                                rightform = formulas[right] 
+                                rightop = rightform.val
+                                if rightop == 'AND':
+                                    if right not in alreadychecked:
+                                        tocheck.append(right)
+                            except:
+                                print("Pass the input node {}".format(right)) 
+
+                    elif left in desincluded and right not in desincluded:
+                        print("Parent {} of node {} is not in descendants".format(right, node_))
+                        if op == 'OR':
+                            countedrows = enrichfilter(op, right, node_, index, aindex, extranodes, countedrows, countedrows) 
+                        # if left no
+                    elif left not in desincluded and right in desincluded:
+                        print("Parent {} of node {} is not in descendants".format(left, node_))
+                    else:
+                        print("BOTH parents {} and {} of node {} are NOT in descendants".format(left, right, node_))
+                else:
+                    print("Unary operator")
+                    print("Add node {} to the list of tocheck nodes".format(node_))
+                    if node_ not in alreadychecked:
+                        tocheck.append(node_)
+                    continue
+
+
+
+def  processBranching_v2(net, toconvergenode, carryon, countedrowsofnodes, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, convergedpairs):
+    if toconvergenode in carryon:
+        des = nx.descendants(net, toconvergenode)
+        desincluded = copy.deepcopy(des)
+        desincluded.add(toconvergenode)
+        print("BRANCHING: Node {} has branching having desendants {}".format(toconvergenode, des))
+        countedpairs = set()
+
+        print("Checking convergence for the pairs {}".format(carryon[toconvergenode]))
+        for pair in carryon[toconvergenode]:
+            if pair[0] in des and pair[1] in des:
+                countedpairs.add(pair) 
+
+        if len(countedpairs) > 0:
+            print("Need convergence of the pairs {}".format(countedpairs))
+        else:
+            print("No pair to converge, continue")
+            return
+
+        for pair in countedpairs:
+            if toconvergenode not in convergedpairs:
+                convergedpairs[toconvergenode] = set()
+            if pair in convergedpairs[toconvergenode]:
+                print("Already counted the pair {}, continue".format(pair))
+                continue
+            convergedpairs[toconvergenode].add(pair)
+            rowsoffactors = dict()
+            print("Rows carried by pair {} are {}".format(pair, sorted(list(rowsofpairs[pair]))))
+            for factor in pair:
+                rowsoffactors[factor] = set()
+                # get all the path from toconvergenode to the resulted node
+                rowsofpath = dict() 
+                paths = nx.all_simple_paths(net, source=toconvergenode, target=factor)
+                for id_, path in enumerate(paths):
+                    initrows = rowsofpairs[pair] # get rows counted by the pair, this time is only to pass to enrichfilter to test
+                    print("Path {}: {}".format(id_, path))
+                    checked = set()
+                    tocheck = list(path)
+                    # tofilter = set() 
+                    while tocheck:
+                        node_ = tocheck.pop(0)
+                        if node_ in checked:
+                            continue
+                        checked.add(node_)
+                        if node_ == toconvergenode:
+                            continue
+                        try:
+                            form = formulas[node_]
+                        except:
+                            print("Pass the input node {}".format(node_))
+                            continue
+                        op = form.val 
+                        if op == 'OR' or op == 'AND':
+                            if form.right.val in desincluded and form.left.val in desincluded:
+                                if form.right.val not in checked:
+                                    tocheck.append(form.right.val)
+                                if form.left.val not in checked:
+                                    tocheck.append(form.left.val)
+                                if op == "OR":
+                                    print('Both parents {} {} of {} in OR are in descendants, add to checklist'.format(form.right.val, form.left.val, node_))
+                                continue
+                            elif form.right.val in desincluded and form.left.val not in desincluded:
+                                print('Parent {} of node {} is not in descendants'.format(form.left.val, node_))
+                                # tofilter.add((form.left.val, op))
+                                if form.right.val not in checked:
+                                    tocheck.append(form.right.val)
+                                # if node_ not in path:
+                                #     indirect = True
+                                # else:
+                                #     indirect = False
+                                initrows = enrichfilter(op, form.left.val, node_, index, aindex, extranodes, node_, initrows)
+                                if len(initrows) == 0:
+                                    print("EMPTY ROWS, stop!")
+                                    break
+                            elif form.right.val not in desincluded and form.left.val in desincluded:
+                                print('Parent {} of node {} is not in descendants'.format(form.right.val, node_))
+                                if form.left.val not in checked:
+                                    tocheck.append(form.left.val)
+                                # if node_ not in path:
+                                #     indirect = True
+                                # else:
+                                #     indirect = False
+                                initrows = enrichfilter(op, form.right.val, node_, index, aindex, extranodes, node_, initrows)
+                                if len(initrows) == 0: 
+                                    print("EMPTY ROWS, stop!")
+                                    break
+                            else:
+                                print("BOTH parents {} and {} of node {} are NOT in DESCENDANTS".format(form.left.val, form.right.val, node_))
+                        else:
+                            print(f"Unary operator of {node_}, do not concern")
+                    rowsofpath[id_] = initrows
+                    # for node, op in tofilter:
+                    #     print("Filter {} with operator {}".format(node, op))
+                    #     initrows = enrichfilter(op, node, factor, index, aindex, extranodes, rowsoffactors[node], initrows)
+                    #     print("Rows after filter are {}".format(sorted(list(initrows))))
+                    # rowsofpath[id_] = initrows
+
+                for id_, rows in rowsofpath.items():
+                    print("Rows counted by path {} are {}".format(id_, sorted(list(rows))))
+                    rowsoffactors[factor] = rowsoffactors[factor].union(rows)
+            
+            rowstoconverge = rowsoffactors[pair[0]].intersection(rowsoffactors[pair[1]]).intersection(countedrowsofnodes[resofpairs[pair]])
+            print("Rows counted by the pair {} are {}".format(pair, sorted(list(rowstoconverge))))
+            countedrowsofnodes[toconvergenode].update(rowstoconverge)
+            print("--------")
+    else:
+        print("Carry nothing to converge")
+
+def rowstovalues(rowdict, simtable, outname):
+    kovalues = dict()
+    kivalues = dict()
+    for node, rowids in rowdict.items():
+        kovalues[node] = 0.0
+        kivalues[node] = 0.0
+        for id in rowids:
+            row = simtable[id]
+            if row[outname]:
+                if row[node]:
+                    kovalues[node] += row['PROP']
+                else:
+                    kivalues[node] += row['PROP']
+            else:
+                if row[node]:
+                    kovalues[node] -= row['PROP']
+                else:
+                    kivalues[node] -= row ['PROP']
+    return kovalues, kivalues
+
+
+def propagateBottomUp(net, simtable, index, aindex, outname, formulas, extranodes):
+    curs = [outname] 
+    countedrowsofnode = dict() # visited[node] = set(), rows that make node count 
+    rowsofpairs = dict() # save the loss information of the OR operator 
+    carryonofnodes = dict() # carryonofnodes[node] = set(), pairs that are carried on to the next layer
+    resofpairs = dict() # the node that is the result of pairs 
+    converged = dict() # save the pairs that are already converged for a node (key) to avoid doing it again 
+    descendantsofnodes = dict() # save the descendants of a node to check if the node is already counted
+    while curs:
+        print("\n\n---Processing layers of {}---".format(curs))
+        nextlayer = []
+        for cur in curs:
+            try:
+                form = formulas[cur]
+            except:
+                print("\nReach node {} without in-comming edges".format(cur))
+                continue
+            # get incoming edge to cur node 
+            inedges = list(net.in_edges(cur)) 
+            assert len(inedges) <= 2, print("Support only binary network") 
+
+            if cur not in countedrowsofnode: # count all rows 
+                countrows = set(range(len(simtable)))
+                countedrowsofnode[cur] = countrows
+            else: # count only rows that cur is counted
+                countrows = countedrowsofnode[cur] 
+            print("\nCounted row for current node {} is {}".format(cur, sorted(list(countrows))))
+
+            if len(inedges) == 2: 
+                print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                # get operator
+                op = form.val 
+                # check if one of the node is extranode 
+                leftselfloop, rightselfloop = False, False
+                rootname = None
+                if form.left.val in extranodes:
+                    print(f"Left node {form.left.val} is an extra node")
+                    # get the root node of the extra node 
+                    rootname = form.left.val.split("_to_")[0]
+                    desname = form.left.val.split("_to_")[1]
+                    if rootname == desname:
+                        leftselfloop = True
+                        
+                    # get the rows that the root node is counted 
+
+                if form.right.val in extranodes:
+                    print(f"Right node {form.right.val} is an extra node")
+                    # get the root node of the extra node
+                    rootname = form.right.val.split("_to_")[0]
+                    desname = form.right.val.split("_to_")[1]
+                    if rootname == desname:
+                        rightselfloop = True
+
+                # now start to process 
+                if op == 'OR':
+                    # rows that left counted are rows that right = False 
+                    if not rightselfloop:
+                        leftrows = aindex[form.right.val]
+                    else:
+                        leftrows = countedrowsofnode[cur]
+
+                    # rows that right counted are rows that left = False 
+                    if not leftselfloop:
+                        rightrows = aindex[form.left.val]
+                    else:
+                        rightrows = countedrowsofnode[cur]
+                        # leftrows = set()
+
+                    androws = index[form.left.val].intersection(index[form.right.val])
+                    pair = (form.left.val, form.right.val)
+                    rowsofpairs[pair] = androws 
+                    resofpairs[pair] = cur
+                    print(f"Pair {pair} has rows {sorted(list(rowsofpairs[pair]))}")
+
+                    if form.left.val not in carryonofnodes:
+                        carryonofnodes[form.left.val] = {pair}
+                    else:
+                        carryonofnodes[form.left.val].add(pair)
+                    if cur in carryonofnodes:
+                        carryonofnodes[form.left.val] = carryonofnodes[form.left.val].union(carryonofnodes[cur])
+
+                    if form.right.val not in carryonofnodes:
+                        carryonofnodes[form.right.val] = {pair}
+                    else:
+                        carryonofnodes[form.right.val].add(pair)
+                    if cur in carryonofnodes:
+                        carryonofnodes[form.right.val] = carryonofnodes[form.right.val].union(carryonofnodes[cur])
+                    
+                elif op == 'AND':
+                    leftrows = index[form.right.val]
+                    # rows that right counted are rows that left = True 
+                    rightrows = index[form.left.val]
+
+                    androws = aindex[form.left.val].intersection(aindex[form.right.val])
+                    pair = (form.left.val, form.right.val)
+                    rowsofpairs[pair] = androws
+                    resofpairs[pair] = cur
+                    print(f"Pair {pair} has rows {sorted(list(rowsofpairs[pair]))}")
+
+                    if form.left.val not in carryonofnodes:
+                        carryonofnodes[form.left.val] = {pair}
+                    else:
+                        carryonofnodes[form.left.val].add(pair)
+                    if cur in carryonofnodes:
+                        carryonofnodes[form.left.val] = carryonofnodes[form.left.val].union(carryonofnodes[cur])
+                    if form.right.val not in carryonofnodes:
+                        carryonofnodes[form.right.val] = {pair}
+                    else:
+                        carryonofnodes[form.right.val].add(pair)
+                    if cur in carryonofnodes:
+                        carryonofnodes[form.right.val] = carryonofnodes[form.right.val].union(carryonofnodes[cur])
+     
+                else:
+                    print(f"Do not support operator {op}")
+                    break
+
+                
+                #left first
+                # intersect with rows that cur is count 
+                leftrows = leftrows.intersection(countrows)
+                print(f"After operator {op}, {form.left.val} count only rows {sorted(list(leftrows))}")
+                if form.left.val not in countedrowsofnode:
+                    countedrowsofnode[form.left.val] = set()
+                countedrowsofnode[form.left.val].update(leftrows)
+
+                # intersect with rows that cur is count 
+                rightrows = rightrows.intersection(countrows)
+                print(f"After operator {op}, {form.right.val} count only rows {sorted(list(rightrows))}")
+                if form.right.val not in countedrowsofnode:
+                    countedrowsofnode[form.right.val] = set()
+                countedrowsofnode[form.right.val].update(rightrows)
+                
+                # do the convergence here if needed 
+                if len(list(net.out_edges(form.left.val))) > 1:
+                    # print(list(net.out_edges(form.left.val)))
+                    processBranching_v2(net, form.left.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged)
+
+                if len(list(net.out_edges(form.right.val))) > 1:
+                    # print(list(net.out_edges(form.right.val)))
+                    processBranching_v2(net, form.right.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged)
+                
+                # add left and right to the next layers 
+                if form.right.val not in nextlayer:
+                    nextlayer.append(form.right.val)
+                if form.left.val not in nextlayer:  
+                    nextlayer.append(form.left.val)
+
+            elif len(inedges) == 1:
+                if form.val == "NOT":
+                    print(f"{cur} === NOT {form.right.val} inherits rows {sorted(list(countrows))}")
+                    if cur in carryonofnodes:
+                        carryonofnodes[form.right.val] = carryonofnodes[cur]
+
+                    if form.right.val not in countedrowsofnode:
+                        countedrowsofnode[form.right.val] = set()
+                    countedrowsofnode[form.right.val].update(countrows)
+
+                    # check branching
+                    if len(list(net.out_edges(form.right.val))) > 1:
+                        processBranching_v2(net, form.right.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged)
+                   
+                    # add this node to the next layer 
+                    if form.right.val not in nextlayer:
+                        nextlayer.append(form.right.val)
+                else:
+                    print(f"{cur} === {form.val} inherits rows {sorted(list(countrows))}") 
+                    if cur in carryonofnodes:
+                        carryonofnodes[form.val] = carryonofnodes[cur]
+                    
+                    if form.val not in countedrowsofnode:
+                        countedrowsofnode[form.val] = set()
+                    countedrowsofnode[form.val].update(countrows) 
+                    
+                    # check branching
+                    if len(list(net.out_edges(form.val))) > 1:
+                        processBranching_v2(net, form.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged)
+
+                    # add new rows to the visited set 
+                    if form.val not in nextlayer:
+                        nextlayer.append(form.val)
+            else:
+                print("Reach node {} without in-comming edges".format(cur))
+                continue 
+        curs = nextlayer
+    return countedrowsofnode 
+
+def topDown(net, formulas, burows, inrows, node_layers):   
+    rowsofnodes = copy.deepcopy(burows) # node: rows that are counted by this node, final! 
+    for node, layer in node_layers.items():
+        # get rows from inrows:
+        try:
+            rowsfrominput = inrows[node]
+        except:
+            # print(f"Cannot find {node} in list of rows for input nodes")
+            try:
+                rowsfrominput = rowsofnodes[node]
+            except:
+                rowsofnodes[node] = set()
+                rowsfrominput = rowsofnodes[node]
+        if layer == 0: # input rows is ground truth
+            rowsofnodes[node] = rowsfrominput 
+        else:
+            try:
+                form = formulas[node]
+            except:
+                print("Pass the input node {}".format(node))
+                continue       
+            op = form.val
+            if op == 'OR' or op == "AND":
+                left, right = form.left.val, form.right.val
+                try:
+                    leftinrows = rowsofnodes[left]
+                except:
+                    print("Cannot find node {} in rows of input nodes".format(left))
+                try:
+                    rightinrows = rowsofnodes[right]
+                except:
+                    print("Cannot find node {} in rows of input nodes".format(right))
+                sumrows = leftinrows.union(rightinrows)
+                # sumrows is the upper bound of the rows that node can have 
+                rowsofnodes[node] = sumrows.intersection(rowsofnodes[node])
+            else:
+                print("Unary operator, take the rows of incoming node")
+                if op == 'NOT':
+                    parent = form.right.val
+                else:
+                    parent = form.val
+                outedges = list(net.out_edges(parent))
+                if len(outedges) > 1:
+                    parentinrows = rowsofnodes[parent]
+                    rowsofnodes[node] = parentinrows.intersection(rowsofnodes[node]) 
+    return rowsofnodes 
+                
+
 
 # do everything with binary network (convert, get speciesnames, simulate...)          
-def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, networkname, sortedinput, sortedinter, isko = False, debug=False):
+def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, networkname, sortedinput, sortedinter, isko = False, iski = False, debug=False, extranodes=None, isprop=False):
     bistrformulas = toBinaryFormulas(formulas, True)
-
-    # to visualize the binary network
-    binet = convertBiBooleanFormulas2Network(bistrformulas, inputnames, orispeciesnames, "bi" + networkname, debug) 
+    binet, nodes_layer = convertBiBooleanFormulas2Network(bistrformulas, inputnames, orispeciesnames, "bi" + networkname, False, debug, extranodes) 
     
-    biformulas = [] 
+    biformulas = [] # this list of dictionary is for the simulation
+    biformulasdict = dict() # this is for the expanding function 
     bispeciesnames = set() 
     # for term, bistrformula in bistrformulas.items():
     for formula in bistrformulas:
@@ -1414,6 +1852,7 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
         thisbiformula = dict()
         thisbiformula['term'] = term
         thisbiformula['formula'] = parseFormula(thisfor, debug) 
+        biformulasdict[term] = thisbiformula['formula'] 
 
         biformulas.append(thisbiformula)
 
@@ -1429,51 +1868,288 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
 
     biinternames = bispeciesnames.difference(inputnames).difference(outputnames)
     if debug:
-        print("----Intermediate nodes-----")
+        print("----Intermediate nodes in binary network-----")
         print(biinternames)
-        print("----Intermediate nodes size is {}-----".format(len(biinternames)))
+        print("----Intermediate nodes size in binary network is {}-----".format(len(biinternames)))
 
-    # simulate binary network 
-    realbioutputs, bidecimalpairs = simBinaryNetwork(biformulas, inputnames, bispeciesnames, sortedinput, sortedinter, True, 1000)
+
+    # simulate binary network, ONLY TO TEST THE CONSISTENCY WITH THE ORIGINAL NETWORK 
+    realbioutputs, bidecimalpairs = simBinaryNetwork(biformulas, inputnames, bispeciesnames, sortedinput, sortedinter, False, 1000, extranodes)
+
+    table, index, aindex = genTableFromOutput(realbioutputs, inputnames, sortedinput, biinternames, outputnames, True) 
+
     intactbigenphe = extractPhe(inputnames, outputnames, realbioutputs)
     if debug:
-        print(intactbigenphe)
+        print("--------Binary network maps between genotype and phenotype-------")
+        print("Uncomment to see the binary genotype-phenotype mapping")
+        # print(intactbigenphe)
     
-    bikoinshapss = calKnockoutShapleyForInput(intactbigenphe, inputnames, outputnames)
+
+    bikoinshapss, koinrows = calKSV4Input(intactbigenphe, inputnames, outputnames, False, table)
     print("-----Knockout Shapley value of input nodes in the binary network-----")
     for out, item in bikoinshapss.items():
         print(out, ":", item)
 
+    bikiinshapss, kiinrows = calKSV4Input(intactbigenphe, inputnames, outputnames, True, table)
+    print("-----KnockIN Shapley value of input nodes in the binary network-----")
+    for out, item in bikiinshapss.items():
+        print(out, ":", item) 
+
+    # show the vanilla binary network here  first 
+    for outname in outputnames:
+        showNetwork(binet, outname, bikoinshapss[outname], bikiinshapss[outname], None, None, 'binary.html')
+
     
+    # ONLY TO TEST THE CONSISTENCY WITH THE ORIGINAL NETWORK 
+    korows, kirows = None, None
     if isko:
-        # now do the knockout procedure with the binary network 
+        # now do the knockout procedure with the binary network, 
         print("-----Now do the knockout procedure with the binary network-----")
 
         # first generate all possible input states 
-        inputstates = genInput(bispecies, inputnames, debug)
-        vs = {} # to store genphe of knockout network 
+        inputstates = genInput(bispecies, inputnames, False)
+        vsko = {} # to store genphe of knockout network 
         for internode in biinternames:
             if internode not in outputnames:
                 print("Knockout {}".format(internode))
                 inputstatescopy = copy.deepcopy(inputstates)
                 kooutputs = []
                 for inputstate in inputstatescopy:
-                    output = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, debug)
+                    output = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, False, extranodes)
                     kooutputs.append(output)
-                    if debug:
-                        print(output)
-                
+
                 genphe = extractPhe(inputnames, outputnames, kooutputs)
-                vs[internode] = genphe
-
+                vsko[internode] = genphe
+        koshaps, korows = calKSV(intactbigenphe, vsko, outputnames, len(inputnames), table, inputnames)
         for outname in outputnames:
-            shaps = calknockoutShapleyValue(intactbigenphe, vs, outname, len(inputnames))
             print("---- Binary KNOCKOUT VALUE for output {}----".format(outname))
-            print(shaps)
+            print(dict(sorted(koshaps.items())))
             print("\n")
+    if iski:
+        print("-----Now do the knockIN procedure with the binary network-----")
+        # now do the knockIN procedure with the binary network 
+        vski = {}
+        inputstates = genInput(bispecies, inputnames, False)
+        for internode in biinternames:
+            if internode not in outputnames:
+                print("KnockIN {}".format(internode))
+                inputstatescopy = copy.deepcopy(inputstates)
+                kioutputs = []
+                for inputstate in inputstatescopy:
+                    output = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, False, extranodes, isKnockin=True)
+                    kioutputs.append(output)
+                genphe = extractPhe(inputnames, outputnames, kioutputs)
+                vski[internode] = genphe
 
+                all_vars = sorted({var for inner in kioutputs for var in inner})
+                # if internode == 'CI_p' or internode == 'ci':
+                #     print("---- Binary KNOCKIN VALUE for node {}----".format(internode))
+                #     for trow in kioutputs:
+                #         prow = "".join(f"{var: <14}:{int(trow.get(var, False)): <2}" for var in all_vars)
+                #         print(prow)
+
+        kishaps, kirows = calKSV(intactbigenphe, vski, outputnames, len(inputnames), table, inputnames)
+        for outname in outputnames:
+            print("---- Binary KNOCKIN VALUE for output {}----".format(outname))
+            print(dict(sorted(kishaps.items())))
+            print("\n")
+    
+    propko, propki = None, None
+    if isprop:        
+        for outname in outputnames:
+            print("-----Propageting to output {}-----".format(outname)) 
+            rowsofnodes = propagateBottomUp(binet, table, index, aindex, outname, biformulasdict, extranodes)
+            # correct the rows for input nodes 
+            for input in inputnames:
+                rowsofnodes[input] = koinrows[input].union(kiinrows[input])
+            # propko, propki = rowstovalues(rowsofnodes, table, outname)
+        
+            ########################################
+            ### now perform the top down propagation
+            # for the top down need to calculate the rows for extranodes with no input
+            # now calculate the knockout and knockin shapley value for the EXTRANODES
+            # inputstates = genInput(bispecies, inputnames, False)
+            # vsexko = {} # to store genphe of knockout network
+            # vsexki = {} # to store genphe of knockin network
+            # for enode in extranodes:
+            #     print("Knockout {}".format(enode))
+            #     inputstatescopy = copy.deepcopy(inputstates)
+            #     kooutputs = []
+            #     for inputstate in inputstatescopy:
+            #         output = getKnockoutOutput(biformulas, inputstate, [enode], True, 1000, False, extranodes)
+            #         kooutputs.append(output)
+
+            #     genphe = extractPhe(inputnames, outputnames, kooutputs)
+            #     vsexko[enode] = genphe
+
+            #     print("KnockIN {}".format(enode))
+            #     inputstatescopy2 = copy.deepcopy(inputstates)
+            #     kioutputs = []
+            #     for inputstate in inputstatescopy2:
+            #         output = getKnockoutOutput(biformulas, inputstate, [enode], True, 1000, False, extranodes, isKnockin=True)
+            #         kioutputs.append(output)
+
+            #     genphe = extractPhe(inputnames, outputnames, kioutputs)
+            #     vsexki[enode] = genphe
+            # koexshaps, koexrows = calKSV(intactbigenphe, vsexko, outputnames, len(inputnames), table, inputnames)
+            # kiexshaps, kiexrows = calKSV(intactbigenphe, vsexki, outputnames, len(inputnames), table, inputnames)
+            # # merge ko and ki rows for inputs 
+            # inrows = dict() 
+            # for input in inputnames:
+            #     if input in koinrows and input in kiinrows:
+            #         inrows[input] = koinrows[input].union(kiinrows[input])
+            #     elif input in koinrows:
+            #         print("NOT FOUND {} in knockin list".format(input))
+            #         inrows[input] = koinrows[input]
+            #     elif input in kiinrows:
+            #         print("NOT FOUND {} in knockout list".format(input))
+            #         inrows[input] = kiinrows[input]
+            #     else:
+            #         print("NOT FOUND {} in both lists".format(input))
+            #         inrows[input] = set()
+            # for enode in extranodes:
+            #     if enode in koexrows and enode in kiexrows:
+            #         inrows[enode] = koexrows[enode].union(kiexrows[enode])
+            #     elif enode in koexrows:
+            #         print("NOT FOUND {} in knockin list".format(enode))
+            #         inrows[enode] = koexrows[enode]
+            #     elif enode in kiexrows:
+            #         print("NOT FOUND {} in knockout list".format(enode))
+            #         inrows[enode] = kiexrows[enode]
+            #     else:
+            #         print("NOT FOUND {} in both lists".format(enode))
+            
+            # rowsofnodes = topDown(binet, biformulasdict, rowsofnodesBU, inrows, nodes_layer)
+            # ### end of top down propagation 
+            # #############################################
+            propko, propki = rowstovalues(rowsofnodes, table, outname)
+            for node, value in propko.items():
+                propko[node] = round(propko[node], 4)
+                propki[node] = round(propki[node], 4)
+                print("{:20} \t\t\t KO: {:10} | KI: {:10}".format(node, propko[node], propki[node]))
+
+
+   
+
+    if isko and iski:
+        errorko = 0.0
+        errorki = 0.0 
+        num = 0
+        for outname in outputnames:
+            showNetwork(binet, outname, bikoinshapss[outname], bikiinshapss[outname], koshaps[outname], kishaps[outname], "binary.html")
+            for node, tvalue in bikoinshapss[outname].items():
+                try:
+                    if abs(tvalue - propko[node]) >= 0.005 or abs(bikiinshapss[outname][node] - propki[node]) >= 0.005:
+                        print("{:20} - Correct: KO: {:10} | KI: {:10} - Incorrect: KO: {:10} | KI: {:10}".format(node, tvalue, bikiinshapss[outname][node], propko[node], propki[node]))
+                    errorko += (tvalue - propko[node])*(tvalue - propko[node])
+                    errorki += (bikiinshapss[outname][node] - propki[node])*(bikiinshapss[outname][node] - propki[node])
+                    num += 1
+                except:
+                    # print("Cannot find {} in the set".format(node))
+                    continue
+            for node, tvalue in koshaps[outname].items():
+                try:
+                    if abs(koshaps[outname][node] - propko[node]) >= 0.005 or abs(kishaps[outname][node] - propki[node]) >= 0.005:
+                        print("{:20} - Correct: KO: {:10} | KI: {:10} - Incorrect: KO: {:10} | KI: {:10}".format(node, tvalue, kishaps[outname][node], propko[node], propki[node]))
+                    errorko += (tvalue - propko[node])*(tvalue - propko[node])
+                    errorki += (kishaps[outname][node] - propki[node])*(kishaps[outname][node] - propki[node])
+                    num += 1
+                except:
+                    # print("Cannot find {} in the set".format(node))
+                    continue
+        
+        print("Number of nodes is {}".format(num))
+        print("Error KO: ", errorko/num)
+        print("Error KI: ", errorki/num)
+
+        # also get the order of nodes to compare 
+
+        calshapko = dict()
+        calshapki = dict()
+        for outname in outputnames:
+            for node, tvalue in koshaps[outname].items():
+                if node in propko:
+                    calshapko[node] = tvalue
+            for node, tvalue in kishaps[outname].items():
+                if node in propko:
+                    calshapki[node] = tvalue
+            for node, tvalue in bikoinshapss[outname].items():
+                if node in propko:
+                    calshapko[node] = tvalue
+            for node, tvalue in bikiinshapss[outname].items():
+                if node in propko:
+                    calshapki[node] = tvalue
+
+        rankedcalko = rank_dict_values(calshapko)
+        rankedcalki = rank_dict_values(calshapki)
+
+        del propko[outname]
+        del propki[outname]
+        rankedko = rank_dict_values(propko)
+        rankedki = rank_dict_values(propki)
+
+
+        print("Ranked KO calculated: ", rankedcalko)
+        print("Ranked KO prop: ", rankedko)
+        print("Ranked KI calculated: ", rankedcalki)
+        print("Ranked KI prop: ", rankedki)
+
+        rankerrorko = 0
+        rankerrorki = 0
+        for node, rank in rankedko.items():
+            if rank != rankedcalko[node]:
+                rankerrorko += 1
+
+        for node, rank in rankedki.items():
+            if rank != rankedcalki[node]:
+                rankerrorki += 1
+        print("Rank error KO: {} over {}".format (rankerrorko, len(rankedko)))
+        print("Rank error KI: {} over {}".format (rankerrorki, len(rankedki)))
+
+        
+        # if korows and kirows:
+        #     for input in inputnames:
+        #         if input in rowsofnodes: 
+        #             gt = koinrows[input].union(kiinrows[input])
+        #             lack = gt.difference(rowsofnodes[input])
+        #             extra = rowsofnodes[input].difference(gt)
+        #             if len(lack) > 0 or len(extra) > 0:
+        #                 print(input)
+        #                 print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+        #                 print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+        #                 print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
+        #                 print("Prop  {:5}: {}\n".format(len(rowsofnodes[input]), sorted(list(rowsofnodes[input]))))
+
+        #     for inter, row in korows.items():
+        #         if inter in rowsofnodes:
+        #             gt = row.union(kirows[inter])
+        #             lack = gt.difference(rowsofnodes[inter])
+        #             extra = rowsofnodes[inter].difference(gt)
+        #             # if len(lack) > 0 or len(extra) > 0:
+        #             if True:
+        #                 print(inter)
+        #                 print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+        #                 print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+        #                 print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
+        #                 print("Prop  {:5}: {}\n".format(len(rowsofnodes[inter]), sorted(list(rowsofnodes[inter]))))
+
+        # # # Get all variable names (assuming all inner dicts use the same keys)
+        # all_vars = sorted({var for inner in table.values() for var in inner})
+
+        # # Print header
+        # # header = "".join(f"{var:<20}" for var in all_vars)
+        # # print(f"{'ID':<10}{header}")
+
+        # # Print rows
+        # for id_, vars_dict in table.items():
+        #     print(f"{id_:<10}")
+        #     row = "".join(f"{var: <5}:{int(vars_dict.get(var, False)): <2}\t" for var in all_vars)
+        #     print(f"{row}")
+        #     print()
     return bidecimalpairs
-               
+
+
+             
             
 if __name__ == "__main__":
     start = timeit.default_timer()
