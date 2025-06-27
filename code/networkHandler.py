@@ -343,7 +343,7 @@ def convertBiBooleanFormulas2Network(biformulas, inputnames, speciesnames, filen
                 else:
                     # print("Added node {}".format(coms[0]))
                     net.add_node(coms[0], labels = coms[0], color='#808080')
-            net.add_edge(coms[0], left, color="#808080")
+            net.add_edge(coms[0], left, color="#008000")
         else:
             print("Confusing binary operator {}".format(right))
 

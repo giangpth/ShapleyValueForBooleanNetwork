@@ -314,31 +314,28 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
     return decimalPairs, koinputshapss
            
 
-def enrichfilter(op, nodetofilter, onenode, index, aindex, extranodes, countedchild, allrows, indirect=False):
+def filterrows(op, nodetofilter, onenode, index, aindex, extranodes, allrows):
     print("---FILTERING---")
     if op == 'OR':
-        if indirect:
-            print("INDRIRECT, do not filter")
-            pass
+        
+        if nodetofilter not in extranodes:
+            # print("NOT EXTRANODE")
+            childrows = aindex[nodetofilter]
+            # countedchild[onenode] = childrows
+            print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, onenode, op))
+            allrows = allrows.intersection(childrows)
+            print("Rows after filter are {}".format(sorted(list(allrows))))
         else:
-            if nodetofilter not in extranodes:
-                # print("NOT EXTRANODE")
+            # print("EXTRANODE")
+            coms = nodetofilter.split("_to_")
+            if len(coms) == 2 and coms[0] == coms[1]:
+                print("{} is selfloop, do not count it".format(nodetofilter))
+            else:
                 childrows = aindex[nodetofilter]
                 # countedchild[onenode] = childrows
                 print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, onenode, op))
                 allrows = allrows.intersection(childrows)
                 print("Rows after filter are {}".format(sorted(list(allrows))))
-            else:
-                # print("EXTRANODE")
-                coms = nodetofilter.split("_to_")
-                if len(coms) == 2 and coms[0] == coms[1]:
-                    print("{} is selfloop, do not count it".format(nodetofilter))
-                else:
-                    childrows = aindex[nodetofilter]
-                    # countedchild[onenode] = childrows
-                    print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, onenode, op))
-                    allrows = allrows.intersection(childrows)
-                    print("Rows after filter are {}".format(sorted(list(allrows))))
     elif op == 'AND':
         if nodetofilter not in extranodes:
             # print("NOT EXTRANODE")
@@ -365,102 +362,6 @@ def enrichfilter(op, nodetofilter, onenode, index, aindex, extranodes, countedch
     return allrows
     
                              
-def processBranching(net, toconvergenode, carryon, countedrowsofnodes, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, convergedpairs, simtable):
-    if toconvergenode in carryon:
-        des = nx.descendants(net, toconvergenode)
-        desincluded = copy.deepcopy(des)
-        desincluded.add(toconvergenode)
-        print("BRANCHING: Node {} has branching having desendants {}".format(toconvergenode, desincluded))
-        countedpairs = set()
-
-        print("Checking convergence for the pairs {}".format(carryon[toconvergenode]))
-        for pair in carryon[toconvergenode]:
-            left, right = pair[0], pair[1] 
-            if left in desincluded and right in desincluded:
-                countedpairs.add(pair) 
-                
-        if len(countedpairs) > 0:
-            print("Need convergence of the pairs {}".format(countedpairs))
-        else:
-            print("No pair to converge, continue")
-            return
-        for pair in countedpairs:
-            print("PAIR {}: {}".format(pair, rowsofpairs[pair]))
-            if toconvergenode not in convergedpairs:
-                convergedpairs[toconvergenode] = set()
-            if pair in convergedpairs[toconvergenode]:
-                print("Already counted the pair {}, continue".format(pair))
-                continue
-            convergedpairs[toconvergenode].add(pair)
-            # carryon[toconvergenode].remove(pair) # remove the pair that is already counted since any pair that is already converged to a node will not be carried on 
-            ornode = resofpairs[pair] # get node resulted by the pair 
-            countedchild = dict() # key are childs, value is the rows counted by the current node to this child 
-            paths = nx.all_simple_paths(net, source=toconvergenode, target=ornode)
-
-            us = set ()
-            for path in paths:
-                us.update(path)
-            # print("To check set for node {} to {} is {}".format(toconvergenode, ornode, us))
-
-            orrows = copy.deepcopy(rowsofpairs[pair]) # get rows counted by the pair, this time is only to pass to enrichfilter to test 
-
-            tocheck = list(us) 
-            # print("Initial to check list for node {} to {} is {}".format(toconvergenode, ornode, tocheck))
-            while tocheck:
-                onenode = tocheck.pop(0)
-                try:
-                    form = formulas[onenode]
-                except:
-                    print("Pass the input node {}".format(onenode))
-                    continue
-                op = form.val
-                if op == 'OR' or op == 'AND':
-                    if form.right.val in desincluded and form.left.val in desincluded:
-                        if form.right.val not in us:
-                            tocheck.append(form.right.val)
-                            us.add(form.right.val)
-                        if form.left.val not in us:
-                            tocheck.append(form.left.val)
-                            us.add(form.left.val)
-                    elif form.right.val in desincluded and form.left.val not in desincluded:
-                        nodepartner = form.left.val
-                        orrows = enrichfilter(op, nodepartner, onenode, index, aindex, extranodes, countedchild, orrows)
-                    elif form.right.val not in desincluded and form.left.val in desincluded:
-                        nodepartner = form.right.val
-                        orrows = enrichfilter(op, nodepartner, onenode, index, aindex, extranodes, countedchild, orrows)
-                    else:
-                        print("Both parents {} and {} of node {} are not in descendants".format(form.left.val, form.right.val, onenode))
-                        
-                else:
-                    print("Unary operator, do not concern")
-                    
-            orrows = rowsofpairs[pair] # redeclare rows counted by the pair 
-            print("All rows counted by the pair {} {}".format(pair, orrows))
-            print("Need to intersect with the rows counted by the node {}: {} ".format(ornode, countedrowsofnodes[ornode]))
-            orrows = orrows.intersection(countedrowsofnodes[ornode]) # visited[ornode] is the rows counted by the node resulted by the pair
-            if countedchild:
-                for child, rows in countedchild.items():
-                    # print("Child {} has rows {}".format(child, rows))
-                    orrows = orrows.intersection(rows)
-
-
-            # from here, recheck rows that are filtered out since they may be counted
-            rowsneedtocheck = rowsofpairs[pair].difference(orrows) 
-            print("Rows left to check of pair {} are: \n {}".format(pair, rowsneedtocheck))
-            for id in rowsneedtocheck:
-                row = simtable[id] 
-                if checkrow(net, row, toconvergenode, ornode, formulas):
-                    orrows.add(id)
-
-            # add this row to the value of the node  
-            if toconvergenode not in countedrowsofnodes:
-                countedrowsofnodes[toconvergenode] = set()
-            countedrowsofnodes[toconvergenode].update(orrows)
-        print("After BRANCHING, the row for node {} is {}".format(toconvergenode, countedrowsofnodes[toconvergenode]))
-    else:
-        print("No carryon pair to converge to node {}".format(toconvergenode))
-
-
 def  processBranching_v2(net, toconvergenode, carryon, countedrowsofnodes, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, convergedpairs, simtable):
     if toconvergenode in carryon:
         des = nx.descendants(net, toconvergenode)
@@ -534,7 +435,7 @@ def  processBranching_v2(net, toconvergenode, carryon, countedrowsofnodes, rowso
                                 if form.right.val not in checked:
                                     tocheck.append(form.right.val)
                         
-                                initrows = enrichfilter(op, form.left.val, node_, index, aindex, extranodes, node_, initrows)
+                                initrows = filterrows(op, form.left.val, node_, index, aindex, extranodes, node_, initrows)
                                 if len(initrows) == 0:
                                     print("EMPTY ROWS, stop!")
                                     break
@@ -543,7 +444,7 @@ def  processBranching_v2(net, toconvergenode, carryon, countedrowsofnodes, rowso
                                 if form.left.val not in checked:
                                     tocheck.append(form.left.val)
                
-                                initrows = enrichfilter(op, form.right.val, node_, index, aindex, extranodes, node_, initrows)
+                                initrows = filterrows(op, form.right.val, node_, index, aindex, extranodes, node_, initrows)
                                 if len(initrows) == 0: 
                                     print("EMPTY ROWS, stop!")
                                     break
@@ -579,574 +480,152 @@ def  processBranching_v2(net, toconvergenode, carryon, countedrowsofnodes, rowso
     else:
         print("Carry nothing to converge")
 
-
-# def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  \
-#                       maxStep=1000, debug=False, extranodes = None, isKnockin=False) -> dict:
-
-# def knockoutSingleNode(formulas, inputstate, ):
-
-
-def propagateBottomUp_v3(net, simtable, index, aindex, outname, formulas, extranodes):
-    diamonds = diamondDigger(net, outname, formulas) 
-    print("----------Diamond information:-----------")
-    for node, diamond in diamonds.items():
-        print("{}: {}".format(node, diamond))
-    carryonofnodes = dict() 
-    countedrowsofnodes = dict() 
-    curs = [outname]
-    while curs:
-        print("\n\n---Processing layers of {}---".format(curs))
-        nextlayer = []
-        for cur in curs:
-            try:
-                form = formulas[cur]    
-            except:
-                print("\nReach node {} without in-comming edges".format(cur))
-                continue
-            # get incoming edge to cur node
-            inedges = list(net.in_edges(cur))
-            assert len(inedges) <= 2, print("Support only binary network")
-
-            # get rows that make current node cur counted 
-            if cur not in countedrowsofnodes:
-                print(f"Init all rows for current node {cur} since it inherits from noone")
-                currows = set(range(len(simtable)))
-                countedrowsofnodes[cur] = currows
-            else: # count only rows that cur is counted
-                currows = copy.deepcopy(countedrowsofnodes[cur]) 
-
-            
-            if cur in carryonofnodes:
-                curry = carryonofnodes[cur]
-            else:
-                curry = dict()
-
-            print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(currows))))
-
-            print("Carried on of current node {} is:".format(cur))
-            for node_, carriedrows in curry.items():
-                for side, rows in carriedrows.items():
-                    print("{}-{}: {}".format(node_, side, sorted(list(rows))))
-
-            if len(inedges) == 2: 
-                print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
-                # get operator
-                op = form.val
-                # check if one of the node is extranode
-                leftselfloop, rightselfloop = False, False
-                rootname = None
-                if form.left.val in extranodes:
-                    print(f"Left node {form.left.val} is an extra node")
-                    # get the root node of the extra node
-                    rootname = form.left.val.split("_to_")[0]
-                    desname = form.left.val.split("_to_")[1]
-                    if rootname == desname:
-                        leftselfloop = True
-                if form.right.val in extranodes:
-                    print(f"Right node {form.right.val} is an extra node")
-                    # get the root node of the extra node
-                    rootname = form.right.val.split("_to_")[0]
-                    desname = form.right.val.split("_to_")[1]
-                    if rootname == desname:
-                        rightselfloop = True 
-                if op == 'OR':
-                    if not rightselfloop:
-                        leftrows = aindex[form.right.val]
-                    else:
-                        leftrows = countedrowsofnodes[cur]
-
-                    # rows that right counted are rows that left = False
-                    if not leftselfloop:
-                        rightrows = aindex[form.left.val]
-                    else:
-                        rightrows = countedrowsofnodes[cur]
-
-                    carryrowofop = index[form.left.val].intersection(index[form.right.val]).intersection(currows)
-                    
-
-                elif op == 'AND':
-                    leftrows = index[form.right.val]
-                    # rows that right counted are rows that left = True
-                    rightrows = index[form.left.val]
-
-                    carryrowofop = aindex[form.left.val].intersection(aindex[form.right.val]).intersection(currows)
-                else:
-                    print("Do not support operator {}")
-                
-                # first assign the counted rows to left and right 
-                if form.left.val not in countedrowsofnodes:
-                    countedrowsofnodes[form.left.val] = set()
-                countedrowsofnodes[form.left.val].update(leftrows.intersection(currows))
-                if form.right.val not in countedrowsofnodes:
-                    countedrowsofnodes[form.right.val] = set ()
-                countedrowsofnodes[form.right.val].update(rightrows.intersection(currows))
-
-                print("Rows assigned to node {} from operator {} are: \n{}".format(form.left.val, op, sorted(list(countedrowsofnodes[form.left.val]))))
-                print("Rows assigned to node {} from operator {} are: \n{}".format(form.left.val, op, sorted(list(countedrowsofnodes[form.right.val])))) 
-
-                '''
-                # now process carry on 
-                print("{} operator carried rows are: \n{}".format(op, sorted(list(carryrowofop))))
-                if form.left.val not in carryonofnodes:
-                    carryonofnodes[form.left.val] = dict()
-                if form.right.val not in carryonofnodes:
-                    carryonofnodes[form.right.val] = dict() 
-
-                # first, both parties carry on rows of current operator, no filter 
-                if cur not in carryonofnodes[form.left.val]:
-                    carryonofnodes[form.left.val][cur] = dict()
-                if cur not in carryonofnodes[form.right.val]:
-                    carryonofnodes[form.right.val][cur] = dict()
-
-                carryonofnodes[form.left.val][cur]['M'] = carryrowofop
-                carryonofnodes[form.right.val][cur]['M'] = carryrowofop 
-
-                # then now passing rows carried by current node cur, filter accordingly to the operator 
-                print("Current node {} carries on:".format(cur))
-                for node, sides in curry.items():
-                    if node not in carryonofnodes[form.left.val]:
-                        carryonofnodes[form.left.val][node] = dict()
-                    if node not in carryonofnodes[form.right.val]:
-                        carryonofnodes[form.right.val][node] = dict() 
-
-                    for side, rows in sides.items():
-                        print("{}-{}:{}".format(node, side, sorted(list(rows)))) 
-                        lrows = rows.intersection(leftrows)
-                        rrows = rows.intersection(rightrows)
-                        mrows = rows.intersection(carryrowofop) 
-
-                        if 'L' not in carryonofnodes[form.left.val][node]:
-                            carryonofnodes[form.left.val][node]['L'] = set()
-                        carryonofnodes[form.left.val][node]['L'].update(lrows) 
-                        if 'M' not in carryonofnodes[form.left.val][node]:
-                            carryonofnodes[form.left.val][node]['M'] = set()
-                        carryonofnodes[form.left.val][node]['M'].update(mrows)
-
-                        if 'R' not in carryonofnodes[form.right.val][node]:
-                            carryonofnodes[form.right.val][node]['R'] = set()
-                        carryonofnodes[form.right.val][node]['R'].update(rrows)
-                        if 'M' not in carryonofnodes[form.right.val][node]:
-                            carryonofnodes[form.right.val][node]['M'] = set()
-                        carryonofnodes[form.right.val][node]['M'].update(mrows)
-
-                # now merge, left first  
-                if form.left.val in diamonds:
-                    for node, siderows in carryonofnodes[form.left.val].items(): 
-                        if node in diamonds[form.left.val]:
-                            for side, rows in siderows.items():
-                                if side == 'L':
-                                    lrows = rows 
-                                else:
-                                    lrows = set ()
-                                if side == 'R':
-                                    rrows = rows
-                                else:
-                                    rrows = set ()
-                                if side == 'M':
-                                    mrows = rows
-                                else:
-                                    mrows = set()
-
-                            rowstomerge = lrows.intersection(rrows)
-                            rowstomerge = mrows.union(rowstomerge)
-                            print("Need to merge rows below for node {} at node {}".format(node, form.left.val))
-                            print(sorted(list(rowstomerge))) 
-                            countedrowsofnodes[form.left.val].update(rowstomerge) 
-
-                            # # now remove rows already merged from the carry on of the node 
-                            # for side, rows in siderows.items(): 
-
-
-                # now merge right 
-                if form.right.val in diamonds:
-                    for node, siderows in carryonofnodes[form.right.val].items(): 
-                        if node in diamonds[form.right.val]:
-                            for side, rows in siderows.items():
-                                if side == 'L':
-                                    lrows = rows 
-                                else:
-                                    lrows = set ()
-                                if side == 'R':
-                                    rrows = rows
-                                else:
-                                    rrows = set ()
-                                if side == 'M':
-                                    mrows = rows
-                                else:
-                                    mrows = set()
-
-                            rowstomerge = lrows.intersection(rrows)
-                            rowstomerge = mrows.union(rowstomerge)
-                            print("Need to merge rows for node {} at node {}".format(node, form.right.val))
-                            print(sorted(list(rowstomerge))) 
-                            countedrowsofnodes[form.right.val].update(rowstomerge) 
-                            
-                '''
-                
-                if form.left.val not in nextlayer:
-                    nextlayer.append(form.left.val)
-                if form.right.val not in nextlayer: 
-                    nextlayer.append(form.right.val)
-                
-
-            elif len(inedges) == 1:
-                if form.val == 'NOT':
-                    print(f"{cur} ==== NOT {form.right.val}")
-                    singlemom = form.right.val
-                else:
-                    print(f"{cur} ==== {form.val}")
-                    singlemom = form.val
-                
-                # first assign counted rows to singlemom 
-                if singlemom not in countedrowsofnodes:
-                    countedrowsofnodes[singlemom] = set()
-                countedrowsofnodes[singlemom].update(currows)
-
-                '''
-                # now passing all the carry on of current node cur to its singlemom 
-                if singlemom not in carryonofnodes:
-                    carryonofnodes[singlemom] = dict()
-                print("Current node {} carries on:".format(cur))
-                for node, sides in curry.items():
-                    if node not in carryonofnodes[singlemom]:
-                        carryonofnodes[singlemom][node] = dict()
-
-                    for side, rows in sides.items():
-                        print("{}-{}:{}".format(node, side, sorted(list(rows)))) 
-                        if side not in carryonofnodes[singlemom][node]:
-                            carryonofnodes[singlemom][node][side] = set() 
-                        carryonofnodes[singlemom][node][side].update(rows) 
-
-                # now merge here 
-                if singlemom in diamonds:
-                    for node, siderows in carryonofnodes[singlemom].items(): 
-                        if node in diamonds[singlemom]:
-                            for side, rows in siderows.items():
-                                if side == 'L':
-                                    lrows = rows 
-                                else:
-                                    lrows = set ()
-                                if side == 'R':
-                                    rrows = rows
-                                else:
-                                    rrows = set ()
-                                if side == 'M':
-                                    mrows = rows
-                                else:
-                                    mrows = set()
-
-                            rowstomerge = lrows.intersection(rrows)
-                            rowstomerge = mrows.union(rowstomerge)
-                            print("Need to merge rows for node {} at node {}".format(node, singlemom))
-                            print(sorted(list(rowstomerge))) 
-                            countedrowsofnodes[singlemom].update(rowstomerge) 
-                '''
-
-                if singlemom not in nextlayer:
-                    nextlayer.append(singlemom)
-
-            else:
-                print(f"Encounter input node {cur}")
-        curs = nextlayer
-    return countedrowsofnodes
-
-
-
-
-def propagateBottomUp_v2(net, simtable, index, aindex, outname, formulas, extranodes):
-    carryonofnodes = dict() # carryonofnodes[node] = dict(), rows of pairs that are carried on to the next layer
-    countedrowsofnodes = dict() # countedrowsofnodes[node] = set(), rows that make node count
-    passingtimes = dict()
-    passingby = dict()
-
-    curs = [outname] # contain nodes at the same levels 
-    while curs:
-        print("\n\n---Processing layers of {}---".format(curs))
-        nextlayer = []
-        for cur in curs:
-            try:
-                form = formulas[cur]    
-            except:
-                print("\nReach node {} without in-comming edges".format(cur))
-                continue
-            # get incoming edge to cur node
-            inedges = list(net.in_edges(cur))
-            assert len(inedges) <= 2, print("Support only binary network")
-
-            # get rows that make cur counted 
-            if cur not in countedrowsofnodes: # count all rows
-                print(f"Init all rows for current node {cur} since it inherits from noone")
-                countrows = set(range(len(simtable)))
-                countedrowsofnodes[cur] = countrows
-            else: # count only rows that cur is counted
-                countrows = copy.deepcopy(countedrowsofnodes[cur])
-            
-            # get rows that carried on by curs (rows that need to be processed to merge)
-            if cur in carryonofnodes:
-                carryonofcur = carryonofnodes[cur] 
-            else:
-                carryonofcur = dict()
-            
-            if cur not in passingtimes:
-                passingtimes[cur] = dict()
-                
-            print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countedrowsofnodes[cur]))))
-
-            print("Carried on of current node {} is:".format(cur))
-            for node_, carriedrows in carryonofcur.items():
-                print("{}: {}".format(node_, sorted(list(carriedrows))))
-
-            if len(inedges) == 2:
-                print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
-                # get operator
-                op = form.val
-                # check if one of the node is extranode
-                leftselfloop, rightselfloop = False, False
-                rootname = None
-                if form.left.val in extranodes:
-                    print(f"Left node {form.left.val} is an extra node")
-                    # get the root node of the extra node
-                    rootname = form.left.val.split("_to_")[0]
-                    desname = form.left.val.split("_to_")[1]
-                    if rootname == desname:
-                        leftselfloop = True
-                if form.right.val in extranodes:
-                    print(f"Right node {form.right.val} is an extra node")
-                    # get the root node of the extra node
-                    rootname = form.right.val.split("_to_")[0]
-                    desname = form.right.val.split("_to_")[1]
-                    if rootname == desname:
-                        rightselfloop = True
-
-                # now start to process
-                if op == 'OR':
-                    # rows that left counted are rows that right = False
-                    if not rightselfloop:
-                        leftrows = aindex[form.right.val]
-                    else:
-                        leftrows = countedrowsofnodes[cur]
-
-                    # rows that right counted are rows that left = False
-                    if not leftselfloop:
-                        rightrows = aindex[form.left.val]
-                    else:
-                        rightrows = countedrowsofnodes[cur]
-
-                    carryrowofop = index[form.left.val].intersection(index[form.right.val]).intersection(countrows.union(carryonofcur))
-                    
-                elif op == 'AND':
-                    leftrows = index[form.right.val]
-                    # rows that right counted are rows that left = True
-                    rightrows = index[form.left.val]
-
-                    carryrowofop = aindex[form.left.val].intersection(aindex[form.right.val]).intersection(countrows.union(carryonofcur))
-                else:
-                    print("Do not support operator {}".format(op))
-
-                print ("{} operator, carried rows are: \n{}".format(op, sorted(list(carryrowofop))))
-
-                if form.left.val not in carryonofnodes:
-                    carryonofnodes[form.left.val] = dict()
-
-                if form.left.val not in passingtimes:
-                    passingtimes[form.left.val] = dict()
-                    # print(f"Init passing times for {form.left.val}")
-                    # print(passingtimes[form.left.val])
-                if form.left.val not in passingby:
-                    passingby[form.left.val] = set()
-
-                carryonofnodes[form.left.val][cur + '_LEFT_'] = carryrowofop # both parties carry on rows of current operator, no filter 
-                passingtimes[form.left.val][cur] = 1
-                passingby[form.left.val].add(cur)
-
-                if form.right.val not in carryonofnodes:
-                    carryonofnodes[form.right.val] = dict()
-
-                if form.right.val not in passingtimes:
-                    passingtimes[form.right.val] = dict() 
-                    # print(f"Init passing times for {form.right.val}")
-                    # print(passingtimes[form.right.val])
-                if form.right.val not in passingby:
-                    passingby[form.right.val] = set ()
-
-                carryonofnodes[form.right.val][cur + "_RIGHT_"] = carryrowofop # both parties carry on rows of current operator, no filter
-                passingtimes[form.right.val][cur] = 1 
-                passingby[form.right.val].add(cur) 
-                
-
-                # now assign the counted rows to nodes
-                leftrows = leftrows.intersection(countrows)
-                if form.left.val not in countedrowsofnodes:
-                    countedrowsofnodes[form.left.val] = set()
-                countedrowsofnodes[form.left.val].update(leftrows)
-                print("After operator {}, {} counts only rows: \n{}".format(op, form.left.val ,sorted(list(countedrowsofnodes[form.left.val]))))
-
-                rightrows = rightrows.intersection(countrows)
-                if form.right.val not in countedrowsofnodes:
-                    countedrowsofnodes[form.right.val] = set()
-                countedrowsofnodes[form.right.val].update(rightrows)
-                print("After operator {}, {} counts only rows: \n{}".format(op, form.right.val ,sorted(list(countedrowsofnodes[form.right.val]))))
-
-                # from here passing carried rows up 
-                if cur in carryonofnodes:
-                    for node_, carriedrows in carryonofnodes[cur].items():
-                        # left first 
-                        if node_ in carryonofnodes[form.left.val]:
-                            if op == 'OR':
-                                # leftcarryrows = 
-                                carryonofnodes[form.left.val][node_].update(carriedrows.intersection(aindex[form.right.val]))
-
-                            elif op == 'AND':
-                                carryonofnodes[form.left.val][node_].update(carriedrows.intersection(index[form.right.val]))
-
-                            if node_ in passingtimes[form.left.val]:
-                                passingtimes[form.left.val][node_] += 1
-                            else:
-                                passingtimes[form.left.val][node_] = 1
-                        else:
-                            if op == 'OR':
-                                carryonofnodes[form.left.val][node_] = (carriedrows.intersection(aindex[form.right.val]))
-                            elif op == 'AND':
-                                carryonofnodes[form.left.val][node_] = (carriedrows.intersection(index[form.right.val]))
-
-                            passingtimes[form.left.val][node_] = 1
-
-                        # now right 
-                        if node_ in carryonofnodes[form.right.val]:
-                            if op == 'OR':
-                                carryonofnodes[form.right.val][node_].update(carriedrows.intersection(aindex[form.left.val]))
-                            elif op == 'AND':
-                                carryonofnodes[form.right.val][node_].update(carriedrows.intersection(index[form.left.val]))
-
-                            if node_ in passingtimes[form.right.val]:
-                                passingtimes[form.right.val][node_] += 1
-                            else:
-                                passingtimes[form.right.val][node_] = 1
-                            
-                        else:
-                            if op == 'OR':
-                                carryonofnodes[form.right.val][node_] = (carriedrows.intersection(aindex[form.left.val]))
-                            elif op == 'AND':
-                                carryonofnodes[form.right.val][node_] = (carriedrows.intersection(index[form.left.val]))
-
-                            passingtimes[form.right.val][node_] = 1
-                        print("Now passing time of {} is: {}".format(form.left.val, passingtimes[form.left.val]))
-                        print("Now passing time of {} is: {}".format(form.right.val, passingtimes[form.right.val]))
-
-
-                print("Passing by information:")
-                print("{:20}: {}".format(form.left.val, passingby[form.left.val]))
-                print("{:20}: {}".format(form.right.val, passingby[form.right.val]))
-
-
-                # now merge here if possible 
-                # left first 
-                # if len(passingby[form.left.val]) > 1:
-                #     for node_, times in passingtimes[form.left.val].items():
-                #         print(f"Node {node_} passed by {form.left.val} {times} times")
-                #         if times > 1:
-                #             print("Merge rows carried for {} to node {}".format(node_, form.left.val))
-                #             countedrowsofnodes[form.left.val].update(carryonofnodes[form.left.val][node_])
-                #             print("Now rows of {} are: \n{}".format(form.left.val, sorted(list(countedrowsofnodes[form.left.val]))))
-                # for node_, carriedrows in carryonofnodes:
-                
-                # now right 
-                if len(passingby[form.right.val]) > 1:
-                    for node_, times, in passingtimes[form.right.val].items():
-                        print(f"Node {node_} passed by {form.right.val} {times} times")
-                        if times > 1:
-                            print("Merge rows carried for {} to node {}".format(node_, form.right.val))
-                            countedrowsofnodes[form.right.val].update(carryonofnodes[form.right.val][node_])
-                            print("Now rows of {} are: \n{}".format(form.right.val, sorted(list(countedrowsofnodes[form.right.val]))))
-
-
-                print(f"After operator {op}, {form.left.val} carries on rows: ")
-                for node_, carriedrows in carryonofnodes[form.left.val].items():
-                    print("{:20}: {}".format(node_, sorted(list(carriedrows))))
-
-                print(f"After operator {op}, {form.right.val} carries on rows: ")
-                for node_, carriedrows in carryonofnodes[form.right.val].items():
-                    print("{:20}: {}".format(node_, sorted(list(carriedrows)))) 
-
-
-                # add parents to the next layer
-                if form.left.val not in nextlayer:
-                    nextlayer.append(form.left.val)
-                if form.right.val not in nextlayer:
-                    nextlayer.append(form.right.val)
-
-            elif len(inedges) == 1:
-                if form.val == 'NOT':
-                    print(f"{cur} ==== NOT {form.right.val}")
-                    singlemom = form.right.val
-                else:
-                    print(f"{cur} ==== {form.val}")
-                    singlemom = form.val
-
-                # first pass all the counted rows of current node ot its single mom since no filter needed 
-                if singlemom not in countedrowsofnodes: 
-                    countedrowsofnodes[singlemom] = dict()
-                countedrowsofnodes[singlemom] = countrows
-                print("Passing all the rows counted by current node {} to its single mom {}".format(cur, singlemom))
-                print("After unary operator rows of {} are: \n{}".format(singlemom, sorted(list(countedrowsofnodes[singlemom]))))
-
-                # now pass carryonrows of current node to its single parent 
-                if singlemom not in carryonofnodes:
-                    carryonofnodes[singlemom] = dict()
-                
-                if singlemom not in passingtimes:
-                    passingtimes[singlemom] = dict()
-                    # print(f"Init passing times for node {singlemom}")
-                    # print(passingtimes[singlemom])
-                if singlemom not in passingby:
-                    passingby[singlemom] = set()
-
-                passingby[singlemom].add(cur)
-
-                if cur in carryonofnodes:
-                    for node_, carriedrows in carryonofnodes[cur].items():
-                        if node_ in carryonofnodes[singlemom]:
-                            carryonofnodes[singlemom][node_].update(carriedrows)
-                            passingtimes[singlemom][node_] += 1
-                            print("Now passing time of {} is: {}".format(singlemom, passingtimes[singlemom]))
-                        else:
-                            carryonofnodes[singlemom][node_] = carriedrows
-                            passingtimes[singlemom][node_] = 1
-                            print("Now passing time of {} is: {}".format(singlemom, passingtimes[singlemom]))
-                
-                print(f"After unary operator {singlemom} carries on rows: ")
-                for node_, carriedrows in carryonofnodes[singlemom].items():
-                    print("{:20}: {}".format(node_, sorted(list(carriedrows))))
-
-                print("Passing by information:")
-                print("{:20}: {}".format(singlemom, passingby[singlemom]))
-                
-                # now do merging here 
-                if len(passingby[singlemom]) > 1:
-                    for node_, times, in passingtimes[singlemom].items():
-                        if times > 1:
-                            print("Merge rows carried from {} to node {}".format(node_, singlemom))
-                            countedrowsofnodes[singlemom].update(carryonofnodes[singlemom][node_])
-                            print("Now rows of {} are: \n{}".format(singlemom, sorted(list(countedrowsofnodes[singlemom]))))
-                
-
-                # add parents to the next layer
-                if singlemom not in nextlayer:
-                    nextlayer.append(singlemom)
-            else:
-                print("Reach node {} without in-comming edges".format(cur))
-                continue
+def  processBranching(net, toconvergenode, carryon, countedrowsofnodes, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, convergedpairs, simtable):
+    if toconvergenode in carryon:
+        des = nx.descendants(net, toconvergenode)
+        desincluded = copy.deepcopy(des)
+        desincluded.add(toconvergenode)
+        print("BRANCHING: Node {} has branching having desendants {}".format(toconvergenode, des))
+        countedpairs = set()
         
-        print("Up until now counted rows for node to be process in the next layer are:")
-        for node_ in nextlayer:
-            print("{:20}: {}".format(node_, sorted(list(countedrowsofnodes[node_]))))
 
-        curs = nextlayer
-    print("Passing time of nodes are:")
-    for node_, times in passingtimes.items():
-        print("{:20}: {}".format(node_, times))
-    return countedrowsofnodes 
-                
+        print("Checking convergence for the pairs {}".format(carryon[toconvergenode]))
+        for pair in carryon[toconvergenode]:
+            if pair[0] in desincluded and pair[1] in desincluded:
+                countedpairs.add(pair) 
+
+        if len(countedpairs) > 0:
+            print("Need convergence of the pairs {}".format(countedpairs))
+        else:
+            print("No pair to converge, continue")
+            return
+
+        for pair in countedpairs:
+            if toconvergenode not in convergedpairs:
+                convergedpairs[toconvergenode] = set()
+            if pair in convergedpairs[toconvergenode]:
+                print("Already counted the pair {}, continue".format(pair))
+                continue
+            if not rowsofpairs[pair]:
+                print(f"Pair {pair} carries no rows, continue")
+                continue
+            convergedpairs[toconvergenode].add(pair)
+            
+            opofpair = formulas[resofpairs[pair]].val
+
+            print("\nRows carried by pair {} are {}".format(pair, sorted(list(rowsofpairs[pair]))))
+            if rowsofpairs[pair] == set():
+                print(f"Pair {pair} carries no rows, continue")
+                continue
+
+            nodeandop = dict() # save the node and operator to be filtered for each factor 
+            for factor in pair:
+                print(f"----Process factor {factor}----")
+                # for each factor, scan all the simple paths from factor to target node and save the node and operator to be filtered 
+                nodeandop[factor] = dict()
+                if factor == toconvergenode:
+                    continue 
+
+                paths = nx.all_simple_paths(net, source=toconvergenode, target=factor)
+
+                for id_, path in enumerate(paths):
+                    print("Path {}: {}".format(id_, path))
+                    checked = set()
+                    tocheck = list(path)
+                    # tofilter = set() 
+                    while tocheck:
+                        node_ = tocheck.pop(0)
+                        if node_ in checked:
+                            continue
+                        checked.add(node_)
+                        if node_ == toconvergenode:
+                            continue
+                        try:
+                            form = formulas[node_]
+                        except:
+                            print("Pass the input node {}".format(node_))
+                            continue
+                        op = form.val 
+
+                        if op == 'OR' or op == 'AND':
+                            if form.right.val in desincluded and form.left.val in desincluded:
+                                if form.right.val not in checked:
+                                    tocheck.append(form.right.val)
+                                if form.left.val not in checked:
+                                    tocheck.append(form.left.val)
+
+                                if op == "OR":
+                                    print('Both parents {} {} of {} in OR are in descendants, add to checklist'.format(form.right.val, form.left.val, node_))
+                            elif form.right.val in desincluded and form.left.val not in desincluded:
+                                print('Parent {} of node {} is not in descendants'.format(form.left.val, node_))
+                                if form.right.val not in checked:
+                                    tocheck.append(form.right.val)
+                        
+                                nodeandop[factor][form.left.val] = op
+                            elif form.right.val not in desincluded and form.left.val in desincluded:
+                                print('Parent {} of node {} is not in descendants'.format(form.right.val, node_))
+                                if form.left.val not in checked:
+                                    tocheck.append(form.left.val)
+               
+                                nodeandop[factor][form.right.val] = op
+                            else:
+                                print("BOTH parents {} and {} of node {} are NOT in DESCENDANTS".format(form.left.val, form.right.val, node_))
+                        else:
+                            print(f"Unary operator of {node_}, do not concern")
+            
+            if opofpair == 'OR':
+                rowstoprocess = copy.deepcopy(rowsofpairs[pair])
+                andset1 = set() 
+                andset2 = set()
+                for nodetofilter, op in nodeandop[pair[0]].items():
+                    if op == 'AND':
+                        andset1.add(nodetofilter)
+                    elif op == 'OR':
+                        rowstoprocess = filterrows(op, nodetofilter, pair[0], index, aindex, extranodes, rowstoprocess)
+                for nodetofilter, op in nodeandop[pair[1]].items(): 
+                    if op == 'AND':
+                        andset2.add(nodetofilter)
+                    elif op == 'OR':
+                        rowstoprocess = filterrows(op, nodetofilter, pair[1], index, aindex, extranodes, rowstoprocess)
+
+                if andset1 and andset2:
+                    print("AND set 1 is {}".format(andset1))
+                    print("AND set 2 is {}".format(andset2))
+                    rowofandset1 = copy.deepcopy(rowstoprocess)
+                    rowofandset2 = copy.deepcopy(rowstoprocess)
+                    for node in andset1: 
+                        rowofandset1 = filterrows('AND', node, toconvergenode, index, aindex, extranodes, rowofandset1)
+                    for node in andset2:
+                        rowofandset2 = filterrows('AND', node, toconvergenode, index, aindex, extranodes, rowofandset2)
+                    rowstoprocess = rowofandset1.union(rowofandset2)
+
+                countedrowsofnodes[toconvergenode].update(rowstoprocess)
+
+            if opofpair == 'AND':
+                rowstoprocess = copy.deepcopy(rowsofpairs[pair])
+                orset1 = set()
+                orset2 = set()
+                for nodetofilter, op in nodeandop[pair[0]].items():
+                    if op == 'OR':
+                        orset1.add(nodetofilter)
+                    elif op == 'AND':
+                        rowstoprocess = filterrows(op, nodetofilter, pair[0], index, aindex, extranodes, rowstoprocess)
+                for nodetofilter, op in nodeandop[pair[1]].items(): 
+                    if op == 'OR':
+                        orset2.add(nodetofilter)
+                    elif op == 'AND':
+                        rowstoprocess = filterrows(op, nodetofilter, pair[1], index, aindex, extranodes,  rowstoprocess)
+
+                if orset1 and orset2:
+                    print("OR set 1 is {}".format(orset1))
+                    print("OR set 2 is {}".format(orset2))
+                    orset = orset1.union(orset2)
+                    for node in orset:
+                        rowstoprocess = filterrows('OR', node, toconvergenode, index, aindex, extranodes, rowstoprocess)
+                countedrowsofnodes[toconvergenode].update(rowstoprocess)
+                    
+    else:
+        print("Carry nothing to converge")
 
 
 def propagateBottomUp(net, simtable, index, aindex, outname, formulas, extranodes):
@@ -1174,6 +653,7 @@ def propagateBottomUp(net, simtable, index, aindex, outname, formulas, extranode
                 countedrowsofnode[cur] = countrows
             else: # count only rows that cur is counted
                 countrows = countedrowsofnode[cur] 
+
             print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
 
             if len(inedges) == 2: 
@@ -1216,53 +696,36 @@ def propagateBottomUp(net, simtable, index, aindex, outname, formulas, extranode
                         rightrows = countedrowsofnode[cur]
                         # leftrows = set()
 
-                    androws = index[form.left.val].intersection(index[form.right.val])
-                    pair = (form.left.val, form.right.val)
-                    rowsofpairs[pair] = androws 
-                    resofpairs[pair] = cur
-                    print(f"Pair {pair} has rows {sorted(list(rowsofpairs[pair]))}")
-
-                    if form.left.val not in carryonofnodes:
-                        carryonofnodes[form.left.val] = {pair}
-                    else:
-                        carryonofnodes[form.left.val].add(pair)
-                    if cur in carryonofnodes:
-                        carryonofnodes[form.left.val] = carryonofnodes[form.left.val].union(carryonofnodes[cur])
-
-                    if form.right.val not in carryonofnodes:
-                        carryonofnodes[form.right.val] = {pair}
-                    else:
-                        carryonofnodes[form.right.val].add(pair)
-                    if cur in carryonofnodes:
-                        carryonofnodes[form.right.val] = carryonofnodes[form.right.val].union(carryonofnodes[cur])
+                    rowsofthispair = index[form.left.val].intersection(index[form.right.val]).intersection(countrows)
                     
                 elif op == 'AND':
                     leftrows = index[form.right.val]
                     # rows that right counted are rows that left = True 
                     rightrows = index[form.left.val]
 
-                    androws = aindex[form.left.val].intersection(aindex[form.right.val])
-                    pair = (form.left.val, form.right.val)
-                    rowsofpairs[pair] = androws
-                    resofpairs[pair] = cur
-                    print(f"Pair {pair} has rows {sorted(list(rowsofpairs[pair]))}")
-
-                    if form.left.val not in carryonofnodes:
-                        carryonofnodes[form.left.val] = {pair}
-                    else:
-                        carryonofnodes[form.left.val].add(pair)
-                    if cur in carryonofnodes:
-                        carryonofnodes[form.left.val] = carryonofnodes[form.left.val].union(carryonofnodes[cur])
-                    if form.right.val not in carryonofnodes:
-                        carryonofnodes[form.right.val] = {pair}
-                    else:
-                        carryonofnodes[form.right.val].add(pair)
-                    if cur in carryonofnodes:
-                        carryonofnodes[form.right.val] = carryonofnodes[form.right.val].union(carryonofnodes[cur])
+                    rowsofthispair = aindex[form.left.val].intersection(aindex[form.right.val]).intersection(countrows)
      
                 else:
                     print(f"Do not support operator {op}")
                     break
+                    
+                pair = (form.left.val, form.right.val)
+                rowsofpairs[pair] = rowsofthispair
+                resofpairs[pair] = cur
+                print(f"Pair {pair} has rows {sorted(list(rowsofpairs[pair]))}")
+
+                if form.left.val not in carryonofnodes:
+                    carryonofnodes[form.left.val] = {pair}
+                else:
+                    carryonofnodes[form.left.val].add(pair)
+                if cur in carryonofnodes:
+                    carryonofnodes[form.left.val] = carryonofnodes[form.left.val].union(carryonofnodes[cur])
+                if form.right.val not in carryonofnodes:
+                    carryonofnodes[form.right.val] = {pair}
+                else:
+                    carryonofnodes[form.right.val].add(pair)
+                if cur in carryonofnodes:
+                    carryonofnodes[form.right.val] = carryonofnodes[form.right.val].union(carryonofnodes[cur])
 
                 
                 #left first
@@ -1283,11 +746,11 @@ def propagateBottomUp(net, simtable, index, aindex, outname, formulas, extranode
                 # do the convergence here if needed 
                 if len(list(net.out_edges(form.left.val))) > 1:
                     # print(list(net.out_edges(form.left.val)))
-                    processBranching_v2(net, form.left.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged, simtable)
+                    processBranching(net, form.left.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged, simtable)
 
                 if len(list(net.out_edges(form.right.val))) > 1:
                     # print(list(net.out_edges(form.right.val)))
-                    processBranching_v2(net, form.right.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged, simtable)
+                    processBranching(net, form.right.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged, simtable)
                 
                 # add left and right to the next layers 
                 if form.right.val not in nextlayer:
@@ -1297,37 +760,26 @@ def propagateBottomUp(net, simtable, index, aindex, outname, formulas, extranode
 
             elif len(inedges) == 1:
                 if form.val == "NOT":
-                    print(f"{cur} === NOT {form.right.val} inherits rows {sorted(list(countrows))}")
-                    if cur in carryonofnodes:
-                        carryonofnodes[form.right.val] = carryonofnodes[cur]
-
-                    if form.right.val not in countedrowsofnode:
-                        countedrowsofnode[form.right.val] = set()
-                    countedrowsofnode[form.right.val].update(countrows)
-
-                    # check branching
-                    if len(list(net.out_edges(form.right.val))) > 1:
-                        processBranching_v2(net, form.right.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged, simtable)
-                   
-                    # add this node to the next layer 
-                    if form.right.val not in nextlayer:
-                        nextlayer.append(form.right.val)
+                    singlemom = form.right.val 
+                    print(f"{cur} === NOT {singlemom} inherits rows {sorted(list(countrows))}")
                 else:
-                    print(f"{cur} === {form.val} inherits rows {sorted(list(countrows))}") 
-                    if cur in carryonofnodes:
-                        carryonofnodes[form.val] = carryonofnodes[cur]
-                    
-                    if form.val not in countedrowsofnode:
-                        countedrowsofnode[form.val] = set()
-                    countedrowsofnode[form.val].update(countrows) 
-                    
-                    # check branching
-                    if len(list(net.out_edges(form.val))) > 1:
-                        processBranching_v2(net, form.val, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged, simtable)
+                    singlemom = form.val
+                    print(f"{cur} === {singlemom} inherits rows {sorted(list(countrows))}")
+                
+                if cur in carryonofnodes:
+                    carryonofnodes[singlemom] = carryonofnodes[cur]
 
-                    # add new rows to the visited set 
-                    if form.val not in nextlayer:
-                        nextlayer.append(form.val)
+                if singlemom not in countedrowsofnode:
+                    countedrowsofnode[singlemom] = set()
+                countedrowsofnode[singlemom].update(countrows)
+
+                # check branching
+                if len(list(net.out_edges(singlemom))) > 1:
+                    processBranching(net, singlemom, carryonofnodes, countedrowsofnode, rowsofpairs, resofpairs, index, aindex, formulas, extranodes, converged, simtable)
+                
+                # add this node to the next layer 
+                if singlemom not in nextlayer:
+                    nextlayer.append(singlemom)
             else:
                 print("Reach node {} without in-comming edges".format(cur))
                 continue 
@@ -1381,6 +833,360 @@ def topDown(net, formulas, burows, inrows, node_layers):
                     rowsofnodes[node] = parentinrows.intersection(rowsofnodes[node]) 
     return rowsofnodes 
                 
+def preprocessBranching (binet, outname, biformulas):
+    print("-------Preprocessing branching for binary network-------")
+    reversenet = binet.reverse(copy=True) # reverse the network to get the in-comming edges
+    relevantnodes = nx.descendants(reversenet, outname) # get all the nodes that are relevant to the output node
+    relevantnodes.add(outname) # add the output node to the relevant nodes
+
+    foreignersofnodes = dict()
+    halfforeignersofnodes = dict() # nodes that have one parent is foreign, the other is not 
+    tobeconvergedofnodes = dict() # save the nodes that both parents are in the family 
+    foreingerop = dict()
+
+    for node in relevantnodes:
+        numoutedges = len(list(binet.out_edges(node)))
+        if numoutedges > 1: # possibly branched node
+            foreignersofnodes[node] = set() # save the foreign nodes that have child inside the family 
+            halfforeignersofnodes[node] = set() # save the foreign nodes that have one parent inside the family, the other is not
+            tobeconvergedofnodes[node] = set() # save the nodes that need to be converged
+            foreingerop[node] = dict()
+
+            des = nx.descendants(binet, node) # get all the descendants of the node
+            desinclude = copy.deepcopy(des)
+            desinclude.add(node) 
+            middlenodes = relevantnodes.intersection(desinclude) # get the middle nodes lying between source and target 
+
+            for mnode in middlenodes:
+                if mnode not in biformulas:
+                    print("Node {} is not in the binary formulas, pass".format(mnode))
+                    continue
+                if mnode == node: 
+                    print("Node {} is the source node, do nothing".format(mnode))
+                    continue
+
+                form = biformulas[mnode]
+
+                if form.val == 'OR' or form.val == 'AND':
+                    # check if both parents are in descendants 
+                    if form.left.val in desinclude and form.right.val in desinclude:
+                        print("Node {} has branching with parents {} and {} are in the family".format(mnode, form.left.val, form.right.val))
+                        tobeconvergedofnodes[node].add(mnode) # add the node to the set of nodes that need to be converged
+                    elif form.left.val in desinclude and form.right.val not in desinclude:
+                        print("Node {} has branching with parent {} is in the family, but parent {} is not".format(mnode, form.left.val, form.right.val))
+                        # add the foreign node to the set of foreigners
+                        foreignersofnodes[node].add(form.right.val)
+                        foreingerop[node][form.right.val] = form.val # save the operator of the foreign node
+
+                        halfforeignersofnodes[node].add(mnode) # add the foreign node to the set of half foreigners 
+                        
+                    elif form.left.val not in desinclude and form.right.val in desinclude:
+                        print("Node {} has branching with parent {} is in the family, but parent {} is not".format(mnode, form.right.val, form.left.val))
+                        # add the foreign node to the set of foreigners
+                        foreignersofnodes[node].add(form.left.val)
+                        foreingerop[node][form.left.val] = form.val # save the operator of the foreign node
+
+                        halfforeignersofnodes[node].add(mnode)
+                    else:
+                        print("Node {} has no branching with parents {} and {} are both not in the family, IMPOSSIBLE".format(mnode, form.left.val, form.right.val))
+                else:
+                    print("Node {} is unary operator, do nothing".format(mnode)) 
+
+
+    print("-------Demographics information-------")
+    for node, foreigners in foreignersofnodes.items():
+        if len(foreigners) > 0:
+            print("Node {} has foreigners {}".format(node, foreigners))
+        print('\n')
+
+        if len(halfforeignersofnodes[node]) > 0:
+            print("Node {} has half foreigners {}".format(node, halfforeignersofnodes[node]))
+        print('\n') 
+
+        if len(tobeconvergedofnodes[node]) > 0:
+            print("Node {} has to be converged {}".format(node, tobeconvergedofnodes[node]))
+        print('\n\n')
+
+    # from here find foreigner nodes that do not need to be filtered out  
+    goodforeignersofnodes = dict() # save the foreign nodes that do not need to be filtered out 
+    tobefilteredforeignersofnodes = dict() # save the foreign nodes that need to be filtered out
+
+    for node, tobeconvergednodes in tobeconvergedofnodes.items():
+        print('Processing node {}'.format(node))
+        goodforeignersofnodes[node] = set() # initialize the set of good foreigners for each node
+        tobefilteredforeignersofnodes[node] = dict() # initialize the set of to be filtered foreigners for each node
+        if len(tobeconvergednodes) == 0:
+            continue
+        
+        for tobeconvergednode in tobeconvergednodes: 
+            tobefilteredforeignersofnodes[node][tobeconvergednode] = dict() # initialize the set of to be filtered foreigners for each to be converged node
+            convergeform = biformulas[tobeconvergednode]
+            left = convergeform.left.val
+            right = convergeform.right.val
+            op = convergeform.val
+            print('Converging node {} ==== {} {} {}'.format(tobeconvergednode, left, op, right))
+
+            leftdes = nx.descendants(reversenet, left)
+            rightdes = nx.descendants(reversenet, right)
+
+            leftforeigners = foreignersofnodes[node].intersection(leftdes) 
+            print("Left foreigners of node {} to node {} are {}".format(node, tobeconvergednode, leftforeigners))
+          
+            rightforeigners = foreignersofnodes[node].intersection(rightdes) 
+            print("Right foreigners of node {} to node {} are {}".format(node, tobeconvergednode, rightforeigners))
+
+            leftor = set() 
+            rightor = set() 
+            leftand = set()
+            rightand = set()
+            for foreigner in leftforeigners: 
+                if foreigner in foreingerop[node]:
+                    if foreingerop[node][foreigner] == 'OR':
+                        leftor.add(foreigner)
+                    elif foreingerop[node][foreigner] == 'AND':
+                        leftand.add(foreigner)
+            for foreigner in rightforeigners:
+                if foreigner in foreingerop[node]:
+                    if foreingerop[node][foreigner] == 'OR':
+                        rightor.add(foreigner)
+                    elif foreingerop[node][foreigner] == 'AND':
+                        rightand.add(foreigner)
+
+            tobefilteredforeignersofnodes[node][tobeconvergednode]['leftor'] = leftor
+            tobefilteredforeignersofnodes[node][tobeconvergednode]['rightor'] = rightor
+            tobefilteredforeignersofnodes[node][tobeconvergednode]['leftand'] = leftand
+            tobefilteredforeignersofnodes[node][tobeconvergednode]['rightand'] = rightand
+
+            if op == 'AND': 
+                if leftor and rightor:
+                    pass 
+                else:
+                    if leftor:
+                        goodforeignersofnodes[node].update(leftor)
+                        print("Add leftor {} to good foreigners of node {}".format(leftor, node))
+                    elif rightor:
+                        goodforeignersofnodes[node].update(rightor)
+                        print("Add rightor {} to good foreigners of node {}".format(rightor, node))
+                    
+            
+            if op == 'OR':
+                if leftand and rightand:
+                    pass 
+                else:
+                    if leftand:
+                        goodforeignersofnodes[node].update(leftand)
+                        print("Add leftand {} to good foreigners of node {}".format(leftand, node))
+                    elif rightand:
+                        goodforeignersofnodes[node].update(rightand)
+                        print("Add rightand {} to good foreigners of node {}".format(rightand, node))
+        print('\n')
+    
+    print("-------Good foreigners information-------")
+    for node, goodforeigners in goodforeignersofnodes.items():
+        if len(goodforeigners) > 0:
+            print("Node {} has good foreigners {}".format(node, goodforeigners))
+    
+    print("-------To be filtered foreigners information-------")
+    for node, tobefilteredforeigners in tobefilteredforeignersofnodes.items():
+        if len(tobefilteredforeigners) > 0:
+            print("Node {} has to be filtered foreigners {}".format(node, tobefilteredforeigners))
+
+    return tobefilteredforeignersofnodes, goodforeignersofnodes 
+
+def convergediamond(node, tobefilteredofnodes, rowsofsinknodes, formulas, index, aindex, extranodes, goodforeignersofnodes, countedrowsofnode):
+    if node in tobefilteredofnodes:
+        print(f"Node {node} has branching and needs to be filtered out, process it")
+    else:
+        print(f"Node {node} has no branching, do nothing")
+        return
+    
+    sinks = tobefilteredofnodes[node] 
+    for sink, dicts in sinks.items():
+        if sink not in rowsofsinknodes:
+            continue
+        
+        allrows = copy.deepcopy(rowsofsinknodes[sink])
+        leftor = dicts['leftor']
+        rightor = dicts['rightor']
+        leftand = dicts['leftand']
+        rightand = dicts['rightand']
+        print(f"Processing sink {sink} with:\n \tleftor {leftor} \n\trightor {rightor} \n\t leftand {leftand} \n\trightand {rightand}")
+        sinkop = formulas[sink].val 
+        if sinkop == 'OR':
+            # filter out all the OR operators 
+            # union of left and right rows when filter out and operator 
+            for node_ in leftor.union(rightor):
+                if node_ not in goodforeignersofnodes[node]:
+                    allrows = filterrows('OR', node_, sink, index, aindex, extranodes, allrows)
+            leftrows = copy.deepcopy(allrows)
+            rightrows = copy.deepcopy(allrows) 
+            
+            for node_ in leftand:
+                if node_ not in goodforeignersofnodes[node]:
+                    leftrows = filterrows('AND', node_, sink, index, aindex, extranodes, leftrows)
+            for node_ in rightand:
+                if node_ not in goodforeignersofnodes[node]:
+                    rightrows = filterrows('AND', node_, sink, index, aindex, extranodes, rightrows)
+
+            countedrowsofnode[node].update(leftrows.union(rightrows))
+                    
+        elif sinkop == 'AND':
+            # filter out all the AND operators
+            # for OR op, if belong to only one side then no filter 
+            for node_ in leftand.union(rightand):
+                if node_ not in goodforeignersofnodes[node]:
+                    allrows = filterrows('AND', node_, sink, index, aindex, extranodes, allrows)
+
+            if leftor and rightor:
+                print("Both leftor and rightor are not empty, need to filter")
+                for node_ in leftor.union(rightor):
+                    if node_ not in goodforeignersofnodes[node]:
+                        allrows = filterrows('OR', node_, sink, index, aindex, extranodes, allrows)
+
+            countedrowsofnode[node].update(allrows) 
+        else:
+            print("Dot not support operator {}".format(sinkop))
+        
+        
+
+def propageteBottomUpWithBranchedInformation(net, simtable, index, aindex, outname, formulas, extranodes, tobefilteredofnodes, goodforeignersofnodes):
+    curs = [outname] 
+    countedrowsofnode = dict() # countedrowsofnode[node] = set of rows that make node count 
+    rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
+    converged = dict() # save the nodes that are already converged for a node (key) to avoid doing it again 
+    while curs:
+        print("\n\n---Processing layers of {}---".format(curs))
+        nextlayer = []
+        for cur in curs:
+            try:
+                form = formulas[cur]
+            except:
+                print("\nReach node {} without in-comming edges".format(cur))
+                continue
+            # get incoming edge to cur node 
+            inedges = list(net.in_edges(cur)) 
+            assert len(inedges) <= 2, print("Support only binary network") 
+
+            if cur not in countedrowsofnode: # count all rows 
+                countrows = set(range(len(simtable)))
+                countedrowsofnode[cur] = countrows
+            else: # count only rows that cur is counted
+                countrows = countedrowsofnode[cur] 
+
+            print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
+
+            if len(inedges) == 2: 
+                print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                # get operator
+                op = form.val 
+                # check if one of the node is extranode 
+                leftselfloop, rightselfloop = False, False
+                rootname = None
+                if form.left.val in extranodes:
+                    print(f"Left node {form.left.val} is an extra node")
+                    # get the root node of the extra node 
+                    rootname = form.left.val.split("_to_")[0]
+                    desname = form.left.val.split("_to_")[1]
+                    if rootname == desname:
+                        leftselfloop = True
+                        
+                    # get the rows that the root node is counted 
+
+                if form.right.val in extranodes:
+                    print(f"Right node {form.right.val} is an extra node")
+                    # get the root node of the extra node
+                    rootname = form.right.val.split("_to_")[0]
+                    desname = form.right.val.split("_to_")[1]
+                    if rootname == desname:
+                        rightselfloop = True
+
+                # now start to process 
+                if op == 'OR': 
+                    # rows that left counted are rows that right = False 
+                    if not rightselfloop:
+                        leftrows = aindex[form.right.val]
+                    else:
+                        leftrows = countedrowsofnode[cur]
+
+                    # rows that right counted are rows that left = False 
+                    if not leftselfloop:
+                        rightrows = aindex[form.left.val]
+                    else:
+                        rightrows = countedrowsofnode[cur]
+                        # leftrows = set()
+
+                    rowsofthispair = index[form.left.val].intersection(index[form.right.val]).intersection(countrows)
+                    
+                elif op == 'AND':
+                    leftrows = index[form.right.val]
+                    # rows that right counted are rows that left = True 
+                    rightrows = index[form.left.val]
+
+                    rowsofthispair = aindex[form.left.val].intersection(aindex[form.right.val]).intersection(countrows)
+     
+                else:
+                    print(f"Do not support operator {op}")
+                    break
+                    
+                rowsofsinknodes[cur] = rowsofthispair # save the rows of the sink node
+
+                
+                #left first
+                # intersect with rows that cur is count 
+                leftrows = leftrows.intersection(countrows)
+                print(f"After operator {op}, {form.left.val} count only rows {sorted(list(leftrows))}")
+                if form.left.val not in countedrowsofnode:
+                    countedrowsofnode[form.left.val] = set()
+                countedrowsofnode[form.left.val].update(leftrows)
+
+                # intersect with rows that cur is count 
+                rightrows = rightrows.intersection(countrows)
+                print(f"After operator {op}, {form.right.val} count only rows {sorted(list(rightrows))}")
+                if form.right.val not in countedrowsofnode:
+                    countedrowsofnode[form.right.val] = set()
+                countedrowsofnode[form.right.val].update(rightrows)
+                
+                # do the convergence here if needed 
+                if len(list(net.out_edges(form.left.val))) > 1: # left first
+                    convergediamond(form.left.val, tobefilteredofnodes, rowsofsinknodes, formulas, index, aindex, extranodes, goodforeignersofnodes, countedrowsofnode)
+                    
+                    
+                if len(list(net.out_edges(form.right.val))) > 1:
+                    convergediamond(form.right.val, tobefilteredofnodes, rowsofsinknodes, formulas, index, aindex, extranodes, goodforeignersofnodes, countedrowsofnode)
+                   
+                   
+                # add left and right to the next layers 
+                if form.right.val not in nextlayer:
+                    nextlayer.append(form.right.val)
+                if form.left.val not in nextlayer:  
+                    nextlayer.append(form.left.val)
+
+            elif len(inedges) == 1:
+                if form.val == "NOT":
+                    singlemom = form.right.val 
+                    print(f"{cur} === NOT {singlemom} inherits rows {sorted(list(countrows))}")
+                else:
+                    singlemom = form.val
+                    print(f"{cur} === {singlemom} inherits rows {sorted(list(countrows))}")
+
+                if singlemom not in countedrowsofnode:
+                    countedrowsofnode[singlemom] = set()
+                countedrowsofnode[singlemom].update(countrows)
+
+                # check branching
+                if len(list(net.out_edges(singlemom))) > 1:
+                    convergediamond(singlemom, tobefilteredofnodes, rowsofsinknodes, formulas, index, aindex, extranodes, goodforeignersofnodes, countedrowsofnode)
+                    
+                # add this node to the next layer 
+                if singlemom not in nextlayer:
+                    nextlayer.append(singlemom)
+            else:
+                print("Reach node {} without in-comming edges".format(cur))
+                continue 
+        curs = nextlayer
+    return countedrowsofnode 
+    
+
 
 
 # do everything with binary network (convert, get speciesnames, simulate...)          
@@ -1506,7 +1312,10 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
     if isprop:        
         for outname in outputnames:
             print("-----Propageting to output {}-----".format(outname)) 
-            rowsofnodes = propagateBottomUp_v3(binet, table, index, aindex, outname, biformulasdict, extranodes)
+            tobefilteredforeignersofnodes, goodforeignersofnodes = preprocessBranching(binet, outname, biformulasdict)
+            
+            # rowsofnodes = propagateBottomUp(binet, table, index, aindex, outname, biformulasdict, extranodes)
+            rowsofnodes = propageteBottomUpWithBranchedInformation(binet, table, index, aindex, outname, biformulasdict, extranodes, tobefilteredforeignersofnodes, goodforeignersofnodes)
 
             # # correct the rows for input nodes 
             # for input in inputnames:

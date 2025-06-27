@@ -886,7 +886,7 @@ def diamondDigger(net, outname, formulas):
                     nextlayer.append(singlemon)
                 print("Carryon of {:20}: {}".format(singlemon,carryonofnodes[singlemon]))
             else:
-                print(f"Node {singlemon} has no input, pass") 
+                print(f"Node {cur} has no input, pass") 
         curs = nextlayer
 
     diamonds = dict()
