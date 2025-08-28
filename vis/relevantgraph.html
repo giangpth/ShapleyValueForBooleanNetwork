@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100%;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#808080", "id": "_XTR_1_", "label": "_XTR_1_", "labels": "_XTR_1_", "layer": 9, "shape": "dot", "size": 10, "x": 145.0, "y": 1023}, {"color": "#808080", "id": "_XTR_14_", "label": "_XTR_14_", "labels": "_XTR_14_", "layer": 10, "shape": "dot", "size": 10, "x": 388.0, "y": 1123}, {"color": "#0000FF", "id": "AKT", "label": "AKT", "labels": "AKT", "layer": 8, "shape": "dot", "size": 10, "x": 381.0, "y": 915}, {"color": "#808080", "id": "_XTR_35_", "label": "_XTR_35_", "labels": "_XTR_35_", "layer": 9, "shape": "dot", "size": 10, "x": 479.0, "y": 983}, {"color": "#0000FF", "id": "FoxO1_3a", "label": "FoxO1_3a", "labels": "FoxO1_3a", "layer": 9, "shape": "dot", "size": 15, "x": 614.0, "y": 996}, {"color": "#0000FF", "id": "p38", "label": "p38", "labels": "p38", "layer": 9, "shape": "dot", "size": 10, "x": 366.0, "y": 1019}, {"color": "#0000FF", "id": "PRAS", "label": "PRAS", "labels": "PRAS", "layer": 9, "shape": "dot", "size": 10, "x": 271.0, "y": 1024}, {"color": "#808080", "id": "_XTR_3_", "label": "_XTR_3_", "labels": "_XTR_3_", "layer": 13, "shape": "dot", "size": 10, "x": 398.0, "y": 1414}, {"color": "#808080", "id": "_XTR_4_", "label": "_XTR_4_", "labels": "_XTR_4_", "layer": 14, "shape": "dot", "size": 10, "x": 340.0, "y": 1512}, {"color": "#808080", "id": "_XTR_9_", "label": "_XTR_9_", "labels": "_XTR_9_", "layer": 14, "shape": "dot", "size": 10, "x": 454.0, "y": 1489}, {"color": "#0000FF", "id": "TSC2", "label": "TSC2", "labels": "TSC2", "layer": 12, "shape": "dot", "size": 10, "x": 400.0, "y": 1319}, {"color": "#808080", "id": "_XTR_5_", "label": "_XTR_5_", "labels": "_XTR_5_", "layer": 10, "shape": "dot", "size": 10, "x": 272.0, "y": 1116}, {"color": "#808080", "id": "_XTR_6_", "label": "_XTR_6_", "labels": "_XTR_6_", "layer": 15, "shape": "dot", "size": 10, "x": 339.0, "y": 1628}, {"color": "#808080", "id": "_XTR_10_", "label": "_XTR_10_", "labels": "_XTR_10_", "layer": 15, "shape": "dot", "size": 10, "x": 425.0, "y": 1627}, {"color": "#808080", "id": "_XTR_7_", "label": "_XTR_7_", "labels": "_XTR_7_", "layer": 1, "shape": "dot", "size": 10, "x": 113.0, "y": 181}, {"color": "#808080", "id": "_XTR_8_", "label": "_XTR_8_", "labels": "_XTR_8_", "layer": 16, "shape": "dot", "size": 10, "x": 318.0, "y": 1693}, {"color": "#808080", "id": "_XTR_11_", "label": "_XTR_11_", "labels": "_XTR_11_", "layer": 16, "shape": "dot", "size": 10, "x": 427.0, "y": 1694}, {"color": "#FFFF00", "id": "Nfkb", "label": "Nfkb", "labels": "Nfkb", "layer": 0, "shape": "dot", "size": 10, "x": 128.0, "y": 88}, {"color": "#808080", "id": "_XTR_64_", "label": "_XTR_64_", "labels": "_XTR_64_", "layer": 22, "shape": "dot", "size": 10, "x": 423.0, "y": 2295}, {"color": "#808080", "id": "_XTR_15_", "label": "_XTR_15_", "labels": "_XTR_15_", "layer": 1, "shape": "dot", "size": 10, "x": 217.0, "y": 217}, {"color": "#808080", "id": "_XTR_42_", "label": "_XTR_42_", "labels": "_XTR_42_", "layer": 5, "shape": "dot", "size": 10, "x": 153.0, "y": 623}, {"color": "#808080", "id": "_XTR_43_", "label": "_XTR_43_", "labels": "_XTR_43_", "layer": 2, "shape": "dot", "size": 10, "x": 325.0, "y": 325}, {"color": "#808080", "id": "_XTR_45_", "label": "_XTR_45_", "labels": "_XTR_45_", "layer": 6, "shape": "dot", "size": 10, "x": 153.0, "y": 695}, {"color": "#808080", "id": "_XTR_16_", "label": "_XTR_16_", "labels": "_XTR_16_", "layer": 11, "shape": "dot", "size": 10, "x": 348.0, "y": 1219}, {"color": "#FFFF00", "id": "ERK1_2", "label": "ERK1_2", "labels": "ERK1_2", "layer": 0, "shape": "dot", "size": 10, "x": 240.0, "y": 70}, {"color": "#808080", "id": "_XTR_38_", "label": "_XTR_38_", "labels": "_XTR_38_", "layer": 3, "shape": "dot", "size": 10, "x": 276.0, "y": 398}, {"color": "#808080", "id": "_XTR_17_", "label": "_XTR_17_", "labels": "_XTR_17_", "layer": 2, "shape": "dot", "size": 10, "x": 1.0, "y": 286}, {"color": "#808080", "id": "_XTR_36_", "label": "_XTR_36_", "labels": "_XTR_36_", "layer": 3, "shape": "dot", "size": 10, "x": 153.0, "y": 425}, {"color": "#808080", "id": "_XTR_40_", "label": "_XTR_40_", "labels": "_XTR_40_", "layer": 19, "shape": "dot", "size": 10, "x": 341.0, "y": 2006}, {"color": "#0000FF", "id": "PTEN", "label": "PTEN", "labels": "PTEN", "layer": 3, "shape": "dot", "size": 10, "x": 48.0, "y": 381}, {"color": "#0000FF", "id": "GSK3a_b", "label": "GSK3a_b", "labels": "GSK3a_b", "layer": 1, "shape": "dot", "size": 10, "x": 332.0, "y": 181}, {"color": "#0000FF", "id": "cJUN", "label": "cJUN", "labels": "cJUN", "layer": 2, "shape": "dot", "size": 15, "x": 776.0, "y": 296}, {"color": "#808080", "id": "_XTR_19_", "label": "_XTR_19_", "labels": "_XTR_19_", "layer": 1, "shape": "dot", "size": 10, "x": 459.0, "y": 208}, {"color": "#808080", "id": "_XTR_20_", "label": "_XTR_20_", "labels": "_XTR_20_", "layer": 2, "shape": "dot", "size": 10, "x": 98.0, "y": 272}, {"color": "#808080", "id": "_XTR_23_", "label": "_XTR_23_", "labels": "_XTR_23_", "layer": 2, "shape": "dot", "size": 10, "x": 216.0, "y": 277}, {"color": "#808080", "id": "_XTR_56_", "label": "_XTR_56_", "labels": "_XTR_56_", "layer": 2, "shape": "dot", "size": 10, "x": 657.0, "y": 272}, {"color": "#808080", "id": "_XTR_59_", "label": "_XTR_59_", "labels": "_XTR_59_", "layer": 19, "shape": "dot", "size": 10, "x": 449.0, "y": 1976}, {"color": "#808080", "id": "_XTR_66_", "label": "_XTR_66_", "labels": "_XTR_66_", "layer": 5, "shape": "dot", "size": 10, "x": 392.0, "y": 577}, {"color": "#808080", "id": "_XTR_69_", "label": "_XTR_69_", "labels": "_XTR_69_", "layer": 6, "shape": "dot", "size": 10, "x": 272.0, "y": 703}, {"color": "#808080", "id": "_XTR_49_", "label": "_XTR_49_", "labels": "_XTR_49_", "layer": 3, "shape": "dot", "size": 10, "x": 616.0, "y": 412}, {"color": "#808080", "id": "_XTR_67_", "label": "_XTR_67_", "labels": "_XTR_67_", "layer": 6, "shape": "dot", "size": 10, "x": 480.0, "y": 694}, {"color": "#808080", "id": "_XTR_52_", "label": "_XTR_52_", "labels": "_XTR_52_", "layer": 4, "shape": "dot", "size": 10, "x": 499.0, "y": 502}, {"color": "#FFFF00", "id": "pertuzumab", "label": "pertuzumab", "labels": "pertuzumab", "layer": 0, "shape": "dot", "size": 10, "x": 350.0, "y": 95}, {"color": "#808080", "id": "_XTR_21_", "label": "_XTR_21_", "labels": "_XTR_21_", "layer": 1, "shape": "dot", "size": 10, "x": 538.0, "y": 192}, {"color": "#808080", "id": "_XTR_48_", "label": "_XTR_48_", "labels": "_XTR_48_", "layer": 2, "shape": "dot", "size": 10, "x": 431.0, "y": 283}, {"color": "#808080", "id": "_XTR_22_", "label": "_XTR_22_", "labels": "_XTR_22_", "layer": 3, "shape": "dot", "size": 10, "x": 378.0, "y": 427}, {"color": "#808080", "id": "_XTR_24_", "label": "_XTR_24_", "labels": "_XTR_24_", "layer": 3, "shape": "dot", "size": 10, "x": 515.0, "y": 382}, {"color": "#808080", "id": "_XTR_51_", "label": "_XTR_51_", "labels": "_XTR_51_", "layer": 3, "shape": "dot", "size": 10, "x": 703.0, "y": 370}, {"color": "#808080", "id": "_XTR_60_", "label": "_XTR_60_", "labels": "_XTR_60_", "layer": 20, "shape": "dot", "size": 10, "x": 438.0, "y": 2099}, {"color": "#FFFF00", "id": "erlotinib", "label": "erlotinib", "labels": "erlotinib", "layer": 0, "shape": "dot", "size": 10, "x": 456.0, "y": 122}, {"color": "#808080", "id": "_XTR_26_", "label": "_XTR_26_", "labels": "_XTR_26_", "layer": 27, "shape": "dot", "size": 10, "x": 390.0, "y": 2814}, {"color": "#808080", "id": "_XTR_27_", "label": "_XTR_27_", "labels": "_XTR_27_", "layer": 28, "shape": "dot", "size": 10, "x": 284.0, "y": 2916}, {"color": "#808080", "id": "_XTR_28_", "label": "_XTR_28_", "labels": "_XTR_28_", "layer": 28, "shape": "dot", "size": 10, "x": 366.0, "y": 2899}, {"color": "#808080", "id": "_XTR_30_", "label": "_XTR_30_", "labels": "_XTR_30_", "layer": 28, "shape": "dot", "size": 10, "x": 481.0, "y": 2929}, {"color": "#0000FF", "id": "p53", "label": "p53", "labels": "p53", "layer": 26, "shape": "dot", "size": 10, "x": 366.0, "y": 2704}, {"color": "#808080", "id": "_XTR_32_", "label": "_XTR_32_", "labels": "_XTR_32_", "layer": 24, "shape": "dot", "size": 10, "x": 370.0, "y": 2502}, {"color": "#808080", "id": "_XTR_33_", "label": "_XTR_33_", "labels": "_XTR_33_", "layer": 25, "shape": "dot", "size": 10, "x": 376.0, "y": 2621}, {"color": "#0000FF", "id": "RB", "label": "RB", "labels": "RB", "layer": 23, "shape": "dot", "size": 10, "x": 371.0, "y": 2390}, {"color": "#808080", "id": "_XTR_47_", "label": "_XTR_47_", "labels": "_XTR_47_", "layer": 1, "shape": "dot", "size": 10, "x": 663.0, "y": 183}, {"color": "#808080", "id": "_XTR_50_", "label": "_XTR_50_", "labels": "_XTR_50_", "layer": 2, "shape": "dot", "size": 10, "x": 558.0, "y": 330}, {"color": "#FFFF00", "id": "trastuzumab", "label": "trastuzumab", "labels": "trastuzumab", "layer": 0, "shape": "dot", "size": 10, "x": 539.0, "y": 128}, {"color": "#808080", "id": "_XTR_54_", "label": "_XTR_54_", "labels": "_XTR_54_", "layer": 4, "shape": "dot", "size": 10, "x": 263.0, "y": 527}, {"color": "#808080", "id": "_XTR_57_", "label": "_XTR_57_", "labels": "_XTR_57_", "layer": 5, "shape": "dot", "size": 10, "x": 486.0, "y": 607}, {"color": "#808080", "id": "_XTR_55_", "label": "_XTR_55_", "labels": "_XTR_55_", "layer": 5, "shape": "dot", "size": 10, "x": 612.0, "y": 603}, {"color": "#808080", "id": "_XTR_61_", "label": "_XTR_61_", "labels": "_XTR_61_", "layer": 21, "shape": "dot", "size": 10, "x": 438.0, "y": 2204}, {"color": "#808080", "id": "_XTR_63_", "label": "_XTR_63_", "labels": "_XTR_63_", "layer": 21, "shape": "dot", "size": 10, "x": 345.0, "y": 2211}, {"color": "#0000FF", "id": "CyclinD1", "label": "CyclinD1", "labels": "CyclinD1", "layer": 20, "shape": "dot", "size": 10, "x": 330.0, "y": 2109}, {"color": "#FFFF00", "id": "stimulus", "label": "stimulus", "labels": "stimulus", "layer": 0, "shape": "dot", "size": 10, "x": 641.0, "y": 83}, {"color": "#808080", "id": "_XTR_68_", "label": "_XTR_68_", "labels": "_XTR_68_", "layer": 7, "shape": "dot", "size": 10, "x": 349.0, "y": 808}, {"color": "#808080", "id": "_XTR_29_", "label": "_XTR_29_", "labels": "_XTR_29_", "layer": 29, "shape": "dot", "size": 10, "x": 367.0, "y": 2975}, {"color": "#0000FF", "id": "ERBB3", "label": "ERBB3", "labels": "ERBB3", "layer": 22, "shape": "dot", "size": 10, "x": 317.0, "y": 2324}, {"color": "#0000FF", "id": "CyclinB1", "label": "CyclinB1", "labels": "CyclinB1", "layer": 30, "shape": "dot", "size": 15, "x": 389.0, "y": 3092}, {"color": "#0000FF", "id": "ERBB1", "label": "ERBB1", "labels": "ERBB1", "layer": 4, "shape": "dot", "size": 10, "x": 373.0, "y": 520}, {"color": "#808080", "id": "_XTR_37_", "label": "_XTR_37_", "labels": "_XTR_37_", "layer": 10, "shape": "dot", "size": 10, "x": 485.0, "y": 1097}, {"color": "#808080", "id": "_XTR_39_", "label": "_XTR_39_", "labels": "_XTR_39_", "layer": 11, "shape": "dot", "size": 10, "x": 442.0, "y": 1225}, {"color": "#0000FF", "id": "RPS6", "label": "RPS6", "labels": "RPS6", "layer": 18, "shape": "dot", "size": 10, "x": 391.0, "y": 1900}, {"color": "#808080", "id": "_XTR_44_", "label": "_XTR_44_", "labels": "_XTR_44_", "layer": 6, "shape": "dot", "size": 10, "x": 388.0, "y": 687}, {"color": "#0000FF", "id": "cRAF", "label": "cRAF", "labels": "cRAF", "layer": 7, "shape": "dot", "size": 15, "x": 435.0, "y": 772}, {"color": "#0000FF", "id": "ERBB2", "label": "ERBB2", "labels": "ERBB2", "layer": 5, "shape": "dot", "size": 10, "x": 294.0, "y": 588}, {"color": "#808080", "id": "_XTR_58_", "label": "_XTR_58_", "labels": "_XTR_58_", "layer": 6, "shape": "dot", "size": 10, "x": 595.0, "y": 677}, {"color": "#0000FF", "id": "p70S6K", "label": "p70S6K", "labels": "p70S6K", "layer": 17, "shape": "dot", "size": 10, "x": 393.0, "y": 1828}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#008000", "from": "_XTR_1_", "to": "_XTR_14_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "AKT", "to": "_XTR_1_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "AKT", "to": "_XTR_35_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "AKT", "to": "FoxO1_3a", "width": 1}, {"arrows": "to", "color": "#008000", "from": "AKT", "to": "p38", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "AKT", "to": "PRAS", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_3_", "to": "_XTR_4_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_3_", "to": "_XTR_9_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "TSC2", "to": "_XTR_3_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_5_", "to": "_XTR_6_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_5_", "to": "_XTR_10_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "PRAS", "to": "_XTR_5_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_7_", "to": "_XTR_8_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_7_", "to": "_XTR_11_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "Nfkb", "to": "_XTR_7_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "Nfkb", "to": "_XTR_64_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_15_", "to": "_XTR_42_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_15_", "to": "_XTR_43_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_15_", "to": "_XTR_45_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_15_", "to": "_XTR_16_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "ERK1_2", "to": "_XTR_15_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERK1_2", "to": "_XTR_4_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERK1_2", "to": "_XTR_38_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_17_", "to": "_XTR_35_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_17_", "to": "_XTR_36_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_17_", "to": "_XTR_38_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_17_", "to": "_XTR_40_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_17_", "to": "TSC2", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_17_", "to": "PTEN", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "GSK3a_b", "to": "_XTR_17_", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "GSK3a_b", "to": "cJUN", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_20_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_23_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_56_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_59_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_66_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_69_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_49_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_19_", "to": "_XTR_67_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_19_", "to": "_XTR_52_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "pertuzumab", "to": "_XTR_19_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_21_", "to": "_XTR_48_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_21_", "to": "_XTR_56_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_21_", "to": "_XTR_22_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_21_", "to": "_XTR_24_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_21_", "to": "_XTR_51_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_21_", "to": "_XTR_60_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "erlotinib", "to": "_XTR_21_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "erlotinib", "to": "_XTR_9_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_26_", "to": "_XTR_27_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_26_", "to": "_XTR_28_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_26_", "to": "_XTR_30_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "p53", "to": "_XTR_26_", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_32_", "to": "_XTR_33_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "p38", "to": "_XTR_32_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "RB", "to": "_XTR_32_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_47_", "to": "_XTR_48_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_47_", "to": "_XTR_50_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "trastuzumab", "to": "_XTR_47_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "trastuzumab", "to": "_XTR_20_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "trastuzumab", "to": "_XTR_27_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "trastuzumab", "to": "_XTR_43_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "trastuzumab", "to": "GSK3a_b", "width": 1}, {"arrows": "to", "color": "#008000", "from": "trastuzumab", "to": "PTEN", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_54_", "to": "_XTR_57_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_54_", "to": "_XTR_55_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_54_", "to": "_XTR_61_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "PTEN", "to": "_XTR_54_", "width": 1}, {"arrows": "to", "color": "#808080", "from": "PTEN", "to": "p53", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_63_", "to": "_XTR_64_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_63_", "to": "RB", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#FF0000", "from": "CyclinD1", "to": "_XTR_63_", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_4_", "to": "_XTR_6_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_9_", "to": "_XTR_10_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_14_", "to": "_XTR_16_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "stimulus", "to": "_XTR_14_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "stimulus", "to": "_XTR_23_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "stimulus", "to": "_XTR_33_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "stimulus", "to": "_XTR_36_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "stimulus", "to": "_XTR_50_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_20_", "to": "_XTR_22_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_20_", "to": "_XTR_68_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_23_", "to": "_XTR_24_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_27_", "to": "_XTR_29_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_28_", "to": "_XTR_29_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERBB3", "to": "_XTR_28_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_30_", "to": "CyclinB1", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERBB1", "to": "_XTR_30_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERBB1", "to": "_XTR_42_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERBB1", "to": "_XTR_66_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_33_", "to": "p53", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_35_", "to": "_XTR_37_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_36_", "to": "_XTR_37_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_38_", "to": "_XTR_39_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_40_", "to": "CyclinD1", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "RPS6", "to": "_XTR_40_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "RPS6", "to": "_XTR_59_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_42_", "to": "_XTR_44_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_43_", "to": "_XTR_44_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_45_", "to": "cRAF", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERBB2", "to": "_XTR_45_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "ERBB2", "to": "_XTR_69_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_48_", "to": "_XTR_49_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_50_", "to": "_XTR_51_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_56_", "to": "_XTR_57_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_59_", "to": "_XTR_60_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_64_", "to": "RB", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_66_", "to": "_XTR_67_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_69_", "to": "AKT", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_6_", "to": "_XTR_8_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_10_", "to": "_XTR_11_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_16_", "to": "TSC2", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_22_", "to": "ERBB1", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_24_", "to": "_XTR_55_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_24_", "to": "ERBB1", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_29_", "to": "CyclinB1", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_37_", "to": "_XTR_39_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_44_", "to": "cRAF", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_49_", "to": "ERBB2", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_51_", "to": "_XTR_52_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_57_", "to": "_XTR_58_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "_XTR_60_", "to": "_XTR_61_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_67_", "to": "_XTR_68_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_8_", "to": "p70S6K", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_11_", "to": "p70S6K", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_39_", "to": "CyclinD1", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_52_", "to": "ERBB2", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_55_", "to": "_XTR_58_", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_61_", "to": "ERBB3", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_68_", "to": "AKT", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#808080", "from": "_XTR_58_", "to": "ERBB3", "type": "arrow", "width": 1}, {"arrows": "to", "color": "#008000", "from": "p70S6K", "to": "RPS6", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
