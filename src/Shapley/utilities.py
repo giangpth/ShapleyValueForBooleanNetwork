@@ -209,6 +209,11 @@ def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputn
         # print(line)
         # each line is a dictionary with keys are name of species and value is true or false
         
+        # for test:
+        if id in [6, 14, 22, 30]:
+            print(f"-------TESTING LINE: {id}-------")
+            print(line)
+
         size = 0
         for input in inputnames:
             if line[input]:
@@ -277,7 +282,7 @@ class BNmodel:
                 outputs[i][0] = 0
         return outputs
 
-def filterrows(op, nodetofilter, onenode, index, aindex, extranodes, allrows):
+def filterrows(op, nodetofilter, childnode, index, aindex, extranodes, allrows):
     """
     Filter rows based on the state of a specific node and a logical operator.
     Args:
@@ -298,9 +303,9 @@ def filterrows(op, nodetofilter, onenode, index, aindex, extranodes, allrows):
             # print("NOT EXTRANODE")
             childrows = aindex[nodetofilter]
             # countedchild[onenode] = childrows
-            print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, onenode, op))
+            print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, childnode, op))
             allrows = allrows.intersection(childrows)
-            print("Rows after filter are {}".format(sorted(list(allrows))))
+            # print("Rows after filter are {}".format(sorted(list(allrows))))
         else:
             # print("EXTRANODE")
             coms = nodetofilter.split("_to_")
@@ -309,17 +314,17 @@ def filterrows(op, nodetofilter, onenode, index, aindex, extranodes, allrows):
             else:
                 childrows = aindex[nodetofilter]
                 # countedchild[onenode] = childrows
-                print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, onenode, op))
+                print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, childnode, op))
                 allrows = allrows.intersection(childrows)
-                print("Rows after filter are {}".format(sorted(list(allrows))))
+                # print("Rows after filter are {}".format(sorted(list(allrows))))
     elif op == 'AND':
         if nodetofilter not in extranodes:
             # print("NOT EXTRANODE")
             childrows = index[nodetofilter]
             # countedchild[onenode] = childrows
-            print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, onenode, op))
+            print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, childnode, op))
             allrows = allrows.intersection(childrows)
-            print("Rows after filter are {}".format(sorted(list(allrows))))
+            # print("Rows after filter are {}".format(sorted(list(allrows))))
         else:
             # print("EXTRANODE")
             coms = nodetofilter.split("_to_")
@@ -328,9 +333,9 @@ def filterrows(op, nodetofilter, onenode, index, aindex, extranodes, allrows):
             else:
                 childrows = index[nodetofilter]
                 # countedchild[onenode] = childrows
-                print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, onenode, op))
+                print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, childnode, op))
                 allrows = allrows.intersection(childrows)
-                print("Rows after filter are {}".format(sorted(list(allrows))))
+                # print("Rows after filter are {}".format(sorted(list(allrows))))
         # pass
     else:
         print("Do not support {} operator".format(op))

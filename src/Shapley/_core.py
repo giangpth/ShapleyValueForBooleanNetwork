@@ -4,9 +4,9 @@ import shap
 import numpy as np
 
 from Shapley.visualization import showNetwork
-from Shapley.utilities import parseArguments, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput, rank_dict_values, filterrows
+from Shapley.utilities import parseArguments, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput, rank_dict_values
 from Shapley.shapleyCalculation import extractPhe, calKSV4Input, calKSV 
-from Shapley.networkUtilities import processDnomaids, refineDiamonds, diamondDigger, getOutput, getKnockoutOutput, simBinaryNetwork
+from Shapley.networkUtilities import refineDiamonds, diamondDigger, getOutput, getKnockoutOutput, simBinaryNetwork, processDiamonds
 from Shapley.speciesHandler import getSpeciesName, getInputNames, genInput, initSpeciesStates
 from Shapley.booleanFormulaHandler import parseFormula, toBinaryFormulas, getFormula
 from Shapley.networkHandler import convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, manipulateNetwork
@@ -469,217 +469,6 @@ def propagateUnrollNetwork(unrollednet, simtable, outname, unrolledformulas, ind
     return rowsofnodes
 
 
-def processDiamonds(node, diamonds, rowsofsinknodes, index, aindex, extranodes, solddiamonds, dnomaids, formulas):
-    """
-    Process diamond structures in the network to infer rows for nodes.
-    Parameters:
-        node: The current node being processed
-        diamonds: Dictionary of diamond structures in the network
-        rowsofsinknodes: Dictionary mapping sink nodes to their associated rows
-        index: Dictionary mapping nodes to rows where they are True
-        aindex: Dictionary mapping nodes to rows where they are False
-        extranodes: List of extra nodes added to the network
-        solddiamonds: Set of already processed diamond pairs
-        dnomaids: Set of nodes that are part of Dnomaid structures
-        formulas: Dictionary of boolean formulas for the network
-    Returns:
-        rowsofnodes: Set of rows associated with the current node after processing diamonds
-    """
-    print("-------Processing diamonds for node {}-------".format(node))
-    rowsofnodes = set() # save the rows for node infered from diamonds 
-    if node in diamonds:
-        print(f"Node {node} has diamonds")
-        goodchild = diamonds[node]['goodchild'] # get the good children of the diamond
-        for end, dicts in diamonds[node].items():
-            if end == 'goodchild':
-                # print(f"Node {node} has good children {goodchild}, continue")
-                continue
-            print(f"Processing the diamon {node} to {end}")
-            if end not in rowsofsinknodes:
-                print(f"Node {end} has no rows yet to be filtered, continue")
-                continue
-            if (node, end) in solddiamonds:
-                print(f"Node {node} to {end} has been processed, continue")
-                continue
-
-            solddiamonds.add((node, end))
-            if len(rowsofsinknodes[end]) == 0:
-                print(f"Node {end} has no rows to be filtered, continue")
-                continue
-            allrows = copy.deepcopy(rowsofsinknodes[end])
-            print(f"Rows of node {end} to be filtered are: \n{sorted(list(allrows))}")
-            leftor = dicts['leftor']
-            rightor = dicts['rightor']
-            leftand = dicts['leftand']
-            rightand = dicts['rightand']
-            diamondop = dicts['op']
-            # goodchild = dicts['goodchild']
-            print(f"Processing diamond {node} to {end} with:\n \tleftor {leftor} \n\trightor {rightor} \n\t leftand {leftand} \n\trightand {rightand} \n\top {diamondop} \n\tgoodchild {goodchild}")
-            if diamondop == 'OR':
-                for node_ in leftor.union(rightor):
-                    if node_ not in goodchild:
-                        tofilter = diamonds[node][end][node_][1]
-                        # if node_ in dnomaids:
-                        if False:
-                            allrows = processDnomaids(node, node_, tofilter, dnomaids, allrows, index, aindex, extranodes, diamonds, formulas)
-                        else:
-                            print(f"Node {node_} is not a good child, filter out")
-                            allrows = filterrows('OR', tofilter, node_, index, aindex, extranodes, allrows)
-                            print("Rows after filtering out {} are: \n{}".format(node_, sorted(list(allrows))))
-                    else:
-                        print(f"Node {node_} is a good child, do not filter out")
-                if not allrows:
-                    continue
-
-                leftrows = copy.deepcopy(allrows)
-                rightrows = copy.deepcopy(allrows)
-                print("Filtering AND operators on the left")
-                for node_ in leftand:
-                    tofilter = diamonds[node][end][node_][1]
-                    # if node_ in dnomaids:
-                    #     leftrows = processDnomaids(node, node_, tofilter, dnomaids, leftrows, index, aindex, extranodes, diamonds, formulas)
-                    # else:
-                    leftrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, leftrows)
-                    
-
-                print("Filtering AND operators on the right")
-                for node_ in rightand:
-                    tofilter = diamonds[node][end][node_][1]
-                    # if node_ in dnomaids:
-                    #     rightrows = processDnomaids(node, node_, tofilter, dnomaids, rightrows, index, aindex, extranodes, diamonds, formulas)
-                    # else:
-                    rightrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, rightrows)
-                print("Merging left and right rows for AND operators in an OR diamond")
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(leftrows.union(rightrows)))))
-                rowsofnodes.update(leftrows.union(rightrows))
-
-            elif diamondop == 'AND':
-
-                for node_ in leftand.union(rightand):
-                    tofilter = diamonds[node][end][node_][1]
-                    # if node_ in dnomaids:
-                    #     allrows = processDnomaids(node, node_, tofilter, dnomaids, allrows, index, aindex, extranodes, diamonds, formulas)
-                    # else:
-                    allrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, allrows)
-                if leftor and rightor:
-                    print("Both leftor and rightor are not empty, need to filter")
-                    for node_ in leftor.union(rightor):
-                        if node_ not in goodchild:
-                            tofilter = diamonds[node][end][node_][1]
-                            # if node_ in dnomaids:
-                            if False:
-                                allrows = processDnomaids(node, node_, tofilter, dnomaids, allrows, index, aindex, extranodes, diamonds, formulas)
-                            else:
-                                allrows = filterrows('OR', tofilter, node_, index, aindex, extranodes, allrows)
-                                print("Rows after filtering out {} are: \n{}".format(node_, sorted(list(allrows))))
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(allrows))))
-                rowsofnodes.update(allrows)
-    return rowsofnodes
-
-def process1side(net, op, node, side, rowstofilter, index, aindex, extranodes, goodchilds, formulas):
-    """
-    Process one side of a diamond structure to filter rows based on the path from node to side.
-    Parameters:
-        net: The directed graph
-        op: The operator at the diamond node ('OR' or 'AND')
-        node: The current node being processed
-        side: The side node of the diamond being processed
-        rowstofilter: The set of rows to be filtered
-        index: Dictionary mapping nodes to rows where they are True
-        aindex: Dictionary mapping nodes to rows where they are False
-        extranodes: List of extra nodes added to the network 
-        goodchilds: List of good children nodes that should not be filtered
-        formulas: Dictionary of boolean formulas for the network
-    Returns:
-        rowstoreturn: Set of rows after filtering based on the path from node to side   
-    """
-    if side == node:
-        if op == 'OR':
-            return set() 
-        if op == 'AND':
-            return rowstofilter 
-    paths = list(nx.all_shortest_paths(net, source=node, target=side))
-    rowstoreturn = set ()
-    for path in paths: 
-        rowsofpath = copy.deepcopy(rowstofilter) 
-        print("Process path {}".format(path)) 
-        for i in range(len(path) - 2):
-            node_ = path[i+1] 
-            parent = path[i] 
-            if node_ in goodchilds:
-                print(f"Node {node_} is a good child, skip")
-                continue
-            # get partner node 
-            op = formulas[node_].val
-            if op not in ['OR', 'AND']:
-                print(f"Node {node_} is unary operator, skip")
-                continue
-
-            partner = formulas[node_].right.val if formulas[node_].left.val == parent else formulas[node_].left.val
-            if op == 'OR':
-                print(f"Filtering rows of node {node_} with OR operator")
-                print("Take only the rows that {} is False".format(partner))
-                rowsofpath = filterrows('OR', partner, node_, index, aindex, extranodes, rowsofpath)
-            elif op == 'AND':
-                print(f"Filtering rows of node {node_} with AND operator")
-                print("Take only the rows that {} is True".format(partner))
-                rowsofpath = filterrows('AND', partner, node_, index, aindex, extranodes, rowsofpath)
-        rowstoreturn.update(rowsofpath)
-    return rowstoreturn
-
-def processDiamonds2(net, node, diamonds, rowsofsinknodes, index, aindex, extranodes, solddiamonds, formulas):
-    """
-    Process diamond structures in the network to infer rows for nodes using path-based filtering.
-    Parameters:
-        net: The directed graph
-        node: The current node being processed
-        diamonds: Dictionary of diamond structures in the network
-        rowsofsinknodes: Dictionary mapping sink nodes to their associated rows
-        index: Dictionary mapping nodes to rows where they are True
-        aindex: Dictionary mapping nodes to rows where they are False
-        extranodes: List of extra nodes added to the network
-        solddiamonds: Set of already processed diamond pairs
-        formulas: Dictionary of boolean formulas for the network
-    Returns:
-        rowsofnodes: Set of rows associated with the current node after processing diamonds
-    """
-    rowofnodes = set() # save the rows for node infered from diamonds 
-    if node in diamonds: 
-        print(f"Node {node} has diamonds")
-        goodchild = diamonds[node]['goodchild']
-        for end, dicts in diamonds[node].items():
-            if end == 'goodchild':
-                print(f"Node {node} has good children {goodchild}, continue")
-                continue 
-            print('------------')
-            print(f"Processing the diamond {node} to {end}") 
-            if end not in rowsofsinknodes:
-                continue
-            if (node, end) in solddiamonds:
-                print(f"Node {node} to {end} has been processed, continue")
-                continue
-            solddiamonds.add((node, end))
-            if len(rowsofsinknodes[end]) == 0:
-                print(f"Node {end} has no rows to be filtered, continue")
-                continue
-            allrows = copy.deepcopy(rowsofsinknodes[end])
-            print(f"Rows of node {end} to be filtered are: \n{sorted(list(allrows))}")
-            
-            left = formulas[end].left.val
-            right = formulas[end].right.val
-            op = formulas[end].val
-            leftrows = process1side(net, op, node, left, allrows, index, aindex, extranodes, goodchild, formulas)
-            rightrows = process1side(net, op, node, right, allrows, index, aindex, extranodes, goodchild, formulas)
-            if op == 'OR':
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(leftrows.union(rightrows)))))
-                rowofnodes.update(leftrows.union(rightrows))
-            elif op == 'AND':
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(leftrows.intersection(rightrows)))))
-                rowofnodes.update(leftrows.intersection(rightrows))
-            
-    return rowofnodes
-        
-
 def propagateWithDiamonds(net, simtable, index, aindex, outname, formulas, extranodes, diamonds, dnomaids):
     """
     Propagate values through the network considering diamond structures to determine the rows of nodes.
@@ -1068,10 +857,10 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
         rankedki = rank_dict_values(propki)
 
 
-        print("Ranked KO calculated: ", rankedcalko)
-        print("Ranked KO prop: ", rankedko)
-        print("Ranked KI calculated: ", rankedcalki)
-        print("Ranked KI prop: ", rankedki)
+        # print("Ranked KO calculated: ", rankedcalko)
+        # print("Ranked KO prop: ", rankedko)
+        # print("Ranked KI calculated: ", rankedcalki)
+        # print("Ranked KI prop: ", rankedki)
 
         rankerrorko = 0
         rankerrorki = 0
@@ -1092,7 +881,7 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
         # print(kiinrows)
         # print(rowsofnodes)
         if korows and kirows:
-            for input in inputnames:
+            for input in sorted(list(inputnames)):
                 if input in rowsofnodes: 
                     gt = koinrows[input].union(kiinrows[input])
                     lack = gt.difference(rowsofnodes[input])
@@ -1105,7 +894,7 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                         print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
                         print("Prop  {:5}: {}\n".format(len(rowsofnodes[input]), sorted(list(rowsofnodes[input]))))
 
-            for inter, row in korows.items():
+            for inter, row in dict(sorted(korows.items(),key=lambda item: item[0])).items():
                 if inter in rowsofnodes:
                     gt = row.union(kirows[inter])
                     lack = gt.difference(rowsofnodes[inter])
