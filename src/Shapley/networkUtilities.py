@@ -1093,15 +1093,18 @@ def diamondDigger(binet, outname, biformulas, debug=False):
                     foundedsinks = set()
                     for ele in common:
                         if carryOns[form.left.val][ele] == 'W' or carryOns[cur][ele] == 'W':
-                            sinks[form.left.val].add(ele)
-                            foundedsinks.add(ele)
+                            if len(relevantgraph.out_edges(form.left.val)) > 1:
+                                sinks[form.left.val].add(ele)
+                                foundedsinks.add(ele)
                         else:
                             if carryOns[form.left.val][ele] == 'L' and carryOns[cur][ele] == 'R':
-                                sinks[form.left.val].add(ele)
-                                foundedsinks.add(ele)
+                                if len(relevantgraph.out_edges(form.left.val)) > 1:
+                                    sinks[form.left.val].add(ele)
+                                    foundedsinks.add(ele)
                             elif carryOns[form.left.val][ele] == 'R' and carryOns[cur][ele] == 'L':
-                                sinks[form.left.val].add(ele)
-                                foundedsinks.add(ele)
+                                if len(relevantgraph.out_edges(form.left.val)) > 1:
+                                    sinks[form.left.val].add(ele)
+                                    foundedsinks.add(ele)
                     if not silent:
                         print("Found sink nodes for {}: {}".format(form.left.val, foundedsinks))
 
@@ -1126,15 +1129,18 @@ def diamondDigger(binet, outname, biformulas, debug=False):
                     foundedsinks = set()
                     for ele in common:
                         if carryOns[form.right.val][ele] == 'W' or carryOns[cur][ele] == 'W':
-                            sinks[form.right.val].add(ele)
-                            foundedsinks.add(ele)
+                            if len(relevantgraph.out_edges(form.right.val)) > 1:
+                                sinks[form.right.val].add(ele)
+                                foundedsinks.add(ele)
                         else:
                             if carryOns[form.right.val][ele] == 'L' and carryOns[cur][ele] == 'R':
-                                sinks[form.right.val].add(ele)
-                                foundedsinks.add(ele)
+                                if len(relevantgraph.out_edges(form.right.val)) > 1:
+                                    sinks[form.right.val].add(ele)
+                                    foundedsinks.add(ele)
                             elif carryOns[form.right.val][ele] == 'R' and carryOns[cur][ele] == 'L':
-                                sinks[form.right.val].add(ele)
-                                foundedsinks.add(ele)
+                                if len(relevantgraph.out_edges(form.right.val)) > 1:
+                                    sinks[form.right.val].add(ele)
+                                    foundedsinks.add(ele)
                     if not silent:
                         print("Found sink nodes for {}: {}".format(form.right.val, foundedsinks))
                     for ele in carryOns[cur].items():
@@ -1196,15 +1202,18 @@ def diamondDigger(binet, outname, biformulas, debug=False):
                     foundedsinks = set()
                     for ele in common:
                         if carryOns[singlemom][ele] == 'W' or carryOns[cur][ele] == 'W':
-                            sinks[singlemom].add(ele)
-                            foundedsinks.add(ele)
+                            if len(relevantgraph.out_edges(singlemom)) > 1:
+                                sinks[singlemom].add(ele)
+                                foundedsinks.add(ele)
                         else:
                             if carryOns[singlemom][ele] == 'L' and carryOns[cur][ele] == 'R':
-                                sinks[singlemom].add(ele)
-                                foundedsinks.add(ele)
+                                if len(relevantgraph.out_edges(singlemom)) > 1:
+                                    sinks[singlemom].add(ele)
+                                    foundedsinks.add(ele)
                             elif carryOns[singlemom][ele] == 'R' and carryOns[cur][ele] == 'L':
-                                sinks[singlemom].add(ele)
-                                foundedsinks.add(ele)
+                                if len(relevantgraph.out_edges(singlemom)) > 1:
+                                    sinks[singlemom].add(ele)
+                                    foundedsinks.add(ele)
                     if not silent:
                         print("Found sink nodes for {}: {}".format(singlemom, foundedsinks))
 
@@ -1229,6 +1238,7 @@ def diamondDigger(binet, outname, biformulas, debug=False):
            
 def findMasterDiamond(binet, sinks, debug=False):
     masterDiamonds = dict() 
+    todelkeys = set()
     for begin, ends in sinks.items():
         biggest = begin
         for end in ends:
@@ -1237,6 +1247,10 @@ def findMasterDiamond(binet, sinks, debug=False):
         if debug:
             print("Master diamond of {} is {}".format(begin, biggest))
         masterDiamonds[begin] = biggest 
+        if begin == biggest:
+            todelkeys.add(begin)
+    for key in todelkeys:
+        del masterDiamonds[key]
     return masterDiamonds 
 
 
