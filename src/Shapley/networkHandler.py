@@ -18,7 +18,8 @@ def convertBooleanFormulas2Network(formulas, inputnames, speciesnames, debug=Fal
         net (nx.DiGraph): A directed graph representing the boolean network.
         fas (list): A list of edges in the feedback arc set (FAS). 
     """
-    print("Input are {}".format(inputnames))
+    if debug:
+        print("Input are {}".format(inputnames))
     net = nx.DiGraph()
 
     for spe in speciesnames:
@@ -60,115 +61,14 @@ def convertBooleanFormulas2Network(formulas, inputnames, speciesnames, debug=Fal
                 else:
                     net.add_edge(leaf, left, color="#FF0000") # not edges have highest weight 
 
-    # nt = Network(directed=True, height="100%", width="100%")
-    # nt.toggle_physics(False)
     order = linear_arrangement(net)
     fas, fwas = getFAS(net, order, debug)
     if debug:
         print("Order is {}".format(order))
         print("FAS is {}".format(fas))
     layout(net, inputnames, fas, order, debug)
-    # nt.from_nx(net)
-    # nt.show(filename + '.html', notebook=False)
 
     return net, fas 
-
-
-# def limitGraphAfterNode(net, inputnames, outputname, formulas, filename = 'limitednet', delcycle = False, debug=False):
-#     # firstly cut all the edges from outputnode, 
-#     # this may cut a cycle too if the node influences itself 
-#     try:
-#         outedges = set(net.out_edges(outputname))
-#         print(outedges)
-#     except:
-#         print("There is no node named {}".format(outputname))             
-#         # print(edges)
-
-#     # this is to test 
-#     if debug: 
-#         firstcpt = nx.simple_cycles(net) 
-#         print("Number of cycles before delete out going edges from output is {}".format(len(list(firstcpt))))
-
-#     net.remove_edges_from(outedges) 
-
-#     # this is also to test 
-#     if debug:
-#         secondcpt = nx.simple_cycles(net) 
-#         print("Number of cycles after delete out going edges from output is {}".format(len(list(secondcpt))))
-
-    
-#     # secondly remove all the edges is not related with the output node at all 
-#     # this also remove cycles
-#     relatededges = set()
-#     for inputname in inputnames:  
-#         allpaths = list(nx.all_simple_edge_paths(net, inputname, outputname))
-#         thesepaths = set()
-#         for onepath in allpaths: 
-#             thesepaths = thesepaths.union(set(onepath))
-#             # print(set(onepath))
-#         # print(list(nx.all_simple_edge_paths(net, inputname, outputname)))
-#         relatededges = relatededges.union(thesepaths)
-
-#     alledges = set(net.edges)
-
-#     nonrelatededges = alledges.difference(relatededges) 
-#     print(nonrelatededges)
-
-
-#     print("None related edges to delete:")
-#     print(nonrelatededges)
-
-#     net.remove_edges_from(nonrelatededges)
-    
-#     nt = Network(directed=True, height="100%", width="100%")
-#     nt.toggle_physics(False)
-    
-#     manipulateNetwork(net, inputnames, formulas, delcycle, debug)
-#     nt.from_nx(net)
-
-#     nt.show(filename + '.html', notebook=False)
-
-#     # this is also for testing 
-#     # find all cycles in this graph 
-#     if debug:
-#         thirdcpt = nx.simple_cycles(net)
-#         print("Number of cycles after delete none related edges to output is {}".format(len(list(thirdcpt))))
-#     # print(cycles)
-#     # for cycle in cycles:
-#     #     print(cycle)
-
-    
-#     # set of all edges to dele
-#     todeledges = outedges.union(nonrelatededges) 
-#     todeledges = nonrelatededges
-#     # todeledges = {('SOCS1', 'Jak1')}
-#     # now delete all the edges from the formulas 
-#     for todeledge in todeledges:
-#         if debug:
-#             print("Deleting edge {} from".format(todeledge))
-#             formulas[todeledge[1]].display()
-#         deleteNode(formulas[todeledge[1]], todeledge[0], False)
-#         if debug:
-#             print("After delete edge {}".format(todeledge))
-#             formulas[todeledge[1]].display()
-#             print("\n")
-#         if formulas[todeledge[1]].val == None:
-#             if debug:
-#                 print("Node {} with None update function will be removed".format(todeledge[1]))
-#             del formulas[todeledge[1]] 
-    
-#     # now remove cycles 
-#     # removeCycles(net, outputname, debug)
-
-
-# def signifiedCycles(net, allcycles, debug=False):
-#     # allarcs = net.edges() 
-#     for cycle in allcycles:
-#         for id, node in enumerate(cycle):
-#             if id < len(cycle): 
-#                 arc = [node, cycle[id +1]]
-#                 # now look for arc in the network 
-#                 net.edges(node, cycle[id+1])
 
 
 # net is a networkx digraph which has correct color for edges already 
@@ -203,41 +103,13 @@ def removeCycles(net, fas, possitiveOnly = True, debug = False):
         net.remove_edges_from(fas) 
 
 
-    # this is for test only 
-    try:
-        cycles = nx.find_cycle(net)
-        print("Remaining cycles after deleteing feedback arcs: {}".format(cycles))
-    except nx.exception.NetworkXNoCycle:
-        print("No cycle found after deleting feedback arcs")
+    # # this is for test only 
+    # try:
+    #     cycles = nx.find_cycle(net)
+    #     print("Remaining cycles after deleteing feedback arcs: {}".format(cycles))
+    # except nx.exception.NetworkXNoCycle:
+    #     print("No cycle found after deleting feedback arcs")
 
-
-# def bfs_arrangement(graph, input_nodes):
-#     """
-#     Assigns numbers to nodes in a directed graph using BFS, starting from input nodes.
-
-#     Parameters:
-#     - graph (networkx.DiGraph): A directed graph.
-#     - input_nodes (list): A list of nodes without incoming edges.
-
-#     Returns:
-#     - list: A list of nodes ordered by their BFS traversal (earlier visited nodes appear first).
-#     """
-#     # Initialize the queue with input nodes and a visited set
-#     queue = deque(input_nodes)
-#     visited = set(input_nodes)
-#     node_order = []  # List to store nodes in order of visitation
-
-#     while queue:
-#         node = queue.popleft()  # Get the next node in BFS order
-#         node_order.append(node)  # Append node to the ordered list
-
-#         # Iterate over outgoing neighbors (successors)
-#         for neighbor in graph.successors(node):
-#             if neighbor not in visited:
-#                 visited.add(neighbor)
-#                 queue.append(neighbor)
-
-#     return node_order
 
 def linear_arrangement(G): # chatGPT code 
     """
@@ -296,9 +168,10 @@ def convertBiBooleanFormulas2Network(biformulas, inputnames, speciesnames, filen
         net (nx.DiGraph): A directed graph representing the boolean network.
         node_positions (dict): A dictionary mapping each node to its (x, y) position.
     """
+    # if debug:
     print("Input are {}".format(inputnames))
-    print("Ordinary nodes are {}".format(speciesnames))
-    print("Extranodes added after removing cycles are {}".format(extranodes))
+    print("Ordinary nodes are \n{}".format(speciesnames))
+    print("Extranodes added after removing cycles are \n{}".format(extranodes))
     net = nx.DiGraph() # Networkx 
     # for left, right in biformulas.items():
     for formula in biformulas:
@@ -437,6 +310,55 @@ def getFAS(net, order, debug=False):
     return FAS, FWAS 
 
 
+def cycles_through_arc_digraph(G: nx.DiGraph, u, v, cutoff=None):
+    """
+    Yield cycles (as node lists starting/ending at u) that contain the arc (u, v).
+    Set `cutoff` (max path length from v to u) to limit search if needed.
+    """
+    if not G.has_edge(u, v):
+        return
+
+    for path in nx.all_simple_paths(G, source=v, target=u, cutoff=cutoff):
+        # path is [v, ..., u]; make a cycle [u, v, ..., u]
+        yield [u] + path 
+
+
+def rewireBinet(binet, extranodes, silent=False):
+    """
+    Recycle the binary interaction network by removing extra nodes added to remove cycles.
+    Parameters:
+        binet (list): A list of dictionaries where each dictionary has 'term' and 'formula' keys.
+        extranodes (list): A list of extra nodes added to the network (if any).
+        silent (bool): If True, suppress print statements.
+    Returns:
+        rbinet (list): The recycled binary interaction network without extra nodes.
+    """
+    cycledbinet = copy.deepcopy(binet) 
+    if not silent:
+        print("Recycling the binary interaction network by removing extra nodes")
+    for extranode in extranodes:
+        root = extranode.split("_to_")[0]
+        tip = extranode.split("_to_")[1] 
+        # get the dependent of the extranode 
+        for dep in list(binet.out_edges(extranode)):
+            if not silent:
+                print("Extranode {} has dependent {}".format(extranode, dep[1]))
+            # replace the extranode in the formula of dep[1] with root
+            # create an edge from root to dep 
+            # get color of old edge 
+            color = binet.get_edge_data(extranode, dep[1]).get("color", "#808080")
+            cycledbinet.add_edge(root, dep[1], color = color, type='arrow', width=3)
+            # now remove the old edge
+            cycledbinet.remove_edge(extranode, dep[1])
+
+        # remove the extranode from the network
+        cycledbinet.remove_node(extranode)
+    
+    return cycledbinet
+
+
+    
+
 # if acyclic is on, remove all the feedback arc and modify also the formulas 
 def manipulateNetwork(net, inputnames, formulas, acyclic = False, binary = False, debug=False): 
     """
@@ -458,10 +380,18 @@ def manipulateNetwork(net, inputnames, formulas, acyclic = False, binary = False
     order = linear_arrangement(net) 
     # order = bfs_arrangement(net, inputnames)
 
-    print("ARRANGEMENT IS \n {}".format(order))
+    if debug:
+        print("ARRANGEMENT IS \n {}".format(order))
 
     # now find the approximate minimum feedback arc set fas and the 
     fas, fwas = getFAS(net, order, debug)
+
+    # cycles = dict()
+    # for arc in fas:
+    #     print("Feedback arc: {}".format(arc))
+    #     cycles[arc] = list(cycles_through_arc_digraph(net, arc[0], arc[1], cutoff=None)) 
+    #     print("There are {} cycles through arc {}-{}".format(len(cycles[arc]), arc[0], arc[1])) 
+
 
     # copy a new network and set of formulas and modify this copies, 
     # keep the original network and formulas intact 
@@ -598,7 +528,8 @@ def layout_acylic(net, order, debug=False):
     Returns:
         dict: A dictionary mapping each node to its (x, y) position.   
     """
-    print("Now arrange layout of the original network for visualization")
+    if debug:
+        print("Now arrange layout of the original network for visualization")
     # print("Starting from input set: {}".format(inputnames))
     nodes = net.nodes()
 
@@ -631,8 +562,9 @@ def layout_acylic(net, order, debug=False):
     for node in nodes:
         net.nodes[node]['layer'] = node_layers[node]
     
-    print("----Layer information----") 
-    print(node_layers)
+    if debug:
+        print("----Layer information----") 
+        print(node_layers)
     
     # split the visualization space for each layer 
     assignednode = dict()
@@ -751,7 +683,8 @@ def layout(net, inputnames, fas, order, debug=False):
         tem = [] # stores the indexes of sink nodes from current node 
         for edge in outedges:
             if edge in fas:
-                print("Encounter feedback arc {}".format(edge))
+                if debug:
+                    print("Encounter feedback arc {}".format(edge))
                 continue
             else:
                 tem.append(find_index(order, edge[1])) # get the sink vertex 
@@ -775,7 +708,8 @@ def layout(net, inputnames, fas, order, debug=False):
     layersize[nextlayer] = 0      
     for node in list(net.nodes):
         if net.nodes[node]['layer'] == -1:
-            print("Couldn't assign layer to node {}".format(node)) 
+            if debug:
+                print("Couldn't assign layer to node {}".format(node)) 
             net.nodes[node]['layer'] = nextlayer
             layersize[nextlayer] += 1
     
@@ -790,13 +724,13 @@ def layout(net, inputnames, fas, order, debug=False):
     # # for i in sorted(layerindex.keys()):
     # #     print("Layer {} includes:{}".format(i,layerindex[i]))
 
+    if debug:
+        print("----Layer information----")
+        print(len(layersize))
+        print(layersize)
 
-    print("----Layer information----")
-    print(len(layersize))
-    print(layersize)
-
-    print("----List of devoted nodes-----")
-    print(devoted)
+        print("----List of devoted nodes-----")
+        print(devoted)
 
     # split the visualization space for each layer 
     assignednode = dict()

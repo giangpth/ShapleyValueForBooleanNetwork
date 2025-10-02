@@ -12,7 +12,6 @@ def showNetwork(net, koinshaps, kiinshap, koshaps, kishaps, filename='network.ht
     
     nt = Network(directed=True, height='100%', width='100%')
     nt.toggle_physics(False)
-    print(koinshaps)
     if koinshaps:
         shaps = koinshaps
         newlables = dict()

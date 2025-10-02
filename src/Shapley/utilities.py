@@ -8,23 +8,73 @@ import random
 import numpy as np
 from Shapley.exceptions import InforError
 
-def rank_dict_values(d):
-    # Sort items by value descending
-    sorted_items = sorted(d.items(), key=lambda x: -x[1])
+# def rank_dict_values(d):
+#     # Sort items by value descending
+#     sorted_items = sorted(d.items(), key=lambda x: -x[1])
     
-    ranks = {}
-    current_rank = 1
-    last_value = None
+#     ranks = {}
+#     current_rank = 1
+#     last_value = None
 
-    for key, value in sorted_items:
-        if value != last_value:
-            last_value = value
-            ranks[key] = current_rank
-            current_rank += 1
-        else:
-            ranks[key] = current_rank - 1  # Same as previous rank
+#     for key, value in sorted_items:
+#         if value != last_value:
+#             last_value = value
+#             ranks[key] = current_rank
+#             current_rank += 1
+#         else:
+#             ranks[key] = current_rank - 1  # Same as previous rank
     
-    return ranks
+#     return ranks
+
+def rank_dict_values(d, method="dense", tol=None, largest=True):
+    """
+    Rank by absolute value.
+      - largest=True -> DESC (largest magnitude rank 1)
+      - largest=False -> ASC  (smallest magnitude rank 1)
+    method: 'dense', 'min' (competition), 'max' (modified competition),
+            'average' (fractional), 'ordinal'
+    tol: floats within tol are treated as equal
+    """
+    if not d:
+        return {}
+
+    items = [(k, abs(v)) for k, v in d.items()]
+    items.sort(key=lambda kv: kv[1], reverse=largest)  # DESC if largest=True
+
+    groups = []
+    gid = []
+    prev = None
+    g = -1
+    for _, val in items:
+        same = (val == prev) if tol is None else (prev is not None and abs(val - prev) <= tol)
+        if not same:
+            g += 1
+            prev = val
+        gid.append(g)
+
+    first_pos, last_pos = {}, {}
+    for i, g in enumerate(gid, start=1):
+        first_pos.setdefault(g, i)
+        last_pos[g] = i
+
+    out = {}
+    for i, (k, _) in enumerate(items, start=1):
+        g = gid[i-1]
+        if method == "dense":
+            r = g + 1
+        elif method == "min":        # all ties get first position in the tie block
+            r = first_pos[g]
+        elif method == "max":        # all ties get last position in the tie block
+            r = last_pos[g]
+        elif method == "average":    # mean of first..last positions
+            r = (first_pos[g] + last_pos[g]) / 2
+        elif method == "ordinal":    # break ties by order in 'items'
+            r = i
+        else:
+            raise ValueError("Unknown method")
+        out[k] = r
+    return out
+
 
 def dict_hash(dictionary: Dict[str, Any]) -> str:
     """MD5 hash of a dictionary."""
@@ -85,6 +135,22 @@ def readfile(path, debug=False):
         return lines
     except IOError:
         print("Error opening file")
+
+def top_rank_keys(d, top_n=10):
+    # get unique ranks sorted ascending (best rank first)
+    ranks = sorted(set(d.values()))
+    # take up to top_n distinct ranks
+    cutoff_ranks = set(ranks[:top_n])
+    # return all keys whose rank is in these cutoff ranks
+    return {k for k, v in d.items() if v in cutoff_ranks}
+
+def top_matches(d1, d2, top_n=10):
+    top1 = top_rank_keys(d1, top_n)
+    top2 = top_rank_keys(d2, top_n)
+    print(top1.difference(top2))
+    print(top2.difference(top1))
+    return len(top1 & top2), top1 & top2, len(top1)
+
 
 
 def getOrderedList(inputnames, internames, debug=False):
@@ -210,9 +276,9 @@ def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputn
         # each line is a dictionary with keys are name of species and value is true or false
         
         # for test:
-        if id in [6, 14, 22, 30]:
-            print(f"-------TESTING LINE: {id}-------")
-            print(line)
+        # if id in [0, 1, 2, 3, 4, 5, 6, 7, 8]:
+        #     print(f"-------TESTING LINE: {id}-------")
+        #     print(line)
 
         size = 0
         for input in inputnames:
@@ -305,7 +371,7 @@ def filterrows(op, nodetofilter, childnode, index, aindex, extranodes, allrows):
             # countedchild[onenode] = childrows
             print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, childnode, op))
             allrows = allrows.intersection(childrows)
-            # print("Rows after filter are {}".format(sorted(list(allrows))))
+            print("\tRows after filter are {}".format(sorted(list(allrows))))
         else:
             # print("EXTRANODE")
             coms = nodetofilter.split("_to_")
@@ -316,7 +382,7 @@ def filterrows(op, nodetofilter, childnode, index, aindex, extranodes, allrows):
                 # countedchild[onenode] = childrows
                 print("Counting the rows that {} is FALSE for {} in operator {}".format(nodetofilter, childnode, op))
                 allrows = allrows.intersection(childrows)
-                # print("Rows after filter are {}".format(sorted(list(allrows))))
+                print("\tRows after filter are {}".format(sorted(list(allrows))))
     elif op == 'AND':
         if nodetofilter not in extranodes:
             # print("NOT EXTRANODE")
@@ -324,7 +390,7 @@ def filterrows(op, nodetofilter, childnode, index, aindex, extranodes, allrows):
             # countedchild[onenode] = childrows
             print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, childnode, op))
             allrows = allrows.intersection(childrows)
-            # print("Rows after filter are {}".format(sorted(list(allrows))))
+            print("\tRows after filter are {}".format(sorted(list(allrows))))
         else:
             # print("EXTRANODE")
             coms = nodetofilter.split("_to_")
@@ -335,7 +401,7 @@ def filterrows(op, nodetofilter, childnode, index, aindex, extranodes, allrows):
                 # countedchild[onenode] = childrows
                 print("Counting the rows that {} is TRUE for {} in operator {}".format(nodetofilter, childnode, op))
                 allrows = allrows.intersection(childrows)
-                # print("Rows after filter are {}".format(sorted(list(allrows))))
+                print("Rows after filter are {}".format(sorted(list(allrows))))
         # pass
     else:
         print("Do not support {} operator".format(op))

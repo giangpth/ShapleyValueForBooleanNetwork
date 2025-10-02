@@ -17,7 +17,7 @@ def extractPhe(inputnames, outputnames, outputstates, debug=False):
     statistic = dict()
     statisticgen = dict()
 
-    print("Pure input")
+    # print("Pure input")
     for outputstate in outputstates:
         gentem = set() # will be used as key
         for name in inputnames:
@@ -195,7 +195,8 @@ def calKSV(intactgenphe, knockoutgenphes, outputnames, numinput, simtable=None, 
                     # assert False, "Cannot find {} in the output set".format(output)
                 # except:
                     # assert False, "Cannot find the set {} for the intact network".format(gen)
-            print("Number of rows for {} is {}".format(internode, numrow))
+            if debug:
+                print("Number of rows for {} is {}".format(internode, numrow))
             shaps[internode] = round(sum/math.factorial(numinput),4)
         shapss[output] = shaps
     if simtable:

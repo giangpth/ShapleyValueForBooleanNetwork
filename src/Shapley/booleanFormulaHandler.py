@@ -1,6 +1,7 @@
 import copy 
 from collections import deque
 import random 
+import networkx as nx
 
 from Shapley.Node import Node
 from Shapley.visualization import showNetwork 
@@ -359,6 +360,7 @@ def testshow():
 
     node7.display()
 
+# def checkrowfullsimulation(rowrow, toconvergenode, targetnode, biformulas)
 
 def checkrow(net, rowraw, toconvergenode, targetnode, biformulas):
     """
@@ -502,7 +504,7 @@ def recShrinkFormula2Node(node, nodesyntacs, biformulas):
             else: 
                 # print(10)
                 right = ""
-            print(right)
+            # print(right)
             newnode = node.val + right 
             if newnode not in nodesyntacs: 
             # if 1: # to test cycle 
@@ -545,7 +547,8 @@ def toBinaryFormulas(formulas, debug=False):
             print("{} = ".format(term))
             node.display()
         tem = recShrinkFormula2Node(node, nodesyntacs, biformulas)
-        print("TEM: {} = {}".format(tem, biformulas[tem]))
+        if debug:
+            print("TEM: {} = {}".format(tem, biformulas[tem]))
         biformulas[left] = biformulas[tem]
         todel.add(tem)
         if debug:
@@ -706,16 +709,17 @@ def toBinaryFormulas(formulas, debug=False):
     if debug:
         for form in toreturn:
             print(form)
-
-    print("Sorted equivalent binary formulas are:")
-    for form in toreturn:
-        print("{} = {}".format(form['term'], form['formula']))
+    if debug:
+        print("Sorted equivalent binary formulas are:")
+        for form in toreturn:
+            print("{} = {}".format(form['term'], form['formula']))
 
     return toreturn 
 
 def unrollCurNode(binet, cur, parents, outedges, biformulasdictandorder, node_positions, edgedatas, unrolldict, debug=False):
-    print("Unrolling node {}".format(cur)) 
-    print("{} has {} parents: {} and {} out-edges: {}".format(cur, len(parents), parents,  len(outedges), outedges))
+    if debug:
+        print("Unrolling node {}".format(cur)) 
+        print("{} has {} parents: {} and {} out-edges: {}".format(cur, len(parents), parents,  len(outedges), outedges))
     # get the formulas of the current node 
     try:
         oriformula = biformulasdictandorder[cur][0] # get the formula of the current node
@@ -765,17 +769,19 @@ def unrollCurNode(binet, cur, parents, outedges, biformulasdictandorder, node_po
                 if childform.right.val == cur:
                     childform.right.val = newnode
                 else:
-                    print("Cannot find current node {} in child formula".format(cur))
-                    childform.display()
+                    if debug:
+                        print("Cannot find current node {} in child formula".format(cur))
+                        childform.display()
             else:
                 if childform.val == cur:
                     childform.val = newnode
                 else:
-                    print("Cannot find current node {} in child formula".format(cur))
-                    childform.display()
-
-        print("New formula:")
-        childform.display()
+                    if debug:
+                        print("Cannot find current node {} in child formula".format(cur))
+                        childform.display()
+        if debug:
+            print("New formula:")
+            childform.display()
 
         # now modify the formula of resnode to include the new node 
         biformulasdictandorder[resnode] = (childform, biformulasdictandorder[resnode][1]) # add the new node and its formula to the dictionary
@@ -797,29 +803,35 @@ def unrollCurNode(binet, cur, parents, outedges, biformulasdictandorder, node_po
         for parent in parents:
             edgedata = edgedatas[(parent, cur)] # get the edge data of the current node to the parent
             # print("Edge data from {} to {} is {}".format(parent, cur, edgedata))
-            print("Add edge: {} {}".format(parent, newnode))
+            if debug:
+                print("Add edge: {} {}".format(parent, newnode))
             binet.add_edge(parent, newnode, color=edgedata['color'], type='arrow', width=3) # keep the color of the edge 
             edgedatas[(parent, newnode)] = edgedata # update the edge data for the new edge
             try:
                 binet.remove_edge(parent, cur) # remove the edge from parent to current node
-                print("Remove edge: {} {}".format(parent, cur))
+                if debug:
+                    print("Remove edge: {} {}".format(parent, cur))
             except:
-                print("Cannot remove edge from {} to {}, maybe it has been removed already".format(parent, cur))
+                if debug:
+                    print("Cannot remove edge from {} to {}, maybe it has been removed already".format(parent, cur))
                 pass
             
         # now add the edge from the new node to the resnode also remove the edge from cur to resnode
         otheredgedata = edgedatas[(cur, resnode)] # get the edge data of the current node to the result node
         # print("Edge data from {} to {} is {}".format(cur, resnode, otheredgedata))
         binet.add_edge(newnode, resnode, color=otheredgedata['color'], type='arrow', width=3) 
-        print("Add edge: {} {}".format(newnode, resnode))
+        if debug:
+            print("Add edge: {} {}".format(newnode, resnode))
         edgedatas[(newnode, resnode)] = otheredgedata # update the edge data for the new edge
         try:
             binet.remove_edge(cur, resnode) # remove the edge from current node to result node
-            print("Remove edge: {} {}".format(cur, resnode))
+            if debug:
+                print("Remove edge: {} {}".format(cur, resnode))
         except:
             print("Cannot remove edge from {} to {}, maybe it has been removed already".format(cur, resnode))
             pass
-        print('-----')
+        if debug:
+            print('-----')
     return 
 
 def unrollBinaryNetwork(binet, outname, biformulasdictandorder, node_positions, debug=False):

@@ -4,7 +4,7 @@ from Shapley.exceptions import InforError
 from Shapley.utilities import filterrows
 
 from Shapley.visualization import showNetwork 
-from Shapley.booleanFormulaHandler import sim1step, sim1bistep, parseFormula
+from Shapley.booleanFormulaHandler import sim1step, sim1bistep, checkrow
 from Shapley.utilities import dict_hash, merge2states, toDecimal, filterrows
 from Shapley.speciesHandler import initSpeciesStates, genInput
 
@@ -97,62 +97,201 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
     print("Cannot converge after {} steps".format(maxStep))
     return inputstate 
 
-def process1side(net, op, node, side, rowstofilter, index, aindex, extranodes, goodchilds, formulas):
+def processPossitiveDiamond(beg, target, infordicts, allrows, goodchilds, index, aindex, extranodes):
     """
-    Process one side of a diamond structure to filter rows based on the path from node to side.
+    Find rows that flow through the inner part of a diamond structure.
     Parameters:
-        net: The directed graph
-        op: The operator at the diamond node ('OR' or 'AND')
-        node: The current node being processed
-        side: The side node of the diamond being processed
-        rowstofilter: The set of rows to be filtered
+        allrows: The set of all rows to be filtered
+        leftors: Set of left OR nodes in the diamond
+        rightors: Set of right OR nodes in the diamond
+        leftands: Set of left AND nodes in the diamond
+        rightands: Set of right AND nodes in the diamond
+        externalnodes: Dict of external nodes influencing the diamond through hybrid childs (used as key of dictionary)
         index: Dictionary mapping nodes to rows where they are True
         aindex: Dictionary mapping nodes to rows where they are False
-        extranodes: List of extra nodes added to the network 
-        goodchilds: List of good children nodes that should not be filtered
+        extranodes: List of extra nodes added to the network
+    Returns:
+        rowstoreturn: Set of rows that flow through the inner part of the diamond
+    """
+    rowstofilter = copy.deepcopy(allrows)
+    rowstoreturn = set()
+    leftors = infordicts['leftor']
+    rightors = infordicts['rightor']
+    leftands = infordicts['leftand']
+    rightands = infordicts['rightand']
+    diaop = infordicts['op']
+    print(f"Information of diamond from {beg} to {target}: \
+                \n\t leftor: {leftors} \n\t rightor: {rightors} \
+                \n\t leftand: {leftands} \n\t rightand: {rightands} \
+                \n\t op: {diaop} \n\t goodchild: {goodchilds}")
+    if diaop == 'OR':
+        print("Working with OR diamond")
+        # filter out all the OR first
+        for node_ in leftors.union(rightors):
+            if node_ not in goodchilds:
+                try:
+                    tofilter = infordicts[node_][1]
+                except KeyError:
+                    print(f"Cannot find foreigner parent for node {node_}, skip")
+                    continue
+                print(f"Node {node_} is not a good child, filter out")
+                rowstofilter = filterrows('OR', tofilter, node_, index, aindex, extranodes, rowstofilter)
+                # print("Rows after filtering out OR {} are: \n{}".format(node_, sorted(list(rowstofilter))))
+            else:
+                print(f"Node {node_} is a good child, do not filter out")
+        if not rowstofilter:
+            return set()
+        # now filter out and in the left and in the right the merge them since it is needed only one side to pass the signal
+        leftrows = copy.deepcopy(rowstofilter)
+        rightrows = copy.deepcopy(rowstofilter)
+        print("'\n'iltering AND operators on the left")
+        for node_ in leftands:
+            tofilter = infordicts[node_][1] 
+            leftrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, leftrows)
+            
+
+        print("\nFiltering AND operators on the right")
+        for node_ in rightands:
+            tofilter = infordicts[node_][1]
+            rightrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, rightrows)
+
+        print("\nMerging left and right rows for AND operators in an OR diamond")
+        rowstoreturn.update(leftrows.union(rightrows))
+        return rowstoreturn
+    
+    elif diaop == 'AND':
+        print("Working with AND diamond")
+        print("Filter out all the AND operator first")
+        for node_ in leftands.union(rightands): 
+            try:
+                tofilter = infordicts[node_][1]
+            except KeyError:
+                print(f"Cannot find foreigner parent for node {node_}, skip")
+                continue
+            rowstofilter = filterrows('AND', tofilter, node_, index, aindex, extranodes, rowstofilter)
+            # print("Rows after filtering out AND {} are: \n{}".format(node_, sorted(list(rowstofilter))))
+        
+        # filter OR in only one side, then merge them since both side need to pass the signal
+        if not rowstofilter:
+            return set()
+        leftrows = copy.deepcopy(rowstofilter)
+        rightrows = copy.deepcopy(rowstofilter)
+        print("\nFiltering OR operators on the left")
+        for node_ in leftors:
+            if node_ not in goodchilds:
+                tofilter = infordicts[node_][1]
+                leftrows = filterrows('OR', tofilter, node_, index, aindex, extranodes, leftrows)
+                # print("Rows after filtering out OR {} are: \n{}".format(node_, sorted(list(leftrows))))
+            else:
+                print(f"Node {node_} is a good child, do not filter out")
+        print("\nFiltering OR operators on the right")
+        for node_ in rightors:
+            if node_ not in goodchilds:
+                tofilter = infordicts[node_][1]
+                rightrows = filterrows('OR', tofilter, node_, index, aindex, extranodes, rightrows)
+                # print("Rows after filtering out OR {} are: \n{}".format(node_, sorted(list(rightrows))))
+            else:
+                print(f"Node {node_} is a good child, do not filter out")
+        print("\nMerging left and right rows for OR operators in an AND diamond")
+        rowstoreturn.update(leftrows.union(rightrows))
+        # if leftors and rightors:
+        #     print("Both leftor and rightor are not empty, need to filter")
+        #     for node_ in leftors.union(rightors):
+        #         if node_ not in goodchilds:
+        #             tofilter = infordicts[node_][1]
+        #             rowstofilter = filterrows('OR', tofilter, node_, index, aindex, extranodes, rowstofilter)
+        #             print("Rows after filtering out {} are: \n{}".format(node_, sorted(list(rowstofilter))))
+                # rowstoreturn.update(rowstofilter)
+        return rowstoreturn
+    else:
+        print("Do not support {} operator".format(diaop))
+        return set()
+
+
+def processDiamond(net, table, node, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds):
+    """
+    Process the biggest diamond structures in the network to infer rows for the node of interest, considering negation.
+    Parameters:
+        node: The current node being processed
+        diamonds: Dictionary of diamond structures in the network
+        rowsofsinknodes: Dictionary mapping sink nodes to their associated rows
+        index: Dictionary mapping nodes to rows where they are True
+        aindex: Dictionary mapping nodes to rows where they are False
+        extranodes: List of extra nodes added to the network
+        solddiamonds: Set of already processed diamond pairs
         formulas: Dictionary of boolean formulas for the network
     Returns:
-        rowstoreturn: Set of rows after filtering based on the path from node to side   
+        rowsofnodes: Set of rows associated with the current node after processing diamonds 
     """
-    if side == node:
-        if op == 'OR':
-            return set() 
-        if op == 'AND':
-            return rowstofilter 
-    paths = list(nx.all_shortest_paths(net, source=node, target=side))
-    rowstoreturn = set ()
-    for path in paths: 
-        rowsofpath = copy.deepcopy(rowstofilter) 
-        print("Process path {}".format(path)) 
-        for i in range(len(path) - 2):
-            node_ = path[i+1] 
-            parent = path[i] 
-            if node_ in goodchilds:
-                print(f"Node {node_} is a good child, skip")
-                continue
-            # get partner node 
-            op = formulas[node_].val
-            if op not in ['OR', 'AND']:
-                print(f"Node {node_} is unary operator, skip")
-                continue
+    # print(f"PROCESS DIAMOND for node {node}") 
+    if node in masterDiamonds:
+        target = masterDiamonds[node] 
+        if target not in rowsofsinknodes:
+            print(f"End node {target} has no rows yet to be filtered, continue")
+            return set()
 
-            partner = formulas[node_].right.val if formulas[node_].left.val == parent else formulas[node_].left.val
-            if op == 'OR':
-                print(f"Filtering rows of node {node_} with OR operator")
-                print("Take only the rows that {} is False".format(partner))
-                rowsofpath = filterrows('OR', partner, node_, index, aindex, extranodes, rowsofpath)
-            elif op == 'AND':
-                print(f"Filtering rows of node {node_} with AND operator")
-                print("Take only the rows that {} is True".format(partner))
-                rowsofpath = filterrows('AND', partner, node_, index, aindex, extranodes, rowsofpath)
-        rowstoreturn.update(rowsofpath)
+        if (node, target) in solddiamonds:
+            print(f"Diamond from {node} to {target} has been processed already, continue")
+            return set()
+        
+        if not rowsofsinknodes[target]:
+            print(f"End node {target} has no rows to be filtered, continue") 
+            return set()
+        
+        print("Process DIAMOND from {} to {}".format(node, masterDiamonds[node])) 
+        # first create set of rows to return first 
+        rowstoreturn = set()
+        goodchilds = diamonds[node]['goodchild']
+        solddiamonds.add((node, target))
+        
+        dicts = diamonds[node][target] 
+        allrows = copy.deepcopy(rowsofsinknodes[target])
+        print(f"Rows of node {target} to be filtered are: \n{sorted(list(allrows))}")
+        
+        leftnots = dicts['leftnot']
+        rightnots = dicts['rightnot']
+
+        if not leftnots and not rightnots:
+            print(f"Possitive diamond from {node} to {target}")
+            setofrows = processPossitiveDiamond(node, target, dicts, allrows, goodchilds, index, aindex, extranodes) 
+            rowstoreturn.update(setofrows)
+        else: # there is negation 
+            try:
+                form = formulas[target]
+            except KeyError:
+                print(f"Cannot find formula for node {target}")
+                return set()
+            try:
+                left = form.left.val
+                right = form.right.val
+            except:
+                print(f"Cannot get left or right parent of node {target}")
+            
+            if leftnots and rightnots:
+                print(f"Both-sided negative diamond from {node} to {target}")
+                rowstoreturn = simulateDiamondOneStep(net, table, node, target, formulas, allrows)
+            else:
+                if leftnots and not rightnots: # only negation on the left 
+                    negside = left 
+                    nonnegside = right
+                    sidename = 'left'
+                    antisidename = 'right'
+                elif rightnots and not leftnots: # only negation on the right 
+                    negside = right 
+                    nonnegside = left
+                    sidename = 'right'
+                    antisidename = 'left'
+                print(f"One-sided negative diamond from {node} to {target} with neagation on the {sidename}")
+                setofrows = processOnesidedDiamond(sidename, antisidename, node, negside, nonnegside, target, dicts, allrows, goodchilds, index, aindex, extranodes)
+                rowstoreturn.update(setofrows)
+
     return rowstoreturn
 
-def processDiamonds2(net, node, diamonds, rowsofsinknodes, index, aindex, extranodes, solddiamonds, formulas):
+def processOnesidedDiamond(side, antiside, beg, neg, nonneg, target, infordicts, allrows, goodchilds, index, aindex, extranodes):
     """
-    Process diamond structures in the network to infer rows for nodes using path-based filtering.
+    Process the diamond with negation in only one side.
     Parameters:
-        net: The directed graph
+        side: the side with negation, either left or right
         node: The current node being processed
         diamonds: Dictionary of diamond structures in the network
         rowsofsinknodes: Dictionary mapping sink nodes to their associated rows
@@ -162,223 +301,542 @@ def processDiamonds2(net, node, diamonds, rowsofsinknodes, index, aindex, extran
         solddiamonds: Set of already processed diamond pairs
         formulas: Dictionary of boolean formulas for the network
     Returns:
-        rowsofnodes: Set of rows associated with the current node after processing diamonds
+        rowsofnodes: Set of rows associated with the current node after processing diamonds 
     """
-    rowofnodes = set() # save the rows for node infered from diamonds 
-    if node in diamonds: 
-        print(f"Node {node} has diamonds")
-        goodchild = diamonds[node]['goodchild']
-        for end, dicts in diamonds[node].items():
-            if end == 'goodchild':
-                print(f"Node {node} has good children {goodchild}, continue")
-                continue 
-            print('------------')
-            print(f"Processing the diamond {node} to {end}") 
-            if end not in rowsofsinknodes:
-                continue
-            if (node, end) in solddiamonds:
-                print(f"Node {node} to {end} has been processed, continue")
-                continue
-            solddiamonds.add((node, end))
-            if len(rowsofsinknodes[end]) == 0:
-                print(f"Node {end} has no rows to be filtered, continue")
-                continue
-            allrows = copy.deepcopy(rowsofsinknodes[end])
-            print(f"Rows of node {end} to be filtered are: \n{sorted(list(allrows))}")
-            
-            left = formulas[end].left.val
-            right = formulas[end].right.val
-            op = formulas[end].val
-            leftrows = process1side(net, op, node, left, allrows, index, aindex, extranodes, goodchild, formulas)
-            rightrows = process1side(net, op, node, right, allrows, index, aindex, extranodes, goodchild, formulas)
-            if op == 'OR':
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(leftrows.union(rightrows)))))
-                rowofnodes.update(leftrows.union(rightrows))
-            elif op == 'AND':
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(leftrows.intersection(rightrows)))))
-                rowofnodes.update(leftrows.intersection(rightrows))
-            
-    return rowofnodes
+    leftors = infordicts['leftor']
+    rightors = infordicts['rightor']
+    leftands = infordicts['leftand']
+    rightands = infordicts['rightand']
+    diaop = infordicts['op']
+    print(f"Information of diamond from {beg} to {target}: \
+                \n\t leftor: {leftors} \n\t rightor: {rightors} \
+                \n\t leftand: {leftands} \n\t rightand: {rightands} \
+                \n\t op: {diaop} \n\t goodchild: {goodchilds}")
+    
+    rowstoreturn = set()
+    # first get the information for the infordicts 
+    negandkey = side + 'and'
+    negands = infordicts[negandkey]
 
-# unbalanced diamonds are diamonds that have external influence on only one side of the diamond 
-def handleUnbalancedDiamond(begin, end, diamonds, rowstofilter, index, aindex, extranodes):
-    print("-------Processing unbalanced diamond from {} to {}-------".format(begin, end))
-    # first get the information of the diamond 
-    try:
-        dicts = diamonds[begin][end]
-    except KeyError:
-        print("No diamond from {} to {}".format(begin, end))
-        return set() 
-    op = dicts['op']
-    if op not in ['OR', 'AND']:
-        print("Diamond from {} to {} is not a valid diamond".format(begin, end))
-        return set()
-    rowsleft = copy.deepcopy(rowstofilter)
-    if op == 'OR':
-        # filter out all the AND first since they block completely the path 
-        alland = dicts['leftand'].union(dicts['rightand']) # one of the dict is empty 
-        for andnode in alland:
-            tofilter = diamonds[begin][end][andnode][1]
-            rowsleft = filterrows('AND', tofilter, andnode, index, aindex, extranodes, rowsleft) 
-            print("Rows after filtering out {} are: \n{}".format(tofilter, sorted(list(rowsleft)))) 
+    negorkey = side + 'or'
+    negors = infordicts[negorkey]
 
-        if not rowsleft:
+    nonnegandkey = antiside + 'and'
+    nonnegands = infordicts[nonnegandkey]
+
+    nonnegorkey = antiside + 'or'
+    nonnegors = infordicts[nonnegorkey] 
+
+
+    # for both AND and OR opertor, take the rows that beg = neg and negative side has no external influence 
+    # first take all rows that beg = neg 
+    begnegTrue = allrows.intersection(index[beg]).intersection(index[neg])
+    begnegFalse = allrows.intersection(aindex[beg]).intersection(aindex[neg])
+    begnegagree = begnegTrue.union(begnegFalse) # can be because of even number of negations that cancel out each other or because of external influence 
+    # now filter out the external influence of begnegagree by filter out all OR or AND in the negative side 
+    print("Rows that BEGIN and NEG nodes agree are: :\n{}\n".format(sorted(list(begnegagree))))
+
+    # now find rows that beg affect neg, no external OR influence 
+    beginfnegnoor = copy.deepcopy(allrows) 
+    for negorop in negors:
+        if negorop not in goodchilds:
+            external = infordicts[negorop][1] 
+            beginfnegnoor = beginfnegnoor.intersection(aindex[external])
+            print("{} is in OR with external {}, take only rows that {} is False, remaining: \n{}".format(negorop, external, external, sorted(list(beginfnegnoor))))
+        else:
+            print(f"Encounter goodchild {negorop}, no filter")
+    # print("Rows: BEG-NEG-NOOR: \n{}\n".format(sorted(list(beginfnegnoor))))
+
+    beginfnegnoand = copy.deepcopy(allrows)
+    for negandop in negands:
+        external = infordicts[negandop][1]
+        beginfnegnoand = beginfnegnoand.intersection(index[external])
+        print("{} is in AND with external {}, take only rows that {} is TRUE, remaining: \n{}".format(negandop, external, external, sorted(list(beginfnegnoand))))
+    # print("Rows: BEG-NEG-NOAND: \n{}\n".format(sorted(list(beginfnegnoand))))
+
+    beginfneg = beginfnegnoor.intersection(beginfnegnoand)
+    begnoinfneg = allrows.difference(beginfneg)  
+
+    print("BEG INF NEG: \n{}".format(sorted(list(beginfneg))))
+    print("BEG NO INF NEG: \n{}".format(sorted(list(begnoinfneg))))
+    
+    # now find rows that beg affect nonneg, no external influence 
+    beginfnonnegnoor = copy.deepcopy(allrows)
+    for nonnegorop in nonnegors:
+        if nonnegorop not in goodchilds:
+            external = infordicts[nonnegorop][1] 
+            beginfnonnegnoor = beginfnonnegnoor.intersection(aindex[external])
+            print("{} is in OR with external {}, take only rows that {} is False, remaining: \n{}".format(nonnegorop, external, external, sorted(list(beginfnonnegnoor))))
+        else:
+            print(f"Encounter goodchild {nonnegorop}, no filter")
+    # print("Rows: BEG-NONNEG-NOOR: \n{}\n".format(sorted(list(beginfnonnegnoor))))
+
+    beginfnonnegnoand = copy.deepcopy(allrows)
+    for nonnegandop in nonnegands:
+        external = infordicts[nonnegandop][1] 
+        beginfnonnegnoand = beginfnonnegnoand.intersection(index[external])
+        print("{} is in AND with external {}, take only rows that {} is TRUE, remaining: \n{}".format(nonnegandop, external, external, sorted(list(beginfnonnegnoand))))
+    # print("Rows: BEG-NONNEG-NOAND: \n{}\n".format(sorted(list(beginfnonnegnoand))))
+
+    beginfnonneg = beginfnonnegnoor.intersection(beginfnonnegnoand)
+    begnoinfnonneg = allrows.difference(beginfnonneg)
+
+    print("BEG INF NONNEG: \n{}".format(sorted(list(beginfnonneg))))
+    print("BEG NO INF NONNEG: \n{}".format(sorted(list(begnoinfnonneg))))
+
+    
+
+
+    if diaop == 'OR':
+        print(f"OR one-sided negative diamnond from {beg} to {target}")
+
+        pureinnerneg = beginfnegnoor.intersection(beginfnegnoand)
+        pureinnernonneg = beginfnonnegnoor.intersection(beginfnonnegnoand) 
+
+        innernoor = beginfnegnoor.intersection(beginfnonnegnoor)
+        inner = (innernoor.intersection(beginfnegnoand)).union((innernoor.intersection(beginfnonnegnoand)))
+        outter = allrows.difference(inner)
+        print("INNER : \n{}".format(sorted(list(inner))))
+        print("OUTTER: \n{}".format(sorted(list(outter))))
+
+    
+        innerbegnegagree = (pureinnerneg.intersection(beginfnonnegnoor)).intersection(begnegagree)
+        
+        print("First take rows flow INNER and BEG NEG AGREE: \n{}".format(sorted(list(innerbegnegagree))))
+        rowstoreturn.update(innerbegnegagree) 
+
+        # negside = outter.intersection(beginfneg.intersection(begnoinfnonneg).intersection(aindex[nonneg]))
+        negside = beginfneg.intersection(begnoinfnonneg).intersection(aindex[nonneg])
+        print("Take rows BEG inf only NEG and nonneg  is False: \n{}".format(sorted(list(negside)))) 
+        rowstoreturn.update(negside)
+
+        nonnegside = outter.intersection(beginfnonneg.intersection(begnoinfneg).intersection(aindex[neg]))
+        print("Take rows BEG inf only NONNEG and neg is False: \n{}".format(sorted(list(nonnegside)))) 
+        rowstoreturn.update(nonnegside)       
+
+    elif diaop == 'AND':
+        print(f"AND one-sided negative diamnond from {beg} to {target}")
+        print("Take only rows flow INNER and BEG NEG AGREE: \n{}".format(sorted(list(innerbegnegagree))))
+        rowstoreturn.update(innerbegnegagree)
+
+    else:
+        print(f"Do not support operator {diaop}")
+    return rowstoreturn
+
+
+def processMasterDiamonds(net, table, node, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamond, orderedBiNodes, debug=False): 
+    """
+    Process the biggest diamond structures in the network to infer rows for the node of interest, considering negation.
+    Parameters:
+        node: The current node being processed
+        diamonds: Dictionary of diamond structures in the network
+        rowsofsinknodes: Dictionary mapping sink nodes to their associated rows
+        index: Dictionary mapping nodes to rows where they are True
+        aindex: Dictionary mapping nodes to rows where they are False
+        extranodes: List of extra nodes added to the network
+        solddiamonds: Set of already processed diamond pairs
+        formulas: Dictionary of boolean formulas for the network
+    Returns:
+        rowsofnodes: Set of rows associated with the current node after processing diamonds 
+    """
+    if debug:
+        print(f"PROCESS DIAMOND for node {node}") 
+    rowsofnode = set() 
+    if node in masterDiamonds: 
+        if debug:
+            print("Process diamond from {} to {}".format(node, masterDiamonds[node])) 
+        target = masterDiamonds[node] 
+        # goodchilds = diamonds[node]['goodchild']
+
+        if target not in rowsofsinknodes:
+            if debug:
+                print(f"End node {target} has no rows yet to be filtered, continue")
             return set()
-        # filter out all the OR next 
-        allor = dicts['leftor'].union(dicts['rightor']) # actually only one dict is not empty
-        for ornode in allor:
-            tofilter = diamonds[begin][end][ornode][1]
-            rowsleft = filterrows('OR', tofilter, ornode, index, aindex, extranodes, rowsleft) 
-            print("Rows after filtering out {} are: \n{}".format(tofilter, sorted(list(rowsleft))))
-    return rowsleft
 
+        if (node, target) in solddiamond:
+            if debug:
+                print(f"Diamond from {node} to {target} has been processed already, continue")
+            return set()
+        
+        solddiamond.add((node, target))
 
-def processDiamonds(node, diamonds, rowsofsinknodes, index, aindex, extranodes, solddiamonds, dnomaids, formulas):
-    """
-    Process diamond structures in the network to infer rows for nodes.
-    Parameters:
-        node: The current node being processed
-        diamonds: Dictionary of diamond structures in the network
-        rowsofsinknodes: Dictionary mapping sink nodes to their associated rows
-        index: Dictionary mapping nodes to rows where they are True
-        aindex: Dictionary mapping nodes to rows where they are False
-        extranodes: List of extra nodes added to the network
-        solddiamonds: Set of already processed diamond pairs
-        dnomaids: Set of nodes that are part of Dnomaid structures
-        formulas: Dictionary of boolean formulas for the network
-    Returns:
-        rowsofnodes: Set of rows associated with the current node after processing diamonds
-    """
-    print("-------Processing diamonds for node {}-------".format(node))
-    rowsofnodes = set() # save the rows for node infered from diamonds 
-    if node in diamonds:
-        print(f"Node {node} has diamonds")
-        goodchild = diamonds[node]['goodchild'] # get the good children of the diamond
-        for end, dicts in diamonds[node].items():
-            if end == 'goodchild':
-                # print(f"Node {node} has good children {goodchild}, continue")
-                continue
-            print(f"Processing the diamon {node} to {end}")
-            if end not in rowsofsinknodes:
-                print(f"Node {end} has no rows yet to be filtered, continue")
-                continue
-            if (node, end) in solddiamonds:
-                print(f"Node {node} to {end} has been processed, continue")
-                continue
+        if not rowsofsinknodes[target]:
+            if debug:
+                print(f"End node {target} has no rows to be filtered, continue") 
+            return set() 
+        
+        rowstoreturn = simulateDiamondOneStep(net, table, node, target, formulas, rowsofsinknodes[target], orderedBiNodes, True)
+        if debug:
+            print("Rows after process diamond {} to {} are: \n{}".format(node, target, sorted(list(rowstoreturn))))
+        return rowstoreturn 
+        
+        dicts = diamonds[node][target] 
+        # print(dicts)
+        allrows = copy.deepcopy(rowsofsinknodes[target])
+        print(f"Rows of node {target} to be filtered are: \n{sorted(list(allrows))}")
+        leftors = dicts['leftor']
+        rightors = dicts['rightor']
+        leftands = dicts['leftand']
+        rightands = dicts['rightand']
+        leftnots = dicts.get('leftnot', set())
+        rightnots = dicts.get('rightnot', set())
+        diop = dicts['op']
+        print(f"\Information of diamond from {node} to {target} with:\n\tleftor: {leftors} \n\trightor: {rightors} \
+                \n\t leftand: {leftands} \n\trightand: {rightands} \
+                \n\t leftnot: {leftnots} \n\trightnot: {rightnots} \
+                \n\t op: {diop} \n\tgoodchild: {goodchilds}")
+        innerrows = processPossitiveDiamond(allrows, leftors, rightors, leftands, rightands, goodchilds, diop, dicts, index, aindex, extranodes)
+        outterrows = allrows.difference(innerrows)
+        print("Rows flow INNER the diamond are: \n{}".format(sorted(list(innerrows))))
+        print("Rows flow OUTTER the diamond are: \n{}".format(sorted(list(outterrows))))
+        # if diamond has no not influence 
+        if not leftnots and not rightnots:
+            print("Positive diamond, take inner rows")
+            rowsofnode.update(innerrows)
+        else: # in case there is negation
+            # first get formula of end of the diamond 
+            
+            try:
+                form = formulas[target]
+            except KeyError:
+                print(f"Cannot find formula for node {target}")
+                return set()
+            try:
+                left = form.left.val
+                right = form.right.val
+            except:
+                print(f"Cannot get left or right parent of node {target}")
 
-            solddiamonds.add((node, end))
-            if len(rowsofsinknodes[end]) == 0:
-                print(f"Node {end} has no rows to be filtered, continue")
-                continue
-            allrows = copy.deepcopy(rowsofsinknodes[end])
-            print(f"Rows of node {end} to be filtered are: \n{sorted(list(allrows))}")
-            leftor = dicts['leftor']
-            rightor = dicts['rightor']
-            leftand = dicts['leftand']
-            rightand = dicts['rightand']
-            diamondop = dicts['op']
-            # goodchild = dicts['goodchild']
-            print(f"\nProcessing diamond {node} to {end} with:\n \tleftor {leftor} \n\trightor {rightor} \n\t leftand {leftand} \n\trightand {rightand} \n\top {diamondop} \n\tgoodchild {goodchild}\n")
-            # firstly, check if diamond has no external influence, just copy the rows if the end node 
+            # get rows that begin node of the diamond is true 
+            begintrue = allrows.intersection(index[node])
 
-            if not leftor and not rightor and not leftand and not rightand:
-                print(f"Diamond {node} to {end} has no external influence, copy all rows of {end} to {node}")
-                rowsofnodes.update(allrows)
-                continue
+            # get rows that begin node of the diamond is false 
+            beginfalse = allrows.intersection(aindex[node])
 
-            if diamondop == 'OR':
-                print('Diamond {} to {} is an OR diamond'.format(node, end))
-                # check and process here unbalanced diamond
-                # diamon has nothing on the left 
-                if not leftor.union(leftand) or not rightor.union(rightand):
-                    print("Diamond has nothing on one side, process unbalanced diamond")
-                    if not leftor.union(leftand):
-                        sidetoprocess = 'left'
-                    else:
-                        sidetoprocess = 'right'
+            print(f"PROCESS DIAMOND WITH NEGATION {node} to {target}")
+            bothside = False 
+            if leftnots and not rightnots: # only not in the left 
+                negside = left 
+                nonnegside = right
+                sidename = 'LEFT'
+            elif rightnots and not leftnots:
+                negside = right 
+                nonnegside = left
+                sidename = 'RIGHT'
+            else: # negation on both side 
+                bothside = True 
+                # just name side to process late 
+                negside = left
+                nonnegside = right
+            
+            # now get rows
+            # get the rows that negside is True, False, respectively
+            negtrue = allrows.intersection(index[negside])
+            negfalse = allrows.intersection(aindex[negside]) 
 
-                    allrows = handleUnbalancedDiamond(node, end, diamonds, allrows, index, aindex, extranodes)
-                    if allrows:
-                        print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(allrows))))
-                        rowsofnodes.update(allrows)
-                    else:
-                        print("No rows inferred from the unbalanced side of the diamond {} to {}".format(node, end))
+            # get the rows that nonnegside is True, False, respectively 
+            nonnegtrue = allrows.intersection(index[nonnegside])
+            nonnegfalse = allrows.intersection(aindex[nonnegside])
+
+            # find rows that begin == negside == true
+            begnegtrue = negtrue.intersection(begintrue)
+                # find rows that begin == negside == false
+            begnegfalse = negfalse.intersection(beginfalse)
+
+            # find rows that begin = false, negside = true
+            begtruenegfalse = begintrue.intersection(negfalse)
+            # find rows that begin = true, negside = false 
+            begfalsenegtrue = beginfalse.intersection(negtrue)
+
+            # find rows that begin == nonnegside = true
+            begnonnegtrue = begintrue.intersection(nonnegtrue)
+                # find rows that begin == nonnegside = false
+            begnonnegfalse = beginfalse.intersection(nonnegfalse)
+
+            # find rows that begin = true, nonnegside = false
+            begtruenonnegfalse = begintrue.intersection(nonnegfalse)
+            # find rows that begin = false, nonnegside = true
+            begfalsenonnegtrue = beginfalse.intersection(nonnegtrue)
+            
+            print("Rows with {}=TRUE, {}=TRUE: \n{}".format(node, negside, sorted(list(begnegtrue))))
+            print("Rows with {}=FALSE, {}=FALSE: \n{}".format(node, negside, sorted(list(begnegfalse))))
+            print("Rows with {}=TRUE, {}=FALSE: \n{}".format(node, negside, sorted(list(begtruenegfalse))))
+            print("Rows with {}=FALSE, {}=TRUE: \n{}".format(node, negside, sorted(list(begfalsenegtrue))))
+
+            print("Rows with {}=TRUE, {}=TRUE: \n{}".format(node, nonnegside, sorted(list(begnonnegtrue))))
+            print("Rows with {}=FALSE, {}=FALSE: \n{}".format(node, nonnegside, sorted(list(begnonnegfalse))))
+            print("Rows with {}=TRUE, {}=FALSE: \n{}".format(node, nonnegside, sorted(list(begtruenonnegfalse))))
+            print("Rows with {}=FALSE, {}=TRUE: \n{}".format(node, nonnegside, sorted(list(begfalsenonnegtrue))))
+            
+            if not bothside:
+                print(f"{diop} diamond has negation on only {sidename} side of node {left}")
+                # take inner rows that begin = negside 
+                begnegagree = begnegtrue.union(begnegfalse)
+                innerbegnegagree = innerrows.intersection(begnegagree)
+                outterbegnegagree = outterrows.intersection(begnegagree)
+
+                begnegdisagree = begtruenegfalse.union(begfalsenegtrue) 
+                innerbegnegdisagree = innerrows.intersection(begnegdisagree) 
+                outterbegnegdisagree = outterrows.intersection(begnegdisagree) 
+
+                pureinnerbegnegagree = copy.deepcopy(innerbegnegagree)
+                pureinnerbegnegdisagree = copy.deepcopy(innerbegnegdisagree)
+                
+                begnonnegagree = begnonnegtrue.union(begnonnegfalse) 
+                innerbegnonnegagree = innerrows.intersection(begnonnegagree)
+                outterbegnonnegagree = outterrows.intersection(begnonnegagree)
+
+                begnonnegdisagree = begtruenonnegfalse.union(begfalsenonnegtrue)
+                innerbegnonnegdisagree = innerrows.intersection(begnonnegdisagree)
+                outterbegnonnegdisagree = outterrows.intersection(begnonnegdisagree)
+
+                pureinnerbegnonnegagree = copy.deepcopy(innerbegnonnegagree)
+                pureinnerbegnonnegdisagree = copy.deepcopy(innerbegnonnegdisagree)
+
+                nonnegnosig = copy.deepcopy(allrows) # to save rows that signals CANNOT pass on the side without negation 
+                negsig = copy.deepcopy(allrows) # to save rows that signals are passed on the side with negation 
+                nonnegsig = copy.deepcopy(allrows) # to save rows that singals are passed on the side without negation 
+
+                # First, get the key name and corresponding dictionary of the diamonds 
+                andkeyname = sidename.lower() + 'and' 
+                orkeyname = sidename.lower() + 'or'
+                negands = dicts[andkeyname] 
+                negors = dicts[orkeyname]
+
+                # Then side without negation 
+                if sidename.lower() == 'left':
+                    nonnegandkeyname = 'rightand'
+                    nonnegorkeyname = 'rightor'
+                else:
+                    nonnegandkeyname = 'leftor'
+                    nonnegorkeyname = 'leftor'
+                nonnegands = dicts[nonnegandkeyname]
+                nonnegors = dicts[nonnegorkeyname]
+
+                if diop == 'OR': # need to examize one-sided AND operators 
+                    print(f"OR diamond from {node} to {target}")
+                    print("Filter out AND operators on the side with negation")
+                    for andop in negands: 
                         
-                        try:
-                            temfor = formulas[end]
-                        except KeyError:
-                            print(f"Node {end} has no formula, continue")
-                            continue
-                        if sidetoprocess == 'left':
-                            sidenode = temfor.right.val
-                        else:
-                            sidenode = temfor.left.val
+                        # for INNER rows 
+                        # filter out all AND operator on the side with negation to make sure that remaining rows are influenced by begin node only 
+                        pureinnerbegnegagree = pureinnerbegnegagree.intersection(index[andop])
+                        pureinnerbegnegdisagree = pureinnerbegnegdisagree.intersection(index[andop])
+                        
+                        # for ALL rows 
+                        # find rows that signal is completely pass on the side of negation, passing all AND op first 
+                        negsig = negsig.intersection(index[andop]) 
 
-                        rowsofnodes.update(allrows.union(aindex[sidenode]))
-                        print("Taking rows that {} is False, rows are: \n{}".format(sidenode, sorted(list(allrows.union(aindex[sidenode])))))
-                    continue
-
-                print("Filtering all OR operators first") 
-                for node_ in leftor.union(rightor):
-                    if node_ not in goodchild:
-                        tofilter = diamonds[node][end][node_][1]
-                        # if node_ in dnomaids:
-                        if False:
-                            allrows = processDnomaids(node, node_, tofilter, dnomaids, allrows, index, aindex, extranodes, diamonds, formulas)
-                        else:
-                            print(f"Node {node_} is not a good child, filter out")
-                            allrows = filterrows('OR', tofilter, node_, index, aindex, extranodes, allrows)
-                            print("Rows after filtering out {} are: \n{}".format(node_, sorted(list(allrows))))
-                    else:
-                        print(f"Node {node_} is a good child, do not filter out")
-                if not allrows:
-                    continue
-
-                leftrows = copy.deepcopy(allrows)
-                rightrows = copy.deepcopy(allrows)
-                print("Filtering AND operators on the left")
-                for node_ in leftand:
-                    tofilter = diamonds[node][end][node_][1]
-                    # if node_ in dnomaids:
-                    #     leftrows = processDnomaids(node, node_, tofilter, dnomaids, leftrows, index, aindex, extranodes, diamonds, formulas)
-                    # else:
-                    leftrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, leftrows)
+                    for orop in negors:
+                        # for ALL rows 
+                        # find rows that signal is completely pass on the side of negation, passing all OR op
+                        negsig = negsig.intersection(aindex[orop]) 
                     
+                    # now get rows that signal of begin node cannot pass, which is the complementary of negsig 
+                    negnosig = allrows.difference(negsig) 
 
-                print("Filtering AND operators on the right")
-                for node_ in rightand:
-                    tofilter = diamonds[node][end][node_][1]
-                    # if node_ in dnomaids:
-                    #     rightrows = processDnomaids(node, node_, tofilter, dnomaids, rightrows, index, aindex, extranodes, diamonds, formulas)
-                    # else:
-                    rightrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, rightrows)
-                print("Merging left and right rows for AND operators in an OR diamond")
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(leftrows.union(rightrows)))))
-                rowsofnodes.update(leftrows.union(rightrows))
+                    # print("Pure inner begin and neg disagree rows: \n{}".format(sorted(list(pureinnerbegnegdisagree))))
 
-            elif diamondop == 'AND':
-                print('Diamond {} to {} is an AND diamond'.format(node, end))
-                print("Filtering all AND operators first")
-                for node_ in leftand.union(rightand):
-                    tofilter = diamonds[node][end][node_][1]
-                    # if node_ in dnomaids:
-                    #     allrows = processDnomaids(node, node_, tofilter, dnomaids, allrows, index, aindex, extranodes, diamonds, formulas)
-                    # else:
-                    allrows = filterrows('AND', tofilter, node_, index, aindex, extranodes, allrows)
-                if leftor and rightor:
-                    print("Both leftor and rightor are not empty, need to filter")
-                    for node_ in leftor.union(rightor):
-                        if node_ not in goodchild:
-                            tofilter = diamonds[node][end][node_][1]
-                            # if node_ in dnomaids:
-                            if False:
-                                allrows = processDnomaids(node, node_, tofilter, dnomaids, allrows, index, aindex, extranodes, diamonds, formulas)
-                            else:
-                                allrows = filterrows('OR', tofilter, node_, index, aindex, extranodes, allrows)
-                                print("Rows after filtering out {} are: \n{}".format(node_, sorted(list(allrows))))
-                print("Rows of node {} inferred from diamond {} to {} are: \n{}".format(node, node, end, sorted(list(allrows))))
-                rowsofnodes.update(allrows)
-    return rowsofnodes
+                    for nonandop in nonnegands:
+                        # for INNER rows 
+                        # filter out all AND op on the side without negation to make sure that remaining rows are influenced by begin only
+                        pureinnerbegnonnegagree = pureinnerbegnonnegagree.intersection(index[nonandop])
+                        pureinnerbegnonnegdisagree = pureinnerbegnonnegdisagree.intersection(index[nonandop])
+
+                        # now for ALL rows 
+                        # find rows that signal is completely pass on the side without negation, first passing all AND op first
+                        nonnegsig = nonnegsig.intersection(index[nonandop])
+
+                    # print("Pure inner begin and NON neg agree rows: \n{}".format(sorted(list(pureinnerbegnonnegagree)))) 
+                    # print("Pure inner begin and NON neg disagree rows: \n{}".format(sorted(list(pureinnerbegnonnegdisagree))))
+
+                    for nonorop in nonnegors:
+                        # for ALL rows 
+                        # find rows that signal is completely pass on the side WITHOUT negation, passing all OR op
+                        nonnegsig = nonnegsig.intersection(aindex[nonorop])
+
+                    # now get rows that signal of begin node cannot pass, which is the complementary of negsig 
+                    negnosig = allrows.difference(negsig) 
+
+                    onlysigneg = outterrows.intersection(negsig.intersection(nonnegnosig))
+                    # but rows with only signal in negation side also need to couple with rows that non negation side is False 
+                    onlysigneg = onlysigneg.intersection(aindex[nonnegside]) 
+
+                    onlysignonneg = outterrows.intersection(nonnegsig.intersection(negnosig))
+                    # same here, rows with only signal from non negation side also need to couple with rows that the negation side is False 
+                    onlysignonneg = onlysignonneg.intersection(aindex[negside])
+
+                    print("TAKING following set of rows:")
+                    print("Pure inner begin and neg agree rows: \n{}".format(sorted(list(pureinnerbegnegagree))))
+                    print("Rows signal only negative side are :\n{}".format(sorted(list(onlysigneg))))
+                    print("Rows signal only non negative side are: \n{}".format(sorted(list(onlysignonneg))))
+                    
+                    rowsofnode.update(pureinnerbegnegagree)
+                    rowsofnode.update(onlysigneg)
+                    rowsofnode.update(onlysignonneg) 
+                
+                elif diop == 'AND': 
+                    print(f"AND diamond from {node} to {target}") 
+                    # for AND operator, allrows are filtered with all AND operators on the way already
+                    # if there are or in both size then they are also filtered out, only need to check the case of OR in one side 
+                    for negorop in negors: 
+                        # filter out all OR op on the side with negation to make sure that remaining rows are influenced by begin node only 
+                        pureinnerbegnegagree = pureinnerbegnegagree.intersection(aindex[negorop]) 
+                        pureinnerbegnegdisagree = pureinnerbegnegdisagree.intersection(aindex[negorop]) 
+
+                    for nonnegorop in nonnegors:
+                        pureinnerbegnonnegagree = pureinnerbegnonnegagree.intersection(aindex[nonnegorop])
+                        pureinnerbegnonnegdisagree = pureinnerbegnonnegdisagree.intersection(aindex[nonnegorop]) 
+
+                    # for INNER rows, take only pureinner rows that beg and neg are agree (can caused by double negations or disable negation)
+                    print("TAKING following set of rows:")
+                    print("Pure inner begin and neg agree rows: \n{}".format(sorted(list(pureinnerbegnegagree))))
+                    rowsofnode.update(pureinnerbegnegagree) 
+
+
+            else:
+                # do checkrow here 
+                print(f"{diop} diamond from {node} to {target} having negation on BOTH side, SIMULATE a step to decide") 
+                for row in allrows:
+                    rawrow = copy.deepcopy(table[row])
+                    changed = checkrow(net, rawrow, node, target, formulas)
+                    if changed:
+                        rowsofnode.add(row) 
+            
+            # print("DIAMOND with NEGATION, simulate a step to decide")
+            # for row in allrows:
+            #     rawrow = copy.deepcopy(table[row])
+            #     changed = checkrow(net, rawrow, node, target, formulas)
+            #     if changed:
+            #         rowsofnode.add(row)
+
+    print("Rows after process diamond {} to {} are: \n{}".format(node, target, sorted(list(rowsofnode))))
+    return rowsofnode
+
+def nodes_on_cycles_digraph(G: nx.DiGraph):
+    """
+    Identify nodes that are part of cycles in a directed graph.
+    Parameters:
+        G: A directed graph (networkx DiGraph)
+    Returns:
+        A set of nodes that are part of cycles in the graph
+    """
+    on = set()
+    for comp in nx.strongly_connected_components(G):
+        if len(comp) > 1:
+            on |= comp
+        else:
+            n = next(iter(comp))
+            if G.has_edge(n, n):  # self-loop => 1-cycle
+                on.add(n)
+    return on
+
+def simulateDiamondOneStep(net, table, node, target, formulas, rowsofnode, orderedBiNodes, debug=False):
+    """
+    Simulate a step to decide the rows for the node of interest through the diamond structure.
+    Parameters:
+        net: The directed graph representing the network
+        table: The truth table of the network
+        node: The current node being processed
+        target: The target node at the end of the diamond
+        formulas: Dictionary of boolean formulas for the network
+        rowsofnode: Set of rows associated with the current node before simulation
+    Returns:
+        rowsofnode: Set of rows associated with the current node after simulation 
+    """
+    silent = not debug
+    if not silent:
+        print("SIMULATE rows {} to decide rows for node {} in diamond to {}".format(sorted(list(rowsofnode)), node, target)) 
+    newrowsofnode = set()
+    node_descendants = nx.descendants(net, node)
+    target_succesors = nx.ancestors(net, target)
+    affected_nodes = set(node_descendants).intersection(set(target_succesors))
+    affected_nodes.add(target)
+    if not silent:
+        print('Affected nodes between {} and {} are: {}'.format(node, target, affected_nodes))
+    affected_nodes_ordered = sorted(affected_nodes, key=orderedBiNodes.__getitem__)
+
+    affectedformulas = []  
+    counter = 0
+    for n in affected_nodes_ordered:
+        if '_XTR_' not in n:
+            counter += 1
+        try:
+            form = formulas[n]
+            dictform = dict()
+            dictform['term'] = n
+            dictform['formula'] = form
+            affectedformulas.append(dictform)
+        except KeyError:
+            print(f"Cannot find formula for node {n}, skip it")
+            continue
+
+    for row in rowsofnode:
+        # print("Simulate row {}".format(row))
+        rawrow = copy.deepcopy(table[row])
+        if rawrow[target]:
+            oldtarget = True
+        else:
+            oldtarget = False
+
+        rawrow[node]  = not rawrow[node] # flip the begin node of the diamond
+
+        oldstates = dict()
+        numstep = 0
+        for _ in range(100):
+            numstep += 1
+            rawrow = sim1bistep(affectedformulas, rawrow, True, None)
+            # print(rawrow)
+            hash = dict_hash(rawrow)
+            
+            if hash not in oldstates:
+                oldstates[hash] = numstep
+            else: # reach a loop 
+                # print("Reach a loop after {} steps".format(numstep))
+                returnstate = copy.deepcopy(rawrow)
+                for i in range(numstep - oldstates[hash]-1):
+                    rawrow = sim1bistep(affectedformulas, rawrow, True, None)
+                    returnstate = merge2states(returnstate, rawrow)
+                    break
+                rawrow = copy.deepcopy(returnstate)
+                break
+        # print("Converge after {} steps".format(numstep))
+
+        if oldtarget ^ rawrow[target]:
+            newrowsofnode.add(row)
+    if not silent:       
+        print("Rows after simulate a step for diamond {} to {} are: \n{}".format(node, target, sorted(list(newrowsofnode))))
+    return newrowsofnode 
+
+def simulateOneNode(table, node, target, formulas, rowsofnode, extranodes, inputnames):
+    """
+    Simulate to decide the rows for the node of interest.
+    Parameters:
+        table: The truth table of the network
+        node: The current node being processed
+        formulas: Dictionary of boolean formulas for the network
+        rowsofnode: Set of rows associated with the current node before simulation
+        extranodes: List of extra nodes added to the network
+    Returns:
+        rowsofnode: Set of rows associated with the current node after simulation 
+    """
+    rowstoreturn = set()
+    for row in rowsofnode:
+        # print("Simulate row {}".format(row))
+        rawrow = copy.deepcopy(table[row])
+        oldvalue = rawrow[target]
+
+        for k, value in rawrow.items():
+            if k not in inputnames:
+                rawrow[k] = False
+
+        knockin = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, True)
+        knockout = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, False)
+
+        if (oldvalue ^ knockin[target]) or (oldvalue ^ knockout[target]): 
+            rowstoreturn.add(row)
+
+    return rowstoreturn
 
 def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  \
                       maxStep=1000, debug=False, extranodes = None, isKnockin=False) -> dict:
@@ -530,7 +988,8 @@ def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedin
         # print("Integer version of state of Binary network")
     decimalPairs = dict() 
     if extranodes:
-        print("Extranodes are not empty, also need to assign value to extranodes")
+        if debug:
+            print("Extranodes are not empty, also need to assign value to extranodes")
         for inputstate in inputstates:
             for node in extranodes:
                 try:
@@ -563,7 +1022,7 @@ def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedin
     # run the simulation with the binary network 
 
 
-def diamondDigger(binet, outname, biformulas):
+def diamondDigger(binet, outname, biformulas, debug=False):
     """
     Identify and process diamond structures in the binary network starting from the output node.
     Parameters:
@@ -573,25 +1032,29 @@ def diamondDigger(binet, outname, biformulas):
     Returns:
         dict: A dictionary containing information about the diamond structures and their processing results
     """
-    print("-------Digging diamonds-------")
-    reversenet = binet.reverse(copy=True) # reverse the network to get the in-comming edges
-    relevantnodes = nx.descendants(reversenet, outname) # get all the nodes that are relevant to the output node
-    relevantnodes.add(outname) # add the output node to the relevant nodes
+    silent = not debug
+    if not silent:
+        print("-------Digging diamonds-------")
+    # reversenet = binet.reverse(copy=True) # reverse the network to get the in-comming edges
+    # relevantnodes = nx.descendants(reversenet, outname) # get all the nodes that are relevant to the output node
+    # relevantnodes.add(outname) # add the output node to the relevant nodes
     processed = set() # save all the processed formulas 
     # relevantgraph = binet.subgraph(relevantnodes) # get the subgraph of the relevant nodes 
     relevantgraph = binet
-    showNetwork(relevantgraph, None, None, None, None, "relevantgraph.html")
+    # showNetwork(relevantgraph, None, None, None, None, "relevantgraph.html")
     curs = [outname] # start from the output node
     carryOns = dict() # save the nodes that are carried on to the next layer
     sinks = dict() # save the sink nodes that are converged
     while curs:
-        print("\n\n---Processing layers of {}---".format(curs))
+        if not silent:
+            print("\n\n---Processing layers of {}---".format(curs))
         nextlayer = []
         for cur in curs:
             try:
                 form = biformulas[cur]
             except:
-                print("\nReach node {} without in-comming edges".format(cur))
+                if not silent:
+                    print("\nReach node {} without in-comming edges".format(cur))
                 continue
             # get incoming edge to cur node
             inedges = list(relevantgraph.in_edges(cur))
@@ -602,7 +1065,8 @@ def diamondDigger(binet, outname, biformulas):
             curset = set(carryOns[cur].keys())
 
             if len(inedges) == 2:
-                print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                if not silent:
+                    print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
                 stringform = cur + " = " + form.left.val + " " + form.val +  " " + form.right.val
                 if stringform in processed:
                     continue
@@ -616,9 +1080,11 @@ def diamondDigger(binet, outname, biformulas):
 
                 if form.left.val not in carryOns:
                     carryOns[form.left.val] = copy.deepcopy(carryOns.get(cur, dict()))
-                    print(f"Node {form.left.val} carries on {carryOns[form.left.val]} of parent {cur}")
+                    if not silent:
+                        print(f"Node {form.left.val} carries on {carryOns[form.left.val]} of parent {cur}")
                 else:
-                    print(f"Node {form.left.val} already carries on {carryOns[form.left.val]}")
+                    if not silent:
+                        print(f"Node {form.left.val} already carries on {carryOns[form.left.val]}")
                     # if there is common node, add to sinks 
                     if form.left.val not in sinks:
                         sinks[form.left.val] = set()
@@ -636,8 +1102,8 @@ def diamondDigger(binet, outname, biformulas):
                             elif carryOns[form.left.val][ele] == 'R' and carryOns[cur][ele] == 'L':
                                 sinks[form.left.val].add(ele)
                                 foundedsinks.add(ele)
-
-                    print("Found sink nodes for {}: {}".format(form.left.val, foundedsinks))
+                    if not silent:
+                        print("Found sink nodes for {}: {}".format(form.left.val, foundedsinks))
 
                     for ele in carryOns[cur].items():
                         if ele[0] not in foundedsinks:
@@ -647,9 +1113,11 @@ def diamondDigger(binet, outname, biformulas):
 
                 if form.right.val not in carryOns:
                     carryOns[form.right.val] = copy.deepcopy(carryOns.get(cur, dict()))
-                    print(f"Node {form.right.val} carries on {carryOns[form.right.val]} of parent {cur}")
+                    if not silent:
+                        print(f"Node {form.right.val} carries on {carryOns[form.right.val]} of parent {cur}")
                 else:
-                    print(f"Node {form.right.val} already carries on {carryOns[form.right.val]}")
+                    if not silent:
+                        print(f"Node {form.right.val} already carries on {carryOns[form.right.val]}")
                     # if there is common node, add to sinks
                     if form.right.val not in sinks:
                         sinks[form.right.val] = set()
@@ -667,8 +1135,8 @@ def diamondDigger(binet, outname, biformulas):
                             elif carryOns[form.right.val][ele] == 'R' and carryOns[cur][ele] == 'L':
                                 sinks[form.right.val].add(ele)
                                 foundedsinks.add(ele)
-
-                    print("Found sink nodes for {}: {}".format(form.right.val, foundedsinks))
+                    if not silent:
+                        print("Found sink nodes for {}: {}".format(form.right.val, foundedsinks))
                     for ele in carryOns[cur].items():
                         if ele[0] not in foundedsinks:
                             carryOns[form.right.val][ele[0]] = ele[1]
@@ -679,14 +1147,16 @@ def diamondDigger(binet, outname, biformulas):
                 if cur in carryOns[form.left.val]:
                     if carryOns[form.left.val][cur] == 'R':
                         sinks[form.left.val].add(cur)
-                        print("Find {} is sink node for {}".format(cur, form.left.val))
+                        if not silent:
+                            print("Find {} is sink node for {}".format(cur, form.left.val))
                 else:
                     carryOns[form.left.val][cur] = 'L'
 
                 if cur in carryOns[form.right.val]:
                     if carryOns[form.right.val][cur] == 'L':
                         sinks[form.right.val].add(cur)
-                        print("Find {} is sink node for {}".format(cur, form.right.val))
+                        if not silent:
+                            print("Find {} is sink node for {}".format(cur, form.right.val))
                 else:
                     carryOns[form.right.val][cur] = 'R'
 
@@ -698,7 +1168,8 @@ def diamondDigger(binet, outname, biformulas):
                     else:
                         processed.add(stringform)
                     singlemom = form.right.val
-                    print(f"{cur} === NOT {singlemom}")
+                    if not silent:
+                        print(f"{cur} === NOT {singlemom}")
                 else:
                     stringform = cur + " = " + form.val
                     if stringform in processed:
@@ -706,15 +1177,18 @@ def diamondDigger(binet, outname, biformulas):
                     else:
                         processed.add(stringform)
                     singlemom = form.val
-                    print(f"{cur} === {singlemom}")
+                    if not silent:
+                        print(f"{cur} === {singlemom}")
                 if singlemom not in nextlayer:
                     nextlayer.append(singlemom)
                 
                 if singlemom not in carryOns:
                     carryOns[singlemom] = copy.deepcopy(carryOns.get(cur, dict()))
-                    print(f"Node {singlemom} carries on {carryOns[singlemom]} of parent {cur}")
+                    if not silent:
+                        print(f"Node {singlemom} carries on {carryOns[singlemom]} of parent {cur}")
                 else:
-                    print(f"Node {singlemom} already carries on {carryOns[singlemom]}")
+                    if not silent:
+                        print(f"Node {singlemom} already carries on {carryOns[singlemom]}")
                     # if there is common node, add to sinks
                     if singlemom not in sinks:
                         sinks[singlemom] = set()
@@ -731,7 +1205,8 @@ def diamondDigger(binet, outname, biformulas):
                             elif carryOns[singlemom][ele] == 'R' and carryOns[cur][ele] == 'L':
                                 sinks[singlemom].add(ele)
                                 foundedsinks.add(ele)
-                    print("Found sink nodes for {}: {}".format(singlemom, foundedsinks))
+                    if not silent:
+                        print("Found sink nodes for {}: {}".format(singlemom, foundedsinks))
 
                     for ele in carryOns[cur].items():
                         if ele[0] not in foundedsinks:
@@ -740,113 +1215,34 @@ def diamondDigger(binet, outname, biformulas):
                             carryOns[singlemom][ele[0]] = 'W'
                     
 
-        for node, carryon in carryOns.items():
-            print(f"Node {node} carries on {carryon}")
+        # for node, carryon in carryOns.items():
+        #     print(f"Node {node} carries on {carryon}")
            
         curs = nextlayer
-    for node, diamondends in sinks.items():
-        if len(diamondends) == 0:
-            continue
-        print(f"Node {node} has diamond ends {diamondends}")
+    if debug:
+        for node, diamondends in sinks.items():
+            if len(diamondends) == 0:
+                continue
+            print(f"Node {node} has diamond ends {diamondends}")
     
     return sinks
+           
+def findMasterDiamond(binet, sinks, debug=False):
+    masterDiamonds = dict() 
+    for begin, ends in sinks.items():
+        biggest = begin
+        for end in ends:
+            if biggest in nx.ancestors(binet, end):
+                biggest = end 
+        if debug:
+            print("Master diamond of {} is {}".format(begin, biggest))
+        masterDiamonds[begin] = biggest 
+    return masterDiamonds 
 
 
-def convergediamond(node, tobefilteredhalfforeigners, rowsofsinknodes, formulas, index, aindex, extranodes, goodhalfforeignersofnodes, countedrowsofnode, foreignerpartners):
+def refineDiamonds(binet, biformulas, sinks, silent=True):
     """
-    Converge the rows for a node with branching (diamond structure) by filtering rows based on the states of half-foreigners.
-    Args:
-        node (str): The name of the node to be processed.
-        tobefilteredhalfforeigners (dict): A dictionary mapping nodes to dictionaries of their half-foreigners and their sides.
-        rowsofsinknodes (dict): A dictionary mapping sink node names to sets of row IDs associated with those sink nodes.
-        formulas (dict): A dictionary with species names as keys and their boolean formulas as values.
-        index (dict): A dictionary mapping node names to sets of row IDs where they are True.
-        aindex (dict): A dictionary mapping node names to sets of row IDs where they are False.
-        extranodes (list): A list of extra nodes to be considered in the filtering.
-        goodhalfforeignersofnodes (dict): A dictionary mapping nodes to sets of their good half-foreigners. 
-        countedrowsofnode (dict): A dictionary mapping node names to sets of row IDs that have been counted for those nodes.
-        foreignerpartners (dict): A dictionary mapping nodes to dictionaries of their half-foreigners and the corresponding foreigner nodes.
-    Returns:
-        None: The function updates countedrowsofnode in place.
-    """
-    if node in tobefilteredhalfforeigners:
-        print(f"Node {node} has branching and needs to be converge these sink node:")
-        # print(tobefilteredofnodes[node])
-        for node_, sides in tobefilteredhalfforeigners[node].items():
-            print(node_)
-    else:
-        print(f"Node {node} has no branching, do nothing")
-        return
-    
-    sinks = tobefilteredhalfforeigners[node] 
-    for sink, dicts in sinks.items():
-        if sink not in rowsofsinknodes:
-            continue
-        else:
-            if len(rowsofsinknodes[sink]) == 0:
-                print(f"Sink node {sink} has no rows to be filtered, continue")
-                continue
-            else:
-                print('--------')
-                print(f"Sink node {sink} has rows to be filtered:")
-                print(list(rowsofsinknodes[sink]))
-        
-        allrows = copy.deepcopy(rowsofsinknodes[sink])
-        leftor = dicts['leftor']
-        rightor = dicts['rightor']
-        leftand = dicts['leftand']
-        rightand = dicts['rightand']
-        print(f"Processing sink {sink} with:\n \tleftor {leftor} \n\trightor {rightor} \n\t leftand {leftand} \n\trightand {rightand}")
-        sinkop = formulas[sink].val 
-        if sinkop == 'OR':
-            # filter out all the OR operators 
-            # union of left and right rows when filter out and operator 
-            for node_ in leftor.union(rightor):
-                if node_ not in goodhalfforeignersofnodes[node]:
-                    foreigner = foreignerpartners[node][node_]
-                    allrows = filterrows('OR', foreigner, node_, index, aindex, extranodes, allrows)
-
-            leftrows = copy.deepcopy(allrows)
-            rightrows = copy.deepcopy(allrows) 
-
-            for node_ in leftand.union(rightand): 
-                # if a half foreigner is in both side that mean 
-                foreigner = foreignerpartners[node][node_]
-                allrows = filterrows('AND', foreigner, node_, index, aindex, extranodes, allrows)
-            
-            for node_ in leftand:
-                if node_ not in goodhalfforeignersofnodes[node]:
-                    foreigner = foreignerpartners[node][node_]
-                    leftrows = filterrows('AND', foreigner, node_, index, aindex, extranodes, leftrows)
-            for node_ in rightand:
-                if node_ not in goodhalfforeignersofnodes[node]:
-                    foreigner = foreignerpartners[node][node_]
-                    rightrows = filterrows('AND', foreigner, node_, index, aindex, extranodes, rightrows)
-
-            countedrowsofnode[node].update(leftrows.union(rightrows))
-                    
-        elif sinkop == 'AND':
-            # filter out all the AND operators
-            # for OR op, if belong to only one side then no filter 
-            for node_ in leftand.union(rightand):
-                # if node_ not in goodforeignersofnodes[node]:
-                foreigner = foreignerpartners[node][node_]
-                allrows = filterrows('AND', foreigner, node_, index, aindex, extranodes, allrows)
-
-            if leftor and rightor:
-                print("Both leftor and rightor are not empty, need to filter")
-                for node_ in leftor.union(rightor):
-                    if node_ not in goodhalfforeignersofnodes[node]:
-                        foreigner = foreignerpartners[node][node_]
-                        allrows = filterrows('OR', foreigner, node_, index, aindex, extranodes, allrows)
-
-            countedrowsofnode[node].update(allrows) 
-        else:
-            print("Dot not support operator {}".format(sinkop))
-
-def refineDiamonds(binet, biformulas, sinks):
-    """
-    Refine diamond structures in a binary network by identifying hybrid children and relevant nodes.
+    Processing diamond structures in a binary network by identifying hybrid children and relevant nodes.
     Args:
         binet (nx.DiGraph): The directed graph representing the binary network.
         biformulas (dict): A dictionary with species names as keys and their boolean formulas as values.
@@ -857,19 +1253,20 @@ def refineDiamonds(binet, biformulas, sinks):
     print("-------Refine diamonds-------")
     reversednet = binet.reverse(copy=True) # reverse the network to get the in-comming edges 
     diamonds = dict() # save the diamonds that are found
-    purediamonds = dict() # save the pure diamonds that are found
-    dnomaids = dict() # save the diamonds but flipped, end first begin later 
+    # dnomaids = dict() # save the diamonds but flipped, end first begin later 
     for begin, ends in sinks.items():
         diamonds[begin] = dict() # save the diamonds for each begin node
-        diamonds[begin]['goodchild'] = set() # save the good children of the diamond
+        diamonds[begin]['goodchild'] = set() # save the good children of the diamond, good childrens are the OR only one side of an AND diamond 
         for end in ends:
             if end == 'goodchild':
                 continue
-            print(f"Processing diamond from {begin} to {end}")
+            if not silent:
+                print(f"Processing diamond from {begin} to {end}")
             diamonds[begin][end] = dict() # save the diamond for each end node
             # get end formulas 
             if end not in biformulas:
-                print(f"End node {end} is not in the binary formulas, pass")
+                if not silent:
+                    print(f"End node {end} is not in the binary formulas, pass")
                 continue
             endform = biformulas[end]
             try:
@@ -877,7 +1274,8 @@ def refineDiamonds(binet, biformulas, sinks):
                 right = endform.right.val
                 op = endform.val
             except:
-                print(f"End node {end} is unary operator, pass")
+                if not silent:
+                    print(f"End node {end} is unary operator, pass")
                 continue
             leftdes = nx.descendants(reversednet, left)
             leftdes.add(left) # add the left node to the descendants
@@ -896,16 +1294,20 @@ def refineDiamonds(binet, biformulas, sinks):
             rightor = set() # save the right OR nodes
             leftand = set() # save the left AND nodes
             rightand = set() # save the right AND nodes
+            leftnot = set() # save the left NOT nodes
+            rightnot = set() # save the right NOT nodes
 
             # look for hybidchildren (one parent is insider one parent is outsider) 
             for node in leftrelevant: 
-                print(f"Processing node {node} in leftrelevant")
+                if not silent:
+                    print(f"Processing node {node} in leftrelevant")
                 if node not in biformulas:
                     continue
                 form = biformulas[node]
                 if form.val == 'OR' or form.val == 'AND':
                     if form.left.val in leftrelevant and form.right.val not in leftrelevant:
-                        print(f"Node {node} is a hybrid child of {form.left.val} and {form.right.val}, left is insider, right is outsider")
+                        if not silent:
+                            print(f"Node {node} is a hybrid child of {form.left.val} and {form.right.val}, left is insider, right is outsider")
                         # add the node to the ends
                         diamonds[begin][end][node] = (form.val, form.right.val) 
                         if form.val == 'OR':
@@ -913,7 +1315,8 @@ def refineDiamonds(binet, biformulas, sinks):
                         elif form.val == 'AND':
                             leftand.add(node)
                     elif form.right.val in leftrelevant and form.left.val not in leftrelevant:
-                        print(f"Node {node} is a hybrid child of {form.left.val} and {form.right.val}, left is outsider, right is insider")
+                        if not silent:
+                            print(f"Node {node} is a hybrid child of {form.left.val} and {form.right.val}, left is outsider, right is insider")
                         diamonds[begin][end][node] = (form.val, form.left.val) 
                         if form.val == 'OR':
                             leftor.add(node)
@@ -922,17 +1325,31 @@ def refineDiamonds(binet, biformulas, sinks):
                     # elif form.left.val in leftrelevant and form.right.val in leftrelevant:
                         # case both parents are insider 
                 else:
-                    print(f"Node {node} is unary operator, pass")
-                    continue
+                    if not silent:
+                        print(f"Node {node} is unary operator")
+                    if form.val == 'NOT':
+                        if node == begin:
+                            if not silent:
+                                print(f"Node {node} is the begin node, skip")
+                            continue
+                        if not silent:
+                            print(f"Node {node} is a NOT node with parent {form.right.val}")
+                        leftnot.add(node)
+                    else:
+                        if not silent:
+                            print(f"Node {node} is unary operator {form.val}, pass")
+                        continue
             
             for node in rightrelevant:
-                print(f"Processing node {node} in rightrelevant")
+                if not silent:
+                    print(f"Processing node {node} in rightrelevant")
                 if node not in biformulas:
                     continue
                 form = biformulas[node]
                 if form.val == 'OR' or form.val == 'AND':
                     if form.left.val in rightrelevant and form.right.val not in rightrelevant:
-                        print(f"Node {node} is a hybrid child of {left} and {right}, left is insider, right is outsider")
+                        if not silent:
+                            print(f"Node {node} is a hybrid child of {left} and {right}, left is insider, right is outsider")
                         # add the node to the ends
                         diamonds[begin][end][node] = (form.val, form.right.val) 
                         if form.val == 'OR':
@@ -940,7 +1357,8 @@ def refineDiamonds(binet, biformulas, sinks):
                         elif form.val == 'AND':
                             rightand.add(node)
                     elif form.right.val in rightrelevant and form.left.val not in rightrelevant:
-                        print(f"Node {node} is a hybrid child of {left} and {right}, left is outsider, right is insider")
+                        if not silent:
+                            print(f"Node {node} is a hybrid child of {left} and {right}, left is outsider, right is insider")
                         diamonds[begin][end][node] = (form.val, form.left.val) 
                         if form.val == 'OR':
                             rightor.add(node)
@@ -948,443 +1366,66 @@ def refineDiamonds(binet, biformulas, sinks):
                             rightand.add(node)
                     
                 else:
-                    print(f"Node {node} is unary operator, pass")
-                    continue
+                    if not silent:
+                        print(f"Node {node} is unary operator")
+                    if form.val == 'NOT':
+                        if node == begin:
+                            if not silent:
+                                print(f"Node {node} is the begin node, skip")
+                            continue
+                        if not silent:
+                            print(f"Node {node} is a NOT node with parent {form.right.val}")
+                        rightnot.add(node)
+                    else:
+                        if not silent:
+                            print(f"Node {node} is unary operator {form.val}, pass")
+                        continue
+                        
+            
+            # save the leftor, rightor, leftand, rightand, leftnot, rightnot to the diamonds
+            diamonds[begin][end]['leftor'] = leftor
+            diamonds[begin][end]['rightor'] = rightor
+            diamonds[begin][end]['leftand'] = leftand
+            diamonds[begin][end]['rightand'] = rightand
+            diamonds[begin][end]['leftnot'] = leftnot
+            diamonds[begin][end]['rightnot'] = rightnot
             if endform.val == 'OR': 
-                diamonds[begin][end]['leftor'] = leftor
-                diamonds[begin][end]['rightor'] = rightor
-                diamonds[begin][end]['leftand'] = leftand
-                diamonds[begin][end]['rightand'] = rightand
                 diamonds[begin][end]['op'] = 'OR'
-               
-
-
             elif endform.val == 'AND':  
-                diamonds[begin][end]['leftand'] = leftand
-                diamonds[begin][end]['rightand'] = rightand
-                diamonds[begin][end]['leftor'] = leftor
-                diamonds[begin][end]['rightor'] = rightor
                 diamonds[begin][end]['op'] = 'AND'
                
                 if leftor and rightor:
-                    print(f"Node {end} has both leftor and rightor, no good child")
+                    if not silent:
+                        print(f"Node {end} has both leftor and rightor, no good child")
                 else:
-                    if leftor:
-                        diamonds[begin]['goodchild'].update(leftor)
-                    elif rightor:
-                        diamonds[begin]['goodchild'].update(rightor)
-            print("-----------")
-            if end not in dnomaids:
-                dnomaids[end] = dict() # save the diamonds but flipped, end first begin later
+                    if not leftnot and not rightnot: # goodchild is only for possitive diamond 
+                        if leftor:
+                            diamonds[begin]['goodchild'].update(leftor)
+                        elif rightor:
+                            diamonds[begin]['goodchild'].update(rightor)
+            # print("-----------")
+            # if end not in dnomaids:
+            #     dnomaids[end] = dict() # save the diamonds but flipped, end first begin later
    
-            dnomaids[end][begin] = dict() # save the diamonds but flipped, end first begin later
-            if endform.val == 'AND': 
-                dnomaids[end][begin]['leftand'] = leftand
-                dnomaids[end][begin]['rightand'] = rightand
-                dnomaids[end][begin]['leftor'] = leftor
-                dnomaids[end][begin]['rightor'] = rightor
-                dnomaids[end][begin]['op'] = 'AND'
-                if leftor and rightor:
-                    print(f"Node {end} has both leftor and rightor, no good child")
-                else:
-                    if leftor:
-                        dnomaids[end][begin]['goodchild'] = leftor
-                    elif rightor:
-                        dnomaids[end][begin]['goodchild'] = rightor
-            elif endform.val == 'OR':
-                dnomaids[end][begin]['leftor'] = leftor
-                dnomaids[end][begin]['rightor'] = rightor
-                dnomaids[end][begin]['leftand'] = leftand
-                dnomaids[end][begin]['rightand'] = rightand
-                dnomaids[end][begin]['op'] = 'OR'
+            # dnomaids[end][begin] = dict() # save the diamonds but flipped, end first begin later
+            # dnomaids[end][begin]['leftand'] = leftand
+            # dnomaids[end][begin]['rightand'] = rightand
+            # dnomaids[end][begin]['leftor'] = leftor
+            # dnomaids[end][begin]['rightor'] = rightor
+            # dnomaids[end][begin]['leftnot'] = leftnot
+            # dnomaids[end][begin]['rightnot'] = rightnot
+            # if endform.val == 'AND': 
+            #     dnomaids[end][begin]['op'] = 'AND'
+            #     if leftor and rightor:
+            #         print(f"Node {end} has both leftor and rightor, no good child")
+            #     else:
+            #         if leftor:
+            #             dnomaids[end][begin]['goodchild'] = leftor
+            #         elif rightor:
+            #             dnomaids[end][begin]['goodchild'] = rightor
+            # elif endform.val == 'OR':
+            #     dnomaids[end][begin]['op'] = 'OR'
         # print("-------------")
          
-    return diamonds, dnomaids
-
-
-def processDnomaids(nodetoconverge, childtoprocess, foreignerparent, dnomaids, rowstoprocess, index, aindex, extranodes, diamonds, formulas):
-    """
-    Process the flipped diamonds to refine the rows for a specific node that needs to be converged.
-    Args:
-        nodetoconverge (str): The name of the node that needs to be converged.
-        childtoprocess (str): The name of the child node to be processed.
-        foreignerparent (str): The name of the foreigner parent node.
-        dnomaids (dict): A dictionary containing the flipped diamond structures.
-        rowstoprocess (set): A set of row IDs that need to be processed.
-        index (dict): A dictionary mapping node names to sets of row IDs where they are True.
-        aindex (dict): A dictionary mapping node names to sets of row IDs where they are False.
-        extranodes (list): A list of extra nodes to be considered in the filtering.
-        diamonds (dict): A dictionary containing the original diamond structures.
-        formulas (dict): A dictionary with species names as keys and their boolean formulas as values.
-    Returns:
-        set: The refined set of row IDs after processing the flipped diamonds.
-    """
-    print ("Node {} is in the flipped diamonds".format(childtoprocess)) 
-
-    for begin, dicts in dnomaids[childtoprocess].items(): 
-        print("\tProcessing flipped diamond from {} to {}".format(childtoprocess, begin))
-        if nodetoconverge in diamonds[begin]['goodchild']:
-            print("\tNode {} is a good child of node {}, no need to process".format(childtoprocess, begin))
-            continue
-        print('\t',dicts) # this one contain leftor, rightor, leftand rightand 
-        # get the dnomaid op 
-        op = dicts['op']
-        typeofinfluence = dict() # save the type of influence of the node to be converged
-        for leftor in dicts['leftor']:
-            print("\tForeigner of node {} is {}".format(leftor, diamonds[begin][childtoprocess][leftor][1]))
-            if nodetoconverge == diamonds[begin][childtoprocess][leftor][1]:
-                print("\tNeed to find rows that {} influence {}".format(nodetoconverge, leftor)) 
-                if 'leftor' not in typeofinfluence:
-                    typeofinfluence['leftor'] = set() 
-                typeofinfluence['leftor'].add(leftor)
-              
-        for rightor in dicts['rightor']:
-            print("\tForeigner of node {} is {}".format(rightor, diamonds[begin][childtoprocess][rightor][1]))
-            if nodetoconverge == diamonds[begin][childtoprocess][rightor][1]:
-                print("\tNeed to find rows that {} influence {}".format(nodetoconverge, rightor))
-                if 'rightor' not in typeofinfluence:
-                    typeofinfluence['rightor'] = set()
-                typeofinfluence['rightor'].add(rightor)
-               
-        for leftand in dicts['leftand']:
-            print("\tForeigner of node {} is {}".format(leftand, diamonds[begin][childtoprocess][leftand][1]))
-            if nodetoconverge == diamonds[begin][childtoprocess][leftand][1]:
-                print("\tNeed to find rows that {} influence {}".format(nodetoconverge, leftand))
-                if 'leftand' not in typeofinfluence:
-                    typeofinfluence['leftand'] = set()
-                typeofinfluence['leftand'].add(leftand)
-
-        for rightand in dicts['rightand']:
-            print("\tForeigner of node {} is {}".format(rightand, diamonds[begin][childtoprocess][rightand][1]))
-            if nodetoconverge == diamonds[begin][childtoprocess][rightand][1]:
-                print("\tNeed to find rows that {} influence {}".format(nodetoconverge, rightand))
-                if 'rightand' not in typeofinfluence:
-                    typeofinfluence['rightand'] = set()
-                typeofinfluence['rightand'].add(rightand)
-
-        print("\t----Node {} influence node {} in type:----".format(nodetoconverge, childtoprocess))
-        for intype, nodes in typeofinfluence.items():
-            print("\t\t{}: {}".format(intype, nodes))
-        
-        if not typeofinfluence:
-            print("Node {} also under the influence of node {}, do normal filtering".format(nodetoconverge, begin))
-            if op == 'OR':
-                print("Take only the rows that {} is False".format(foreignerparent))
-                rowstoprocess = rowstoprocess.intersection(aindex[foreignerparent])
-            elif op == 'AND':
-                print("Take only the rows that {} is True".format(foreignerparent))
-                rowstoprocess = rowstoprocess.intersection(index[foreignerparent])
-            return rowstoprocess
-
-        for intype, nodes in typeofinfluence.items():
-            if intype == 'leftor': 
-                for innode in nodes: 
-                    # get the partner of the nodetoconverge 
-                    partner = formulas[innode].right.val
-                    print("Take only the rows that {} is False".format(partner))
-                    rowstoprocess = rowstoprocess.intersection(aindex[partner])
-            elif intype == 'rightor':
-                for innode in nodes:
-                    partner = formulas[innode].left.val
-                    print("Take only the rows that {} is False".format(partner))
-                    rowstoprocess = rowstoprocess.intersection(aindex[partner])
-
-            elif intype == 'leftand':
-                for innode in nodes:
-                    partner = formulas[innode].right.val
-                    print("Take only the rows that {} is True".format(partner))
-                    rowstoprocess = rowstoprocess.intersection(index[partner])
-                    if op == 'OR':
-                        print("And rows that all right or are False")
-                        for rightor in dicts['rightor']:
-                            print("{} should be False".format(rightor))
-                            rowstoprocess = rowstoprocess.intersection(aindex[diamonds[begin][childtoprocess][rightor][1]])
-                        rightandrows = set()
-                        print("And also rows that at least one rightand False") 
-                        for rightand in dicts['rightand']:
-                            # print("{} should be False".format(rightand))
-                            temrows = rowstoprocess.intersection(aindex[formulas[rightand].left.val])
-                            rightandrows.update(temrows)
-                        if rightandrows:
-                            rowstoprocess = rowstoprocess.intersection(rightandrows)
-
-                    elif op == 'AND':
-                        print("With AND operator, only need to take rows that {} is True".format(foreignerparent))
-                        rowstoprocess = rowstoprocess.intersection(index[foreignerparent])
-
-            elif intype == 'rightand':
-                for innode in nodes:
-                    partner = formulas[innode].left.val
-                    print("Take only the rows that {} is True".format(partner))
-                    rowstoprocess = rowstoprocess.intersection(index[partner])
-                    print("After taking rows that {} is True, rows are: \n{}".format(partner, sorted(list(rowstoprocess))))
-
-                    if op == 'OR':
-                        print("And rows that all left OR are False")
-                        for leftor in dicts['leftor']:
-                            print("{} should be False".format(leftor))
-                            rowstoprocess = rowstoprocess.intersection(aindex[diamonds[begin][childtoprocess][leftor][1]])
-                        leftandrows = set()
-                        print("And also only rows that at least one left AND False")
-                        for leftand in dicts['leftand']:
-                            print("{} should be False".format(leftand))
-                            temrows = rowstoprocess.intersection(aindex[formulas[leftand].right.val])
-                            leftandrows.update(temrows)
-                        if leftandrows:
-                            rowstoprocess = rowstoprocess.intersection(leftandrows)
-                        
-                    elif op == 'AND':
-                        print("With AND operator, only need to take rows that {} is True".format(foreignerparent))
-                        rowstoprocess = rowstoprocess.intersection(index[foreignerparent])
-    print("Rows of node {} after processing flipped diamond {} are: \n{}".format(nodetoconverge, childtoprocess, sorted(list(rowstoprocess))))
-    return rowstoprocess
-
-def diamondDigger_old(net, outname, formulas):
-    """
-    Identify diamond structures in the network starting from the output node.
-    A diamond structure is defined as a node that has multiple paths leading to it from a common ancestor node.
-    Args:
-        net (nx.DiGraph): The directed graph representing the network.
-        outname (str): The name of the output node to start the search from.
-        formulas (dict): A dictionary with species names as keys and their boolean formulas as values.
-    Returns:
-        dict: A dictionary mapping nodes to sets of ancestor nodes that form diamond structures.
-    """
-    print(f"\n\nFinding diamonds for output node {outname}")
-    # first round, locate all the diamonds and their endpoints, starting from output node 
-    curs = [outname]
-    carryonofnodes = dict() 
-
-    while curs:
-        print(f'\n\n Processing layer of {curs}')
-        nextlayer = []
-        for cur in curs: 
-            try:
-                form = formulas[cur]
-            except:
-                print(f"Encounter node {cur} without incoming edges")
-            inedges = list(net.in_edges(cur))
-            assert len(inedges) <= 2, print("Support only binary network")
-
-            if len(inedges) == 2: # care only about binary operator 
-                left = form.left.val 
-                right = form.right.val 
-                # first, carryon  current node cur 
-                if left not in carryonofnodes:
-                    carryonofnodes[left] = dict() 
-                
-                if cur not in carryonofnodes[left]:
-                    carryonofnodes[left][cur] = []
-                carryonofnodes[left][cur].append('L')
-
-
-                if right not in carryonofnodes:
-                    carryonofnodes[right] = dict() 
-
-                if cur not in carryonofnodes[right]:
-                    carryonofnodes[right][cur] = []
-                carryonofnodes[right][cur].append('R')
-
-                if cur in carryonofnodes:
-                    print(f"Now passing carry on of current node {cur} to its parents {left} and {right}")
-                    # distribute the carryon of current node to its parents 
-                    for node, carryon in carryonofnodes[cur].items():
-                        # carryonofnodes[left][node] = copy.deepcopy(carryonofnodes[cur][node]) 
-                        # print(node, carryon)
-                        if node not in carryonofnodes[left]:
-                            carryonofnodes[left][node] = []
-                        else:
-                            print("Node {} already in carry on of {}".format(node, left))
-                        
-                        if node not in carryonofnodes[right]:
-                            carryonofnodes[right][node] = []
-                        else:
-                            print("Node {} already in carry on of {}".format(node, right)) 
-
-                        for side in carryon:
-                            carryonofnodes[left][node].append(side + 'L')
-                            carryonofnodes[right][node].append(side + 'R')
-                        
-                        # carryonofnodes[right][node].extend(carryon)
-                        # carryonofnodes[right][node].append('R')
-                        # for side in carryonofnodes[left][node]: 
-                        #     # print(side)
-                        #     carryonofnodes[left][node].append('L')
-
-                        # carryonofnodes[right][node] = copy.deepcopy(carryonofnodes[cur][node]) 
-                        # for side in carryonofnodes[right][node]: 
-                        #     # print(side)
-                        #     carryonofnodes[right][node].append('R')
-
-                if left not in nextlayer:
-                    nextlayer.append(left)
-                if right not in nextlayer:
-                    nextlayer.append(right)
-                
-                print("Carryon of {:20}: {}".format(left,carryonofnodes[left]))
-                print("Carryon of {:20}: {}".format(right,carryonofnodes[right]))
-            elif len(inedges) == 1:
-                singlemon = inedges[0][0] 
-
-                #just pass all the carry on of current node cur to its single mom 
-                if singlemon not in carryonofnodes:
-                    carryonofnodes[singlemon] = dict()
-
-                if cur in carryonofnodes:
-                    print(f"Now passing carry on of current node {cur} to its singlemon {singlemon}")
-                    for node, carryon in carryonofnodes[cur].items():
-                        if node not in carryonofnodes[singlemon]:
-                            carryonofnodes[singlemon][node] = []
-                        else:
-                            print(f"Node {node} already in carry on of node {singlemon}")
-                        
-                        for side in carryon:
-                            carryonofnodes[singlemon][node].append(side)
-                        
-
-                if singlemon not in nextlayer:
-                    nextlayer.append(singlemon)
-                print("Carryon of {:20}: {}".format(singlemon,carryonofnodes[singlemon]))
-            else:
-                print(f"Node {cur} has no input, pass") 
-        curs = nextlayer
-
-    diamonds = dict()
-    print ("-----------------Now check DIAMONDS from the resulted carryons--------------------------")
-    for node, carryon in carryonofnodes.items():
-        print(f"Carryon of {node}")
-        if len(net.out_edges(node)) > 1:
-            for one, onelist in carryon.items():
-                print("{:20}: {}".format(one, onelist))
-                L, R = False, False
-                for astr in onelist:
-                        tostop = False 
-                        side = astr[0] 
-                        if side == 'L':
-                            L = True 
-                        if side == 'R':
-                            R = True
-                if L and R:
-                    print("\tNode {} should inherit the carryon rows of node {}".format(node, one))
-                    if node not in diamonds:
-                        diamonds[node] = set()
-                    diamonds[node].add(one)
-
-    return diamonds
-
-
-def findConstraints(net, output, formulas, debug = False):
-    """
-    Find constraints for all nodes in the network that influence the given output node.
-    Args:
-        net (nx.DiGraph): The directed graph representing the network.
-        output (str): The name of the output node to start the search from.
-        formulas (dict): A dictionary with species names as keys and their boolean formulas as values.
-        debug (bool): If True, print debug information.
-    Returns: 
-        dict: A dictionary mapping nodes to their constraints.
-    """
-    print("\nFinding constraints for output {}".format(output))
-    # convert formulas from list to dictionary
-    # formulas pass here is a list of string
-    fordict = copy.deepcopy(formulas)
-    # for term, formula in formulas.items():
-    #     # fordict[formula['left']] = formula['right']
-    #     fordict[term] = formula
-    # if debug:
-    #     print("Formulas are converted to dictionary form")
-    #     # print(fordict)
-
-    # traverse the graph from the output to the top to get the filter list of all the nodes 
-    filters = dict()
-    filters[output] = dict()
-
-    curs = [output] # curs is a list of nodes at the same level (layer)
-    while curs:
-        if debug:
-            print("Current layer includes {}".format(curs))
-        nextlayer = []
-        for i in range(len(curs)):
-            cur = curs.pop(0) 
-            # print("Working with {}".format(cur))
-            # find constraints for the parent nodes of the current node
-            inedges = list(net.in_edges(cur))
-            num = len(inedges) # can be only 1 or 2 because of binary tree 
-            assert num <= 2, print("Propagate function only supports binary tree at the moment")
-            if num == 2: # filter is needed only in case of binary operators 
-                edge1 = inedges.pop(0)
-                edge2 = inedges.pop(0)
-                com1 = edge1[0]
-                com2 = edge2[0]
-
-                # check if parent nodes influences multiple nodes from this current layer
-                # need to release all the contraints inherit for the dependent node
-                if com1 in filters:
-                    # print(com1, ":", filters[com1])
-                    if cur in filters[com1]:
-                        filters[com1].pop(cur)
-
-                if com2 in filters:
-                    # print(com2, ":", filters[com2])
-                    if cur in filters[com2]:
-                        filters[com2].pop(cur)
-                
-                # if fordict[cur] is a string, convert to Node 
-                if isinstance(fordict[cur], str):
-                    temdict = dict()
-                    temdict['right'] = fordict[cur]
-                    temdict['left'] = cur
-                    fordict[cur] = parseFormula(temdict, debug) 
-
-                            
-                op = fordict[cur].val
-                if debug:
-                    print(com1, op, com2)
-                if op.upper() == "AND":
-                    if com1 not in filters:
-                        filters[com1] = copy.deepcopy(filters[cur])
-                    filters[com1][com2] = True
-
-                    if com2 not in filters:
-                        filters[com2] = copy.deepcopy(filters[cur])
-                    filters[com2][com1] = True
-
-                elif op.upper() == "OR":
-                    if com1 not in filters:
-                        filters[com1] = copy.deepcopy(filters[cur])
-                    filters[com1][com2] = False
-                    
-                    if com2 not in filters:
-                        filters[com2] = copy.deepcopy(filters[cur])
-                    filters[com2][com1] = False
-        
-                if com1 not in nextlayer:
-                    nextlayer.append(com1)
-                if com2 not in nextlayer:
-                    nextlayer.append(com2)
-            elif num == 1: 
-                onlyedge = inedges.pop(0)
-                onlycom = onlyedge[0]
-
-                if onlycom in filters:
-                    print(filters[onlycom])
-                    if cur in filters[onlycom]:
-                        filters[onlycom].pop(cur)
-
-                if onlycom not in filters:
-                    filters[onlycom] = copy.deepcopy(filters[cur])
-
-                if onlycom not in nextlayer:
-                    nextlayer.append(onlycom)
-                
-            else:
-                print("Reach node {} without in-comming edges".format(cur))
-                continue 
-        curs = nextlayer
-
-    if debug:
-        for id, item in filters.items():
-            print(id,":", item)
-
-    return filters
+    return diamonds #, {'flipped': None} # dnomaids
 
