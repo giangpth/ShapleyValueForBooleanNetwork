@@ -1052,7 +1052,7 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
         for outname in outputnames:
             time3 = time.time() 
             print("=======PROPAGATE FOR OUTPUT {}=======".format(outname)) 
-            diamonds = diamondDigger(binet, outname, biformulasdict, True) 
+            diamonds = diamondDigger(binet, outname, biformulasdict, debug=False) 
             # finediamonds = refineDiamonds(binet, biformulasdict, diamonds)
             
             if debug:
@@ -1061,12 +1061,12 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                     print(f"Node {begin} has diamonds: {ends}")
 
             masterDiamonds = findMasterDiamond(binet, diamonds) 
-            if debug:
+            if True:
                 print("----Master diamonds-----")
                 print(masterDiamonds)
             # rowsofnodes = propagateWithDiamonds(binet, table, index, aindex, outname, biformulasdict, extranodes, masterDiamonds)
             # need to take order of nodes to simulate the diamond and pass to the function
-            rowsofnodes = propagate(binet, table, index, aindex, outname, biformulasdict, biformulas, extranodes, nodetosimulate, masterDiamonds, inputnames, orderedBiNodes, True)
+            rowsofnodes = propagate(binet, table, index, aindex, outname, biformulasdict, biformulas, extranodes, nodetosimulate, masterDiamonds, inputnames, orderedBiNodes, debug=False)
             # rowsofnodes = rowsofnodes | inrows
 
             propko, propki = rowstovalues(rowsofnodes, table, outname)

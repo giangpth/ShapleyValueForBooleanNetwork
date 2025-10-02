@@ -465,7 +465,7 @@ def processMasterDiamonds(net, table, node, masterDiamonds, rowsofsinknodes, ind
                 print(f"End node {target} has no rows to be filtered, continue") 
             return set() 
         
-        rowstoreturn = simulateDiamondOneStep(net, table, node, target, formulas, rowsofsinknodes[target], orderedBiNodes, True)
+        rowstoreturn = simulateDiamondOneStep(net, table, node, target, formulas, rowsofsinknodes[target], orderedBiNodes, debug)
         if debug:
             print("Rows after process diamond {} to {} are: \n{}".format(node, target, sorted(list(rowstoreturn))))
         return rowstoreturn 
@@ -1038,7 +1038,7 @@ def diamondDigger(binet, outname, biformulas, debug=False):
     # reversenet = binet.reverse(copy=True) # reverse the network to get the in-comming edges
     # relevantnodes = nx.descendants(reversenet, outname) # get all the nodes that are relevant to the output node
     # relevantnodes.add(outname) # add the output node to the relevant nodes
-    processed = set() # save all the processed formulas 
+    # processed = set() # save all the processed formulas 
     # relevantgraph = binet.subgraph(relevantnodes) # get the subgraph of the relevant nodes 
     relevantgraph = binet
     # showNetwork(relevantgraph, None, None, None, None, "relevantgraph.html")
@@ -1067,11 +1067,11 @@ def diamondDigger(binet, outname, biformulas, debug=False):
             if len(inedges) == 2:
                 if not silent:
                     print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
-                stringform = cur + " = " + form.left.val + " " + form.val +  " " + form.right.val
-                if stringform in processed:
-                    continue
-                else:
-                    processed.add(stringform)
+                # stringform = cur + " = " + form.left.val + " " + form.val +  " " + form.right.val
+                # if stringform in processed: # this cause wrong in some case 
+                #     continue
+                # else:
+                #     processed.add(stringform)
                 
                 if form.left.val not in nextlayer:
                     nextlayer.append(form.left.val)
@@ -1162,20 +1162,20 @@ def diamondDigger(binet, outname, biformulas, debug=False):
 
             else:
                 if form.val == 'NOT':
-                    stringform = cur + " = NOT " + form.right.val
-                    if stringform in processed:
-                        continue
-                    else:
-                        processed.add(stringform)
+                    # stringform = cur + " = NOT " + form.right.val
+                    # if stringform in processed:
+                    #     continue
+                    # else:
+                    #     processed.add(stringform)
                     singlemom = form.right.val
                     if not silent:
                         print(f"{cur} === NOT {singlemom}")
                 else:
-                    stringform = cur + " = " + form.val
-                    if stringform in processed:
-                        continue
-                    else:
-                        processed.add(stringform)
+                    # stringform = cur + " = " + form.val
+                    # if stringform in processed:
+                    #     continue
+                    # else:
+                    #     processed.add(stringform)
                     singlemom = form.val
                     if not silent:
                         print(f"{cur} === {singlemom}")
