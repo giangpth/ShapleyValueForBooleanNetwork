@@ -8,23 +8,52 @@ import random
 import numpy as np
 from Shapley.exceptions import InforError
 
-# def rank_dict_values(d):
-#     # Sort items by value descending
-#     sorted_items = sorted(d.items(), key=lambda x: -x[1])
-    
-#     ranks = {}
-#     current_rank = 1
-#     last_value = None
+from math import isfinite
 
-#     for key, value in sorted_items:
-#         if value != last_value:
-#             last_value = value
-#             ranks[key] = current_rank
-#             current_rank += 1
-#         else:
-#             ranks[key] = current_rank - 1  # Same as previous rank
-    
-#     return ranks
+def tie_buckets_abs(values, atol=1e-4, rtol=1e-4, rep="max"):
+    """
+    values: dict[key] -> float (will use absolute value)
+    returns: dict[key] -> (bucket_id, bucket_rep)
+    """
+    items = [(k, abs(v)) for k, v in values.items() if isfinite(v)]
+    items.sort(key=lambda kv: kv[1], reverse=True)
+
+    def close(a, b):
+        return abs(a-b) <= max(atol, rtol*max(abs(a), abs(b)))
+
+    buckets, current = [], []
+    for k, val in items:
+        if not current:
+            current = [(k, val)]
+        else:
+            # compare to representative of current bucket
+            ref = (max(x[1] for x in current) if rep=="max"
+                   else (sum(x[1] for x in current)/len(current)))
+            if close(val, ref):
+                current.append((k, val))
+            else:
+                buckets.append(current)
+                current = [(k, val)]
+    if current:
+        buckets.append(current)
+
+    # assign bucket ids and representatives
+    out = {}
+    for bid, bucket in enumerate(buckets, start=1):
+        rep_val = (max(x[1] for x in bucket) if rep=="max"
+                   else (sum(x[1] for x in bucket)/len(bucket)))
+        for k, _ in bucket:
+            out[k] = (bid, rep_val)
+    return out
+
+def dense_ranks_from_buckets(bucket_map):
+    # bucket_id already encodes order (1 = top)
+    return {k: bucket_map[k][0] for k in bucket_map}
+
+# Example: build ranks for baseline and propagated, then use your tie-aware metrics
+# base_ranks = dense_ranks_from_buckets(tie_buckets_abs(baseline, atol=1e-6, rtol=1e-6))
+# prop_ranks = dense_ranks_from_buckets(tie_buckets_abs(propagated, atol=1e-6, rtol=1e-6))
+
 
 def rank_dict_values(d, method="dense", tol=None, largest=True):
     """

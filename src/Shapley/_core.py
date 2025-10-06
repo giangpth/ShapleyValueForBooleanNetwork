@@ -7,9 +7,10 @@ import time
 
 
 from Shapley.visualization import showNetwork
-from Shapley.utilities import parseArguments, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput, rank_dict_values, top_matches
+from Shapley.rankingEvaluation import compare_rankings, print_rank_comparison
+from Shapley.utilities import parseArguments, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput
 from Shapley.shapleyCalculation import extractPhe, calKSV4Input, calKSV 
-from Shapley.networkUtilities import diamondDigger, getOutput, getKnockoutOutput, simBinaryNetwork, findMasterDiamond, processMasterDiamonds, nodes_on_cycles_digraph, simulateOneNode
+from Shapley.networkUtilities import diamondDigger, getOutput, getKnockoutOutput, simBinaryNetwork, findMasterDiamond, processMasterDiamonds, simulateOneNode
 from Shapley.speciesHandler import getSpeciesName, getInputNames, genInput, initSpeciesStates
 from Shapley.booleanFormulaHandler import parseFormula, toBinaryFormulas, getFormula
 from Shapley.networkHandler import convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, manipulateNetwork, rewireBinet
@@ -400,113 +401,226 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
     return decimalPairs, koinputshapss, timesimori, timeori
            
 
-
-# def propagateUnrollNetwork(unrollednet, simtable, outname, unrolledformulas, index, aindex, extranodes, unrollednodes):
+def propagateCyclic(net, simtable, index, aindex, outname, formulas, simformulas, extranodes, nodestosim, masterDiamonds, inputnames, orderedBiNodes, debug=False):
     """
-    Propagate values through the unrolled network to determine the rows of nodes.
+    Propagate values through the network considering diamond structures to determine the rows of nodes.
     Parameters:
-        unrollednet: The unrolled directed graph
+        net: The directed graph
         simtable: The simulation table with input-output mappings
-        outname: The output node name
-        unrolledformulas: Dictionary of boolean formulas for the unrolled network
-        index: Dictionary mapping nodes to rows where they are True
+        index: Dictionary mapping nodes to rows where they are True 
         aindex: Dictionary mapping nodes to rows where they are False
+        outname: The output node name
+        formulas: Dictionary of boolean formulas for the network
         extranodes: List of extra nodes added to the network
-        unrollednodes: Dictionary mapping unrolled nodes to their original nodes
+        diamonds: Dictionary of diamond structures in the network
     Returns:
-        rowsofnodes: Dictionary mapping each node to the set of rows it is associated with
+        countedrowsofnode: Dictionary mapping each node to the set of rows it is associated with
     """
-    print("\n\n-------PROPAGATING unrolled network-------")
-    curs = [outname] # start from the output node
-    rowsofnodes = dict() # save the rows of nodes that are counted by this node
+    print("\n\n--------PROPAGATION--------")
+    curs = [outname]
+    countedrowsofnode = dict() # countedrowsofnode[node] = set of rows that make node count
+    rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
+    solddiamonds = set() # save the diamonds that are already converged for a node (key) to avoid doing it again
+    alreadysimulated = set() # save the nodes that are already simulated to avoid doing it again
+    encountered = set()
     while curs:
-        print("\n\n---Processing layers of {}---".format(curs))
+        if debug:
+            print("\n\n---Processing layers of {}---".format(curs))
         nextlayer = []
         for cur in curs:
+            encountered.add(cur)
             try:
-                form = unrolledformulas[cur][0]
-                form.display()
+                form = formulas[cur]
             except:
-                print("\nReach node {} without in-comming edges".format(cur))
+                if debug:
+                    print("\nReach node {} without in-comming edges".format(cur))
                 continue
-
             # get incoming edge to cur node
-            inedges = list(unrollednet.in_edges(cur))
+            inedges = list(net.in_edges(cur))
             assert len(inedges) <= 2, print("Support only binary network")
-            # while cur in unrollednodes:
-            #     cur = unrollednodes[cur]
-            #  if cur  is unrolled, then get the original node
-            if cur not in rowsofnodes:
-                rowsofnodes[cur] = set(range(len(simtable)))
-            curset = rowsofnodes[cur]
-            print(f"Current rows of node {cur} are: \n{sorted(list(curset))}")
+            if cur not in countedrowsofnode: # count all rows
+                countrows = set(range(len(simtable)))
+                countedrowsofnode[cur] = countrows
+            else: # count only rows that cur is counted
+                countrows = countedrowsofnode[cur]
+            if debug:
+                print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
+            if len(inedges) == 2: 
+                if debug:
+                    print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                # get operator
+                op = form.val 
+                # check if one of the node is extranode 
+                leftselfloop, rightselfloop = False, False
+                leftroot, rightroot = None, None
+                leftdes, rightdes = None, None
+                if form.left.val in extranodes: 
+                    if debug:
+                        print(f"Left node {form.left.val} is an extra node")
+                    # get the root node of the extra node 
+                    leftroot = form.left.val.split("_to_")[0]
+                    leftdes = form.left.val.split("_to_")[1]
+                    if leftroot == leftdes:
+                        leftselfloop = True
 
-            if len(inedges) == 2:
-                print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
-                if form.left.val not in nextlayer:
+                if form.right.val in extranodes:
+                    if debug:
+                        print(f"Right node {form.right.val} is an extra node")
+                    # get the root node of the extra node
+                    rightroot = form.right.val.split("_to_")[0]
+                    rightdes = form.right.val.split("_to_")[1]
+                    if rightroot == rightdes:
+                        rightselfloop = True
+
+                # now start to process 
+                if op == 'OR': 
+                    # rows that left counted are rows that right = False 
+                    if not rightselfloop:
+                        leftrows = aindex[form.right.val]
+                    else:
+                        leftrows = countedrowsofnode[cur]
+
+                    # rows that right counted are rows that left = False 
+                    if not leftselfloop:
+                        rightrows = aindex[form.left.val]
+                    else:
+                        rightrows = countedrowsofnode[cur]
+                elif op == 'AND':
+                    leftrows = index[form.right.val]
+                    # rows that right counted are rows that left = True 
+                    rightrows = index[form.left.val]
+                else:
+                    print(f"Do not support operator {op}")
+                    break
+                    
+                rowsofsinknodes[cur] = countedrowsofnode[cur] # save the rows of the sink node
+                
+                #rows of current node cur are propagated to parents only in the case cur is not belong to a diamond of the parent 
+                # check left parent first 
+                if form.left.val in nodestosim:
+                    if form.left.val not in inputnames:
+                    # if 1:
+                        if form.left.val in alreadysimulated:
+                            if debug:
+                                print(f"Left node {form.left.val} is already simulated, skip it")
+                        else:
+                            alreadysimulated.add(form.left.val)
+                            if debug:
+                                print(f"Left node {form.left.val} is a node to simulate, simulate it with all rows of {cur}")
+                            ressimrows = simulateOneNode(simtable, form.left.val, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
+                            countedrowsofnode[form.left.val] = ressimrows
+                else:
+                    if form.left.val not in inputnames:
+                    # if 1:
+                        if form.left.val not in countedrowsofnode:
+                            countedrowsofnode[form.left.val] = set()
+                        if form.left.val not in masterDiamonds:
+                            # intersect with rows that cur is count 
+                            leftrows = leftrows.intersection(countrows)
+                            if debug:
+                                print(f"After operator {op}, {form.left.val} count only rows: \n{sorted(list(leftrows))}")
+                            countedrowsofnode[form.left.val].update(leftrows)
+                        else: 
+                            if debug:
+                                print("PROCESS DIAMONDS for {}".format(form.left.val))
+                            rowsfromdiamonds = processMasterDiamonds(net, simtable, form.left.val, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds, orderedBiNodes, debug)
+                            # rowsfromdiamonds = processDiamond(net, simtable, form.left.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+                            countedrowsofnode[form.left.val].update(rowsfromdiamonds) 
+                
+                # check right parent
+                if form.right.val in nodestosim:
+                    if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
+                    # if 1:
+                        if form.right.val in alreadysimulated:
+                            if debug:
+                                print(f"Right node {form.right.val} is already simulated, skip it")
+                        else:
+                            alreadysimulated.add(form.right.val)
+                            if debug:
+                                print(f"Right node {form.right.val} is a node to simulate, simulate it with all rows of {cur}")
+                            ressimrows = simulateOneNode(simtable, form.right.val, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
+                            countedrowsofnode[form.right.val] = ressimrows
+                    
+                else:
+                    if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
+                    # if 1:
+                        if form.right.val not in countedrowsofnode:
+                            countedrowsofnode[form.right.val] = set()
+                        if form.right.val not in masterDiamonds:
+                            # intersect with rows that cur is count 
+                            rightrows = rightrows.intersection(countrows)
+                            if debug:
+                                print(f"After operator {op}, {form.right.val} count only rows: \n{sorted(list(rightrows))}")
+                            countedrowsofnode[form.right.val].update(rightrows)
+                        else:
+                            if debug:
+                                print("PROCESS DIAMONDS for {}".format(form.right.val))
+                            rowsfromdiamonds = processMasterDiamonds(net, simtable, form.right.val, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds, orderedBiNodes, debug)
+                            # rowsfromdiamonds = processDiamond(net, simtable, form.right.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+                            countedrowsofnode[form.right.val].update(rowsfromdiamonds)
+
+                if form.left.val not in nextlayer and form.left.val not in encountered:
                     nextlayer.append(form.left.val)
-                if form.right.val not in nextlayer:
+                if form.right.val not in nextlayer and form.right.val not in encountered:
                     nextlayer.append(form.right.val)
 
-               
-                left = form.left.val
-                while left in unrollednodes:
-                    left = unrollednodes[left]
-                print(f"Left node {form.left.val} is unrolled to {left}")
-               
-                right = form.right.val
-                while right in unrollednodes:
-                    right = unrollednodes[right]
-                print(f"Right node {form.right.val} is unrolled to {right}") 
-
-                print(f"Rows of node {form.left.val} before inferred from {cur} are: \n{sorted(list(rowsofnodes.get(form.left.val, set()))) }")
-                print(f"Rows of node {form.right.val} before inferred from {cur} are: \n{sorted(list(rowsofnodes.get(form.right.val, set()))) }")
-                
-                if form.val == 'OR':
-                    if form.right.val not in rowsofnodes:
-                        rowsofnodes[form.right.val] = set()
-                    # right takes all the rows that left is False 
-                    rowsofnodes[form.right.val].update(curset.intersection(aindex[left]))
-
-                    if form.left.val not in rowsofnodes:
-                        rowsofnodes[form.left.val] = set()
-                    # left takes all the rows that right is False
-                    rowsofnodes[form.left.val].update(curset.intersection(aindex[right]))
-
-                if form.val == 'AND':
-                    if form.right.val not in rowsofnodes:
-                        rowsofnodes[form.right.val] = set()
-                    # right takes all the rows that left is True 
-                    rowsofnodes[form.right.val].update(curset.intersection(index[left]))
-
-                    if form.left.val not in rowsofnodes:
-                        rowsofnodes[form.left.val] = set()
-                    # left takes all the rows that right is True
-                    rowsofnodes[form.left.val].update(curset.intersection(index[right]))
-                
-                print(f"Rows of node {form.left.val} inferred from {cur} are: \n{sorted(list(rowsofnodes[form.left.val]))}")
-                print(f"Rows of node {form.right.val} inferred from {cur} are: \n{sorted(list(rowsofnodes[form.right.val]))}")
+                if leftroot and (leftroot not in encountered) and (leftroot not in nextlayer):
+                    print(f"Extranodes {form.left.val}, add {leftroot} to nextlayer")
+                    nextlayer.append(leftroot)
+                if rightroot and (rightroot not in encountered) and (rightroot not in nextlayer):
+                    print(f"Extranodes {form.right.val}, add  {rightroot} to nextlayer")
+                    nextlayer.append(rightroot)
             else:
                 if form.val == 'NOT':
                     singlemom = form.right.val
-                    print(f"{cur} === NOT {singlemom}")
+                    if debug:
+                        print(f"{cur} === NOT {singlemom}")
                 else:
                     singlemom = form.val
-                    print(f"{cur} === {singlemom}")
-
-                print(f"Rows of node {singlemom} before inferred from {cur} are: \n{sorted(list(rowsofnodes.get(singlemom, set()))) }")
-
-                if singlemom not in rowsofnodes:
-                    rowsofnodes[singlemom] = set()
-                rowsofnodes[singlemom].update(curset)
+                    if debug:
+                        print(f"{cur} === {singlemom}")
                 
-                print(f"Rows of node {singlemom} inferred from {cur} are: \n{sorted(list(rowsofnodes[singlemom]))}")
+                singleroot, singledes = None, None 
+                if singlemom in extranodes:
+                    singleroot = singlemom.split("_to_")[0]
+                    singledes = singlemom.split("_to_")[1]
+                
+                
+                if singlemom in nodestosim:
+                    if singlemom not in inputnames:
+                        if singlemom in alreadysimulated:
+                            if debug:
+                                print(f"Node {singlemom} is already simulated, skip it")
+                        else:
+                            alreadysimulated.add(singlemom)
+                            if debug:
+                                print(f"Node {singlemom} is a node to simulate, simulate it with all rows of {cur}")
+                            ressimrows = simulateOneNode(simtable, singlemom, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
+                            countedrowsofnode[singlemom] = ressimrows
+                else:
+                    if singlemom not in inputnames: 
+                    # if 1:
+                        if singlemom not in countedrowsofnode:
+                            countedrowsofnode[singlemom] = set()
+                        # check if current node cur is in a diamond of singlemom
+                        if singlemom not in masterDiamonds:
+                            countedrowsofnode[singlemom].update(countrows)
+                        else:
+                            if debug:
+                                print("PROCESS DIAMONDS for {}".format(singlemom))
+                            rowsfromdiamonds = processMasterDiamonds(net, simtable, singlemom, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds, orderedBiNodes, debug)
+                            # rowsfromdiamonds = processDiamond(net, simtable, singlemom, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+                            countedrowsofnode[singlemom].update(rowsfromdiamonds)
 
-                if singlemom not in nextlayer:
+                if singlemom not in nextlayer and singlemom not in encountered:
                     nextlayer.append(singlemom)
+                if singleroot and singleroot not in encountered and singleroot not in nextlayer:
+                    print(f"Extranodes {singleroot}, add {singleroot} to nextlayer")
+                    nextlayer.append(singleroot)
+            if debug:
+                print("\t\t\t---------------")
         curs = nextlayer
-    return rowsofnodes
-
+    return countedrowsofnode
 
 def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extranodes, nodestosim, masterDiamonds, inputnames, orderedBiNodes, debug=False):
     """
@@ -603,8 +717,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
                 #rows of current node cur are propagated to parents only in the case cur is not belong to a diamond of the parent 
                 # check left parent first 
                 if form.left.val in nodestosim:
-                    # if form.left.val not in inputnames:
-                    if 1:
+                    if form.left.val not in inputnames:
                         if form.left.val in alreadysimulated:
                             if debug:
                                 print(f"Left node {form.left.val} is already simulated, skip it")
@@ -615,8 +728,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
                             ressimrows = simulateOneNode(simtable, form.left.val, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
                             countedrowsofnode[form.left.val] = ressimrows
                 else:
-                    # if form.left.val not in inputnames:
-                    if 1:
+                    if form.left.val not in inputnames:
                         if form.left.val not in countedrowsofnode:
                             countedrowsofnode[form.left.val] = set()
                         if form.left.val not in masterDiamonds:
@@ -634,8 +746,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
                 
                 # check right parent
                 if form.right.val in nodestosim:
-                    # if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
-                    if 1:
+                    if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
                         if form.right.val in alreadysimulated:
                             if debug:
                                 print(f"Right node {form.right.val} is already simulated, skip it")
@@ -647,8 +758,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
                             countedrowsofnode[form.right.val] = ressimrows
                     
                 else:
-                    # if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
-                    if 1:
+                    if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
                         if form.right.val not in countedrowsofnode:
                             countedrowsofnode[form.right.val] = set()
                         if form.right.val not in masterDiamonds:
@@ -691,8 +801,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
                             ressimrows = simulateOneNode(simtable, singlemom, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
                             countedrowsofnode[singlemom] = ressimrows
                 else:
-                    # if singlemom not in inputnames: 
-                    if 1:
+                    if singlemom not in inputnames: 
                         if singlemom not in countedrowsofnode:
                             countedrowsofnode[singlemom] = set()
                         # check if current node cur is in a diamond of singlemom
@@ -898,10 +1007,10 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
     bistrformulas = toBinaryFormulas(formulas, debug)
     binet, nodes_positions = convertBiBooleanFormulas2Network(bistrformulas, inputnames, orispeciesnames, "bi" + networkname, False, debug, extranodes) 
     protime += time.time() - time1 
-    ''' # unfinised work on handling cycles 
+
+    ''' # unfinised work on handling cycles
     # cycledbinet = rewireBinet(binet, extranodes) # rewire the binet to remove self-loop caused by extra nodes
     # showNetwork(cycledbinet, None, None, None, None, 'cyclebinet.html')
-
     # nodesincycles = nodes_on_cycles_digraph(cycledbinet)
     # nodetosimulate = set()
     # if nodesincycles:
@@ -919,6 +1028,7 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
     
     # nodetosimulate = set()
     '''
+
     nodetosimulate = set()
 
     for outname in outputnames:
@@ -926,9 +1036,8 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
 
     time2 = time.time()
     biformulas = [] # this list of dictionary is for the simulation, maintaining correctly the order for the simulation 
-    biformulasdict = dict() # this is for the expanding function 
+    biformulasdict = dict() # this is for the diamond digger 
     bispeciesnames = set() 
-    biformulasdictandorder = dict() # this is for the unroll function, to keep the order of the binary formulas
     # for term, bistrformula in bistrformulas.items():
     orderedBiNodes = dict()
     for i, formula in enumerate(bistrformulas):
@@ -941,9 +1050,6 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
         thisbiformula['term'] = term
         thisbiformula['formula'] = parseFormula(thisfor, debug) 
         biformulasdict[term] = thisbiformula['formula'] 
-
-        forunroll = copy.deepcopy(thisbiformula['formula']) # make a copy of the formula for unrolling later
-        biformulasdictandorder[term] = (forunroll, i) # save the order of the binary formulas, also for the unrolling later
 
         biformulas.append(thisbiformula)
 
@@ -1033,14 +1139,6 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                     kioutputs.append(output)
                 genphe = extractPhe(inputnames, outputnames, kioutputs)
                 vski[internode] = genphe
-
-                # all_vars = sorted({var for inner in kioutputs for var in inner})
-                # if internode == 'CI_p' or internode == 'ci':
-                #     print("---- Binary KNOCKIN VALUE for node {}----".format(internode))
-                #     for trow in kioutputs:
-                #         prow = "".join(f"{var: <14}:{int(trow.get(var, False)): <2}" for var in all_vars)
-                #         print(prow)
-
         kishaps, kirows = calKSV(intactbigenphe, vski, outputnames, len(inputnames), table, inputnames)
         for outname in outputnames:
             print("---- Binary KNOCKIN VALUE for output {}----".format(outname))
@@ -1066,10 +1164,11 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                 print(masterDiamonds)
             # rowsofnodes = propagateWithDiamonds(binet, table, index, aindex, outname, biformulasdict, extranodes, masterDiamonds)
             # need to take order of nodes to simulate the diamond and pass to the function
-            rowsofnodes = propagate(binet, table, index, aindex, outname, biformulasdict, biformulas, extranodes, nodetosimulate, masterDiamonds, inputnames, orderedBiNodes, debug=False)
-            # rowsofnodes = rowsofnodes | inrows
+            rowsofnodes = propagateCyclic(binet, table, index, aindex, outname, biformulasdict, biformulas, extranodes, nodetosimulate, masterDiamonds, inputnames, orderedBiNodes, debug=debug)
+            rowsofnodes = rowsofnodes | inrows 
 
             propko, propki = rowstovalues(rowsofnodes, table, outname)
+
             for node, value in propko.items():
                 propko[node] = round(propko[node], 4)
                 propki[node] = round(propki[node], 4)
@@ -1077,90 +1176,33 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
             protime += time.time() - time3
 
             if isko and iski:
+                calko = bikoinshapss[outname] | koshaps[outname]
+                calki = bikiinshapss[outname] | kishaps[outname]
+
+                unreachablekeys = calko.keys() - propko.keys() 
+                print(f"There are {len(unreachablekeys)} unreachable nodes, they are:")
+                print(unreachablekeys)
+
                 errorko = 0.0
                 errorki = 0.0 
                 num = 0
-                for outname in outputnames:
-                    showNetwork(binet, bikoinshapss[outname], bikiinshapss[outname], koshaps[outname], kishaps[outname], "binary.html")
-                    for node, tvalue in bikoinshapss[outname].items():
-                        try:
-                            if abs(tvalue - propko[node]) >= 0.005 or abs(bikiinshapss[outname][node] - propki[node]) >= 0.005:
-                                print("{:20} - Correct: KO: {:10} | KI: {:10} - Incorrect: KO: {:10} | KI: {:10}".format(node, tvalue, bikiinshapss[outname][node], propko[node], propki[node]))
-                            errorko += (tvalue - propko[node])*(tvalue - propko[node])
-                            errorki += (bikiinshapss[outname][node] - propki[node])*(bikiinshapss[outname][node] - propki[node])
-                            num += 1
-                        except:
-                            # print("Cannot find {} in the set".format(node))
-                            continue
-                    for node, tvalue in koshaps[outname].items():
-                        try:
-                            if abs(koshaps[outname][node] - propko[node]) >= 0.005 or abs(kishaps[outname][node] - propki[node]) >= 0.005:
-                                print("{:20} - Correct: KO: {:10} | KI: {:10} - Incorrect: KO: {:10} | KI: {:10}".format(node, tvalue, kishaps[outname][node], propko[node], propki[node]))
-                            errorko += (tvalue - propko[node])*(tvalue - propko[node])
-                            errorki += (kishaps[outname][node] - propki[node])*(kishaps[outname][node] - propki[node])
-                            num += 1
-                        except:
-                            # print("Cannot find {} in the set".format(node))
-                            continue
-                
-                print("Number of nodes is {}".format(num))
-                print("Error KO: ", math.sqrt(errorko/num))
-                print("Error KI: ", math.sqrt(errorki/num))
-
-                # also get the order of nodes to compare 
-
-                calshapko = dict()
-                calshapki = dict()
-                for outname in outputnames:
-                    for node, tvalue in koshaps[outname].items():
-                        if node in propko:
-                            calshapko[node] = tvalue
-                    for node, tvalue in kishaps[outname].items():
-                        if node in propko:
-                            calshapki[node] = tvalue
-                    for node, tvalue in bikoinshapss[outname].items():
-                        if node in propko:
-                            calshapko[node] = tvalue
-                    for node, tvalue in bikiinshapss[outname].items():
-                        if node in propko:
-                            calshapki[node] = tvalue
-
-                rankedcalko = rank_dict_values(koshaps[outname] | bikoinshapss[outname])
-                rankedcalki = rank_dict_values(kishaps[outname] | bikiinshapss[outname])
-                print("Rank calculated KO:")
-                print(rankedcalko)
-
-                print("Rank calculated KI:")
-                print(rankedcalki)
+                showNetwork(binet, bikoinshapss[outname], bikiinshapss[outname], koshaps[outname], kishaps[outname], "binary.html")
+                for node, value in calko.items():
+                    num += 1
+                    if node not in propko:
+                        propko[node] = 0.0
+                    if node not in propki:
+                        propki[node] = 0.0 
+                    if abs(value - propko[node]) >= 0.005 or abs(calki[node] - propki[node]) >= 0.005:
+                        print("{:20} - Correct: KO: {:10} | KI : {:10} - Incorrect KO: {:10} | KI: {:10}".format(node, value, calki[node], propko[node], propki[node]))
+                    errorko += (value - propko[node])*(value - propko[node])
+                    errorki += (calki[node] - propki[node])*(calki[node] - propki[node])
 
                 del propko[outname]
                 del propki[outname]
 
-                rankedko = rank_dict_values(propko)
-                rankedki = rank_dict_values(propki)
-                print("Rank propagated KO:")
-                print(rankedko)
-
-                print("Rank propagated KI:")
-                print(rankedki)
-                rankerrorko = 0
-                rankerrorki = 0
-                for node, rank in rankedko.items():
-                    if rank != rankedcalko[node]:
-                        rankerrorko += 1
-
-                for node, rank in rankedki.items():
-                    if rank != rankedcalki[node]:
-                        rankerrorki += 1
-                print("Rank error KO: {}/{}".format (rankerrorko, len(rankedko)))
-                print("Rank error KI: {}/{}".format (rankerrorki, len(rankedki)))
-
-                top_n = 3
-                topmatchKO, komatches, totaltopko = top_matches(rankedcalko, rankedko, top_n)
-                topmatchKI, kimatches, totaltopki = top_matches(rankedcalki, rankedki, top_n) 
-                print(f"Among top {top_n} gene with highest KO ranking there are {topmatchKO}/{totaltopko}: \n{sorted(list(komatches))}")
-                print(f"Among top {top_n} gene with highest KI ranking there are {topmatchKI}/{totaltopki}: \n{sorted(list(kimatches))}")
-
+                
+                
                 if korows and kirows:
                     for input in sorted(list(inputnames)):
                         if input in rowsofnodes: 
@@ -1188,19 +1230,13 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                                 print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
                                 print("Prop  {:5}: {}\n".format(len(rowsofnodes[inter]), sorted(list(rowsofnodes[inter]))))
 
-        # # # Get all variable names (assuming all inner dicts use the same keys)
-        # all_vars = sorted({var for inner in table.values() for var in inner})
+                print("Number of nodes is {}".format(num))
+                print("Error KO: ", math.sqrt(errorko/num))
+                print("Error KI: ", math.sqrt(errorki/num))
 
-        # # Print header
-        # # header = "".join(f"{var:<20}" for var in all_vars)
-        # # print(f"{'ID':<10}{header}")
-
-        # # Print rows
-        # for id_, vars_dict in table.items():
-        #     print(f"{id_:<10}")
-        #     row = "".join(f"{var: <5}:{int(vars_dict.get(var, False)): <2}\t" for var in all_vars)
-        #     print(f"{row}")
-        #     print()
+                korankingres = compare_rankings(calko, propko)
+                kirankingres = compare_rankings(calki, propki)
+                print_rank_comparison(korankingres, kirankingres)
     return bidecimalpairs, protime
 
 
