@@ -1,0 +1,1191 @@
+The expression file is data/realbenchmark/8.txt
+The interested output is: 
+{'ERBB3'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'pertuzumab', 'PTEN', 'RB', 'CyclinD1', 'ERK1_2', 'BAX', 'p53', 'cRAF', 'ERBB3', 'Nfkb', 'TSC2', 'ERBB2', 'RPS6', 'CyclinB1', 'ERBB1', 'stimulus', 'p70S6K', 'GSKa_b', 'p38', 'PRAS', 'FOXO1_3a', 'AKT', 'erlotinib', 'trastuzumab', 'cJUN'}
+-----Input names-----
+{'trastuzumab', 'stimulus', 'erlotinib', 'pertuzumab'}
+----Intermediate nodes-----
+{'ERBB1', 'PTEN', 'RB', 'CyclinD1', 'ERK1_2', 'p70S6K', 'GSKa_b', 'BAX', 'p38', 'PRAS', 'p53', 'FOXO1_3a', 'cRAF', 'Nfkb', 'TSC2', 'AKT', 'ERBB2', 'CyclinB1', 'RPS6', 'cJUN'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['AKT', 'BAX', 'CyclinB1', 'CyclinD1', 'ERBB1', 'ERBB2', 'ERK1_2', 'FOXO1_3a', 'GSKa_b', 'Nfkb', 'PRAS', 'PTEN', 'RB', 'RPS6', 'TSC2', 'cJUN', 'cRAF', 'p38', 'p53', 'p70S6K']
+There are 20 intermediate nodes with the range of inter: 0 1048575
+----Input knockout shapley value-----
+('ERBB3', {'trastuzumab': 0.0, 'stimulus': 0.4167, 'erlotinib': -0.4167, 'pertuzumab': -0.4167})
+
+
+----Input knockIN shapley value-----
+('ERBB3', {'trastuzumab': 0.0, 'stimulus': -1.25, 'erlotinib': 0.4167, 'pertuzumab': 0.4167})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout ERBB1
+Knockout PTEN
+Knockout RB
+Knockout CyclinD1
+Knockout ERK1_2
+Knockout p70S6K
+Knockout GSKa_b
+Knockout BAX
+Knockout p38
+Knockout PRAS
+Knockout p53
+Knockout FOXO1_3a
+Knockout cRAF
+Knockout Nfkb
+Knockout TSC2
+Knockout AKT
+Knockout ERBB2
+Knockout CyclinB1
+Knockout RPS6
+Knockout cJUN
+----KNOCKOUT VALUE for output ERBB3----
+{'AKT': 0.0, 'BAX': 0.0, 'CyclinB1': 0.0, 'CyclinD1': 0.0, 'ERBB1': 0.0, 'ERBB2': 0.0, 'ERK1_2': 0.0, 'FOXO1_3a': 0.0, 'GSKa_b': 0.0, 'Nfkb': 0.0, 'PRAS': 0.0, 'PTEN': 0.0, 'RB': 0.0, 'RPS6': 0.0, 'TSC2': 0.0, 'cJUN': 0.0, 'cRAF': 0.0, 'p38': 0.0, 'p53': 0.0, 'p70S6K': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin ERBB1
+Knockin PTEN
+Knockin RB
+Knockin CyclinD1
+Knockin ERK1_2
+Knockin p70S6K
+Knockin GSKa_b
+Knockin BAX
+Knockin p38
+Knockin PRAS
+Knockin p53
+Knockin FOXO1_3a
+Knockin cRAF
+Knockin Nfkb
+Knockin TSC2
+Knockin AKT
+Knockin ERBB2
+Knockin CyclinB1
+Knockin RPS6
+Knockin cJUN
+----KNOCKIN VALUE for output ERBB3----
+{'ERBB3': {'ERBB1': -1.25, 'PTEN': 0.0, 'RB': 0.0, 'CyclinD1': 0.0, 'ERK1_2': -1.25, 'p70S6K': -1.25, 'GSKa_b': 0.0, 'BAX': 0.0, 'p38': 0.0, 'PRAS': 0.0, 'p53': 0.0, 'FOXO1_3a': 0.0, 'cRAF': -1.25, 'Nfkb': 0.0, 'TSC2': 0.0, 'AKT': 0.0, 'ERBB2': -1.25, 'CyclinB1': 0.0, 'RPS6': -1.25, 'cJUN': -1.25}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'trastuzumab', 'stimulus', 'erlotinib', 'pertuzumab'}
+Ordinary nodes are 
+{'pertuzumab', 'PTEN', 'RB', 'CyclinD1', 'ERK1_2', 'BAX', 'p53', 'cRAF', 'ERBB3', 'Nfkb', 'TSC2', 'ERBB2', 'RPS6', 'CyclinB1', 'ERBB1', 'stimulus', 'p70S6K', 'GSKa_b', 'p38', 'PRAS', 'FOXO1_3a', 'AKT', 'erlotinib', 'trastuzumab', 'cJUN'}
+Extranodes added after removing cycles are 
+['PTEN_to_PTEN', 'PTEN_to_AKT', 'RB_to_RB', 'CyclinD1_to_CyclinD1', 'ERK1_2_to_ERK1_2', 'BAX_to_BAX', 'p53_to_CyclinB1', 'p53_to_GSKa_b', 'p53_to_p53', 'p53_to_RB', 'cRAF_to_cRAF', 'cRAF_to_ERK1_2', 'ERBB3_to_ERBB3', 'ERBB3_to_AKT', 'Nfkb_to_Nfkb', 'TSC2_to_TSC2', 'ERBB2_to_ERBB2', 'RPS6_to_RPS6', 'CyclinB1_to_CyclinB1', 'ERBB1_to_ERBB1', 'ERBB1_to_ERK1_2', 'ERBB1_to_AKT', 'p70S6K_to_p70S6K', 'GSKa_b_to_GSKa_b', 'p38_to_p38', 'PRAS_to_PRAS', 'PRAS_to_p70S6K', 'FOXO1_3a_to_FOXO1_3a', 'AKT_to_AKT', 'cJUN_to_cJUN']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+-----Knockout Shapley value of input nodes in the binary network-----
+ERBB3 : {'trastuzumab': 0.0, 'stimulus': 0.4167, 'erlotinib': -0.4167, 'pertuzumab': -0.4167}
+-----KnockIN Shapley value of input nodes in the binary network-----
+ERBB3 : {'trastuzumab': 0.0, 'stimulus': -1.25, 'erlotinib': 0.4167, 'pertuzumab': 0.4167}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout _XTR_32_
+Knockout _XTR_84_
+Knockout _XTR_9_
+Knockout _XTR_14_
+Knockout _XTR_6_
+Knockout _XTR_52_
+Knockout CyclinD1
+Knockout ERBB3_to_AKT
+Knockout _XTR_58_
+Knockout ERBB1_to_ERBB1
+Knockout ERBB1_to_AKT
+Knockout _XTR_51_
+Knockout _XTR_60_
+Knockout ERK1_2
+Knockout BAX
+Knockout ERBB3_to_ERBB3
+Knockout p53
+Knockout TSC2
+Knockout _XTR_28_
+Knockout _XTR_71_
+Knockout _XTR_77_
+Knockout cJUN_to_cJUN
+Knockout ERBB2
+Knockout _XTR_25_
+Knockout _XTR_86_
+Knockout TSC2_to_TSC2
+Knockout _XTR_7_
+Knockout _XTR_31_
+Knockout _XTR_46_
+Knockout _XTR_42_
+Knockout ERBB1_to_ERK1_2
+Knockout _XTR_29_
+Knockout ERBB1
+Knockout _XTR_76_
+Knockout _XTR_20_
+Knockout p38_to_p38
+Knockout p70S6K_to_p70S6K
+Knockout _XTR_56_
+Knockout _XTR_21_
+Knockout _XTR_79_
+Knockout _XTR_38_
+Knockout p70S6K
+Knockout GSKa_b
+Knockout p53_to_CyclinB1
+Knockout _XTR_34_
+Knockout FOXO1_3a
+Knockout BAX_to_BAX
+Knockout _XTR_5_
+Knockout _XTR_12_
+Knockout AKT
+Knockout _XTR_74_
+Knockout _XTR_57_
+Knockout cRAF_to_ERK1_2
+Knockout _XTR_17_
+Knockout p53_to_GSKa_b
+Knockout PTEN_to_PTEN
+Knockout CyclinB1_to_CyclinB1
+Knockout _XTR_72_
+Knockout _XTR_16_
+Knockout _XTR_27_
+Knockout PTEN
+Knockout RB
+Knockout _XTR_2_
+Knockout _XTR_47_
+Knockout _XTR_49_
+Knockout AKT_to_AKT
+Knockout ERK1_2_to_ERK1_2
+Knockout _XTR_69_
+Knockout _XTR_64_
+Knockout _XTR_48_
+Knockout _XTR_75_
+Knockout _XTR_73_
+Knockout _XTR_10_
+Knockout ERBB2_to_ERBB2
+Knockout FOXO1_3a_to_FOXO1_3a
+Knockout _XTR_26_
+Knockout CyclinD1_to_CyclinD1
+Knockout _XTR_61_
+Knockout Nfkb
+Knockout _XTR_43_
+Knockout cRAF
+Knockout PTEN_to_AKT
+Knockout Nfkb_to_Nfkb
+Knockout _XTR_54_
+Knockout _XTR_18_
+Knockout RPS6
+Knockout CyclinB1
+Knockout _XTR_39_
+Knockout _XTR_85_
+Knockout _XTR_11_
+Knockout _XTR_82_
+Knockout _XTR_83_
+Knockout _XTR_66_
+Knockout RPS6_to_RPS6
+Knockout _XTR_68_
+Knockout _XTR_22_
+Knockout _XTR_8_
+Knockout _XTR_65_
+Knockout _XTR_19_
+Knockout _XTR_37_
+Knockout cRAF_to_cRAF
+Knockout p53_to_p53
+Knockout GSKa_b_to_GSKa_b
+Knockout p38
+Knockout PRAS
+Knockout _XTR_4_
+Knockout PRAS_to_PRAS
+Knockout PRAS_to_p70S6K
+Knockout _XTR_30_
+Knockout RB_to_RB
+Knockout _XTR_78_
+Knockout _XTR_45_
+Knockout _XTR_67_
+Knockout _XTR_81_
+Knockout p53_to_RB
+Knockout cJUN
+---- Binary KNOCKOUT VALUE for output ERBB3----
+{'ERBB3': {'_XTR_32_': 0.0, '_XTR_84_': 0.0, '_XTR_9_': 0.0, '_XTR_14_': 0.0, '_XTR_6_': 0.4167, '_XTR_52_': 0.0, 'CyclinD1': 0.0, 'ERBB3_to_AKT': 0.0, '_XTR_58_': 0.0, 'ERBB1_to_ERBB1': 0.0, 'ERBB1_to_AKT': 0.0, '_XTR_51_': 0.0, '_XTR_60_': 0.0, 'ERK1_2': 0.0, 'BAX': 0.0, 'ERBB3_to_ERBB3': 0.0, 'p53': 0.0, 'TSC2': 0.0, '_XTR_28_': 0.0, '_XTR_71_': 0.0, '_XTR_77_': 0.0, 'cJUN_to_cJUN': 0.0, 'ERBB2': 0.0, '_XTR_25_': 0.0, '_XTR_86_': 0.0, 'TSC2_to_TSC2': 0.0, '_XTR_7_': 0.0, '_XTR_31_': 0.0, '_XTR_46_': 0.0, '_XTR_42_': 0.0, 'ERBB1_to_ERK1_2': 0.0, '_XTR_29_': 0.0, 'ERBB1': 0.0, '_XTR_76_': 0.0, '_XTR_20_': 0.0, 'p38_to_p38': 0.0, 'p70S6K_to_p70S6K': 0.0, '_XTR_56_': 0.0, '_XTR_21_': 0.0, '_XTR_79_': 0.0, '_XTR_38_': 0.0, 'p70S6K': 0.0, 'GSKa_b': 0.0, 'p53_to_CyclinB1': 0.0, '_XTR_34_': 0.0, 'FOXO1_3a': 0.0, 'BAX_to_BAX': 0.0, '_XTR_5_': 0.0, '_XTR_12_': 0.0, 'AKT': 0.0, '_XTR_74_': 0.0, '_XTR_57_': 0.0, 'cRAF_to_ERK1_2': 0.0, '_XTR_17_': 0.0, 'p53_to_GSKa_b': 0.0, 'PTEN_to_PTEN': 0.0, 'CyclinB1_to_CyclinB1': 0.0, '_XTR_72_': 0.0, '_XTR_16_': 0.0, '_XTR_27_': 0.0, 'PTEN': 0.0, 'RB': 0.0, '_XTR_2_': 0.0, '_XTR_47_': 0.0, '_XTR_49_': 0.0, 'AKT_to_AKT': 0.0, 'ERK1_2_to_ERK1_2': 0.0, '_XTR_69_': 0.0, '_XTR_64_': 0.0, '_XTR_48_': 0.0, '_XTR_75_': 0.0, '_XTR_73_': 0.0, '_XTR_10_': 0.0, 'ERBB2_to_ERBB2': 0.0, 'FOXO1_3a_to_FOXO1_3a': 0.0, '_XTR_26_': 0.0, 'CyclinD1_to_CyclinD1': 0.0, '_XTR_61_': 0.0, 'Nfkb': 0.0, '_XTR_43_': 0.0, 'cRAF': 0.0, 'PTEN_to_AKT': 0.0, 'Nfkb_to_Nfkb': 0.0, '_XTR_54_': 0.0, '_XTR_18_': 0.0, 'RPS6': 0.0, 'CyclinB1': 0.0, '_XTR_39_': 0.0, '_XTR_85_': 0.0, '_XTR_11_': 0.0, '_XTR_82_': 0.0, '_XTR_83_': 0.0, '_XTR_66_': 0.0, 'RPS6_to_RPS6': 0.0, '_XTR_68_': 0.0, '_XTR_22_': 0.0, '_XTR_8_': 0.0, '_XTR_65_': 0.0, '_XTR_19_': 0.0, '_XTR_37_': 0.0, 'cRAF_to_cRAF': 0.0, 'p53_to_p53': 0.0, 'GSKa_b_to_GSKa_b': 0.0, 'p38': 0.0, 'PRAS': 0.0, '_XTR_4_': 0.4167, 'PRAS_to_PRAS': 0.0, 'PRAS_to_p70S6K': 0.0, '_XTR_30_': 0.0, 'RB_to_RB': 0.0, '_XTR_78_': 0.0, '_XTR_45_': 0.0, '_XTR_67_': 0.0, '_XTR_81_': 0.0, 'p53_to_RB': 0.0, 'cJUN': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN _XTR_32_
+KnockIN _XTR_84_
+KnockIN _XTR_9_
+KnockIN _XTR_14_
+KnockIN _XTR_6_
+KnockIN _XTR_52_
+KnockIN CyclinD1
+KnockIN ERBB3_to_AKT
+KnockIN _XTR_58_
+KnockIN ERBB1_to_ERBB1
+KnockIN ERBB1_to_AKT
+KnockIN _XTR_51_
+KnockIN _XTR_60_
+KnockIN ERK1_2
+KnockIN BAX
+KnockIN ERBB3_to_ERBB3
+KnockIN p53
+KnockIN TSC2
+KnockIN _XTR_28_
+KnockIN _XTR_71_
+KnockIN _XTR_77_
+KnockIN cJUN_to_cJUN
+KnockIN ERBB2
+KnockIN _XTR_25_
+KnockIN _XTR_86_
+KnockIN TSC2_to_TSC2
+KnockIN _XTR_7_
+KnockIN _XTR_31_
+KnockIN _XTR_46_
+KnockIN _XTR_42_
+KnockIN ERBB1_to_ERK1_2
+KnockIN _XTR_29_
+KnockIN ERBB1
+KnockIN _XTR_76_
+KnockIN _XTR_20_
+KnockIN p38_to_p38
+KnockIN p70S6K_to_p70S6K
+KnockIN _XTR_56_
+KnockIN _XTR_21_
+KnockIN _XTR_79_
+KnockIN _XTR_38_
+KnockIN p70S6K
+KnockIN GSKa_b
+KnockIN p53_to_CyclinB1
+KnockIN _XTR_34_
+KnockIN FOXO1_3a
+KnockIN BAX_to_BAX
+KnockIN _XTR_5_
+KnockIN _XTR_12_
+KnockIN AKT
+KnockIN _XTR_74_
+KnockIN _XTR_57_
+KnockIN cRAF_to_ERK1_2
+KnockIN _XTR_17_
+KnockIN p53_to_GSKa_b
+KnockIN PTEN_to_PTEN
+KnockIN CyclinB1_to_CyclinB1
+KnockIN _XTR_72_
+KnockIN _XTR_16_
+KnockIN _XTR_27_
+KnockIN PTEN
+KnockIN RB
+KnockIN _XTR_2_
+KnockIN _XTR_47_
+KnockIN _XTR_49_
+KnockIN AKT_to_AKT
+KnockIN ERK1_2_to_ERK1_2
+KnockIN _XTR_69_
+KnockIN _XTR_64_
+KnockIN _XTR_48_
+KnockIN _XTR_75_
+KnockIN _XTR_73_
+KnockIN _XTR_10_
+KnockIN ERBB2_to_ERBB2
+KnockIN FOXO1_3a_to_FOXO1_3a
+KnockIN _XTR_26_
+KnockIN CyclinD1_to_CyclinD1
+KnockIN _XTR_61_
+KnockIN Nfkb
+KnockIN _XTR_43_
+KnockIN cRAF
+KnockIN PTEN_to_AKT
+KnockIN Nfkb_to_Nfkb
+KnockIN _XTR_54_
+KnockIN _XTR_18_
+KnockIN RPS6
+KnockIN CyclinB1
+KnockIN _XTR_39_
+KnockIN _XTR_85_
+KnockIN _XTR_11_
+KnockIN _XTR_82_
+KnockIN _XTR_83_
+KnockIN _XTR_66_
+KnockIN RPS6_to_RPS6
+KnockIN _XTR_68_
+KnockIN _XTR_22_
+KnockIN _XTR_8_
+KnockIN _XTR_65_
+KnockIN _XTR_19_
+KnockIN _XTR_37_
+KnockIN cRAF_to_cRAF
+KnockIN p53_to_p53
+KnockIN GSKa_b_to_GSKa_b
+KnockIN p38
+KnockIN PRAS
+KnockIN _XTR_4_
+KnockIN PRAS_to_PRAS
+KnockIN PRAS_to_p70S6K
+KnockIN _XTR_30_
+KnockIN RB_to_RB
+KnockIN _XTR_78_
+KnockIN _XTR_45_
+KnockIN _XTR_67_
+KnockIN _XTR_81_
+KnockIN p53_to_RB
+KnockIN cJUN
+---- Binary KNOCKIN VALUE for output ERBB3----
+{'ERBB3': {'_XTR_32_': -1.25, '_XTR_84_': 0.0, '_XTR_9_': -1.25, '_XTR_14_': 0.0, '_XTR_6_': -0.4167, '_XTR_52_': 0.0, 'CyclinD1': 0.0, 'ERBB3_to_AKT': 0.0, '_XTR_58_': 0.0, 'ERBB1_to_ERBB1': -1.25, 'ERBB1_to_AKT': 0.0, '_XTR_51_': 0.0, '_XTR_60_': 0.0, 'ERK1_2': -1.25, 'BAX': 0.0, 'ERBB3_to_ERBB3': -1.25, 'p53': 0.0, 'TSC2': 0.0, '_XTR_28_': -1.25, '_XTR_71_': 0.0, '_XTR_77_': 0.0, 'cJUN_to_cJUN': -1.25, 'ERBB2': -1.25, '_XTR_25_': -1.25, '_XTR_86_': 0.0, 'TSC2_to_TSC2': 0.0, '_XTR_7_': -1.0, '_XTR_31_': -1.25, '_XTR_46_': -1.25, '_XTR_42_': 0.0, 'ERBB1_to_ERK1_2': -1.25, '_XTR_29_': -1.25, 'ERBB1': -1.25, '_XTR_76_': 0.0, '_XTR_20_': -4.5833, 'p38_to_p38': 0.0, 'p70S6K_to_p70S6K': -1.25, '_XTR_56_': 0.0, '_XTR_21_': -2.0833, '_XTR_79_': 0.0, '_XTR_38_': 0.0, 'p70S6K': -1.25, 'GSKa_b': 0.0, 'p53_to_CyclinB1': 0.0, '_XTR_34_': 0.0, 'FOXO1_3a': 0.0, 'BAX_to_BAX': 0.0, '_XTR_5_': -1.0, '_XTR_12_': -1.25, 'AKT': 0.0, '_XTR_74_': 0.0, '_XTR_57_': 0.0, 'cRAF_to_ERK1_2': -1.25, '_XTR_17_': -4.5833, 'p53_to_GSKa_b': 0.0, 'PTEN_to_PTEN': 0.0, 'CyclinB1_to_CyclinB1': 0.0, '_XTR_72_': 0.0, '_XTR_16_': -2.0833, '_XTR_27_': -1.25, 'PTEN': 0.0, 'RB': 0.0, '_XTR_2_': 0.0, '_XTR_47_': -1.25, '_XTR_49_': -1.25, 'AKT_to_AKT': 0.0, 'ERK1_2_to_ERK1_2': -1.25, '_XTR_69_': -1.25, '_XTR_64_': 0.0, '_XTR_48_': -1.25, '_XTR_75_': 0.0, '_XTR_73_': 0.0, '_XTR_10_': -1.25, 'ERBB2_to_ERBB2': -1.0, 'FOXO1_3a_to_FOXO1_3a': 0.0, '_XTR_26_': -1.25, 'CyclinD1_to_CyclinD1': 0.0, '_XTR_61_': 0.0, 'Nfkb': 0.0, '_XTR_43_': 0.0, 'cRAF': -1.25, 'PTEN_to_AKT': 0.0, 'Nfkb_to_Nfkb': 0.0, '_XTR_54_': -1.25, '_XTR_18_': -2.0833, 'RPS6': -1.25, 'CyclinB1': 0.0, '_XTR_39_': 0.0, '_XTR_85_': 0.0, '_XTR_11_': -1.25, '_XTR_82_': 0.0, '_XTR_83_': 0.0, '_XTR_66_': 0.0, 'RPS6_to_RPS6': -1.25, '_XTR_68_': -1.25, '_XTR_22_': -4.5833, '_XTR_8_': 0.0, '_XTR_65_': -1.25, '_XTR_19_': -4.5833, '_XTR_37_': 0.0, 'cRAF_to_cRAF': -1.25, 'p53_to_p53': 0.0, 'GSKa_b_to_GSKa_b': 0.0, 'p38': 0.0, 'PRAS': 0.0, '_XTR_4_': -0.4167, 'PRAS_to_PRAS': 0.0, 'PRAS_to_p70S6K': 0.0, '_XTR_30_': -1.25, 'RB_to_RB': 0.0, '_XTR_78_': 0.0, '_XTR_45_': 0.0, '_XTR_67_': -1.25, '_XTR_81_': 0.0, 'p53_to_RB': 0.0, 'cJUN': -1.25}}
+
+
+=======PROPAGATE FOR OUTPUT ERBB3=======
+----Master diamonds-----
+{'_XTR_4_': 'ERBB3', '_XTR_6_': 'ERBB3', '_XTR_66_': 'p70S6K', '_XTR_64_': 'p70S6K', '_XTR_45_': 'p70S6K', 'ERK1_2': 'p70S6K', '_XTR_2_': 'p70S6K', '_XTR_14_': 'p70S6K', '_XTR_56_': 'p70S6K', 'CyclinB1': 'p70S6K', '_XTR_71_': 'p70S6K', '_XTR_8_': 'p70S6K', 'stimulus': 'ERBB3'}
+
+
+--------PROPAGATION--------
+Extranodes PRAS, add PRAS to nextlayer
+Extranodes cRAF_to_ERK1_2, add  cRAF to nextlayer
+Extranodes ERBB1_to_ERK1_2, add  ERBB1 to nextlayer
+Extranodes p53_to_GSKa_b, add p53 to nextlayer
+Extranodes p53_to_GSKa_b, add p53 to nextlayer
+Extranodes PTEN, add PTEN to nextlayer
+Extranodes PTEN, add PTEN to nextlayer
+ERBB3                			 KO:     0.4167 | KI:    -4.5835
+_XTR_20_             			 KO:        0.0 | KI:    -4.5835
+_XTR_22_             			 KO:        0.0 | KI:    -4.5835
+_XTR_17_             			 KO:        0.0 | KI:    -4.5835
+_XTR_19_             			 KO:        0.0 | KI:    -4.5835
+_XTR_21_             			 KO:        0.0 | KI:    -2.0834
+_XTR_4_              			 KO:     0.4167 | KI:    -0.4167
+_XTR_16_             			 KO:        0.0 | KI:    -2.0834
+_XTR_18_             			 KO:        0.0 | KI:    -2.0834
+_XTR_6_              			 KO:     0.4167 | KI:    -0.4167
+RPS6                 			 KO:        0.0 | KI:      -1.25
+ERBB3_to_ERBB3       			 KO:        0.0 | KI:      -1.25
+p70S6K               			 KO:        0.0 | KI:      -1.25
+RPS6_to_RPS6         			 KO:        0.0 | KI:      -1.25
+_XTR_67_             			 KO:        0.0 | KI:      -1.25
+_XTR_69_             			 KO:        0.0 | KI:      -1.25
+_XTR_65_             			 KO:        0.0 | KI:      -1.25
+_XTR_66_             			 KO:        0.0 | KI:        0.0
+_XTR_68_             			 KO:        0.0 | KI:      -1.25
+ERK1_2               			 KO:        0.0 | KI:      -1.25
+_XTR_64_             			 KO:        0.0 | KI:        0.0
+PRAS_to_p70S6K       			 KO:        0.0 | KI:        0.0
+p70S6K_to_p70S6K     			 KO:        0.0 | KI:      -1.25
+_XTR_54_             			 KO:        0.0 | KI:      -1.25
+cRAF_to_ERK1_2       			 KO:        0.0 | KI:      -1.25
+TSC2                 			 KO:        0.0 | KI:        0.0
+PRAS                 			 KO:        0.0 | KI:    -4.1668
+_XTR_60_             			 KO:        0.0 | KI:    -4.1668
+_XTR_61_             			 KO:        0.0 | KI:    -4.1668
+ERK1_2_to_ERK1_2     			 KO:        0.0 | KI:      -1.25
+ERBB1_to_ERK1_2      			 KO:        0.0 | KI:      -1.25
+cRAF                 			 KO:        0.0 | KI:    -4.1668
+_XTR_48_             			 KO:        0.0 | KI:    -4.1668
+_XTR_49_             			 KO:        0.0 | KI:    -4.1668
+_XTR_83_             			 KO:        0.0 | KI:        0.0
+_XTR_86_             			 KO:        0.0 | KI:        0.0
+PRAS_to_PRAS         			 KO:        0.0 | KI:    -4.5835
+_XTR_14_             			 KO:        0.0 | KI:        0.0
+cJUN                 			 KO:        0.0 | KI:    -4.5835
+ERBB1                			 KO:     0.4167 | KI:    -4.5835
+_XTR_30_             			 KO:     0.4167 | KI:    -4.5835
+_XTR_32_             			 KO:        0.0 | KI:    -4.5835
+_XTR_46_             			 KO:        0.0 | KI:    -4.1668
+_XTR_47_             			 KO:        0.0 | KI:    -4.1668
+_XTR_45_             			 KO:        0.0 | KI:        0.0
+_XTR_82_             			 KO:        0.0 | KI:        0.0
+_XTR_85_             			 KO:        0.0 | KI:        0.0
+AKT                  			 KO:        0.0 | KI:    -4.5835
+cJUN_to_cJUN         			 KO:        0.0 | KI:    -4.5835
+_XTR_2_              			 KO:        0.0 | KI:        0.0
+_XTR_27_             			 KO:        0.0 | KI:    -4.5835
+_XTR_29_             			 KO:        0.0 | KI:    -4.5835
+_XTR_31_             			 KO:        0.0 | KI:    -2.0834
+cRAF_to_cRAF         			 KO:        0.0 | KI:    -4.5835
+ERBB2                			 KO:        0.0 | KI:    -4.5835
+_XTR_81_             			 KO:        0.0 | KI:        0.0
+_XTR_84_             			 KO:        0.0 | KI:        0.0
+_XTR_78_             			 KO:        0.0 | KI:        0.0
+_XTR_79_             			 KO:        0.0 | KI:        0.0
+GSKa_b               			 KO:        0.0 | KI:        0.0
+_XTR_11_             			 KO:        0.0 | KI:    -4.5835
+_XTR_26_             			 KO:        0.0 | KI:    -4.5835
+_XTR_28_             			 KO:        0.0 | KI:    -2.0834
+_XTR_9_              			 KO:        0.0 | KI:    -4.5835
+_XTR_12_             			 KO:        0.0 | KI:    -4.5835
+RB                   			 KO:        0.0 | KI:    -4.5835
+TSC2_to_TSC2         			 KO:        0.0 | KI:        0.0
+_XTR_76_             			 KO:        0.0 | KI:        0.0
+_XTR_77_             			 KO:        0.0 | KI:        0.0
+CyclinB1             			 KO:        0.0 | KI:        0.0
+_XTR_71_             			 KO:        0.0 | KI:        0.0
+p53_to_GSKa_b        			 KO:        0.0 | KI:        0.0
+GSKa_b_to_GSKa_b     			 KO:        0.0 | KI:        0.0
+_XTR_10_             			 KO:        0.0 | KI:    -2.0834
+_XTR_25_             			 KO:        0.0 | KI:    -2.0834
+ERBB1_to_ERBB1       			 KO:        0.0 | KI:      -1.25
+_XTR_7_              			 KO:        0.0 | KI:    -2.2501
+_XTR_8_              			 KO:        0.0 | KI:        0.0
+_XTR_57_             			 KO:        0.0 | KI:        0.0
+_XTR_58_             			 KO:        0.0 | KI:        0.0
+_XTR_74_             			 KO:        0.0 | KI:        0.0
+_XTR_75_             			 KO:        0.0 | KI:        0.0
+ERBB1_to_AKT         			 KO:        0.0 | KI:        0.0
+CyclinB1_to_CyclinB1 			 KO:        0.0 | KI:        0.0
+_XTR_34_             			 KO:        0.0 | KI:        0.0
+PTEN_to_AKT          			 KO:        0.0 | KI:        0.0
+p53                  			 KO:     0.4167 | KI:    -4.5835
+_XTR_43_             			 KO:     0.4167 | KI:    -4.5835
+_XTR_5_              			 KO:        0.0 | KI:    -1.4167
+RB_to_RB             			 KO:        0.0 | KI:        0.0
+_XTR_56_             			 KO:        0.0 | KI:        0.0
+p53_to_RB            			 KO:        0.0 | KI:        0.0
+_XTR_72_             			 KO:        0.0 | KI:        0.0
+_XTR_73_             			 KO:        0.0 | KI:        0.0
+ERBB3_to_AKT         			 KO:        0.0 | KI:        0.0
+p53_to_CyclinB1      			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:        0.0 | KI:    -4.1668
+_XTR_51_             			 KO:        0.0 | KI:    -4.1668
+_XTR_52_             			 KO:        0.0 | KI:    -4.1668
+_XTR_42_             			 KO:     0.4167 | KI:    -4.5835
+p53_to_p53           			 KO:        0.0 | KI:    -4.5835
+ERBB2_to_ERBB2       			 KO:        0.0 | KI:       -1.0
+AKT_to_AKT           			 KO:        0.0 | KI:        0.0
+PTEN_to_PTEN         			 KO:        0.0 | KI:    -4.5835
+p38                  			 KO:        0.0 | KI:    -4.5835
+p38_to_p38           			 KO:        0.0 | KI:    -4.5835
+trastuzumab          			 KO:        0.0 | KI:        0.0
+stimulus             			 KO:     0.4167 | KI:      -1.25
+erlotinib            			 KO:    -0.4167 | KI:     0.4167
+pertuzumab           			 KO:    -0.4167 | KI:     0.4167
+There are 11 unreachable nodes, they are:
+{'CyclinD1', '_XTR_38_', '_XTR_37_', 'BAX', 'FOXO1_3a_to_FOXO1_3a', 'FOXO1_3a', 'BAX_to_BAX', 'CyclinD1_to_CyclinD1', 'Nfkb', 'Nfkb_to_Nfkb', '_XTR_39_'}
+binary.html
+_XTR_32_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_9_              - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_52_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_51_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_60_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.1668
+p53                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     0.4167 | KI:    -4.5835
+_XTR_28_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -2.0834
+cJUN_to_cJUN         - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+ERBB2                - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_25_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -2.0834
+_XTR_7_              - Correct: KO:        0.0 | KI :       -1.0 - Incorrect KO:        0.0 | KI:    -2.2501
+_XTR_31_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -2.0834
+_XTR_46_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_42_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     0.4167 | KI:    -4.5835
+_XTR_29_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+ERBB1                - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:     0.4167 | KI:    -4.5835
+p38_to_p38           - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_5_              - Correct: KO:        0.0 | KI :       -1.0 - Incorrect KO:        0.0 | KI:    -1.4167
+_XTR_12_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+AKT                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+PTEN_to_PTEN         - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_27_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+PTEN                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.1668
+RB                   - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_47_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_49_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_48_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_10_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -2.0834
+_XTR_26_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_61_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_43_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     0.4167 | KI:    -4.5835
+cRAF                 - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.1668
+_XTR_11_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+cRAF_to_cRAF         - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+p53_to_p53           - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+p38                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+PRAS                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.1668
+PRAS_to_PRAS         - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+_XTR_30_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:     0.4167 | KI:    -4.5835
+cJUN                 - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:    -4.5835
+erlotinib
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 10, 11]
+Prop      4: [2, 3, 10, 11]
+
+pertuzumab
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+stimulus
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+trastuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AKT
+Lack      0: []
+Extra    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+AKT_to_AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CyclinB1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CyclinB1_to_CyclinB1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ERBB1
+Lack      0: []
+Extra    14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+ERBB1_to_AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ERBB1_to_ERBB1
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+ERBB1_to_ERK1_2
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+ERBB2
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+ERBB2_to_ERBB2
+Lack      0: []
+Extra     0: []
+Real      1: [0]
+Prop      1: [0]
+
+ERBB3_to_AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ERBB3_to_ERBB3
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+ERK1_2
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+ERK1_2_to_ERK1_2
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+GSKa_b
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GSKa_b_to_GSKa_b
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PRAS
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+PRAS_to_PRAS
+Lack      0: []
+Extra    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+PRAS_to_p70S6K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTEN
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+PTEN_to_AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTEN_to_PTEN
+Lack      0: []
+Extra    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+RB
+Lack      0: []
+Extra    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+RB_to_RB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RPS6
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+RPS6_to_RPS6
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+TSC2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TSC2_to_TSC2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_10_
+Lack      0: []
+Extra     4: [4, 5, 6, 7]
+Real      2: [0, 1]
+Prop      6: [0, 1, 4, 5, 6, 7]
+
+_XTR_11_
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_12_
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_14_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_16_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 8, 9, 10, 11]
+Prop      6: [0, 1, 8, 9, 10, 11]
+
+_XTR_17_
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_18_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 8, 9, 10, 11]
+Prop      6: [0, 1, 8, 9, 10, 11]
+
+_XTR_19_
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_20_
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_21_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 8, 9, 10, 11]
+Prop      6: [0, 1, 8, 9, 10, 11]
+
+_XTR_22_
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_25_
+Lack      0: []
+Extra     4: [4, 5, 6, 7]
+Real      2: [0, 1]
+Prop      6: [0, 1, 4, 5, 6, 7]
+
+_XTR_26_
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_27_
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_28_
+Lack      0: []
+Extra     4: [4, 5, 6, 7]
+Real      2: [0, 1]
+Prop      6: [0, 1, 4, 5, 6, 7]
+
+_XTR_29_
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_30_
+Lack      0: []
+Extra    14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_31_
+Lack      0: []
+Extra     4: [4, 5, 6, 7]
+Real      2: [0, 1]
+Prop      6: [0, 1, 4, 5, 6, 7]
+
+_XTR_32_
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_34_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_42_
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_43_
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_45_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_46_
+Lack      0: []
+Extra    14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_47_
+Lack      0: []
+Extra    14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_48_
+Lack      0: []
+Extra    14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_49_
+Lack      0: []
+Extra    14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_4_
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+_XTR_51_
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_52_
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_54_
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+_XTR_56_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_57_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_58_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_5_
+Lack      0: []
+Extra     2: [4, 6]
+Real      1: [0]
+Prop      3: [0, 4, 6]
+
+_XTR_60_
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_61_
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_64_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_65_
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+_XTR_66_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_67_
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+_XTR_68_
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+_XTR_69_
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+_XTR_6_
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 10, 11]
+Prop      4: [2, 3, 10, 11]
+
+_XTR_71_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_72_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_73_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_74_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_75_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_76_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_77_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_78_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_79_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_7_
+Lack      0: []
+Extra     6: [4, 6, 8, 10, 12, 14]
+Real      1: [0]
+Prop      7: [0, 4, 6, 8, 10, 12, 14]
+
+_XTR_81_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_82_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_83_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_84_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_85_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_86_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_8_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_9_
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+cJUN
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+cJUN_to_cJUN
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+cRAF
+Lack      0: []
+Extra    14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+cRAF_to_ERK1_2
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+cRAF_to_cRAF
+Lack      0: []
+Extra    12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      2: [0, 1]
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+p38
+Lack      0: []
+Extra    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+p38_to_p38
+Lack      0: []
+Extra    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+p53
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+p53_to_CyclinB1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p53_to_GSKa_b
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p53_to_RB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p53_to_p53
+Lack      0: []
+Extra    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+p70S6K
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+p70S6K_to_p70S6K
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+Number of nodes is 120
+Error KO:  0.08505853131814586
+Error KI:  2.0529859711324545
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                            120.000      120.000
+Kendall tau-b                         0.692        0.564
+Spearman rho                          0.692        0.559
+Mean abs rank diff                    0.042        2.800
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.083        0.309
+         Precision@10                1.000        0.630
+         Recall@10                   0.083        0.378
+  Top-20 Jaccard                   1.000        0.309
+         Precision@20                1.000        0.630
+         Recall@20                   1.000        0.378
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.500        0.148
+  Top-2  groups Jaccard            1.000        0.098
+  Top-3  groups Jaccard            1.000        0.355
+==========================================================
+TIME process heading: 0.0012030601501464844
+TIME simulate original network: 0.014095783233642578
+TIME perform original analysis process: 0.6612300872802734
+TIME perform propagation: 0.26322007179260254
+-----------TOTAL RUNNING TIME---------------
+22.067286334000528

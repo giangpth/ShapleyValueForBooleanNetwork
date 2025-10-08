@@ -1,0 +1,478 @@
+The expression file is data/acyclicbenchmark/5.txt
+The interested output is: 
+{'Cdh1'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'Cdh1', 'Swe1', 'Swi5', 'Sic1', 'Size', 'Cln3', 'SpindleCP', 'BuddingCP', 'Cdc20', 'Clb5', 'MEN', 'Clb2', 'Start', 'Yhp1', 'SMBF', 'Cln2', 'Whi5', 'FEAR', 'Cdc14', 'SFF'}
+-----Input names-----
+{'SpindleCP', 'BuddingCP', 'Start', 'Size'}
+----Intermediate nodes-----
+{'Swe1', 'Swi5', 'Clb2', 'Yhp1', 'Sic1', 'Cln3', 'SMBF', 'Cdc20', 'Cdc14', 'Clb5', 'Cln2', 'Whi5', 'FEAR', 'MEN', 'SFF'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['Cdc14', 'Cdc20', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Whi5', 'Yhp1']
+There are 15 intermediate nodes with the range of inter: 0 32767
+----Input knockout shapley value-----
+('Cdh1', {'SpindleCP': 1.6667, 'BuddingCP': 1.6667, 'Start': 0.0, 'Size': 0.0})
+
+
+----Input knockIN shapley value-----
+('Cdh1', {'SpindleCP': -0.8333, 'BuddingCP': -0.8333, 'Start': 0.0, 'Size': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout Swe1
+Knockout Swi5
+Knockout Clb2
+Knockout Yhp1
+Knockout Sic1
+Knockout Cln3
+Knockout SMBF
+Knockout Cdc20
+Knockout Cdc14
+Knockout Clb5
+Knockout Cln2
+Knockout Whi5
+Knockout FEAR
+Knockout MEN
+Knockout SFF
+----KNOCKOUT VALUE for output Cdh1----
+{'Cdc14': 1.6667, 'Cdc20': 1.6667, 'Clb2': -0.8333, 'Clb5': -1.6667, 'Cln2': -0.8333, 'Cln3': 0.0, 'FEAR': 1.6667, 'MEN': 1.6667, 'SFF': 1.6667, 'SMBF': -2.5, 'Sic1': 0.0, 'Swe1': -0.8333, 'Swi5': 0.0, 'Whi5': 0.0, 'Yhp1': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin Swe1
+Knockin Swi5
+Knockin Clb2
+Knockin Yhp1
+Knockin Sic1
+Knockin Cln3
+Knockin SMBF
+Knockin Cdc20
+Knockin Cdc14
+Knockin Clb5
+Knockin Cln2
+Knockin Whi5
+Knockin FEAR
+Knockin MEN
+Knockin SFF
+----KNOCKIN VALUE for output Cdh1----
+{'Cdh1': {'Swe1': -0.8333, 'Swi5': 0.0, 'Clb2': -0.8333, 'Yhp1': 0.0, 'Sic1': 0.0, 'Cln3': 0.0, 'SMBF': 0.0, 'Cdc20': -2.5, 'Cdc14': -3.3333, 'Clb5': 0.0, 'Cln2': 0.0, 'Whi5': 0.0, 'FEAR': -0.8333, 'MEN': 0.0, 'SFF': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'SpindleCP', 'BuddingCP', 'Start', 'Size'}
+Ordinary nodes are 
+{'Cdh1', 'Swe1', 'Swi5', 'Sic1', 'Size', 'Cln3', 'SpindleCP', 'BuddingCP', 'Cdc20', 'Clb5', 'MEN', 'Clb2', 'Start', 'Yhp1', 'SMBF', 'Cln2', 'Whi5', 'FEAR', 'Cdc14', 'SFF'}
+Extranodes added after removing cycles are 
+[]
+binary.html
+----Simulate binary network----
+----Generate table from output----
+-----Knockout Shapley value of input nodes in the binary network-----
+Cdh1 : {'SpindleCP': 1.6667, 'BuddingCP': 1.6667, 'Start': 0.0, 'Size': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+Cdh1 : {'SpindleCP': -0.8333, 'BuddingCP': -0.8333, 'Start': 0.0, 'Size': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout _XTR_35_
+Knockout Swe1
+Knockout Swi5
+Knockout _XTR_33_
+Knockout _XTR_37_
+Knockout _XTR_23_
+Knockout _XTR_18_
+Knockout _XTR_26_
+Knockout _XTR_4_
+Knockout _XTR_34_
+Knockout Sic1
+Knockout _XTR_42_
+Knockout _XTR_28_
+Knockout Cln3
+Knockout _XTR_56_
+Knockout _XTR_31_
+Knockout Cdc20
+Knockout _XTR_15_
+Knockout _XTR_3_
+Knockout Clb5
+Knockout _XTR_22_
+Knockout _XTR_20_
+Knockout _XTR_7_
+Knockout _XTR_8_
+Knockout _XTR_57_
+Knockout MEN
+Knockout Cdc14
+Knockout _XTR_25_
+Knockout _XTR_6_
+Knockout _XTR_58_
+Knockout _XTR_49_
+Knockout _XTR_51_
+Knockout Clb2
+Knockout _XTR_21_
+Knockout Yhp1
+Knockout _XTR_19_
+Knockout _XTR_45_
+Knockout _XTR_38_
+Knockout _XTR_55_
+Knockout _XTR_29_
+Knockout SMBF
+Knockout _XTR_54_
+Knockout _XTR_27_
+Knockout _XTR_16_
+Knockout _XTR_36_
+Knockout _XTR_9_
+Knockout _XTR_17_
+Knockout _XTR_52_
+Knockout Cln2
+Knockout _XTR_47_
+Knockout _XTR_46_
+Knockout Whi5
+Knockout _XTR_2_
+Knockout FEAR
+Knockout _XTR_24_
+Knockout _XTR_12_
+Knockout _XTR_53_
+Knockout _XTR_1_
+Knockout SFF
+Knockout _XTR_30_
+Knockout _XTR_39_
+---- Binary KNOCKOUT VALUE for output Cdh1----
+{'Cdh1': {'_XTR_35_': 0.0, 'Swe1': -0.8333, 'Swi5': 0.0, '_XTR_33_': 0.0, '_XTR_37_': 0.0, '_XTR_23_': 0.0, '_XTR_18_': 0.0, '_XTR_26_': 0.0, '_XTR_4_': 0.0, '_XTR_34_': 0.0, 'Sic1': 0.0, '_XTR_42_': 0.0, '_XTR_28_': 0.0, 'Cln3': 0.0, '_XTR_56_': 0.0, '_XTR_31_': 0.0, 'Cdc20': 1.6667, '_XTR_15_': 0.0, '_XTR_3_': -3.3333, 'Clb5': -1.6667, '_XTR_22_': 0.0, '_XTR_20_': 0.0, '_XTR_7_': 0.0, '_XTR_8_': 0.0, '_XTR_57_': 0.0, 'MEN': 1.6667, 'Cdc14': 1.6667, '_XTR_25_': 0.0, '_XTR_6_': 0.0, '_XTR_58_': 0.0, '_XTR_49_': 0.0, '_XTR_51_': -0.8333, 'Clb2': -0.8333, '_XTR_21_': 0.0, 'Yhp1': 0.0, '_XTR_19_': 0.0, '_XTR_45_': -1.6667, '_XTR_38_': 0.0, '_XTR_55_': 0.0, '_XTR_29_': 0.0, 'SMBF': -2.5, '_XTR_54_': 0.0, '_XTR_27_': 0.0, '_XTR_16_': 0.0, '_XTR_36_': 0.0, '_XTR_9_': 0.0, '_XTR_17_': 0.0, '_XTR_52_': 0.0, 'Cln2': -0.8333, '_XTR_47_': -1.6667, '_XTR_46_': -1.6667, 'Whi5': 0.0, '_XTR_2_': -1.6667, 'FEAR': 1.6667, '_XTR_24_': 0.0, '_XTR_12_': 1.6667, '_XTR_53_': 0.0, '_XTR_1_': -0.8333, 'SFF': 1.6667, '_XTR_30_': 0.0, '_XTR_39_': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN _XTR_35_
+KnockIN Swe1
+KnockIN Swi5
+KnockIN _XTR_33_
+KnockIN _XTR_37_
+KnockIN _XTR_23_
+KnockIN _XTR_18_
+KnockIN _XTR_26_
+KnockIN _XTR_4_
+KnockIN _XTR_34_
+KnockIN Sic1
+KnockIN _XTR_42_
+KnockIN _XTR_28_
+KnockIN Cln3
+KnockIN _XTR_56_
+KnockIN _XTR_31_
+KnockIN Cdc20
+KnockIN _XTR_15_
+KnockIN _XTR_3_
+KnockIN Clb5
+KnockIN _XTR_22_
+KnockIN _XTR_20_
+KnockIN _XTR_7_
+KnockIN _XTR_8_
+KnockIN _XTR_57_
+KnockIN MEN
+KnockIN Cdc14
+KnockIN _XTR_25_
+KnockIN _XTR_6_
+KnockIN _XTR_58_
+KnockIN _XTR_49_
+KnockIN _XTR_51_
+KnockIN Clb2
+KnockIN _XTR_21_
+KnockIN Yhp1
+KnockIN _XTR_19_
+KnockIN _XTR_45_
+KnockIN _XTR_38_
+KnockIN _XTR_55_
+KnockIN _XTR_29_
+KnockIN SMBF
+KnockIN _XTR_54_
+KnockIN _XTR_27_
+KnockIN _XTR_16_
+KnockIN _XTR_36_
+KnockIN _XTR_9_
+KnockIN _XTR_17_
+KnockIN _XTR_52_
+KnockIN Cln2
+KnockIN _XTR_47_
+KnockIN _XTR_46_
+KnockIN Whi5
+KnockIN _XTR_2_
+KnockIN FEAR
+KnockIN _XTR_24_
+KnockIN _XTR_12_
+KnockIN _XTR_53_
+KnockIN _XTR_1_
+KnockIN SFF
+KnockIN _XTR_30_
+KnockIN _XTR_39_
+---- Binary KNOCKIN VALUE for output Cdh1----
+{'Cdh1': {'_XTR_35_': 0.0, 'Swe1': -0.8333, 'Swi5': 0.0, '_XTR_33_': 0.0, '_XTR_37_': 0.0, '_XTR_23_': 0.0, '_XTR_18_': 0.0, '_XTR_26_': 0.0, '_XTR_4_': -3.3333, '_XTR_34_': 0.0, 'Sic1': 0.0, '_XTR_42_': -2.5, '_XTR_28_': 0.0, 'Cln3': 0.0, '_XTR_56_': 0.0, '_XTR_31_': 0.0, 'Cdc20': -2.5, '_XTR_15_': 0.0, '_XTR_3_': 0.0, 'Clb5': 0.0, '_XTR_22_': 0.0, '_XTR_20_': 0.0, '_XTR_7_': 0.0, '_XTR_8_': 0.0, '_XTR_57_': 0.0, 'MEN': 0.0, 'Cdc14': -3.3333, '_XTR_25_': 0.0, '_XTR_6_': 0.0, '_XTR_58_': -0.8333, '_XTR_49_': 0.0, '_XTR_51_': -0.8333, 'Clb2': -0.8333, '_XTR_21_': 0.0, 'Yhp1': 0.0, '_XTR_19_': 0.0, '_XTR_45_': 0.0, '_XTR_38_': 0.0, '_XTR_55_': -0.8333, '_XTR_29_': 0.0, 'SMBF': 0.0, '_XTR_54_': 0.0, '_XTR_27_': 0.0, '_XTR_16_': 0.0, '_XTR_36_': 0.0, '_XTR_9_': 0.0, '_XTR_17_': 0.0, '_XTR_52_': -0.4167, 'Cln2': 0.0, '_XTR_47_': 0.0, '_XTR_46_': 0.0, 'Whi5': 0.0, '_XTR_2_': 0.0, 'FEAR': -0.8333, '_XTR_24_': 0.0, '_XTR_12_': -0.4167, '_XTR_53_': 0.0, '_XTR_1_': 0.0, 'SFF': 0.0, '_XTR_30_': 0.0, '_XTR_39_': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT Cdh1=======
+----Master diamonds-----
+{'FEAR': 'Cdh1', 'Cdc20': 'Cdh1', 'SpindleCP': 'Cdh1', 'Clb2': 'Cdh1', 'Cdc14': 'Cdh1', 'SMBF': '_XTR_3_', 'Start': 'Cdh1', 'SFF': 'Cdh1', '_XTR_51_': 'Cdh1', 'BuddingCP': 'Cdh1', 'Size': 'Cdh1'}
+
+
+--------PROPAGATION--------
+Cdh1                 			 KO:     1.6667 | KI:    -3.3335
+Cdc14                			 KO:     1.6667 | KI:    -3.3335
+_XTR_4_              			 KO:        0.0 | KI:    -3.3335
+MEN                  			 KO:     1.6667 | KI:        0.0
+FEAR                 			 KO:     1.6667 | KI:    -0.8334
+_XTR_3_              			 KO:    -3.3335 | KI:        0.0
+Clb2                 			 KO:    -0.8334 | KI:    -0.8334
+Cdc20                			 KO:     1.6667 | KI:    -2.5001
+_XTR_2_              			 KO:    -1.6668 | KI:        0.0
+Clb5                 			 KO:    -1.6667 | KI:        0.0
+_XTR_58_             			 KO:        0.0 | KI:    -0.8334
+_XTR_51_             			 KO:    -0.8334 | KI:    -0.8334
+_XTR_12_             			 KO:     1.6667 | KI:    -0.4167
+_XTR_1_              			 KO:    -0.8334 | KI:        0.0
+Cln2                 			 KO:    -0.8334 | KI:        0.0
+_XTR_46_             			 KO:    -1.6667 | KI:        0.0
+_XTR_47_             			 KO:    -1.6667 | KI:        0.0
+_XTR_55_             			 KO:        0.0 | KI:    -0.8334
+_XTR_57_             			 KO:        0.0 | KI:        0.0
+Swe1                 			 KO:    -0.8334 | KI:    -0.8334
+SFF                  			 KO:     1.6667 | KI:        0.0
+SMBF                 			 KO:    -2.5001 | KI:        0.0
+_XTR_45_             			 KO:    -1.6667 | KI:        0.0
+_XTR_52_             			 KO:        0.0 | KI:    -0.4167
+_XTR_54_             			 KO:        0.0 | KI:        0.0
+_XTR_56_             			 KO:        0.0 | KI:        0.0
+_XTR_42_             			 KO:        0.0 | KI:    -2.5001
+_XTR_53_             			 KO:        0.0 | KI:        0.0
+SpindleCP            			 KO:     1.6667 | KI:    -0.8334
+BuddingCP            			 KO:     1.6667 | KI:    -0.8334
+Start                			 KO:        0.0 | KI:        0.0
+Size                 			 KO:        0.0 | KI:        0.0
+There are 34 unreachable nodes, they are:
+{'_XTR_35_', '_XTR_37_', '_XTR_28_', '_XTR_31_', '_XTR_7_', '_XTR_8_', '_XTR_25_', '_XTR_6_', '_XTR_49_', '_XTR_21_', 'Yhp1', '_XTR_38_', '_XTR_27_', '_XTR_9_', 'Whi5', '_XTR_39_', 'Swi5', '_XTR_23_', '_XTR_18_', '_XTR_26_', '_XTR_34_', 'Sic1', 'Cln3', '_XTR_15_', '_XTR_22_', '_XTR_20_', '_XTR_19_', '_XTR_29_', '_XTR_16_', '_XTR_36_', '_XTR_17_', '_XTR_24_', '_XTR_30_', '_XTR_33_'}
+binary.html
+BuddingCP
+Lack      0: []
+Extra     0: []
+Real      8: [2, 3, 6, 7, 10, 11, 14, 15]
+Prop      8: [2, 3, 6, 7, 10, 11, 14, 15]
+
+Size
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SpindleCP
+Lack      0: []
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      8: [8, 9, 10, 11, 12, 13, 14, 15]
+
+Start
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cdc14
+Lack      0: []
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Cdc20
+Lack      0: []
+Extra     0: []
+Real     12: [0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     12: [0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Clb2
+Lack      0: []
+Extra     0: []
+Real      8: [2, 3, 6, 7, 8, 9, 12, 13]
+Prop      8: [2, 3, 6, 7, 8, 9, 12, 13]
+
+Clb5
+Lack      0: []
+Extra     0: []
+Real      4: [0, 2, 4, 6]
+Prop      4: [0, 2, 4, 6]
+
+Cln2
+Lack      0: []
+Extra     0: []
+Real      4: [1, 3, 5, 7]
+Prop      4: [1, 3, 5, 7]
+
+FEAR
+Lack      0: []
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      8: [8, 9, 10, 11, 12, 13, 14, 15]
+
+MEN
+Lack      0: []
+Extra     0: []
+Real      4: [10, 11, 14, 15]
+Prop      4: [10, 11, 14, 15]
+
+SFF
+Lack      0: []
+Extra     0: []
+Real      4: [10, 11, 14, 15]
+Prop      4: [10, 11, 14, 15]
+
+SMBF
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Swe1
+Lack      0: []
+Extra     0: []
+Real      8: [2, 3, 6, 7, 8, 9, 12, 13]
+Prop      8: [2, 3, 6, 7, 8, 9, 12, 13]
+
+_XTR_12_
+Lack      0: []
+Extra     0: []
+Real      6: [2, 6, 10, 11, 14, 15]
+Prop      6: [2, 6, 10, 11, 14, 15]
+
+_XTR_1_
+Lack      0: []
+Extra     0: []
+Real      4: [8, 9, 12, 13]
+Prop      4: [8, 9, 12, 13]
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      8: [1, 3, 5, 7, 8, 9, 12, 13]
+Prop      8: [1, 3, 5, 7, 8, 9, 12, 13]
+
+_XTR_3_
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+
+_XTR_42_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_45_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 2, 4, 6]
+Prop      4: [0, 2, 4, 6]
+
+_XTR_46_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 2, 4, 6]
+Prop      4: [0, 2, 4, 6]
+
+_XTR_47_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 2, 4, 6]
+Prop      4: [0, 2, 4, 6]
+
+_XTR_4_
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+
+_XTR_51_
+Lack      0: []
+Extra     0: []
+Real      8: [2, 3, 6, 7, 8, 9, 12, 13]
+Prop      8: [2, 3, 6, 7, 8, 9, 12, 13]
+
+_XTR_52_
+Lack      0: []
+Extra     0: []
+Real      2: [2, 3]
+Prop      2: [2, 3]
+
+_XTR_53_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_54_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_55_
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+_XTR_56_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_57_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_58_
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+Number of nodes is 65
+Error KO:  4.113766756037589e-05
+Error KI:  5.262348115842893e-05
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             65.000       65.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+TIME process heading: 0.0007610321044921875
+TIME simulate original network: 0.0225222110748291
+TIME perform original analysis process: 0.6381340026855469
+TIME perform propagation: 0.3605003356933594
+-----------TOTAL RUNNING TIME---------------
+11.578300458029844

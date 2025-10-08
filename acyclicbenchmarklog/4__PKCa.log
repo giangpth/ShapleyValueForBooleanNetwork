@@ -1,0 +1,436 @@
+The expression file is data/acyclicbenchmark/4.txt
+The interested output is: 
+{'PKCa'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'ERBB1', 'EGF', 'ERK1_2', 'PDK1', 'PLCg', 'MEK1_2', 'pertuzumab', 'AKT', 'erlotinib', 'trastuzumab', 'ERBB2', 'PKCa', 'HRG', 'p70S6K', 'mTOR', 'ERBB3'}
+-----Input names-----
+{'EGF', 'pertuzumab', 'erlotinib', 'trastuzumab', 'HRG'}
+----Intermediate nodes-----
+{'ERBB1', 'ERK1_2', 'PDK1', 'PLCg', 'MEK1_2', 'ERBB3', 'AKT', 'ERBB2', 'mTOR', 'p70S6K'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+There are 5 inputs with the range of input: 0 31
+Sorted internames:
+['AKT', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'MEK1_2', 'PDK1', 'PLCg', 'mTOR', 'p70S6K']
+There are 10 intermediate nodes with the range of inter: 0 1023
+----Input knockout shapley value-----
+('PKCa', {'EGF': 1.0, 'pertuzumab': 0.0, 'erlotinib': 0.0, 'trastuzumab': 0.0, 'HRG': 1.0})
+
+
+----Input knockIN shapley value-----
+('PKCa', {'EGF': -2.0, 'pertuzumab': 0.0, 'erlotinib': 0.0, 'trastuzumab': 0.0, 'HRG': -2.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout ERBB1
+Knockout ERK1_2
+Knockout PDK1
+Knockout PLCg
+Knockout MEK1_2
+Knockout ERBB3
+Knockout AKT
+Knockout ERBB2
+Knockout mTOR
+Knockout p70S6K
+----KNOCKOUT VALUE for output PKCa----
+{'AKT': 0.0, 'ERBB1': 0.0, 'ERBB2': 0.0, 'ERBB3': 0.0, 'ERK1_2': 0.0, 'MEK1_2': 0.0, 'PDK1': 0.0, 'PLCg': 1.0, 'mTOR': 0.0, 'p70S6K': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin ERBB1
+Knockin ERK1_2
+Knockin PDK1
+Knockin PLCg
+Knockin MEK1_2
+Knockin ERBB3
+Knockin AKT
+Knockin ERBB2
+Knockin mTOR
+Knockin p70S6K
+----KNOCKIN VALUE for output PKCa----
+{'PKCa': {'ERBB1': -2.0, 'ERK1_2': 0.0, 'PDK1': 0.0, 'PLCg': -2.0, 'MEK1_2': 0.0, 'ERBB3': -2.0, 'AKT': 0.0, 'ERBB2': -2.0, 'mTOR': 0.0, 'p70S6K': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'EGF', 'pertuzumab', 'erlotinib', 'trastuzumab', 'HRG'}
+Ordinary nodes are 
+{'ERBB1', 'EGF', 'ERK1_2', 'PDK1', 'PLCg', 'MEK1_2', 'pertuzumab', 'AKT', 'erlotinib', 'trastuzumab', 'ERBB2', 'PKCa', 'HRG', 'p70S6K', 'mTOR', 'ERBB3'}
+Extranodes added after removing cycles are 
+[]
+binary.html
+----Simulate binary network----
+----Generate table from output----
+-----Knockout Shapley value of input nodes in the binary network-----
+PKCa : {'EGF': 1.0, 'pertuzumab': 0.0, 'erlotinib': 0.0, 'trastuzumab': 0.0, 'HRG': 1.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+PKCa : {'EGF': -2.0, 'pertuzumab': 0.0, 'erlotinib': 0.0, 'trastuzumab': 0.0, 'HRG': -2.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout ERBB1
+Knockout _XTR_19_
+Knockout _XTR_15_
+Knockout MEK1_2
+Knockout _XTR_8_
+Knockout _XTR_18_
+Knockout _XTR_37_
+Knockout _XTR_27_
+Knockout ERBB3
+Knockout _XTR_21_
+Knockout _XTR_16_
+Knockout AKT
+Knockout _XTR_1_
+Knockout _XTR_36_
+Knockout _XTR_12_
+Knockout _XTR_11_
+Knockout mTOR
+Knockout p70S6K
+Knockout _XTR_5_
+Knockout _XTR_3_
+Knockout _XTR_7_
+Knockout _XTR_13_
+Knockout _XTR_10_
+Knockout PDK1
+Knockout PLCg
+Knockout _XTR_17_
+Knockout _XTR_4_
+Knockout ERBB2
+Knockout _XTR_9_
+Knockout _XTR_6_
+Knockout ERK1_2
+Knockout _XTR_34_
+Knockout _XTR_2_
+Knockout _XTR_26_
+Knockout _XTR_30_
+Knockout _XTR_24_
+Knockout _XTR_25_
+Knockout _XTR_22_
+---- Binary KNOCKOUT VALUE for output PKCa----
+{'PKCa': {'ERBB1': 0.0, '_XTR_19_': 0.0, '_XTR_15_': 0.0, 'MEK1_2': 0.0, '_XTR_8_': 0.0, '_XTR_18_': 0.0, '_XTR_37_': 0.0, '_XTR_27_': 0.0, 'ERBB3': 0.0, '_XTR_21_': 0.7, '_XTR_16_': 0.0, 'AKT': 0.0, '_XTR_1_': 0.0, '_XTR_36_': 0.0, '_XTR_12_': 0.0, '_XTR_11_': 0.0, 'mTOR': 0.0, 'p70S6K': 0.0, '_XTR_5_': 0.0, '_XTR_3_': 0.0, '_XTR_7_': 0.0, '_XTR_13_': 0.0, '_XTR_10_': 0.0, 'PDK1': 0.0, 'PLCg': 1.0, '_XTR_17_': 0.0, '_XTR_4_': 0.0, 'ERBB2': 0.0, '_XTR_9_': 0.0, '_XTR_6_': 0.0, 'ERK1_2': 0.0, '_XTR_34_': 0.0, '_XTR_2_': 0.0, '_XTR_26_': 0.0, '_XTR_30_': 0.0, '_XTR_24_': 0.0, '_XTR_25_': 0.0, '_XTR_22_': 0.7}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN ERBB1
+KnockIN _XTR_19_
+KnockIN _XTR_15_
+KnockIN MEK1_2
+KnockIN _XTR_8_
+KnockIN _XTR_18_
+KnockIN _XTR_37_
+KnockIN _XTR_27_
+KnockIN ERBB3
+KnockIN _XTR_21_
+KnockIN _XTR_16_
+KnockIN AKT
+KnockIN _XTR_1_
+KnockIN _XTR_36_
+KnockIN _XTR_12_
+KnockIN _XTR_11_
+KnockIN mTOR
+KnockIN p70S6K
+KnockIN _XTR_5_
+KnockIN _XTR_3_
+KnockIN _XTR_7_
+KnockIN _XTR_13_
+KnockIN _XTR_10_
+KnockIN PDK1
+KnockIN PLCg
+KnockIN _XTR_17_
+KnockIN _XTR_4_
+KnockIN ERBB2
+KnockIN _XTR_9_
+KnockIN _XTR_6_
+KnockIN ERK1_2
+KnockIN _XTR_34_
+KnockIN _XTR_2_
+KnockIN _XTR_26_
+KnockIN _XTR_30_
+KnockIN _XTR_24_
+KnockIN _XTR_25_
+KnockIN _XTR_22_
+---- Binary KNOCKIN VALUE for output PKCa----
+{'PKCa': {'ERBB1': -2.0, '_XTR_19_': -2.0, '_XTR_15_': -1.5, 'MEK1_2': 0.0, '_XTR_8_': -1.5, '_XTR_18_': -2.0, '_XTR_37_': 0.0, '_XTR_27_': -2.0, 'ERBB3': -2.0, '_XTR_21_': -2.0, '_XTR_16_': -2.0, 'AKT': 0.0, '_XTR_1_': 0.0, '_XTR_36_': 0.0, '_XTR_12_': -1.5, '_XTR_11_': -1.4, 'mTOR': 0.0, 'p70S6K': 0.0, '_XTR_5_': 0.0, '_XTR_3_': 0.0, '_XTR_7_': -1.4, '_XTR_13_': -2.0, '_XTR_10_': -2.0, 'PDK1': 0.0, 'PLCg': -2.0, '_XTR_17_': -1.5, '_XTR_4_': -1.5, 'ERBB2': -2.0, '_XTR_9_': -2.0, '_XTR_6_': -2.0, 'ERK1_2': 0.0, '_XTR_34_': 0.0, '_XTR_2_': -1.2, '_XTR_26_': -1.5, '_XTR_30_': 0.0, '_XTR_24_': -1.5, '_XTR_25_': -2.0, '_XTR_22_': -2.0}}
+
+
+=======PROPAGATE FOR OUTPUT PKCa=======
+----Master diamonds-----
+{'_XTR_1_': 'PLCg', '_XTR_5_': 'PLCg', '_XTR_18_': 'ERBB1', '_XTR_11_': 'PLCg', 'EGF': 'PLCg', 'HRG': 'PKCa', 'pertuzumab': 'PLCg', '_XTR_3_': 'ERBB2', '_XTR_7_': 'PLCg', 'ERBB3': 'PLCg'}
+
+
+--------PROPAGATION--------
+PKCa                 			 KO:        4.0 | KI:       -2.0
+PLCg                 			 KO:        1.0 | KI:       -2.0
+_XTR_22_             			 KO:        0.7 | KI:       -2.0
+ERBB3                			 KO:        0.0 | KI:       -2.0
+_XTR_21_             			 KO:        0.7 | KI:       -2.0
+ERBB2                			 KO:        0.0 | KI:       -2.0
+_XTR_25_             			 KO:        0.0 | KI:       -2.0
+_XTR_27_             			 KO:        0.0 | KI:       -2.0
+ERBB1                			 KO:        0.0 | KI:       -2.0
+_XTR_10_             			 KO:        0.0 | KI:       -2.0
+_XTR_13_             			 KO:        0.0 | KI:       -2.0
+_XTR_24_             			 KO:        0.0 | KI:       -1.5
+_XTR_1_              			 KO:        0.0 | KI:        0.0
+_XTR_26_             			 KO:        0.0 | KI:       -1.5
+_XTR_19_             			 KO:        0.0 | KI:       -2.0
+_XTR_18_             			 KO:        0.0 | KI:       -2.0
+_XTR_6_              			 KO:        0.0 | KI:       -2.0
+_XTR_9_              			 KO:        0.0 | KI:       -2.0
+_XTR_12_             			 KO:        0.0 | KI:       -1.5
+_XTR_5_              			 KO:        0.0 | KI:        0.0
+_XTR_11_             			 KO:        0.0 | KI:       -1.4
+_XTR_7_              			 KO:        0.0 | KI:       -1.4
+_XTR_16_             			 KO:        0.0 | KI:       -2.0
+_XTR_17_             			 KO:        0.0 | KI:       -1.5
+_XTR_4_              			 KO:        0.0 | KI:       -1.5
+_XTR_8_              			 KO:        0.0 | KI:       -1.5
+_XTR_3_              			 KO:        0.0 | KI:        0.0
+_XTR_15_             			 KO:        0.0 | KI:       -1.5
+_XTR_2_              			 KO:        0.0 | KI:       -1.2
+EGF                  			 KO:        1.0 | KI:       -2.0
+pertuzumab           			 KO:        0.0 | KI:        0.0
+erlotinib            			 KO:        0.0 | KI:        0.0
+trastuzumab          			 KO:        0.0 | KI:        0.0
+HRG                  			 KO:        1.0 | KI:       -2.0
+There are 10 unreachable nodes, they are:
+{'PDK1', 'MEK1_2', '_XTR_37_', 'ERK1_2', '_XTR_34_', 'AKT', '_XTR_36_', '_XTR_30_', 'mTOR', 'p70S6K'}
+binary.html
+EGF
+Lack      0: []
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21, 22, 23]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21, 22, 23]
+
+HRG
+Lack      0: []
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+erlotinib
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pertuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+trastuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ERBB1
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+ERBB2
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+ERBB3
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+PLCg
+Lack      0: []
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21, 22, 23]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 16, 17, 18, 19, 20, 21, 22, 23]
+
+_XTR_10_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_11_
+Lack      0: []
+Extra     0: []
+Real      3: [0, 1, 2]
+Prop      3: [0, 1, 2]
+
+_XTR_12_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_13_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_15_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 4, 5]
+Prop      4: [0, 1, 4, 5]
+
+_XTR_16_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_17_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 4, 5]
+Prop      4: [0, 1, 4, 5]
+
+_XTR_18_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_19_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_1_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_21_
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 2, 3, 4, 5, 6, 7, 18, 19, 20, 21, 22, 23]
+Prop     14: [0, 1, 2, 3, 4, 5, 6, 7, 18, 19, 20, 21, 22, 23]
+
+_XTR_22_
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 2, 3, 4, 5, 6, 7, 18, 19, 20, 21, 22, 23]
+Prop     14: [0, 1, 2, 3, 4, 5, 6, 7, 18, 19, 20, 21, 22, 23]
+
+_XTR_24_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 4, 5]
+Prop      4: [0, 1, 4, 5]
+
+_XTR_25_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_26_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 4, 5]
+Prop      4: [0, 1, 4, 5]
+
+_XTR_27_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      2: [0, 2]
+Prop      2: [0, 2]
+
+_XTR_3_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_4_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_5_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_6_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_7_
+Lack      0: []
+Extra     0: []
+Real      3: [0, 1, 2]
+Prop      3: [0, 1, 2]
+
+_XTR_8_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_9_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Number of nodes is 43
+Error KO:  0.0
+Error KI:  0.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             43.000       43.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+TIME process heading: 0.0005898475646972656
+TIME simulate original network: 0.018008708953857422
+TIME perform original analysis process: 0.3728911876678467
+TIME perform propagation: 0.20197033882141113
+-----------TOTAL RUNNING TIME---------------
+5.280880665988661

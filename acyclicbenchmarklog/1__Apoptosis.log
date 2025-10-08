@@ -1,0 +1,685 @@
+The expression file is data/acyclicbenchmark/1.txt
+The interested output is: 
+{'Apoptosis'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'Cas6', 'MEKK1', 'GF', 'APC', 'p53', 'Cas7', 'PIP2', 'IkB', 'BAD', 'PTEN', 'Cas3', 'TNF', 'A20', 'DNADamageEvent', 'NIK', 'Cas9', 'Cas12', 'Apoptosis', 'BclX', 'PI3K', 'Cas8', 'TRAF2', 'TRADD', 'TNFR1', 'GFR', 'TNFR2', 'IKK', 'Apaf1', 'JNKK', 'NFkB', 'BID', 'RIP', 'IAP', 'TRAF', 'PIP3', 'JNK', 'FADD', 'cFLIP', 'AKT', 'Mdm2', 'Mito'}
+-----Input names-----
+{'TNF', 'NFkB', 'GF'}
+----Intermediate nodes-----
+{'Cas6', 'MEKK1', 'APC', 'p53', 'Cas7', 'PIP2', 'IkB', 'BAD', 'PTEN', 'Cas3', 'A20', 'DNADamageEvent', 'NIK', 'Cas9', 'Cas12', 'BclX', 'PI3K', 'Cas8', 'TRAF2', 'TRADD', 'TNFR1', 'GFR', 'TNFR2', 'IKK', 'Apaf1', 'JNKK', 'BID', 'RIP', 'IAP', 'TRAF', 'PIP3', 'JNK', 'FADD', 'cFLIP', 'AKT', 'Mdm2', 'Mito'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['GF', 'NFkB', 'TNF']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['A20', 'AKT', 'APC', 'Apaf1', 'BAD', 'BID', 'BclX', 'Cas12', 'Cas3', 'Cas6', 'Cas7', 'Cas8', 'Cas9', 'DNADamageEvent', 'FADD', 'GFR', 'IAP', 'IKK', 'IkB', 'JNK', 'JNKK', 'MEKK1', 'Mdm2', 'Mito', 'NIK', 'PI3K', 'PIP2', 'PIP3', 'PTEN', 'RIP', 'TNFR1', 'TNFR2', 'TRADD', 'TRAF', 'TRAF2', 'cFLIP', 'p53']
+There are 37 intermediate nodes with the range of inter: 0 137438953471
+----Input knockout shapley value-----
+('Apoptosis', {'TNF': 0.3333, 'NFkB': -0.3333, 'GF': 1.6667})
+
+
+----Input knockIN shapley value-----
+('Apoptosis', {'TNF': -1.0, 'NFkB': 0.3333, 'GF': -1.6667})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout Cas6
+Knockout MEKK1
+Knockout APC
+Knockout p53
+Knockout Cas7
+Knockout PIP2
+Knockout IkB
+Knockout BAD
+Knockout PTEN
+Knockout Cas3
+Knockout A20
+Knockout DNADamageEvent
+Knockout NIK
+Knockout Cas9
+Knockout Cas12
+Knockout BclX
+Knockout PI3K
+Knockout Cas8
+Knockout TRAF2
+Knockout TRADD
+Knockout TNFR1
+Knockout GFR
+Knockout TNFR2
+Knockout IKK
+Knockout Apaf1
+Knockout JNKK
+Knockout BID
+Knockout RIP
+Knockout IAP
+Knockout TRAF
+Knockout PIP3
+Knockout JNK
+Knockout FADD
+Knockout cFLIP
+Knockout AKT
+Knockout Mdm2
+Knockout Mito
+----KNOCKOUT VALUE for output Apoptosis----
+{'A20': 0.0, 'AKT': 0.0, 'APC': 0.0, 'Apaf1': 0.0, 'BAD': 0.0, 'BID': 0.0, 'BclX': 0.0, 'Cas12': 0.0, 'Cas3': 2.3333, 'Cas6': 0.0, 'Cas7': 0.0, 'Cas8': 0.6667, 'Cas9': 0.0, 'DNADamageEvent': 2.3333, 'FADD': 0.0, 'GFR': 0.0, 'IAP': -0.3333, 'IKK': 0.0, 'IkB': 0.0, 'JNK': 0.0, 'JNKK': 0.0, 'MEKK1': 0.0, 'Mdm2': 0.0, 'Mito': 0.0, 'NIK': 0.0, 'PI3K': 0.0, 'PIP2': 0.0, 'PIP3': 0.0, 'PTEN': 0.0, 'RIP': 0.0, 'TNFR1': 0.0, 'TNFR2': 0.0, 'TRADD': 0.0, 'TRAF': 0.0, 'TRAF2': 0.0, 'cFLIP': 0.0, 'p53': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin Cas6
+Knockin MEKK1
+Knockin APC
+Knockin p53
+Knockin Cas7
+Knockin PIP2
+Knockin IkB
+Knockin BAD
+Knockin PTEN
+Knockin Cas3
+Knockin A20
+Knockin DNADamageEvent
+Knockin NIK
+Knockin Cas9
+Knockin Cas12
+Knockin BclX
+Knockin PI3K
+Knockin Cas8
+Knockin TRAF2
+Knockin TRADD
+Knockin TNFR1
+Knockin GFR
+Knockin TNFR2
+Knockin IKK
+Knockin Apaf1
+Knockin JNKK
+Knockin BID
+Knockin RIP
+Knockin IAP
+Knockin TRAF
+Knockin PIP3
+Knockin JNK
+Knockin FADD
+Knockin cFLIP
+Knockin AKT
+Knockin Mdm2
+Knockin Mito
+----KNOCKIN VALUE for output Apoptosis----
+{'Apoptosis': {'Cas6': 0.0, 'MEKK1': 0.0, 'APC': -1.0, 'p53': 0.0, 'Cas7': 0.0, 'PIP2': 0.0, 'IkB': 0.0, 'BAD': 0.0, 'PTEN': 0.0, 'Cas3': -1.6667, 'A20': 0.0, 'DNADamageEvent': -1.6667, 'NIK': 0.0, 'Cas9': 0.0, 'Cas12': 0.0, 'BclX': 0.0, 'PI3K': 0.0, 'Cas8': -1.0, 'TRAF2': 0.0, 'TRADD': 0.0, 'TNFR1': 0.0, 'GFR': 0.0, 'TNFR2': 0.0, 'IKK': 0.0, 'Apaf1': 0.0, 'JNKK': 0.0, 'BID': 0.0, 'RIP': 0.0, 'IAP': 2.3333, 'TRAF': 0.6667, 'PIP3': 0.0, 'JNK': 0.0, 'FADD': -1.0, 'cFLIP': 0.6667, 'AKT': 0.0, 'Mdm2': 0.0, 'Mito': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'TNF', 'NFkB', 'GF'}
+Ordinary nodes are 
+{'Cas6', 'MEKK1', 'GF', 'APC', 'p53', 'Cas7', 'PIP2', 'IkB', 'BAD', 'PTEN', 'Cas3', 'TNF', 'A20', 'DNADamageEvent', 'NIK', 'Cas9', 'Cas12', 'Apoptosis', 'BclX', 'PI3K', 'Cas8', 'TRAF2', 'TRADD', 'TNFR1', 'GFR', 'TNFR2', 'IKK', 'Apaf1', 'JNKK', 'NFkB', 'BID', 'RIP', 'IAP', 'TRAF', 'PIP3', 'JNK', 'FADD', 'cFLIP', 'AKT', 'Mdm2', 'Mito'}
+Extranodes added after removing cycles are 
+[]
+binary.html
+----Simulate binary network----
+----Generate table from output----
+-----Knockout Shapley value of input nodes in the binary network-----
+Apoptosis : {'TNF': 0.3333, 'NFkB': -0.3333, 'GF': 1.6667}
+-----KnockIN Shapley value of input nodes in the binary network-----
+Apoptosis : {'TNF': -1.0, 'NFkB': 0.3333, 'GF': -1.6667}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout Cas6
+Knockout MEKK1
+Knockout _XTR_60_
+Knockout APC
+Knockout _XTR_54_
+Knockout _XTR_5_
+Knockout _XTR_41_
+Knockout Cas7
+Knockout PIP2
+Knockout PTEN
+Knockout _XTR_21_
+Knockout _XTR_25_
+Knockout _XTR_11_
+Knockout A20
+Knockout _XTR_9_
+Knockout _XTR_14_
+Knockout Cas12
+Knockout BclX
+Knockout PI3K
+Knockout Cas8
+Knockout _XTR_43_
+Knockout _XTR_37_
+Knockout _XTR_31_
+Knockout _XTR_52_
+Knockout TNFR2
+Knockout Apaf1
+Knockout JNKK
+Knockout _XTR_20_
+Knockout BID
+Knockout _XTR_49_
+Knockout PIP3
+Knockout JNK
+Knockout _XTR_4_
+Knockout _XTR_38_
+Knockout _XTR_53_
+Knockout AKT
+Knockout Mito
+Knockout _XTR_34_
+Knockout p53
+Knockout IkB
+Knockout BAD
+Knockout _XTR_2_
+Knockout _XTR_26_
+Knockout Cas3
+Knockout _XTR_22_
+Knockout _XTR_1_
+Knockout _XTR_12_
+Knockout DNADamageEvent
+Knockout _XTR_3_
+Knockout NIK
+Knockout Cas9
+Knockout _XTR_33_
+Knockout _XTR_48_
+Knockout TRAF2
+Knockout _XTR_42_
+Knockout TRADD
+Knockout TNFR1
+Knockout GFR
+Knockout IKK
+Knockout _XTR_13_
+Knockout _XTR_39_
+Knockout RIP
+Knockout IAP
+Knockout TRAF
+Knockout FADD
+Knockout _XTR_32_
+Knockout cFLIP
+Knockout _XTR_35_
+Knockout Mdm2
+---- Binary KNOCKOUT VALUE for output Apoptosis----
+{'Apoptosis': {'Cas6': 0.0, 'MEKK1': 0.0, '_XTR_60_': 0.0, 'APC': 0.0, '_XTR_54_': 0.0, '_XTR_5_': 0.3333, '_XTR_41_': -0.3333, 'Cas7': 0.0, 'PIP2': 0.0, 'PTEN': 0.0, '_XTR_21_': 0.6667, '_XTR_25_': 0.0, '_XTR_11_': 0.0, 'A20': 0.0, '_XTR_9_': 0.0, '_XTR_14_': 0.0, 'Cas12': 0.0, 'BclX': 0.0, 'PI3K': 0.0, 'Cas8': 0.6667, '_XTR_43_': -0.3333, '_XTR_37_': 0.0, '_XTR_31_': 0.0, '_XTR_52_': 0.0, 'TNFR2': 0.0, 'Apaf1': 0.0, 'JNKK': 0.0, '_XTR_20_': 0.6667, 'BID': 0.0, '_XTR_49_': 0.0, 'PIP3': 0.0, 'JNK': 0.0, '_XTR_4_': 0.6667, '_XTR_38_': 0.0, '_XTR_53_': 0.0, 'AKT': 0.0, 'Mito': 0.0, '_XTR_34_': 0.0, 'p53': 0.0, 'IkB': 0.0, 'BAD': 0.0, '_XTR_2_': 0.6667, '_XTR_26_': -0.3333, 'Cas3': 2.3333, '_XTR_22_': 0.0, '_XTR_1_': 2.3333, '_XTR_12_': 0.0, 'DNADamageEvent': 2.3333, '_XTR_3_': 0.0, 'NIK': 0.0, 'Cas9': 0.0, '_XTR_33_': 0.0, '_XTR_48_': 0.0, 'TRAF2': 0.0, '_XTR_42_': 0.0, 'TRADD': 0.0, 'TNFR1': 0.0, 'GFR': 0.0, 'IKK': 0.0, '_XTR_13_': 0.0, '_XTR_39_': 0.0, 'RIP': 0.0, 'IAP': -0.3333, 'TRAF': 0.0, 'FADD': 0.0, '_XTR_32_': 0.0, 'cFLIP': 0.0, '_XTR_35_': 0.0, 'Mdm2': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN Cas6
+KnockIN MEKK1
+KnockIN _XTR_60_
+KnockIN APC
+KnockIN _XTR_54_
+KnockIN _XTR_5_
+KnockIN _XTR_41_
+KnockIN Cas7
+KnockIN PIP2
+KnockIN PTEN
+KnockIN _XTR_21_
+KnockIN _XTR_25_
+KnockIN _XTR_11_
+KnockIN A20
+KnockIN _XTR_9_
+KnockIN _XTR_14_
+KnockIN Cas12
+KnockIN BclX
+KnockIN PI3K
+KnockIN Cas8
+KnockIN _XTR_43_
+KnockIN _XTR_37_
+KnockIN _XTR_31_
+KnockIN _XTR_52_
+KnockIN TNFR2
+KnockIN Apaf1
+KnockIN JNKK
+KnockIN _XTR_20_
+KnockIN BID
+KnockIN _XTR_49_
+KnockIN PIP3
+KnockIN JNK
+KnockIN _XTR_4_
+KnockIN _XTR_38_
+KnockIN _XTR_53_
+KnockIN AKT
+KnockIN Mito
+KnockIN _XTR_34_
+KnockIN p53
+KnockIN IkB
+KnockIN BAD
+KnockIN _XTR_2_
+KnockIN _XTR_26_
+KnockIN Cas3
+KnockIN _XTR_22_
+KnockIN _XTR_1_
+KnockIN _XTR_12_
+KnockIN DNADamageEvent
+KnockIN _XTR_3_
+KnockIN NIK
+KnockIN Cas9
+KnockIN _XTR_33_
+KnockIN _XTR_48_
+KnockIN TRAF2
+KnockIN _XTR_42_
+KnockIN TRADD
+KnockIN TNFR1
+KnockIN GFR
+KnockIN IKK
+KnockIN _XTR_13_
+KnockIN _XTR_39_
+KnockIN RIP
+KnockIN IAP
+KnockIN TRAF
+KnockIN FADD
+KnockIN _XTR_32_
+KnockIN cFLIP
+KnockIN _XTR_35_
+KnockIN Mdm2
+---- Binary KNOCKIN VALUE for output Apoptosis----
+{'Apoptosis': {'Cas6': 0.0, 'MEKK1': 0.0, '_XTR_60_': 0.0, 'APC': -1.0, '_XTR_54_': 0.0, '_XTR_5_': -1.6667, '_XTR_41_': 1.0, 'Cas7': 0.0, 'PIP2': 0.0, 'PTEN': 0.0, '_XTR_21_': -1.0, '_XTR_25_': 0.0, '_XTR_11_': 0.0, 'A20': 0.0, '_XTR_9_': 0.0, '_XTR_14_': 0.0, 'Cas12': 0.0, 'BclX': 0.0, 'PI3K': 0.0, 'Cas8': -1.0, '_XTR_43_': 0.0, '_XTR_37_': 0.0, '_XTR_31_': 0.0, '_XTR_52_': 0.0, 'TNFR2': 0.0, 'Apaf1': 0.0, 'JNKK': 0.0, '_XTR_20_': 0.0, 'BID': 0.0, '_XTR_49_': -1.0, 'PIP3': 0.0, 'JNK': 0.0, '_XTR_4_': -1.6667, '_XTR_38_': 0.0, '_XTR_53_': 0.0, 'AKT': 0.0, 'Mito': 0.0, '_XTR_34_': 0.0, 'p53': 0.0, 'IkB': 0.0, 'BAD': 0.0, '_XTR_2_': -1.6667, '_XTR_26_': 0.3333, 'Cas3': -1.6667, '_XTR_22_': -1.0, '_XTR_1_': -0.3333, '_XTR_12_': 0.0, 'DNADamageEvent': -1.6667, '_XTR_3_': -1.6667, 'NIK': 0.0, 'Cas9': 0.0, '_XTR_33_': 0.0, '_XTR_48_': 0.0, 'TRAF2': 0.0, '_XTR_42_': -0.3333, 'TRADD': 0.0, 'TNFR1': 0.0, 'GFR': 0.0, 'IKK': 0.0, '_XTR_13_': 0.0, '_XTR_39_': 0.0, 'RIP': 0.0, 'IAP': 2.3333, 'TRAF': 0.6667, 'FADD': -1.0, '_XTR_32_': 0.0, 'cFLIP': 0.6667, '_XTR_35_': 0.0, 'Mdm2': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT Apoptosis=======
+----Master diamonds-----
+{'_XTR_1_': 'Cas3', '_XTR_20_': '_XTR_4_', 'GF': 'Cas3', 'NFkB': 'Cas3', '_XTR_26_': 'Cas3', 'TNF': 'Cas3', 'TRADD': '_XTR_4_', '_XTR_32_': 'Mito', 'JNK': '_XTR_48_', 'p53': '_XTR_48_', 'Cas8': '_XTR_4_', '_XTR_9_': '_XTR_48_', 'AKT': '_XTR_48_', 'RIP': '_XTR_48_', 'GFR': '_XTR_48_'}
+
+
+--------PROPAGATION--------
+Apoptosis            			 KO:     2.3332 | KI:    -1.6666
+DNADamageEvent       			 KO:     2.3332 | KI:    -1.6666
+Cas3                 			 KO:     2.3332 | KI:    -1.6666
+_XTR_4_              			 KO:     0.6666 | KI:    -1.6666
+_XTR_5_              			 KO:     0.3333 | KI:    -1.6666
+_XTR_2_              			 KO:     0.6666 | KI:    -1.6666
+_XTR_3_              			 KO:        0.0 | KI:    -1.6666
+_XTR_1_              			 KO:     2.3332 | KI:    -0.3333
+Cas8                 			 KO:     0.6666 | KI:       -1.0
+APC                  			 KO:        0.0 | KI:       -1.0
+IAP                  			 KO:    -0.3333 | KI:     2.3332
+_XTR_21_             			 KO:     0.6666 | KI:       -1.0
+_XTR_22_             			 KO:        0.0 | KI:       -1.0
+_XTR_49_             			 KO:        0.0 | KI:       -1.0
+_XTR_41_             			 KO:    -0.3333 | KI:     0.9999
+_XTR_43_             			 KO:    -0.3333 | KI:        0.0
+_XTR_20_             			 KO:     0.6666 | KI:        0.0
+FADD                 			 KO:        0.0 | KI:       -1.0
+_XTR_48_             			 KO:        0.0 | KI:        0.0
+_XTR_26_             			 KO:    -0.3333 | KI:     0.3333
+_XTR_42_             			 KO:        0.0 | KI:    -0.3333
+cFLIP                			 KO:        0.0 | KI:     0.6666
+TRADD                			 KO:        0.0 | KI:        0.0
+Mito                 			 KO:        0.0 | KI:        0.0
+Apaf1                			 KO:        0.0 | KI:        0.0
+TRAF                 			 KO:        0.0 | KI:     0.6666
+TNFR1                			 KO:        0.0 | KI:        0.0
+BID                  			 KO:        0.0 | KI:        0.0
+_XTR_32_             			 KO:        0.0 | KI:        0.0
+p53                  			 KO:        0.0 | KI:        0.0
+_XTR_33_             			 KO:        0.0 | KI:        0.0
+_XTR_35_             			 KO:        0.0 | KI:        0.0
+BclX                 			 KO:        0.0 | KI:        0.0
+JNK                  			 KO:        0.0 | KI:        0.0
+_XTR_31_             			 KO:        0.0 | KI:        0.0
+_XTR_34_             			 KO:        0.0 | KI:        0.0
+_XTR_53_             			 KO:        0.0 | KI:        0.0
+_XTR_54_             			 KO:        0.0 | KI:        0.0
+JNKK                 			 KO:        0.0 | KI:        0.0
+_XTR_52_             			 KO:        0.0 | KI:        0.0
+BAD                  			 KO:        0.0 | KI:        0.0
+MEKK1                			 KO:        0.0 | KI:        0.0
+_XTR_9_              			 KO:        0.0 | KI:        0.0
+RIP                  			 KO:        0.0 | KI:        0.0
+AKT                  			 KO:        0.0 | KI:        0.0
+PIP3                 			 KO:        0.0 | KI:        0.0
+_XTR_25_             			 KO:        0.0 | KI:        0.0
+PI3K                 			 KO:        0.0 | KI:        0.0
+PIP2                 			 KO:        0.0 | KI:        0.0
+GFR                  			 KO:        0.0 | KI:        0.0
+TNF                  			 KO:     0.3333 | KI:       -1.0
+NFkB                 			 KO:    -0.3333 | KI:     0.3333
+GF                   			 KO:     1.6666 | KI:    -1.6666
+There are 20 unreachable nodes, they are:
+{'Cas6', '_XTR_60_', 'Cas7', 'PTEN', '_XTR_11_', 'A20', '_XTR_14_', 'Cas12', '_XTR_37_', 'TNFR2', '_XTR_38_', 'IkB', '_XTR_12_', 'NIK', 'Cas9', 'TRAF2', 'IKK', '_XTR_13_', '_XTR_39_', 'Mdm2'}
+binary.html
+GF
+Lack      0: []
+Extra     0: []
+Real      6: [0, 2, 3, 4, 6, 7]
+Prop      6: [0, 2, 3, 4, 6, 7]
+
+NFkB
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+TNF
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+APC
+Lack      0: []
+Extra     0: []
+Real      1: [0]
+Prop      1: [0]
+
+Apaf1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BAD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BID
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BclX
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas3
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Cas8
+Lack      0: []
+Extra     0: []
+Real      3: [0, 4, 6]
+Prop      3: [0, 4, 6]
+
+DNADamageEvent
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+FADD
+Lack      0: []
+Extra     0: []
+Real      1: [0]
+Prop      1: [0]
+
+GFR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IAP
+Lack      0: []
+Extra     0: []
+Real      6: [1, 3, 4, 5, 6, 7]
+Prop      6: [1, 3, 4, 5, 6, 7]
+
+JNK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JNKK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MEKK1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mito
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PI3K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PIP2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PIP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RIP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TNFR1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TRADD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TRAF
+Lack      0: []
+Extra     0: []
+Real      2: [4, 6]
+Prop      2: [4, 6]
+
+_XTR_1_
+Lack      0: []
+Extra     0: []
+Real      6: [1, 3, 4, 5, 6, 7]
+Prop      6: [1, 3, 4, 5, 6, 7]
+
+_XTR_20_
+Lack      0: []
+Extra     0: []
+Real      2: [4, 6]
+Prop      2: [4, 6]
+
+_XTR_21_
+Lack      0: []
+Extra     0: []
+Real      3: [0, 4, 6]
+Prop      3: [0, 4, 6]
+
+_XTR_22_
+Lack      0: []
+Extra     0: []
+Real      1: [0]
+Prop      1: [0]
+
+_XTR_25_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_26_
+Lack      0: []
+Extra     0: []
+Real      2: [3, 6]
+Prop      2: [3, 6]
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      5: [0, 2, 3, 4, 6]
+Prop      5: [0, 2, 3, 4, 6]
+
+_XTR_31_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_32_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_33_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_34_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_35_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_3_
+Lack      0: []
+Extra     0: []
+Real      3: [0, 2, 3]
+Prop      3: [0, 2, 3]
+
+_XTR_41_
+Lack      0: []
+Extra     0: []
+Real      4: [1, 3, 4, 6]
+Prop      4: [1, 3, 4, 6]
+
+_XTR_42_
+Lack      0: []
+Extra     0: []
+Real      1: [3]
+Prop      1: [3]
+
+_XTR_43_
+Lack      0: []
+Extra     0: []
+Real      1: [3]
+Prop      1: [3]
+
+_XTR_48_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_49_
+Lack      0: []
+Extra     0: []
+Real      1: [0]
+Prop      1: [0]
+
+_XTR_4_
+Lack      0: []
+Extra     0: []
+Real      5: [0, 2, 3, 4, 6]
+Prop      5: [0, 2, 3, 4, 6]
+
+_XTR_52_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_53_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_54_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_5_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_9_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cFLIP
+Lack      0: []
+Extra     0: []
+Real      2: [4, 6]
+Prop      2: [4, 6]
+
+p53
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Number of nodes is 72
+Error KO:  3.535533905929731e-05
+Error KI:  3.9086797998516386e-05
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             72.000       72.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+TIME process heading: 0.0009181499481201172
+TIME simulate original network: 0.032423973083496094
+TIME perform original analysis process: 2.2946548461914062
+TIME perform propagation: 0.21840691566467285
+-----------TOTAL RUNNING TIME---------------
+11.143723333952948

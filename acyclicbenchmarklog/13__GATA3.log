@@ -1,0 +1,327 @@
+The expression file is data/acyclicbenchmark/13.txt
+The interested output is: 
+{'GATA3'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'IRAK', 'TCR', 'GATA3', 'IL4R', 'IL18', 'IL10', 'IFNgR', 'JAK1', 'IL10R', 'STAT3', 'Tbet', 'IL12', 'IFNbR', 'IL18R', 'IL12R', 'IFNg', 'IFNb', 'STAT4', 'NFAT', 'dummy1', 'STAT6', 'STAT1', 'SOCS1', 'IL4', 'dummy2'}
+-----Input names-----
+{'IFNb', 'TCR', 'dummy1', 'IL12', 'dummy2', 'IL18'}
+----Intermediate nodes-----
+{'IL12R', 'IRAK', 'IFNg', 'IL4R', 'IL10', 'IFNgR', 'JAK1', 'STAT4', 'NFAT', 'IL10R', 'STAT3', 'Tbet', 'IL4', 'STAT6', 'STAT1', 'SOCS1', 'IFNbR', 'IL18R'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['IFNb', 'IL12', 'IL18', 'TCR', 'dummy1', 'dummy2']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+There are 18 intermediate nodes with the range of inter: 0 262143
+----Input knockout shapley value-----
+('GATA3', {'IFNb': 0.0, 'TCR': 0.0, 'dummy1': 2.3333, 'IL12': 0.0, 'dummy2': 2.3333, 'IL18': 0.0})
+
+
+----Input knockIN shapley value-----
+('GATA3', {'IFNb': 0.0, 'TCR': 0.0, 'dummy1': -1.1667, 'IL12': 0.0, 'dummy2': -1.1667, 'IL18': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout IL12R
+Knockout IRAK
+Knockout IFNg
+Knockout IL4R
+Knockout IL10
+Knockout IFNgR
+Knockout JAK1
+Knockout STAT4
+Knockout NFAT
+Knockout IL10R
+Knockout STAT3
+Knockout Tbet
+Knockout IL4
+Knockout STAT6
+Knockout STAT1
+Knockout SOCS1
+Knockout IFNbR
+Knockout IL18R
+----KNOCKOUT VALUE for output GATA3----
+{'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IL4': 0.0, 'IL4R': 0.0, 'IRAK': 0.0, 'JAK1': 0.0, 'NFAT': 0.0, 'SOCS1': 0.0, 'STAT1': 0.0, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': 0.0, 'Tbet': -1.1667}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin IL12R
+Knockin IRAK
+Knockin IFNg
+Knockin IL4R
+Knockin IL10
+Knockin IFNgR
+Knockin JAK1
+Knockin STAT4
+Knockin NFAT
+Knockin IL10R
+Knockin STAT3
+Knockin Tbet
+Knockin IL4
+Knockin STAT6
+Knockin STAT1
+Knockin SOCS1
+Knockin IFNbR
+Knockin IL18R
+----KNOCKIN VALUE for output GATA3----
+{'GATA3': {'IL12R': 0.0, 'IRAK': 0.0, 'IFNg': 0.0, 'IL4R': 0.0, 'IL10': 0.0, 'IFNgR': 0.0, 'JAK1': 0.0, 'STAT4': 0.0, 'NFAT': 0.0, 'IL10R': 0.0, 'STAT3': 0.0, 'Tbet': 2.3333, 'IL4': 0.0, 'STAT6': -2.9167, 'STAT1': 0.0, 'SOCS1': 0.0, 'IFNbR': 0.0, 'IL18R': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'IFNb', 'TCR', 'dummy1', 'IL12', 'dummy2', 'IL18'}
+Ordinary nodes are 
+{'IRAK', 'TCR', 'GATA3', 'IL4R', 'IL18', 'IL10', 'IFNgR', 'JAK1', 'IL10R', 'STAT3', 'Tbet', 'IL12', 'IFNbR', 'IL18R', 'IL12R', 'IFNg', 'IFNb', 'STAT4', 'NFAT', 'dummy1', 'STAT6', 'STAT1', 'SOCS1', 'IL4', 'dummy2'}
+Extranodes added after removing cycles are 
+[]
+binary.html
+----Simulate binary network----
+----Generate table from output----
+-----Knockout Shapley value of input nodes in the binary network-----
+GATA3 : {'IFNb': 0.0, 'TCR': 0.0, 'dummy1': 2.3333, 'IL12': 0.0, 'dummy2': 2.3333, 'IL18': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+GATA3 : {'IFNb': 0.0, 'TCR': 0.0, 'dummy1': -1.1667, 'IL12': 0.0, 'dummy2': -1.1667, 'IL18': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout _XTR_22_
+Knockout _XTR_12_
+Knockout IRAK
+Knockout _XTR_31_
+Knockout _XTR_29_
+Knockout _XTR_18_
+Knockout IL4R
+Knockout _XTR_34_
+Knockout _XTR_21_
+Knockout IL10
+Knockout IFNgR
+Knockout JAK1
+Knockout _XTR_26_
+Knockout IL10R
+Knockout STAT3
+Knockout Tbet
+Knockout _XTR_13_
+Knockout IFNbR
+Knockout _XTR_35_
+Knockout IL18R
+Knockout _XTR_33_
+Knockout _XTR_30_
+Knockout IL12R
+Knockout _XTR_11_
+Knockout _XTR_2_
+Knockout IFNg
+Knockout STAT4
+Knockout NFAT
+Knockout _XTR_5_
+Knockout _XTR_23_
+Knockout SOCS1
+Knockout STAT6
+Knockout STAT1
+Knockout _XTR_32_
+Knockout IL4
+---- Binary KNOCKOUT VALUE for output GATA3----
+{'GATA3': {'_XTR_22_': 0.0, '_XTR_12_': 0.0, 'IRAK': 0.0, '_XTR_31_': 0.0, '_XTR_29_': 0.0, '_XTR_18_': 0.0, 'IL4R': 0.0, '_XTR_34_': 0.0, '_XTR_21_': -1.1667, 'IL10': 0.0, 'IFNgR': 0.0, 'JAK1': 0.0, '_XTR_26_': 0.0, 'IL10R': 0.0, 'STAT3': 0.0, 'Tbet': -1.1667, '_XTR_13_': 0.0, 'IFNbR': 0.0, '_XTR_35_': 0.0, 'IL18R': 0.0, '_XTR_33_': 0.0, '_XTR_30_': 0.0, 'IL12R': 0.0, '_XTR_11_': 2.3333, '_XTR_2_': 0.0, 'IFNg': 0.0, 'STAT4': 0.0, 'NFAT': 0.0, '_XTR_5_': 0.0, '_XTR_23_': -0.5833, 'SOCS1': 0.0, 'STAT6': 0.0, 'STAT1': 0.0, '_XTR_32_': 0.0, 'IL4': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN _XTR_22_
+KnockIN _XTR_12_
+KnockIN IRAK
+KnockIN _XTR_31_
+KnockIN _XTR_29_
+KnockIN _XTR_18_
+KnockIN IL4R
+KnockIN _XTR_34_
+KnockIN _XTR_21_
+KnockIN IL10
+KnockIN IFNgR
+KnockIN JAK1
+KnockIN _XTR_26_
+KnockIN IL10R
+KnockIN STAT3
+KnockIN Tbet
+KnockIN _XTR_13_
+KnockIN IFNbR
+KnockIN _XTR_35_
+KnockIN IL18R
+KnockIN _XTR_33_
+KnockIN _XTR_30_
+KnockIN IL12R
+KnockIN _XTR_11_
+KnockIN _XTR_2_
+KnockIN IFNg
+KnockIN STAT4
+KnockIN NFAT
+KnockIN _XTR_5_
+KnockIN _XTR_23_
+KnockIN SOCS1
+KnockIN STAT6
+KnockIN STAT1
+KnockIN _XTR_32_
+KnockIN IL4
+---- Binary KNOCKIN VALUE for output GATA3----
+{'GATA3': {'_XTR_22_': 2.3333, '_XTR_12_': -4.6667, 'IRAK': 0.0, '_XTR_31_': 0.0, '_XTR_29_': 0.0, '_XTR_18_': 0.0, 'IL4R': 0.0, '_XTR_34_': 0.0, '_XTR_21_': 2.3333, 'IL10': 0.0, 'IFNgR': 0.0, 'JAK1': 0.0, '_XTR_26_': 0.0, 'IL10R': 0.0, 'STAT3': 0.0, 'Tbet': 2.3333, '_XTR_13_': -4.6667, 'IFNbR': 0.0, '_XTR_35_': 0.0, 'IL18R': 0.0, '_XTR_33_': 0.0, '_XTR_30_': 0.0, 'IL12R': 0.0, '_XTR_11_': -1.1667, '_XTR_2_': 0.0, 'IFNg': 0.0, 'STAT4': 0.0, 'NFAT': 0.0, '_XTR_5_': 0.0, '_XTR_23_': 2.3333, 'SOCS1': 0.0, 'STAT6': -2.9167, 'STAT1': 0.0, '_XTR_32_': 0.0, 'IL4': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT GATA3=======
+----Master diamonds-----
+{'_XTR_11_': 'GATA3', 'dummy1': 'GATA3', '_XTR_21_': 'GATA3', 'dummy2': 'GATA3'}
+
+
+--------PROPAGATION--------
+GATA3                			 KO:     2.3337 | KI:    -4.6677
+_XTR_12_             			 KO:        0.0 | KI:    -4.6677
+_XTR_13_             			 KO:        0.0 | KI:    -4.6677
+_XTR_11_             			 KO:     2.3337 | KI:     -1.167
+STAT6                			 KO:        0.0 | KI:    -2.9172
+Tbet                 			 KO:     -1.167 | KI:     2.3337
+_XTR_22_             			 KO:        0.0 | KI:     2.3337
+_XTR_23_             			 KO:    -0.5835 | KI:     2.3337
+STAT1                			 KO:        0.0 | KI:        0.0
+_XTR_21_             			 KO:     -1.167 | KI:     2.3337
+IFNbR                			 KO:        0.0 | KI:        0.0
+IFNb                 			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+dummy1               			 KO:     2.3337 | KI:     -1.167
+IL12                 			 KO:        0.0 | KI:        0.0
+dummy2               			 KO:     2.3337 | KI:     -1.167
+IL18                 			 KO:        0.0 | KI:        0.0
+There are 25 unreachable nodes, they are:
+{'IRAK', '_XTR_31_', '_XTR_29_', '_XTR_18_', 'IL4R', '_XTR_34_', 'IL10', 'IFNgR', 'JAK1', '_XTR_26_', 'IL10R', 'STAT3', '_XTR_35_', 'IL18R', '_XTR_33_', '_XTR_30_', 'IL12R', '_XTR_2_', 'IFNg', 'STAT4', 'NFAT', '_XTR_5_', 'SOCS1', 'IL4', '_XTR_32_'}
+binary.html
+IFNb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TCR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+dummy1
+Lack      0: []
+Extra     0: []
+Real     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+Prop     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+
+dummy2
+Lack      0: []
+Extra     0: []
+Real     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+Prop     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+
+IFNbR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT6
+Lack      0: []
+Extra     0: []
+Real     24: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 33, 37, 41, 45, 49, 53, 57, 61]
+Prop     24: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 33, 37, 41, 45, 49, 53, 57, 61]
+
+Tbet
+Lack      0: []
+Extra     0: []
+Real     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+Prop     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+
+_XTR_11_
+Lack      0: []
+Extra     0: []
+Real     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+Prop     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+
+_XTR_12_
+Lack      0: []
+Extra     0: []
+Real     48: [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62]
+Prop     48: [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62]
+
+_XTR_13_
+Lack      0: []
+Extra     0: []
+Real     48: [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62]
+Prop     48: [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 16, 17, 18, 20, 21, 22, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36, 37, 38, 40, 41, 42, 44, 45, 46, 48, 49, 50, 52, 53, 54, 56, 57, 58, 60, 61, 62]
+
+_XTR_21_
+Lack      0: []
+Extra     0: []
+Real     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+Prop     32: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59, 62, 63]
+
+_XTR_22_
+Lack      0: []
+Extra     0: []
+Real     16: [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63]
+Prop     16: [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63]
+
+_XTR_23_
+Lack      0: []
+Extra     0: []
+Real     24: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 35, 39, 43, 47, 51, 55, 59, 63]
+Prop     24: [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 35, 39, 43, 47, 51, 55, 59, 63]
+
+Number of nodes is 41
+Error KO:  0.00013066434376563316
+Error KI:  0.00027762055170993415
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             41.000       41.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+TIME process heading: 0.00061798095703125
+TIME simulate original network: 0.11016416549682617
+TIME perform original analysis process: 3.745616912841797
+TIME perform propagation: 0.38585901260375977
+-----------TOTAL RUNNING TIME---------------
+17.940660165972076
