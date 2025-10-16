@@ -252,8 +252,8 @@ def merge2states(state1, state2, debug=False):
     """
     for item in state1.keys():
         # print(state1[item], state2[item])
-        # state1[item] = state1[item] or state2[item] 
-        state1[item] = state1[item] and state2[item]
+        state1[item] = state1[item] or state2[item] 
+        # state1[item] = state1[item] and state2[item]
     return state1
 
 
