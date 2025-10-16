@@ -10,7 +10,7 @@ from Shapley.visualization import showNetwork
 from Shapley.rankingEvaluation import compare_rankings, print_rank_comparison
 from Shapley.utilities import parseArguments, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput
 from Shapley.shapleyCalculation import extractPhe, calKSV4Input, calKSV 
-from Shapley.networkUtilities import diamondDigger, getOutput, getKnockoutOutput, simBinaryNetwork, findMasterDiamond, processMasterDiamonds, simulateOneNode
+from Shapley.networkUtilities import diamondDigger, getOutput, getKnockoutOutput, simBinaryNetwork, findMasterDiamond, processMasterDiamonds, simulateOneNode, nodes_on_cycles_digraph
 from Shapley.speciesHandler import getSpeciesName, getInputNames, genInput, initSpeciesStates
 from Shapley.booleanFormulaHandler import parseFormula, toBinaryFormulas, getFormula
 from Shapley.networkHandler import convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, manipulateNetwork, rewireBinet
@@ -24,6 +24,7 @@ def BooleanShapleyAnalysis():
     timePerformOriginalAnalysis = 0 # time to perform the Knockout/Knockin of the original network 
     timePropagation = 0 # time to propagate 
     timeHeading = 0 # time to read, parse formulas 
+    bound = 0
 
     parser = parseArguments()
     args= vars(parser.parse_args())
@@ -64,6 +65,9 @@ def BooleanShapleyAnalysis():
         inputnames = getInputNames(lines, speciesnames, debug)
         print("-----Input names-----")
         print(inputnames)
+        bound = len(inputnames) + 1
+
+
 
         internames = speciesnames.difference(inputnames).difference(outputnames)
         print("----Intermediate nodes-----")
@@ -131,7 +135,7 @@ def BooleanShapleyAnalysis():
                     formula.display()
 
             # now do the limiting procedure for each output node 
-            if debug:
+            if 1:
                 adecimalpairs, ashapss = workwithAcyclicNetwork(anet, \
                     inputnames, internames, outputnames, speciesnames, aformulas, extranodes, iski, debug)
             
@@ -149,7 +153,7 @@ def BooleanShapleyAnalysis():
                 bidecimalpairs, protime = workwithBinaryNetwork(aformulas, inputnames, outputnames, \
                     speciesnames, "abinetwork", sortedinput, sortedinter, isko, iski, debug, extranodes, isprop)
                 timePropagation += protime
-                if debug:
+                if 1:
                     bicount = 0
                     for ainp, ainter, in adecimalpairs.items():
                         if ainter != bidecimalpairs[ainp]:
@@ -982,7 +986,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
 
 
 # do everything with binary network (convert, get speciesnames, simulate...)          
-def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, networkname, sortedinput, sortedinter, isko = False, iski = False, debug=False, extranodes=None, isprop=False):
+def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, networkname, sortedinput, sortedinter, isko = False, iski = False, debug=True, extranodes=None, isprop=False):
     """
     Work with the binary network to calculate Shapley values and perform knockout/knockin analyses.
     Parameters:
@@ -1008,26 +1012,26 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
     binet, nodes_positions = convertBiBooleanFormulas2Network(bistrformulas, inputnames, orispeciesnames, "bi" + networkname, False, debug, extranodes) 
     protime += time.time() - time1 
 
-    ''' # unfinised work on handling cycles
-    # cycledbinet = rewireBinet(binet, extranodes) # rewire the binet to remove self-loop caused by extra nodes
-    # showNetwork(cycledbinet, None, None, None, None, 'cyclebinet.html')
-    # nodesincycles = nodes_on_cycles_digraph(cycledbinet)
-    # nodetosimulate = set()
-    # if nodesincycles:
-    #     print("There are {} nodes in cycles after rewiring:".format(len(nodesincycles)))
-    #     print(nodesincycles)
-    #     relatednodes = set()
-    #     for node in nodesincycles:
-    #         # get list of node that point to this node
-    #         preds = list(cycledbinet.predecessors(node))
-    #         relatednodes.update(preds)
-    #     print("Related nodes that point to nodes in cycles:")
-    #     print(relatednodes)
-    #     nodetosimulate = nodesincycles.union(relatednodes)
-    #     print("Need to simulate {} nodes".format(len(nodetosimulate))) 
+    # unfinised work on handling cycles
+    cycledbinet = rewireBinet(binet, extranodes) # rewire the binet to remove self-loop caused by extra nodes
+    showNetwork(cycledbinet, None, None, None, None, 'cyclebinet.html')
+    nodesincycles = nodes_on_cycles_digraph(cycledbinet)
+    nodetosimulate = set()
+    if nodesincycles:
+        print("There are {} nodes in cycles after rewiring:".format(len(nodesincycles)))
+        print(nodesincycles)
+        relatednodes = set()
+        for node in nodesincycles:
+            # get list of node that point to this node
+            preds = list(cycledbinet.predecessors(node))
+            relatednodes.update(preds)
+        print("Related nodes that point to nodes in cycles:")
+        print(relatednodes)
+        nodetosimulate = nodesincycles.union(relatednodes)
+        print("Need to simulate {} nodes".format(len(nodetosimulate))) 
     
-    # nodetosimulate = set()
-    '''
+    nodetosimulate = set()
+    
 
     nodetosimulate = set()
 
@@ -1230,16 +1234,14 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                                 print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
                                 print("Prop  {:5}: {}\n".format(len(rowsofnodes[inter]), sorted(list(rowsofnodes[inter]))))
 
+
+
                 print("Number of nodes is {}".format(num))
-                print("Error KO: ", math.sqrt(errorko/num))
-                print("Error KI: ", math.sqrt(errorki/num))
+                print("Relative_RMSE_KO_is ", (math.sqrt(errorko/num)/(2.0*(len(inputnames)+1))))
+                print("Relative_RMSE_KI_is ", (math.sqrt(errorki/num))/(2.0*(len(inputnames)+1)))
 
                 korankingres = compare_rankings(calko, propko)
                 kirankingres = compare_rankings(calki, propki)
                 print_rank_comparison(korankingres, kirankingres)
     return bidecimalpairs, protime
-
-
-             
-            
 

@@ -1,0 +1,124 @@
+\clearpage
+\newgeometry{landscape,left=15mm,right=15mm,top=15mm,bottom=15mm,headheight=0pt,headsep=0pt,footskip=0pt,includeheadfoot,heightrounded}
+\begin{landscape}
+\thispagestyle{empty}
+\begingroup\flushbottom
+\small
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{0.9}
+\begin{longtable}{llcccccccccccccccccccc}
+\caption{Normal benchmark --- Performance (per target) (Part 1 of 2)}\label{tab:normal\_perf-p1} \\
+\toprule
+\textbf{Model} & \textbf{Target} & \multicolumn{2}{c}{\textbf{Error}} & \multicolumn{2}{c}{\textbf{Kendall $\tau$-b}} & \multicolumn{2}{c}{\textbf{Spearman $\rho$}} & \multicolumn{2}{c}{\textbf{Mean abs rank diff}} & \multicolumn{2}{c}{\textbf{Top-10 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@10}} & \multicolumn{2}{c}{\textbf{Recall@10}} & \multicolumn{2}{c}{\textbf{Top-20 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@20}} & \multicolumn{2}{c}{\textbf{Recall@20}} \\
+\midrule
+ &  & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Model} & \textbf{Target} & \multicolumn{2}{c}{\textbf{Error}} & \multicolumn{2}{c}{\textbf{Kendall $\tau$-b}} & \multicolumn{2}{c}{\textbf{Spearman $\rho$}} & \multicolumn{2}{c}{\textbf{Mean abs rank diff}} & \multicolumn{2}{c}{\textbf{Top-10 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@10}} & \multicolumn{2}{c}{\textbf{Recall@10}} & \multicolumn{2}{c}{\textbf{Top-20 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@20}} & \multicolumn{2}{c}{\textbf{Recall@20}} \\
+\midrule
+ &  & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{1} & \texttt{Apoptosis} & 0.810 & 1.079 & 0.024 & 0.396 & -0.063 & 0.496 & 3.588 & 1.647 & 0.118 & 0.556 & 1.000 & 0.667 & 0.118 & 0.769 & 1.000 & 0.323 & 1.000 & 0.500 & 1.000 & 0.476 \\
+\texttt{1} & \texttt{Cas6} & 0.858 & 1.263 & 0.045 & 0.385 & 0.141 & 0.463 & 3.186 & 1.581 & 0.174 & 0.588 & 1.000 & 0.588 & 0.174 & 1.000 & 0.477 & 0.375 & 1.000 & 0.500 & 0.477 & 0.600 \\
+\texttt{1} & \texttt{Cas9} & 0.717 & 0.759 & 0.024 & 0.563 & -0.063 & 0.696 & 3.588 & 0.612 & 0.118 & 0.600 & 1.000 & 0.632 & 0.118 & 0.923 & 1.000 & 0.405 & 1.000 & 0.577 & 1.000 & 0.577 \\
+\texttt{10} & \texttt{Easter} & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{10} & \texttt{Spirit} & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{10} & \texttt{Spz} & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{11} & \texttt{CyclinB1} & 0.035 & 2.115 & 0.891 & 0.226 & 0.891 & 0.224 & 0.007 & 4.062 & 1.000 & 0.124 & 1.000 & 1.000 & 1.000 & 0.124 & 1.000 & 0.186 & 1.000 & 1.000 & 1.000 & 0.186 \\
+\texttt{11} & \texttt{RB} & 0.040 & 2.077 & 0.761 & 0.363 & 0.603 & 0.373 & 0.993 & 4.055 & 1.000 & 0.145 & 1.000 & 1.000 & 1.000 & 0.145 & 1.000 & 0.145 & 1.000 & 1.000 & 1.000 & 0.145 \\
+\texttt{11} & \texttt{cRAF} & 0.037 & 1.945 & -0.007 & 0.391 & -0.007 & 0.439 & 0.014 & 3.945 & 1.000 & 0.124 & 1.000 & 1.000 & 1.000 & 0.124 & 1.000 & 0.186 & 1.000 & 1.000 & 1.000 & 0.186 \\
+\texttt{12} & \texttt{AKT} & 0.252 & 1.069 & 0.312 & 0.916 & 0.197 & 0.980 & 0.411 & 0.143 & 0.321 & 0.826 & 0.321 & 0.826 & 1.000 & 1.000 & 1.000 & 0.655 & 1.000 & 0.826 & 1.000 & 0.760 \\
+\texttt{12} & \texttt{PKCa} & 0.180 & 0.000 & 0.658 & 1.000 & 0.705 & 1.000 & 0.214 & 0.000 & 0.286 & 1.000 & 0.286 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{12} & \texttt{p70S6K} & 0.242 & 1.069 & 0.362 & 0.874 & 0.370 & 0.961 & 0.357 & 0.143 & 0.250 & 0.886 & 0.250 & 0.886 & 1.000 & 1.000 & 1.000 & 0.886 & 1.000 & 0.886 & 1.000 & 1.000 \\
+\texttt{13} & \texttt{GATA3} & 0.727 & 1.488 & -- & -- & 0.000 & 0.624 & 1.884 & 0.512 & 1.000 & 0.674 & 1.000 & 1.000 & 1.000 & 0.674 & 1.000 & 0.674 & 1.000 & 1.000 & 1.000 & 0.674 \\
+\texttt{13} & \texttt{IL4R} & 0.000 & 1.259 & -- & -- & 0.000 & 0.287 & 0.000 & 1.636 & 1.000 & 0.500 & 1.000 & 1.000 & 1.000 & 0.500 & 1.000 & 0.500 & 1.000 & 1.000 & 1.000 & 0.500 \\
+\texttt{13} & \texttt{JAK1} & 0.657 & 0.550 & 0.739 & 0.317 & 0.757 & 0.487 & 1.000 & 0.674 & 1.000 & 0.326 & 1.000 & 1.000 & 1.000 & 0.326 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{14} & \texttt{CRE} & 0.238 & 0.714 & 0.914 & 0.800 & 0.936 & 0.815 & 0.132 & 0.491 & 0.857 & 1.000 & 0.857 & 1.000 & 1.000 & 1.000 & 0.952 & 0.593 & 0.952 & 0.800 & 1.000 & 0.696 \\
+\texttt{14} & \texttt{NFAT} & 0.183 & 0.495 & -- & -- & 0.000 & 0.886 & 0.981 & 2.453 & 1.000 & 0.189 & 1.000 & 1.000 & 1.000 & 0.189 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{14} & \texttt{Nfkb} & 0.183 & 0.487 & 0.711 & 0.793 & 0.893 & 0.906 & 0.962 & 1.679 & 1.000 & 0.189 & 1.000 & 1.000 & 1.000 & 0.189 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{15} & \texttt{Meta} & 0.001 & 0.004 & 1.000 & 0.999 & 1.000 & 1.000 & 0.000 & 0.571 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{15} & \texttt{Meta2} & 0.001 & 0.004 & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{15} & \texttt{XylSh} & 0.000 & 0.002 & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{16} & \texttt{Dally} & 0.013 & 0.013 & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{16} & \texttt{Nemo} & 0.082 & 0.048 & 0.932 & 1.000 & 0.976 & 1.000 & 0.500 & 0.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.500 & 1.000 & 0.500 & 1.000 & 1.000 & 1.000 \\
+\texttt{16} & \texttt{Targets} & 0.466 & 2.698 & 0.822 & 0.907 & 0.792 & 0.916 & 1.190 & 1.429 & 0.833 & 0.923 & 0.833 & 0.923 & 1.000 & 1.000 & 0.929 & 0.960 & 0.929 & 1.000 & 1.000 & 0.960 \\
+\texttt{2} & \texttt{HH\_p} & 1.025 & 0.232 & 0.249 & 0.718 & 0.064 & 0.870 & 2.432 & 0.270 & 0.270 & 0.297 & 1.000 & 1.000 & 0.270 & 0.297 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{2} & \texttt{SMO} & 0.822 & 0.684 & 0.460 & 0.392 & 0.487 & 0.398 & 0.486 & 0.649 & 0.286 & 0.455 & 0.500 & 1.000 & 0.400 & 0.455 & 0.568 & 0.595 & 0.568 & 0.595 & 1.000 & 1.000 \\
+\texttt{2} & \texttt{WG\_p} & 0.763 & 0.355 & 0.475 & 0.618 & 0.465 & 0.801 & 2.081 & 0.486 & 0.526 & 0.562 & 1.000 & 0.692 & 0.526 & 0.750 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\end{longtable}
+\endgroup
+\end{landscape}
+\restoregeometry
+\clearpage
+\clearpage
+\newgeometry{landscape,left=15mm,right=15mm,top=15mm,bottom=15mm,headheight=0pt,headsep=0pt,footskip=0pt,includeheadfoot,heightrounded}
+\begin{landscape}
+\thispagestyle{empty}
+\begingroup\flushbottom
+\small
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{0.9}
+\begin{longtable}{llcccccccccccccccccccc}
+\caption{Normal benchmark --- Performance (per target) (Part 2 of 2)}\label{tab:normal\_perf-p2} \\
+\toprule
+\textbf{Model} & \textbf{Target} & \multicolumn{2}{c}{\textbf{Error}} & \multicolumn{2}{c}{\textbf{Kendall $\tau$-b}} & \multicolumn{2}{c}{\textbf{Spearman $\rho$}} & \multicolumn{2}{c}{\textbf{Mean abs rank diff}} & \multicolumn{2}{c}{\textbf{Top-10 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@10}} & \multicolumn{2}{c}{\textbf{Recall@10}} & \multicolumn{2}{c}{\textbf{Top-20 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@20}} & \multicolumn{2}{c}{\textbf{Recall@20}} \\
+\midrule
+ &  & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Model} & \textbf{Target} & \multicolumn{2}{c}{\textbf{Error}} & \multicolumn{2}{c}{\textbf{Kendall $\tau$-b}} & \multicolumn{2}{c}{\textbf{Spearman $\rho$}} & \multicolumn{2}{c}{\textbf{Mean abs rank diff}} & \multicolumn{2}{c}{\textbf{Top-10 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@10}} & \multicolumn{2}{c}{\textbf{Recall@10}} & \multicolumn{2}{c}{\textbf{Top-20 Jaccard}} & \multicolumn{2}{c}{\textbf{Precision@20}} & \multicolumn{2}{c}{\textbf{Recall@20}} \\
+\midrule
+ &  & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} & \textbf{KO} & \textbf{KI} \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{3} & \texttt{CyclinB1} & 0.484 & 2.500 & 0.563 & 0.229 & 0.593 & 0.236 & 1.891 & 3.966 & 1.000 & 0.101 & 1.000 & 1.000 & 1.000 & 0.101 & 1.000 & 0.210 & 1.000 & 1.000 & 1.000 & 0.210 \\
+\texttt{3} & \texttt{RB} & 0.331 & 2.214 & -- & -- & 0.000 & 0.360 & 1.957 & 4.034 & 1.000 & 0.129 & 1.000 & 1.000 & 1.000 & 0.129 & 1.000 & 0.224 & 1.000 & 1.000 & 1.000 & 0.224 \\
+\texttt{3} & \texttt{cRAF} & 0.038 & 1.197 & 0.813 & 0.459 & 0.813 & 0.558 & 0.008 & 3.437 & 1.000 & 0.092 & 1.000 & 1.000 & 1.000 & 0.092 & 1.000 & 0.193 & 1.000 & 1.000 & 1.000 & 0.193 \\
+\texttt{4} & \texttt{PKCa} & 0.088 & 0.000 & 0.737 & 1.000 & 0.904 & 1.000 & 0.174 & 0.000 & 0.174 & 1.000 & 0.174 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{4} & \texttt{mTOR} & 0.479 & 0.135 & 0.344 & 0.951 & 0.424 & 0.923 & 2.478 & 0.217 & 0.316 & 1.000 & 0.600 & 1.000 & 0.400 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{4} & \texttt{p70S6K} & 0.684 & 0.135 & 0.524 & 0.953 & 0.497 & 0.961 & 4.029 & 0.246 & 0.353 & 1.000 & 0.600 & 1.000 & 0.462 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{5} & \texttt{Cdh1} & 1.221 & 0.614 & 0.185 & 0.491 & 0.284 & 0.655 & 8.076 & 2.127 & 0.048 & 0.769 & 0.083 & 0.769 & 0.100 & 1.000 & 0.261 & 0.509 & 0.571 & 0.853 & 0.324 & 0.558 \\
+\texttt{5} & \texttt{Sic1} & 1.155 & 1.071 & 0.245 & 0.351 & 0.287 & 0.371 & 6.203 & 3.367 & 0.042 & 0.278 & 0.091 & 0.385 & 0.071 & 0.500 & 0.278 & 0.500 & 0.500 & 0.714 & 0.385 & 0.625 \\
+\texttt{5} & \texttt{Whi5} & 1.331 & 0.988 & 0.064 & 0.272 & 0.095 & 0.149 & 6.937 & 6.468 & 0.077 & 0.000 & 0.167 & 0.000 & 0.125 & 0.000 & 0.229 & 0.306 & 0.524 & 0.577 & 0.289 & 0.395 \\
+\texttt{6} & \texttt{IKK} & 0.706 & 1.047 & -- & -- & 0.000 & 0.254 & 2.686 & 2.471 & 0.196 & 0.235 & 1.000 & 1.000 & 0.196 & 0.235 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{6} & \texttt{ROS} & 0.931 & 1.194 & 0.285 & 0.350 & 0.318 & 0.397 & 1.596 & 2.058 & 0.263 & 0.120 & 0.417 & 0.176 & 0.417 & 0.273 & 1.000 & 0.515 & 1.000 & 0.630 & 1.000 & 0.739 \\
+\texttt{6} & \texttt{apoptosis} & 0.592 & 1.439 & 0.634 & 0.781 & 0.712 & 0.834 & 0.961 & 1.451 & 0.556 & 0.909 & 0.769 & 0.909 & 0.667 & 1.000 & 0.621 & 0.688 & 0.818 & 1.000 & 0.720 & 0.688 \\
+\texttt{7} & \texttt{Atrboh} & 0.000 & 0.506 & -- & -- & 0.000 & 0.803 & 0.000 & 0.041 & 1.000 & 0.082 & 1.000 & 0.082 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\texttt{7} & \texttt{CaIM} & 1.000 & 1.134 & 0.483 & 0.252 & 0.425 & 0.288 & 0.828 & 1.992 & 0.167 & 0.227 & 0.375 & 0.556 & 0.231 & 0.278 & 0.278 & 0.267 & 0.500 & 0.571 & 0.385 & 0.333 \\
+\texttt{7} & \texttt{Closure} & 0.869 & 1.319 & 0.699 & 0.228 & 0.686 & 0.241 & 1.238 & 1.475 & 0.500 & 0.086 & 0.700 & 0.231 & 0.636 & 0.120 & 0.500 & 0.074 & 0.667 & 0.121 & 0.667 & 0.160 \\
+\texttt{8} & \texttt{CyclinD1} & 0.108 & 1.976 & 0.484 & 0.573 & 0.484 & 0.615 & 0.067 & 1.950 & 0.083 & 0.667 & 1.000 & 0.730 & 0.083 & 0.885 & 1.000 & 0.667 & 1.000 & 0.730 & 1.000 & 0.885 \\
+\texttt{8} & \texttt{ERBB3} & 0.085 & 2.053 & 0.692 & 0.564 & 0.692 & 0.559 & 0.042 & 2.800 & 0.083 & 0.309 & 1.000 & 0.630 & 0.083 & 0.378 & 1.000 & 0.309 & 1.000 & 0.630 & 1.000 & 0.378 \\
+\texttt{8} & \texttt{FOXO1\_3a} & 0.093 & 2.885 & -- & -- & 0.000 & 0.101 & 0.950 & 1.708 & 1.000 & 0.375 & 1.000 & 1.000 & 1.000 & 0.375 & 1.000 & 0.375 & 1.000 & 1.000 & 1.000 & 0.375 \\
+\texttt{9} & \texttt{AKT} & 0.426 & 1.053 & 0.373 & 0.777 & 0.515 & 0.883 & 1.264 & 1.111 & 0.208 & 0.809 & 0.208 & 1.000 & 1.000 & 0.809 & 1.000 & 0.809 & 1.000 & 1.000 & 1.000 & 0.809 \\
+\texttt{9} & \texttt{PKCa} & 0.169 & 0.650 & 0.520 & 0.873 & 0.573 & 0.854 & 1.222 & 0.806 & 0.222 & 0.909 & 0.222 & 1.000 & 1.000 & 0.909 & 1.000 & 0.909 & 1.000 & 1.000 & 1.000 & 0.909 \\
+\texttt{9} & \texttt{PLCg} & 0.210 & 1.633 & 0.369 & 0.781 & 0.245 & 0.926 & 0.264 & 0.500 & 0.181 & 0.600 & 0.181 & 0.600 & 1.000 & 1.000 & 1.000 & 0.462 & 1.000 & 0.600 & 1.000 & 0.667 \\
+\texttt{cd4} & \texttt{Foxp3} & 1.091 & 2.404 & 0.278 & 0.284 & 0.291 & 0.335 & 12.963 & 15.787 & 0.115 & 0.353 & 0.273 & 0.500 & 0.167 & 0.545 & 0.184 & 0.214 & 0.350 & 0.450 & 0.280 & 0.290 \\
+\texttt{cd4} & \texttt{GATA3} & 1.526 & 3.535 & 0.095 & 0.424 & 0.047 & 0.543 & 13.794 & 15.691 & 0.278 & 0.571 & 0.455 & 0.727 & 0.417 & 0.727 & 0.115 & 0.379 & 0.261 & 0.550 & 0.171 & 0.550 \\
+\texttt{cd4} & \texttt{Tbet} & 1.014 & 2.651 & 0.523 & 0.608 & 0.597 & 0.729 & 16.257 & 13.199 & 0.222 & 0.800 & 0.400 & 1.000 & 0.333 & 0.800 & 0.242 & 0.441 & 0.381 & 0.714 & 0.400 & 0.536 \\
+\texttt{hgf} & \texttt{Akt} & 0.540 & 0.600 & 0.648 & 0.798 & 0.522 & 0.720 & 1.901 & 1.132 & 0.110 & 0.333 & 1.000 & 0.545 & 0.110 & 0.462 & 1.000 & 0.231 & 1.000 & 1.000 & 1.000 & 0.231 \\
+\texttt{hgf} & \texttt{CellMigration} & 0.886 & 1.399 & 0.861 & 0.566 & 0.871 & 0.412 & 1.033 & 1.418 & 0.867 & 0.292 & 0.963 & 0.438 & 0.897 & 0.467 & 0.867 & 0.253 & 0.963 & 1.000 & 0.897 & 0.253 \\
+\texttt{hgf} & \texttt{Proliferation} & 1.208 & 1.737 & 0.447 & 0.436 & 0.232 & 0.545 & 1.077 & 3.582 & 0.187 & 0.400 & 1.000 & 0.545 & 0.187 & 0.600 & 1.000 & 0.286 & 1.000 & 1.000 & 1.000 & 0.286 \\
+\end{longtable}
+\endgroup
+\end{landscape}
+\restoregeometry
+\clearpage

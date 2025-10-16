@@ -252,7 +252,8 @@ def merge2states(state1, state2, debug=False):
     """
     for item in state1.keys():
         # print(state1[item], state2[item])
-        state1[item] = state1[item] or state2[item]
+        # state1[item] = state1[item] or state2[item] 
+        state1[item] = state1[item] and state2[item]
     return state1
 
 
@@ -304,10 +305,10 @@ def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputn
         # print(line)
         # each line is a dictionary with keys are name of species and value is true or false
         
-        # for test:
-        # if id in [0, 1, 2, 3, 4, 5, 6, 7, 8]:
-        #     print(f"-------TESTING LINE: {id}-------")
-        #     print(line)
+        # for test 
+        if id in [0, 1]:
+            print(f"-------TESTING LINE: {id}-------")
+            print(line)
 
         size = 0
         for input in inputnames:

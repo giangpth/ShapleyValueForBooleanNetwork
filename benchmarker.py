@@ -41,8 +41,8 @@ RE_INT = r"(\d+)"
 
 PATTERNS = {
     "num_nodes": re.compile(rf"Number of nodes is\s+{RE_INT}", re.IGNORECASE),
-    "error_ko": re.compile(rf"Error\s+KO:\s+{RE_FLOAT}", re.IGNORECASE),
-    "error_ki": re.compile(rf"Error\s+KI:\s+{RE_FLOAT}", re.IGNORECASE),
+    "error_ko": re.compile(rf"Relative_RMSE_KO_is\s+{RE_FLOAT}", re.IGNORECASE),
+    "error_ki": re.compile(rf"Relative_RMSE_KI_is\s+{RE_FLOAT}", re.IGNORECASE),
 
     # Two-column metric lines under "Ranking Comparison"
     "kendall": re.compile(rf"Kendall\s+tau-b\s+{RE_FLOAT}\s+{RE_FLOAT}", re.IGNORECASE),

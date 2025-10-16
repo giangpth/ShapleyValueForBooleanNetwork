@@ -1,0 +1,5 @@
+ptc = ( ( ( CIA  ) AND NOT ( WG_e  )  ) AND NOT ( CIR  ) ) 
+HH_p = ( ( WG_e  ) AND NOT ( CIR  ) ) 
+CIA = ( hh_e AND ( ( ( NOT WG_e ) ) )    )  OR ( ( NOT WG_e  ) AND NOT ( PTC_p  ) ) 
+CIR = ( ( ( NOT WG_e ) AND ( ( ( PTC_p ) ) )     ) AND NOT ( hh_e  ) ) 
+PTC_p = ( ptc )  OR ( ( PTC_p  ) AND NOT ( hh_e  ) ) 
