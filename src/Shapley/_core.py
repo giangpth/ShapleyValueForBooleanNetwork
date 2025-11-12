@@ -1,9 +1,9 @@
 import copy 
-import networkx as nx
 import shap 
 import numpy as np
 import math 
 import time
+from sklearn.metrics import ndcg_score
 
 
 from Shapley.visualization import showNetwork
@@ -268,9 +268,11 @@ def workwithAcyclicNetwork(anet, inputnames, internames, outputnames, speciesnam
     cloneinputstates = copy.deepcopy(inputstates)
 
     outputs = []
+    blinkings = []
     for inputstate in cloneinputstates:
-        output = getOutput(aformulas, inputstate, False, 1000, False, extranodes) 
+        output, blinking = getOutput(aformulas, inputstate, False, 1000, False, extranodes) 
         outputs.append(output)
+        blinkings.append(blinking)
         inp, inter = toDecimal(output, sortedinput, sortedinter)
         decimalPairs[inp] = inter
 
@@ -325,9 +327,11 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
 
     simoritimestart = time.time()
     outputs = []
+    blingkings = []
     for inputstate in cloneinputstates:
-        output = getOutput(formulas, inputstate, False, 1000, debug)        
+        output, blinking = getOutput(formulas, inputstate, False, 1000, debug)        
         outputs.append(output)
+        blingkings.append(blinking)
         inp, inter = toDecimal(output, sortedinput, sortedinter) 
         decimalPairs[inp] = inter 
 
@@ -360,9 +364,11 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
                 print("Knockout {}".format(internode))
                 clone2inputstates = copy.deepcopy(inputstates)
                 koouputs = []
+                koblinkings = []
                 for inputstate in clone2inputstates:
-                    output = getKnockoutOutput(formulas, inputstate, [internode], False, 1000, False)
+                    output, koblinking = getKnockoutOutput(formulas, inputstate, [internode], False, 1000, False)
                     koouputs.append(output)
+                    koblinkings.append(koblinking)
                 kogenphe = extractPhe(inputnames, outputnames, koouputs)
                 vs[internode] = kogenphe 
         # for outname in outputnames:
@@ -380,10 +386,12 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
                 print("Knockin {}".format(internode))
                 clone3inputstates = copy.deepcopy(inputstates)
                 kiouputs = []
+                kiblinkings = []
                 for inputstate in clone3inputstates:
-                    output = getKnockoutOutput(formulas, inputstate, [internode],\
+                    output, kiblingking = getKnockoutOutput(formulas, inputstate, [internode],\
                                                 False, 1000, False, None, True)
                     kiouputs.append(output)
+                    kiblinkings.append(kiblingking)
                 kigenphe = extractPhe(inputnames, outputnames, kiouputs)
                 vski[internode] = kigenphe 
         
@@ -405,7 +413,7 @@ def workWithOriginalNetwork(net, inputnames, speciesnames, outputnames, internam
     return decimalPairs, koinputshapss, timesimori, timeori
            
 
-def propagateCyclic(net, simtable, index, aindex, outname, formulas, simformulas, extranodes, nodestosim, masterDiamonds, inputnames, orderedBiNodes, debug=False):
+def propagateCyclic(net, simtable, index, aindex, bindex, outname, formulas, simformulas, extranodes, nodestosim, masterDiamonds, inputnames, orderedBiNodes, debug=False):
     """
     Propagate values through the network considering diamond structures to determine the rows of nodes.
     Parameters:
@@ -426,27 +434,46 @@ def propagateCyclic(net, simtable, index, aindex, outname, formulas, simformulas
     rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
     solddiamonds = set() # save the diamonds that are already converged for a node (key) to avoid doing it again
     alreadysimulated = set() # save the nodes that are already simulated to avoid doing it again
-    encountered = set()
+    # encountered = set()
     while curs:
         if debug:
             print("\n\n---Processing layers of {}---".format(curs))
         nextlayer = []
         for cur in curs:
-            encountered.add(cur)
+            if '_to_' in cur:
+                root, des = cur.split("_to_")[0], cur.split("_to_")[1]
+                print("\nCurrent node {} is an extra node, wire back to root node {}".format(cur, root))
+                if cur not in countedrowsofnode: # count all rows
+                    countrows = set(range(len(simtable)))
+                    countedrowsofnode[cur] = countrows  
+                else: # count only rows that cur is counted
+                    countrows = countedrowsofnode[cur]
+                cur = root 
+                if cur not in countedrowsofnode: # count all rows
+                    countedrowsofnode[cur] = countrows
+                else:
+                    countedrowsofnode[cur].update(countrows)
+            else:
+                if cur not in countedrowsofnode: # count all rows
+                    countrows = set(range(len(simtable)))
+                    countedrowsofnode[cur] = countrows
+                else: # count only rows that cur is counted
+                    countrows = countedrowsofnode[cur]
+
+
             try:
                 form = formulas[cur]
             except:
                 if debug:
                     print("\nReach node {} without in-comming edges".format(cur))
                 continue
+            # first, check if cur is an extranode 
+            
+
             # get incoming edge to cur node
             inedges = list(net.in_edges(cur))
             assert len(inedges) <= 2, print("Support only binary network")
-            if cur not in countedrowsofnode: # count all rows
-                countrows = set(range(len(simtable)))
-                countedrowsofnode[cur] = countrows
-            else: # count only rows that cur is counted
-                countrows = countedrowsofnode[cur]
+            
             if debug:
                 print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
             if len(inedges) == 2: 
@@ -497,7 +524,8 @@ def propagateCyclic(net, simtable, index, aindex, outname, formulas, simformulas
                     print(f"Do not support operator {op}")
                     break
                     
-                rowsofsinknodes[cur] = countedrowsofnode[cur] # save the rows of the sink node
+                # rowsofsinknodes[cur] = countedrowsofnode[cur] # save the rows of the sink node
+                rowsofsinknodes[cur] = countrows
                 
                 #rows of current node cur are propagated to parents only in the case cur is not belong to a diamond of the parent 
                 # check left parent first 
@@ -515,7 +543,6 @@ def propagateCyclic(net, simtable, index, aindex, outname, formulas, simformulas
                             countedrowsofnode[form.left.val] = ressimrows
                 else:
                     if form.left.val not in inputnames:
-                    # if 1:
                         if form.left.val not in countedrowsofnode:
                             countedrowsofnode[form.left.val] = set()
                         if form.left.val not in masterDiamonds:
@@ -563,17 +590,17 @@ def propagateCyclic(net, simtable, index, aindex, outname, formulas, simformulas
                             # rowsfromdiamonds = processDiamond(net, simtable, form.right.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
                             countedrowsofnode[form.right.val].update(rowsfromdiamonds)
 
-                if form.left.val not in nextlayer and form.left.val not in encountered:
+                if form.left.val not in nextlayer and not leftroot: 
                     nextlayer.append(form.left.val)
-                if form.right.val not in nextlayer and form.right.val not in encountered:
+                if form.right.val not in nextlayer and not rightroot:
                     nextlayer.append(form.right.val)
 
-                if leftroot and (leftroot not in encountered) and (leftroot not in nextlayer):
-                    print(f"Extranodes {form.left.val}, add {leftroot} to nextlayer")
-                    nextlayer.append(leftroot)
-                if rightroot and (rightroot not in encountered) and (rightroot not in nextlayer):
-                    print(f"Extranodes {form.right.val}, add  {rightroot} to nextlayer")
-                    nextlayer.append(rightroot)
+                if leftroot and (leftroot not in countedrowsofnode) and (leftroot not in nextlayer):
+                    print(f"Extranodes {form.left.val}, add {form.left.val} to nextlayer")
+                    nextlayer.append(form.left.val)
+                if rightroot and (rightroot not in countedrowsofnode) and (rightroot not in nextlayer):
+                    print(f"Extranodes {form.right.val}, add  {form.left.val} to nextlayer")
+                    nextlayer.append(form.right.val)
             else:
                 if form.val == 'NOT':
                     singlemom = form.right.val
@@ -616,11 +643,210 @@ def propagateCyclic(net, simtable, index, aindex, outname, formulas, simformulas
                             # rowsfromdiamonds = processDiamond(net, simtable, singlemom, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
                             countedrowsofnode[singlemom].update(rowsfromdiamonds)
 
-                if singlemom not in nextlayer and singlemom not in encountered:
+                if singlemom not in nextlayer and not singleroot:
                     nextlayer.append(singlemom)
-                if singleroot and singleroot not in encountered and singleroot not in nextlayer:
-                    print(f"Extranodes {singleroot}, add {singleroot} to nextlayer")
-                    nextlayer.append(singleroot)
+                if singleroot and singleroot not in countedrowsofnode and singleroot not in nextlayer:
+                    print(f"Extranodes {singlemom}, add {singlemom} to nextlayer")
+                    nextlayer.append(singlemom)
+            if debug:
+                print("\t\t\t---------------")
+        curs = nextlayer
+    return countedrowsofnode
+'''
+def propagateBlinking(net, simtable, index, aindex, bindex, outname, formulas, simformulas, extranodes, nodestosim, masterDiamonds, inputnames, orderedBiNodes, debug=False):
+    """
+    Propagate values through the network considering diamond structures to determine the rows of nodes.
+    Parameters:
+        net: The directed graph
+        simtable: The simulation table with input-output mappings
+        index: Dictionary mapping nodes to rows where they are True 
+        aindex: Dictionary mapping nodes to rows where they are False
+        outname: The output node name
+        formulas: Dictionary of boolean formulas for the network
+        extranodes: List of extra nodes added to the network
+        diamonds: Dictionary of diamond structures in the network
+        dnomaids: Set of nodes that are part of Dnomaid structures
+    Returns:
+        countedrowsofnode: Dictionary mapping each node to the set of rows it is associated with
+    """
+    print("\n\n--------PROPAGATION--------")
+    curs = [outname]
+    countedrowsofnode = dict() # countedrowsofnode[node] = set of rows that make node count
+    rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
+    solddiamonds = set() # save the diamonds that are already converged for a node (key) to avoid doing it again
+    alreadysimulated = set() # save the nodes that are already simulated to avoid doing it again
+    while curs:
+        if debug:
+            print("\n\n---Processing layers of {}---".format(curs))
+        nextlayer = []
+        for cur in curs:
+            try:
+                form = formulas[cur]
+            except:
+                if debug:
+                    print("\nReach node {} without in-comming edges".format(cur))
+                continue
+            # get incoming edge to cur node
+            inedges = list(net.in_edges(cur))
+            assert len(inedges) <= 2, print("Support only binary network")
+            if cur not in countedrowsofnode: # count all rows
+                countrows = set(range(len(simtable)))
+                countedrowsofnode[cur] = countrows
+            else: # count only rows that cur is counted
+                countrows = countedrowsofnode[cur]
+            if debug:
+                print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
+            if len(inedges) == 2: 
+                if debug:
+                    print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                # get operator
+                op = form.val 
+                # check if one of the node is extranode 
+                leftselfloop, rightselfloop = False, False
+                rootname = None
+                if form.left.val in extranodes: 
+                    if debug:
+                        print(f"Left node {form.left.val} is an extra node")
+                    # get the root node of the extra node 
+                    rootname = form.left.val.split("_to_")[0]
+                    desname = form.left.val.split("_to_")[1]
+                    if rootname == desname:
+                        leftselfloop = True
+
+                if form.right.val in extranodes:
+                    if debug:
+                        print(f"Right node {form.right.val} is an extra node")
+                    # get the root node of the extra node
+                    rootname = form.right.val.split("_to_")[0]
+                    desname = form.right.val.split("_to_")[1]
+                    if rootname == desname:
+                        rightselfloop = True
+
+                # now start to process 
+                if op == 'OR': 
+                    # rows that left counted are rows that right = False 
+                    if not rightselfloop:
+                        leftrows = aindex[form.right.val]
+                    else:
+                        leftrows = countedrowsofnode[cur]
+
+                    # rows that right counted are rows that left = False 
+                    if not leftselfloop:
+                        rightrows = aindex[form.left.val]
+                    else:
+                        rightrows = countedrowsofnode[cur]
+                elif op == 'AND':
+                    leftrows = index[form.right.val]
+                    # rows that right counted are rows that left = True 
+                    rightrows = index[form.left.val]
+                else:
+                    print(f"Do not support operator {op}")
+                    break
+                    
+                rowsofsinknodes[cur] = countedrowsofnode[cur] # save the rows of the sink node
+                
+                #rows of current node cur are propagated to parents only in the case cur is not belong to a diamond of the parent 
+                # check left parent first 
+                if form.left.val in nodestosim:
+                    if form.left.val not in inputnames:
+                        if form.left.val in alreadysimulated:
+                            if debug:
+                                print(f"Left node {form.left.val} is already simulated, skip it")
+                        else:
+                            alreadysimulated.add(form.left.val)
+                            if debug:
+                                print(f"Left node {form.left.val} is a node to simulate, simulate it with all rows of {cur}")
+                            ressimrows = simulateOneNode(simtable, form.left.val, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
+                            countedrowsofnode[form.left.val] = ressimrows
+                else:
+                    if form.left.val not in inputnames:
+                        if form.left.val not in countedrowsofnode:
+                            countedrowsofnode[form.left.val] = set()
+                        if form.left.val not in masterDiamonds:
+                            # intersect with rows that cur is count 
+                            leftrows = leftrows.intersection(countrows)
+                            if debug:
+                                print(f"After operator {op}, {form.left.val} count only rows: \n{sorted(list(leftrows))}")
+                            countedrowsofnode[form.left.val].update(leftrows)
+                        else: 
+                            if debug:
+                                print("PROCESS DIAMONDS for {}".format(form.left.val))
+                            rowsfromdiamonds = processMasterDiamonds(net, simtable, form.left.val, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds, orderedBiNodes, debug)
+                            # rowsfromdiamonds = processDiamond(net, simtable, form.left.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+                            countedrowsofnode[form.left.val].update(rowsfromdiamonds) 
+                
+                # check right parent
+                if form.right.val in nodestosim:
+                    if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
+                        if form.right.val in alreadysimulated:
+                            if debug:
+                                print(f"Right node {form.right.val} is already simulated, skip it")
+                        else:
+                            alreadysimulated.add(form.right.val)
+                            if debug:
+                                print(f"Right node {form.right.val} is a node to simulate, simulate it with all rows of {cur}")
+                            ressimrows = simulateOneNode(simtable, form.right.val, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
+                            countedrowsofnode[form.right.val] = ressimrows
+                    
+                else:
+                    if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
+                        if form.right.val not in countedrowsofnode:
+                            countedrowsofnode[form.right.val] = set()
+                        if form.right.val not in masterDiamonds:
+                            # intersect with rows that cur is count 
+                            rightrows = rightrows.intersection(countrows)
+                            if debug:
+                                print(f"After operator {op}, {form.right.val} count only rows: \n{sorted(list(rightrows))}")
+                            countedrowsofnode[form.right.val].update(rightrows)
+                        else:
+                            if debug:
+                                print("PROCESS DIAMONDS for {}".format(form.right.val))
+                            rowsfromdiamonds = processMasterDiamonds(net, simtable, form.right.val, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds, orderedBiNodes, debug)
+                            # rowsfromdiamonds = processDiamond(net, simtable, form.right.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+                            countedrowsofnode[form.right.val].update(rowsfromdiamonds)
+
+                if form.left.val not in nextlayer:
+                    nextlayer.append(form.left.val)
+                if form.right.val not in nextlayer:
+                    nextlayer.append(form.right.val)
+            else:
+                if form.val == 'NOT':
+                    singlemom = form.right.val
+                    if debug:
+                        print(f"{cur} === NOT {singlemom}")
+                else:
+                    singlemom = form.val
+                    if debug:
+                        print(f"{cur} === {singlemom}")
+                
+                
+                if singlemom in nodestosim:
+                    if singlemom not in inputnames:
+                        if singlemom in alreadysimulated:
+                            if debug:
+                                print(f"Node {singlemom} is already simulated, skip it")
+                        else:
+                            alreadysimulated.add(singlemom)
+                            if debug:
+                                print(f"Node {singlemom} is a node to simulate, simulate it with all rows of {cur}")
+                            ressimrows = simulateOneNode(simtable, singlemom, cur, simformulas, countedrowsofnode[cur], extranodes, inputnames)
+                            countedrowsofnode[singlemom] = ressimrows
+                else:
+                    if singlemom not in inputnames: 
+                        if singlemom not in countedrowsofnode:
+                            countedrowsofnode[singlemom] = set()
+                        # check if current node cur is in a diamond of singlemom
+                        if singlemom not in masterDiamonds:
+                            countedrowsofnode[singlemom].update(countrows)
+                        else:
+                            if debug:
+                                print("PROCESS DIAMONDS for {}".format(singlemom))
+                            rowsfromdiamonds = processMasterDiamonds(net, simtable, singlemom, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds, orderedBiNodes, debug)
+                            # rowsfromdiamonds = processDiamond(net, simtable, singlemom, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+                            countedrowsofnode[singlemom].update(rowsfromdiamonds)
+
+                if singlemom not in nextlayer:
+                    nextlayer.append(singlemom)
             if debug:
                 print("\t\t\t---------------")
         curs = nextlayer
@@ -826,7 +1052,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
     return countedrowsofnode
 
 
-# def propagateWithDiamonds(net, simtable, index, aindex, outname, formulas, extranodes, masterDiamonds, debug=False):
+def propagateWithDiamonds(net, simtable, index, aindex, outname, formulas, extranodes, masterDiamonds, debug=False):
     """
     Propagate values through the network considering diamond structures to determine the rows of nodes.
     Parameters:
@@ -983,7 +1209,7 @@ def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extr
                 print("\t\t\t---------------")
         curs = nextlayer
     return countedrowsofnode
-
+'''
 
 # do everything with binary network (convert, get speciesnames, simulate...)          
 def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, networkname, sortedinput, sortedinter, isko = False, iski = False, debug=True, extranodes=None, isprop=False):
@@ -1012,25 +1238,23 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
     binet, nodes_positions = convertBiBooleanFormulas2Network(bistrformulas, inputnames, orispeciesnames, "bi" + networkname, False, debug, extranodes) 
     protime += time.time() - time1 
 
-    # unfinised work on handling cycles
-    cycledbinet = rewireBinet(binet, extranodes) # rewire the binet to remove self-loop caused by extra nodes
-    showNetwork(cycledbinet, None, None, None, None, 'cyclebinet.html')
-    nodesincycles = nodes_on_cycles_digraph(cycledbinet)
-    nodetosimulate = set()
-    if nodesincycles:
-        print("There are {} nodes in cycles after rewiring:".format(len(nodesincycles)))
-        print(nodesincycles)
-        relatednodes = set()
-        for node in nodesincycles:
-            # get list of node that point to this node
-            preds = list(cycledbinet.predecessors(node))
-            relatednodes.update(preds)
-        print("Related nodes that point to nodes in cycles:")
-        print(relatednodes)
-        nodetosimulate = nodesincycles.union(relatednodes)
-        print("Need to simulate {} nodes".format(len(nodetosimulate))) 
-    
-    nodetosimulate = set()
+    # # unfinised work on handling cycles
+    # cycledbinet = rewireBinet(binet, extranodes) # rewire the binet to remove self-loop caused by extra nodes
+    # # showNetwork(cycledbinet, None, None, None, None, 'cyclebinet.html')
+    # nodesincycles = nodes_on_cycles_digraph(cycledbinet)
+    # nodetosimulate = set()
+    # if nodesincycles:
+    #     print("There are {} nodes in cycles after rewiring:".format(len(nodesincycles)))
+    #     print(nodesincycles)
+    #     relatednodes = set()
+    #     for node in nodesincycles:
+    #         # get list of node that point to this node
+    #         preds = list(cycledbinet.predecessors(node))
+    #         relatednodes.update(preds)
+    #     print("Related nodes that point to nodes in cycles:")
+    #     print(relatednodes)
+    #     nodetosimulate = nodesincycles.union(relatednodes)
+    #     print("Need to simulate {} nodes".format(len(nodetosimulate))) 
     
 
     nodetosimulate = set()
@@ -1073,10 +1297,13 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
         print(biinternames)
 
     # simulate binary network, ONLY TO TEST THE CONSISTENCY WITH THE ORIGINAL NETWORK 
-    realbioutputs, bidecimalpairs = simBinaryNetwork(biformulas, inputnames, bispeciesnames, sortedinput, sortedinter, False, 1000, extranodes)
+    realbioutputs, blinkings, bidecimalpairs = simBinaryNetwork(biformulas, inputnames, bispeciesnames, sortedinput, sortedinter, False, 1000, extranodes)
 
-    table, index, aindex = genTableFromOutput(realbioutputs, inputnames, sortedinput, biinternames, outputnames, True) 
-
+    table, index, aindex, bindex = genTableFromOutput(realbioutputs, inputnames, blinkings, biinternames, outputnames, False) 
+    if debug:
+        print("BINDEX")
+        for node, rows in dict(sorted(bindex.items())).items():
+            print("Node {:20}: Rows {}".format(node, sorted(list(rows))))
 
     intactbigenphe = extractPhe(inputnames, outputnames, realbioutputs)
     if debug:
@@ -1117,9 +1344,11 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                 print("Knockout {}".format(internode))
                 inputstatescopy = copy.deepcopy(inputstates)
                 kooutputs = []
+                koblinkings = []
                 for inputstate in inputstatescopy:
-                    output = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, False, extranodes)
+                    output, koblinking = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, False, extranodes)
                     kooutputs.append(output)
+                    koblinkings.append(koblinking)
 
                 genphe = extractPhe(inputnames, outputnames, kooutputs)
                 vsko[internode] = genphe
@@ -1138,9 +1367,11 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                 print("KnockIN {}".format(internode))
                 inputstatescopy = copy.deepcopy(inputstates)
                 kioutputs = [] 
+                kiblinkings = []
                 for inputstate in inputstatescopy: 
-                    output = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, False, extranodes, isKnockin=True)
+                    output, kiblinking = getKnockoutOutput(biformulas, inputstate, [internode], True, 1000, False, extranodes, isKnockin=True)
                     kioutputs.append(output)
+                    kiblinkings.append(kiblinking)
                 genphe = extractPhe(inputnames, outputnames, kioutputs)
                 vski[internode] = genphe
         kishaps, kirows = calKSV(intactbigenphe, vski, outputnames, len(inputnames), table, inputnames)
@@ -1168,7 +1399,8 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                 print(masterDiamonds)
             # rowsofnodes = propagateWithDiamonds(binet, table, index, aindex, outname, biformulasdict, extranodes, masterDiamonds)
             # need to take order of nodes to simulate the diamond and pass to the function
-            rowsofnodes = propagateCyclic(binet, table, index, aindex, outname, biformulasdict, biformulas, extranodes, nodetosimulate, masterDiamonds, inputnames, orderedBiNodes, debug=debug)
+            # rowsofnodes = propagateBlinking(binet, table, index, aindex, bindex, outname, biformulasdict, biformulas, extranodes, nodetosimulate, masterDiamonds, inputnames, orderedBiNodes, debug=True)
+            rowsofnodes = propagateCyclic(binet, table, index, aindex, bindex, outname, biformulasdict, biformulas, extranodes, nodetosimulate, masterDiamonds, inputnames, orderedBiNodes, debug=False)
             rowsofnodes = rowsofnodes | inrows 
 
             propko, propki = rowstovalues(rowsofnodes, table, outname)
@@ -1205,8 +1437,20 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                 del propko[outname]
                 del propki[outname]
 
-                
-                
+
+                # ensure both have the same keys
+                keys = sorted(calko.keys())
+
+                y_true_ko = np.array([[abs(calko[k]) for k in keys]])
+                y_pred_ko = np.array([[abs(propko[k]) for k in keys]])
+
+                y_true_ki = np.array([[abs(calki[k]) for k in keys]])
+                y_pred_ki = np.array([[abs(propki[k]) for k in keys]])
+
+
+                dncg_ko = ndcg_score(y_true_ko, y_pred_ko)
+                dncg_ki = ndcg_score(y_true_ki, y_pred_ki)
+
                 if korows and kirows:
                     for input in sorted(list(inputnames)):
                         if input in rowsofnodes: 
@@ -1222,23 +1466,27 @@ def workwithBinaryNetwork(formulas, inputnames, outputnames, orispeciesnames, ne
                                 print("Prop  {:5}: {}\n".format(len(rowsofnodes[input]), sorted(list(rowsofnodes[input]))))
 
                     for inter, row in dict(sorted(korows.items(),key=lambda item: item[0])).items():
-                        if inter in rowsofnodes:
-                            gt = row.union(kirows[inter])
-                            lack = gt.difference(rowsofnodes[inter])
-                            extra = rowsofnodes[inter].difference(gt)
-                            # if len(lack) > 0 or len(extra) > 0:
-                            if True:
-                                print(inter)
-                                print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
-                                print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
-                                print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
-                                print("Prop  {:5}: {}\n".format(len(rowsofnodes[inter]), sorted(list(rowsofnodes[inter]))))
-
-
+                        if inter not in rowsofnodes:
+                            rowsofnodes[inter] = set()
+                        
+                        gt = row.union(kirows[inter])
+                        lack = gt.difference(rowsofnodes[inter])
+                        extra = rowsofnodes[inter].difference(gt)
+                        # if len(lack) > 0 or len(extra) > 0:
+                        if True:
+                            print(inter)
+                            print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+                            print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+                            print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
+                            print("Prop  {:5}: {}\n".format(len(rowsofnodes[inter]), sorted(list(rowsofnodes[inter]))))
+                        
 
                 print("Number of nodes is {}".format(num))
+                print("Number of input nodes is {}".format(len(inputnames)))
                 print("Relative_RMSE_KO_is ", (math.sqrt(errorko/num)/(2.0*(len(inputnames)+1))))
                 print("Relative_RMSE_KI_is ", (math.sqrt(errorki/num))/(2.0*(len(inputnames)+1)))
+                print("NDCG_KO_is ", dncg_ko)
+                print("NDCG_KI_is ", dncg_ki)
 
                 korankingres = compare_rankings(calko, propko)
                 kirankingres = compare_rankings(calki, propki)

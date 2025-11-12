@@ -1,0 +1,1521 @@
+The expression file is data/realbenchmark/cd4.txt
+The interested output is: 
+{'GATA3'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'Jak1', 'Tbet', 'TGFbR', 'STAT6', 'STAT1', 'IL27', 'SOCS1', 'IL2R', 'Foxp3', 'IRAK', 'IFNgR', 'IL21', 'NFAT', 'IL6_e', 'IFNg', 'IL2', 'TGFb', 'IL18', 'IL17', 'TCR', 'GATA3', 'IL4R', 'IL23', 'IL21R', 'IL23R', 'IL12', 'IL12R', 'STAT4', 'IFNg_e', 'IL6', 'IL4', 'STAT5', 'RORgt', 'IL18R', 'IL6R', 'IL4_e', 'STAT3', 'NFkB'}
+-----Input names-----
+{'IFNg_e', 'IL6_e', 'TCR', 'IL27', 'IL4_e', 'TGFb', 'IL18', 'IL12', 'IL23'}
+----Intermediate nodes-----
+{'IL17', 'Jak1', 'Tbet', 'TGFbR', 'STAT6', 'STAT1', 'IL4R', 'SOCS1', 'IL2R', 'Foxp3', 'IRAK', 'IL21R', 'IL21', 'IFNgR', 'NFAT', 'IL23R', 'IL12R', 'STAT4', 'IL6', 'IL4', 'STAT5', 'IFNg', 'RORgt', 'IL18R', 'IL6R', 'STAT3', 'IL2', 'NFkB'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['IFNg_e', 'IL12', 'IL18', 'IL23', 'IL27', 'IL4_e', 'IL6_e', 'TCR', 'TGFb']
+There are 9 inputs with the range of input: 0 511
+Sorted internames:
+['Foxp3', 'IFNg', 'IFNgR', 'IL12R', 'IL17', 'IL18R', 'IL2', 'IL21', 'IL21R', 'IL23R', 'IL2R', 'IL4', 'IL4R', 'IL6', 'IL6R', 'IRAK', 'Jak1', 'NFAT', 'NFkB', 'RORgt', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT5', 'STAT6', 'TGFbR', 'Tbet']
+There are 28 intermediate nodes with the range of inter: 0 268435455
+----Input knockout shapley value-----
+('GATA3', {'IFNg_e': -0.0357, 'IL6_e': -0.0357, 'TCR': 0.131, 'IL27': -0.1071, 'IL4_e': 0.131, 'TGFb': -0.1071, 'IL18': 0.0, 'IL12': -0.1071, 'IL23': 0.0})
+
+
+----Input knockIN shapley value-----
+('GATA3', {'IFNg_e': 0.0357, 'IL6_e': 0.0357, 'TCR': -0.2976, 'IL27': 0.131, 'IL4_e': -0.2976, 'TGFb': 0.131, 'IL18': 0.0, 'IL12': 0.131, 'IL23': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout IL17
+Knockout Jak1
+Knockout Tbet
+Knockout TGFbR
+Knockout STAT6
+Knockout STAT1
+Knockout IL4R
+Knockout SOCS1
+Knockout IL2R
+Knockout Foxp3
+Knockout IRAK
+Knockout IL21R
+Knockout IL21
+Knockout IFNgR
+Knockout NFAT
+Knockout IL23R
+Knockout IL12R
+Knockout STAT4
+Knockout IL6
+Knockout IL4
+Knockout STAT5
+Knockout IFNg
+Knockout RORgt
+Knockout IL18R
+Knockout IL6R
+Knockout STAT3
+Knockout IL2
+Knockout NFkB
+----KNOCKOUT VALUE for output GATA3----
+{'Foxp3': 0.0, 'IFNg': 0.0357, 'IFNgR': -0.0357, 'IL12R': -0.2381, 'IL17': 0.0, 'IL18R': 0.0, 'IL2': 0.0, 'IL21': 0.0, 'IL21R': 0.0, 'IL23R': 0.0, 'IL2R': 0.0, 'IL4': 0.0, 'IL4R': 0.131, 'IL6': 0.0, 'IL6R': -0.0357, 'IRAK': 0.0, 'Jak1': -0.0357, 'NFAT': 0.131, 'NFkB': 0.0, 'RORgt': 0.0, 'SOCS1': 0.0198, 'STAT1': -0.2024, 'STAT3': -0.0357, 'STAT4': -0.2381, 'STAT5': 0.0, 'STAT6': 0.131, 'TGFbR': 0.0, 'Tbet': -0.869}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin IL17
+Knockin Jak1
+Knockin Tbet
+Knockin TGFbR
+Knockin STAT6
+Knockin STAT1
+Knockin IL4R
+Knockin SOCS1
+Knockin IL2R
+Knockin Foxp3
+Knockin IRAK
+Knockin IL21R
+Knockin IL21
+Knockin IFNgR
+Knockin NFAT
+Knockin IL23R
+Knockin IL12R
+Knockin STAT4
+Knockin IL6
+Knockin IL4
+Knockin STAT5
+Knockin IFNg
+Knockin RORgt
+Knockin IL18R
+Knockin IL6R
+Knockin STAT3
+Knockin IL2
+Knockin NFkB
+----KNOCKIN VALUE for output GATA3----
+{'GATA3': {'IL17': 0.0, 'Jak1': 0.131, 'Tbet': 0.131, 'TGFbR': 0.0952, 'STAT6': -0.631, 'STAT1': 0.131, 'IL4R': -0.3333, 'SOCS1': 0.131, 'IL2R': -3.8333, 'Foxp3': 0.131, 'IRAK': -0.4762, 'IL21R': 0.0357, 'IL21': 0.0357, 'IFNgR': 0.0357, 'NFAT': -0.2976, 'IL23R': 0.0357, 'IL12R': 0.0, 'STAT4': 0.131, 'IL6': 0.0357, 'IL4': -0.2976, 'STAT5': -3.9841, 'IFNg': 0.131, 'RORgt': 0.131, 'IL18R': -0.4405, 'IL6R': 0.0357, 'STAT3': 0.0357, 'IL2': -0.4048, 'NFkB': -0.369}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['IFNg_e', 'IL12', 'IL18', 'IL23', 'IL27', 'IL4_e', 'IL6_e', 'TCR', 'TGFb']
+There are 9 inputs with the range of input: 0 511
+Sorted internames:
+['Foxp3', 'IFNg', 'IFNgR', 'IL12R', 'IL17', 'IL18R', 'IL2', 'IL21', 'IL21R', 'IL23R', 'IL2R', 'IL4', 'IL4R', 'IL6', 'IL6R', 'IRAK', 'Jak1', 'NFAT', 'NFkB', 'RORgt', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT5', 'STAT6', 'TGFbR', 'Tbet']
+There are 28 intermediate nodes with the range of inter: 0 268435455
+----Input shapley value of acyclic network-----
+('GATA3', {'IFNg_e': -0.0357, 'IL6_e': -0.0357, 'TCR': 0.131, 'IL27': -0.1071, 'IL4_e': 0.131, 'TGFb': -0.1071, 'IL18': 0.0, 'IL12': -0.1071, 'IL23': 0.0})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac STAT3ANDIL6R, try IL6RANDSTAT3
+Input are {'IFNg_e', 'IL6_e', 'TCR', 'IL27', 'IL4_e', 'TGFb', 'IL18', 'IL12', 'IL23'}
+Ordinary nodes are 
+{'Jak1', 'Tbet', 'TGFbR', 'STAT6', 'STAT1', 'IL27', 'SOCS1', 'IL2R', 'Foxp3', 'IRAK', 'IFNgR', 'IL21', 'NFAT', 'IL6_e', 'IFNg', 'IL2', 'TGFb', 'IL18', 'IL17', 'TCR', 'GATA3', 'IL4R', 'IL23', 'IL21R', 'IL23R', 'IL12', 'IL12R', 'STAT4', 'IFNg_e', 'IL6', 'IL4', 'STAT5', 'RORgt', 'IL18R', 'IL6R', 'IL4_e', 'STAT3', 'NFkB'}
+Extranodes added after removing cycles are 
+['Jak1_to_STAT1', 'Tbet_to_Tbet', 'STAT6_to_GATA3', 'IL2R_to_STAT5', 'Foxp3_to_GATA3', 'Foxp3_to_Tbet', 'Foxp3_to_NFAT', 'IFNg_to_STAT6', 'IFNg_to_Tbet', 'IL17_to_IL17', 'GATA3_to_GATA3', 'IL21R_to_STAT3', 'IL23R_to_STAT3', 'STAT4_to_IL12R', 'STAT4_to_Tbet', 'IL6_to_IL6R', 'RORgt_to_GATA3', 'RORgt_to_Tbet', 'IL6R_to_STAT3']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[set(), set(), set(), {'_XTR_78_', 'TGFbR', '_XTR_47_', '_XTR_64_', '_XTR_36_', 'Foxp3', '_XTR_79_', '_XTR_80_', '_XTR_100_', 'NFAT'}, set(), set(), set(), set(), set(), set(), set(), {'TGFbR', 'Foxp3_to_NFAT', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', 'Foxp3_to_Tbet', 'NFAT', '_XTR_33_', '_XTR_78_', '_XTR_47_', '_XTR_36_', '_XTR_32_', '_XTR_80_', '_XTR_100_'}, set(), set(), set(), set(), set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'_XTR_78_', 'TGFbR', '_XTR_47_', '_XTR_64_', '_XTR_36_', 'Foxp3', '_XTR_79_', '_XTR_80_', '_XTR_100_', 'NFAT'}, set(), set(), set(), set(), set(), set(), set(), {'TGFbR', 'Foxp3_to_NFAT', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', 'Foxp3_to_Tbet', 'NFAT', '_XTR_33_', '_XTR_78_', '_XTR_47_', '_XTR_36_', '_XTR_32_', '_XTR_80_', '_XTR_100_'}, set(), set(), set(), set(), set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'_XTR_78_', 'TGFbR', '_XTR_47_', '_XTR_64_', '_XTR_36_', 'Foxp3', '_XTR_79_', '_XTR_80_', '_XTR_100_', 'NFAT'}, set(), set(), set(), set(), set(), set(), set(), {'TGFbR', 'Foxp3_to_NFAT', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', 'Foxp3_to_Tbet', 'NFAT', '_XTR_33_', '_XTR_78_', '_XTR_47_', '_XTR_36_', '_XTR_32_', '_XTR_80_', '_XTR_100_'}, set(), set(), set(), set(), set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'_XTR_78_', 'TGFbR', '_XTR_47_', '_XTR_64_', '_XTR_36_', 'Foxp3', '_XTR_79_', '_XTR_80_', '_XTR_100_', 'NFAT'}, set(), set(), set(), set(), set(), set(), set(), {'TGFbR', 'Foxp3_to_NFAT', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', 'Foxp3_to_Tbet', 'NFAT', '_XTR_33_', '_XTR_78_', '_XTR_47_', '_XTR_36_', '_XTR_32_', '_XTR_80_', '_XTR_100_'}, set(), set(), set(), set(), set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_19_', '_XTR_100_', 'Foxp3_to_Tbet', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_62_', '_XTR_19_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', '_XTR_19_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', '_XTR_9_', '_XTR_55_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_3_', '_XTR_13_', '_XTR_68_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_33_', '_XTR_67_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_19_', '_XTR_62_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'STAT6', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_4_', '_XTR_50_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_80_', '_XTR_32_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_19_', '_XTR_100_', 'Foxp3_to_Tbet', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_62_', '_XTR_19_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', '_XTR_19_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', '_XTR_9_', '_XTR_55_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_3_', '_XTR_13_', '_XTR_68_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_33_', '_XTR_67_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_19_', '_XTR_62_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'STAT6', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_4_', '_XTR_50_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_80_', '_XTR_32_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_19_', '_XTR_68_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', 'STAT1', '_XTR_62_', '_XTR_19_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_25_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'IRAK', 'Foxp3', '_XTR_49_', '_XTR_19_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_50_', 'IL18R', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', 'STAT1', '_XTR_62_', '_XTR_19_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_25_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_68_', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'STAT1', 'IRAK', '_XTR_19_', '_XTR_49_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', '_XTR_53_', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'NFkB', '_XTR_9_', '_XTR_55_', '_XTR_84_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_5_', '_XTR_51_', '_XTR_3_', 'IL18R', '_XTR_13_', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_19_', '_XTR_68_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', '_XTR_98_', 'STAT1', '_XTR_62_', '_XTR_19_', '_XTR_38_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_25_', 'IL2', '_XTR_68_', 'IL2R_to_STAT5', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'IRAK', 'Foxp3', '_XTR_49_', '_XTR_19_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_50_', 'IL18R', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', '_XTR_98_', 'STAT1', '_XTR_62_', '_XTR_19_', '_XTR_38_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_25_', 'IL2', '_XTR_68_', 'IL2R_to_STAT5', '_XTR_27_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_68_', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'STAT1', 'IRAK', '_XTR_19_', '_XTR_49_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', '_XTR_53_', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'NFkB', '_XTR_9_', '_XTR_55_', '_XTR_84_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_5_', '_XTR_51_', '_XTR_3_', 'IL18R', '_XTR_13_', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, set(), set(), {'Jak1', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_55_', '_XTR_65_', '_XTR_19_', '_XTR_60_', '_XTR_63_', '_XTR_61_', '_XTR_69_', '_XTR_5_', 'Tbet_to_Tbet', '_XTR_3_', 'IFNg', '_XTR_25_', '_XTR_70_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_25_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', '_XTR_23_', '_XTR_3_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_'}, set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_69_', '_XTR_11_', 'Tbet_to_Tbet', 'IFNg', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_16_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', '_XTR_5_', '_XTR_50_', 'IL12R', '_XTR_102_', 'GATA3_to_GATA3', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', 'STAT6', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', 'STAT6', '_XTR_23_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_', '_XTR_4_', '_XTR_50_', '_XTR_33_', '_XTR_3_', 'STAT6_to_GATA3', '_XTR_32_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'STAT6', 'TGFbR', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), {'Jak1', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_55_', '_XTR_65_', '_XTR_19_', '_XTR_60_', '_XTR_63_', '_XTR_61_', '_XTR_69_', '_XTR_5_', 'Tbet_to_Tbet', '_XTR_3_', 'IFNg', '_XTR_25_', '_XTR_70_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_25_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', '_XTR_23_', '_XTR_3_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_'}, set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_69_', '_XTR_11_', 'Tbet_to_Tbet', 'IFNg', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_16_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', '_XTR_5_', '_XTR_50_', 'IL12R', '_XTR_102_', 'GATA3_to_GATA3', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', 'STAT6', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', 'STAT6', '_XTR_23_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_', '_XTR_4_', '_XTR_50_', '_XTR_33_', '_XTR_3_', 'STAT6_to_GATA3', '_XTR_32_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'STAT6', 'TGFbR', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), {'Jak1', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_55_', '_XTR_65_', '_XTR_19_', '_XTR_60_', '_XTR_63_', '_XTR_61_', '_XTR_69_', '_XTR_5_', 'Tbet_to_Tbet', '_XTR_3_', 'IFNg', '_XTR_25_', '_XTR_70_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_25_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', '_XTR_23_', '_XTR_3_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_'}, set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_69_', '_XTR_11_', 'Tbet_to_Tbet', 'IFNg', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_16_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', '_XTR_5_', '_XTR_50_', 'IL12R', '_XTR_102_', 'GATA3_to_GATA3', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', 'STAT6', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', 'STAT6', '_XTR_23_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_', '_XTR_4_', '_XTR_50_', '_XTR_33_', '_XTR_3_', 'STAT6_to_GATA3', '_XTR_32_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'STAT6', 'TGFbR', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), {'Jak1', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_55_', '_XTR_65_', '_XTR_19_', '_XTR_60_', '_XTR_63_', '_XTR_61_', '_XTR_69_', '_XTR_5_', 'Tbet_to_Tbet', '_XTR_3_', 'IFNg', '_XTR_25_', '_XTR_70_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_25_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', '_XTR_23_', '_XTR_3_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_'}, set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Jak1_to_STAT1', '_XTR_54_', '_XTR_15_', 'STAT1', 'SOCS1', '_XTR_69_', '_XTR_11_', 'Tbet_to_Tbet', 'IFNg', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_16_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_65_', '_XTR_61_', '_XTR_60_', '_XTR_63_', '_XTR_5_', '_XTR_50_', 'IL12R', '_XTR_102_', 'GATA3_to_GATA3', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'Jak1', 'TGFbR', '_XTR_54_', 'Jak1_to_STAT1', 'Foxp3_to_NFAT', 'STAT6', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_'}, set(), set(), set(), {'Jak1', 'Jak1_to_STAT1', 'STAT6', '_XTR_23_', 'STAT1', 'IL17_to_IL17', 'SOCS1', '_XTR_24_', '_XTR_4_', '_XTR_50_', '_XTR_33_', '_XTR_3_', 'STAT6_to_GATA3', '_XTR_32_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'TGFbR', '_XTR_54_', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_70_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_5_', '_XTR_3_', '_XTR_25_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'Jak1', 'Tbet', 'IFNg_to_Tbet', 'Jak1_to_STAT1', 'STAT6', 'TGFbR', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_64_', '_XTR_15_', 'STAT1', 'SOCS1', 'Foxp3', '_XTR_19_', '_XTR_69_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_55_', '_XTR_84_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_61_', '_XTR_63_', '_XTR_60_', '_XTR_4_', '_XTR_5_', '_XTR_50_', '_XTR_33_', '_XTR_3_', '_XTR_80_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'Foxp3', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_3_', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', '_XTR_93_', 'STAT1', '_XTR_66_', 'IL6_to_IL6R', '_XTR_25_', 'RORgt', '_XTR_62_', '_XTR_19_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_19_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_50_', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', 'STAT1', '_XTR_62_', '_XTR_19_', '_XTR_33_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', 'STAT6_to_GATA3', '_XTR_25_', '_XTR_32_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'STAT6', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_4_', '_XTR_50_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_80_', '_XTR_32_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'Foxp3', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_3_', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', '_XTR_98_', '_XTR_93_', 'STAT1', '_XTR_66_', 'IL6_to_IL6R', '_XTR_25_', 'RORgt', '_XTR_62_', '_XTR_19_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_19_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', 'Tbet_to_Tbet', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_50_', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', '_XTR_98_', 'STAT1', '_XTR_62_', '_XTR_19_', '_XTR_33_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', 'STAT6_to_GATA3', '_XTR_25_', '_XTR_32_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'STAT6', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_100_', '_XTR_4_', '_XTR_50_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_80_', '_XTR_32_', '_XTR_68_', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', '_XTR_62_', '_XTR_19_', '_XTR_69_', '_XTR_68_', '_XTR_38_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_49_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', '_XTR_53_', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', 'NFkB', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_51_', '_XTR_3_', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', 'STAT1', '_XTR_62_', '_XTR_19_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_25_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'IFNg_to_Tbet', 'Tbet', 'STAT6', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'IRAK', 'Foxp3', '_XTR_68_', '_XTR_19_', '_XTR_49_', 'Foxp3_to_Tbet', 'NFAT', '_XTR_47_', '_XTR_18_', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_5_', '_XTR_3_', 'IL18R', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Jak1', 'IL6', 'Tbet_to_Tbet', '_XTR_3_', 'RORgt_to_Tbet', 'SOCS1', 'IL2R', '_XTR_4_', 'RORgt_to_GATA3'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_68_', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'STAT1', 'IRAK', '_XTR_19_', '_XTR_49_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', '_XTR_53_', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'NFkB', '_XTR_9_', '_XTR_55_', '_XTR_84_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_5_', '_XTR_51_', '_XTR_3_', 'IL18R', '_XTR_13_', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'TGFbR', '_XTR_54_', '_XTR_67_', 'Foxp3_to_NFAT', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_49_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', '_XTR_53_', 'IFNg', '_XTR_36_', '_XTR_100_', 'IFNg_to_STAT6', 'NFkB', '_XTR_9_', '_XTR_55_', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_5_', '_XTR_51_', '_XTR_3_', '_XTR_13_', '_XTR_80_', '_XTR_68_', '_XTR_78_', '_XTR_58_'}, set(), set(), set(), {'Tbet', '_XTR_94_', 'Jak1_to_STAT1', '_XTR_67_', '_XTR_98_', 'STAT1', '_XTR_62_', '_XTR_19_', '_XTR_38_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_25_', 'IL2', '_XTR_68_', 'IL2R_to_STAT5', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'IFNg_to_Tbet', 'Tbet', 'STAT6', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'IRAK', 'Foxp3', '_XTR_68_', '_XTR_19_', '_XTR_49_', 'Foxp3_to_Tbet', 'NFAT', '_XTR_47_', '_XTR_18_', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_32_', '_XTR_100_', 'IFNg_to_STAT6', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_5_', '_XTR_3_', 'IL18R', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Jak1', 'IL6', 'Tbet_to_Tbet', '_XTR_3_', 'RORgt_to_Tbet', 'SOCS1', 'IL2R', '_XTR_4_', 'RORgt_to_GATA3'}, set(), set(), set(), {'IFNg_to_Tbet', 'Tbet', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'SOCS1', 'Foxp3', '_XTR_79_', 'Foxp3_to_GATA3', '_XTR_69_', '_XTR_19_', 'Foxp3_to_Tbet', '_XTR_68_', '_XTR_100_', '_XTR_5_', 'NFAT', '_XTR_47_', '_XTR_3_', '_XTR_36_', '_XTR_25_', '_XTR_70_', '_XTR_80_', 'NFkB', '_XTR_78_', '_XTR_58_', 'IFNg_to_STAT6'}, set(), set(), set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, {'STAT6', 'IFNg', 'IL18R', '_XTR_5_', 'STAT6_to_GATA3', 'IRAK', 'NFkB', '_XTR_58_', '_XTR_50_'}, set(), {'Tbet', 'TGFbR', 'STAT6', '_XTR_54_', 'Foxp3_to_NFAT', '_XTR_67_', '_XTR_64_', 'STAT1', 'IRAK', '_XTR_19_', '_XTR_49_', 'Foxp3_to_Tbet', 'IFNgR', 'NFAT', '_XTR_8_', '_XTR_47_', '_XTR_18_', 'Tbet_to_Tbet', '_XTR_53_', 'IFNg', '_XTR_36_', 'STAT6_to_GATA3', '_XTR_70_', '_XTR_32_', '_XTR_100_', 'NFkB', '_XTR_9_', '_XTR_55_', '_XTR_84_', 'Foxp3_to_GATA3', '_XTR_4_', '_XTR_50_', '_XTR_5_', '_XTR_51_', '_XTR_3_', 'IL18R', '_XTR_13_', '_XTR_25_', '_XTR_68_', '_XTR_58_'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, {'IFNg_to_Tbet', 'STAT6', 'IFNg', 'IL18R', 'STAT6_to_GATA3', '_XTR_50_', 'NFkB', '_XTR_58_', '_XTR_5_', 'IFNg_to_STAT6'}, set(), {'Tbet', '_XTR_94_', '_XTR_67_', '_XTR_98_', '_XTR_62_', '_XTR_19_', '_XTR_69_', 'STAT5', '_XTR_93_', 'IL6_to_IL6R', '_XTR_66_', 'RORgt', '_XTR_70_', 'IL2', 'IL2R_to_STAT5', '_XTR_68_', '_XTR_38_', '_XTR_27_'}]
+-------TESTING LINE: 0-------
+{'_XTR_35_': False, 'Tbet': False, 'Jak1': False, '_XTR_91_': False, 'TGFbR': False, 'Jak1_to_STAT1': False, '_XTR_64_': True, '_XTR_15_': False, 'IL27': False, '_XTR_77_': False, 'SOCS1': False, 'IL2R': False, 'Foxp3': False, '_XTR_49_': False, '_XTR_106_': False, '_XTR_52_': True, '_XTR_8_': False, 'IL6_e': False, '_XTR_47_': True, '_XTR_28_': False, '_XTR_39_': False, 'STAT6_to_GATA3': False, 'STAT4_to_IL12R': False, '_XTR_41_': False, 'IL18': False, 'RORgt_to_GATA3': False, 'IL6R_to_STAT3': False, '_XTR_104_': False, '_XTR_16_': False, 'STAT4_to_Tbet': False, '_XTR_44_': False, '_XTR_75_': True, '_XTR_74_': False, '_XTR_72_': False, '_XTR_9_': False, 'IL23R_to_STAT3': False, '_XTR_79_': False, 'IL21R_to_STAT3': False, 'IL12': False, '_XTR_5_': True, '_XTR_4_': False, '_XTR_45_': False, 'STAT3': False, '_XTR_58_': True, 'IL2R_to_STAT5': False, 'STAT6': False, '_XTR_54_': False, '_XTR_87_': False, '_XTR_19_': True, '_XTR_24_': False, 'IFNgR': False, '_XTR_43_': False, '_XTR_66_': False, '_XTR_29_': False, '_XTR_70_': False, 'IL2': False, '_XTR_100_': True, '_XTR_37_': False, '_XTR_98_': False, 'GATA3': False, '_XTR_55_': False, '_XTR_61_': False, 'IL23': False, '_XTR_76_': False, '_XTR_12_': False, '_XTR_51_': False, '_XTR_102_': False, '_XTR_34_': True, 'IL4': False, '_XTR_3_': True, '_XTR_97_': False, '_XTR_25_': True, 'IL6R': False, '_XTR_14_': False, '_XTR_59_': True, '_XTR_67_': False, 'STAT1': False, 'RORgt_to_Tbet': False, '_XTR_92_': False, 'IRAK': False, '_XTR_69_': False, 'Foxp3_to_Tbet': False, '_XTR_42_': False, '_XTR_18_': False, '_XTR_93_': False, '_XTR_53_': False, 'IL6_to_IL6R': False, '_XTR_32_': False, 'TGFb': False, 'IL17': False, '_XTR_23_': False, 'TCR': False, 'Foxp3_to_GATA3': False, '_XTR_40_': False, '_XTR_63_': False, '_XTR_65_': False, 'IL21R': False, '_XTR_50_': True, 'IL12R': False, 'STAT4': False, 'IFNg_e': False, 'GATA3_to_GATA3': False, '_XTR_13_': False, '_XTR_68_': False, '_XTR_38_': True, '_XTR_90_': False, '_XTR_27_': True, 'IFNg_to_Tbet': False, '_XTR_82_': False, '_XTR_94_': False, 'Foxp3_to_NFAT': False, 'IL21': False, 'NFAT': False, '_XTR_11_': True, 'Tbet_to_Tbet': False, 'IFNg': False, '_XTR_36_': True, 'IFNg_to_STAT6': False, 'IL17_to_IL17': False, '_XTR_84_': False, 'IL4R': False, '_XTR_62_': True, '_XTR_60_': True, 'IL23R': False, '_XTR_33_': False, 'IL6': False, 'STAT5': False, '_XTR_26_': False, 'RORgt': False, '_XTR_73_': True, 'IL18R': False, 'IL4_e': False, '_XTR_80_': False, 'NFkB': False, '_XTR_78_': False}
+-------TESTING LINE: 1-------
+{'_XTR_35_': False, 'Tbet': False, 'Jak1': False, '_XTR_91_': False, 'TGFbR': False, 'Jak1_to_STAT1': False, '_XTR_64_': True, '_XTR_15_': False, 'IL27': False, '_XTR_77_': False, 'SOCS1': False, 'IL2R': False, 'Foxp3': False, '_XTR_49_': False, '_XTR_106_': False, '_XTR_52_': True, '_XTR_8_': False, 'IL6_e': False, '_XTR_47_': True, '_XTR_28_': False, '_XTR_39_': False, 'STAT6_to_GATA3': False, 'STAT4_to_IL12R': False, '_XTR_41_': False, 'IL18': False, 'RORgt_to_GATA3': False, 'IL6R_to_STAT3': False, '_XTR_104_': False, '_XTR_16_': False, 'STAT4_to_Tbet': False, '_XTR_44_': False, '_XTR_75_': True, '_XTR_74_': False, '_XTR_72_': False, '_XTR_9_': False, 'IL23R_to_STAT3': False, '_XTR_79_': False, 'IL21R_to_STAT3': False, 'IL12': False, '_XTR_5_': True, '_XTR_4_': False, '_XTR_45_': False, 'STAT3': False, '_XTR_58_': True, 'IL2R_to_STAT5': False, 'STAT6': False, '_XTR_54_': False, '_XTR_87_': False, '_XTR_19_': True, '_XTR_24_': False, 'IFNgR': False, '_XTR_43_': False, '_XTR_66_': False, '_XTR_29_': False, '_XTR_70_': False, 'IL2': False, '_XTR_100_': True, '_XTR_37_': False, '_XTR_98_': False, 'GATA3': False, '_XTR_55_': False, '_XTR_61_': False, 'IL23': False, '_XTR_76_': False, '_XTR_12_': False, '_XTR_51_': False, '_XTR_102_': False, '_XTR_34_': False, 'IL4': False, '_XTR_3_': True, '_XTR_97_': False, '_XTR_25_': True, 'IL6R': False, '_XTR_14_': False, '_XTR_59_': True, '_XTR_67_': False, 'STAT1': False, 'RORgt_to_Tbet': False, '_XTR_92_': False, 'IRAK': False, '_XTR_69_': False, 'Foxp3_to_Tbet': False, '_XTR_42_': False, '_XTR_18_': False, '_XTR_93_': False, '_XTR_53_': False, 'IL6_to_IL6R': False, '_XTR_32_': False, 'TGFb': True, 'IL17': False, '_XTR_23_': False, 'TCR': False, 'Foxp3_to_GATA3': False, '_XTR_40_': False, '_XTR_63_': False, '_XTR_65_': False, 'IL21R': False, '_XTR_50_': True, 'IL12R': False, 'STAT4': False, 'IFNg_e': False, 'GATA3_to_GATA3': False, '_XTR_13_': False, '_XTR_68_': False, '_XTR_38_': True, '_XTR_90_': False, '_XTR_27_': True, 'IFNg_to_Tbet': False, '_XTR_82_': False, '_XTR_94_': False, 'Foxp3_to_NFAT': False, 'IL21': False, 'NFAT': False, '_XTR_11_': True, 'Tbet_to_Tbet': False, 'IFNg': False, '_XTR_36_': True, 'IFNg_to_STAT6': False, 'IL17_to_IL17': False, '_XTR_84_': False, 'IL4R': False, '_XTR_62_': True, '_XTR_60_': True, 'IL23R': False, '_XTR_33_': False, 'IL6': False, 'STAT5': False, '_XTR_26_': False, 'RORgt': False, '_XTR_73_': True, 'IL18R': False, 'IL4_e': False, '_XTR_80_': False, 'NFkB': False, '_XTR_78_': False}
+-------TESTING LINE: 3-------
+{'_XTR_35_': False, 'Tbet': False, 'Jak1': False, '_XTR_91_': False, 'TGFbR': True, 'Jak1_to_STAT1': False, '_XTR_64_': True, '_XTR_15_': False, 'IL27': False, '_XTR_77_': False, 'SOCS1': False, 'IL2R': False, 'Foxp3': True, '_XTR_49_': False, '_XTR_106_': False, '_XTR_52_': True, '_XTR_8_': False, 'IL6_e': False, '_XTR_47_': True, '_XTR_28_': False, '_XTR_39_': False, 'STAT6_to_GATA3': False, 'STAT4_to_IL12R': False, '_XTR_41_': False, 'IL18': False, 'RORgt_to_GATA3': False, 'IL6R_to_STAT3': False, '_XTR_104_': False, '_XTR_16_': True, 'STAT4_to_Tbet': False, '_XTR_44_': False, '_XTR_75_': True, '_XTR_74_': False, '_XTR_72_': False, '_XTR_9_': False, 'IL23R_to_STAT3': False, '_XTR_79_': True, 'IL21R_to_STAT3': False, 'IL12': False, '_XTR_5_': True, '_XTR_4_': False, '_XTR_45_': False, 'STAT3': False, '_XTR_58_': True, 'IL2R_to_STAT5': False, 'STAT6': False, '_XTR_54_': False, '_XTR_87_': False, '_XTR_19_': True, '_XTR_24_': False, 'IFNgR': False, '_XTR_43_': False, '_XTR_66_': False, '_XTR_29_': False, '_XTR_70_': False, 'IL2': False, '_XTR_100_': True, '_XTR_37_': False, '_XTR_98_': False, 'GATA3': False, '_XTR_55_': False, '_XTR_61_': False, 'IL23': False, '_XTR_76_': False, '_XTR_12_': False, '_XTR_51_': False, '_XTR_102_': False, '_XTR_34_': False, 'IL4': False, '_XTR_3_': True, '_XTR_97_': False, '_XTR_25_': True, 'IL6R': False, '_XTR_14_': False, '_XTR_59_': True, '_XTR_67_': False, 'STAT1': False, 'RORgt_to_Tbet': False, '_XTR_92_': False, 'IRAK': False, '_XTR_69_': False, 'Foxp3_to_Tbet': True, '_XTR_42_': False, '_XTR_18_': False, '_XTR_93_': False, '_XTR_53_': False, 'IL6_to_IL6R': False, '_XTR_32_': False, 'TGFb': True, 'IL17': False, '_XTR_23_': False, 'TCR': True, 'Foxp3_to_GATA3': True, '_XTR_40_': False, '_XTR_63_': False, '_XTR_65_': False, 'IL21R': False, '_XTR_50_': True, 'IL12R': True, 'STAT4': False, 'IFNg_e': False, 'GATA3_to_GATA3': False, '_XTR_13_': False, '_XTR_68_': False, '_XTR_38_': True, '_XTR_90_': False, '_XTR_27_': True, 'IFNg_to_Tbet': False, '_XTR_82_': False, '_XTR_94_': False, 'Foxp3_to_NFAT': True, 'IL21': False, 'NFAT': True, '_XTR_11_': True, 'Tbet_to_Tbet': False, 'IFNg': False, '_XTR_36_': True, 'IFNg_to_STAT6': False, 'IL17_to_IL17': False, '_XTR_84_': False, 'IL4R': False, '_XTR_62_': True, '_XTR_60_': True, 'IL23R': False, '_XTR_33_': False, 'IL6': False, 'STAT5': False, '_XTR_26_': False, 'RORgt': False, '_XTR_73_': True, 'IL18R': False, 'IL4_e': False, '_XTR_80_': True, 'NFkB': False, '_XTR_78_': True}
+-------TESTING LINE: 4-------
+{'_XTR_35_': False, 'Tbet': False, 'Jak1': False, '_XTR_91_': True, 'TGFbR': False, 'Jak1_to_STAT1': False, '_XTR_64_': True, '_XTR_15_': False, 'IL27': False, '_XTR_77_': False, 'SOCS1': False, 'IL2R': False, 'Foxp3': False, '_XTR_49_': False, '_XTR_106_': True, '_XTR_52_': False, '_XTR_8_': False, 'IL6_e': True, '_XTR_47_': True, '_XTR_28_': False, '_XTR_39_': False, 'STAT6_to_GATA3': False, 'STAT4_to_IL12R': False, '_XTR_41_': False, 'IL18': False, 'RORgt_to_GATA3': False, 'IL6R_to_STAT3': True, '_XTR_104_': False, '_XTR_16_': False, 'STAT4_to_Tbet': False, '_XTR_44_': False, '_XTR_75_': True, '_XTR_74_': False, '_XTR_72_': True, '_XTR_9_': False, 'IL23R_to_STAT3': True, '_XTR_79_': False, 'IL21R_to_STAT3': False, 'IL12': False, '_XTR_5_': True, '_XTR_4_': False, '_XTR_45_': False, 'STAT3': True, '_XTR_58_': True, 'IL2R_to_STAT5': False, 'STAT6': False, '_XTR_54_': False, '_XTR_87_': False, '_XTR_19_': True, '_XTR_24_': False, 'IFNgR': False, '_XTR_43_': False, '_XTR_66_': False, '_XTR_29_': False, '_XTR_70_': False, 'IL2': False, '_XTR_100_': True, '_XTR_37_': False, '_XTR_98_': False, 'GATA3': False, '_XTR_55_': False, '_XTR_61_': False, 'IL23': False, '_XTR_76_': False, '_XTR_12_': False, '_XTR_51_': False, '_XTR_102_': False, '_XTR_34_': True, 'IL4': False, '_XTR_3_': True, '_XTR_97_': False, '_XTR_25_': True, 'IL6R': True, '_XTR_14_': False, '_XTR_59_': True, '_XTR_67_': False, 'STAT1': False, 'RORgt_to_Tbet': False, '_XTR_92_': False, 'IRAK': False, '_XTR_69_': False, 'Foxp3_to_Tbet': False, '_XTR_42_': False, '_XTR_18_': False, '_XTR_93_': False, '_XTR_53_': False, 'IL6_to_IL6R': False, '_XTR_32_': False, 'TGFb': False, 'IL17': False, '_XTR_23_': False, 'TCR': False, 'Foxp3_to_GATA3': False, '_XTR_40_': False, '_XTR_63_': False, '_XTR_65_': False, 'IL21R': False, '_XTR_50_': True, 'IL12R': False, 'STAT4': False, 'IFNg_e': False, 'GATA3_to_GATA3': False, '_XTR_13_': False, '_XTR_68_': False, '_XTR_38_': True, '_XTR_90_': False, '_XTR_27_': True, 'IFNg_to_Tbet': False, '_XTR_82_': False, '_XTR_94_': False, 'Foxp3_to_NFAT': False, 'IL21': False, 'NFAT': False, '_XTR_11_': True, 'Tbet_to_Tbet': False, 'IFNg': False, '_XTR_36_': True, 'IFNg_to_STAT6': False, 'IL17_to_IL17': False, '_XTR_84_': False, 'IL4R': False, '_XTR_62_': True, '_XTR_60_': True, 'IL23R': True, '_XTR_33_': False, 'IL6': False, 'STAT5': False, '_XTR_26_': False, 'RORgt': False, '_XTR_73_': False, 'IL18R': False, 'IL4_e': False, '_XTR_80_': False, 'NFkB': False, '_XTR_78_': False}
+-------TESTING LINE: 5-------
+{'_XTR_35_': False, 'Tbet': False, 'Jak1': False, '_XTR_91_': True, 'TGFbR': False, 'Jak1_to_STAT1': False, '_XTR_64_': True, '_XTR_15_': False, 'IL27': False, '_XTR_77_': False, 'SOCS1': False, 'IL2R': False, 'Foxp3': False, '_XTR_49_': False, '_XTR_106_': True, '_XTR_52_': False, '_XTR_8_': False, 'IL6_e': True, '_XTR_47_': True, '_XTR_28_': False, '_XTR_39_': False, 'STAT6_to_GATA3': False, 'STAT4_to_IL12R': False, '_XTR_41_': False, 'IL18': False, 'RORgt_to_GATA3': False, 'IL6R_to_STAT3': True, '_XTR_104_': False, '_XTR_16_': False, 'STAT4_to_Tbet': False, '_XTR_44_': False, '_XTR_75_': True, '_XTR_74_': False, '_XTR_72_': True, '_XTR_9_': False, 'IL23R_to_STAT3': True, '_XTR_79_': False, 'IL21R_to_STAT3': False, 'IL12': False, '_XTR_5_': True, '_XTR_4_': False, '_XTR_45_': False, 'STAT3': True, '_XTR_58_': True, 'IL2R_to_STAT5': False, 'STAT6': False, '_XTR_54_': False, '_XTR_87_': False, '_XTR_19_': True, '_XTR_24_': False, 'IFNgR': False, '_XTR_43_': False, '_XTR_66_': False, '_XTR_29_': False, '_XTR_70_': False, 'IL2': False, '_XTR_100_': True, '_XTR_37_': False, '_XTR_98_': False, 'GATA3': False, '_XTR_55_': False, '_XTR_61_': False, 'IL23': False, '_XTR_76_': False, '_XTR_12_': False, '_XTR_51_': False, '_XTR_102_': False, '_XTR_34_': False, 'IL4': False, '_XTR_3_': True, '_XTR_97_': False, '_XTR_25_': True, 'IL6R': True, '_XTR_14_': False, '_XTR_59_': True, '_XTR_67_': False, 'STAT1': False, 'RORgt_to_Tbet': False, '_XTR_92_': False, 'IRAK': False, '_XTR_69_': False, 'Foxp3_to_Tbet': False, '_XTR_42_': False, '_XTR_18_': False, '_XTR_93_': False, '_XTR_53_': False, 'IL6_to_IL6R': False, '_XTR_32_': False, 'TGFb': True, 'IL17': False, '_XTR_23_': False, 'TCR': False, 'Foxp3_to_GATA3': False, '_XTR_40_': False, '_XTR_63_': False, '_XTR_65_': False, 'IL21R': False, '_XTR_50_': True, 'IL12R': False, 'STAT4': False, 'IFNg_e': False, 'GATA3_to_GATA3': False, '_XTR_13_': False, '_XTR_68_': False, '_XTR_38_': True, '_XTR_90_': False, '_XTR_27_': True, 'IFNg_to_Tbet': False, '_XTR_82_': False, '_XTR_94_': False, 'Foxp3_to_NFAT': False, 'IL21': False, 'NFAT': False, '_XTR_11_': True, 'Tbet_to_Tbet': False, 'IFNg': False, '_XTR_36_': True, 'IFNg_to_STAT6': False, 'IL17_to_IL17': False, '_XTR_84_': False, 'IL4R': False, '_XTR_62_': True, '_XTR_60_': True, 'IL23R': True, '_XTR_33_': False, 'IL6': False, 'STAT5': False, '_XTR_26_': False, 'RORgt': False, '_XTR_73_': False, 'IL18R': False, 'IL4_e': False, '_XTR_80_': False, 'NFkB': False, '_XTR_78_': False}
+-------TESTING LINE: 6-------
+{'_XTR_35_': False, 'Tbet': False, 'Jak1': False, '_XTR_91_': True, 'TGFbR': False, 'Jak1_to_STAT1': False, '_XTR_64_': True, '_XTR_15_': False, 'IL27': False, '_XTR_77_': False, 'SOCS1': False, 'IL2R': False, 'Foxp3': False, '_XTR_49_': False, '_XTR_106_': True, '_XTR_52_': False, '_XTR_8_': False, 'IL6_e': True, '_XTR_47_': True, '_XTR_28_': False, '_XTR_39_': False, 'STAT6_to_GATA3': False, 'STAT4_to_IL12R': False, '_XTR_41_': False, 'IL18': False, 'RORgt_to_GATA3': False, 'IL6R_to_STAT3': True, '_XTR_104_': False, '_XTR_16_': True, 'STAT4_to_Tbet': False, '_XTR_44_': False, '_XTR_75_': False, '_XTR_74_': False, '_XTR_72_': True, '_XTR_9_': False, 'IL23R_to_STAT3': True, '_XTR_79_': False, 'IL21R_to_STAT3': True, 'IL12': False, '_XTR_5_': True, '_XTR_4_': False, '_XTR_45_': False, 'STAT3': True, '_XTR_58_': True, 'IL2R_to_STAT5': False, 'STAT6': False, '_XTR_54_': False, '_XTR_87_': False, '_XTR_19_': True, '_XTR_24_': False, 'IFNgR': False, '_XTR_43_': False, '_XTR_66_': False, '_XTR_29_': False, '_XTR_70_': False, 'IL2': False, '_XTR_100_': True, '_XTR_37_': False, '_XTR_98_': False, 'GATA3': False, '_XTR_55_': False, '_XTR_61_': False, 'IL23': False, '_XTR_76_': False, '_XTR_12_': False, '_XTR_51_': False, '_XTR_102_': False, '_XTR_34_': True, 'IL4': False, '_XTR_3_': True, '_XTR_97_': False, '_XTR_25_': True, 'IL6R': True, '_XTR_14_': False, '_XTR_59_': True, '_XTR_67_': False, 'STAT1': False, 'RORgt_to_Tbet': False, '_XTR_92_': False, 'IRAK': False, '_XTR_69_': False, 'Foxp3_to_Tbet': False, '_XTR_42_': False, '_XTR_18_': False, '_XTR_93_': False, '_XTR_53_': False, 'IL6_to_IL6R': False, '_XTR_32_': False, 'TGFb': False, 'IL17': False, '_XTR_23_': False, 'TCR': True, 'Foxp3_to_GATA3': False, '_XTR_40_': False, '_XTR_63_': False, '_XTR_65_': False, 'IL21R': True, '_XTR_50_': True, 'IL12R': True, 'STAT4': False, 'IFNg_e': False, 'GATA3_to_GATA3': False, '_XTR_13_': False, '_XTR_68_': False, '_XTR_38_': True, '_XTR_90_': True, '_XTR_27_': True, 'IFNg_to_Tbet': False, '_XTR_82_': False, '_XTR_94_': False, 'Foxp3_to_NFAT': False, 'IL21': True, 'NFAT': True, '_XTR_11_': True, 'Tbet_to_Tbet': False, 'IFNg': False, '_XTR_36_': True, 'IFNg_to_STAT6': False, 'IL17_to_IL17': False, '_XTR_84_': False, 'IL4R': False, '_XTR_62_': True, '_XTR_60_': True, 'IL23R': True, '_XTR_33_': False, 'IL6': False, 'STAT5': False, '_XTR_26_': False, 'RORgt': False, '_XTR_73_': False, 'IL18R': False, 'IL4_e': False, '_XTR_80_': False, 'NFkB': False, '_XTR_78_': False}
+-------TESTING LINE: 7-------
+{'_XTR_35_': False, 'Tbet': False, 'Jak1': False, '_XTR_91_': True, 'TGFbR': True, 'Jak1_to_STAT1': False, '_XTR_64_': True, '_XTR_15_': False, 'IL27': False, '_XTR_77_': False, 'SOCS1': False, 'IL2R': False, 'Foxp3': False, '_XTR_49_': False, '_XTR_106_': True, '_XTR_52_': False, '_XTR_8_': False, 'IL6_e': True, '_XTR_47_': True, '_XTR_28_': True, '_XTR_39_': False, 'STAT6_to_GATA3': False, 'STAT4_to_IL12R': False, '_XTR_41_': False, 'IL18': False, 'RORgt_to_GATA3': True, 'IL6R_to_STAT3': True, '_XTR_104_': False, '_XTR_16_': True, 'STAT4_to_Tbet': False, '_XTR_44_': False, '_XTR_75_': False, '_XTR_74_': False, '_XTR_72_': True, '_XTR_9_': False, 'IL23R_to_STAT3': True, '_XTR_79_': False, 'IL21R_to_STAT3': True, 'IL12': False, '_XTR_5_': True, '_XTR_4_': False, '_XTR_45_': False, 'STAT3': True, '_XTR_58_': True, 'IL2R_to_STAT5': False, 'STAT6': False, '_XTR_54_': False, '_XTR_87_': False, '_XTR_19_': True, '_XTR_24_': True, 'IFNgR': False, '_XTR_43_': False, '_XTR_66_': False, '_XTR_29_': True, '_XTR_70_': False, 'IL2': False, '_XTR_100_': True, '_XTR_37_': False, '_XTR_98_': False, 'GATA3': False, '_XTR_55_': False, '_XTR_61_': False, 'IL23': False, '_XTR_76_': False, '_XTR_12_': False, '_XTR_51_': False, '_XTR_102_': False, '_XTR_34_': False, 'IL4': False, '_XTR_3_': True, '_XTR_97_': False, '_XTR_25_': True, 'IL6R': True, '_XTR_14_': False, '_XTR_59_': True, '_XTR_67_': False, 'STAT1': False, 'RORgt_to_Tbet': True, '_XTR_92_': True, 'IRAK': False, '_XTR_69_': False, 'Foxp3_to_Tbet': False, '_XTR_42_': False, '_XTR_18_': False, '_XTR_93_': True, '_XTR_53_': False, 'IL6_to_IL6R': True, '_XTR_32_': False, 'TGFb': True, 'IL17': True, '_XTR_23_': True, 'TCR': True, 'Foxp3_to_GATA3': False, '_XTR_40_': False, '_XTR_63_': False, '_XTR_65_': False, 'IL21R': True, '_XTR_50_': True, 'IL12R': True, 'STAT4': False, 'IFNg_e': False, 'GATA3_to_GATA3': False, '_XTR_13_': False, '_XTR_68_': False, '_XTR_38_': False, '_XTR_90_': True, '_XTR_27_': True, 'IFNg_to_Tbet': False, '_XTR_82_': False, '_XTR_94_': True, 'Foxp3_to_NFAT': False, 'IL21': True, 'NFAT': True, '_XTR_11_': True, 'Tbet_to_Tbet': False, 'IFNg': False, '_XTR_36_': True, 'IFNg_to_STAT6': False, 'IL17_to_IL17': True, '_XTR_84_': False, 'IL4R': False, '_XTR_62_': False, '_XTR_60_': True, 'IL23R': True, '_XTR_33_': False, 'IL6': True, 'STAT5': False, '_XTR_26_': True, 'RORgt': True, '_XTR_73_': False, 'IL18R': False, 'IL4_e': False, '_XTR_80_': False, 'NFkB': False, '_XTR_78_': False}
+-----Knockout Shapley value of input nodes in the binary network-----
+GATA3 : {'IFNg_e': -0.0357, 'IL6_e': -0.0357, 'TCR': 0.131, 'IL27': -0.1071, 'IL4_e': 0.131, 'TGFb': -0.1071, 'IL18': 0.0, 'IL12': -0.1071, 'IL23': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+GATA3 : {'IFNg_e': 0.0357, 'IL6_e': 0.0357, 'TCR': -0.2976, 'IL27': 0.131, 'IL4_e': -0.2976, 'TGFb': 0.131, 'IL18': 0.0, 'IL12': 0.131, 'IL23': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout _XTR_35_
+Knockout Tbet
+Knockout Jak1
+Knockout _XTR_91_
+Knockout TGFbR
+Knockout Jak1_to_STAT1
+Knockout _XTR_67_
+Knockout _XTR_64_
+Knockout _XTR_15_
+Knockout STAT1
+Knockout RORgt_to_Tbet
+Knockout _XTR_92_
+Knockout _XTR_77_
+Knockout SOCS1
+Knockout IL2R
+Knockout Foxp3
+Knockout IRAK
+Knockout _XTR_49_
+Knockout _XTR_69_
+Knockout Foxp3_to_Tbet
+Knockout _XTR_106_
+Knockout _XTR_52_
+Knockout _XTR_42_
+Knockout _XTR_8_
+Knockout _XTR_47_
+Knockout _XTR_28_
+Knockout _XTR_18_
+Knockout _XTR_93_
+Knockout _XTR_53_
+Knockout _XTR_39_
+Knockout STAT6_to_GATA3
+Knockout STAT4_to_IL12R
+Knockout _XTR_41_
+Knockout IL6_to_IL6R
+Knockout _XTR_32_
+Knockout RORgt_to_GATA3
+Knockout IL6R_to_STAT3
+Knockout _XTR_104_
+Knockout _XTR_16_
+Knockout STAT4_to_Tbet
+Knockout _XTR_44_
+Knockout IL17
+Knockout _XTR_75_
+Knockout NFkB
+Knockout _XTR_74_
+Knockout _XTR_23_
+Knockout _XTR_72_
+Knockout _XTR_9_
+Knockout IL23R_to_STAT3
+Knockout _XTR_79_
+Knockout Foxp3_to_GATA3
+Knockout _XTR_40_
+Knockout _XTR_63_
+Knockout _XTR_65_
+Knockout IL21R
+Knockout IL21R_to_STAT3
+Knockout _XTR_5_
+Knockout _XTR_4_
+Knockout _XTR_50_
+Knockout IL12R
+Knockout STAT4
+Knockout _XTR_45_
+Knockout GATA3_to_GATA3
+Knockout _XTR_13_
+Knockout STAT3
+Knockout _XTR_68_
+Knockout _XTR_58_
+Knockout IL2R_to_STAT5
+Knockout _XTR_38_
+Knockout _XTR_90_
+Knockout _XTR_27_
+Knockout IFNg_to_Tbet
+Knockout _XTR_82_
+Knockout _XTR_94_
+Knockout STAT6
+Knockout _XTR_54_
+Knockout Foxp3_to_NFAT
+Knockout _XTR_87_
+Knockout _XTR_19_
+Knockout _XTR_24_
+Knockout IFNgR
+Knockout IL21
+Knockout NFAT
+Knockout _XTR_11_
+Knockout _XTR_43_
+Knockout Tbet_to_Tbet
+Knockout IFNg
+Knockout _XTR_66_
+Knockout _XTR_29_
+Knockout _XTR_36_
+Knockout _XTR_70_
+Knockout IL2
+Knockout _XTR_100_
+Knockout IFNg_to_STAT6
+Knockout _XTR_37_
+Knockout _XTR_98_
+Knockout IL17_to_IL17
+Knockout _XTR_55_
+Knockout _XTR_84_
+Knockout IL4R
+Knockout _XTR_62_
+Knockout _XTR_61_
+Knockout _XTR_60_
+Knockout _XTR_76_
+Knockout IL23R
+Knockout _XTR_12_
+Knockout _XTR_51_
+Knockout _XTR_102_
+Knockout _XTR_34_
+Knockout _XTR_33_
+Knockout IL4
+Knockout IL6
+Knockout STAT5
+Knockout _XTR_26_
+Knockout _XTR_3_
+Knockout RORgt
+Knockout _XTR_73_
+Knockout _XTR_97_
+Knockout _XTR_25_
+Knockout IL6R
+Knockout _XTR_14_
+Knockout IL18R
+Knockout _XTR_80_
+Knockout _XTR_59_
+Knockout _XTR_78_
+---- Binary KNOCKOUT VALUE for output GATA3----
+{'GATA3': {'_XTR_35_': 0.131, 'Tbet': -0.869, 'Jak1': -0.0357, '_XTR_91_': 0.0, 'TGFbR': 0.0, 'Jak1_to_STAT1': -0.0357, '_XTR_67_': -0.2381, '_XTR_64_': -0.869, '_XTR_15_': 0.0, 'STAT1': -0.2024, 'RORgt_to_Tbet': 0.0, '_XTR_92_': 0.0, '_XTR_77_': 0.0, 'SOCS1': 0.0198, 'IL2R': 0.0, 'Foxp3': 0.0, 'IRAK': 0.0, '_XTR_49_': 0.0, '_XTR_69_': -0.2024, 'Foxp3_to_Tbet': 0.0, '_XTR_106_': -0.0357, '_XTR_52_': 0.0357, '_XTR_42_': 0.0, '_XTR_8_': -0.0357, '_XTR_47_': 0.0, '_XTR_28_': 0.0, '_XTR_18_': 0.0, '_XTR_93_': 0.0, '_XTR_53_': 0.0, '_XTR_39_': 0.131, 'STAT6_to_GATA3': 0.131, 'STAT4_to_IL12R': 0.0, '_XTR_41_': 0.131, 'IL6_to_IL6R': 0.0, '_XTR_32_': 0.131, 'RORgt_to_GATA3': 0.0, 'IL6R_to_STAT3': -0.0357, '_XTR_104_': 0.0, '_XTR_16_': -0.0159, 'STAT4_to_Tbet': -0.2381, '_XTR_44_': 0.0, 'IL17': 0.0, '_XTR_75_': 0.0, 'NFkB': 0.0, '_XTR_74_': 0.0, '_XTR_23_': 0.0, '_XTR_72_': 0.0, '_XTR_9_': 0.0, 'IL23R_to_STAT3': 0.0, '_XTR_79_': 0.0, 'Foxp3_to_GATA3': 0.0, '_XTR_40_': 0.0, '_XTR_63_': -0.0357, '_XTR_65_': -0.0357, 'IL21R': 0.0, 'IL21R_to_STAT3': 0.0, '_XTR_5_': 0.131, '_XTR_4_': 0.131, '_XTR_50_': 0.0, 'IL12R': -0.2381, 'STAT4': -0.2381, '_XTR_45_': 0.0, 'GATA3_to_GATA3': 0.0, '_XTR_13_': 0.0, 'STAT3': -0.0357, '_XTR_68_': -0.2738, '_XTR_58_': -0.0357, 'IL2R_to_STAT5': 0.0, '_XTR_38_': 0.131, '_XTR_90_': 0.0, '_XTR_27_': 0.0, 'IFNg_to_Tbet': 0.0357, '_XTR_82_': -0.2381, '_XTR_94_': 0.0, 'STAT6': 0.131, '_XTR_54_': 0.0357, 'Foxp3_to_NFAT': 0.0, '_XTR_87_': 0.0, '_XTR_19_': 0.131, '_XTR_24_': 0.0, 'IFNgR': -0.0357, 'IL21': 0.0, 'NFAT': 0.131, '_XTR_11_': -0.2381, '_XTR_43_': 0.0, 'Tbet_to_Tbet': -0.0357, 'IFNg': 0.0357, '_XTR_66_': -0.2381, '_XTR_29_': 0.0, '_XTR_36_': 0.131, '_XTR_70_': -0.2024, 'IL2': 0.0, '_XTR_100_': 0.131, 'IFNg_to_STAT6': 0.0, '_XTR_37_': 0.131, '_XTR_98_': 0.0, 'IL17_to_IL17': 0.0, '_XTR_55_': 0.0357, '_XTR_84_': -0.1071, 'IL4R': 0.131, '_XTR_62_': -0.869, '_XTR_61_': -0.0357, '_XTR_60_': -0.0357, '_XTR_76_': 0.0, 'IL23R': 0.0, '_XTR_12_': 0.0, '_XTR_51_': 0.0, '_XTR_102_': 0.0, '_XTR_34_': 0.131, '_XTR_33_': 0.131, 'IL4': 0.0, 'IL6': 0.0, 'STAT5': 0.0, '_XTR_26_': 0.0, '_XTR_3_': 0.131, 'RORgt': 0.0, '_XTR_73_': 0.0, '_XTR_97_': 0.0, '_XTR_25_': 0.0, 'IL6R': -0.0357, '_XTR_14_': 0.0, 'IL18R': 0.0, '_XTR_80_': 0.0, '_XTR_59_': -0.0357, '_XTR_78_': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN _XTR_35_
+KnockIN Tbet
+KnockIN Jak1
+KnockIN _XTR_91_
+KnockIN TGFbR
+KnockIN Jak1_to_STAT1
+KnockIN _XTR_67_
+KnockIN _XTR_64_
+KnockIN _XTR_15_
+KnockIN STAT1
+KnockIN RORgt_to_Tbet
+KnockIN _XTR_92_
+KnockIN _XTR_77_
+KnockIN SOCS1
+KnockIN IL2R
+KnockIN Foxp3
+KnockIN IRAK
+KnockIN _XTR_49_
+KnockIN _XTR_69_
+KnockIN Foxp3_to_Tbet
+KnockIN _XTR_106_
+KnockIN _XTR_52_
+KnockIN _XTR_42_
+KnockIN _XTR_8_
+KnockIN _XTR_47_
+KnockIN _XTR_28_
+KnockIN _XTR_18_
+KnockIN _XTR_93_
+KnockIN _XTR_53_
+KnockIN _XTR_39_
+KnockIN STAT6_to_GATA3
+KnockIN STAT4_to_IL12R
+KnockIN _XTR_41_
+KnockIN IL6_to_IL6R
+KnockIN _XTR_32_
+KnockIN RORgt_to_GATA3
+KnockIN IL6R_to_STAT3
+KnockIN _XTR_104_
+KnockIN _XTR_16_
+KnockIN STAT4_to_Tbet
+KnockIN _XTR_44_
+KnockIN IL17
+KnockIN _XTR_75_
+KnockIN NFkB
+KnockIN _XTR_74_
+KnockIN _XTR_23_
+KnockIN _XTR_72_
+KnockIN _XTR_9_
+KnockIN IL23R_to_STAT3
+KnockIN _XTR_79_
+KnockIN Foxp3_to_GATA3
+KnockIN _XTR_40_
+KnockIN _XTR_63_
+KnockIN _XTR_65_
+KnockIN IL21R
+KnockIN IL21R_to_STAT3
+KnockIN _XTR_5_
+KnockIN _XTR_4_
+KnockIN _XTR_50_
+KnockIN IL12R
+KnockIN STAT4
+KnockIN _XTR_45_
+KnockIN GATA3_to_GATA3
+KnockIN _XTR_13_
+KnockIN STAT3
+KnockIN _XTR_68_
+KnockIN _XTR_58_
+KnockIN IL2R_to_STAT5
+KnockIN _XTR_38_
+KnockIN _XTR_90_
+KnockIN _XTR_27_
+KnockIN IFNg_to_Tbet
+KnockIN _XTR_82_
+KnockIN _XTR_94_
+KnockIN STAT6
+KnockIN _XTR_54_
+KnockIN Foxp3_to_NFAT
+KnockIN _XTR_87_
+KnockIN _XTR_19_
+KnockIN _XTR_24_
+KnockIN IFNgR
+KnockIN IL21
+KnockIN NFAT
+KnockIN _XTR_11_
+KnockIN _XTR_43_
+KnockIN Tbet_to_Tbet
+KnockIN IFNg
+KnockIN _XTR_66_
+KnockIN _XTR_29_
+KnockIN _XTR_36_
+KnockIN _XTR_70_
+KnockIN IL2
+KnockIN _XTR_100_
+KnockIN IFNg_to_STAT6
+KnockIN _XTR_37_
+KnockIN _XTR_98_
+KnockIN IL17_to_IL17
+KnockIN _XTR_55_
+KnockIN _XTR_84_
+KnockIN IL4R
+KnockIN _XTR_62_
+KnockIN _XTR_61_
+KnockIN _XTR_60_
+KnockIN _XTR_76_
+KnockIN IL23R
+KnockIN _XTR_12_
+KnockIN _XTR_51_
+KnockIN _XTR_102_
+KnockIN _XTR_34_
+KnockIN _XTR_33_
+KnockIN IL4
+KnockIN IL6
+KnockIN STAT5
+KnockIN _XTR_26_
+KnockIN _XTR_3_
+KnockIN RORgt
+KnockIN _XTR_73_
+KnockIN _XTR_97_
+KnockIN _XTR_25_
+KnockIN IL6R
+KnockIN _XTR_14_
+KnockIN IL18R
+KnockIN _XTR_80_
+KnockIN _XTR_59_
+KnockIN _XTR_78_
+---- Binary KNOCKIN VALUE for output GATA3----
+{'GATA3': {'_XTR_35_': -9.869, 'Tbet': 0.131, 'Jak1': 0.131, '_XTR_91_': 0.0, 'TGFbR': 0.0952, 'Jak1_to_STAT1': 0.131, '_XTR_67_': 0.131, '_XTR_64_': 0.0, '_XTR_15_': 0.0, 'STAT1': 0.131, 'RORgt_to_Tbet': -0.869, '_XTR_92_': 0.131, '_XTR_77_': 0.131, 'SOCS1': 0.131, 'IL2R': -3.8333, 'Foxp3': 0.131, 'IRAK': -0.4762, '_XTR_49_': 0.131, '_XTR_69_': 0.131, 'Foxp3_to_Tbet': -0.869, '_XTR_106_': 0.0357, '_XTR_52_': -0.0357, '_XTR_42_': -4.869, '_XTR_8_': 0.0357, '_XTR_47_': 0.0, '_XTR_28_': 0.0, '_XTR_18_': -0.3452, '_XTR_93_': 0.131, '_XTR_53_': 0.131, '_XTR_39_': -9.869, 'STAT6_to_GATA3': -0.631, 'STAT4_to_IL12R': 0.0, '_XTR_41_': -9.869, 'IL6_to_IL6R': 0.0357, '_XTR_32_': -3.8175, 'RORgt_to_GATA3': 0.131, 'IL6R_to_STAT3': 0.0357, '_XTR_104_': -0.369, '_XTR_16_': 0.0, 'STAT4_to_Tbet': 0.131, '_XTR_44_': -9.869, 'IL17': 0.0, '_XTR_75_': 0.0, 'NFkB': -0.369, '_XTR_74_': 0.131, '_XTR_23_': 0.0, '_XTR_72_': 0.0, '_XTR_9_': 0.0357, 'IL23R_to_STAT3': 0.0357, '_XTR_79_': 0.131, 'Foxp3_to_GATA3': 0.131, '_XTR_40_': -9.869, '_XTR_63_': 0.131, '_XTR_65_': 0.131, 'IL21R': 0.0357, 'IL21R_to_STAT3': 0.0357, '_XTR_5_': 0.0, '_XTR_4_': -0.369, '_XTR_50_': 0.0, 'IL12R': 0.0, 'STAT4': 0.131, '_XTR_45_': -9.869, 'GATA3_to_GATA3': -6.4246, '_XTR_13_': 0.0, 'STAT3': 0.0357, '_XTR_68_': 0.131, '_XTR_58_': 0.0357, 'IL2R_to_STAT5': -3.8333, '_XTR_38_': 0.0, '_XTR_90_': 0.0, '_XTR_27_': 0.0, 'IFNg_to_Tbet': -0.0357, '_XTR_82_': 0.131, '_XTR_94_': 0.131, 'STAT6': -0.631, '_XTR_54_': 0.131, 'Foxp3_to_NFAT': 0.131, '_XTR_87_': -0.2976, '_XTR_19_': -0.869, '_XTR_24_': 0.0, 'IFNgR': 0.0357, 'IL21': 0.0357, 'NFAT': -0.2976, '_XTR_11_': 0.0, '_XTR_43_': -9.869, 'Tbet_to_Tbet': 0.131, 'IFNg': 0.131, '_XTR_66_': 0.131, '_XTR_29_': 0.0, '_XTR_36_': 0.0, '_XTR_70_': 0.131, 'IL2': -0.4048, '_XTR_100_': 0.0, 'IFNg_to_STAT6': 0.131, '_XTR_37_': -9.869, '_XTR_98_': 0.0357, 'IL17_to_IL17': 0.0, '_XTR_55_': 0.131, '_XTR_84_': 0.131, 'IL4R': -0.3333, '_XTR_62_': 0.0, '_XTR_61_': 0.131, '_XTR_60_': 0.0357, '_XTR_76_': 0.131, 'IL23R': 0.0357, '_XTR_12_': 0.0, '_XTR_51_': 0.131, '_XTR_102_': -0.2976, '_XTR_34_': -0.127, '_XTR_33_': -4.869, 'IL4': -0.2976, 'IL6': 0.0357, 'STAT5': -3.9841, '_XTR_26_': 0.0, '_XTR_3_': 0.0198, 'RORgt': 0.131, '_XTR_73_': 0.0, '_XTR_97_': 0.0357, '_XTR_25_': 0.0, 'IL6R': 0.0357, '_XTR_14_': 0.0, 'IL18R': -0.4405, '_XTR_80_': 0.131, '_XTR_59_': 0.0, '_XTR_78_': 0.131}}
+
+
+=======PROPAGATE FOR OUTPUT GATA3=======
+----Master diamonds-----
+{'_XTR_38_': 'GATA3', '_XTR_36_': 'GATA3', '_XTR_34_': 'GATA3', '_XTR_19_': 'GATA3', 'TGFb': 'GATA3', 'Tbet': 'GATA3', '_XTR_64_': 'GATA3', '_XTR_62_': 'GATA3', 'NFAT': 'GATA3', 'STAT1': 'GATA3', 'TCR': 'GATA3', 'IL12': 'GATA3'}
+
+
+--------PROPAGATION--------
+Extranodes RORgt_to_GATA3, add RORgt_to_GATA3 to nextlayer
+Extranodes RORgt_to_GATA3, add RORgt_to_GATA3 to nextlayer
+Extranodes Foxp3_to_GATA3, add Foxp3_to_GATA3 to nextlayer
+
+Current node RORgt_to_GATA3 is an extra node, wire back to root node RORgt
+Extranodes Foxp3_to_GATA3, add Foxp3_to_GATA3 to nextlayer
+
+Current node RORgt_to_GATA3 is an extra node, wire back to root node RORgt
+
+Current node Foxp3_to_GATA3 is an extra node, wire back to root node Foxp3
+
+Current node Foxp3_to_GATA3 is an extra node, wire back to root node Foxp3
+Extranodes IL2R_to_STAT5, add IL2R_to_STAT5 to nextlayer
+Extranodes STAT6_to_GATA3, add STAT6_to_GATA3 to nextlayer
+
+Current node IL2R_to_STAT5 is an extra node, wire back to root node IL2R
+
+Current node STAT6_to_GATA3 is an extra node, wire back to root node STAT6
+Extranodes STAT4_to_Tbet, add STAT4_to_Tbet to nextlayer
+Extranodes Jak1_to_STAT1, add Jak1_to_STAT1 to nextlayer
+Extranodes IFNg_to_STAT6, add IFNg_to_STAT6 to nextlayer
+
+Current node STAT4_to_Tbet is an extra node, wire back to root node STAT4
+
+Current node Jak1_to_STAT1 is an extra node, wire back to root node Jak1
+
+Current node IFNg_to_STAT6 is an extra node, wire back to root node IFNg
+Extranodes IL6_to_IL6R, add  IL6_e to nextlayer
+Extranodes IL23R_to_STAT3, add  _XTR_106_ to nextlayer
+Extranodes IL6_to_IL6R, add  IL6_e to nextlayer
+Extranodes IL23R_to_STAT3, add  _XTR_106_ to nextlayer
+
+Current node IL6_to_IL6R is an extra node, wire back to root node IL6
+
+Current node IL23R_to_STAT3 is an extra node, wire back to root node IL23R
+
+Current node IL6_to_IL6R is an extra node, wire back to root node IL6
+
+Current node IL23R_to_STAT3 is an extra node, wire back to root node IL23R
+GATA3                			 KO:     0.1307 | KI:    -9.8607
+_XTR_41_             			 KO:     0.1307 | KI:    -9.8607
+_XTR_45_             			 KO:        0.0 | KI:    -9.8607
+_XTR_39_             			 KO:        0.0 | KI:    -9.8607
+_XTR_40_             			 KO:        0.0 | KI:    -9.8607
+_XTR_44_             			 KO:        0.0 | KI:    -9.6944
+_XTR_38_             			 KO:        0.0 | KI:        0.0
+_XTR_37_             			 KO:        0.0 | KI:    -9.6944
+GATA3_to_GATA3       			 KO:        0.0 | KI:    -8.6248
+_XTR_19_             			 KO:     0.1307 | KI:        0.0
+_XTR_43_             			 KO:        0.0 | KI:    -9.6944
+_XTR_36_             			 KO:        0.0 | KI:        0.0
+RORgt_to_GATA3       			 KO:        0.0 | KI:        0.0
+_XTR_35_             			 KO:        0.0 | KI:    -9.6944
+Tbet                 			 KO:        0.0 | KI:     0.0951
+_XTR_42_             			 KO:        0.0 | KI:     -4.865
+_XTR_34_             			 KO:        0.0 | KI:    -0.1902
+Foxp3_to_GATA3       			 KO:        0.0 | KI:        0.0
+RORgt                			 KO:        0.0 | KI:        0.0
+_XTR_94_             			 KO:        0.0 | KI:        0.0
+_XTR_47_             			 KO:        0.0 | KI:        0.0
+_XTR_33_             			 KO:        0.0 | KI:     -4.865
+_XTR_68_             			 KO:        0.0 | KI:     0.0951
+_XTR_70_             			 KO:        0.0 | KI:     0.0951
+STAT5                			 KO:        0.0 | KI:    -3.6291
+Foxp3                			 KO:        0.0 | KI:        0.0
+_XTR_77_             			 KO:        0.0 | KI:        0.0
+_XTR_80_             			 KO:        0.0 | KI:        0.0
+_XTR_93_             			 KO:        0.0 | KI:        0.0
+_XTR_11_             			 KO:        0.0 | KI:        0.0
+_XTR_32_             			 KO:        0.0 | KI:    -3.6291
+_XTR_65_             			 KO:        0.0 | KI:     0.0951
+_XTR_67_             			 KO:        0.0 | KI:     0.0951
+_XTR_69_             			 KO:        0.0 | KI:     0.0951
+_XTR_64_             			 KO:        0.0 | KI:        0.0
+IL2R_to_STAT5        			 KO:        0.0 | KI:    -3.6291
+TGFb                 			 KO:    -0.1068 | KI:     0.1307
+_XTR_76_             			 KO:        0.0 | KI:        0.0
+_XTR_79_             			 KO:        0.0 | KI:        0.0
+_XTR_92_             			 KO:        0.0 | KI:        0.0
+STAT6_to_GATA3       			 KO:        0.0 | KI:    -0.2976
+NFAT                 			 KO:     0.0356 | KI:    -0.4995
+_XTR_63_             			 KO:        0.0 | KI:     0.0951
+_XTR_66_             			 KO:        0.0 | KI:     0.0951
+STAT1                			 KO:     0.0356 | KI:     0.0951
+_XTR_62_             			 KO:        0.0 | KI:        0.0
+Foxp3_to_Tbet        			 KO:        0.0 | KI:        0.0
+IL2R                 			 KO:        0.0 | KI:    -3.6291
+IL2                  			 KO:        0.0 | KI:    -0.2976
+_XTR_74_             			 KO:        0.0 | KI:        0.0
+_XTR_75_             			 KO:        0.0 | KI:        0.0
+_XTR_78_             			 KO:        0.0 | KI:        0.0
+TGFbR                			 KO:        0.0 | KI:        0.0
+_XTR_91_             			 KO:        0.0 | KI:        0.0
+_XTR_100_            			 KO:     0.0356 | KI:        0.0
+STAT6                			 KO:        0.0 | KI:    -0.2976
+_XTR_4_              			 KO:        0.0 | KI:    -0.2976
+_XTR_5_              			 KO:        0.0 | KI:        0.0
+_XTR_61_             			 KO:        0.0 | KI:     0.0951
+STAT4_to_Tbet        			 KO:        0.0 | KI:     0.0951
+Jak1_to_STAT1        			 KO:     0.0356 | KI:     0.0951
+_XTR_84_             			 KO:        0.0 | KI:     0.0951
+RORgt_to_Tbet        			 KO:        0.0 | KI:        0.0
+_XTR_18_             			 KO:        0.0 | KI:    -0.2976
+_XTR_73_             			 KO:        0.0 | KI:        0.0
+IL21R                			 KO:        0.0 | KI:        0.0
+_XTR_72_             			 KO:        0.0 | KI:        0.0
+_XTR_90_             			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:     0.1307 | KI:    -0.2976
+Foxp3_to_NFAT        			 KO:        0.0 | KI:     0.0356
+IL4R                 			 KO:        0.0 | KI:    -0.2976
+_XTR_3_              			 KO:     0.0356 | KI:        0.0
+IFNg_to_STAT6        			 KO:        0.0 | KI:     0.0951
+Tbet_to_Tbet         			 KO:        0.0 | KI:     0.0951
+_XTR_60_             			 KO:        0.0 | KI:        0.0
+STAT4                			 KO:        0.0 | KI:     0.0951
+_XTR_82_             			 KO:        0.0 | KI:        0.0
+Jak1                 			 KO:     0.0356 | KI:     0.0951
+IFNgR                			 KO:     0.0356 | KI:     0.0951
+NFkB                 			 KO:        0.0 | KI:    -0.2025
+IL21                 			 KO:        0.0 | KI:        0.0
+IL6R                 			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+_XTR_87_             			 KO:        0.0 | KI:    -0.2976
+SOCS1                			 KO:     0.0356 | KI:        0.0
+IFNg                 			 KO:        0.0 | KI:     0.0951
+_XTR_55_             			 KO:        0.0 | KI:     0.0951
+_XTR_58_             			 KO:        0.0 | KI:        0.0
+_XTR_59_             			 KO:        0.0 | KI:        0.0
+IL12R                			 KO:        0.0 | KI:        0.0
+IL27                 			 KO:    -0.1068 | KI:     0.1307
+_XTR_8_              			 KO:        0.0 | KI:     0.0951
+_XTR_9_              			 KO:        0.0 | KI:     0.0951
+IRAK                 			 KO:        0.0 | KI:    -0.2025
+IL6_to_IL6R          			 KO:        0.0 | KI:        0.0
+_XTR_106_            			 KO:        0.0 | KI:        0.0
+IL23R_to_STAT3       			 KO:        0.0 | KI:        0.0
+IL4_e                			 KO:     0.1307 | KI:    -0.2976
+IL4                  			 KO:        0.0 | KI:    -0.2976
+_XTR_53_             			 KO:        0.0 | KI:     0.0951
+_XTR_54_             			 KO:        0.0 | KI:     0.0951
+IFNg_to_Tbet         			 KO:        0.0 | KI:        0.0
+_XTR_15_             			 KO:        0.0 | KI:        0.0
+_XTR_16_             			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:    -0.1068 | KI:     0.1307
+IL18R                			 KO:        0.0 | KI:    -0.2025
+IL6_e                			 KO:    -0.0356 | KI:     0.0356
+IL6                  			 KO:        0.0 | KI:        0.0
+IL21R_to_STAT3       			 KO:        0.0 | KI:        0.0
+IL6R_to_STAT3        			 KO:        0.0 | KI:        0.0
+IL23R                			 KO:        0.0 | KI:        0.0
+_XTR_98_             			 KO:        0.0 | KI:        0.0
+_XTR_102_            			 KO:        0.0 | KI:    -0.2976
+_XTR_25_             			 KO:        0.0 | KI:        0.0
+_XTR_51_             			 KO:        0.0 | KI:     0.0595
+_XTR_52_             			 KO:        0.0 | KI:        0.0
+_XTR_14_             			 KO:        0.0 | KI:        0.0
+IFNg_e               			 KO:    -0.0356 | KI:     0.0356
+_XTR_104_            			 KO:        0.0 | KI:    -0.2976
+_XTR_50_             			 KO:        0.0 | KI:        0.0
+_XTR_97_             			 KO:        0.0 | KI:        0.0
+_XTR_49_             			 KO:        0.0 | KI:        0.0
+_XTR_12_             			 KO:        0.0 | KI:        0.0
+_XTR_13_             			 KO:        0.0 | KI:        0.0
+STAT4_to_IL12R       			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+IL23                 			 KO:        0.0 | KI:        0.0
+There are 8 unreachable nodes, they are:
+{'_XTR_28_', '_XTR_24_', '_XTR_29_', 'IL17', '_XTR_23_', '_XTR_27_', 'IL17_to_IL17', '_XTR_26_'}
+binary.html
+_XTR_35_             - Correct: KO:      0.131 | KI :     -9.869 - Incorrect KO:        0.0 | KI:    -9.6944
+Tbet                 - Correct: KO:     -0.869 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+Jak1                 - Correct: KO:    -0.0357 | KI :      0.131 - Incorrect KO:     0.0356 | KI:     0.0951
+TGFbR                - Correct: KO:        0.0 | KI :     0.0952 - Incorrect KO:        0.0 | KI:        0.0
+Jak1_to_STAT1        - Correct: KO:    -0.0357 | KI :      0.131 - Incorrect KO:     0.0356 | KI:     0.0951
+_XTR_67_             - Correct: KO:    -0.2381 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_64_             - Correct: KO:     -0.869 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+STAT1                - Correct: KO:    -0.2024 | KI :      0.131 - Incorrect KO:     0.0356 | KI:     0.0951
+RORgt_to_Tbet        - Correct: KO:        0.0 | KI :     -0.869 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_92_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_77_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+SOCS1                - Correct: KO:     0.0198 | KI :      0.131 - Incorrect KO:     0.0356 | KI:        0.0
+IL2R                 - Correct: KO:        0.0 | KI :    -3.8333 - Incorrect KO:        0.0 | KI:    -3.6291
+Foxp3                - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+IRAK                 - Correct: KO:        0.0 | KI :    -0.4762 - Incorrect KO:        0.0 | KI:    -0.2025
+_XTR_49_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_69_             - Correct: KO:    -0.2024 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+Foxp3_to_Tbet        - Correct: KO:        0.0 | KI :     -0.869 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_106_            - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_52_             - Correct: KO:     0.0357 | KI :    -0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_8_              - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_18_             - Correct: KO:        0.0 | KI :    -0.3452 - Incorrect KO:        0.0 | KI:    -0.2976
+_XTR_93_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_53_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_39_             - Correct: KO:      0.131 | KI :     -9.869 - Incorrect KO:        0.0 | KI:    -9.8607
+STAT6_to_GATA3       - Correct: KO:      0.131 | KI :     -0.631 - Incorrect KO:        0.0 | KI:    -0.2976
+_XTR_41_             - Correct: KO:      0.131 | KI :     -9.869 - Incorrect KO:     0.1307 | KI:    -9.8607
+IL6_to_IL6R          - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_32_             - Correct: KO:      0.131 | KI :    -3.8175 - Incorrect KO:        0.0 | KI:    -3.6291
+RORgt_to_GATA3       - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+IL6R_to_STAT3        - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_104_            - Correct: KO:        0.0 | KI :     -0.369 - Incorrect KO:        0.0 | KI:    -0.2976
+_XTR_16_             - Correct: KO:    -0.0159 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+STAT4_to_Tbet        - Correct: KO:    -0.2381 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_44_             - Correct: KO:        0.0 | KI :     -9.869 - Incorrect KO:        0.0 | KI:    -9.6944
+NFkB                 - Correct: KO:        0.0 | KI :     -0.369 - Incorrect KO:        0.0 | KI:    -0.2025
+_XTR_74_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_9_              - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:     0.0951
+IL23R_to_STAT3       - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_79_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+Foxp3_to_GATA3       - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_40_             - Correct: KO:        0.0 | KI :     -9.869 - Incorrect KO:        0.0 | KI:    -9.8607
+_XTR_63_             - Correct: KO:    -0.0357 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_65_             - Correct: KO:    -0.0357 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+IL21R                - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+IL21R_to_STAT3       - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_5_              - Correct: KO:      0.131 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_4_              - Correct: KO:      0.131 | KI :     -0.369 - Incorrect KO:        0.0 | KI:    -0.2976
+IL12R                - Correct: KO:    -0.2381 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+STAT4                - Correct: KO:    -0.2381 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_45_             - Correct: KO:        0.0 | KI :     -9.869 - Incorrect KO:        0.0 | KI:    -9.8607
+GATA3_to_GATA3       - Correct: KO:        0.0 | KI :    -6.4246 - Incorrect KO:        0.0 | KI:    -8.6248
+STAT3                - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_68_             - Correct: KO:    -0.2738 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_58_             - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+IL2R_to_STAT5        - Correct: KO:        0.0 | KI :    -3.8333 - Incorrect KO:        0.0 | KI:    -3.6291
+_XTR_38_             - Correct: KO:      0.131 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+IFNg_to_Tbet         - Correct: KO:     0.0357 | KI :    -0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_82_             - Correct: KO:    -0.2381 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_94_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+STAT6                - Correct: KO:      0.131 | KI :     -0.631 - Incorrect KO:        0.0 | KI:    -0.2976
+_XTR_54_             - Correct: KO:     0.0357 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+Foxp3_to_NFAT        - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0356
+_XTR_19_             - Correct: KO:      0.131 | KI :     -0.869 - Incorrect KO:     0.1307 | KI:        0.0
+IFNgR                - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:     0.0356 | KI:     0.0951
+IL21                 - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+NFAT                 - Correct: KO:      0.131 | KI :    -0.2976 - Incorrect KO:     0.0356 | KI:    -0.4995
+_XTR_11_             - Correct: KO:    -0.2381 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_43_             - Correct: KO:        0.0 | KI :     -9.869 - Incorrect KO:        0.0 | KI:    -9.6944
+Tbet_to_Tbet         - Correct: KO:    -0.0357 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+IFNg                 - Correct: KO:     0.0357 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_66_             - Correct: KO:    -0.2381 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_36_             - Correct: KO:      0.131 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_70_             - Correct: KO:    -0.2024 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+IL2                  - Correct: KO:        0.0 | KI :    -0.4048 - Incorrect KO:        0.0 | KI:    -0.2976
+_XTR_100_            - Correct: KO:      0.131 | KI :        0.0 - Incorrect KO:     0.0356 | KI:        0.0
+IFNg_to_STAT6        - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_37_             - Correct: KO:      0.131 | KI :     -9.869 - Incorrect KO:        0.0 | KI:    -9.6944
+_XTR_98_             - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_55_             - Correct: KO:     0.0357 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_84_             - Correct: KO:    -0.1071 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+IL4R                 - Correct: KO:      0.131 | KI :    -0.3333 - Incorrect KO:        0.0 | KI:    -0.2976
+_XTR_62_             - Correct: KO:     -0.869 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_61_             - Correct: KO:    -0.0357 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0951
+_XTR_60_             - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_76_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+IL23R                - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_51_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:     0.0595
+_XTR_34_             - Correct: KO:      0.131 | KI :     -0.127 - Incorrect KO:        0.0 | KI:    -0.1902
+_XTR_33_             - Correct: KO:      0.131 | KI :     -4.869 - Incorrect KO:        0.0 | KI:     -4.865
+IL6                  - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+STAT5                - Correct: KO:        0.0 | KI :    -3.9841 - Incorrect KO:        0.0 | KI:    -3.6291
+_XTR_3_              - Correct: KO:      0.131 | KI :     0.0198 - Incorrect KO:     0.0356 | KI:        0.0
+RORgt                - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_97_             - Correct: KO:        0.0 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+IL6R                 - Correct: KO:    -0.0357 | KI :     0.0357 - Incorrect KO:        0.0 | KI:        0.0
+IL18R                - Correct: KO:        0.0 | KI :    -0.4405 - Incorrect KO:        0.0 | KI:    -0.2025
+_XTR_80_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_59_             - Correct: KO:    -0.0357 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_78_             - Correct: KO:        0.0 | KI :      0.131 - Incorrect KO:        0.0 | KI:        0.0
+IFNg_e
+Lack      0: []
+Extra     0: []
+Real      8: [14, 46, 78, 110, 270, 302, 334, 366]
+Prop      8: [14, 46, 78, 110, 270, 302, 334, 366]
+
+IL12
+Lack      0: []
+Extra     0: []
+Real     24: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 202, 206, 234, 238, 266, 298, 330, 362, 394, 426, 458, 490]
+Prop     24: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 202, 206, 234, 238, 266, 298, 330, 362, 394, 426, 458, 490]
+
+IL18
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL23
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL27
+Lack      0: []
+Extra     0: []
+Real     24: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 282, 298, 314, 330, 346, 362, 378]
+Prop     24: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 282, 298, 314, 330, 346, 362, 378]
+
+IL4_e
+Lack      0: []
+Extra     0: []
+Real     24: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 258, 266, 290, 298, 322, 330, 354, 362]
+Prop     24: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 258, 266, 290, 298, 322, 330, 354, 362]
+
+IL6_e
+Lack      0: []
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      8: [266, 270, 298, 302, 330, 334, 362, 366]
+
+TCR
+Lack      0: []
+Extra     0: []
+Real     24: [8, 10, 12, 14, 40, 42, 44, 46, 72, 74, 76, 78, 104, 106, 108, 110, 264, 266, 296, 298, 328, 330, 360, 362]
+Prop     24: [8, 10, 12, 14, 40, 42, 44, 46, 72, 74, 76, 78, 104, 106, 108, 110, 264, 266, 296, 298, 328, 330, 360, 362]
+
+TGFb
+Lack      0: []
+Extra     0: []
+Real     24: [10, 11, 14, 15, 42, 43, 46, 47, 74, 75, 78, 79, 106, 107, 110, 111, 266, 267, 298, 299, 330, 331, 362, 363]
+Prop     24: [10, 11, 14, 15, 42, 43, 46, 47, 74, 75, 78, 79, 106, 107, 110, 111, 266, 267, 298, 299, 330, 331, 362, 363]
+
+Foxp3
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+Foxp3_to_GATA3
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+Foxp3_to_NFAT
+Lack      8: [10, 14, 42, 46, 74, 78, 106, 110]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      4: [266, 298, 330, 362]
+
+Foxp3_to_Tbet
+Lack     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Extra     0: []
+Real     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Prop      0: []
+
+GATA3_to_GATA3
+Lack     18: [130, 134, 138, 142, 162, 166, 170, 174, 194, 202, 206, 226, 234, 238, 450, 458, 482, 490]
+Extra    52: [23, 31, 55, 63, 87, 95, 119, 127, 151, 159, 183, 191, 199, 207, 215, 223, 231, 239, 247, 255, 263, 271, 279, 287, 295, 303, 311, 319, 327, 335, 343, 351, 359, 367, 375, 383, 391, 399, 407, 415, 423, 431, 439, 447, 455, 463, 471, 479, 487, 495, 503, 511]
+Real    362: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 19, 20, 21, 24, 25, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 51, 52, 53, 56, 57, 59, 60, 61, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 83, 84, 85, 88, 89, 91, 92, 93, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 115, 116, 117, 120, 121, 123, 124, 125, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 147, 148, 149, 152, 153, 155, 156, 157, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 179, 180, 181, 184, 185, 187, 188, 189, 192, 193, 194, 195, 196, 197, 200, 201, 202, 203, 204, 205, 206, 208, 209, 211, 212, 213, 216, 217, 219, 220, 221, 224, 225, 226, 227, 228, 229, 232, 233, 234, 235, 236, 237, 238, 240, 241, 243, 244, 245, 248, 249, 251, 252, 253, 256, 257, 258, 259, 260, 261, 264, 265, 267, 268, 269, 272, 273, 275, 276, 277, 280, 281, 283, 284, 285, 288, 289, 290, 291, 292, 293, 296, 297, 299, 300, 301, 304, 305, 307, 308, 309, 312, 313, 315, 316, 317, 320, 321, 322, 323, 324, 325, 328, 329, 331, 332, 333, 336, 337, 339, 340, 341, 344, 345, 347, 348, 349, 352, 353, 354, 355, 356, 357, 360, 361, 363, 364, 365, 368, 369, 371, 372, 373, 376, 377, 379, 380, 381, 384, 385, 387, 388, 389, 392, 393, 395, 396, 397, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 416, 417, 419, 420, 421, 424, 425, 427, 428, 429, 432, 433, 435, 436, 437, 440, 441, 443, 444, 445, 448, 449, 450, 451, 452, 453, 456, 457, 458, 459, 460, 461, 464, 465, 467, 468, 469, 472, 473, 475, 476, 477, 480, 481, 482, 483, 484, 485, 488, 489, 490, 491, 492, 493, 496, 497, 499, 500, 501, 504, 505, 507, 508, 509]
+Prop    396: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 19, 20, 21, 23, 24, 25, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 51, 52, 53, 55, 56, 57, 59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 83, 84, 85, 87, 88, 89, 91, 92, 93, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 115, 116, 117, 119, 120, 121, 123, 124, 125, 127, 128, 129, 131, 132, 133, 135, 136, 137, 139, 140, 141, 143, 144, 145, 147, 148, 149, 151, 152, 153, 155, 156, 157, 159, 160, 161, 163, 164, 165, 167, 168, 169, 171, 172, 173, 175, 176, 177, 179, 180, 181, 183, 184, 185, 187, 188, 189, 191, 192, 193, 195, 196, 197, 199, 200, 201, 203, 204, 205, 207, 208, 209, 211, 212, 213, 215, 216, 217, 219, 220, 221, 223, 224, 225, 227, 228, 229, 231, 232, 233, 235, 236, 237, 239, 240, 241, 243, 244, 245, 247, 248, 249, 251, 252, 253, 255, 256, 257, 258, 259, 260, 261, 263, 264, 265, 267, 268, 269, 271, 272, 273, 275, 276, 277, 279, 280, 281, 283, 284, 285, 287, 288, 289, 290, 291, 292, 293, 295, 296, 297, 299, 300, 301, 303, 304, 305, 307, 308, 309, 311, 312, 313, 315, 316, 317, 319, 320, 321, 322, 323, 324, 325, 327, 328, 329, 331, 332, 333, 335, 336, 337, 339, 340, 341, 343, 344, 345, 347, 348, 349, 351, 352, 353, 354, 355, 356, 357, 359, 360, 361, 363, 364, 365, 367, 368, 369, 371, 372, 373, 375, 376, 377, 379, 380, 381, 383, 384, 385, 387, 388, 389, 391, 392, 393, 395, 396, 397, 399, 400, 401, 403, 404, 405, 407, 408, 409, 411, 412, 413, 415, 416, 417, 419, 420, 421, 423, 424, 425, 427, 428, 429, 431, 432, 433, 435, 436, 437, 439, 440, 441, 443, 444, 445, 447, 448, 449, 451, 452, 453, 455, 456, 457, 459, 460, 461, 463, 464, 465, 467, 468, 469, 471, 472, 473, 475, 476, 477, 479, 480, 481, 483, 484, 485, 487, 488, 489, 491, 492, 493, 495, 496, 497, 499, 500, 501, 503, 504, 505, 507, 508, 509, 511]
+
+IFNg
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+IFNgR
+Lack      4: [270, 302, 334, 366]
+Extra     8: [10, 42, 74, 106, 266, 298, 330, 362]
+Real      8: [14, 46, 78, 110, 270, 302, 334, 366]
+Prop     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+
+IFNg_to_STAT6
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+IFNg_to_Tbet
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+IL12R
+Lack     24: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     24: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      0: []
+
+IL17
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL17_to_IL17
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18R
+Lack     16: [138, 142, 170, 174, 202, 206, 234, 238, 262, 270, 294, 302, 326, 334, 358, 366]
+Extra     8: [10, 14, 42, 46, 74, 78, 106, 110]
+Real     28: [2, 6, 34, 38, 66, 70, 98, 102, 138, 142, 170, 174, 202, 206, 234, 238, 258, 262, 270, 290, 294, 302, 322, 326, 334, 354, 358, 366]
+Prop     20: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 258, 290, 322, 354]
+
+IL2
+Lack     12: [26, 58, 90, 122, 142, 174, 206, 238, 282, 314, 346, 378]
+Extra     0: []
+Real     24: [2, 6, 26, 34, 38, 58, 66, 70, 90, 98, 102, 122, 142, 174, 206, 238, 258, 282, 290, 314, 322, 346, 354, 378]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+IL21
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL21R
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL21R_to_STAT3
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL23R
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL23R_to_STAT3
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL2R
+Lack     32: [130, 134, 138, 142, 146, 154, 162, 166, 170, 174, 178, 186, 202, 206, 210, 218, 234, 238, 242, 250, 266, 298, 330, 362, 390, 398, 422, 430, 454, 462, 486, 494]
+Extra     4: [258, 290, 322, 354]
+Real    168: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 152, 154, 156, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 184, 186, 188, 192, 196, 200, 202, 204, 206, 208, 210, 212, 216, 218, 220, 224, 228, 232, 234, 236, 238, 240, 242, 244, 248, 250, 252, 256, 260, 264, 266, 268, 272, 276, 280, 284, 288, 292, 296, 298, 300, 304, 308, 312, 316, 320, 324, 328, 330, 332, 336, 340, 344, 348, 352, 356, 360, 362, 364, 368, 372, 376, 380, 384, 388, 390, 392, 396, 398, 400, 404, 408, 412, 416, 420, 422, 424, 428, 430, 432, 436, 440, 444, 448, 452, 454, 456, 460, 462, 464, 468, 472, 476, 480, 484, 486, 488, 492, 494, 496, 500, 504, 508]
+Prop    140: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 184, 188, 192, 196, 200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248, 252, 256, 258, 260, 264, 268, 272, 276, 280, 284, 288, 290, 292, 296, 300, 304, 308, 312, 316, 320, 322, 324, 328, 332, 336, 340, 344, 348, 352, 354, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400, 404, 408, 412, 416, 420, 424, 428, 432, 436, 440, 444, 448, 452, 456, 460, 464, 468, 472, 476, 480, 484, 488, 492, 496, 500, 504, 508]
+
+IL2R_to_STAT5
+Lack     32: [130, 134, 138, 142, 146, 154, 162, 166, 170, 174, 178, 186, 202, 206, 210, 218, 234, 238, 242, 250, 266, 298, 330, 362, 390, 398, 422, 430, 454, 462, 486, 494]
+Extra     4: [258, 290, 322, 354]
+Real    168: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 152, 154, 156, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 184, 186, 188, 192, 196, 200, 202, 204, 206, 208, 210, 212, 216, 218, 220, 224, 228, 232, 234, 236, 238, 240, 242, 244, 248, 250, 252, 256, 260, 264, 266, 268, 272, 276, 280, 284, 288, 292, 296, 298, 300, 304, 308, 312, 316, 320, 324, 328, 330, 332, 336, 340, 344, 348, 352, 356, 360, 362, 364, 368, 372, 376, 380, 384, 388, 390, 392, 396, 398, 400, 404, 408, 412, 416, 420, 422, 424, 428, 430, 432, 436, 440, 444, 448, 452, 454, 456, 460, 462, 464, 468, 472, 476, 480, 484, 486, 488, 492, 494, 496, 500, 504, 508]
+Prop    140: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 184, 188, 192, 196, 200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248, 252, 256, 258, 260, 264, 268, 272, 276, 280, 284, 288, 290, 292, 296, 300, 304, 308, 312, 316, 320, 322, 324, 328, 332, 336, 340, 344, 348, 352, 354, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400, 404, 408, 412, 416, 420, 424, 428, 432, 436, 440, 444, 448, 452, 456, 460, 464, 468, 472, 476, 480, 484, 488, 492, 496, 500, 504, 508]
+
+IL4
+Lack      0: []
+Extra     0: []
+Real     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+IL4R
+Lack     16: [10, 14, 42, 46, 74, 78, 106, 110, 134, 142, 166, 174, 266, 298, 330, 362]
+Extra     0: []
+Real     28: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 134, 142, 166, 174, 258, 266, 290, 298, 322, 330, 354, 362]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+IL6
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL6R
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+IL6R_to_STAT3
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+IL6_to_IL6R
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IRAK
+Lack     20: [26, 58, 90, 122, 142, 174, 206, 238, 262, 270, 282, 294, 302, 314, 326, 334, 346, 358, 366, 378]
+Extra     8: [10, 14, 42, 46, 74, 78, 106, 110]
+Real     32: [2, 6, 26, 34, 38, 58, 66, 70, 90, 98, 102, 122, 142, 174, 206, 238, 258, 262, 270, 282, 290, 294, 302, 314, 322, 326, 334, 346, 354, 358, 366, 378]
+Prop     20: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 258, 290, 322, 354]
+
+Jak1
+Lack      4: [270, 302, 334, 366]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Prop     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+
+Jak1_to_STAT1
+Lack      4: [270, 302, 334, 366]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Prop     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+
+NFAT
+Lack      8: [10, 14, 42, 46, 74, 78, 106, 110]
+Extra    20: [136, 140, 168, 172, 200, 204, 232, 236, 268, 300, 332, 364, 392, 396, 424, 428, 456, 460, 488, 492]
+Real     24: [8, 10, 12, 14, 40, 42, 44, 46, 72, 74, 76, 78, 104, 106, 108, 110, 264, 266, 296, 298, 328, 330, 360, 362]
+Prop     36: [8, 12, 40, 44, 72, 76, 104, 108, 136, 140, 168, 172, 200, 204, 232, 236, 264, 266, 268, 296, 298, 300, 328, 330, 332, 360, 362, 364, 392, 396, 424, 428, 456, 460, 488, 492]
+
+NFkB
+Lack      8: [262, 270, 294, 302, 326, 334, 358, 366]
+Extra     8: [10, 14, 42, 46, 74, 78, 106, 110]
+Real     20: [2, 6, 34, 38, 66, 70, 98, 102, 258, 262, 270, 290, 294, 302, 322, 326, 334, 354, 358, 366]
+Prop     20: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 258, 290, 322, 354]
+
+RORgt
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+RORgt_to_GATA3
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+RORgt_to_Tbet
+Lack     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Extra     0: []
+Real     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Prop      0: []
+
+SOCS1
+Lack     10: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174]
+Extra     0: []
+Real     14: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362]
+Prop      4: [266, 298, 330, 362]
+
+STAT1
+Lack     20: [26, 30, 58, 62, 90, 94, 122, 126, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382]
+Extra     0: []
+Real     32: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382]
+Prop     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+
+STAT3
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+STAT4
+Lack     28: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     36: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+STAT4_to_IL12R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT4_to_Tbet
+Lack     28: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     36: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+STAT5
+Lack     46: [130, 134, 138, 142, 146, 154, 162, 166, 170, 174, 178, 186, 206, 210, 218, 238, 242, 250, 266, 298, 330, 362, 386, 390, 394, 398, 402, 410, 418, 422, 426, 430, 434, 442, 450, 454, 458, 462, 466, 474, 482, 486, 490, 494, 498, 506]
+Extra     4: [258, 290, 322, 354]
+Real    182: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 152, 154, 156, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 184, 186, 188, 192, 196, 200, 204, 206, 208, 210, 212, 216, 218, 220, 224, 228, 232, 236, 238, 240, 242, 244, 248, 250, 252, 256, 260, 264, 266, 268, 272, 276, 280, 284, 288, 292, 296, 298, 300, 304, 308, 312, 316, 320, 324, 328, 330, 332, 336, 340, 344, 348, 352, 356, 360, 362, 364, 368, 372, 376, 380, 384, 386, 388, 390, 392, 394, 396, 398, 400, 402, 404, 408, 410, 412, 416, 418, 420, 422, 424, 426, 428, 430, 432, 434, 436, 440, 442, 444, 448, 450, 452, 454, 456, 458, 460, 462, 464, 466, 468, 472, 474, 476, 480, 482, 484, 486, 488, 490, 492, 494, 496, 498, 500, 504, 506, 508]
+Prop    140: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 184, 188, 192, 196, 200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248, 252, 256, 258, 260, 264, 268, 272, 276, 280, 284, 288, 290, 292, 296, 300, 304, 308, 312, 316, 320, 322, 324, 328, 332, 336, 340, 344, 348, 352, 354, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400, 404, 408, 412, 416, 420, 424, 428, 432, 436, 440, 444, 448, 452, 456, 460, 464, 468, 472, 476, 480, 484, 488, 492, 496, 500, 504, 508]
+
+STAT6
+Lack     44: [10, 14, 42, 46, 74, 78, 106, 110, 130, 134, 138, 142, 162, 166, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 386, 390, 394, 398, 418, 422, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     56: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 130, 134, 138, 142, 162, 166, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 258, 266, 290, 298, 322, 330, 354, 362, 386, 390, 394, 398, 418, 422, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+STAT6_to_GATA3
+Lack     44: [10, 14, 42, 46, 74, 78, 106, 110, 130, 134, 138, 142, 162, 166, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 386, 390, 394, 398, 418, 422, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     56: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 130, 134, 138, 142, 162, 166, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 258, 266, 290, 298, 322, 330, 354, 362, 386, 390, 394, 398, 418, 422, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+TGFbR
+Lack     16: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362, 398, 430]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362, 398, 430]
+Prop      0: []
+
+Tbet
+Lack     72: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Extra     0: []
+Real     80: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+Tbet_to_Tbet
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_100_
+Lack      8: [10, 14, 42, 46, 74, 78, 106, 110]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      4: [266, 298, 330, 362]
+
+_XTR_102_
+Lack      0: []
+Extra     0: []
+Real     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+_XTR_104_
+Lack      8: [262, 270, 294, 302, 326, 334, 358, 366]
+Extra     0: []
+Real     20: [2, 6, 34, 38, 66, 70, 98, 102, 258, 262, 270, 290, 294, 302, 322, 326, 334, 354, 358, 366]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+_XTR_106_
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+_XTR_11_
+Lack     24: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     24: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      0: []
+
+_XTR_12_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_13_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_14_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_15_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_16_
+Lack      2: [142, 174]
+Extra     0: []
+Real      2: [142, 174]
+Prop      0: []
+
+_XTR_18_
+Lack     12: [26, 58, 90, 122, 142, 174, 206, 238, 282, 314, 346, 378]
+Extra     4: [258, 290, 322, 354]
+Real     20: [2, 6, 26, 34, 38, 58, 66, 70, 90, 98, 102, 122, 142, 174, 206, 238, 282, 314, 346, 378]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+_XTR_19_
+Lack     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Extra     0: []
+Real     80: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Prop     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+
+_XTR_23_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_24_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_25_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_26_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_27_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_28_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_29_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_32_
+Lack     30: [10, 14, 42, 46, 74, 78, 106, 110, 130, 134, 138, 142, 162, 166, 170, 174, 194, 202, 206, 226, 234, 238, 266, 298, 330, 362, 450, 458, 482, 490]
+Extra     0: []
+Real    170: [0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 28, 32, 34, 36, 38, 40, 42, 44, 46, 48, 52, 56, 60, 64, 66, 68, 70, 72, 74, 76, 78, 80, 84, 88, 92, 96, 98, 100, 102, 104, 106, 108, 110, 112, 116, 120, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 148, 152, 156, 160, 162, 164, 166, 168, 170, 172, 174, 176, 180, 184, 188, 192, 194, 196, 200, 202, 204, 206, 208, 212, 216, 220, 224, 226, 228, 232, 234, 236, 238, 240, 244, 248, 252, 256, 258, 260, 264, 266, 268, 272, 276, 280, 284, 288, 290, 292, 296, 298, 300, 304, 308, 312, 316, 320, 322, 324, 328, 330, 332, 336, 340, 344, 348, 352, 354, 356, 360, 362, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400, 404, 408, 412, 416, 420, 424, 428, 432, 436, 440, 444, 448, 450, 452, 456, 458, 460, 464, 468, 472, 476, 480, 482, 484, 488, 490, 492, 496, 500, 504, 508]
+Prop    140: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 184, 188, 192, 196, 200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248, 252, 256, 258, 260, 264, 268, 272, 276, 280, 284, 288, 290, 292, 296, 300, 304, 308, 312, 316, 320, 322, 324, 328, 332, 336, 340, 344, 348, 352, 354, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400, 404, 408, 412, 416, 420, 424, 428, 432, 436, 440, 444, 448, 452, 456, 460, 464, 468, 472, 476, 480, 484, 488, 492, 496, 500, 504, 508]
+
+_XTR_33_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real    256: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250, 252, 254, 256, 258, 260, 262, 264, 266, 268, 270, 272, 274, 276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 298, 300, 302, 304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 330, 332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358, 360, 362, 364, 366, 368, 370, 372, 374, 376, 378, 380, 382, 384, 386, 388, 390, 392, 394, 396, 398, 400, 402, 404, 406, 408, 410, 412, 414, 416, 418, 420, 422, 424, 426, 428, 430, 432, 434, 436, 438, 440, 442, 444, 446, 448, 450, 452, 454, 456, 458, 460, 462, 464, 466, 468, 470, 472, 474, 476, 478, 480, 482, 484, 486, 488, 490, 492, 494, 496, 498, 500, 502, 504, 506, 508, 510]
+Prop    244: [0, 2, 4, 6, 8, 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 76, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 108, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250, 252, 254, 256, 258, 260, 262, 264, 268, 270, 272, 274, 276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 300, 302, 304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358, 360, 364, 366, 368, 370, 372, 374, 376, 378, 380, 382, 384, 386, 388, 390, 392, 394, 396, 398, 400, 402, 404, 406, 408, 410, 412, 414, 416, 418, 420, 422, 424, 426, 428, 430, 432, 434, 436, 438, 440, 442, 444, 446, 448, 450, 452, 454, 456, 458, 460, 462, 464, 466, 468, 470, 472, 474, 476, 478, 480, 482, 484, 486, 488, 490, 492, 494, 496, 498, 500, 502, 504, 506, 508, 510]
+
+_XTR_34_
+Lack     20: [10, 14, 15, 42, 46, 47, 74, 78, 79, 106, 110, 111, 266, 267, 298, 299, 330, 331, 362, 363]
+Extra    10: [27, 59, 91, 123, 283, 315, 347, 379, 399, 431]
+Real     26: [10, 11, 14, 15, 42, 43, 46, 47, 74, 75, 78, 79, 106, 107, 110, 111, 143, 175, 266, 267, 298, 299, 330, 331, 362, 363]
+Prop     16: [11, 27, 43, 59, 75, 91, 107, 123, 143, 175, 283, 315, 347, 379, 399, 431]
+
+_XTR_35_
+Lack     28: [7, 10, 14, 15, 39, 42, 46, 47, 71, 74, 78, 79, 103, 106, 110, 111, 263, 266, 271, 295, 298, 303, 327, 330, 335, 359, 362, 367]
+Extra     0: []
+Real    512: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    484: [0, 1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 43, 44, 45, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 104, 105, 107, 108, 109, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 264, 265, 267, 268, 269, 270, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 296, 297, 299, 300, 301, 302, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 328, 329, 331, 332, 333, 334, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 360, 361, 363, 364, 365, 366, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_36_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_37_
+Lack     28: [7, 10, 14, 15, 39, 42, 46, 47, 71, 74, 78, 79, 103, 106, 110, 111, 263, 266, 271, 295, 298, 303, 327, 330, 335, 359, 362, 367]
+Extra     0: []
+Real    512: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    484: [0, 1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 43, 44, 45, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 104, 105, 107, 108, 109, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 264, 265, 267, 268, 269, 270, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 296, 297, 299, 300, 301, 302, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 328, 329, 331, 332, 333, 334, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 360, 361, 363, 364, 365, 366, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_38_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_39_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real    512: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    500: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_3_
+Lack     10: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174]
+Extra     0: []
+Real     14: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362]
+Prop      4: [266, 298, 330, 362]
+
+_XTR_40_
+Lack      0: []
+Extra     0: []
+Real    500: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    500: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_41_
+Lack      0: []
+Extra     0: []
+Real    512: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    512: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_42_
+Lack      0: []
+Extra     0: []
+Real    244: [0, 2, 4, 6, 8, 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 76, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 108, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250, 252, 254, 256, 258, 260, 262, 264, 268, 270, 272, 274, 276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 300, 302, 304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358, 360, 364, 366, 368, 370, 372, 374, 376, 378, 380, 382, 384, 386, 388, 390, 392, 394, 396, 398, 400, 402, 404, 406, 408, 410, 412, 414, 416, 418, 420, 422, 424, 426, 428, 430, 432, 434, 436, 438, 440, 442, 444, 446, 448, 450, 452, 454, 456, 458, 460, 462, 464, 466, 468, 470, 472, 474, 476, 478, 480, 482, 484, 486, 488, 490, 492, 494, 496, 498, 500, 502, 504, 506, 508, 510]
+Prop    244: [0, 2, 4, 6, 8, 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 76, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 108, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250, 252, 254, 256, 258, 260, 262, 264, 268, 270, 272, 274, 276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 300, 302, 304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358, 360, 364, 366, 368, 370, 372, 374, 376, 378, 380, 382, 384, 386, 388, 390, 392, 394, 396, 398, 400, 402, 404, 406, 408, 410, 412, 414, 416, 418, 420, 422, 424, 426, 428, 430, 432, 434, 436, 438, 440, 442, 444, 446, 448, 450, 452, 454, 456, 458, 460, 462, 464, 466, 468, 470, 472, 474, 476, 478, 480, 482, 484, 486, 488, 490, 492, 494, 496, 498, 500, 502, 504, 506, 508, 510]
+
+_XTR_43_
+Lack     16: [7, 15, 39, 47, 71, 79, 103, 111, 263, 271, 295, 303, 327, 335, 359, 367]
+Extra     0: []
+Real    500: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    484: [0, 1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 43, 44, 45, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 104, 105, 107, 108, 109, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 264, 265, 267, 268, 269, 270, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 296, 297, 299, 300, 301, 302, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 328, 329, 331, 332, 333, 334, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 360, 361, 363, 364, 365, 366, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_44_
+Lack     16: [7, 15, 39, 47, 71, 79, 103, 111, 263, 271, 295, 303, 327, 335, 359, 367]
+Extra     0: []
+Real    500: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    484: [0, 1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 43, 44, 45, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 75, 76, 77, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 104, 105, 107, 108, 109, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 264, 265, 267, 268, 269, 270, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 296, 297, 299, 300, 301, 302, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 328, 329, 331, 332, 333, 334, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 360, 361, 363, 364, 365, 366, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_45_
+Lack      0: []
+Extra     0: []
+Real    500: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+Prop    500: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 107, 108, 109, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511]
+
+_XTR_47_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_49_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_4_
+Lack     20: [10, 14, 42, 46, 74, 78, 106, 110, 134, 142, 166, 174, 266, 298, 330, 362, 390, 398, 422, 430]
+Extra     0: []
+Real     32: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 134, 142, 166, 174, 258, 266, 290, 298, 322, 330, 354, 362, 390, 398, 422, 430]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+_XTR_50_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_51_
+Lack      8: [14, 46, 78, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      4: [10, 42, 74, 106]
+
+_XTR_52_
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+_XTR_53_
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_54_
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_55_
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_58_
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+_XTR_59_
+Lack      4: [270, 302, 334, 366]
+Extra     0: []
+Real      4: [270, 302, 334, 366]
+Prop      0: []
+
+_XTR_5_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_60_
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+_XTR_61_
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_62_
+Lack     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Extra     0: []
+Real     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Prop      0: []
+
+_XTR_63_
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_64_
+Lack     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Extra     0: []
+Real     68: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 270, 282, 286, 302, 314, 318, 334, 346, 350, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Prop      0: []
+
+_XTR_65_
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_66_
+Lack     28: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     36: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_67_
+Lack     28: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     36: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_68_
+Lack     32: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 270, 298, 302, 330, 334, 362, 366, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     40: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 270, 298, 302, 330, 334, 362, 366, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_69_
+Lack     24: [26, 30, 58, 62, 90, 94, 122, 126, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382]
+Extra     0: []
+Real     32: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_70_
+Lack     24: [26, 30, 58, 62, 90, 94, 122, 126, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382]
+Extra     0: []
+Real     32: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_72_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_73_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_74_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_75_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_76_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_77_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_78_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_79_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_80_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_82_
+Lack     36: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     36: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      0: []
+
+_XTR_84_
+Lack     16: [26, 30, 58, 62, 90, 94, 122, 126, 266, 282, 298, 314, 330, 346, 362, 378]
+Extra     0: []
+Real     24: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 282, 298, 314, 330, 346, 362, 378]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_87_
+Lack      0: []
+Extra     0: []
+Real     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+_XTR_8_
+Lack      4: [270, 302, 334, 366]
+Extra     4: [10, 42, 74, 106]
+Real      8: [14, 46, 78, 110, 270, 302, 334, 366]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+_XTR_90_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_91_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_92_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_93_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_94_
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+_XTR_97_
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+_XTR_98_
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+_XTR_9_
+Lack      0: []
+Extra     4: [10, 42, 74, 106]
+Real      4: [14, 46, 78, 110]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+Number of nodes is 134
+Number of input nodes is 9
+Relative_RMSE_KO_is  0.007696618781753572
+Relative_RMSE_KI_is  0.012430900202750658
+NDCG_KO_is  0.5482358581970409
+NDCG_KI_is  0.9956668705715391
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                            134.000      134.000
+Kendall tau-b                         0.323        0.723
+Spearman rho                          0.285        0.865
+Mean abs rank diff                    4.336        4.828
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.000        1.000
+         Precision@10                0.000        1.000
+         Recall@10                   0.000        1.000
+  Top-20 Jaccard                   0.254        0.548
+         Precision@20                0.254        0.607
+         Recall@20                   1.000        0.850
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.000        0.500
+  Top-2  groups Jaccard            0.000        0.889
+  Top-3  groups Jaccard            0.000        0.818
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.0017211437225341797
+TIME simulate original network: 1.6159229278564453
+TIME perform original analysis process: 89.36623692512512
+TIME perform propagation: 18.87080717086792
+-----------TOTAL RUNNING TIME---------------
+1806.4081470407546

@@ -250,11 +250,14 @@ def merge2states(state1, state2, debug=False):
     Returns:
         dict: The merged state dictionary.
     """
+    blinking = set()
     for item in state1.keys():
         # print(state1[item], state2[item])
         state1[item] = state1[item] or state2[item] 
         # state1[item] = state1[item] and state2[item]
-    return state1
+        if state1[item] ^ state2[item]:
+            blinking.add(item)
+    return state1, blinking 
 
 
 def subsets(s):  
@@ -269,7 +272,7 @@ def subsets(s):
     x = subsets(s[:-1])  
     return x + [[s[-1]] + y for y in x] 
               
-def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputnames, debug=False):
+def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnames, debug=False):
     """
     Generate a table from simulation outputs, indexing rows by species states.
     Args:
@@ -285,18 +288,24 @@ def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputn
         dict: A dictionary mapping species names to sets of row IDs where they are False.
     """
     print("----Generate table from output----")
+    print("Blinkings:")
+    print(blinkings)
     index = dict() # for each node, save the IDs of row that the node is TRUE
     aindex = dict() # for each node, save the IDs of row that the node is TRUE
+    bindex = dict() # for each node, save the IDs of row that the node is BLINKING
     dictresult = dict()
     for inter in sortedinter:
         index[inter] = set()
         aindex[inter] = set()
+        bindex[inter] = set()
     for input in inputnames:
         index[input] = set()
         aindex[input] = set()
+        bindex[input] = set()
     for outputname in outputnames:
         index[outputname] = set() 
         aindex[outputname] = set() 
+        bindex[outputname] = set()
     
     # print("Integer verson of output:")
     for id, line in enumerate(simoutputs):
@@ -306,7 +315,7 @@ def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputn
         # each line is a dictionary with keys are name of species and value is true or false
         
         # for test 
-        if id in [0, 1]:
+        if id in [0, 1, 3, 4, 5, 6, 7]:
             print(f"-------TESTING LINE: {id}-------")
             print(line)
 
@@ -316,24 +325,31 @@ def genTableFromOutput(simoutputs, inputnames, sortedinput, sortedinter, outputn
                 size += 1
         line['SIZE'] = size
         line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
+        blinking = blinkings[id] # this is the set of nodes that blink in this row 
         for inter in sortedinter:
             if line[inter]:
+                if inter in blinking:
+                    bindex[inter].add(id)
                 index[inter].add(id)
             else:
                 aindex[inter].add(id)
         for input in inputnames:
             if line[input]:
+                if input in blinking:
+                    bindex[input].add(id)
                 index[input].add(id)
             else:
                 aindex[input].add(id)
         for outputname in outputnames: 
             if line[outputname]:
+                if outputname in blinking:
+                    bindex[outputname].add(id)
                 index[outputname].add(id)
             else:
                 aindex[outputname].add(id)
 
         dictresult[id] = line
-    return dictresult, index, aindex 
+    return dictresult, index, aindex, bindex
 
 # a wrapper for SHAP, taking a dataset of samples and computes the output of the model for those samples
 class BNmodel:

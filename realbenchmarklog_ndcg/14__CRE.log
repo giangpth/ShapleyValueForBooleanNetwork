@@ -1,0 +1,673 @@
+The expression file is data/realbenchmark/14.txt
+The interested output is: 
+{'CRE'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'ERK', 'Calcin', 'Ras', 'CREB', 'Lck', 'ZAP70', 'IP3', 'IkB', 'NFAT', 'Grb2Sos', 'Rsk', 'TCRphos', 'DAG', 'Raf', 'SLP76', 'IKKbeta', 'Jun', 'PLCg_act', 'PKCth', 'CRE', 'Itk', 'cCbl', 'MEK', 'TCRbind', 'Fos', 'LAT', 'CD8', 'RasGRP1', 'JNK', 'Rlk', 'Fyn', 'Gads', 'SEK', 'Nfkb', 'PAGCsk', 'CD45', 'TCRlig', 'PLCg_bind', 'AP1', 'Ca'}
+-----Input names-----
+{'CD45', 'CD8', 'TCRlig'}
+----Intermediate nodes-----
+{'ERK', 'Calcin', 'Ras', 'CREB', 'Lck', 'ZAP70', 'IP3', 'IkB', 'NFAT', 'Grb2Sos', 'Rsk', 'TCRphos', 'DAG', 'Raf', 'SLP76', 'IKKbeta', 'Jun', 'PLCg_act', 'PKCth', 'Itk', 'cCbl', 'MEK', 'TCRbind', 'Fos', 'LAT', 'RasGRP1', 'JNK', 'Rlk', 'Fyn', 'Gads', 'SEK', 'Nfkb', 'PAGCsk', 'PLCg_bind', 'AP1', 'Ca'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['CD45', 'CD8', 'TCRlig']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['AP1', 'CREB', 'Ca', 'Calcin', 'DAG', 'ERK', 'Fos', 'Fyn', 'Gads', 'Grb2Sos', 'IKKbeta', 'IP3', 'IkB', 'Itk', 'JNK', 'Jun', 'LAT', 'Lck', 'MEK', 'NFAT', 'Nfkb', 'PAGCsk', 'PKCth', 'PLCg_act', 'PLCg_bind', 'Raf', 'Ras', 'RasGRP1', 'Rlk', 'Rsk', 'SEK', 'SLP76', 'TCRbind', 'TCRphos', 'ZAP70', 'cCbl']
+There are 36 intermediate nodes with the range of inter: 0 68719476735
+----Input knockout shapley value-----
+('CRE', {'CD45': 1.3333, 'CD8': 1.3333, 'TCRlig': 0.0})
+
+
+----Input knockIN shapley value-----
+('CRE', {'CD45': -0.6667, 'CD8': -0.6667, 'TCRlig': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout ERK
+Knockout Calcin
+Knockout Ras
+Knockout CREB
+Knockout Lck
+Knockout ZAP70
+Knockout IP3
+Knockout IkB
+Knockout NFAT
+Knockout Grb2Sos
+Knockout Rsk
+Knockout TCRphos
+Knockout DAG
+Knockout Raf
+Knockout SLP76
+Knockout IKKbeta
+Knockout Jun
+Knockout PLCg_act
+Knockout PKCth
+Knockout Itk
+Knockout cCbl
+Knockout MEK
+Knockout TCRbind
+Knockout Fos
+Knockout LAT
+Knockout RasGRP1
+Knockout JNK
+Knockout Rlk
+Knockout Fyn
+Knockout Gads
+Knockout SEK
+Knockout Nfkb
+Knockout PAGCsk
+Knockout PLCg_bind
+Knockout AP1
+Knockout Ca
+----KNOCKOUT VALUE for output CRE----
+{'AP1': 0.0, 'CREB': 1.3333, 'Ca': 0.0, 'Calcin': 0.0, 'DAG': 0.0, 'ERK': 1.3333, 'Fos': 0.0, 'Fyn': 1.3333, 'Gads': 0.0, 'Grb2Sos': 1.3333, 'IKKbeta': 0.0, 'IP3': 0.0, 'IkB': 0.0, 'Itk': 0.0, 'JNK': 0.0, 'Jun': 0.0, 'LAT': 1.3333, 'Lck': 1.3333, 'MEK': 1.3333, 'NFAT': 0.0, 'Nfkb': 0.0, 'PAGCsk': 0.0, 'PKCth': 0.0, 'PLCg_act': 0.0, 'PLCg_bind': 0.0, 'Raf': 1.3333, 'Ras': 1.3333, 'RasGRP1': 0.0, 'Rlk': 0.0, 'Rsk': 1.3333, 'SEK': 0.0, 'SLP76': 0.0, 'TCRbind': 0.0, 'TCRphos': 1.3333, 'ZAP70': 1.3333, 'cCbl': 1.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin ERK
+Knockin Calcin
+Knockin Ras
+Knockin CREB
+Knockin Lck
+Knockin ZAP70
+Knockin IP3
+Knockin IkB
+Knockin NFAT
+Knockin Grb2Sos
+Knockin Rsk
+Knockin TCRphos
+Knockin DAG
+Knockin Raf
+Knockin SLP76
+Knockin IKKbeta
+Knockin Jun
+Knockin PLCg_act
+Knockin PKCth
+Knockin Itk
+Knockin cCbl
+Knockin MEK
+Knockin TCRbind
+Knockin Fos
+Knockin LAT
+Knockin RasGRP1
+Knockin JNK
+Knockin Rlk
+Knockin Fyn
+Knockin Gads
+Knockin SEK
+Knockin Nfkb
+Knockin PAGCsk
+Knockin PLCg_bind
+Knockin AP1
+Knockin Ca
+----KNOCKIN VALUE for output CRE----
+{'CRE': {'ERK': -2.6667, 'Calcin': 0.0, 'Ras': -2.6667, 'CREB': -2.6667, 'Lck': -0.6667, 'ZAP70': -2.6667, 'IP3': 0.0, 'IkB': 0.0, 'NFAT': 0.0, 'Grb2Sos': -2.6667, 'Rsk': -2.6667, 'TCRphos': 0.0, 'DAG': -2.6667, 'Raf': -2.6667, 'SLP76': 0.0, 'IKKbeta': 0.0, 'Jun': 0.0, 'PLCg_act': -2.6667, 'PKCth': 0.0, 'Itk': 0.0, 'cCbl': 1.3333, 'MEK': -2.6667, 'TCRbind': 1.3333, 'Fos': 0.0, 'LAT': -2.6667, 'RasGRP1': -2.6667, 'JNK': 0.0, 'Rlk': 0.0, 'Fyn': 1.3333, 'Gads': 0.0, 'SEK': 0.0, 'Nfkb': 0.0, 'PAGCsk': 1.3333, 'PLCg_bind': 0.0, 'AP1': 0.0, 'Ca': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['CD45', 'CD8', 'TCRlig']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['AP1', 'CREB', 'Ca', 'Calcin', 'DAG', 'ERK', 'Fos', 'Fyn', 'Gads', 'Grb2Sos', 'IKKbeta', 'IP3', 'IkB', 'Itk', 'JNK', 'Jun', 'LAT', 'Lck', 'MEK', 'NFAT', 'Nfkb', 'PAGCsk', 'PKCth', 'PLCg_act', 'PLCg_bind', 'Raf', 'Ras', 'RasGRP1', 'Rlk', 'Rsk', 'SEK', 'SLP76', 'TCRbind', 'TCRphos', 'ZAP70', 'cCbl']
+There are 36 intermediate nodes with the range of inter: 0 68719476735
+----Input shapley value of acyclic network-----
+('CRE', {'CD45': 1.3333, 'CD8': 1.3333, 'TCRlig': 0.0})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'CD45', 'CD8', 'TCRlig'}
+Ordinary nodes are 
+{'ERK', 'Calcin', 'Ras', 'CREB', 'Lck', 'ZAP70', 'IP3', 'IkB', 'NFAT', 'Grb2Sos', 'Rsk', 'TCRphos', 'DAG', 'Raf', 'SLP76', 'IKKbeta', 'Jun', 'PLCg_act', 'PKCth', 'CRE', 'Itk', 'cCbl', 'MEK', 'TCRbind', 'Fos', 'LAT', 'CD8', 'RasGRP1', 'JNK', 'Rlk', 'Fyn', 'Gads', 'SEK', 'Nfkb', 'PAGCsk', 'CD45', 'TCRlig', 'PLCg_bind', 'AP1', 'Ca'}
+Extranodes added after removing cycles are 
+['ZAP70_to_cCbl', 'PAGCsk_to_Lck']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[set(), set(), set(), set(), set(), set(), {'ERK', 'CREB', 'Lck', 'ZAP70', 'Grb2Sos', 'ZAP70_to_cCbl', 'Rsk', 'TCRphos', 'PAGCsk_to_Lck', 'Raf', 'cCbl', 'MEK', 'Fos', 'LAT', '_XTR_37_', 'Rlk', 'Fyn', 'Gads', 'PAGCsk', '_XTR_25_', '_XTR_15_', 'PLCg_bind', '_XTR_33_'}, {'ERK', 'TCRbind', 'CREB', 'Lck', 'LAT', 'Fos', '_XTR_37_', 'ZAP70', 'Rlk', 'Fyn', 'Grb2Sos', '_XTR_24_', 'Gads', 'ZAP70_to_cCbl', '_XTR_25_', 'Rsk', '_XTR_15_', 'PLCg_bind', 'PAGCsk_to_Lck', 'Raf', '_XTR_33_', 'cCbl', 'MEK'}]
+-----Knockout Shapley value of input nodes in the binary network-----
+CRE : {'CD45': 1.3333, 'CD8': 1.3333, 'TCRlig': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+CRE : {'CD45': -0.6667, 'CD8': -0.6667, 'TCRlig': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout ERK
+Knockout Calcin
+Knockout Ras
+Knockout CREB
+Knockout _XTR_11_
+Knockout Lck
+Knockout _XTR_9_
+Knockout ZAP70
+Knockout IP3
+Knockout IkB
+Knockout NFAT
+Knockout Grb2Sos
+Knockout ZAP70_to_cCbl
+Knockout _XTR_10_
+Knockout Rsk
+Knockout _XTR_7_
+Knockout TCRphos
+Knockout DAG
+Knockout PAGCsk_to_Lck
+Knockout Raf
+Knockout SLP76
+Knockout IKKbeta
+Knockout Jun
+Knockout PLCg_act
+Knockout PKCth
+Knockout Itk
+Knockout cCbl
+Knockout MEK
+Knockout TCRbind
+Knockout Fos
+Knockout LAT
+Knockout _XTR_37_
+Knockout RasGRP1
+Knockout JNK
+Knockout Rlk
+Knockout _XTR_24_
+Knockout Fyn
+Knockout Gads
+Knockout SEK
+Knockout _XTR_12_
+Knockout Nfkb
+Knockout _XTR_8_
+Knockout PAGCsk
+Knockout _XTR_25_
+Knockout _XTR_15_
+Knockout PLCg_bind
+Knockout AP1
+Knockout _XTR_32_
+Knockout _XTR_33_
+Knockout Ca
+---- Binary KNOCKOUT VALUE for output CRE----
+{'CRE': {'ERK': 1.3333, 'Calcin': 0.0, 'Ras': 1.3333, 'CREB': 1.3333, '_XTR_11_': 0.0, 'Lck': 1.3333, '_XTR_9_': 0.0, 'ZAP70': 1.3333, 'IP3': 0.0, 'IkB': 0.0, 'NFAT': 0.0, 'Grb2Sos': 1.3333, 'ZAP70_to_cCbl': 1.0, '_XTR_10_': 0.0, 'Rsk': 1.3333, '_XTR_7_': 0.0, 'TCRphos': 1.3333, 'DAG': 0.0, 'PAGCsk_to_Lck': 0.0, 'Raf': 1.3333, 'SLP76': 0.0, 'IKKbeta': 0.0, 'Jun': 0.0, 'PLCg_act': 0.0, 'PKCth': 0.0, 'Itk': 0.0, 'cCbl': 1.0, 'MEK': 1.3333, 'TCRbind': 0.0, 'Fos': 0.0, 'LAT': 1.3333, '_XTR_37_': 1.3333, 'RasGRP1': 0.0, 'JNK': 0.0, 'Rlk': 0.0, '_XTR_24_': 0.0, 'Fyn': 1.3333, 'Gads': 0.0, 'SEK': 0.0, '_XTR_12_': 0.0, 'Nfkb': 0.0, '_XTR_8_': 0.0, 'PAGCsk': 0.0, '_XTR_25_': 0.3333, '_XTR_15_': 1.3333, 'PLCg_bind': 0.0, 'AP1': 0.0, '_XTR_32_': 1.3333, '_XTR_33_': 1.3333, 'Ca': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN ERK
+KnockIN Calcin
+KnockIN Ras
+KnockIN CREB
+KnockIN _XTR_11_
+KnockIN Lck
+KnockIN _XTR_9_
+KnockIN ZAP70
+KnockIN IP3
+KnockIN IkB
+KnockIN NFAT
+KnockIN Grb2Sos
+KnockIN ZAP70_to_cCbl
+KnockIN _XTR_10_
+KnockIN Rsk
+KnockIN _XTR_7_
+KnockIN TCRphos
+KnockIN DAG
+KnockIN PAGCsk_to_Lck
+KnockIN Raf
+KnockIN SLP76
+KnockIN IKKbeta
+KnockIN Jun
+KnockIN PLCg_act
+KnockIN PKCth
+KnockIN Itk
+KnockIN cCbl
+KnockIN MEK
+KnockIN TCRbind
+KnockIN Fos
+KnockIN LAT
+KnockIN _XTR_37_
+KnockIN RasGRP1
+KnockIN JNK
+KnockIN Rlk
+KnockIN _XTR_24_
+KnockIN Fyn
+KnockIN Gads
+KnockIN SEK
+KnockIN _XTR_12_
+KnockIN Nfkb
+KnockIN _XTR_8_
+KnockIN PAGCsk
+KnockIN _XTR_25_
+KnockIN _XTR_15_
+KnockIN PLCg_bind
+KnockIN AP1
+KnockIN _XTR_32_
+KnockIN _XTR_33_
+KnockIN Ca
+---- Binary KNOCKIN VALUE for output CRE----
+{'CRE': {'ERK': -2.6667, 'Calcin': 0.0, 'Ras': -2.6667, 'CREB': -2.6667, '_XTR_11_': 0.0, 'Lck': -0.6667, '_XTR_9_': -2.6667, 'ZAP70': -2.6667, 'IP3': 0.0, 'IkB': 0.0, 'NFAT': 0.0, 'Grb2Sos': -2.6667, 'ZAP70_to_cCbl': 1.3333, '_XTR_10_': 0.0, 'Rsk': -2.6667, '_XTR_7_': 0.0, 'TCRphos': 0.0, 'DAG': -2.6667, 'PAGCsk_to_Lck': 1.3333, 'Raf': -2.6667, 'SLP76': 0.0, 'IKKbeta': 0.0, 'Jun': 0.0, 'PLCg_act': -2.6667, 'PKCth': 0.0, 'Itk': 0.0, 'cCbl': 1.3333, 'MEK': -2.6667, 'TCRbind': 1.3333, 'Fos': 0.0, 'LAT': -2.6667, '_XTR_37_': -2.6667, 'RasGRP1': -2.6667, 'JNK': 0.0, 'Rlk': 0.0, '_XTR_24_': 1.3333, 'Fyn': 1.3333, 'Gads': 0.0, 'SEK': 0.0, '_XTR_12_': -2.6667, 'Nfkb': 0.0, '_XTR_8_': 0.0, 'PAGCsk': 1.3333, '_XTR_25_': 1.3333, '_XTR_15_': 1.0, 'PLCg_bind': 0.0, 'AP1': 0.0, '_XTR_32_': -0.6667, '_XTR_33_': 0.0, 'Ca': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT CRE=======
+----Master diamonds-----
+{'DAG': 'RasGRP1', 'PLCg_act': 'RasGRP1', 'ZAP70': 'Ras', '_XTR_15_': 'Ras', 'SLP76': 'RasGRP1', 'Lck': 'Ras', 'PLCg_bind': 'RasGRP1', 'LAT': 'Ras', 'Fyn': 'Ras', 'CD45': 'Ras'}
+
+
+--------PROPAGATION--------
+Extranodes PAGCsk, add PAGCsk to nextlayer
+CRE                  			 KO:     1.3333 | KI:    -2.6665
+CREB                 			 KO:     1.3333 | KI:    -2.6665
+Rsk                  			 KO:     1.3333 | KI:    -2.6665
+ERK                  			 KO:     1.3333 | KI:    -2.6665
+MEK                  			 KO:     1.3333 | KI:    -2.6665
+Raf                  			 KO:     1.3333 | KI:    -2.6665
+Ras                  			 KO:     1.3333 | KI:    -2.6665
+RasGRP1              			 KO:        0.0 | KI:    -2.6665
+Grb2Sos              			 KO:     1.3333 | KI:    -2.6665
+PKCth                			 KO:        0.0 | KI:        0.0
+DAG                  			 KO:        0.0 | KI:    -2.6665
+LAT                  			 KO:     1.3333 | KI:    -2.6665
+PLCg_act             			 KO:        0.0 | KI:    -2.6665
+ZAP70                			 KO:     1.3333 | KI:    -2.6665
+_XTR_9_              			 KO:        0.0 | KI:    -2.6665
+_XTR_12_             			 KO:        0.0 | KI:    -2.6665
+_XTR_37_             			 KO:     1.3333 | KI:    -2.6665
+_XTR_15_             			 KO:     1.3333 | KI:        0.0
+Itk                  			 KO:        0.0 | KI:        0.0
+_XTR_8_              			 KO:        0.0 | KI:        0.0
+_XTR_11_             			 KO:        0.0 | KI:        0.0
+TCRphos              			 KO:     1.3333 | KI:        0.0
+Lck                  			 KO:     1.3333 | KI:    -0.6666
+cCbl                 			 KO:     1.3333 | KI:        0.0
+SLP76                			 KO:        0.0 | KI:        0.0
+_XTR_7_              			 KO:        0.0 | KI:        0.0
+_XTR_10_             			 KO:        0.0 | KI:        0.0
+Fyn                  			 KO:     1.3333 | KI:        0.0
+_XTR_32_             			 KO:     1.3333 | KI:    -0.3333
+_XTR_33_             			 KO:     1.3333 | KI:        0.0
+ZAP70_to_cCbl        			 KO:     1.3333 | KI:        0.0
+Gads                 			 KO:        0.0 | KI:        0.0
+PLCg_bind            			 KO:        0.0 | KI:        0.0
+Rlk                  			 KO:        0.0 | KI:        0.0
+_XTR_24_             			 KO:        0.0 | KI:        0.0
+_XTR_25_             			 KO:     0.3333 | KI:        0.0
+PAGCsk_to_Lck        			 KO:     1.3333 | KI:        0.0
+TCRbind              			 KO:        0.0 | KI:        0.0
+PAGCsk               			 KO:        1.0 | KI:    -2.3332
+CD45                 			 KO:     1.3333 | KI:    -0.6666
+CD8                  			 KO:     1.3333 | KI:    -0.6666
+TCRlig               			 KO:        0.0 | KI:        0.0
+There are 12 unreachable nodes, they are:
+{'Calcin', 'Fos', 'JNK', 'IP3', 'IkB', 'NFAT', 'SEK', 'Nfkb', 'AP1', 'IKKbeta', 'Jun', 'Ca'}
+binary.html
+ZAP70_to_cCbl        - Correct: KO:        1.0 | KI :     1.3333 - Incorrect KO:     1.3333 | KI:        0.0
+PAGCsk_to_Lck        - Correct: KO:        0.0 | KI :     1.3333 - Incorrect KO:     1.3333 | KI:        0.0
+cCbl                 - Correct: KO:        1.0 | KI :     1.3333 - Incorrect KO:     1.3333 | KI:        0.0
+TCRbind              - Correct: KO:        0.0 | KI :     1.3333 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_24_             - Correct: KO:        0.0 | KI :     1.3333 - Incorrect KO:        0.0 | KI:        0.0
+Fyn                  - Correct: KO:     1.3333 | KI :     1.3333 - Incorrect KO:     1.3333 | KI:        0.0
+PAGCsk               - Correct: KO:        0.0 | KI :     1.3333 - Incorrect KO:        1.0 | KI:    -2.3332
+_XTR_25_             - Correct: KO:     0.3333 | KI :     1.3333 - Incorrect KO:     0.3333 | KI:        0.0
+_XTR_15_             - Correct: KO:     1.3333 | KI :        1.0 - Incorrect KO:     1.3333 | KI:        0.0
+_XTR_32_             - Correct: KO:     1.3333 | KI :    -0.6667 - Incorrect KO:     1.3333 | KI:    -0.3333
+CD45
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+CD8
+Lack      0: []
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      4: [4, 5, 6, 7]
+
+TCRlig
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AP1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CREB
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Ca
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Calcin
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DAG
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+ERK
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Fos
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Fyn
+Lack      0: []
+Extra     0: []
+Real      2: [6, 7]
+Prop      2: [6, 7]
+
+Gads
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Grb2Sos
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+IKKbeta
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IkB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Itk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JNK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Jun
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+LAT
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Lck
+Lack      0: []
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      4: [4, 5, 6, 7]
+
+MEK
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+NFAT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Nfkb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAGCsk
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      2: [6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+PAGCsk_to_Lck
+Lack      0: []
+Extra     0: []
+Real      2: [6, 7]
+Prop      2: [6, 7]
+
+PKCth
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLCg_act
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+PLCg_bind
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Raf
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Ras
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+RasGRP1
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+Rlk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Rsk
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+SEK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SLP76
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TCRbind
+Lack      2: [6, 7]
+Extra     0: []
+Real      2: [6, 7]
+Prop      0: []
+
+TCRphos
+Lack      0: []
+Extra     0: []
+Real      2: [6, 7]
+Prop      2: [6, 7]
+
+ZAP70
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+ZAP70_to_cCbl
+Lack      0: []
+Extra     0: []
+Real      2: [6, 7]
+Prop      2: [6, 7]
+
+_XTR_10_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_11_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_12_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+_XTR_15_
+Lack      0: []
+Extra     0: []
+Real      2: [6, 7]
+Prop      2: [6, 7]
+
+_XTR_24_
+Lack      2: [6, 7]
+Extra     0: []
+Real      2: [6, 7]
+Prop      0: []
+
+_XTR_25_
+Lack      1: [7]
+Extra     0: []
+Real      2: [6, 7]
+Prop      1: [6]
+
+_XTR_32_
+Lack      1: [5]
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      3: [4, 6, 7]
+
+_XTR_33_
+Lack      0: []
+Extra     0: []
+Real      2: [6, 7]
+Prop      2: [6, 7]
+
+_XTR_37_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_7_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_8_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_9_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+cCbl
+Lack      0: []
+Extra     0: []
+Real      2: [6, 7]
+Prop      2: [6, 7]
+
+Number of nodes is 53
+Number of input nodes is 3
+Relative_RMSE_KO_is  0.029738773597288014
+Relative_RMSE_KI_is  0.08921533050728213
+NDCG_KO_is  0.9740147058982502
+NDCG_KI_is  0.985021149875465
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             53.000       53.000
+Kendall tau-b                         0.914        0.800
+Spearman rho                          0.936        0.815
+Mean abs rank diff                    0.132        0.491
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.857        1.000
+         Precision@10                0.857        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   0.952        0.593
+         Precision@20                0.952        0.800
+         Recall@20                   1.000        0.696
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.857        1.000
+  Top-2  groups Jaccard            0.909        0.696
+  Top-3  groups Jaccard            0.913        0.593
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.0009520053863525391
+TIME simulate original network: 0.029816865921020508
+TIME perform original analysis process: 2.111884117126465
+TIME perform propagation: 0.23350286483764648
+-----------TOTAL RUNNING TIME---------------
+6.695990417152643

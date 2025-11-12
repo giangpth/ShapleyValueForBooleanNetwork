@@ -16,8 +16,9 @@ Performance tables:
   - First columns: Model, Target; every metric shown as KO/KI pair.
   - NOW includes Top-20 metrics (Top-20 Jaccard, Precision@20, Recall@20).
 
-Time tables:
-  - Regular table float (portrait), per-(model,target) rows, includes Total column.
++ Time tables:
++   - Regular table float (portrait), per-(model,target) rows, includes Ratio column
++     where Ratio = time_original_analysis / time_propagation.
 
 USAGE:
   python make_tables_two_csvs_fullbleed.py \
@@ -277,7 +278,11 @@ def build_performance_longtable_tex(df: pd.DataFrame, caption_base: str, label_b
 # ---------------- Time: per-(model,target) table (portrait) ----------------
 
 def build_time_table_tex(df: pd.DataFrame, caption: str, label: str) -> str:
-    """Portrait longtable (non-floating) so it always appears where \input is placed."""
+    """Portrait longtable (non-floating) so it always appears where \\input is placed.
+       Shows per-(model,target) times and a Ratio column where
+       Ratio = time_original_analysis / time_propagation.
+       Adds a final Average row for the Ratio column only.
+    """
     if df.empty:
         return rf"\par\noindent\emph{{No data for { _latex_escape(caption) }.}}\par\n"
 
@@ -285,36 +290,82 @@ def build_time_table_tex(df: pd.DataFrame, caption: str, label: str) -> str:
     tgt_col = _pick_target_col(df)
     present = [key for _, key in TIME_COLS if key in df.columns]
 
-    # Small debug note in the .tex to help if nothing matched
     if not present:
         dbg = ", ".join(k for _, k in TIME_COLS)
         return (r"\par\noindent\emph{No time metrics found. "
                 rf"Expected one of: { _latex_escape(dbg) }." r"}\par" "\n")
 
-    # Aggregate duplicate (model,target), compute Total
+    # Aggregate duplicate (model,target)
     agg = _aggregate_model_target(df, present)
     if agg.empty:
         return rf"\par\noindent\emph{{No usable time rows for { _latex_escape(caption) }.}}\par\n"
 
-    agg["Total"] = agg[present].sum(axis=1, numeric_only=True)
-    for c in present + ["Total"]:
-        if c in agg.columns:
-            agg[c] = agg[c].map(_fmt_float)
+    # Compute Ratio from raw numeric values before formatting
+    import numpy as np
+    need_ratio = ("time_original_analysis" in df.columns) and ("time_propagation" in df.columns)
+    ratio_mean_str = r"--"
 
-    # Build longtable (portrait)
-    col_spec = "ll" + "c" * (len(present) + 1)  # Model, Target, metrics..., Total
+    if need_ratio:
+        # Recompute necessary numeric columns over the same grouping
+        numeric = _aggregate_model_target(
+            df,
+            ["time_original_analysis", "time_propagation"]
+        )
+        oa = pd.to_numeric(numeric.get("time_original_analysis"), errors="coerce")
+        prop = pd.to_numeric(numeric.get("time_propagation"), errors="coerce")
+
+        # Safe division; invalid -> NaN
+        ratio_vals = np.where((prop.notna()) & (prop != 0), oa / prop, np.nan)
+        # Keep a numeric copy for averaging; formatted copy for display
+        ratio_series_num = pd.Series(ratio_vals, index=numeric.index)
+        id_cols = [model_col] + ([tgt_col] if tgt_col else [])
+        ratio_df = pd.concat([numeric[id_cols], ratio_series_num.rename("_ratio_num")], axis=1)
+
+        # Merge numeric ratio onto agg
+        agg = agg.merge(ratio_df, on=id_cols, how="left")
+
+        # Format time columns after we’ve merged
+        for c in present:
+            if c in agg.columns:
+                agg[c] = agg[c].map(_fmt_float)
+
+        def _fmt_ratio(v):
+            try:
+                f = float(v)
+                if np.isfinite(f):
+                    return f"{f:.{ROUND_DEC}f}"
+                return r"--"
+            except Exception:
+                return r"--"
+
+        agg["Ratio"] = agg["_ratio_num"].map(_fmt_ratio)
+
+        # Compute mean of valid ratios for the final row
+        valid = agg["_ratio_num"].astype(float)
+        if valid.notna().any():
+            mean_val = valid.mean(skipna=True)
+            if np.isfinite(mean_val):
+                ratio_mean_str = f"{mean_val:.{ROUND_DEC}f}"
+    else:
+        # No ratio possible; still format time columns
+        for c in present:
+            if c in agg.columns:
+                agg[c] = agg[c].map(_fmt_float)
+        agg["Ratio"] = r"--"
+
+    # Build longtable (portrait). Columns: Model, Target, present time cols..., Ratio
+    col_spec = "ll" + "c" * (len(present) + 1)
     cap = _latex_escape(caption).replace("—", "---")
 
-    # header row
     hdr_cells = [r"\textbf{Model}", r"\textbf{Target}"] + \
                 [rf"\textbf{{{_latex_escape(d)}}}" for (d, k) in TIME_COLS if k in present] + \
-                [r"\textbf{Total}"]
+                [r"\textbf{Ratio}"]
     top_line = " & ".join(hdr_cells) + r" \\"
 
     lines = []
-    lines.append(r"\clearpage")                    # ensure it starts fresh
-    lines.append(r"\begingroup")                   # keep sizing local
-    lines.append(r"\small")                        # <- put \small here for time tables
+    lines.append(r"\clearpage")
+    lines.append(r"\begingroup")
+    lines.append(r"\small")
     lines.append(r"\setlength{\tabcolsep}{4pt}")
     lines.append(r"\renewcommand{\arraystretch}{1.0}")
     lines.append(rf"\begin{{longtable}}{{{col_spec}}}")
@@ -343,13 +394,25 @@ def build_time_table_tex(df: pd.DataFrame, caption: str, label: str) -> str:
         for _, key in TIME_COLS:
             if key in present:
                 cells.append(row.get(key, ""))
-        cells.append(row.get("Total", ""))
+        cells.append(row.get("Ratio", r"--"))
         lines.append(" & ".join(cells) + r" \\")
+
+    # Average row: only Ratio gets a value; others blank
+    lines.append(r"\midrule")
+    avg_cells = [
+        r"\textbf{Average}",
+        r"--",
+    ]
+    # blanks for each present time column
+    avg_cells.extend([""] * len(present))
+    # the ratio mean
+    avg_cells.append(ratio_mean_str)
+    lines.append(" & ".join(avg_cells) + r" \\")
+
     lines.append(r"\end{longtable}")
     lines.append(r"\endgroup")
     lines.append(r"\clearpage")
     return "\n".join(lines) + "\n"
-
 
 
 # ---------------- Driver ----------------

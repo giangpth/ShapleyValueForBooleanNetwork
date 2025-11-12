@@ -1,0 +1,938 @@
+The expression file is data/realbenchmark/5.txt
+The interested output is: 
+{'Whi5'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'Sic1', 'SpindleCP', 'Yhp1', 'Size', 'Cln3', 'Start', 'Cdc14', 'FEAR', 'BuddingCP', 'Clb2', 'SFF', 'Clb5', 'SMBF', 'MEN', 'Whi5', 'Swi5', 'Cdh1', 'Cdc20', 'Cln2', 'Swe1'}
+-----Input names-----
+{'SpindleCP', 'Size', 'BuddingCP', 'Start'}
+----Intermediate nodes-----
+{'Sic1', 'FEAR', 'Yhp1', 'Clb2', 'SFF', 'Clb5', 'SMBF', 'MEN', 'Cln3', 'Swi5', 'Cdh1', 'Cdc20', 'Cln2', 'Swe1', 'Cdc14'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Yhp1']
+There are 15 intermediate nodes with the range of inter: 0 32767
+----Input knockout shapley value-----
+('Whi5', {'SpindleCP': 1.0, 'Size': -0.25, 'BuddingCP': -0.25, 'Start': -0.25})
+
+
+----Input knockIN shapley value-----
+('Whi5', {'SpindleCP': -0.25, 'Size': 0.1667, 'BuddingCP': 0.1667, 'Start': 0.1667})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout Sic1
+Knockout FEAR
+Knockout Yhp1
+Knockout Clb2
+Knockout SFF
+Knockout Clb5
+Knockout SMBF
+Knockout MEN
+Knockout Cln3
+Knockout Swi5
+Knockout Cdh1
+Knockout Cdc20
+Knockout Cln2
+Knockout Swe1
+Knockout Cdc14
+----KNOCKOUT VALUE for output Whi5----
+{'Cdc14': 1.0, 'Cdc20': 1.0, 'Cdh1': 1.0, 'Clb2': -0.25, 'Clb5': 0.0, 'Cln2': -0.25, 'Cln3': -0.25, 'FEAR': 1.0, 'MEN': 1.0, 'SFF': 1.0, 'SMBF': 1.4167, 'Sic1': 0.0, 'Swe1': 0.1667, 'Swi5': 0.0, 'Yhp1': 1.4167}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin Sic1
+Knockin FEAR
+Knockin Yhp1
+Knockin Clb2
+Knockin SFF
+Knockin Clb5
+Knockin SMBF
+Knockin MEN
+Knockin Cln3
+Knockin Swi5
+Knockin Cdh1
+Knockin Cdc20
+Knockin Cln2
+Knockin Swe1
+Knockin Cdc14
+----KNOCKIN VALUE for output Whi5----
+{'Whi5': {'Sic1': -0.25, 'FEAR': 0.0, 'Yhp1': -0.25, 'Clb2': 1.4167, 'SFF': 0.0, 'Clb5': 0.0, 'SMBF': 2.25, 'MEN': 0.0, 'Cln3': 2.25, 'Swi5': 0.0, 'Cdh1': -0.25, 'Cdc20': -0.25, 'Cln2': 2.25, 'Swe1': -0.25, 'Cdc14': -0.25}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Yhp1']
+There are 15 intermediate nodes with the range of inter: 0 32767
+----Input shapley value of acyclic network-----
+('Whi5', {'SpindleCP': 1.0, 'Size': -0.25, 'BuddingCP': -0.25, 'Start': -0.25})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac Cdh1_to_Clb2ANDCdc20_to_Clb2, try Cdc20_to_Clb2ANDCdh1_to_Clb2
+Input are {'SpindleCP', 'Size', 'BuddingCP', 'Start'}
+Ordinary nodes are 
+{'Sic1', 'SpindleCP', 'Yhp1', 'Size', 'Cln3', 'Start', 'Cdc14', 'FEAR', 'BuddingCP', 'Clb2', 'SFF', 'Clb5', 'SMBF', 'MEN', 'Whi5', 'Swi5', 'Cdh1', 'Cdc20', 'Cln2', 'Swe1'}
+Extranodes added after removing cycles are 
+['Sic1_to_Sic1', 'Sic1_to_Clb2', 'SFF_to_Clb2', 'Clb5_to_Sic1', 'Whi5_to_SMBF', 'Swi5_to_Swi5', 'Cdh1_to_Clb2', 'Cdc20_to_Clb2']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[set(), {'_XTR_21_', 'Sic1', '_XTR_24_', 'Yhp1', 'SMBF', '_XTR_39_', '_XTR_20_', '_XTR_34_', 'Whi5', '_XTR_49_', '_XTR_52_', '_XTR_50_', 'Cdh1', 'Cln2', '_XTR_28_', '_XTR_4_'}, set(), {'_XTR_21_', 'Sic1', '_XTR_24_', 'Yhp1', 'SMBF', '_XTR_39_', '_XTR_20_', '_XTR_34_', 'Whi5', '_XTR_49_', '_XTR_52_', '_XTR_50_', 'Cdh1', 'Cln2', '_XTR_28_', '_XTR_4_'}, set(), {'Sic1', '_XTR_36_', '_XTR_18_', '_XTR_45_', 'Yhp1', '_XTR_39_', '_XTR_20_', 'Cln3', '_XTR_49_', 'Cdh1_to_Clb2', '_XTR_52_', '_XTR_50_', '_XTR_29_', '_XTR_4_', 'Sic1_to_Sic1', 'Whi5_to_SMBF', '_XTR_22_', '_XTR_30_', 'Clb5_to_Sic1', 'Clb5', 'SMBF', '_XTR_31_', '_XTR_34_', 'Whi5', 'Cdh1', 'Sic1_to_Clb2', 'Cln2', '_XTR_23_'}, set(), {'Sic1', '_XTR_36_', '_XTR_18_', '_XTR_45_', 'Yhp1', '_XTR_39_', '_XTR_20_', 'Cln3', '_XTR_49_', 'Cdh1_to_Clb2', '_XTR_52_', '_XTR_50_', '_XTR_29_', '_XTR_4_', 'Sic1_to_Sic1', 'Whi5_to_SMBF', '_XTR_22_', '_XTR_30_', 'Clb5_to_Sic1', 'Clb5', 'SMBF', '_XTR_31_', '_XTR_34_', 'Whi5', 'Cdh1', 'Sic1_to_Clb2', 'Cln2', '_XTR_23_'}, {'_XTR_61_', 'SFF', '_XTR_16_', '_XTR_2_', '_XTR_33_', '_XTR_31_', '_XTR_32_', '_XTR_60_', 'Sic1_to_Sic1', 'Cdh1_to_Clb2', 'Sic1_to_Clb2', '_XTR_1_', '_XTR_3_', '_XTR_29_', '_XTR_30_'}, set(), {'_XTR_61_', 'SFF', '_XTR_16_', '_XTR_2_', '_XTR_33_', '_XTR_31_', '_XTR_32_', '_XTR_60_', 'Sic1_to_Sic1', 'Cdh1_to_Clb2', 'Sic1_to_Clb2', '_XTR_1_', '_XTR_3_', '_XTR_29_', '_XTR_30_'}, set(), {'_XTR_55_', '_XTR_4_', 'Clb2', 'Sic1', '_XTR_17_', 'SFF_to_Clb2', '_XTR_34_', '_XTR_58_', 'Cdh1', '_XTR_50_', '_XTR_59_', '_XTR_7_', '_XTR_9_'}, set(), {'_XTR_55_', '_XTR_4_', 'Clb2', 'Sic1', '_XTR_17_', 'SFF_to_Clb2', '_XTR_34_', '_XTR_58_', 'Cdh1', '_XTR_50_', '_XTR_59_', '_XTR_7_', '_XTR_9_'}, {'_XTR_27_', '_XTR_18_', '_XTR_45_', '_XTR_7_', '_XTR_56_', '_XTR_39_', '_XTR_29_', '_XTR_6_', 'FEAR', 'Whi5_to_SMBF', '_XTR_12_', '_XTR_30_', 'Clb5_to_Sic1', '_XTR_55_', 'Clb2', '_XTR_26_', 'Clb5', 'SFF_to_Clb2', '_XTR_58_', 'Whi5', '_XTR_57_', 'MEN', 'Cdh1', 'Cdc20', 'Cdc20_to_Clb2', 'Cln2', 'Sic1', '_XTR_36_', '_XTR_15_', 'Yhp1', '_XTR_9_', '_XTR_17_', '_XTR_20_', 'Swi5_to_Swi5', '_XTR_8_', 'Cln3', '_XTR_49_', 'Cdh1_to_Clb2', '_XTR_52_', '_XTR_50_', '_XTR_63_', 'Cdc14', '_XTR_62_', '_XTR_16_', '_XTR_64_', '_XTR_60_', 'Sic1_to_Sic1', '_XTR_25_', '_XTR_22_', '_XTR_61_', 'SFF', 'SMBF', '_XTR_31_', 'Swi5', '_XTR_1_', 'Sic1_to_Clb2', '_XTR_28_', '_XTR_59_', '_XTR_23_'}]
+-----Knockout Shapley value of input nodes in the binary network-----
+Whi5 : {'SpindleCP': 1.0, 'Size': -0.25, 'BuddingCP': -0.25, 'Start': -0.25}
+-----KnockIN Shapley value of input nodes in the binary network-----
+Whi5 : {'SpindleCP': -0.25, 'Size': 0.1667, 'BuddingCP': 0.1667, 'Start': 0.1667}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout _XTR_27_
+Knockout _XTR_32_
+Knockout _XTR_18_
+Knockout _XTR_45_
+Knockout _XTR_7_
+Knockout _XTR_56_
+Knockout _XTR_39_
+Knockout _XTR_29_
+Knockout _XTR_6_
+Knockout _XTR_48_
+Knockout _XTR_41_
+Knockout _XTR_19_
+Knockout _XTR_24_
+Knockout _XTR_40_
+Knockout FEAR
+Knockout Whi5_to_SMBF
+Knockout _XTR_12_
+Knockout _XTR_30_
+Knockout Clb5_to_Sic1
+Knockout _XTR_55_
+Knockout Clb2
+Knockout _XTR_26_
+Knockout Clb5
+Knockout SFF_to_Clb2
+Knockout _XTR_58_
+Knockout MEN
+Knockout _XTR_57_
+Knockout _XTR_38_
+Knockout Swe1
+Knockout Cdc20
+Knockout Cln2
+Knockout Cdc20_to_Clb2
+Knockout Cdh1
+Knockout Sic1
+Knockout _XTR_36_
+Knockout _XTR_15_
+Knockout _XTR_3_
+Knockout Yhp1
+Knockout _XTR_9_
+Knockout _XTR_17_
+Knockout _XTR_33_
+Knockout _XTR_2_
+Knockout _XTR_20_
+Knockout Swi5_to_Swi5
+Knockout _XTR_8_
+Knockout Cln3
+Knockout _XTR_49_
+Knockout Cdh1_to_Clb2
+Knockout _XTR_52_
+Knockout _XTR_63_
+Knockout _XTR_37_
+Knockout _XTR_50_
+Knockout _XTR_4_
+Knockout Cdc14
+Knockout _XTR_54_
+Knockout _XTR_21_
+Knockout _XTR_62_
+Knockout _XTR_16_
+Knockout _XTR_64_
+Knockout _XTR_60_
+Knockout Sic1_to_Sic1
+Knockout _XTR_25_
+Knockout _XTR_22_
+Knockout _XTR_61_
+Knockout SFF
+Knockout SMBF
+Knockout _XTR_31_
+Knockout _XTR_34_
+Knockout _XTR_1_
+Knockout Swi5
+Knockout Sic1_to_Clb2
+Knockout _XTR_42_
+Knockout _XTR_28_
+Knockout _XTR_59_
+Knockout _XTR_23_
+---- Binary KNOCKOUT VALUE for output Whi5----
+{'Whi5': {'_XTR_27_': 0.0, '_XTR_32_': -0.25, '_XTR_18_': 0.0, '_XTR_45_': 2.25, '_XTR_7_': 0.0, '_XTR_56_': 1.0, '_XTR_39_': 2.25, '_XTR_29_': 0.0, '_XTR_6_': 0.0, '_XTR_48_': 0.0, '_XTR_41_': -0.25, '_XTR_19_': 0.0, '_XTR_24_': 0.0, '_XTR_40_': -0.25, 'FEAR': 1.0, 'Whi5_to_SMBF': 0.8333, '_XTR_12_': 1.0, '_XTR_30_': 0.0, 'Clb5_to_Sic1': 0.0, '_XTR_55_': -0.25, 'Clb2': -0.25, '_XTR_26_': 0.0, 'Clb5': 0.0, 'SFF_to_Clb2': 0.0, '_XTR_58_': -0.25, 'MEN': 1.0, '_XTR_57_': -0.25, '_XTR_38_': -0.25, 'Swe1': 0.1667, 'Cdc20': 1.0, 'Cln2': -0.25, 'Cdc20_to_Clb2': 1.0, 'Cdh1': 1.0, 'Sic1': 0.0, '_XTR_36_': -0.25, '_XTR_15_': -0.25, '_XTR_3_': -0.25, 'Yhp1': 1.4167, '_XTR_9_': 0.0, '_XTR_17_': 0.0, '_XTR_33_': -0.25, '_XTR_2_': 0.0, '_XTR_20_': 0.0, 'Swi5_to_Swi5': 0.0, '_XTR_8_': 0.0, 'Cln3': -0.25, '_XTR_49_': 0.0, 'Cdh1_to_Clb2': 1.0, '_XTR_52_': -0.25, '_XTR_63_': 1.4167, '_XTR_37_': 0.0, '_XTR_50_': 0.0, '_XTR_4_': 0.0, 'Cdc14': 1.0, '_XTR_54_': -0.25, '_XTR_21_': 0.0, '_XTR_62_': 0.1667, '_XTR_16_': 0.0, '_XTR_64_': -0.25, '_XTR_60_': 0.0, 'Sic1_to_Sic1': 0.0, '_XTR_25_': 0.0, '_XTR_22_': 0.0, '_XTR_61_': 0.0, 'SFF': 1.0, 'SMBF': 1.4167, '_XTR_31_': 0.0, '_XTR_34_': 0.0, '_XTR_1_': 0.0, 'Swi5': 0.0, 'Sic1_to_Clb2': 0.0, '_XTR_42_': 0.0, '_XTR_28_': 0.0, '_XTR_59_': -0.25, '_XTR_23_': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN _XTR_27_
+KnockIN _XTR_32_
+KnockIN _XTR_18_
+KnockIN _XTR_45_
+KnockIN _XTR_7_
+KnockIN _XTR_56_
+KnockIN _XTR_39_
+KnockIN _XTR_29_
+KnockIN _XTR_6_
+KnockIN _XTR_48_
+KnockIN _XTR_41_
+KnockIN _XTR_19_
+KnockIN _XTR_24_
+KnockIN _XTR_40_
+KnockIN FEAR
+KnockIN Whi5_to_SMBF
+KnockIN _XTR_12_
+KnockIN _XTR_30_
+KnockIN Clb5_to_Sic1
+KnockIN _XTR_55_
+KnockIN Clb2
+KnockIN _XTR_26_
+KnockIN Clb5
+KnockIN SFF_to_Clb2
+KnockIN _XTR_58_
+KnockIN MEN
+KnockIN _XTR_57_
+KnockIN _XTR_38_
+KnockIN Swe1
+KnockIN Cdc20
+KnockIN Cln2
+KnockIN Cdc20_to_Clb2
+KnockIN Cdh1
+KnockIN Sic1
+KnockIN _XTR_36_
+KnockIN _XTR_15_
+KnockIN _XTR_3_
+KnockIN Yhp1
+KnockIN _XTR_9_
+KnockIN _XTR_17_
+KnockIN _XTR_33_
+KnockIN _XTR_2_
+KnockIN _XTR_20_
+KnockIN Swi5_to_Swi5
+KnockIN _XTR_8_
+KnockIN Cln3
+KnockIN _XTR_49_
+KnockIN Cdh1_to_Clb2
+KnockIN _XTR_52_
+KnockIN _XTR_63_
+KnockIN _XTR_37_
+KnockIN _XTR_50_
+KnockIN _XTR_4_
+KnockIN Cdc14
+KnockIN _XTR_54_
+KnockIN _XTR_21_
+KnockIN _XTR_62_
+KnockIN _XTR_16_
+KnockIN _XTR_64_
+KnockIN _XTR_60_
+KnockIN Sic1_to_Sic1
+KnockIN _XTR_25_
+KnockIN _XTR_22_
+KnockIN _XTR_61_
+KnockIN SFF
+KnockIN SMBF
+KnockIN _XTR_31_
+KnockIN _XTR_34_
+KnockIN _XTR_1_
+KnockIN Swi5
+KnockIN Sic1_to_Clb2
+KnockIN _XTR_42_
+KnockIN _XTR_28_
+KnockIN _XTR_59_
+KnockIN _XTR_23_
+---- Binary KNOCKIN VALUE for output Whi5----
+{'Whi5': {'_XTR_27_': -0.25, '_XTR_32_': 0.0, '_XTR_18_': 0.0, '_XTR_45_': 1.4167, '_XTR_7_': 0.0, '_XTR_56_': -0.25, '_XTR_39_': -0.25, '_XTR_29_': 0.0, '_XTR_6_': 0.0, '_XTR_48_': 0.0, '_XTR_41_': 0.0, '_XTR_19_': 0.0, '_XTR_24_': -0.25, '_XTR_40_': 0.0, 'FEAR': 0.0, 'Whi5_to_SMBF': 1.4167, '_XTR_12_': 1.0, '_XTR_30_': 0.0, 'Clb5_to_Sic1': 0.0, '_XTR_55_': 0.1667, 'Clb2': 1.4167, '_XTR_26_': -0.25, 'Clb5': 0.0, 'SFF_to_Clb2': 0.0, '_XTR_58_': 0.1667, 'MEN': 0.0, '_XTR_57_': 1.0, '_XTR_38_': 2.25, 'Swe1': -0.25, 'Cdc20': -0.25, 'Cln2': 2.25, 'Cdc20_to_Clb2': -0.25, 'Cdh1': -0.25, 'Sic1': -0.25, '_XTR_36_': 2.25, '_XTR_15_': 0.0, '_XTR_3_': 0.0, 'Yhp1': -0.25, '_XTR_9_': 0.0, '_XTR_17_': 0.0, '_XTR_33_': 0.0, '_XTR_2_': 0.0, '_XTR_20_': 0.0, 'Swi5_to_Swi5': 0.0, '_XTR_8_': 0.0, 'Cln3': 2.25, '_XTR_49_': 0.0, 'Cdh1_to_Clb2': -0.25, '_XTR_52_': 1.4167, '_XTR_63_': -0.25, '_XTR_37_': 2.25, '_XTR_50_': 0.0, '_XTR_4_': -0.25, 'Cdc14': -0.25, '_XTR_54_': 0.0, '_XTR_21_': -0.25, '_XTR_62_': -0.25, '_XTR_16_': 0.0, '_XTR_64_': 1.4167, '_XTR_60_': -0.25, 'Sic1_to_Sic1': 0.0, '_XTR_25_': 0.0, '_XTR_22_': 0.0, '_XTR_61_': -0.25, 'SFF': 0.0, 'SMBF': 2.25, '_XTR_31_': 0.0, '_XTR_34_': -0.25, '_XTR_1_': 0.0, 'Swi5': 0.0, 'Sic1_to_Clb2': -0.25, '_XTR_42_': -0.25, '_XTR_28_': -0.25, '_XTR_59_': 1.4167, '_XTR_23_': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT Whi5=======
+----Master diamonds-----
+{'Cln2': 'Whi5', 'Start': 'Whi5', 'Cln3': 'Whi5', 'SMBF': 'Whi5', 'Clb2': 'Whi5', '_XTR_57_': 'Whi5', 'Cdc20_to_Clb2': 'Whi5', 'SFF_to_Clb2': 'Whi5', 'Cdh1_to_Clb2': 'Whi5', 'Swe1': 'Whi5'}
+
+
+--------PROPAGATION--------
+Extranodes Cdc20_to_Clb2, add  Cdc20 to nextlayer
+Extranodes Cdc20_to_Clb2, add  Cdc20 to nextlayer
+Extranodes SFF_to_Clb2, add SFF to nextlayer
+Extranodes Cdh1_to_Clb2, add  Cdh1 to nextlayer
+Extranodes SFF_to_Clb2, add SFF to nextlayer
+Extranodes Cdh1_to_Clb2, add  Cdh1 to nextlayer
+Extranodes Sic1_to_Clb2, add  Sic1 to nextlayer
+Extranodes Sic1_to_Clb2, add  Sic1 to nextlayer
+Whi5                 			 KO:     4.7502 | KI:      -0.25
+_XTR_39_             			 KO:     3.0835 | KI:      -0.25
+_XTR_42_             			 KO:        0.0 | KI:      -0.25
+_XTR_38_             			 KO:     1.5834 | KI:     1.2501
+_XTR_41_             			 KO:      -0.25 | KI:        0.0
+_XTR_36_             			 KO:      -0.25 | KI:     1.2501
+_XTR_37_             			 KO:     0.4167 | KI:     1.2501
+_XTR_40_             			 KO:      -0.25 | KI:        0.0
+Cln2                 			 KO:     1.4167 | KI:     0.4167
+Cln3                 			 KO:     1.1667 | KI:     0.8334
+SMBF                 			 KO:     1.4167 | KI:     0.4167
+_XTR_52_             			 KO:     1.1667 | KI:        0.0
+_XTR_45_             			 KO:     1.8334 | KI:        0.0
+Yhp1                 			 KO:     1.4167 | KI:      -0.25
+Whi5_to_SMBF         			 KO:     0.6667 | KI:        0.0
+Clb2                 			 KO:        1.0 | KI:     0.4167
+_XTR_59_             			 KO:        0.0 | KI:     0.4167
+_XTR_64_             			 KO:        0.0 | KI:     0.4167
+_XTR_58_             			 KO:        0.0 | KI:     0.4167
+_XTR_57_             			 KO:     1.4167 | KI:        0.0
+_XTR_63_             			 KO:     0.4167 | KI:        0.0
+_XTR_55_             			 KO:        0.0 | KI:     0.4167
+_XTR_56_             			 KO:        1.0 | KI:     0.4167
+_XTR_62_             			 KO:     0.4167 | KI:        0.0
+Cdc20_to_Clb2        			 KO:        1.0 | KI:     0.4167
+SFF_to_Clb2          			 KO:        1.0 | KI:     0.4167
+_XTR_54_             			 KO:        0.0 | KI:        0.0
+Cdh1_to_Clb2         			 KO:     1.4167 | KI:        0.0
+_XTR_61_             			 KO:     0.4167 | KI:        0.0
+Cdc20                			 KO:        1.0 | KI:     3.5002
+_XTR_12_             			 KO:        1.0 | KI:     1.5001
+Swe1                 			 KO:     0.4167 | KI:        1.0
+SFF                  			 KO:     1.7501 | KI:     2.7501
+Cdh1                 			 KO:     4.5835 | KI:    -0.0833
+Cdc14                			 KO:        1.0 | KI:     1.8334
+_XTR_4_              			 KO:     3.5835 | KI:    -0.0833
+_XTR_60_             			 KO:        0.0 | KI:        0.0
+Sic1_to_Clb2         			 KO:        0.0 | KI:        0.0
+MEN                  			 KO:        1.0 | KI:        0.0
+FEAR                 			 KO:        1.0 | KI:        0.0
+_XTR_3_              			 KO:     1.5835 | KI:     1.9167
+Sic1                 			 KO:     4.5835 | KI:    -0.0833
+_XTR_28_             			 KO:     2.9167 | KI:    -0.0833
+_XTR_34_             			 KO:     1.2501 | KI:    -0.0833
+_XTR_2_              			 KO:     1.1668 | KI:     1.9167
+Clb5                 			 KO:        0.0 | KI:     1.9167
+_XTR_24_             			 KO:     1.9167 | KI:    -0.0833
+_XTR_27_             			 KO:        1.0 | KI:    -0.0833
+_XTR_33_             			 KO:     1.1668 | KI:        0.0
+_XTR_1_              			 KO:     0.7501 | KI:     1.9167
+_XTR_49_             			 KO:        0.0 | KI:        0.0
+_XTR_50_             			 KO:        0.0 | KI:        0.0
+_XTR_21_             			 KO:     1.9167 | KI:    -0.0833
+_XTR_23_             			 KO:     2.9167 | KI:        0.0
+_XTR_26_             			 KO:        1.0 | KI:    -0.0833
+_XTR_32_             			 KO:     0.7501 | KI:        0.0
+Clb5_to_Sic1         			 KO:        1.0 | KI:     1.9167
+_XTR_48_             			 KO:        0.0 | KI:        0.0
+_XTR_18_             			 KO:     1.9167 | KI:    -0.0833
+_XTR_20_             			 KO:     2.9167 | KI:        0.0
+_XTR_22_             			 KO:        1.0 | KI:     1.9167
+_XTR_25_             			 KO:        1.0 | KI:    -0.0833
+_XTR_31_             			 KO:     0.7501 | KI:        0.0
+Sic1_to_Sic1         			 KO:     1.9167 | KI:        0.0
+_XTR_17_             			 KO:     2.9167 | KI:        0.0
+_XTR_19_             			 KO:        1.0 | KI:     1.9167
+_XTR_15_             			 KO:        1.0 | KI:        0.0
+Swi5                 			 KO:        1.0 | KI:        0.0
+_XTR_30_             			 KO:     0.7501 | KI:        0.0
+_XTR_16_             			 KO:        1.0 | KI:     1.9167
+_XTR_8_              			 KO:        1.0 | KI:        0.0
+_XTR_9_              			 KO:        1.0 | KI:        0.0
+_XTR_29_             			 KO:        0.0 | KI:        0.0
+_XTR_7_              			 KO:        1.0 | KI:        0.0
+_XTR_6_              			 KO:        1.0 | KI:        0.0
+Swi5_to_Swi5         			 KO:        1.0 | KI:        0.0
+SpindleCP            			 KO:        1.0 | KI:      -0.25
+Size                 			 KO:      -0.25 | KI:     0.1667
+BuddingCP            			 KO:      -0.25 | KI:     0.1667
+Start                			 KO:      -0.25 | KI:     0.1667
+There are 0 unreachable nodes, they are:
+set()
+binary.html
+_XTR_27_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:        1.0 | KI:    -0.0833
+_XTR_32_             - Correct: KO:      -0.25 | KI :        0.0 - Incorrect KO:     0.7501 | KI:        0.0
+_XTR_18_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.9167 | KI:    -0.0833
+_XTR_45_             - Correct: KO:       2.25 | KI :     1.4167 - Incorrect KO:     1.8334 | KI:        0.0
+_XTR_7_              - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_56_             - Correct: KO:        1.0 | KI :      -0.25 - Incorrect KO:        1.0 | KI:     0.4167
+_XTR_39_             - Correct: KO:       2.25 | KI :      -0.25 - Incorrect KO:     3.0835 | KI:      -0.25
+_XTR_6_              - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_19_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:     1.9167
+_XTR_24_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:     1.9167 | KI:    -0.0833
+Whi5_to_SMBF         - Correct: KO:     0.8333 | KI :     1.4167 - Incorrect KO:     0.6667 | KI:        0.0
+_XTR_12_             - Correct: KO:        1.0 | KI :        1.0 - Incorrect KO:        1.0 | KI:     1.5001
+_XTR_30_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     0.7501 | KI:        0.0
+Clb5_to_Sic1         - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:     1.9167
+_XTR_55_             - Correct: KO:      -0.25 | KI :     0.1667 - Incorrect KO:        0.0 | KI:     0.4167
+Clb2                 - Correct: KO:      -0.25 | KI :     1.4167 - Incorrect KO:        1.0 | KI:     0.4167
+_XTR_26_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:        1.0 | KI:    -0.0833
+Clb5                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:     1.9167
+SFF_to_Clb2          - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:     0.4167
+_XTR_58_             - Correct: KO:      -0.25 | KI :     0.1667 - Incorrect KO:        0.0 | KI:     0.4167
+_XTR_57_             - Correct: KO:      -0.25 | KI :        1.0 - Incorrect KO:     1.4167 | KI:        0.0
+_XTR_38_             - Correct: KO:      -0.25 | KI :       2.25 - Incorrect KO:     1.5834 | KI:     1.2501
+Swe1                 - Correct: KO:     0.1667 | KI :      -0.25 - Incorrect KO:     0.4167 | KI:        1.0
+Cdc20                - Correct: KO:        1.0 | KI :      -0.25 - Incorrect KO:        1.0 | KI:     3.5002
+Cln2                 - Correct: KO:      -0.25 | KI :       2.25 - Incorrect KO:     1.4167 | KI:     0.4167
+Cdc20_to_Clb2        - Correct: KO:        1.0 | KI :      -0.25 - Incorrect KO:        1.0 | KI:     0.4167
+Cdh1                 - Correct: KO:        1.0 | KI :      -0.25 - Incorrect KO:     4.5835 | KI:    -0.0833
+Sic1                 - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:     4.5835 | KI:    -0.0833
+_XTR_36_             - Correct: KO:      -0.25 | KI :       2.25 - Incorrect KO:      -0.25 | KI:     1.2501
+_XTR_15_             - Correct: KO:      -0.25 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_3_              - Correct: KO:      -0.25 | KI :        0.0 - Incorrect KO:     1.5835 | KI:     1.9167
+_XTR_9_              - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_17_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     2.9167 | KI:        0.0
+_XTR_33_             - Correct: KO:      -0.25 | KI :        0.0 - Incorrect KO:     1.1668 | KI:        0.0
+_XTR_2_              - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.1668 | KI:     1.9167
+_XTR_20_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     2.9167 | KI:        0.0
+Swi5_to_Swi5         - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_8_              - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+Cln3                 - Correct: KO:      -0.25 | KI :       2.25 - Incorrect KO:     1.1667 | KI:     0.8334
+Cdh1_to_Clb2         - Correct: KO:        1.0 | KI :      -0.25 - Incorrect KO:     1.4167 | KI:        0.0
+_XTR_52_             - Correct: KO:      -0.25 | KI :     1.4167 - Incorrect KO:     1.1667 | KI:        0.0
+_XTR_63_             - Correct: KO:     1.4167 | KI :      -0.25 - Incorrect KO:     0.4167 | KI:        0.0
+_XTR_37_             - Correct: KO:        0.0 | KI :       2.25 - Incorrect KO:     0.4167 | KI:     1.2501
+_XTR_4_              - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:     3.5835 | KI:    -0.0833
+Cdc14                - Correct: KO:        1.0 | KI :      -0.25 - Incorrect KO:        1.0 | KI:     1.8334
+_XTR_54_             - Correct: KO:      -0.25 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_21_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:     1.9167 | KI:    -0.0833
+_XTR_62_             - Correct: KO:     0.1667 | KI :      -0.25 - Incorrect KO:     0.4167 | KI:        0.0
+_XTR_16_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:     1.9167
+_XTR_64_             - Correct: KO:      -0.25 | KI :     1.4167 - Incorrect KO:        0.0 | KI:     0.4167
+_XTR_60_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:        0.0 | KI:        0.0
+Sic1_to_Sic1         - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.9167 | KI:        0.0
+_XTR_25_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:    -0.0833
+_XTR_22_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:     1.9167
+_XTR_61_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:     0.4167 | KI:        0.0
+SFF                  - Correct: KO:        1.0 | KI :        0.0 - Incorrect KO:     1.7501 | KI:     2.7501
+SMBF                 - Correct: KO:     1.4167 | KI :       2.25 - Incorrect KO:     1.4167 | KI:     0.4167
+_XTR_31_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     0.7501 | KI:        0.0
+_XTR_34_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:     1.2501 | KI:    -0.0833
+_XTR_1_              - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     0.7501 | KI:     1.9167
+Swi5                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+Sic1_to_Clb2         - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_28_             - Correct: KO:        0.0 | KI :      -0.25 - Incorrect KO:     2.9167 | KI:    -0.0833
+_XTR_59_             - Correct: KO:      -0.25 | KI :     1.4167 - Incorrect KO:        0.0 | KI:     0.4167
+_XTR_23_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     2.9167 | KI:        0.0
+BuddingCP
+Lack      0: []
+Extra     0: []
+Real      2: [5, 13]
+Prop      2: [5, 13]
+
+Size
+Lack      0: []
+Extra     0: []
+Real      2: [9, 13]
+Prop      2: [9, 13]
+
+SpindleCP
+Lack      0: []
+Extra     0: []
+Real      2: [13, 15]
+Prop      2: [13, 15]
+
+Start
+Lack      0: []
+Extra     0: []
+Real      2: [12, 13]
+Prop      2: [12, 13]
+
+Cdc14
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 9, 11]
+Real      2: [13, 15]
+Prop      8: [0, 2, 4, 6, 9, 11, 13, 15]
+
+Cdc20
+Lack      0: []
+Extra    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14]
+Real      2: [13, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Cdc20_to_Clb2
+Lack      1: [13]
+Extra     2: [5, 7]
+Real      2: [13, 15]
+Prop      3: [5, 7, 15]
+
+Cdh1
+Lack      0: []
+Extra    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14]
+Real      2: [13, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Cdh1_to_Clb2
+Lack      1: [13]
+Extra     2: [5, 7]
+Real      2: [13, 15]
+Prop      3: [5, 7, 15]
+
+Clb2
+Lack      1: [13]
+Extra     0: []
+Real      4: [5, 7, 13, 15]
+Prop      3: [5, 7, 15]
+
+Clb5
+Lack      0: []
+Extra     5: [0, 2, 4, 6, 11]
+Real      0: []
+Prop      5: [0, 2, 4, 6, 11]
+
+Clb5_to_Sic1
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 11, 15]
+Real      0: []
+Prop      6: [0, 2, 4, 6, 11, 15]
+
+Cln2
+Lack      3: [1, 3, 13]
+Extra     0: []
+Real      8: [1, 3, 5, 7, 9, 11, 13, 15]
+Prop      5: [5, 7, 9, 11, 15]
+
+Cln3
+Lack      0: []
+Extra     0: []
+Real      8: [1, 3, 5, 7, 9, 11, 13, 15]
+Prop      8: [1, 3, 5, 7, 9, 11, 13, 15]
+
+FEAR
+Lack      0: []
+Extra     0: []
+Real      1: [15]
+Prop      1: [15]
+
+MEN
+Lack      0: []
+Extra     0: []
+Real      1: [15]
+Prop      1: [15]
+
+SFF
+Lack      0: []
+Extra    15: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+Real      1: [15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+SFF_to_Clb2
+Lack      0: []
+Extra     3: [5, 7, 15]
+Real      0: []
+Prop      3: [5, 7, 15]
+
+SMBF
+Lack      2: [1, 3]
+Extra     0: []
+Real      7: [1, 3, 5, 7, 9, 11, 15]
+Prop      5: [5, 7, 9, 11, 15]
+
+Sic1
+Lack      0: []
+Extra    15: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15]
+Real      1: [13]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Sic1_to_Clb2
+Lack      1: [13]
+Extra     0: []
+Real      1: [13]
+Prop      0: []
+
+Sic1_to_Sic1
+Lack      0: []
+Extra     5: [0, 2, 4, 6, 11]
+Real      0: []
+Prop      5: [0, 2, 4, 6, 11]
+
+Swe1
+Lack      1: [13]
+Extra     2: [7, 15]
+Real      2: [5, 13]
+Prop      3: [5, 7, 15]
+
+Swi5
+Lack      0: []
+Extra     1: [15]
+Real      0: []
+Prop      1: [15]
+
+Swi5_to_Swi5
+Lack      0: []
+Extra     1: [15]
+Real      0: []
+Prop      1: [15]
+
+Whi5_to_SMBF
+Lack      3: [1, 3, 15]
+Extra     1: [11]
+Real      5: [1, 3, 5, 7, 15]
+Prop      3: [5, 7, 11]
+
+Yhp1
+Lack      0: []
+Extra     0: []
+Real      4: [5, 7, 13, 15]
+Prop      4: [5, 7, 13, 15]
+
+_XTR_12_
+Lack      0: []
+Extra     7: [2, 3, 6, 7, 10, 11, 14]
+Real      1: [15]
+Prop      8: [2, 3, 6, 7, 10, 11, 14, 15]
+
+_XTR_15_
+Lack      1: [13]
+Extra     1: [15]
+Real      1: [13]
+Prop      1: [15]
+
+_XTR_16_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 11, 15]
+Real      0: []
+Prop      6: [0, 2, 4, 6, 11, 15]
+
+_XTR_17_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 11, 15]
+Real      0: []
+Prop      6: [0, 2, 4, 6, 11, 15]
+
+_XTR_18_
+Lack      0: []
+Extra     7: [0, 2, 4, 6, 9, 11, 13]
+Real      0: []
+Prop      7: [0, 2, 4, 6, 9, 11, 13]
+
+_XTR_19_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 11, 15]
+Real      0: []
+Prop      6: [0, 2, 4, 6, 11, 15]
+
+_XTR_1_
+Lack      0: []
+Extra    11: [0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+Real      0: []
+Prop     11: [0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+
+_XTR_20_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 11, 15]
+Real      0: []
+Prop      6: [0, 2, 4, 6, 11, 15]
+
+_XTR_21_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 9, 11]
+Real      1: [13]
+Prop      7: [0, 2, 4, 6, 9, 11, 13]
+
+_XTR_22_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 11, 15]
+Real      0: []
+Prop      6: [0, 2, 4, 6, 11, 15]
+
+_XTR_23_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 11, 15]
+Real      0: []
+Prop      6: [0, 2, 4, 6, 11, 15]
+
+_XTR_24_
+Lack      0: []
+Extra     6: [0, 2, 4, 6, 9, 11]
+Real      1: [13]
+Prop      7: [0, 2, 4, 6, 9, 11, 13]
+
+_XTR_25_
+Lack      0: []
+Extra     3: [9, 13, 15]
+Real      0: []
+Prop      3: [9, 13, 15]
+
+_XTR_26_
+Lack      0: []
+Extra     2: [9, 15]
+Real      1: [13]
+Prop      3: [9, 13, 15]
+
+_XTR_27_
+Lack      0: []
+Extra     2: [9, 15]
+Real      1: [13]
+Prop      3: [9, 13, 15]
+
+_XTR_28_
+Lack      0: []
+Extra     7: [0, 2, 4, 6, 9, 11, 15]
+Real      1: [13]
+Prop      8: [0, 2, 4, 6, 9, 11, 13, 15]
+
+_XTR_29_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_2_
+Lack      0: []
+Extra    13: [0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+Real      0: []
+Prop     13: [0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+
+_XTR_30_
+Lack      0: []
+Extra     6: [8, 9, 10, 12, 13, 14]
+Real      0: []
+Prop      6: [8, 9, 10, 12, 13, 14]
+
+_XTR_31_
+Lack      0: []
+Extra     6: [8, 9, 10, 12, 13, 14]
+Real      0: []
+Prop      6: [8, 9, 10, 12, 13, 14]
+
+_XTR_32_
+Lack      0: []
+Extra     5: [8, 9, 10, 12, 14]
+Real      1: [13]
+Prop      6: [8, 9, 10, 12, 13, 14]
+
+_XTR_33_
+Lack      0: []
+Extra     7: [5, 7, 8, 9, 10, 12, 14]
+Real      1: [13]
+Prop      8: [5, 7, 8, 9, 10, 12, 13, 14]
+
+_XTR_34_
+Lack      0: []
+Extra     7: [5, 7, 8, 9, 10, 12, 14]
+Real      1: [13]
+Prop      8: [5, 7, 8, 9, 10, 12, 13, 14]
+
+_XTR_36_
+Lack      5: [1, 3, 5, 7, 15]
+Extra     4: [4, 6, 12, 14]
+Real      8: [1, 3, 5, 7, 9, 11, 13, 15]
+Prop      7: [4, 6, 9, 11, 12, 13, 14]
+
+_XTR_37_
+Lack      3: [5, 7, 15]
+Extra     4: [4, 6, 12, 14]
+Real      7: [1, 3, 5, 7, 9, 11, 15]
+Prop      8: [1, 3, 4, 6, 9, 11, 12, 14]
+
+_XTR_38_
+Lack      0: []
+Extra     4: [4, 6, 12, 14]
+Real      8: [1, 3, 5, 7, 9, 11, 13, 15]
+Prop     12: [1, 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15]
+
+_XTR_39_
+Lack      0: []
+Extra     4: [4, 6, 12, 14]
+Real      8: [1, 3, 5, 7, 9, 11, 13, 15]
+Prop     12: [1, 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15]
+
+_XTR_3_
+Lack      0: []
+Extra    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14]
+Real      1: [13]
+Prop     15: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+_XTR_40_
+Lack      0: []
+Extra     0: []
+Real      1: [13]
+Prop      1: [13]
+
+_XTR_41_
+Lack      0: []
+Extra     0: []
+Real      1: [13]
+Prop      1: [13]
+
+_XTR_42_
+Lack      0: []
+Extra     0: []
+Real      1: [13]
+Prop      1: [13]
+
+_XTR_45_
+Lack      2: [1, 3]
+Extra     0: []
+Real      7: [1, 3, 5, 7, 9, 11, 15]
+Prop      5: [5, 7, 9, 11, 15]
+
+_XTR_48_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_49_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_4_
+Lack      0: []
+Extra    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14]
+Real      1: [13]
+Prop     15: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+_XTR_50_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_52_
+Lack      0: []
+Extra     0: []
+Real      4: [5, 7, 13, 15]
+Prop      4: [5, 7, 13, 15]
+
+_XTR_54_
+Lack      1: [13]
+Extra     0: []
+Real      1: [13]
+Prop      0: []
+
+_XTR_55_
+Lack      1: [13]
+Extra     1: [7]
+Real      2: [5, 13]
+Prop      2: [5, 7]
+
+_XTR_56_
+Lack      1: [13]
+Extra     2: [5, 7]
+Real      2: [13, 15]
+Prop      3: [5, 7, 15]
+
+_XTR_57_
+Lack      1: [13]
+Extra     2: [5, 7]
+Real      2: [13, 15]
+Prop      3: [5, 7, 15]
+
+_XTR_58_
+Lack      1: [13]
+Extra     1: [7]
+Real      2: [5, 13]
+Prop      2: [5, 7]
+
+_XTR_59_
+Lack      2: [13, 15]
+Extra     0: []
+Real      4: [5, 7, 13, 15]
+Prop      2: [5, 7]
+
+_XTR_60_
+Lack      1: [13]
+Extra     0: []
+Real      1: [13]
+Prop      0: []
+
+_XTR_61_
+Lack      1: [13]
+Extra     2: [5, 7]
+Real      1: [13]
+Prop      2: [5, 7]
+
+_XTR_62_
+Lack      1: [13]
+Extra     1: [7]
+Real      2: [5, 13]
+Prop      2: [5, 7]
+
+_XTR_63_
+Lack      2: [13, 15]
+Extra     0: []
+Real      4: [5, 7, 13, 15]
+Prop      2: [5, 7]
+
+_XTR_64_
+Lack      2: [13, 15]
+Extra     0: []
+Real      4: [5, 7, 13, 15]
+Prop      2: [5, 7]
+
+_XTR_6_
+Lack      0: []
+Extra     1: [15]
+Real      0: []
+Prop      1: [15]
+
+_XTR_7_
+Lack      0: []
+Extra     1: [15]
+Real      0: []
+Prop      1: [15]
+
+_XTR_8_
+Lack      0: []
+Extra     1: [15]
+Real      0: []
+Prop      1: [15]
+
+_XTR_9_
+Lack      0: []
+Extra     1: [15]
+Real      0: []
+Prop      1: [15]
+
+Number of nodes is 79
+Number of input nodes is 4
+Relative_RMSE_KO_is  0.13306018711446602
+Relative_RMSE_KI_is  0.10109899975716244
+NDCG_KO_is  0.643677163665606
+NDCG_KI_is  0.5778021396971252
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             79.000       79.000
+Kendall tau-b                         0.064        0.238
+Spearman rho                          0.095        0.114
+Mean abs rank diff                    6.937        6.418
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.077        0.000
+         Precision@10                0.167        0.000
+         Recall@10                   0.125        0.000
+  Top-20 Jaccard                   0.229        0.300
+         Precision@20                0.524        0.556
+         Recall@20                   0.289        0.395
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.000        0.000
+  Top-2  groups Jaccard            0.000        0.000
+  Top-3  groups Jaccard            0.111        0.000
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.0007510185241699219
+TIME simulate original network: 0.031333208084106445
+TIME perform original analysis process: 0.8821578025817871
+TIME perform propagation: 0.506281852722168
+-----------TOTAL RUNNING TIME---------------
+23.12872354197316

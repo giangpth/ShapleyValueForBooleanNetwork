@@ -61,6 +61,9 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
         if hash not in oldstate:
             oldstate[hash] = numstep
         else:
+            # print("Start attractor")
+            # print(inputstate)
+            blinking = set()
             # merge all the state inside the loop 
             returnstate = copy.deepcopy(inputstate)
             for i in range(numstep-oldstate[hash] - 1):
@@ -76,6 +79,8 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
                                 print("Cannot find the root of the extra node {}".format(extranode)) 
                                 return
                     inputstate = sim1bistep(formulas, inputstate, debug)
+                    # print("Periodic")
+                    # print(inputstate)
                 else:
                     if extranodes:
                         for extranode in extranodes:
@@ -88,14 +93,15 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
                                 print("Cannot find the root of the extra node {}".format(extranode)) 
                                 return
                     inputstate = sim1step(formulas, inputstate, debug)
-                returnstate = merge2states(returnstate, inputstate)
+                returnstate, thisblink = merge2states(returnstate, inputstate)
+                blinking.update(thisblink)
             # if toshow:
             #     print("Converge at step {}".format(numstep)) 
             #     print(returnstate)
-            return returnstate 
+            return returnstate, blinking
     # print(type(inputstate))
     print("Cannot converge after {} steps".format(maxStep))
-    return inputstate 
+    return inputstate, set()
 
 def processPossitiveDiamond(beg, target, infordicts, allrows, goodchilds, index, aindex, extranodes):
     """
@@ -830,8 +836,8 @@ def simulateOneNode(table, node, target, formulas, rowsofnode, extranodes, input
             if k not in inputnames:
                 rawrow[k] = False
 
-        knockin = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, True)
-        knockout = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, False)
+        knockin, kiblinking = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, True)
+        knockout, koblinking = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, False)
 
         if (oldvalue ^ knockin[target]) or (oldvalue ^ knockout[target]): 
             rowstoreturn.add(row)
@@ -920,6 +926,7 @@ def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  \
             #     print("Number of iteration {} and first loop point is {}".format(numstep, oldstate[hash]))
 
             # merge all the state inside the loop 
+            blinkings = set()
             returnstate = copy.deepcopy(inputstate)
             for i in range(numstep-oldstate[hash] - 1):
                 if isbi:
@@ -955,14 +962,15 @@ def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  \
                             inputstate[node] = False
                         # print("Setting {} is False as it is knocked out".format(node))
 
-                returnstate = merge2states(returnstate, inputstate)
+                returnstate, blinking = merge2states(returnstate, inputstate)
+                blinkings.update(blinking)
             # if toshow:
             #     print("Converge at step {}".format(numstep)) 
             #     print(returnstate)
-            return returnstate 
+            return returnstate, blinkings
     # print(type(inputstate))
     print("Cannot converge after {} steps".format(maxStep))
-    return inputstate 
+    return inputstate, set()
 
 
 def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedinter, debug=False, maxstep=1000, extranodes=None):
@@ -1003,13 +1011,15 @@ def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedin
                     return
 
     outputs = []
+    blinkings = []
     for inputstate in inputstates:
-        output = getOutput(biformulas, inputstate, True, 1000, debug, extranodes) 
+        output, blinking = getOutput(biformulas, inputstate, True, 1000, debug, extranodes) 
         
         # this is to test the correctness of the getKnockoutOutput function 
         # output = getKnockoutOutput(biformulas, inputstate, None, True, 1000, False, extranodes)
         
         outputs.append(output)
+        blinkings.append(blinking)
         # if debug:
             # print(inp, inter)
         inp, inter = toDecimal(output, sortedinput, sortedinter)
@@ -1017,7 +1027,7 @@ def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedin
 
 
 
-    return outputs, decimalPairs
+    return outputs, blinkings, decimalPairs
 
     # run the simulation with the binary network 
 

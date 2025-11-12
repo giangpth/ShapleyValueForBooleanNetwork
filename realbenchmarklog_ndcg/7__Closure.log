@@ -1,0 +1,1372 @@
+The expression file is data/realbenchmark/7.txt
+The interested output is: 
+{'Closure'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'NO', 'Ca2_c', 'ERA1', 'KEV', 'ABI1', 'OST1', 'Atrboh', 'Ca2_ATPase', 'RAC1', 'Actin', 'ROP2', 'CIS', 'cGMP', 'GCR1', 'HTPase', 'PLD', 'Malate', 'AGB1', 'PEPC', 'ADPRc', 'InsP3', 'KOUT', 'PLC', 'ROP10', 'AnionEM', 'Depolar', 'NIA12', 'GPA1', 'PA', 'cADPR', 'NOS', 'Closure', 'CaIM', 'ROS', 'pH', 'RCN1', 'KAP', 'ABH1', 'GC', 'SphK', 'InsP6', 'ABA', 'InsPK', 'S1P'}
+-----Input names-----
+{'ABA', 'GCR1', 'ERA1', 'ABH1'}
+----Intermediate nodes-----
+{'NO', 'Ca2_c', 'KEV', 'ABI1', 'OST1', 'Atrboh', 'Ca2_ATPase', 'RAC1', 'Actin', 'ROP2', 'CIS', 'cGMP', 'HTPase', 'PLD', 'Malate', 'AGB1', 'PEPC', 'ADPRc', 'InsP3', 'KOUT', 'PLC', 'ROP10', 'AnionEM', 'Depolar', 'NIA12', 'GPA1', 'PA', 'cADPR', 'NOS', 'CaIM', 'ROS', 'pH', 'RCN1', 'KAP', 'GC', 'SphK', 'InsP6', 'InsPK', 'S1P'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Depolar', 'GC', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+There are 39 intermediate nodes with the range of inter: 0 549755813887
+----Input knockout shapley value-----
+('Closure', {'ABA': 0.0, 'GCR1': 0.0, 'ERA1': -1.6667, 'ABH1': -1.6667})
+
+
+----Input knockIN shapley value-----
+('Closure', {'ABA': 0.0, 'GCR1': 0.0, 'ERA1': 0.8333, 'ABH1': 0.8333})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout NO
+Knockout Ca2_c
+Knockout KEV
+Knockout ABI1
+Knockout OST1
+Knockout Atrboh
+Knockout Ca2_ATPase
+Knockout RAC1
+Knockout Actin
+Knockout ROP2
+Knockout CIS
+Knockout cGMP
+Knockout HTPase
+Knockout PLD
+Knockout Malate
+Knockout AGB1
+Knockout PEPC
+Knockout ADPRc
+Knockout InsP3
+Knockout KOUT
+Knockout PLC
+Knockout ROP10
+Knockout AnionEM
+Knockout Depolar
+Knockout NIA12
+Knockout GPA1
+Knockout PA
+Knockout cADPR
+Knockout NOS
+Knockout CaIM
+Knockout ROS
+Knockout pH
+Knockout RCN1
+Knockout KAP
+Knockout GC
+Knockout SphK
+Knockout InsP6
+Knockout InsPK
+Knockout S1P
+----KNOCKOUT VALUE for output Closure----
+{'ABI1': -1.25, 'ADPRc': 0.0, 'AGB1': 0.0, 'Actin': 3.3333, 'AnionEM': 3.3333, 'Atrboh': 0.0, 'CIS': 1.25, 'Ca2_ATPase': 0.0, 'Ca2_c': 3.3333, 'CaIM': 3.3333, 'Depolar': 3.3333, 'GC': 0.0, 'GPA1': 0.0, 'HTPase': 2.0833, 'InsP3': 0.0, 'InsP6': 0.0, 'InsPK': 0.0, 'KAP': 0.0, 'KEV': 0.0, 'KOUT': 3.3333, 'Malate': 0.0, 'NIA12': 0.0, 'NO': 0.0, 'NOS': 0.0, 'OST1': 0.0, 'PA': 0.0, 'PEPC': 0.0, 'PLC': 0.0, 'PLD': 0.0, 'RAC1': 0.0, 'RCN1': 0.0, 'ROP10': 0.0, 'ROP2': 0.0, 'ROS': 0.0, 'S1P': 0.0, 'SphK': 0.0, 'cADPR': 0.0, 'cGMP': 0.0, 'pH': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin NO
+Knockin Ca2_c
+Knockin KEV
+Knockin ABI1
+Knockin OST1
+Knockin Atrboh
+Knockin Ca2_ATPase
+Knockin RAC1
+Knockin Actin
+Knockin ROP2
+Knockin CIS
+Knockin cGMP
+Knockin HTPase
+Knockin PLD
+Knockin Malate
+Knockin AGB1
+Knockin PEPC
+Knockin ADPRc
+Knockin InsP3
+Knockin KOUT
+Knockin PLC
+Knockin ROP10
+Knockin AnionEM
+Knockin Depolar
+Knockin NIA12
+Knockin GPA1
+Knockin PA
+Knockin cADPR
+Knockin NOS
+Knockin CaIM
+Knockin ROS
+Knockin pH
+Knockin RCN1
+Knockin KAP
+Knockin GC
+Knockin SphK
+Knockin InsP6
+Knockin InsPK
+Knockin S1P
+----KNOCKIN VALUE for output Closure----
+{'Closure': {'NO': -1.6667, 'Ca2_c': -1.6667, 'KEV': 2.0833, 'ABI1': 2.0833, 'OST1': 0.0, 'Atrboh': 0.8333, 'Ca2_ATPase': 3.3333, 'RAC1': 0.0, 'Actin': 0.0, 'ROP2': -1.25, 'CIS': -1.6667, 'cGMP': 0.0, 'HTPase': 0.0, 'PLD': -1.25, 'Malate': 3.3333, 'AGB1': -1.25, 'PEPC': 0.0, 'ADPRc': 0.0, 'InsP3': -1.25, 'KOUT': 0.0, 'PLC': -1.25, 'ROP10': 0.0, 'AnionEM': 0.8333, 'Depolar': 3.3333, 'NIA12': 0.0, 'GPA1': -1.25, 'PA': -1.25, 'cADPR': 0.0, 'NOS': -1.25, 'CaIM': -1.6667, 'ROS': 0.8333, 'pH': 2.0833, 'RCN1': 0.0, 'KAP': 0.0, 'GC': 0.0, 'SphK': 0.0, 'InsP6': 0.0, 'InsPK': 0.0, 'S1P': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Depolar', 'GC', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+There are 39 intermediate nodes with the range of inter: 0 549755813887
+----Input shapley value of acyclic network-----
+('Closure', {'ABA': 0.0, 'GCR1': 0.0, 'ERA1': -1.6667, 'ABH1': -1.6667})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac AnionEMANDActin, try ActinANDAnionEM
+Input are {'ABA', 'GCR1', 'ERA1', 'ABH1'}
+Ordinary nodes are 
+{'NO', 'Ca2_c', 'ERA1', 'KEV', 'ABI1', 'OST1', 'Atrboh', 'Ca2_ATPase', 'RAC1', 'Actin', 'ROP2', 'CIS', 'cGMP', 'GCR1', 'HTPase', 'PLD', 'Malate', 'AGB1', 'PEPC', 'ADPRc', 'InsP3', 'KOUT', 'PLC', 'ROP10', 'AnionEM', 'Depolar', 'NIA12', 'GPA1', 'PA', 'cADPR', 'NOS', 'Closure', 'CaIM', 'ROS', 'pH', 'RCN1', 'KAP', 'ABH1', 'GC', 'SphK', 'InsP6', 'ABA', 'InsPK', 'S1P'}
+Extranodes added after removing cycles are 
+['Atrboh_to_ROS', 'Ca2_ATPase_to_Ca2_c', 'CIS_to_Ca2_c', 'AGB1_to_GPA1', 'Depolar_to_KOUT', 'CaIM_to_Ca2_c']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[{'_XTR_61_', 'Ca2_c', '_XTR_29_', '_XTR_100_', '_XTR_78_', '_XTR_65_', 'KEV', 'Ca2_ATPase', 'Actin', '_XTR_55_', 'HTPase', '_XTR_30_', '_XTR_63_', 'Malate', '_XTR_3_', '_XTR_62_', 'Depolar_to_KOUT', '_XTR_15_', 'KOUT', '_XTR_35_', '_XTR_76_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_20_', 'CaIM_to_Ca2_c', 'NOS', '_XTR_28_', 'CaIM', 'KAP', '_XTR_31_', '_XTR_93_', '_XTR_64_'}, {'_XTR_61_', 'Ca2_c', '_XTR_29_', '_XTR_100_', '_XTR_78_', '_XTR_65_', 'KEV', 'Ca2_ATPase', 'Actin', '_XTR_55_', 'HTPase', '_XTR_30_', '_XTR_63_', 'Malate', '_XTR_3_', '_XTR_62_', 'Depolar_to_KOUT', '_XTR_15_', 'KOUT', '_XTR_35_', '_XTR_76_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_20_', 'CaIM_to_Ca2_c', 'NOS', '_XTR_28_', 'CaIM', 'KAP', '_XTR_31_', '_XTR_93_', '_XTR_64_'}, {'_XTR_61_', 'Ca2_c', '_XTR_100_', '_XTR_78_', '_XTR_65_', 'KEV', '_XTR_27_', 'Ca2_ATPase', 'Actin', '_XTR_55_', 'HTPase', '_XTR_63_', 'Malate', '_XTR_3_', '_XTR_62_', 'Depolar_to_KOUT', '_XTR_15_', 'KOUT', '_XTR_35_', '_XTR_76_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_20_', '_XTR_26_', 'CaIM_to_Ca2_c', 'NOS', '_XTR_28_', 'CaIM', 'KAP', '_XTR_93_', '_XTR_64_'}, {'_XTR_61_', 'Ca2_c', '_XTR_100_', '_XTR_78_', '_XTR_65_', 'KEV', '_XTR_27_', 'Ca2_ATPase', 'Actin', '_XTR_55_', 'HTPase', '_XTR_63_', 'Malate', '_XTR_3_', '_XTR_62_', 'Depolar_to_KOUT', '_XTR_15_', 'KOUT', '_XTR_35_', '_XTR_76_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_20_', '_XTR_26_', 'CaIM_to_Ca2_c', 'NOS', '_XTR_28_', 'CaIM', 'KAP', '_XTR_93_', '_XTR_64_'}, {'_XTR_61_', 'Ca2_c', '_XTR_100_', '_XTR_78_', '_XTR_65_', 'KEV', '_XTR_27_', '_XTR_21_', 'Ca2_ATPase', 'Actin', '_XTR_55_', 'HTPase', '_XTR_63_', 'Malate', '_XTR_3_', '_XTR_62_', 'Depolar_to_KOUT', '_XTR_15_', 'KOUT', '_XTR_35_', '_XTR_76_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_20_', 'CaIM_to_Ca2_c', 'NOS', 'CaIM', 'KAP', '_XTR_23_', '_XTR_93_', '_XTR_64_'}, {'_XTR_61_', 'Ca2_c', '_XTR_100_', '_XTR_78_', '_XTR_65_', 'KEV', '_XTR_27_', '_XTR_21_', 'Ca2_ATPase', 'Actin', '_XTR_55_', 'HTPase', '_XTR_63_', 'Malate', '_XTR_3_', '_XTR_62_', 'Depolar_to_KOUT', '_XTR_15_', 'KOUT', '_XTR_35_', '_XTR_76_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_20_', 'CaIM_to_Ca2_c', 'NOS', 'CaIM', 'KAP', '_XTR_23_', '_XTR_93_', '_XTR_64_'}, {'KOUT', 'KAP', '_XTR_35_', 'Depolar_to_KOUT', '_XTR_20_'}, {'KOUT', 'KAP', '_XTR_35_', 'Depolar_to_KOUT', '_XTR_20_'}, {'_XTR_61_', 'Ca2_c', 'KEV', 'Ca2_ATPase', '_XTR_54_', 'CIS', '_XTR_59_', 'cGMP', '_XTR_55_', '_XTR_73_', '_XTR_74_', '_XTR_56_', '_XTR_42_', 'CIS_to_Ca2_c', '_XTR_3_', '_XTR_62_', '_XTR_83_', 'ADPRc', '_XTR_15_', '_XTR_77_', '_XTR_57_', '_XTR_58_', 'PLC', '_XTR_76_', '_XTR_4_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_5_', 'cADPR', '_XTR_43_', 'NOS', 'GC', 'KAP', '_XTR_84_'}, {'_XTR_61_', 'Ca2_c', 'KEV', 'Ca2_ATPase', '_XTR_54_', 'CIS', '_XTR_59_', 'cGMP', '_XTR_55_', '_XTR_73_', '_XTR_74_', '_XTR_56_', '_XTR_42_', 'CIS_to_Ca2_c', '_XTR_3_', '_XTR_62_', '_XTR_83_', 'ADPRc', '_XTR_15_', '_XTR_77_', '_XTR_57_', '_XTR_58_', 'PLC', '_XTR_76_', '_XTR_4_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_5_', 'cADPR', '_XTR_43_', 'NOS', 'GC', 'KAP', '_XTR_84_'}, {'_XTR_61_', 'Ca2_c', 'KEV', 'Ca2_ATPase', '_XTR_54_', 'CIS', '_XTR_59_', 'cGMP', '_XTR_55_', '_XTR_73_', '_XTR_74_', '_XTR_56_', '_XTR_42_', 'CIS_to_Ca2_c', '_XTR_3_', '_XTR_62_', '_XTR_83_', 'ADPRc', '_XTR_15_', '_XTR_77_', '_XTR_57_', '_XTR_58_', 'PLC', '_XTR_76_', '_XTR_4_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_5_', 'cADPR', '_XTR_43_', 'NOS', 'GC', 'KAP', '_XTR_84_'}, {'_XTR_61_', 'Ca2_c', 'KEV', 'Ca2_ATPase', '_XTR_54_', 'CIS', '_XTR_59_', 'cGMP', '_XTR_55_', '_XTR_73_', '_XTR_74_', '_XTR_56_', '_XTR_42_', 'CIS_to_Ca2_c', '_XTR_3_', '_XTR_62_', '_XTR_83_', 'ADPRc', '_XTR_15_', '_XTR_77_', '_XTR_57_', '_XTR_58_', 'PLC', '_XTR_76_', '_XTR_4_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_5_', 'cADPR', '_XTR_43_', 'NOS', 'GC', 'KAP', '_XTR_84_'}, {'_XTR_61_', 'Ca2_c', 'KEV', 'Ca2_ATPase', '_XTR_54_', 'CIS', '_XTR_59_', 'cGMP', '_XTR_55_', '_XTR_73_', '_XTR_74_', '_XTR_56_', '_XTR_42_', 'CIS_to_Ca2_c', '_XTR_3_', '_XTR_62_', '_XTR_83_', 'ADPRc', '_XTR_15_', '_XTR_77_', '_XTR_57_', '_XTR_58_', 'PLC', '_XTR_76_', '_XTR_4_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_5_', 'cADPR', '_XTR_43_', 'NOS', 'GC', 'KAP', '_XTR_84_'}, {'_XTR_61_', 'Ca2_c', 'KEV', 'Ca2_ATPase', '_XTR_54_', 'CIS', '_XTR_59_', 'cGMP', '_XTR_55_', '_XTR_73_', '_XTR_74_', '_XTR_56_', '_XTR_42_', 'CIS_to_Ca2_c', '_XTR_3_', '_XTR_62_', '_XTR_83_', 'ADPRc', '_XTR_15_', '_XTR_77_', '_XTR_57_', '_XTR_58_', 'PLC', '_XTR_76_', '_XTR_4_', '_XTR_52_', 'AnionEM', '_XTR_67_', '_XTR_5_', 'cADPR', '_XTR_43_', 'NOS', 'GC', 'KAP', '_XTR_84_'}, set(), set()]
+-----Knockout Shapley value of input nodes in the binary network-----
+Closure : {'ABA': 0.0, 'GCR1': 0.0, 'ERA1': -1.6667, 'ABH1': -1.6667}
+-----KnockIN Shapley value of input nodes in the binary network-----
+Closure : {'ABA': 0.0, 'GCR1': 0.0, 'ERA1': 0.8333, 'ABH1': 0.8333}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout NO
+Knockout _XTR_61_
+Knockout Ca2_c
+Knockout _XTR_14_
+Knockout _XTR_25_
+Knockout _XTR_66_
+Knockout ABI1
+Knockout _XTR_27_
+Knockout OST1
+Knockout Atrboh
+Knockout Ca2_ATPase
+Knockout _XTR_102_
+Knockout Ca2_ATPase_to_Ca2_c
+Knockout ROP2
+Knockout _XTR_59_
+Knockout cGMP
+Knockout _XTR_63_
+Knockout _XTR_73_
+Knockout _XTR_30_
+Knockout _XTR_74_
+Knockout HTPase
+Knockout _XTR_19_
+Knockout Malate
+Knockout PLD
+Knockout _XTR_56_
+Knockout CIS_to_Ca2_c
+Knockout _XTR_99_
+Knockout PEPC
+Knockout Depolar_to_KOUT
+Knockout _XTR_62_
+Knockout _XTR_60_
+Knockout ADPRc
+Knockout _XTR_15_
+Knockout _XTR_92_
+Knockout _XTR_57_
+Knockout _XTR_58_
+Knockout _XTR_8_
+Knockout PLC
+Knockout _XTR_70_
+Knockout _XTR_24_
+Knockout NIA12
+Knockout _XTR_36_
+Knockout _XTR_103_
+Knockout PA
+Knockout _XTR_26_
+Knockout _XTR_71_
+Knockout _XTR_88_
+Knockout _XTR_51_
+Knockout _XTR_101_
+Knockout cADPR
+Knockout _XTR_43_
+Knockout NOS
+Knockout _XTR_33_
+Knockout _XTR_48_
+Knockout GC
+Knockout KAP
+Knockout _XTR_31_
+Knockout _XTR_84_
+Knockout InsP6
+Knockout SphK
+Knockout _XTR_93_
+Knockout InsPK
+Knockout Atrboh_to_ROS
+Knockout _XTR_64_
+Knockout _XTR_13_
+Knockout _XTR_53_
+Knockout _XTR_29_
+Knockout _XTR_100_
+Knockout AGB1_to_GPA1
+Knockout _XTR_78_
+Knockout KEV
+Knockout _XTR_65_
+Knockout _XTR_87_
+Knockout _XTR_21_
+Knockout RAC1
+Knockout Actin
+Knockout _XTR_54_
+Knockout CIS
+Knockout _XTR_98_
+Knockout _XTR_55_
+Knockout _XTR_2_
+Knockout _XTR_49_
+Knockout _XTR_42_
+Knockout AGB1
+Knockout _XTR_3_
+Knockout _XTR_83_
+Knockout InsP3
+Knockout _XTR_77_
+Knockout KOUT
+Knockout _XTR_35_
+Knockout _XTR_76_
+Knockout _XTR_4_
+Knockout ROP10
+Knockout AnionEM
+Knockout _XTR_67_
+Knockout Depolar
+Knockout _XTR_5_
+Knockout _XTR_10_
+Knockout _XTR_52_
+Knockout _XTR_20_
+Knockout GPA1
+Knockout _XTR_69_
+Knockout _XTR_18_
+Knockout CaIM_to_Ca2_c
+Knockout _XTR_9_
+Knockout _XTR_22_
+Knockout _XTR_28_
+Knockout CaIM
+Knockout ROS
+Knockout pH
+Knockout _XTR_38_
+Knockout RCN1
+Knockout _XTR_1_
+Knockout _XTR_68_
+Knockout _XTR_23_
+Knockout _XTR_89_
+Knockout _XTR_34_
+Knockout S1P
+---- Binary KNOCKOUT VALUE for output Closure----
+{'Closure': {'NO': 0.0, '_XTR_61_': 0.0, 'Ca2_c': 3.3333, '_XTR_14_': 0.0, '_XTR_25_': 0.8333, '_XTR_66_': 2.0833, 'ABI1': -1.25, '_XTR_27_': 1.6667, 'OST1': 0.0, 'Atrboh': 0.0, 'Ca2_ATPase': 0.0, '_XTR_102_': 1.25, 'Ca2_ATPase_to_Ca2_c': 0.0, 'ROP2': 0.0, '_XTR_59_': 0.0, 'cGMP': 0.0, '_XTR_63_': 0.0, '_XTR_73_': 0.0, '_XTR_30_': -1.6667, '_XTR_74_': 0.0, 'HTPase': 2.0833, '_XTR_19_': 0.8333, 'Malate': 0.0, 'PLD': 0.0, '_XTR_56_': 0.0, 'CIS_to_Ca2_c': 1.25, '_XTR_99_': 0.0, 'PEPC': 0.0, 'Depolar_to_KOUT': 3.3333, '_XTR_62_': 0.0, '_XTR_60_': 2.0833, 'ADPRc': 0.0, '_XTR_15_': 0.0, '_XTR_92_': 0.0, '_XTR_57_': 0.0, '_XTR_58_': 0.0, '_XTR_8_': -1.25, 'PLC': 0.0, '_XTR_70_': 2.0833, '_XTR_24_': 0.8333, 'NIA12': 0.0, '_XTR_36_': 0.0, '_XTR_103_': 1.25, 'PA': 0.0, '_XTR_26_': 0.8333, '_XTR_71_': 0.0, '_XTR_88_': 0.0, '_XTR_51_': 0.0, '_XTR_101_': 0.0, 'cADPR': 0.0, '_XTR_43_': 0.0, 'NOS': 0.0, '_XTR_33_': 0.0, '_XTR_48_': 0.0, 'GC': 0.0, 'KAP': 0.0, '_XTR_31_': 1.6667, '_XTR_84_': 0.0, 'InsP6': 0.0, 'SphK': 0.0, '_XTR_93_': 0.0, 'InsPK': 0.0, 'Atrboh_to_ROS': 0.0, '_XTR_64_': 0.0, '_XTR_13_': 0.0, '_XTR_53_': 0.0, '_XTR_29_': -1.6667, '_XTR_100_': 3.3333, 'AGB1_to_GPA1': 0.0, '_XTR_78_': 3.3333, 'KEV': 0.0, '_XTR_65_': 0.0, '_XTR_87_': 0.0, '_XTR_21_': 0.8333, 'RAC1': 0.0, 'Actin': 3.3333, '_XTR_54_': 0.0, 'CIS': 1.25, '_XTR_98_': 3.3333, '_XTR_55_': 0.0, '_XTR_2_': 2.0833, '_XTR_49_': 0.0, '_XTR_42_': 0.0, 'AGB1': 0.0, '_XTR_3_': 2.0833, '_XTR_83_': 0.0, 'InsP3': 0.0, '_XTR_77_': 1.25, 'KOUT': 3.3333, '_XTR_35_': 2.0833, '_XTR_76_': 3.3333, '_XTR_4_': 0.0, 'ROP10': 0.0, 'AnionEM': 3.3333, '_XTR_67_': 0.0, 'Depolar': 3.3333, '_XTR_5_': 0.0, '_XTR_10_': -1.25, '_XTR_52_': 0.0, '_XTR_20_': 1.6667, 'GPA1': 0.0, '_XTR_69_': 0.0, '_XTR_18_': 0.8333, 'CaIM_to_Ca2_c': 3.3333, '_XTR_9_': -1.25, '_XTR_22_': 0.0, '_XTR_28_': 0.0, 'CaIM': 3.3333, 'ROS': 0.0, 'pH': 0.0, '_XTR_38_': 0.0, 'RCN1': 0.0, '_XTR_1_': 2.0833, '_XTR_68_': 0.0, '_XTR_23_': 0.8333, '_XTR_89_': 0.0, '_XTR_34_': 2.0833, 'S1P': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN NO
+KnockIN _XTR_61_
+KnockIN Ca2_c
+KnockIN _XTR_14_
+KnockIN _XTR_25_
+KnockIN _XTR_66_
+KnockIN ABI1
+KnockIN _XTR_27_
+KnockIN OST1
+KnockIN Atrboh
+KnockIN Ca2_ATPase
+KnockIN _XTR_102_
+KnockIN Ca2_ATPase_to_Ca2_c
+KnockIN ROP2
+KnockIN _XTR_59_
+KnockIN cGMP
+KnockIN _XTR_63_
+KnockIN _XTR_73_
+KnockIN _XTR_30_
+KnockIN _XTR_74_
+KnockIN HTPase
+KnockIN _XTR_19_
+KnockIN Malate
+KnockIN PLD
+KnockIN _XTR_56_
+KnockIN CIS_to_Ca2_c
+KnockIN _XTR_99_
+KnockIN PEPC
+KnockIN Depolar_to_KOUT
+KnockIN _XTR_62_
+KnockIN _XTR_60_
+KnockIN ADPRc
+KnockIN _XTR_15_
+KnockIN _XTR_92_
+KnockIN _XTR_57_
+KnockIN _XTR_58_
+KnockIN _XTR_8_
+KnockIN PLC
+KnockIN _XTR_70_
+KnockIN _XTR_24_
+KnockIN NIA12
+KnockIN _XTR_36_
+KnockIN _XTR_103_
+KnockIN PA
+KnockIN _XTR_26_
+KnockIN _XTR_71_
+KnockIN _XTR_88_
+KnockIN _XTR_51_
+KnockIN _XTR_101_
+KnockIN cADPR
+KnockIN _XTR_43_
+KnockIN NOS
+KnockIN _XTR_33_
+KnockIN _XTR_48_
+KnockIN GC
+KnockIN KAP
+KnockIN _XTR_31_
+KnockIN _XTR_84_
+KnockIN InsP6
+KnockIN SphK
+KnockIN _XTR_93_
+KnockIN InsPK
+KnockIN Atrboh_to_ROS
+KnockIN _XTR_64_
+KnockIN _XTR_13_
+KnockIN _XTR_53_
+KnockIN _XTR_29_
+KnockIN _XTR_100_
+KnockIN AGB1_to_GPA1
+KnockIN _XTR_78_
+KnockIN KEV
+KnockIN _XTR_65_
+KnockIN _XTR_87_
+KnockIN _XTR_21_
+KnockIN RAC1
+KnockIN Actin
+KnockIN _XTR_54_
+KnockIN CIS
+KnockIN _XTR_98_
+KnockIN _XTR_55_
+KnockIN _XTR_2_
+KnockIN _XTR_49_
+KnockIN _XTR_42_
+KnockIN AGB1
+KnockIN _XTR_3_
+KnockIN _XTR_83_
+KnockIN InsP3
+KnockIN _XTR_77_
+KnockIN KOUT
+KnockIN _XTR_35_
+KnockIN _XTR_76_
+KnockIN _XTR_4_
+KnockIN ROP10
+KnockIN AnionEM
+KnockIN _XTR_67_
+KnockIN Depolar
+KnockIN _XTR_5_
+KnockIN _XTR_10_
+KnockIN _XTR_52_
+KnockIN _XTR_20_
+KnockIN GPA1
+KnockIN _XTR_69_
+KnockIN _XTR_18_
+KnockIN CaIM_to_Ca2_c
+KnockIN _XTR_9_
+KnockIN _XTR_22_
+KnockIN _XTR_28_
+KnockIN CaIM
+KnockIN ROS
+KnockIN pH
+KnockIN _XTR_38_
+KnockIN RCN1
+KnockIN _XTR_1_
+KnockIN _XTR_68_
+KnockIN _XTR_23_
+KnockIN _XTR_89_
+KnockIN _XTR_34_
+KnockIN S1P
+---- Binary KNOCKIN VALUE for output Closure----
+{'Closure': {'NO': -1.6667, '_XTR_61_': 0.0, 'Ca2_c': -1.6667, '_XTR_14_': 1.25, '_XTR_25_': -1.6667, '_XTR_66_': 2.0833, 'ABI1': 2.0833, '_XTR_27_': -1.6667, 'OST1': 0.0, 'Atrboh': 0.8333, 'Ca2_ATPase': 3.3333, '_XTR_102_': -1.25, 'Ca2_ATPase_to_Ca2_c': 3.3333, 'ROP2': -1.25, '_XTR_59_': 2.0833, 'cGMP': 0.0, '_XTR_63_': 2.0833, '_XTR_73_': -1.6667, '_XTR_30_': 1.6667, '_XTR_74_': -1.6667, 'HTPase': 0.0, '_XTR_19_': -1.6667, 'Malate': 3.3333, 'PLD': -1.25, '_XTR_56_': 2.0833, 'CIS_to_Ca2_c': -1.6667, '_XTR_99_': -1.25, 'PEPC': 0.0, 'Depolar_to_KOUT': 0.0, '_XTR_62_': 0.0, '_XTR_60_': 2.0833, 'ADPRc': 0.0, '_XTR_15_': 2.0833, '_XTR_92_': 2.0833, '_XTR_57_': 2.0833, '_XTR_58_': 2.0833, '_XTR_8_': 0.0, 'PLC': -1.25, '_XTR_70_': 0.0, '_XTR_24_': -1.6667, 'NIA12': 0.0, '_XTR_36_': 0.0, '_XTR_103_': -1.6667, 'PA': -1.25, '_XTR_26_': -1.6667, '_XTR_71_': 2.0833, '_XTR_88_': -1.25, '_XTR_51_': 2.0833, '_XTR_101_': -1.6667, 'cADPR': 0.0, '_XTR_43_': 0.0, 'NOS': -1.25, '_XTR_33_': 2.0833, '_XTR_48_': -1.25, 'GC': 0.0, 'KAP': 0.0, '_XTR_31_': -1.6667, '_XTR_84_': 0.0, 'InsP6': 0.0, 'SphK': 0.0, '_XTR_93_': 2.0833, 'InsPK': 0.0, 'Atrboh_to_ROS': 0.8333, '_XTR_64_': 2.0833, '_XTR_13_': 0.0, '_XTR_53_': 2.0833, '_XTR_29_': 1.6667, '_XTR_100_': 0.0, 'AGB1_to_GPA1': -1.25, '_XTR_78_': -1.6667, 'KEV': 2.0833, '_XTR_65_': 2.0833, '_XTR_87_': 0.0, '_XTR_21_': -1.6667, 'RAC1': 0.0, 'Actin': 0.0, '_XTR_54_': 2.0833, 'CIS': -1.6667, '_XTR_98_': -1.25, '_XTR_55_': 0.0, '_XTR_2_': 0.0, '_XTR_49_': 0.8333, '_XTR_42_': 0.0, 'AGB1': -1.25, '_XTR_3_': 0.8333, '_XTR_83_': 0.0, 'InsP3': -1.25, '_XTR_77_': -1.6667, 'KOUT': 0.0, '_XTR_35_': 0.0, '_XTR_76_': 0.0, '_XTR_4_': -1.25, 'ROP10': 0.0, 'AnionEM': 0.8333, '_XTR_67_': 0.0, 'Depolar': 3.3333, '_XTR_5_': 0.8333, '_XTR_10_': 0.0, '_XTR_52_': 0.0, '_XTR_20_': 0.0, 'GPA1': -1.25, '_XTR_69_': 0.0, '_XTR_18_': -1.6667, 'CaIM_to_Ca2_c': -1.6667, '_XTR_9_': 2.0833, '_XTR_22_': -1.6667, '_XTR_28_': 1.6667, 'CaIM': -1.6667, 'ROS': 0.8333, 'pH': 2.0833, '_XTR_38_': 0.0, 'RCN1': 0.0, '_XTR_1_': -1.25, '_XTR_68_': 0.0, '_XTR_23_': -1.6667, '_XTR_89_': -1.25, '_XTR_34_': 0.0, 'S1P': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT Closure=======
+----Master diamonds-----
+{'_XTR_100_': 'Closure', '_XTR_98_': 'Closure', 'AnionEM': 'Closure', 'Depolar_to_KOUT': 'Closure', 'Ca2_c': 'Closure', 'pH': 'Closure', 'ABA': 'Closure', 'KOUT': 'Closure', '_XTR_76_': 'Closure', '_XTR_1_': 'Closure', '_XTR_15_': 'Closure', 'KEV': 'Depolar', 'ABI1': 'Closure', 'ROS': 'Closure', 'HTPase': 'Depolar', '_XTR_55_': '_XTR_66_', 'NO': 'Closure', 'PA': 'Closure', '_XTR_52_': '_XTR_66_', 'GPA1': 'Closure', 'AGB1_to_GPA1': 'Closure'}
+
+
+--------PROPAGATION--------
+Extranodes CIS_to_Ca2_c, add CIS to nextlayer
+Extranodes CaIM_to_Ca2_c, add CaIM to nextlayer
+Extranodes CIS_to_Ca2_c, add CIS to nextlayer
+Extranodes CaIM_to_Ca2_c, add CaIM to nextlayer
+Extranodes Ca2_ATPase, add Ca2_ATPase to nextlayer
+Extranodes Atrboh, add Atrboh to nextlayer
+Extranodes Ca2_ATPase, add Ca2_ATPase to nextlayer
+Extranodes AGB1_to_GPA1, add AGB1 to nextlayer
+Extranodes AGB1_to_GPA1, add AGB1 to nextlayer
+Closure              			 KO:     3.3335 | KI:    -1.6667
+_XTR_101_            			 KO:        0.0 | KI:    -1.6667
+_XTR_103_            			 KO:     1.2501 | KI:    -1.6667
+_XTR_99_             			 KO:        0.0 | KI:      -1.25
+_XTR_100_            			 KO:     3.3335 | KI:        0.0
+_XTR_102_            			 KO:     1.2501 | KI:      -1.25
+KAP                  			 KO:        0.0 | KI:        0.0
+_XTR_98_             			 KO:     3.3335 | KI:      -1.25
+Malate               			 KO:     2.0834 | KI:     1.2501
+KOUT                 			 KO:        0.0 | KI:        0.0
+Depolar              			 KO:     3.3335 | KI:        0.0
+_XTR_84_             			 KO:        0.0 | KI:        0.0
+Actin                			 KO:     3.3335 | KI:        0.0
+AnionEM              			 KO:     3.3335 | KI:      -1.25
+_XTR_14_             			 KO:     2.0834 | KI:     1.2501
+_XTR_15_             			 KO:        0.0 | KI:        0.0
+_XTR_35_             			 KO:        0.0 | KI:        0.0
+_XTR_36_             			 KO:        0.0 | KI:        0.0
+_XTR_66_             			 KO:     3.3335 | KI:        0.0
+_XTR_71_             			 KO:        0.0 | KI:        0.0
+_XTR_83_             			 KO:        0.0 | KI:        0.0
+Ca2_c                			 KO:     3.3335 | KI:    -1.6667
+_XTR_43_             			 KO:        0.0 | KI:        0.0
+_XTR_3_              			 KO:     2.0834 | KI:      -1.25
+_XTR_5_              			 KO:        0.0 | KI:      -1.25
+PEPC                 			 KO:     2.0834 | KI:        0.0
+_XTR_13_             			 KO:     2.0834 | KI:        0.0
+Depolar_to_KOUT      			 KO:        0.0 | KI:        0.0
+_XTR_34_             			 KO:        0.0 | KI:        0.0
+pH                   			 KO:        0.0 | KI:        0.0
+_XTR_60_             			 KO:     1.2501 | KI:        0.0
+_XTR_65_             			 KO:        0.0 | KI:        0.0
+_XTR_70_             			 KO:        0.0 | KI:        0.0
+_XTR_77_             			 KO:     1.2501 | KI:    -1.6667
+_XTR_78_             			 KO:     2.0834 | KI:    -1.6667
+_XTR_42_             			 KO:        0.0 | KI:        0.0
+_XTR_2_              			 KO:     2.0834 | KI:        0.0
+_XTR_4_              			 KO:        0.0 | KI:      -1.25
+_XTR_33_             			 KO:        0.0 | KI:        0.0
+_XTR_59_             			 KO:        0.0 | KI:        0.0
+HTPase               			 KO:        0.0 | KI:        0.0
+_XTR_64_             			 KO:        0.0 | KI:        0.0
+_XTR_69_             			 KO:        0.0 | KI:        0.0
+CIS_to_Ca2_c         			 KO:     1.2501 | KI:    -1.6667
+_XTR_76_             			 KO:     3.3335 | KI:        0.0
+CaIM_to_Ca2_c        			 KO:     2.0834 | KI:    -1.6667
+RAC1                 			 KO:        0.0 | KI:        0.0
+_XTR_1_              			 KO:     2.0834 | KI:      -1.25
+ROS                  			 KO:        0.0 | KI:      -1.25
+NO                   			 KO:        0.0 | KI:        0.0
+_XTR_51_             			 KO:        0.0 | KI:        0.0
+_XTR_58_             			 KO:        0.0 | KI:        0.0
+_XTR_93_             			 KO:        0.0 | KI:        0.0
+_XTR_62_             			 KO:        0.0 | KI:        0.0
+_XTR_63_             			 KO:        0.0 | KI:        0.0
+_XTR_68_             			 KO:        0.0 | KI:        0.0
+Ca2_ATPase_to_Ca2_c  			 KO:     3.3335 | KI:        0.0
+CIS                  			 KO:     1.2501 | KI:     0.4167
+_XTR_73_             			 KO:        0.0 | KI:     0.4167
+_XTR_74_             			 KO:        0.0 | KI:     0.4167
+CaIM                 			 KO:     2.0834 | KI:    -0.4166
+_XTR_27_             			 KO:     0.8334 | KI:    -0.4166
+_XTR_31_             			 KO:       1.25 | KI:    -0.4166
+_XTR_38_             			 KO:        0.0 | KI:        0.0
+ABI1                 			 KO:      -1.25 | KI:     2.0834
+Atrboh_to_ROS        			 KO:        0.0 | KI:      -1.25
+NOS                  			 KO:        0.0 | KI:        0.0
+NIA12                			 KO:        0.0 | KI:        0.0
+KEV                  			 KO:        0.0 | KI:        0.0
+_XTR_57_             			 KO:        0.0 | KI:        0.0
+_XTR_92_             			 KO:        0.0 | KI:        0.0
+_XTR_61_             			 KO:        0.0 | KI:        0.0
+_XTR_67_             			 KO:        0.0 | KI:        0.0
+Ca2_ATPase           			 KO:     3.3335 | KI:    -1.6667
+InsP3                			 KO:        0.0 | KI:      -1.25
+InsP6                			 KO:        0.0 | KI:        0.0
+cGMP                 			 KO:        0.0 | KI:        0.0
+cADPR                			 KO:        0.0 | KI:        0.0
+_XTR_23_             			 KO:     0.4167 | KI:    -0.4166
+_XTR_26_             			 KO:     0.4167 | KI:    -0.4166
+_XTR_30_             			 KO:     0.8334 | KI:        0.0
+_XTR_9_              			 KO:      -1.25 | KI:     2.0834
+_XTR_10_             			 KO:      -1.25 | KI:        0.0
+Atrboh               			 KO:        0.0 | KI:     1.6668
+_XTR_49_             			 KO:        0.0 | KI:     1.6667
+RCN1                 			 KO:        0.0 | KI:        0.0
+_XTR_56_             			 KO:        0.0 | KI:        0.0
+_XTR_52_             			 KO:        0.0 | KI:        0.0
+_XTR_55_             			 KO:        0.0 | KI:        0.0
+PLC                  			 KO:        0.0 | KI:      -1.25
+InsPK                			 KO:        0.0 | KI:        0.0
+GC                   			 KO:        0.0 | KI:        0.0
+ADPRc                			 KO:        0.0 | KI:        0.0
+_XTR_21_             			 KO:     0.4167 | KI:    -0.4166
+_XTR_22_             			 KO:        0.0 | KI:    -0.4166
+_XTR_25_             			 KO:     0.4167 | KI:    -0.4167
+_XTR_20_             			 KO:     0.8334 | KI:     0.8334
+_XTR_29_             			 KO:     0.8334 | KI:        0.0
+_XTR_8_              			 KO:      -1.25 | KI:        0.0
+PA                   			 KO:        0.0 | KI:      -1.25
+OST1                 			 KO:        0.0 | KI:        0.0
+_XTR_48_             			 KO:        0.0 | KI:        0.0
+_XTR_54_             			 KO:        0.0 | KI:        0.0
+_XTR_19_             			 KO:     0.4167 | KI:    -0.4167
+_XTR_24_             			 KO:     0.4167 | KI:    -0.4167
+_XTR_28_             			 KO:     2.0834 | KI:        0.0
+PLD                  			 KO:        0.0 | KI:      -1.25
+ROP2                 			 KO:        0.0 | KI:        0.0
+_XTR_53_             			 KO:        0.0 | KI:        0.0
+_XTR_18_             			 KO:     0.4167 | KI:    -0.4167
+GPA1                 			 KO:        0.0 | KI:      -1.25
+_XTR_88_             			 KO:        0.0 | KI:      -1.25
+_XTR_89_             			 KO:        0.0 | KI:      -1.25
+AGB1_to_GPA1         			 KO:        0.0 | KI:      -1.25
+_XTR_87_             			 KO:        0.0 | KI:        0.0
+S1P                  			 KO:        0.0 | KI:        0.0
+AGB1                 			 KO:        0.0 | KI:     1.6668
+SphK                 			 KO:        0.0 | KI:        0.0
+ABA                  			 KO:        0.0 | KI:        0.0
+GCR1                 			 KO:        0.0 | KI:        0.0
+ERA1                 			 KO:    -1.6667 | KI:     0.8334
+ABH1                 			 KO:    -1.6667 | KI:     0.8334
+There are 1 unreachable nodes, they are:
+{'ROP10'}
+binary.html
+NO                   - Correct: KO:        0.0 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_14_             - Correct: KO:        0.0 | KI :       1.25 - Incorrect KO:     2.0834 | KI:     1.2501
+_XTR_25_             - Correct: KO:     0.8333 | KI :    -1.6667 - Incorrect KO:     0.4167 | KI:    -0.4167
+_XTR_66_             - Correct: KO:     2.0833 | KI :     2.0833 - Incorrect KO:     3.3335 | KI:        0.0
+_XTR_27_             - Correct: KO:     1.6667 | KI :    -1.6667 - Incorrect KO:     0.8334 | KI:    -0.4166
+Atrboh               - Correct: KO:        0.0 | KI :     0.8333 - Incorrect KO:        0.0 | KI:     1.6668
+Ca2_ATPase           - Correct: KO:        0.0 | KI :     3.3333 - Incorrect KO:     3.3335 | KI:    -1.6667
+Ca2_ATPase_to_Ca2_c  - Correct: KO:        0.0 | KI :     3.3333 - Incorrect KO:     3.3335 | KI:        0.0
+ROP2                 - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_59_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_63_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_73_             - Correct: KO:        0.0 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:     0.4167
+_XTR_30_             - Correct: KO:    -1.6667 | KI :     1.6667 - Incorrect KO:     0.8334 | KI:        0.0
+_XTR_74_             - Correct: KO:        0.0 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:     0.4167
+HTPase               - Correct: KO:     2.0833 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_19_             - Correct: KO:     0.8333 | KI :    -1.6667 - Incorrect KO:     0.4167 | KI:    -0.4167
+Malate               - Correct: KO:        0.0 | KI :     3.3333 - Incorrect KO:     2.0834 | KI:     1.2501
+_XTR_56_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+PEPC                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     2.0834 | KI:        0.0
+Depolar_to_KOUT      - Correct: KO:     3.3333 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_60_             - Correct: KO:     2.0833 | KI :     2.0833 - Incorrect KO:     1.2501 | KI:        0.0
+_XTR_15_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_92_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_57_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_58_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_70_             - Correct: KO:     2.0833 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_24_             - Correct: KO:     0.8333 | KI :    -1.6667 - Incorrect KO:     0.4167 | KI:    -0.4167
+_XTR_26_             - Correct: KO:     0.8333 | KI :    -1.6667 - Incorrect KO:     0.4167 | KI:    -0.4166
+_XTR_71_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_51_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+NOS                  - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_33_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_48_             - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_31_             - Correct: KO:     1.6667 | KI :    -1.6667 - Incorrect KO:       1.25 | KI:    -0.4166
+_XTR_93_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+Atrboh_to_ROS        - Correct: KO:        0.0 | KI :     0.8333 - Incorrect KO:        0.0 | KI:      -1.25
+_XTR_64_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_13_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     2.0834 | KI:        0.0
+_XTR_53_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_29_             - Correct: KO:    -1.6667 | KI :     1.6667 - Incorrect KO:     0.8334 | KI:        0.0
+_XTR_78_             - Correct: KO:     3.3333 | KI :    -1.6667 - Incorrect KO:     2.0834 | KI:    -1.6667
+KEV                  - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_65_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_21_             - Correct: KO:     0.8333 | KI :    -1.6667 - Incorrect KO:     0.4167 | KI:    -0.4166
+_XTR_54_             - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+CIS                  - Correct: KO:       1.25 | KI :    -1.6667 - Incorrect KO:     1.2501 | KI:     0.4167
+_XTR_49_             - Correct: KO:        0.0 | KI :     0.8333 - Incorrect KO:        0.0 | KI:     1.6667
+AGB1                 - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:     1.6668
+_XTR_3_              - Correct: KO:     2.0833 | KI :     0.8333 - Incorrect KO:     2.0834 | KI:      -1.25
+KOUT                 - Correct: KO:     3.3333 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_35_             - Correct: KO:     2.0833 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+AnionEM              - Correct: KO:     3.3333 | KI :     0.8333 - Incorrect KO:     3.3335 | KI:      -1.25
+Depolar              - Correct: KO:     3.3333 | KI :     3.3333 - Incorrect KO:     3.3335 | KI:        0.0
+_XTR_5_              - Correct: KO:        0.0 | KI :     0.8333 - Incorrect KO:        0.0 | KI:      -1.25
+_XTR_20_             - Correct: KO:     1.6667 | KI :        0.0 - Incorrect KO:     0.8334 | KI:     0.8334
+_XTR_18_             - Correct: KO:     0.8333 | KI :    -1.6667 - Incorrect KO:     0.4167 | KI:    -0.4167
+CaIM_to_Ca2_c        - Correct: KO:     3.3333 | KI :    -1.6667 - Incorrect KO:     2.0834 | KI:    -1.6667
+_XTR_22_             - Correct: KO:        0.0 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:    -0.4166
+_XTR_28_             - Correct: KO:        0.0 | KI :     1.6667 - Incorrect KO:     2.0834 | KI:        0.0
+CaIM                 - Correct: KO:     3.3333 | KI :    -1.6667 - Incorrect KO:     2.0834 | KI:    -0.4166
+ROS                  - Correct: KO:        0.0 | KI :     0.8333 - Incorrect KO:        0.0 | KI:      -1.25
+pH                   - Correct: KO:        0.0 | KI :     2.0833 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_23_             - Correct: KO:     0.8333 | KI :    -1.6667 - Incorrect KO:     0.4167 | KI:    -0.4166
+_XTR_34_             - Correct: KO:     2.0833 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+ABA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ABH1
+Lack      0: []
+Extra     0: []
+Real      8: [2, 3, 6, 7, 10, 11, 14, 15]
+Prop      8: [2, 3, 6, 7, 10, 11, 14, 15]
+
+ERA1
+Lack      0: []
+Extra     0: []
+Real      8: [4, 5, 6, 7, 12, 13, 14, 15]
+Prop      8: [4, 5, 6, 7, 12, 13, 14, 15]
+
+GCR1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ABI1
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      8: [0, 1, 2, 3, 4, 5, 14, 15]
+
+ADPRc
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AGB1
+Lack      0: []
+Extra    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+Real      2: [14, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+AGB1_to_GPA1
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+Actin
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+AnionEM
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     14: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Atrboh
+Lack      0: []
+Extra     8: [6, 7, 8, 9, 10, 11, 12, 13]
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Atrboh_to_ROS
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      2: [14, 15]
+
+CIS
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+CIS_to_Ca2_c
+Lack      0: []
+Extra     0: []
+Real     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Ca2_ATPase
+Lack      0: []
+Extra     4: [6, 7, 14, 15]
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Ca2_ATPase_to_Ca2_c
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+Ca2_c
+Lack      0: []
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+CaIM
+Lack      0: []
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+CaIM_to_Ca2_c
+Lack      6: [8, 9, 10, 11, 12, 13]
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     10: [0, 1, 2, 3, 4, 5, 6, 7, 14, 15]
+
+Depolar
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+Depolar_to_KOUT
+Lack     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop      0: []
+
+GC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GPA1
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+HTPase
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+InsP3
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+InsP6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+InsPK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+KAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+KEV
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+KOUT
+Lack     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop      0: []
+
+Malate
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+NIA12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NO
+Lack      4: [6, 7, 14, 15]
+Extra     0: []
+Real      4: [6, 7, 14, 15]
+Prop      0: []
+
+NOS
+Lack      2: [14, 15]
+Extra     0: []
+Real      2: [14, 15]
+Prop      0: []
+
+OST1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PA
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+PEPC
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+PLC
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+PLD
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+RAC1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RCN1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ROP10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ROP2
+Lack      2: [14, 15]
+Extra     0: []
+Real      2: [14, 15]
+Prop      0: []
+
+ROS
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      2: [14, 15]
+
+S1P
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SphK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_100_
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+_XTR_101_
+Lack      0: []
+Extra     0: []
+Real      4: [6, 7, 14, 15]
+Prop      4: [6, 7, 14, 15]
+
+_XTR_102_
+Lack      0: []
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      8: [8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_103_
+Lack      0: []
+Extra     0: []
+Real     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_10_
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+_XTR_13_
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+_XTR_14_
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      6: [8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+_XTR_15_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_18_
+Lack      4: [12, 13, 14, 15]
+Extra     0: []
+Real      8: [4, 5, 6, 7, 12, 13, 14, 15]
+Prop      4: [4, 5, 6, 7]
+
+_XTR_19_
+Lack      4: [12, 13, 14, 15]
+Extra     0: []
+Real      8: [4, 5, 6, 7, 12, 13, 14, 15]
+Prop      4: [4, 5, 6, 7]
+
+_XTR_1_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      8: [0, 1, 2, 3, 4, 5, 14, 15]
+
+_XTR_20_
+Lack      0: []
+Extra     0: []
+Real      8: [2, 3, 4, 5, 10, 11, 12, 13]
+Prop      8: [2, 3, 4, 5, 10, 11, 12, 13]
+
+_XTR_21_
+Lack      0: []
+Extra     4: [8, 9, 10, 11]
+Real      8: [4, 5, 6, 7, 12, 13, 14, 15]
+Prop     12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_22_
+Lack      0: []
+Extra     6: [8, 9, 10, 11, 12, 13]
+Real      4: [6, 7, 14, 15]
+Prop     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_23_
+Lack      0: []
+Extra     4: [8, 9, 10, 11]
+Real      8: [4, 5, 6, 7, 12, 13, 14, 15]
+Prop     12: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_24_
+Lack      4: [10, 11, 14, 15]
+Extra     0: []
+Real      8: [2, 3, 6, 7, 10, 11, 14, 15]
+Prop      4: [2, 3, 6, 7]
+
+_XTR_25_
+Lack      4: [10, 11, 14, 15]
+Extra     0: []
+Real      8: [2, 3, 6, 7, 10, 11, 14, 15]
+Prop      4: [2, 3, 6, 7]
+
+_XTR_26_
+Lack      0: []
+Extra     4: [8, 9, 12, 13]
+Real      8: [2, 3, 6, 7, 10, 11, 14, 15]
+Prop     12: [2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_27_
+Lack      0: []
+Extra     2: [8, 9]
+Real     12: [2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15]
+Prop     14: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_28_
+Lack      0: []
+Extra     2: [12, 13]
+Real      4: [0, 1, 8, 9]
+Prop      6: [0, 1, 8, 9, 12, 13]
+
+_XTR_29_
+Lack      0: []
+Extra     4: [10, 11, 12, 13]
+Real      8: [0, 1, 6, 7, 8, 9, 14, 15]
+Prop     12: [0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+_XTR_30_
+Lack      0: []
+Extra     4: [10, 11, 12, 13]
+Real      8: [0, 1, 6, 7, 8, 9, 14, 15]
+Prop     12: [0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_31_
+Lack      0: []
+Extra     4: [10, 11, 12, 13]
+Real      8: [0, 1, 6, 7, 8, 9, 14, 15]
+Prop     12: [0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_33_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_34_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_35_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_36_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_38_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_3_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      8: [0, 1, 2, 3, 4, 5, 14, 15]
+
+_XTR_42_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_43_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_48_
+Lack      2: [14, 15]
+Extra     0: []
+Real      2: [14, 15]
+Prop      0: []
+
+_XTR_49_
+Lack      2: [14, 15]
+Extra     2: [6, 7]
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_4_
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+_XTR_51_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_52_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_53_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_54_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_55_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_56_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_57_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_58_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_59_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_5_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      2: [14, 15]
+
+_XTR_60_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     6: [8, 9, 10, 11, 12, 13]
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [8, 9, 10, 11, 12, 13]
+
+_XTR_61_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_62_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_63_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_64_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_65_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_66_
+Lack      0: []
+Extra     6: [8, 9, 10, 11, 12, 13]
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+_XTR_67_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_68_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_69_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_70_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_71_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_73_
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      4: [6, 7, 14, 15]
+Prop     10: [0, 1, 2, 3, 4, 5, 6, 7, 14, 15]
+
+_XTR_74_
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      4: [6, 7, 14, 15]
+Prop     10: [0, 1, 2, 3, 4, 5, 6, 7, 14, 15]
+
+_XTR_76_
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+_XTR_77_
+Lack      0: []
+Extra     0: []
+Real     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_78_
+Lack      6: [8, 9, 10, 11, 12, 13]
+Extra     0: []
+Real     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     10: [0, 1, 2, 3, 4, 5, 6, 7, 14, 15]
+
+_XTR_83_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_84_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_87_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_88_
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+_XTR_89_
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+_XTR_8_
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+_XTR_92_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_93_
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+_XTR_98_
+Lack      0: []
+Extra     0: []
+Real     14: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     14: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 14, 15]
+
+_XTR_99_
+Lack      0: []
+Extra     0: []
+Real      2: [14, 15]
+Prop      2: [14, 15]
+
+_XTR_9_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 14, 15]
+Prop      8: [0, 1, 2, 3, 4, 5, 14, 15]
+
+cADPR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cGMP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pH
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      0: []
+
+Number of nodes is 122
+Number of input nodes is 4
+Relative_RMSE_KO_is  0.0930942735292264
+Relative_RMSE_KI_is  0.13192346307861896
+NDCG_KO_is  0.8828493369170783
+NDCG_KI_is  0.8556030243718519
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                            122.000      122.000
+Kendall tau-b                         0.676        0.228
+Spearman rho                          0.653        0.241
+Mean abs rank diff                    1.270        1.475
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.467        0.086
+         Precision@10                0.700        0.231
+         Recall@10                   0.583        0.120
+  Top-20 Jaccard                   0.500        0.074
+         Precision@20                0.667        0.121
+         Recall@20                   0.667        0.160
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.467        0.000
+  Top-2  groups Jaccard            0.500        0.086
+  Top-3  groups Jaccard            0.457        0.153
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.002701997756958008
+TIME simulate original network: 0.105712890625
+TIME perform original analysis process: 7.905500888824463
+TIME perform propagation: 1.297928810119629
+-----------TOTAL RUNNING TIME---------------
+82.391170124989

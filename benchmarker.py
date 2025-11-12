@@ -41,8 +41,13 @@ RE_INT = r"(\d+)"
 
 PATTERNS = {
     "num_nodes": re.compile(rf"Number of nodes is\s+{RE_INT}", re.IGNORECASE),
+    "num_inputs": re.compile(rf"Number of input nodes is\s+{RE_INT}", re.IGNORECASE),
     "error_ko": re.compile(rf"Relative_RMSE_KO_is\s+{RE_FLOAT}", re.IGNORECASE),
     "error_ki": re.compile(rf"Relative_RMSE_KI_is\s+{RE_FLOAT}", re.IGNORECASE),
+
+    # NDCG
+    "ndcg_ko": re.compile(rf"NDCG_KO_is\s+{RE_FLOAT}", re.IGNORECASE),
+    "ndcg_ki": re.compile(rf"NDCG_KI_is\s+{RE_FLOAT}", re.IGNORECASE),
 
     # Two-column metric lines under "Ranking Comparison"
     "kendall": re.compile(rf"Kendall\s+tau-b\s+{RE_FLOAT}\s+{RE_FLOAT}", re.IGNORECASE),
@@ -78,6 +83,9 @@ CSV_COLUMNS = [
     "target",
 
     "num_nodes",
+    "num_inputs",
+    "ndcg_ko",
+    "ndcg_ki",
     "error_ko",
     "error_ki",
 
@@ -159,6 +167,9 @@ def parse_metrics(text: str) -> Dict[str, Optional[str]]:
 
     # Singles
     d["num_nodes"] = (m.group(1) if (m := PATTERNS["num_nodes"].search(text)) else None)
+    d["num_inputs"] = (m.group(1) if (m := PATTERNS["num_inputs"].search(text)) else None)
+    d["ndcg_ko"] = (m.group(1) if (m := PATTERNS["ndcg_ko"].search(text)) else None)
+    d["ndcg_ki"] = (m.group(1) if (m := PATTERNS["ndcg_ki"].search(text)) else None)
     d["error_ko"] = (m.group(1) if (m := PATTERNS["error_ko"].search(text)) else None)
     d["error_ki"] = (m.group(1) if (m := PATTERNS["error_ki"].search(text)) else None)
 
@@ -203,7 +214,7 @@ def append_csv_row(csv_path: Path, row: Dict[str, Optional[str]]):
     file_exists = csv_path.exists()
     ensure_parent(csv_path)
     with csv_path.open("a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=CSV_COLUMNS)
+        writer = csv.DictWriter(f, fieldnames=CSV_COLUMNS, delimiter=";")
         if not file_exists:
             writer.writeheader()
         writer.writerow(row)

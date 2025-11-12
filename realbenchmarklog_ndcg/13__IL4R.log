@@ -1,0 +1,572 @@
+The expression file is data/realbenchmark/13.txt
+The interested output is: 
+{'IL4R'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'JAK1', 'IFNgR', 'STAT3', 'IFNg', 'IL10R', 'Tbet', 'SOCS1', 'IFNbR', 'GATA3', 'IL18', 'IRAK', 'IL12', 'IFNb', 'IL18R', 'STAT6', 'IL10', 'IL4R', 'STAT4', 'STAT1', 'IL4', 'TCR', 'NFAT', 'IL12R'}
+-----Input names-----
+{'IFNb', 'IL12', 'TCR', 'IL18'}
+----Intermediate nodes-----
+{'GATA3', 'JAK1', 'IRAK', 'IFNbR', 'IFNgR', 'STAT3', 'IFNg', 'IL18R', 'STAT6', 'IL10', 'STAT4', 'STAT1', 'IL4', 'IL10R', 'Tbet', 'SOCS1', 'NFAT', 'IL12R'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['IFNb', 'IL12', 'IL18', 'TCR']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+There are 18 intermediate nodes with the range of inter: 0 262143
+----Input knockout shapley value-----
+('IL4R', {'IFNb': 0.0, 'IL12': 0.0, 'TCR': 0.0, 'IL18': 0.0})
+
+
+----Input knockIN shapley value-----
+('IL4R', {'IFNb': 0.0, 'IL12': 0.0, 'TCR': 0.0, 'IL18': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout GATA3
+Knockout JAK1
+Knockout IRAK
+Knockout IFNbR
+Knockout IFNgR
+Knockout STAT3
+Knockout IFNg
+Knockout IL18R
+Knockout STAT6
+Knockout IL10
+Knockout STAT4
+Knockout STAT1
+Knockout IL4
+Knockout IL10R
+Knockout Tbet
+Knockout SOCS1
+Knockout NFAT
+Knockout IL12R
+----KNOCKOUT VALUE for output IL4R----
+{'GATA3': 0.0, 'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IL4': 0.0, 'IRAK': 0.0, 'JAK1': 0.0, 'NFAT': 0.0, 'SOCS1': 0.0, 'STAT1': 0.0, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': 0.0, 'Tbet': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin GATA3
+Knockin JAK1
+Knockin IRAK
+Knockin IFNbR
+Knockin IFNgR
+Knockin STAT3
+Knockin IFNg
+Knockin IL18R
+Knockin STAT6
+Knockin IL10
+Knockin STAT4
+Knockin STAT1
+Knockin IL4
+Knockin IL10R
+Knockin Tbet
+Knockin SOCS1
+Knockin NFAT
+Knockin IL12R
+----KNOCKIN VALUE for output IL4R----
+{'IL4R': {'GATA3': -2.5, 'JAK1': 0.0, 'IRAK': 0.0, 'IFNbR': 0.0, 'IFNgR': 0.0, 'STAT3': 0.0, 'IFNg': 0.0, 'IL18R': 0.0, 'STAT6': -2.5, 'IL10': 0.0, 'STAT4': 0.0, 'STAT1': 0.0, 'IL4': -2.5, 'IL10R': 0.0, 'Tbet': 0.0, 'SOCS1': 0.0, 'NFAT': 0.0, 'IL12R': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['IFNb', 'IL12', 'IL18', 'TCR']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+There are 18 intermediate nodes with the range of inter: 0 262143
+----Input shapley value of acyclic network-----
+('IL4R', {'IFNb': 0.0, 'IL12': 0.0, 'TCR': 0.0, 'IL18': 0.0})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'IFNb', 'IL12', 'TCR', 'IL18'}
+Ordinary nodes are 
+{'JAK1', 'IFNgR', 'STAT3', 'IFNg', 'IL10R', 'Tbet', 'SOCS1', 'IFNbR', 'GATA3', 'IL18', 'IRAK', 'IL12', 'IFNb', 'IL18R', 'STAT6', 'IL10', 'IL4R', 'STAT4', 'STAT1', 'IL4', 'TCR', 'NFAT', 'IL12R'}
+Extranodes added after removing cycles are 
+['JAK1_to_STAT1', 'Tbet_to_GATA3', 'Tbet_to_Tbet', 'GATA3_to_GATA3', 'STAT6_to_GATA3']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set()]
+-----Knockout Shapley value of input nodes in the binary network-----
+IL4R : {'IFNb': 0.0, 'IL12': 0.0, 'TCR': 0.0, 'IL18': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+IL4R : {'IFNb': 0.0, 'IL12': 0.0, 'TCR': 0.0, 'IL18': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout _XTR_22_
+Knockout JAK1
+Knockout IFNgR
+Knockout _XTR_13_
+Knockout _XTR_28_
+Knockout Tbet_to_Tbet
+Knockout STAT3
+Knockout Tbet_to_GATA3
+Knockout IFNg
+Knockout _XTR_18_
+Knockout _XTR_32_
+Knockout _XTR_5_
+Knockout IL10R
+Knockout Tbet
+Knockout SOCS1
+Knockout IFNbR
+Knockout _XTR_21_
+Knockout _XTR_29_
+Knockout _XTR_34_
+Knockout GATA3
+Knockout _XTR_25_
+Knockout _XTR_30_
+Knockout IRAK
+Knockout _XTR_31_
+Knockout _XTR_33_
+Knockout _XTR_2_
+Knockout _XTR_12_
+Knockout GATA3_to_GATA3
+Knockout IL18R
+Knockout STAT6
+Knockout IL10
+Knockout STAT4
+Knockout STAT1
+Knockout STAT6_to_GATA3
+Knockout IL4
+Knockout JAK1_to_STAT1
+Knockout NFAT
+Knockout _XTR_11_
+Knockout IL12R
+---- Binary KNOCKOUT VALUE for output IL4R----
+{'IL4R': {'_XTR_22_': 0.0, 'JAK1': 0.0, 'IFNgR': 0.0, '_XTR_13_': 0.0, '_XTR_28_': 0.0, 'Tbet_to_Tbet': 0.0, 'STAT3': 0.0, 'Tbet_to_GATA3': 0.0, 'IFNg': 0.0, '_XTR_18_': 0.0, '_XTR_32_': 0.0, '_XTR_5_': 0.0, 'IL10R': 0.0, 'Tbet': 0.0, 'SOCS1': 0.0, 'IFNbR': 0.0, '_XTR_21_': 0.0, '_XTR_29_': 0.0, '_XTR_34_': 0.0, 'GATA3': 0.0, '_XTR_25_': 0.0, '_XTR_30_': 0.0, 'IRAK': 0.0, '_XTR_31_': 0.0, '_XTR_33_': 0.0, '_XTR_2_': 0.0, '_XTR_12_': 0.0, 'GATA3_to_GATA3': 0.0, 'IL18R': 0.0, 'STAT6': 0.0, 'IL10': 0.0, 'STAT4': 0.0, 'STAT1': 0.0, 'STAT6_to_GATA3': 0.0, 'IL4': 0.0, 'JAK1_to_STAT1': 0.0, 'NFAT': 0.0, '_XTR_11_': 0.0, 'IL12R': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN _XTR_22_
+KnockIN JAK1
+KnockIN IFNgR
+KnockIN _XTR_13_
+KnockIN _XTR_28_
+KnockIN Tbet_to_Tbet
+KnockIN STAT3
+KnockIN Tbet_to_GATA3
+KnockIN IFNg
+KnockIN _XTR_18_
+KnockIN _XTR_32_
+KnockIN _XTR_5_
+KnockIN IL10R
+KnockIN Tbet
+KnockIN SOCS1
+KnockIN IFNbR
+KnockIN _XTR_21_
+KnockIN _XTR_29_
+KnockIN _XTR_34_
+KnockIN GATA3
+KnockIN _XTR_25_
+KnockIN _XTR_30_
+KnockIN IRAK
+KnockIN _XTR_31_
+KnockIN _XTR_33_
+KnockIN _XTR_2_
+KnockIN _XTR_12_
+KnockIN GATA3_to_GATA3
+KnockIN IL18R
+KnockIN STAT6
+KnockIN IL10
+KnockIN STAT4
+KnockIN STAT1
+KnockIN STAT6_to_GATA3
+KnockIN IL4
+KnockIN JAK1_to_STAT1
+KnockIN NFAT
+KnockIN _XTR_11_
+KnockIN IL12R
+---- Binary KNOCKIN VALUE for output IL4R----
+{'IL4R': {'_XTR_22_': 0.0, 'JAK1': 0.0, 'IFNgR': 0.0, '_XTR_13_': -2.5, '_XTR_28_': 0.0, 'Tbet_to_Tbet': 0.0, 'STAT3': 0.0, 'Tbet_to_GATA3': 0.0, 'IFNg': 0.0, '_XTR_18_': 0.0, '_XTR_32_': 0.0, '_XTR_5_': 0.0, 'IL10R': 0.0, 'Tbet': 0.0, 'SOCS1': 0.0, 'IFNbR': 0.0, '_XTR_21_': 0.0, '_XTR_29_': 0.0, '_XTR_34_': 0.0, 'GATA3': -2.5, '_XTR_25_': 0.0, '_XTR_30_': 0.0, 'IRAK': 0.0, '_XTR_31_': 0.0, '_XTR_33_': 0.0, '_XTR_2_': 0.0, '_XTR_12_': -2.5, 'GATA3_to_GATA3': -2.5, 'IL18R': 0.0, 'STAT6': -2.5, 'IL10': 0.0, 'STAT4': 0.0, 'STAT1': 0.0, 'STAT6_to_GATA3': -2.5, 'IL4': -2.5, 'JAK1_to_STAT1': 0.0, 'NFAT': 0.0, '_XTR_11_': 0.0, 'IL12R': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT IL4R=======
+----Master diamonds-----
+{'STAT1': 'IL4R', '_XTR_11_': 'IL4R', '_XTR_18_': 'Tbet', 'GATA3': 'IL4R'}
+
+
+--------PROPAGATION--------
+Extranodes STAT6_to_GATA3, add STAT6 to nextlayer
+Extranodes JAK1_to_STAT1, add  JAK1 to nextlayer
+IL4R                 			 KO:        0.0 | KI:    -5.0002
+IL4                  			 KO:        0.0 | KI:       -1.0
+_XTR_5_              			 KO:        0.0 | KI:    -4.0002
+GATA3                			 KO:        0.0 | KI:    -2.5001
+_XTR_25_             			 KO:        0.0 | KI:        0.0
+SOCS1                			 KO:    -4.0002 | KI:        0.0
+_XTR_12_             			 KO:        0.0 | KI:    -2.5001
+_XTR_13_             			 KO:        0.0 | KI:    -2.5001
+STAT1                			 KO:        0.0 | KI:        0.0
+Tbet                 			 KO:    -1.5001 | KI:       -1.0
+GATA3_to_GATA3       			 KO:        0.0 | KI:       -1.0
+_XTR_11_             			 KO:        0.0 | KI:        0.0
+STAT6_to_GATA3       			 KO:        0.0 | KI:       -1.0
+IFNbR                			 KO:        0.0 | KI:        0.0
+JAK1_to_STAT1        			 KO:        0.0 | KI:        0.0
+_XTR_21_             			 KO:        0.0 | KI:       -1.0
+_XTR_22_             			 KO:    -1.5001 | KI:       -1.0
+Tbet_to_GATA3        			 KO:        0.0 | KI:        0.0
+STAT6                			 KO:        0.0 | KI:    -5.0002
+JAK1                 			 KO:        0.0 | KI:    -5.0002
+IFNgR                			 KO:        0.0 | KI:       -1.0
+_XTR_18_             			 KO:        0.0 | KI:        0.0
+Tbet_to_Tbet         			 KO:    -1.5001 | KI:       -1.0
+IFNg                 			 KO:        0.0 | KI:       -1.0
+_XTR_33_             			 KO:        0.0 | KI:       -1.0
+_XTR_34_             			 KO:        0.0 | KI:       -1.0
+_XTR_31_             			 KO:        0.0 | KI:       -1.0
+_XTR_32_             			 KO:        0.0 | KI:       -1.0
+_XTR_28_             			 KO:        0.0 | KI:        0.0
+_XTR_29_             			 KO:        0.0 | KI:       -1.0
+_XTR_30_             			 KO:        0.0 | KI:       -1.0
+STAT4                			 KO:        0.0 | KI:       -1.0
+STAT3                			 KO:        0.0 | KI:        0.0
+NFAT                 			 KO:        0.0 | KI:       -1.0
+IRAK                 			 KO:        0.0 | KI:       -1.0
+IL12R                			 KO:        0.0 | KI:       -1.0
+IL10R                			 KO:        0.0 | KI:        0.0
+IL18R                			 KO:        0.0 | KI:       -1.0
+IL10                 			 KO:        0.0 | KI:        0.0
+_XTR_2_              			 KO:        0.0 | KI:        0.0
+IFNb                 			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+There are 0 unreachable nodes, they are:
+set()
+binary.html
+_XTR_22_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:    -1.5001 | KI:       -1.0
+JAK1                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -5.0002
+IFNgR                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+Tbet_to_Tbet         - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:    -1.5001 | KI:       -1.0
+IFNg                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_32_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_5_              - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.0002
+Tbet                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:    -1.5001 | KI:       -1.0
+SOCS1                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:    -4.0002 | KI:        0.0
+_XTR_21_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_29_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_34_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_30_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+IRAK                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_31_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_33_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+GATA3_to_GATA3       - Correct: KO:        0.0 | KI :       -2.5 - Incorrect KO:        0.0 | KI:       -1.0
+IL18R                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+STAT6                - Correct: KO:        0.0 | KI :       -2.5 - Incorrect KO:        0.0 | KI:    -5.0002
+STAT4                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+STAT6_to_GATA3       - Correct: KO:        0.0 | KI :       -2.5 - Incorrect KO:        0.0 | KI:       -1.0
+IL4                  - Correct: KO:        0.0 | KI :       -2.5 - Incorrect KO:        0.0 | KI:       -1.0
+NFAT                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+IL12R                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+IFNb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TCR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GATA3
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+GATA3_to_GATA3
+Lack      7: [1, 2, 3, 4, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      1: [0]
+
+IFNbR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNg
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IFNgR
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IL10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL10R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12R
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IL18R
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IL4
+Lack      7: [1, 2, 3, 4, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      1: [0]
+
+IRAK
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+JAK1
+Lack      0: []
+Extra    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+JAK1_to_STAT1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NFAT
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+SOCS1
+Lack      0: []
+Extra    15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+STAT1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT4
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+STAT6
+Lack      0: []
+Extra     8: [8, 9, 10, 11, 12, 13, 14, 15]
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop     16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+STAT6_to_GATA3
+Lack      7: [1, 2, 3, 4, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      1: [0]
+
+Tbet
+Lack      0: []
+Extra     8: [0, 1, 2, 3, 4, 5, 6, 7]
+Real      0: []
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Tbet_to_GATA3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Tbet_to_Tbet
+Lack      0: []
+Extra     8: [0, 1, 2, 3, 4, 5, 6, 7]
+Real      0: []
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_11_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_12_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_13_
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_18_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_21_
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+_XTR_22_
+Lack      0: []
+Extra     8: [0, 1, 2, 3, 4, 5, 6, 7]
+Real      0: []
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_25_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_28_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_29_
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_30_
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+_XTR_31_
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+_XTR_32_
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+_XTR_33_
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+_XTR_34_
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+_XTR_5_
+Lack      0: []
+Extra    15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Real      0: []
+Prop     15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Number of nodes is 43
+Number of input nodes is 4
+Relative_RMSE_KO_is  0.07274117875073591
+Relative_RMSE_KI_is  0.12850174204773385
+NDCG_KO_is  0.0
+NDCG_KI_is  0.7544840783768626
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             43.000       43.000
+Kendall tau-b                           NaN        0.463
+Spearman rho                          0.000        0.449
+Mean abs rank diff                    1.884        2.349
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        0.605
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        0.605
+  Top-20 Jaccard                   1.000        0.605
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        0.605
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.023        0.125
+  Top-2  groups Jaccard            0.093        0.070
+  Top-3  groups Jaccard            1.000        0.140
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.0005629062652587891
+TIME simulate original network: 0.029565095901489258
+TIME perform original analysis process: 0.9896180629730225
+TIME perform propagation: 0.17290902137756348
+-----------TOTAL RUNNING TIME---------------
+6.122816083021462
