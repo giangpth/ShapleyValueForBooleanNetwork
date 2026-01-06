@@ -1,8 +1,11 @@
 import timeit
-from . import BooleanShapleyAnalysis 
+from . import BooleanShapleyTest, BooleanShapleyAnalysis, testEachModel, percentageTest
 
 if __name__ == "__main__":
     start = timeit.default_timer()
-    BooleanShapleyAnalysis()
+    # BooleanShapleyAnalysis()
+    # BooleanShapleyTest()
+    percentageTest('realbenchmark_2.txt', 'output_2.json')
+    # testEachModel('data/realbenchmark/1.txt', 'Apoptosis')
     print("-----------TOTAL RUNNING TIME---------------")
-    print(timeit.default_timer() - start)
+    print(timeit.default_timer() - start)  

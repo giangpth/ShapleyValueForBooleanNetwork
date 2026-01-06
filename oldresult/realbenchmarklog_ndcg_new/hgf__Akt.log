@@ -1,0 +1,1062 @@
+The expression file is data/realbenchmark/hgf.txt
+The interested output is: 
+{'Akt'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'MLK3', 'Integrins', 'Ras', 'p38', 'STAT3', 'PTEN', 'Plasmin', 'Rap1', 'Raf', 'CDKN2A', 'CyclinD', 'CellMigration', 'CTGF', 'Mekk1', 'Fak', 'PAK2', 'PTGS2', 'CREB', 'ETS', 'Mkk3', 'DAG', 'C3G', 'cFOS', 'PAK1', 'Mkk6', 'EGF', 'cJUN', 'IL8', 'JNK', 'HBEGF', 'AKAP12', 'AP1', 'Mek', 'SOS', 'Ca', 'uPAR', 'Akt', 'PAI_1', 'IP3', 'PAK3', 'EGR1', 'PKC', 'DOCK180', 'CDKN1A', 'cMYC', 'Cdc42_Rac1', 'Erk', 'Elk1', 'ECM', 'MET', 'Grb2', 'EGFR', 'uPA', 'Mekk4', 'MMP1_10', 'Mkk4', 'ATF2', 'CDK2', 'Proliferation', 'CCL20', 'HGF', 'CRKL', 'PI3K', 'PLC_g', 'DUSP1', 'Shc', 'RSK', 'Mekk7'}
+-----Input names-----
+{'EGF', 'PTEN', 'PAI_1', 'HGF', 'DUSP1', 'AKAP12'}
+----Intermediate nodes-----
+{'MLK3', 'Plasmin', 'Integrins', 'Ras', 'STAT3', 'p38', 'Rap1', 'Raf', 'CDKN2A', 'CyclinD', 'CellMigration', 'CTGF', 'Mekk1', 'Fak', 'PAK2', 'PTGS2', 'CREB', 'ETS', 'RSK', 'Mkk3', 'DAG', 'PAK1', 'Mkk6', 'C3G', 'cFOS', 'cJUN', 'IL8', 'JNK', 'HBEGF', 'AP1', 'Mek', 'SOS', 'Ca', 'uPAR', 'PAK3', 'EGR1', 'PKC', 'DOCK180', 'CDKN1A', 'cMYC', 'Cdc42_Rac1', 'Erk', 'Elk1', 'ECM', 'EGFR', 'uPA', 'MET', 'Grb2', 'Mekk4', 'MMP1_10', 'Mkk4', 'ATF2', 'Proliferation', 'CDK2', 'CCL20', 'CRKL', 'PI3K', 'PLC_g', 'Shc', 'IP3', 'Mekk7'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['AP1', 'ATF2', 'C3G', 'CCL20', 'CDK2', 'CDKN1A', 'CDKN2A', 'CREB', 'CRKL', 'CTGF', 'Ca', 'Cdc42_Rac1', 'CellMigration', 'CyclinD', 'DAG', 'DOCK180', 'ECM', 'EGFR', 'EGR1', 'ETS', 'Elk1', 'Erk', 'Fak', 'Grb2', 'HBEGF', 'IL8', 'IP3', 'Integrins', 'JNK', 'MET', 'MLK3', 'MMP1_10', 'Mek', 'Mekk1', 'Mekk4', 'Mekk7', 'Mkk3', 'Mkk4', 'Mkk6', 'PAK1', 'PAK2', 'PAK3', 'PI3K', 'PKC', 'PLC_g', 'PTGS2', 'Plasmin', 'Proliferation', 'RSK', 'Raf', 'Rap1', 'Ras', 'SOS', 'STAT3', 'Shc', 'cFOS', 'cJUN', 'cMYC', 'p38', 'uPA', 'uPAR']
+There are 61 intermediate nodes with the range of inter: 0 2305843009213693951
+----Input knockout shapley value-----
+('Akt', {'EGF': 0.0, 'PTEN': -2.3333, 'PAI_1': 0.0, 'HGF': 1.1667, 'DUSP1': 0.0, 'AKAP12': 0.0})
+
+
+----Input knockIN shapley value-----
+('Akt', {'EGF': 0.0, 'PTEN': 1.1667, 'PAI_1': 0.0, 'HGF': -2.3333, 'DUSP1': 0.0, 'AKAP12': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout MLK3
+Knockout Plasmin
+Knockout Integrins
+Knockout Ras
+Knockout STAT3
+Knockout p38
+Knockout Rap1
+Knockout Raf
+Knockout CDKN2A
+Knockout CyclinD
+Knockout CellMigration
+Knockout CTGF
+Knockout Mekk1
+Knockout Fak
+Knockout PAK2
+Knockout PTGS2
+Knockout CREB
+Knockout ETS
+Knockout RSK
+Knockout Mkk3
+Knockout DAG
+Knockout PAK1
+Knockout Mkk6
+Knockout C3G
+Knockout cFOS
+Knockout cJUN
+Knockout IL8
+Knockout JNK
+Knockout HBEGF
+Knockout AP1
+Knockout Mek
+Knockout SOS
+Knockout Ca
+Knockout uPAR
+Knockout PAK3
+Knockout EGR1
+Knockout PKC
+Knockout DOCK180
+Knockout CDKN1A
+Knockout cMYC
+Knockout Cdc42_Rac1
+Knockout Erk
+Knockout Elk1
+Knockout ECM
+Knockout EGFR
+Knockout uPA
+Knockout MET
+Knockout Grb2
+Knockout Mekk4
+Knockout MMP1_10
+Knockout Mkk4
+Knockout ATF2
+Knockout Proliferation
+Knockout CDK2
+Knockout CCL20
+Knockout CRKL
+Knockout PI3K
+Knockout PLC_g
+Knockout Shc
+Knockout IP3
+Knockout Mekk7
+----KNOCKOUT VALUE for output Akt----
+{'AP1': 0.0, 'ATF2': 0.0, 'C3G': 0.0, 'CCL20': 0.0, 'CDK2': 0.0, 'CDKN1A': 0.0, 'CDKN2A': 0.0, 'CREB': 0.0, 'CRKL': 0.0, 'CTGF': 0.0, 'Ca': 0.0, 'Cdc42_Rac1': 0.0, 'CellMigration': 0.0, 'CyclinD': 0.0, 'DAG': 0.0, 'DOCK180': 0.0, 'ECM': 0.0, 'EGFR': 0.0, 'EGR1': 0.0, 'ETS': 0.0, 'Elk1': 0.0, 'Erk': 0.0, 'Fak': 0.0, 'Grb2': 0.0, 'HBEGF': 0.0, 'IL8': 0.0, 'IP3': 0.0, 'Integrins': 0.0, 'JNK': 0.0, 'MET': 1.1667, 'MLK3': 0.0, 'MMP1_10': 0.0, 'Mek': 0.0, 'Mekk1': 0.0, 'Mekk4': 0.0, 'Mekk7': 0.0, 'Mkk3': 0.0, 'Mkk4': 0.0, 'Mkk6': 0.0, 'PAK1': 0.0, 'PAK2': 0.0, 'PAK3': 0.0, 'PI3K': 1.1667, 'PKC': 0.0, 'PLC_g': 0.0, 'PTGS2': 0.0, 'Plasmin': 0.0, 'Proliferation': 0.0, 'RSK': 0.0, 'Raf': 0.0, 'Rap1': 0.0, 'Ras': 0.0, 'SOS': 0.0, 'STAT3': 0.0, 'Shc': 0.0, 'cFOS': 0.0, 'cJUN': 0.0, 'cMYC': 0.0, 'p38': 0.0, 'uPA': 0.0, 'uPAR': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin MLK3
+Knockin Plasmin
+Knockin Integrins
+Knockin Ras
+Knockin STAT3
+Knockin p38
+Knockin Rap1
+Knockin Raf
+Knockin CDKN2A
+Knockin CyclinD
+Knockin CellMigration
+Knockin CTGF
+Knockin Mekk1
+Knockin Fak
+Knockin PAK2
+Knockin PTGS2
+Knockin CREB
+Knockin ETS
+Knockin RSK
+Knockin Mkk3
+Knockin DAG
+Knockin PAK1
+Knockin Mkk6
+Knockin C3G
+Knockin cFOS
+Knockin cJUN
+Knockin IL8
+Knockin JNK
+Knockin HBEGF
+Knockin AP1
+Knockin Mek
+Knockin SOS
+Knockin Ca
+Knockin uPAR
+Knockin PAK3
+Knockin EGR1
+Knockin PKC
+Knockin DOCK180
+Knockin CDKN1A
+Knockin cMYC
+Knockin Cdc42_Rac1
+Knockin Erk
+Knockin Elk1
+Knockin ECM
+Knockin EGFR
+Knockin uPA
+Knockin MET
+Knockin Grb2
+Knockin Mekk4
+Knockin MMP1_10
+Knockin Mkk4
+Knockin ATF2
+Knockin Proliferation
+Knockin CDK2
+Knockin CCL20
+Knockin CRKL
+Knockin PI3K
+Knockin PLC_g
+Knockin Shc
+Knockin IP3
+Knockin Mekk7
+----KNOCKIN VALUE for output Akt----
+{'Akt': {'MLK3': 0.0, 'Plasmin': -0.5833, 'Integrins': -0.5833, 'Ras': 0.0, 'STAT3': 0.0, 'p38': 0.0, 'Rap1': 0.0, 'Raf': 0.0, 'CDKN2A': 0.0, 'CyclinD': 0.0, 'CellMigration': 0.0, 'CTGF': 0.0, 'Mekk1': 0.0, 'Fak': -0.5833, 'PAK2': 0.0, 'PTGS2': 0.0, 'CREB': 0.0, 'ETS': 0.0, 'RSK': 0.0, 'Mkk3': 0.0, 'DAG': 0.0, 'PAK1': 0.0, 'Mkk6': 0.0, 'C3G': 0.0, 'cFOS': 0.0, 'cJUN': 0.0, 'IL8': 0.0, 'JNK': 0.0, 'HBEGF': 0.0, 'AP1': -0.2333, 'Mek': 0.0, 'SOS': 0.0, 'Ca': 0.0, 'uPAR': -0.2333, 'PAK3': 0.0, 'EGR1': 0.0, 'PKC': 0.0, 'DOCK180': 0.0, 'CDKN1A': 0.0, 'cMYC': 0.0, 'Cdc42_Rac1': -0.5833, 'Erk': 0.0, 'Elk1': 0.0, 'ECM': -0.5833, 'EGFR': 0.0, 'uPA': -0.2333, 'MET': -2.3333, 'Grb2': 0.0, 'Mekk4': 0.0, 'MMP1_10': -0.5833, 'Mkk4': 0.0, 'ATF2': 0.0, 'Proliferation': 0.0, 'CDK2': 0.0, 'CCL20': 0.0, 'CRKL': 0.0, 'PI3K': -2.3333, 'PLC_g': 0.0, 'Shc': 0.0, 'IP3': 0.0, 'Mekk7': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['AP1', 'ATF2', 'C3G', 'CCL20', 'CDK2', 'CDKN1A', 'CDKN2A', 'CREB', 'CRKL', 'CTGF', 'Ca', 'Cdc42_Rac1', 'CellMigration', 'CyclinD', 'DAG', 'DOCK180', 'ECM', 'EGFR', 'EGR1', 'ETS', 'Elk1', 'Erk', 'Fak', 'Grb2', 'HBEGF', 'IL8', 'IP3', 'Integrins', 'JNK', 'MET', 'MLK3', 'MMP1_10', 'Mek', 'Mekk1', 'Mekk4', 'Mekk7', 'Mkk3', 'Mkk4', 'Mkk6', 'PAK1', 'PAK2', 'PAK3', 'PI3K', 'PKC', 'PLC_g', 'PTGS2', 'Plasmin', 'Proliferation', 'RSK', 'Raf', 'Rap1', 'Ras', 'SOS', 'STAT3', 'Shc', 'cFOS', 'cJUN', 'cMYC', 'p38', 'uPA', 'uPAR']
+There are 61 intermediate nodes with the range of inter: 0 2305843009213693951
+----Input shapley value of acyclic network-----
+('Akt', {'EGF': 0.0, 'PTEN': -2.3333, 'PAI_1': 0.0, 'HGF': 1.1667, 'DUSP1': 0.0, 'AKAP12': 0.0})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'EGF', 'PTEN', 'PAI_1', 'HGF', 'DUSP1', 'AKAP12'}
+Ordinary nodes are 
+{'MLK3', 'Integrins', 'Ras', 'p38', 'STAT3', 'PTEN', 'Plasmin', 'Rap1', 'Raf', 'CDKN2A', 'CyclinD', 'CellMigration', 'CTGF', 'Mekk1', 'Fak', 'PAK2', 'PTGS2', 'CREB', 'ETS', 'Mkk3', 'DAG', 'C3G', 'cFOS', 'PAK1', 'Mkk6', 'EGF', 'cJUN', 'IL8', 'JNK', 'HBEGF', 'AKAP12', 'AP1', 'Mek', 'SOS', 'Ca', 'uPAR', 'Akt', 'PAI_1', 'IP3', 'PAK3', 'EGR1', 'PKC', 'DOCK180', 'CDKN1A', 'cMYC', 'Cdc42_Rac1', 'Erk', 'Elk1', 'ECM', 'MET', 'Grb2', 'EGFR', 'uPA', 'Mekk4', 'MMP1_10', 'Mkk4', 'ATF2', 'CDK2', 'Proliferation', 'CCL20', 'HGF', 'CRKL', 'PI3K', 'PLC_g', 'DUSP1', 'Shc', 'RSK', 'Mekk7'}
+Extranodes added after removing cycles are 
+['Ras_to_Cdc42_Rac1', 'C3G_to_Rap1', 'Mek_to_Erk', 'Akt_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set(), set()]
+-------TESTING LINE: 0-------
+{'Plasmin': False, 'STAT3': False, '_XTR_2_': False, '_XTR_38_': False, 'DAG': False, 'Mkk6': False, 'PAK1': False, 'Ras_to_Cdc42_Rac1': False, 'PAK3': False, 'EGR1': False, 'CDKN1A': False, 'DOCK180': False, 'ECM': False, 'uPA': False, '_XTR_5_': False, 'Proliferation': False, 'CRKL': False, 'PI3K': False, 'PLC_g': False, 'PTEN': False, '_XTR_45_': True, '_XTR_46_': True, 'Fak': False, '_XTR_6_': True, 'C3G': False, '_XTR_43_': False, 'EGF': False, '_XTR_26_': True, '_XTR_20_': False, 'DOCK180_to_Cdc42_Rac1': False, 'PAI_1': False, 'cMYC': False, 'Erk': False, 'Elk1': False, 'Grb2': False, 'ATF2': False, 'CCL20': False, 'Rap1': False, '_XTR_51_': False, 'Raf': False, 'CTGF': False, 'CellMigration': False, 'PAK2': False, 'Mkk3': False, '_XTR_41_': False, 'JNK': False, 'AKAP12': False, 'Ca': False, 'PKC': False, '_XTR_29_': False, 'EGFR': False, 'Mekk4': False, 'Akt_to_Cdc42_Rac1': False, 'Mkk4': False, 'Shc': False, 'IP3': False, 'Mekk7': False, 'Integrins': False, 'MLK3': False, 'Ras': False, 'p38': False, '_XTR_54_': False, 'CDKN2A': False, 'CyclinD': False, '_XTR_47_': True, '_XTR_1_': False, 'Mekk1': False, 'PTGS2': False, 'CREB': False, 'ETS': False, 'cFOS': False, 'Mek_to_Erk': False, 'cJUN': False, 'IL8': False, '_XTR_21_': False, '_XTR_42_': True, 'HBEGF': False, 'AP1': False, 'SOS': False, 'Mek': False, 'uPAR': False, 'Akt': False, 'C3G_to_Rap1': False, 'Cdc42_Rac1': False, 'MET': False, 'MMP1_10': False, '_XTR_14_': False, 'CDK2': False, 'HGF': False, '_XTR_49_': False, 'DUSP1': False, 'RSK': False}
+-------TESTING LINE: 1-------
+{'Plasmin': False, 'STAT3': False, '_XTR_2_': False, '_XTR_38_': False, 'DAG': False, 'Mkk6': False, 'PAK1': False, 'Ras_to_Cdc42_Rac1': False, 'PAK3': False, 'EGR1': False, 'CDKN1A': False, 'DOCK180': False, 'ECM': False, 'uPA': False, '_XTR_5_': False, 'Proliferation': False, 'CRKL': False, 'PI3K': False, 'PLC_g': False, 'PTEN': True, '_XTR_45_': True, '_XTR_46_': True, 'Fak': False, '_XTR_6_': True, 'C3G': False, '_XTR_43_': False, 'EGF': False, '_XTR_26_': False, '_XTR_20_': False, 'DOCK180_to_Cdc42_Rac1': False, 'PAI_1': False, 'cMYC': False, 'Erk': False, 'Elk1': False, 'Grb2': False, 'ATF2': False, 'CCL20': False, 'Rap1': False, '_XTR_51_': False, 'Raf': False, 'CTGF': False, 'CellMigration': False, 'PAK2': False, 'Mkk3': False, '_XTR_41_': False, 'JNK': False, 'AKAP12': False, 'Ca': False, 'PKC': False, '_XTR_29_': False, 'EGFR': False, 'Mekk4': False, 'Akt_to_Cdc42_Rac1': False, 'Mkk4': False, 'Shc': False, 'IP3': False, 'Mekk7': False, 'Integrins': False, 'MLK3': False, 'Ras': False, 'p38': False, '_XTR_54_': False, 'CDKN2A': False, 'CyclinD': False, '_XTR_47_': True, '_XTR_1_': False, 'Mekk1': False, 'PTGS2': False, 'CREB': False, 'ETS': False, 'cFOS': False, 'Mek_to_Erk': False, 'cJUN': False, 'IL8': False, '_XTR_21_': False, '_XTR_42_': True, 'HBEGF': False, 'AP1': False, 'SOS': False, 'Mek': False, 'uPAR': False, 'Akt': False, 'C3G_to_Rap1': False, 'Cdc42_Rac1': False, 'MET': False, 'MMP1_10': False, '_XTR_14_': False, 'CDK2': False, 'HGF': False, '_XTR_49_': False, 'DUSP1': False, 'RSK': False}
+-------TESTING LINE: 3-------
+{'Plasmin': False, 'STAT3': False, '_XTR_2_': False, '_XTR_38_': False, 'DAG': False, 'Mkk6': False, 'PAK1': False, 'Ras_to_Cdc42_Rac1': False, 'PAK3': False, 'EGR1': False, 'CDKN1A': False, 'DOCK180': False, 'ECM': False, 'uPA': False, '_XTR_5_': False, 'Proliferation': False, 'CRKL': False, 'PI3K': False, 'PLC_g': False, 'PTEN': True, '_XTR_45_': True, '_XTR_46_': True, 'Fak': False, '_XTR_6_': True, 'C3G': False, '_XTR_43_': False, 'EGF': False, '_XTR_26_': False, '_XTR_20_': False, 'DOCK180_to_Cdc42_Rac1': False, 'PAI_1': True, 'cMYC': False, 'Erk': False, 'Elk1': False, 'Grb2': False, 'ATF2': False, 'CCL20': False, 'Rap1': False, '_XTR_51_': False, 'Raf': False, 'CTGF': False, 'CellMigration': False, 'PAK2': False, 'Mkk3': False, '_XTR_41_': False, 'JNK': False, 'AKAP12': False, 'Ca': False, 'PKC': False, '_XTR_29_': False, 'EGFR': False, 'Mekk4': False, 'Akt_to_Cdc42_Rac1': False, 'Mkk4': False, 'Shc': False, 'IP3': False, 'Mekk7': False, 'Integrins': False, 'MLK3': False, 'Ras': False, 'p38': False, '_XTR_54_': False, 'CDKN2A': False, 'CyclinD': False, '_XTR_47_': True, '_XTR_1_': False, 'Mekk1': False, 'PTGS2': False, 'CREB': False, 'ETS': False, 'cFOS': False, 'Mek_to_Erk': False, 'cJUN': False, 'IL8': False, '_XTR_21_': False, '_XTR_42_': True, 'HBEGF': False, 'AP1': False, 'SOS': False, 'Mek': False, 'uPAR': False, 'Akt': False, 'C3G_to_Rap1': False, 'Cdc42_Rac1': False, 'MET': False, 'MMP1_10': False, '_XTR_14_': False, 'CDK2': False, 'HGF': False, '_XTR_49_': False, 'DUSP1': False, 'RSK': False}
+-------TESTING LINE: 4-------
+{'Plasmin': False, 'STAT3': True, '_XTR_2_': True, '_XTR_38_': False, 'DAG': True, 'Mkk6': True, 'PAK1': True, 'Ras_to_Cdc42_Rac1': True, 'PAK3': True, 'EGR1': True, 'CDKN1A': True, 'DOCK180': True, 'ECM': False, 'uPA': True, '_XTR_5_': True, 'Proliferation': False, 'CRKL': True, 'PI3K': True, 'PLC_g': True, 'PTEN': False, '_XTR_45_': False, '_XTR_46_': False, 'Fak': False, '_XTR_6_': True, 'C3G': True, '_XTR_43_': True, 'EGF': False, '_XTR_26_': True, '_XTR_20_': True, 'DOCK180_to_Cdc42_Rac1': True, 'PAI_1': False, 'cMYC': True, 'Erk': True, 'Elk1': True, 'Grb2': True, 'ATF2': True, 'CCL20': True, 'Rap1': True, '_XTR_51_': False, 'Raf': True, 'CTGF': True, 'CellMigration': True, 'PAK2': True, 'Mkk3': True, '_XTR_41_': True, 'JNK': True, 'AKAP12': False, 'Ca': True, 'PKC': True, '_XTR_29_': True, 'EGFR': True, 'Mekk4': True, 'Akt_to_Cdc42_Rac1': True, 'Mkk4': True, 'Shc': True, 'IP3': True, 'Mekk7': True, 'Integrins': False, 'MLK3': True, 'Ras': True, 'p38': True, '_XTR_54_': True, 'CDKN2A': True, 'CyclinD': True, '_XTR_47_': False, '_XTR_1_': True, 'Mekk1': True, 'PTGS2': True, 'CREB': True, 'ETS': True, 'cFOS': True, 'Mek_to_Erk': True, 'cJUN': True, 'IL8': True, '_XTR_21_': True, '_XTR_42_': True, 'HBEGF': True, 'AP1': True, 'SOS': True, 'Mek': True, 'uPAR': True, 'Akt': True, 'C3G_to_Rap1': True, 'Cdc42_Rac1': True, 'MET': True, 'MMP1_10': False, '_XTR_14_': True, 'CDK2': False, 'HGF': True, '_XTR_49_': True, 'DUSP1': False, 'RSK': True}
+-------TESTING LINE: 5-------
+{'Plasmin': False, 'STAT3': False, '_XTR_2_': False, '_XTR_38_': False, 'DAG': True, 'Mkk6': False, 'PAK1': False, 'Ras_to_Cdc42_Rac1': True, 'PAK3': False, 'EGR1': False, 'CDKN1A': False, 'DOCK180': True, 'ECM': False, 'uPA': False, '_XTR_5_': True, 'Proliferation': False, 'CRKL': True, 'PI3K': True, 'PLC_g': True, 'PTEN': True, '_XTR_45_': True, '_XTR_46_': True, 'Fak': False, '_XTR_6_': True, 'C3G': True, '_XTR_43_': False, 'EGF': False, '_XTR_26_': False, '_XTR_20_': True, 'DOCK180_to_Cdc42_Rac1': True, 'PAI_1': False, 'cMYC': False, 'Erk': False, 'Elk1': False, 'Grb2': True, 'ATF2': False, 'CCL20': False, 'Rap1': True, '_XTR_51_': False, 'Raf': False, 'CTGF': False, 'CellMigration': False, 'PAK2': False, 'Mkk3': False, '_XTR_41_': False, 'JNK': False, 'AKAP12': False, 'Ca': True, 'PKC': True, '_XTR_29_': True, 'EGFR': False, 'Mekk4': False, 'Akt_to_Cdc42_Rac1': False, 'Mkk4': False, 'Shc': True, 'IP3': True, 'Mekk7': False, 'Integrins': False, 'MLK3': False, 'Ras': True, 'p38': False, '_XTR_54_': False, 'CDKN2A': False, 'CyclinD': False, '_XTR_47_': True, '_XTR_1_': False, 'Mekk1': False, 'PTGS2': False, 'CREB': False, 'ETS': False, 'cFOS': False, 'Mek_to_Erk': False, 'cJUN': False, 'IL8': False, '_XTR_21_': False, '_XTR_42_': True, 'HBEGF': False, 'AP1': False, 'SOS': True, 'Mek': False, 'uPAR': False, 'Akt': False, 'C3G_to_Rap1': True, 'Cdc42_Rac1': False, 'MET': True, 'MMP1_10': False, '_XTR_14_': False, 'CDK2': False, 'HGF': True, '_XTR_49_': False, 'DUSP1': False, 'RSK': False}
+-------TESTING LINE: 6-------
+{'Plasmin': True, 'STAT3': True, '_XTR_2_': True, '_XTR_38_': True, 'DAG': True, 'Mkk6': True, 'PAK1': True, 'Ras_to_Cdc42_Rac1': True, 'PAK3': True, 'EGR1': True, 'CDKN1A': True, 'DOCK180': True, 'ECM': True, 'uPA': True, '_XTR_5_': True, 'Proliferation': False, 'CRKL': True, 'PI3K': True, 'PLC_g': True, 'PTEN': False, '_XTR_45_': False, '_XTR_46_': False, 'Fak': True, '_XTR_6_': True, 'C3G': True, '_XTR_43_': True, 'EGF': False, '_XTR_26_': True, '_XTR_20_': True, 'DOCK180_to_Cdc42_Rac1': True, 'PAI_1': True, 'cMYC': True, 'Erk': True, 'Elk1': True, 'Grb2': True, 'ATF2': True, 'CCL20': True, 'Rap1': True, '_XTR_51_': True, 'Raf': True, 'CTGF': True, 'CellMigration': True, 'PAK2': True, 'Mkk3': True, '_XTR_41_': True, 'JNK': True, 'AKAP12': False, 'Ca': True, 'PKC': True, '_XTR_29_': True, 'EGFR': True, 'Mekk4': True, 'Akt_to_Cdc42_Rac1': True, 'Mkk4': True, 'Shc': True, 'IP3': True, 'Mekk7': True, 'Integrins': True, 'MLK3': True, 'Ras': True, 'p38': True, '_XTR_54_': True, 'CDKN2A': True, 'CyclinD': True, '_XTR_47_': False, '_XTR_1_': True, 'Mekk1': True, 'PTGS2': True, 'CREB': True, 'ETS': True, 'cFOS': True, 'Mek_to_Erk': True, 'cJUN': True, 'IL8': True, '_XTR_21_': True, '_XTR_42_': True, 'HBEGF': True, 'AP1': True, 'SOS': True, 'Mek': True, 'uPAR': True, 'Akt': True, 'C3G_to_Rap1': True, 'Cdc42_Rac1': True, 'MET': True, 'MMP1_10': True, '_XTR_14_': True, 'CDK2': False, 'HGF': True, '_XTR_49_': True, 'DUSP1': False, 'RSK': True}
+-------TESTING LINE: 7-------
+{'Plasmin': False, 'STAT3': False, '_XTR_2_': False, '_XTR_38_': False, 'DAG': True, 'Mkk6': False, 'PAK1': False, 'Ras_to_Cdc42_Rac1': True, 'PAK3': False, 'EGR1': False, 'CDKN1A': False, 'DOCK180': True, 'ECM': False, 'uPA': False, '_XTR_5_': True, 'Proliferation': False, 'CRKL': True, 'PI3K': True, 'PLC_g': True, 'PTEN': True, '_XTR_45_': True, '_XTR_46_': True, 'Fak': False, '_XTR_6_': True, 'C3G': True, '_XTR_43_': False, 'EGF': False, '_XTR_26_': False, '_XTR_20_': True, 'DOCK180_to_Cdc42_Rac1': True, 'PAI_1': True, 'cMYC': False, 'Erk': False, 'Elk1': False, 'Grb2': True, 'ATF2': False, 'CCL20': False, 'Rap1': True, '_XTR_51_': False, 'Raf': False, 'CTGF': False, 'CellMigration': False, 'PAK2': False, 'Mkk3': False, '_XTR_41_': False, 'JNK': False, 'AKAP12': False, 'Ca': True, 'PKC': True, '_XTR_29_': True, 'EGFR': False, 'Mekk4': False, 'Akt_to_Cdc42_Rac1': False, 'Mkk4': False, 'Shc': True, 'IP3': True, 'Mekk7': False, 'Integrins': False, 'MLK3': False, 'Ras': True, 'p38': False, '_XTR_54_': False, 'CDKN2A': False, 'CyclinD': False, '_XTR_47_': True, '_XTR_1_': False, 'Mekk1': False, 'PTGS2': False, 'CREB': False, 'ETS': False, 'cFOS': False, 'Mek_to_Erk': False, 'cJUN': False, 'IL8': False, '_XTR_21_': False, '_XTR_42_': True, 'HBEGF': False, 'AP1': False, 'SOS': True, 'Mek': False, 'uPAR': False, 'Akt': False, 'C3G_to_Rap1': True, 'Cdc42_Rac1': False, 'MET': True, 'MMP1_10': False, '_XTR_14_': False, 'CDK2': False, 'HGF': True, '_XTR_49_': False, 'DUSP1': False, 'RSK': False}
+-----Knockout Shapley value of input nodes in the binary network-----
+Akt : {'EGF': 0.0, 'PTEN': -2.3333, 'PAI_1': 0.0, 'HGF': 1.1667, 'DUSP1': 0.0, 'AKAP12': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+Akt : {'EGF': 0.0, 'PTEN': 1.1667, 'PAI_1': 0.0, 'HGF': -2.3333, 'DUSP1': 0.0, 'AKAP12': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout Plasmin
+Knockout STAT3
+Knockout Rap1
+Knockout _XTR_51_
+Knockout Raf
+Knockout _XTR_2_
+Knockout CTGF
+Knockout CellMigration
+Knockout PAK2
+Knockout _XTR_38_
+Knockout Mkk3
+Knockout DAG
+Knockout Mkk6
+Knockout PAK1
+Knockout Ras_to_Cdc42_Rac1
+Knockout _XTR_41_
+Knockout JNK
+Knockout Ca
+Knockout PAK3
+Knockout EGR1
+Knockout PKC
+Knockout CDKN1A
+Knockout DOCK180
+Knockout _XTR_29_
+Knockout ECM
+Knockout uPA
+Knockout _XTR_5_
+Knockout EGFR
+Knockout Mekk4
+Knockout Akt_to_Cdc42_Rac1
+Knockout Mkk4
+Knockout Proliferation
+Knockout CRKL
+Knockout PI3K
+Knockout PLC_g
+Knockout Shc
+Knockout IP3
+Knockout Mekk7
+Knockout Integrins
+Knockout MLK3
+Knockout Ras
+Knockout p38
+Knockout _XTR_54_
+Knockout _XTR_45_
+Knockout CDKN2A
+Knockout CyclinD
+Knockout _XTR_46_
+Knockout _XTR_47_
+Knockout _XTR_1_
+Knockout Fak
+Knockout Mekk1
+Knockout PTGS2
+Knockout CREB
+Knockout ETS
+Knockout _XTR_6_
+Knockout C3G
+Knockout _XTR_43_
+Knockout cFOS
+Knockout Mek_to_Erk
+Knockout cJUN
+Knockout IL8
+Knockout _XTR_21_
+Knockout _XTR_42_
+Knockout HBEGF
+Knockout AP1
+Knockout _XTR_26_
+Knockout SOS
+Knockout Mek
+Knockout uPAR
+Knockout _XTR_20_
+Knockout DOCK180_to_Cdc42_Rac1
+Knockout C3G_to_Rap1
+Knockout cMYC
+Knockout Cdc42_Rac1
+Knockout Erk
+Knockout Elk1
+Knockout MET
+Knockout Grb2
+Knockout MMP1_10
+Knockout ATF2
+Knockout _XTR_14_
+Knockout CDK2
+Knockout CCL20
+Knockout _XTR_49_
+Knockout RSK
+---- Binary KNOCKOUT VALUE for output Akt----
+{'Akt': {'Plasmin': 0.0, 'STAT3': 0.0, 'Rap1': 0.0, '_XTR_51_': 0.0, 'Raf': 0.0, '_XTR_2_': 0.0, 'CTGF': 0.0, 'CellMigration': 0.0, 'PAK2': 0.0, '_XTR_38_': 0.0, 'Mkk3': 0.0, 'DAG': 0.0, 'Mkk6': 0.0, 'PAK1': 0.0, 'Ras_to_Cdc42_Rac1': 0.0, '_XTR_41_': 0.0, 'JNK': 0.0, 'Ca': 0.0, 'PAK3': 0.0, 'EGR1': 0.0, 'PKC': 0.0, 'CDKN1A': 0.0, 'DOCK180': 0.0, '_XTR_29_': 0.0, 'ECM': 0.0, 'uPA': 0.0, '_XTR_5_': 0.0, 'EGFR': 0.0, 'Mekk4': 0.0, 'Akt_to_Cdc42_Rac1': 0.0, 'Mkk4': 0.0, 'Proliferation': 0.0, 'CRKL': 0.0, 'PI3K': 1.1667, 'PLC_g': 0.0, 'Shc': 0.0, 'IP3': 0.0, 'Mekk7': 0.0, 'Integrins': 0.0, 'MLK3': 0.0, 'Ras': 0.0, 'p38': 0.0, '_XTR_54_': 0.0, '_XTR_45_': 0.0, 'CDKN2A': 0.0, 'CyclinD': 0.0, '_XTR_46_': 0.0, '_XTR_47_': 0.0, '_XTR_1_': 0.0, 'Fak': 0.0, 'Mekk1': 0.0, 'PTGS2': 0.0, 'CREB': 0.0, 'ETS': 0.0, '_XTR_6_': 0.0, 'C3G': 0.0, '_XTR_43_': 0.0, 'cFOS': 0.0, 'Mek_to_Erk': 0.0, 'cJUN': 0.0, 'IL8': 0.0, '_XTR_21_': 0.0, '_XTR_42_': 0.0, 'HBEGF': 0.0, 'AP1': 0.0, '_XTR_26_': 1.1667, 'SOS': 0.0, 'Mek': 0.0, 'uPAR': 0.0, '_XTR_20_': 0.0, 'DOCK180_to_Cdc42_Rac1': 0.0, 'C3G_to_Rap1': 0.0, 'cMYC': 0.0, 'Cdc42_Rac1': 0.0, 'Erk': 0.0, 'Elk1': 0.0, 'MET': 1.1667, 'Grb2': 0.0, 'MMP1_10': 0.0, 'ATF2': 0.0, '_XTR_14_': 0.0, 'CDK2': 0.0, 'CCL20': 0.0, '_XTR_49_': 0.0, 'RSK': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN Plasmin
+KnockIN STAT3
+KnockIN Rap1
+KnockIN _XTR_51_
+KnockIN Raf
+KnockIN _XTR_2_
+KnockIN CTGF
+KnockIN CellMigration
+KnockIN PAK2
+KnockIN _XTR_38_
+KnockIN Mkk3
+KnockIN DAG
+KnockIN Mkk6
+KnockIN PAK1
+KnockIN Ras_to_Cdc42_Rac1
+KnockIN _XTR_41_
+KnockIN JNK
+KnockIN Ca
+KnockIN PAK3
+KnockIN EGR1
+KnockIN PKC
+KnockIN CDKN1A
+KnockIN DOCK180
+KnockIN _XTR_29_
+KnockIN ECM
+KnockIN uPA
+KnockIN _XTR_5_
+KnockIN EGFR
+KnockIN Mekk4
+KnockIN Akt_to_Cdc42_Rac1
+KnockIN Mkk4
+KnockIN Proliferation
+KnockIN CRKL
+KnockIN PI3K
+KnockIN PLC_g
+KnockIN Shc
+KnockIN IP3
+KnockIN Mekk7
+KnockIN Integrins
+KnockIN MLK3
+KnockIN Ras
+KnockIN p38
+KnockIN _XTR_54_
+KnockIN _XTR_45_
+KnockIN CDKN2A
+KnockIN CyclinD
+KnockIN _XTR_46_
+KnockIN _XTR_47_
+KnockIN _XTR_1_
+KnockIN Fak
+KnockIN Mekk1
+KnockIN PTGS2
+KnockIN CREB
+KnockIN ETS
+KnockIN _XTR_6_
+KnockIN C3G
+KnockIN _XTR_43_
+KnockIN cFOS
+KnockIN Mek_to_Erk
+KnockIN cJUN
+KnockIN IL8
+KnockIN _XTR_21_
+KnockIN _XTR_42_
+KnockIN HBEGF
+KnockIN AP1
+KnockIN _XTR_26_
+KnockIN SOS
+KnockIN Mek
+KnockIN uPAR
+KnockIN _XTR_20_
+KnockIN DOCK180_to_Cdc42_Rac1
+KnockIN C3G_to_Rap1
+KnockIN cMYC
+KnockIN Cdc42_Rac1
+KnockIN Erk
+KnockIN Elk1
+KnockIN MET
+KnockIN Grb2
+KnockIN MMP1_10
+KnockIN ATF2
+KnockIN _XTR_14_
+KnockIN CDK2
+KnockIN CCL20
+KnockIN _XTR_49_
+KnockIN RSK
+---- Binary KNOCKIN VALUE for output Akt----
+{'Akt': {'Plasmin': -0.5833, 'STAT3': 0.0, 'Rap1': 0.0, '_XTR_51_': -0.5833, 'Raf': 0.0, '_XTR_2_': 0.0, 'CTGF': 0.0, 'CellMigration': 0.0, 'PAK2': 0.0, '_XTR_38_': -2.3333, 'Mkk3': 0.0, 'DAG': 0.0, 'Mkk6': 0.0, 'PAK1': 0.0, 'Ras_to_Cdc42_Rac1': 0.0, '_XTR_41_': 0.0, 'JNK': 0.0, 'Ca': 0.0, 'PAK3': 0.0, 'EGR1': 0.0, 'PKC': 0.0, 'CDKN1A': 0.0, 'DOCK180': 0.0, '_XTR_29_': 0.0, 'ECM': -0.5833, 'uPA': -0.2333, '_XTR_5_': 0.0, 'EGFR': 0.0, 'Mekk4': 0.0, 'Akt_to_Cdc42_Rac1': -0.2333, 'Mkk4': 0.0, 'Proliferation': 0.0, 'CRKL': 0.0, 'PI3K': -2.3333, 'PLC_g': 0.0, 'Shc': 0.0, 'IP3': 0.0, 'Mekk7': 0.0, 'Integrins': -0.5833, 'MLK3': 0.0, 'Ras': 0.0, 'p38': 0.0, '_XTR_54_': 0.0, '_XTR_45_': 0.0, 'CDKN2A': 0.0, 'CyclinD': 0.0, '_XTR_46_': 0.0, '_XTR_47_': 0.0, '_XTR_1_': 0.0, 'Fak': -0.5833, 'Mekk1': 0.0, 'PTGS2': 0.0, 'CREB': 0.0, 'ETS': 0.0, '_XTR_6_': 0.0, 'C3G': 0.0, '_XTR_43_': 0.0, 'cFOS': 0.0, 'Mek_to_Erk': 0.0, 'cJUN': 0.0, 'IL8': 0.0, '_XTR_21_': 0.0, '_XTR_42_': 0.0, 'HBEGF': 0.0, 'AP1': -0.2333, '_XTR_26_': -2.3333, 'SOS': 0.0, 'Mek': 0.0, 'uPAR': -0.2333, '_XTR_20_': 0.0, 'DOCK180_to_Cdc42_Rac1': 0.0, 'C3G_to_Rap1': 0.0, 'cMYC': 0.0, 'Cdc42_Rac1': -0.5833, 'Erk': 0.0, 'Elk1': 0.0, 'MET': -2.3333, 'Grb2': 0.0, 'MMP1_10': -0.5833, 'ATF2': 0.0, '_XTR_14_': 0.0, 'CDK2': 0.0, 'CCL20': 0.0, '_XTR_49_': 0.0, 'RSK': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT Akt=======
+----Master diamonds-----
+{'_XTR_26_': 'Akt', 'MLK3': '_XTR_38_', 'Cdc42_Rac1': '_XTR_38_', 'Erk': '_XTR_38_', 'p38': '_XTR_38_', 'Mekk1': '_XTR_14_'}
+
+
+--------PROPAGATION--------
+Extranodes Mek_to_Erk, add Mek_to_Erk to nextlayer
+Extranodes C3G_to_Rap1, add C3G_to_Rap1 to nextlayer
+
+Current node Mek_to_Erk is an extra node, wire back to root node Mek
+
+Current node C3G_to_Rap1 is an extra node, wire back to root node C3G
+Extranodes DOCK180_to_Cdc42_Rac1, add  Ras_to_Cdc42_Rac1 to nextlayer
+
+Current node DOCK180_to_Cdc42_Rac1 is an extra node, wire back to root node DOCK180
+Akt                  			 KO:      1.167 | KI:    -5.8344
+PI3K                 			 KO:      1.167 | KI:    -2.3337
+_XTR_26_             			 KO:      1.167 | KI:    -2.3337
+MET                  			 KO:     0.5835 | KI:    -2.3337
+_XTR_38_             			 KO:        0.0 | KI:    -2.3337
+EGFR                 			 KO:        0.0 | KI:        0.0
+Fak                  			 KO:        0.0 | KI:    -0.5835
+PTEN                 			 KO:    -2.3337 | KI:      1.167
+HGF                  			 KO:      1.167 | KI:    -2.3337
+HBEGF                			 KO:        0.0 | KI:        0.0
+_XTR_51_             			 KO:        0.0 | KI:    -0.5835
+p38                  			 KO:        0.0 | KI:        0.0
+Erk                  			 KO:        0.0 | KI:        0.0
+EGF                  			 KO:        0.0 | KI:        0.0
+Integrins            			 KO:        0.0 | KI:    -0.5835
+Rap1                 			 KO:        0.0 | KI:        0.0
+PAK1                 			 KO:        0.0 | KI:        0.0
+_XTR_43_             			 KO:        0.0 | KI:        0.0
+Mek_to_Erk           			 KO:        0.0 | KI:        0.0
+ECM                  			 KO:        0.0 | KI:    -0.5835
+C3G_to_Rap1          			 KO:        0.0 | KI:        0.0
+Cdc42_Rac1           			 KO:        0.0 | KI:        0.0
+_XTR_41_             			 KO:        0.0 | KI:        0.0
+_XTR_42_             			 KO:        0.0 | KI:        0.0
+Mek                  			 KO:        0.0 | KI:        0.0
+Mekk1                			 KO:        0.0 | KI:        0.0
+Raf                  			 KO:        0.0 | KI:        0.0
+MMP1_10              			 KO:        0.0 | KI:    -0.5835
+C3G                  			 KO:        0.0 | KI:        0.0
+CRKL                 			 KO:        0.0 | KI:        0.0
+Akt_to_Cdc42_Rac1    			 KO:        0.0 | KI:        0.0
+_XTR_29_             			 KO:        0.0 | KI:        0.0
+Mkk3                 			 KO:        0.0 | KI:        0.0
+Mkk6                 			 KO:        0.0 | KI:        0.0
+Ras                  			 KO:        0.0 | KI:        0.0
+_XTR_54_             			 KO:        0.0 | KI:        0.0
+Plasmin              			 KO:        0.0 | KI:    -0.5835
+Grb2                 			 KO:        0.0 | KI:        0.0
+Ras_to_Cdc42_Rac1    			 KO:        0.0 | KI:        0.0
+DOCK180_to_Cdc42_Rac1 			 KO:        0.0 | KI:        0.0
+MLK3                 			 KO:        0.0 | KI:        0.0
+DUSP1                			 KO:        0.0 | KI:        0.0
+SOS                  			 KO:        0.0 | KI:        0.0
+PAK3                 			 KO:        0.0 | KI:        0.0
+PKC                  			 KO:        0.0 | KI:        0.0
+uPA                  			 KO:        0.0 | KI:    -0.2334
+Shc                  			 KO:        0.0 | KI:        0.0
+DOCK180              			 KO:        0.0 | KI:        0.0
+_XTR_5_              			 KO:        0.0 | KI:        0.0
+_XTR_6_              			 KO:        0.0 | KI:        0.0
+uPAR                 			 KO:        0.0 | KI:    -0.2334
+PAI_1                			 KO:        0.0 | KI:        0.0
+_XTR_20_             			 KO:        0.0 | KI:        0.0
+DAG                  			 KO:        0.0 | KI:        0.0
+Ca                   			 KO:        0.0 | KI:        0.0
+AP1                  			 KO:        0.0 | KI:    -0.2334
+PLC_g                			 KO:        0.0 | KI:        0.0
+IP3                  			 KO:        0.0 | KI:        0.0
+AKAP12               			 KO:        0.0 | KI:        0.0
+cFOS                 			 KO:        0.0 | KI:        0.0
+cJUN                 			 KO:        0.0 | KI:        0.0
+JNK                  			 KO:        0.0 | KI:        0.0
+_XTR_14_             			 KO:        0.0 | KI:        0.0
+PAK2                 			 KO:        0.0 | KI:        0.0
+Mekk7                			 KO:        0.0 | KI:        0.0
+Mkk4                 			 KO:        0.0 | KI:        0.0
+_XTR_49_             			 KO:        0.0 | KI:        0.0
+Mekk4                			 KO:        0.0 | KI:        0.0
+There are 24 unreachable nodes, they are:
+{'STAT3', '_XTR_45_', 'CDKN2A', 'CyclinD', '_XTR_2_', '_XTR_46_', '_XTR_47_', 'CTGF', 'CellMigration', '_XTR_1_', 'PTGS2', 'CREB', 'ETS', 'IL8', '_XTR_21_', 'EGR1', 'CDKN1A', 'cMYC', 'Elk1', 'ATF2', 'Proliferation', 'CDK2', 'CCL20', 'RSK'}
+binary.html
+Akt_to_Cdc42_Rac1    - Correct: KO:        0.0 | KI :    -0.2333 - Incorrect KO:        0.0 | KI:        0.0
+Cdc42_Rac1           - Correct: KO:        0.0 | KI :    -0.5833 - Incorrect KO:        0.0 | KI:        0.0
+MET                  - Correct: KO:     1.1667 | KI :    -2.3333 - Incorrect KO:     0.5835 | KI:    -2.3337
+AKAP12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DUSP1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+EGF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+HGF
+Lack      0: []
+Extra     0: []
+Real     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+Prop     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+
+PAI_1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTEN
+Lack      0: []
+Extra     0: []
+Real     32: [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55, 60, 61, 62, 63]
+Prop     32: [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55, 60, 61, 62, 63]
+
+AP1
+Lack      0: []
+Extra     0: []
+Real      4: [10, 26, 42, 58]
+Prop      4: [10, 26, 42, 58]
+
+ATF2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Akt_to_Cdc42_Rac1
+Lack      4: [10, 26, 42, 58]
+Extra     0: []
+Real      4: [10, 26, 42, 58]
+Prop      0: []
+
+C3G
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+C3G_to_Rap1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CCL20
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CDK2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CDKN1A
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CDKN2A
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CREB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CRKL
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CTGF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ca
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cdc42_Rac1
+Lack      8: [2, 10, 18, 26, 34, 42, 50, 58]
+Extra     0: []
+Real      8: [2, 10, 18, 26, 34, 42, 50, 58]
+Prop      0: []
+
+CellMigration
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CyclinD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DAG
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DOCK180
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DOCK180_to_Cdc42_Rac1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ECM
+Lack      0: []
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      8: [8, 10, 24, 26, 40, 42, 56, 58]
+
+EGFR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+EGR1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ETS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Elk1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Erk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Fak
+Lack      0: []
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      8: [8, 10, 24, 26, 40, 42, 56, 58]
+
+Grb2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+HBEGF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL8
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Integrins
+Lack      0: []
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      8: [8, 10, 24, 26, 40, 42, 56, 58]
+
+JNK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MET
+Lack      8: [6, 14, 22, 30, 38, 46, 54, 62]
+Extra     0: []
+Real     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+Prop     24: [0, 2, 4, 8, 10, 12, 16, 18, 20, 24, 26, 28, 32, 34, 36, 40, 42, 44, 48, 50, 52, 56, 58, 60]
+
+MLK3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MMP1_10
+Lack      0: []
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      8: [8, 10, 24, 26, 40, 42, 56, 58]
+
+Mek
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mek_to_Erk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mekk1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mekk4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mekk7
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mkk3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mkk4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mkk6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAK1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAK2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAK3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PI3K
+Lack      0: []
+Extra     0: []
+Real     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+Prop     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+
+PKC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLC_g
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTGS2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Plasmin
+Lack      0: []
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      8: [8, 10, 24, 26, 40, 42, 56, 58]
+
+Proliferation
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RSK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Raf
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Rap1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ras
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ras_to_Cdc42_Rac1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SOS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Shc
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_14_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_1_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_20_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_21_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_26_
+Lack      0: []
+Extra     0: []
+Real     32: [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55, 60, 61, 62, 63]
+Prop     32: [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55, 60, 61, 62, 63]
+
+_XTR_29_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_38_
+Lack      0: []
+Extra     0: []
+Real     16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+Prop     16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+
+_XTR_41_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_42_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_43_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_45_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_46_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_47_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_49_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_51_
+Lack      0: []
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      8: [8, 10, 24, 26, 40, 42, 56, 58]
+
+_XTR_54_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_5_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_6_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cFOS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cJUN
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cMYC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p38
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+uPA
+Lack      0: []
+Extra     0: []
+Real      4: [10, 26, 42, 58]
+Prop      4: [10, 26, 42, 58]
+
+uPAR
+Lack      0: []
+Extra     0: []
+Real      4: [10, 26, 42, 58]
+Prop      4: [10, 26, 42, 58]
+
+Number of nodes is 91
+Number of input nodes is 6
+Relative_RMSE_KO_is  0.004366857880230524
+Relative_RMSE_KI_is  0.004704004654460963
+NDCG_KO_is  1.0
+NDCG_KI_is  0.9933958647890069
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             91.000       91.000
+Kendall tau-b                         0.997        0.935
+Spearman rho                          0.979        0.976
+Mean abs rank diff                    0.956        0.033
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        0.923
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        0.923
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            0.800        1.000
+  Top-3  groups Jaccard            0.055        0.923
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.0017011165618896484
+TIME simulate original network: 0.44930410385131836
+TIME perform original analysis process: 53.900761127471924
+TIME perform propagation: 0.9456491470336914
+-----------TOTAL RUNNING TIME---------------
+159.89903758326545

@@ -1,0 +1,281 @@
+The expression file is data/realbenchmark/2.txt
+The interested output is: 
+HH_p
+List of all species:
+{'ci', 'CIR', 'CIA', 'CI_p', 'SMO', 'ptc', 'hh_e', 'PTC_p', 'HH_p', 'SLP', 'en', 'EN_p', 'hh', 'PH', 'wg', 'WG_e', 'WG_p'}
+-----Input names-----
+{'SLP', 'hh_e', 'WG_e'}
+----Intermediate nodes-----
+{'ci', 'CIR', 'CI_p', 'CIA', 'SMO', 'ptc', 'PTC_p', 'HH_p', 'en', 'EN_p', 'hh', 'PH', 'wg', 'WG_p'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+Sorted input names
+['SLP', 'WG_e', 'hh_e']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['CIA', 'CIR', 'CI_p', 'EN_p', 'HH_p', 'PH', 'PTC_p', 'SMO', 'WG_p', 'ci', 'en', 'hh', 'ptc', 'wg']
+There are 14 intermediate nodes with the range of inter: 0 16383
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.018110036849975586 seconds===
+----Input knockout shapley value-----
+('SLP', -1.3333)
+('hh_e', 0.0)
+('WG_e', 0.6667)
+----Input knockIN shapley value-----
+('SLP', 0.6667)
+('hh_e', 0.0)
+('WG_e', -1.3333)
+-------Now perform the knockout procedure to original network-------
+Knockout ci
+Knockout CIR
+Knockout CI_p
+Knockout CIA
+Knockout SMO
+Knockout ptc
+Knockout PTC_p
+Knockout en
+Knockout EN_p
+Knockout hh
+Knockout PH
+Knockout wg
+Knockout WG_p
+----KNOCKOUT VALUE for output HH_p----
+{'CIA': 0.0, 'CIR': 0.0, 'CI_p': 0.0, 'EN_p': 0.6667, 'PH': 0.0, 'PTC_p': 0.0, 'SMO': 0.0, 'WG_p': 0.0, 'ci': 0.0, 'en': 0.6667, 'hh': 0.6667, 'ptc': 0.0, 'wg': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin ci
+Knockin CIR
+Knockin CI_p
+Knockin CIA
+Knockin SMO
+Knockin ptc
+Knockin PTC_p
+Knockin en
+Knockin EN_p
+Knockin hh
+Knockin PH
+Knockin wg
+Knockin WG_p
+----KNOCKIN VALUE for output HH_p----
+{'CIA': 0.0, 'CIR': 0.6667, 'CI_p': 0.3333, 'EN_p': -3.3333, 'PH': 0.0, 'PTC_p': 0.0, 'SMO': 0.0, 'WG_p': 0.0, 'ci': 0.0, 'en': -3.3333, 'hh': -3.3333, 'ptc': 0.0, 'wg': 0.0}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'SLP', 'hh_e', 'WG_e'}
+Ordinary nodes are 
+{'ci', 'CIR', 'CIA', 'CI_p', 'SMO', 'ptc', 'hh_e', 'PTC_p', 'HH_p', 'SLP', 'en', 'EN_p', 'hh', 'PH', 'wg', 'WG_e', 'WG_p'}
+Extranodes added after removing cycles are 
+['PTC_p_to_CIA', 'PTC_p_to_CIR', 'PTC_p_to_PTC_p', 'wg_to_wg']
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+----Generate table from output----
+-----Calculated value of input nodes-----
+SLP                  			 KO:    -1.3333 | KI:     0.6667
+WG_e                 			 KO:     0.6667 | KI:    -1.3333
+hh_e                 			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT HH_p=======
+----Master diamonds-----
+{'EN_p': 'hh', 'SLP': 'hh'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+CIA                  			 KO:        0.0 | KI:        0.0
+CIR                  			 KO:        0.0 | KI:     0.6666
+CI_p                 			 KO:        0.0 | KI:        0.0
+EN_p                 			 KO:     0.6666 | KI:    -3.3332
+HH_p                 			 KO:     0.6666 | KI:    -3.3332
+PTC_p                			 KO:        0.0 | KI:        0.0
+SLP                  			 KO:    -1.3333 | KI:     0.6666
+WG_e                 			 KO:     0.6666 | KI:    -1.3333
+ci                   			 KO:        0.0 | KI:        0.0
+en                   			 KO:     0.6666 | KI:    -3.3332
+hh                   			 KO:     0.6666 | KI:    -3.3332
+hh_e                 			 KO:        0.0 | KI:        0.0
+ptc                  			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	HH_p, hh, EN_p, en
+2	CIR, CI_p, ci, PTC_p, ptc, CIA
+=======
+KI RANKING OF NODES:
+1	HH_p, hh, EN_p, en
+2	WG_e
+3	CIR, SLP
+4	CI_p, hh_e, ci, PTC_p, ptc, CIA
+=======
+NUMBER OF NODES: 17
+NUMBER OF INPUTS: 3
+NUMBER OF EDGES: 29
+TIME process heading: 0.0008919239044189453
+TIME simulate original network: 0.018110036849975586
+TIME perform original analysis process: 0.3991391658782959
+TIME perform propagation: 0.07827115058898926
+There are 4 unreachable nodes, they are:
+{'PH', 'wg', 'WG_p', 'SMO'}
+CI_p                 - Correct: KO:        0.0 | KI :     0.3333 - Incorrect KO:        0.0 | KI:        0.0
+CIA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CIR
+Lack      0: []
+Extra     0: []
+Real      2: [2, 3]
+Prop      2: [2, 3]
+
+CI_p
+Lack      1: [2]
+Extra     0: []
+Real      1: [2]
+Prop      0: []
+
+EN_p
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+PH
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTC_p
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SLP
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+SMO
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+WG_e
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+WG_p
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ci
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+en
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+hh
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+hh_e
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ptc
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+wg
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	SLP
+2	hh, EN_p, en, WG_e
+3	CIR, CI_p, hh_e, ci, PTC_p, ptc
+	CIA, SMO, PH, wg, WG_p
+REFERENCE:
+1	SLP
+2	WG_e, en, EN_p, hh
+3	hh_e, ci, CIR, CI_p, CIA, SMO
+	ptc, PTC_p, PH, wg, WG_p
+=======
+-----KI RANKING COMPARISON-----
+1	hh, EN_p, en
+2	WG_e
+3	CIR, SLP
+4	CI_p, hh_e, ci, PTC_p, ptc, CIA
+	SMO, PH, wg, WG_p
+REFERENCE:
+1	en, EN_p, hh
+2	WG_e
+3	SLP, CIR
+4	CI_p
+5	hh_e, ci, CIA, SMO, ptc, PTC_p
+	PH, wg, WG_p
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.010415625
+NDCG_KO_is  1.0
+NDCG_KI_is  0.9979
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             16.000       16.000
+Kendall tau-b                         1.000        0.942
+Spearman rho                          1.000        0.981
+Mean abs rank diff                    0.000        0.562
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9922
+-----------TOTAL RUNNING TIME---------------
+0.6495174588635564

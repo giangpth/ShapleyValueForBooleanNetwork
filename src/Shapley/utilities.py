@@ -6,9 +6,14 @@ import math
 import copy 
 import random 
 import numpy as np
-from Shapley.exceptions import InforError
-
+from sklearn.metrics import ndcg_score
 from math import isfinite
+import random
+import math
+
+from Shapley.exceptions import InforError
+from Shapley.rankingEvaluation import compare_rankings, print_rank_comparison
+from Shapley.visualization import showNetwork
 
 def tie_buckets_abs(values, atol=1e-4, rtol=1e-4, rep="max"):
     """
@@ -114,9 +119,43 @@ def dict_hash(dictionary: Dict[str, Any]) -> str:
     dhash.update(encoded)
     return dhash.hexdigest() 
 
+def print_ranked_keys(d, orispecies=None):
+    if orispecies:
+        subd = {k: v for k, v in d.items() if k in orispecies}
+    else:
+        subd = d
+
+    # sort by value descending
+    sorted_items = sorted(subd.items(), key=lambda x: abs(x[1]), reverse=True)
+
+    ranks = []
+    current_rank = 1
+    last_value = None
+
+    # build rank groups
+    for key, value in sorted_items:
+        if value != last_value:
+            ranks.append((current_rank, [key]))
+            current_rank += 1
+            last_value = value
+        else:
+            ranks[-1][1].append(key)
+
+    # print with max 4 keys per row
+    MAX_PER_ROW = 6
+
+    for rank, keys in ranks:
+        # slice keys into groups of size 4
+        for idx in range(0, len(keys), MAX_PER_ROW):
+            chunk = keys[idx:idx + MAX_PER_ROW]
+            rank_label = str(rank) if idx == 0 else ""   # only show rank on first line
+            print(f"{rank_label}\t{', '.join(chunk)}")
 
 
-def parseArguments():
+
+
+
+def parseArgumentsAnalysis():
     """
     Parse command line arguments.
 
@@ -126,21 +165,108 @@ def parseArguments():
     
     parser = ap.ArgumentParser(description='Input the expression file and ')
     parser.add_argument('-e', '--expression', type=str, help="path to expression file", required=True)
-    parser.add_argument('-o', '--output', type=str, help='list of interested components to examine')
-    parser.add_argument('-k', '--knockout', help='Perform knockout or not', \
-                        action='store_true')
-    parser.add_argument('-i', '--knockin', help='Perform knockin or not', \
-                        action='store_true')
-    parser.add_argument('-b', '--binary', help='Work with binary network or not', \
-                        action='store_true')
-    parser.add_argument('-a', '--acyclic', help='Extract acyclic network with respect to output node', \
-                        action='store_true')
-    parser.add_argument('-p', '--propagate', help='Run propagation for binary network or not', \
-                        action='store_true')
+    parser.add_argument('-o', '--output', type=str, help='list of interested components to examine', required=True)
+    parser.add_argument('-m', '--mode', help='Mode of calculation, can be "Shapley" or "Uniform", default is "Shapley" ', type=str, default='Shapley')
+    parser.add_argument('-s', '--simprop', help='Probability to simulate an original node during the propagation', type = float, default=0.3)
+    parser.add_argument('-v', '--verbose', help="Print log or not", action='store_true')
+    
+    return parser 
+
+
+def parseArgumentsTest():
+    """
+    Parse command line arguments.
+
+    Returns:
+        argparse.ArgumentParser: The argument parser with defined options. 
+    """
+    
+    parser = ap.ArgumentParser(description='Input the expression file and ')
+    parser.add_argument('-e', '--expression', type=str, help="path to expression file", required=True)
+    parser.add_argument('-o', '--output', type=str, help='list of interested components to examine', required=True)
+    # parser.add_argument('-k', '--knockout', help='Perform knockout or not', \
+                        # action='store_true')
+    # parser.add_argument('-i', '--knockin', help='Perform knockin or not', \
+    #                     action='store_true')
+    # parser.add_argument('-b', '--binary', help='Work with binary network or not', \
+    #                     action='store_true')
+    # parser.add_argument('-a', '--acyclic', help='Extract acyclic network with respect to output node', \
+    #                     action='store_true')
+    # parser.add_argument('-p', '--propagate', help='Run propagation for binary network or not', \
+    #                     action='store_true')
     parser.add_argument('-d', '--debug', help="Print log to debug or not", \
                         action='store_true')
+    # parser.add_argument('-t', '--threshold', type=float, help="Threshold for error", default=0.6) # e.g. 0.6 mean need to simulate at least 40% of the rows
+    parser.add_argument('-m', '--mode', type=str, help="Mode: 'Shapley' or 'Uniform' ", default='Shapley')
 
     return parser
+
+def genRowids2simulate(numinputs, errthreshold, mode='Shapley', debug=False):
+    """
+    Generate a set of row IDs to simulate based on the total number of rows and an error threshold.
+    Args:
+        numinput (int): The number of input nodes.
+        errthreshold (float): The error threshold (between 0 and 1).
+        mode (str): The mode of operation, can be 'Shapley' or 'Uniform', default is 'Shapley'.
+        debug (bool): If True, print debug information.
+    Returns:
+        set: A set of row IDs to simulate.
+    """
+    if mode == 'Uniform':
+        totalrows = pow(2, numinputs)
+        simrows = math.ceil((1 - errthreshold) * totalrows)
+        if debug:
+            print(f"Total rows: {totalrows}, need to simulate at least {simrows} rows according to the error threshold {errthreshold}")
+        rowidstosimulate = set()
+        while len(rowidstosimulate) < simrows:
+            randint = random.randint(0, totalrows - 1) 
+            rowidstosimulate.add(randint)
+    else: # Shapley mode
+        maxval = numinputs + 1
+        maxerr = maxval*(1.0-errthreshold)
+        # simulate row with highest prop first, stop adding rows when the error is below threshold
+        rowidstosimulate = set()
+        cumerr = 0.0
+        for size in range(0, int(numinputs/2) + 1): 
+            numrowswithsize = math.comb(numinputs, size)
+            perrowerr = 1.0 / numrowswithsize
+            for i in range(numrowswithsize):
+                bitstr = '1'*size + '0'*(numinputs - size)
+                bitlist = list(bitstr)
+                # permute the bitlist to get the ith combination
+                from itertools import permutations
+                perm = set(permutations(bitlist))
+                perm = sorted(list(perm))
+                selectedbitstr = ''.join(perm[i])
+                rowid = int(selectedbitstr, 2)
+                rowidstosimulate.add(rowid)
+                cumerr += perrowerr
+                if cumerr >= maxerr:
+                    break
+            if cumerr >= maxerr/2:
+                break
+        for size in range(numinputs, int(numinputs/2), -1): 
+            numrowswithsize = math.comb(numinputs, size)
+            perrowerr = 1.0 / numrowswithsize
+            for i in range(numrowswithsize):
+                bitstr = '1'*size + '0'*(numinputs - size)
+                bitlist = list(bitstr)
+                # permute the bitlist to get the ith combination
+                from itertools import permutations
+                perm = set(permutations(bitlist))
+                perm = sorted(list(perm))
+                selectedbitstr = ''.join(perm[i])
+                rowid = int(selectedbitstr, 2)
+                rowidstosimulate.add(rowid)
+                cumerr += perrowerr
+                if cumerr >= maxerr:
+                    break
+            if cumerr >= maxerr:
+                break
+    if debug:
+        print(f"Row IDs to simulate: {sorted(list(rowidstosimulate))}") 
+    return rowidstosimulate
+
 
 def readfile(path, debug=False):
     """
@@ -271,8 +397,55 @@ def subsets(s):
         return [[]]  
     x = subsets(s[:-1])  
     return x + [[s[-1]] + y for y in x] 
-              
-def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnames, debug=False):
+
+def processPrecomputSimulations(intactbitable, output, rowids, KOres, KIres, debug=False):
+    """
+    Process precomputed simulation results for intact, knockout, and knockin scenarios.
+    Args:
+        intactbitable (dict): A dictionary mapping input states to output states for the intact network.
+        output (str): The output species name to consider.
+        rowids (set): A set of row IDs to consider.
+        KOres (dict): A dictionary mapping intermediate nodes to their knockout simulation results.
+        KIres (dict): A dictionary mapping intermediate nodes to their knockin simulation results.
+        debug (bool): If True, print debug information.
+    Returns:
+        dict: A dictionary mapping rows accounted for intermediate nodes.
+    """
+    # print(intactbitable)
+    # print(KOres)
+    # print(KIres)
+    precountedrow = dict()
+    for internode, koresults in KOres.items():
+        # print (koresults)
+        # print (KIres[internode])
+
+        precountedrow[internode] = set()
+        if internode not in KIres:
+            print("Cannot find knockin results for node {}".format(internode))
+
+        for rowid in rowids:
+            intactresult = intactbitable[rowid]
+            if rowid in koresults:
+                koresult = koresults[rowid]
+            else:
+                print("Cannot find knockout result for node {} at row {}".format(internode, rowid))
+                continue
+            if rowid in KIres[internode]:
+                kiresult = KIres[internode][rowid]
+            else:
+                print("Cannot find knockin result for node {} at row {}".format(internode, rowid))
+                continue
+
+            # print("Node {}: intact output {}, KO output {}, KI output {} at row {}".format(internode, intactresult[output], koresult[output], kiresult[output], rowid))
+            if intactresult[output] != koresult[output] or intactresult[output] != kiresult[output]:
+                precountedrow[internode].add(rowid)
+                
+    return precountedrow
+
+# def print_rank(dict1, dict2):
+    
+
+def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputname, mode='Shapley', debug=False):
     """
     Generate a table from simulation outputs, indexing rows by species states.
     Args:
@@ -288,11 +461,15 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
         dict: A dictionary mapping species names to sets of row IDs where they are False.
     """
     print("----Generate table from output----")
-    print("Blinkings:")
-    print(blinkings)
+    if debug:
+        print("Blinkings:")
+        print(blinkings)
+        for id, bset in enumerate(blinkings):
+            print(f"Row {id}: blinking nodes: {bset}")
     index = dict() # for each node, save the IDs of row that the node is TRUE
     aindex = dict() # for each node, save the IDs of row that the node is TRUE
     bindex = dict() # for each node, save the IDs of row that the node is BLINKING
+
     dictresult = dict()
     for inter in sortedinter:
         index[inter] = set()
@@ -302,10 +479,10 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
         index[input] = set()
         aindex[input] = set()
         bindex[input] = set()
-    for outputname in outputnames:
-        index[outputname] = set() 
-        aindex[outputname] = set() 
-        bindex[outputname] = set()
+
+    index[outputname] = set() 
+    aindex[outputname] = set() 
+    bindex[outputname] = set()
     
     # print("Integer verson of output:")
     for id, line in enumerate(simoutputs):
@@ -315,16 +492,20 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
         # each line is a dictionary with keys are name of species and value is true or false
         
         # for test 
-        if id in [0, 1, 3, 4, 5, 6, 7]:
-            print(f"-------TESTING LINE: {id}-------")
-            print(line)
-
+        # if id in [0, 1, 3, 4, 5, 6, 7]:
+        #     print(f"-------TESTING LINE: {id}-------")
+        #     print(line)
+        # print(line)
         size = 0
         for input in inputnames:
             if line[input]:
                 size += 1
         line['SIZE'] = size
-        line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
+        if mode == 'Uniform':
+            # line['PROP'] = round(1.0 / pow(2, len(inputnames)),4)
+            line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
+        else: # Shapley mode
+            line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
         blinking = blinkings[id] # this is the set of nodes that blink in this row 
         for inter in sortedinter:
             if line[inter]:
@@ -340,16 +521,86 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
                 index[input].add(id)
             else:
                 aindex[input].add(id)
-        for outputname in outputnames: 
-            if line[outputname]:
-                if outputname in blinking:
-                    bindex[outputname].add(id)
-                index[outputname].add(id)
-            else:
-                aindex[outputname].add(id)
+       
+        if line[outputname]:
+            if outputname in blinking:
+                bindex[outputname].add(id)
+            index[outputname].add(id)
+        else:
+            aindex[outputname].add(id)
 
         dictresult[id] = line
     return dictresult, index, aindex, bindex
+
+# def agreement(index, aindex, node1, node2, countedrows, debug=False):
+#     """
+#     Test function to check agreement between two nodes.
+#     Parameters:
+#         index: Dictionary mapping nodes to rows where they are True 
+#         aindex: Dictionary mapping nodes to rows where they are False
+#         node1: First node name
+#         node2: Second node name
+#     Returns:
+#         None
+#     """
+#     intersecttrue = countedrows.intersection(index[node1].intersection(index[node2]))
+#     intersectfalse = countedrows.intersection(aindex[node1].intersection(aindex[node2]))
+#     agree = intersecttrue.union(intersectfalse)
+#     disagree = countedrows.difference(agree)
+#     true1false2 = countedrows.intersection(index[node1].intersection(aindex[node2]))
+#     false1true2 = countedrows.intersection(aindex[node1].intersection(index[node2]))
+#     if debug: 
+#         print("Node {} and Node {} both TRUE on rows {}".format(node1, node2, sorted(list(intersecttrue))))
+#         print("Node {} and Node {} both FALSE on rows {}".format(node1, node2, sorted(list(intersectfalse))))
+#         # print("Node {} and Node {} DISAGREE on rows {}".format(node1, node2, sorted(list(disagree))))
+#         print("{} is TRUE while {} is FALSE on rows {}".format(node1, node2, sorted(list(index[node1].intersection(aindex[node2]).intersection(countedrows)))))
+#         print("{} is FALSE while {} is TRUE on rows {}".format(node1, node2, sorted(list(aindex[node1].intersection(index[node2]).intersection(countedrows)))))
+#     return intersecttrue, intersectfalse, true1false2, false1true2 
+
+# def partlySimulate(formulas, inputnames, internames, inputstates, errthreshold, mode='Shapley', debug=False):
+#     # sortedinput, sortedinter = getOrderedList(inputnames, internames, True)
+
+#     partlyKORes = dict()
+#     partlyKIRes = dict() 
+
+#     numinputs = len(inputnames)
+#     if debug:
+#         print("Simulate some rows to refine the results according to the ERROR THRESHOLD {}".format(errthreshold))
+#     rowids2simulate = genRowids2simulate(numinputs, errthreshold, mode, True)
+
+#     if debug:
+#         print("Rows to simulate: {}".format(sorted(list(rowids2simulate))))
+
+#     # knock out 
+#     for inter in sorted(list(internames)):
+#         partlyKORes[inter] = dict()
+#         partlyKIRes[inter] = dict()
+#         for rowid in rowids2simulate:
+#             if debug:
+#                 print("Knockout intermediate node {} for row {}".format(inter, rowid))
+#             inputstateKO = copy.deepcopy(inputstates[rowid])
+#             outputKO, blinking = getKnockoutOutput(formulas, inputstateKO, [inter], False, 1000, False)  
+#             partlyKORes[inter][rowid] = outputKO
+
+#             if debug:
+#                 print("Knockin intermediate node {} for row {}".format(inter, rowid))
+#             inputstateKI = copy.deepcopy(inputstates[rowid])
+#             outputKI, blinking = getKnockoutOutput(formulas, inputstateKI, [inter], False, 1000, False, None, True)
+#             partlyKIRes[inter][rowid] = outputKI
+
+
+#     return rowids2simulate, partlyKORes, partlyKIRes
+
+# def refineResults(formulas, simtable, countedrowsofnode, potentiallylacky, potentiallyextra, exerror = 0.2, debug=False):
+#     print("\n\n--------REFINING RESULTS--------") 
+#     print("Expected error is {}".format(exerror))
+#     for node, rows in countedrowsofnode.items(): 
+#         thispolack = potentiallylacky.difference(rows)
+#         thispoextra = potentiallyextra.intersection(rows) 
+#         if len(thispolack) > 0:
+#             print("Node {} potentially LACK rows: {}".format(node, sorted(list(thispolack)))) 
+#         if len(thispoextra) > 0:
+#             print("Node {} potentially EXTRA rows: {}".format(node, sorted(list(thispoextra)))) 
 
 # a wrapper for SHAP, taking a dataset of samples and computes the output of the model for those samples
 class BNmodel:
@@ -454,6 +705,34 @@ def filterrows(op, nodetofilter, childnode, index, aindex, extranodes, allrows):
     
     return allrows
 
+
+def random_percentage_selection(elements, percentage):
+    """
+    Randomly selects approximately 'percentage'% of elements from the given iterable.
+    
+    Args:
+        elements (list or set): The collection of elements to choose from.
+        percentage (float): The percentage to select (e.g., 30 for 30%).
+    
+    Returns:
+        list: A list of randomly selected elements.
+    """
+    if not elements:
+        return []
+    
+    # Convert set to list if needed (random.sample requires a sequence)
+    elem_list = list(elements)
+    
+    # Calculate the number of elements to select
+    # Use math.ceil for rounding up, or int() for truncation, or round() for nearest
+    num_to_select = max(1, math.ceil(len(elem_list) * (percentage / 100.0)))
+    
+    # Randomly sample without replacement
+    selected = random.sample(elem_list, num_to_select)
+    
+    return selected
+
+
 def genAllInputForSHAP(numfeature):
     """
     Generate all possible binary input combinations for a given number of features.
@@ -504,7 +783,109 @@ def genRandomInputForSHAP(numfeature, numsample):
     # return inputs 
 
 
+def evaluation(proprows, simrows, simtable, outname):
+    numinput = math.log2(len(simtable))
 
+    propko, propki = rowstovalues(proprows, simtable, outname)
+    simko, simki = rowstovalues(simrows, simtable, outname) 
+
+    # print(f"propko {propko}")
+    # print(f"propki {propki}")
+    # print(f"simko {simko}")
+    # print(f"simki {simki}")
+
+
+    unreachablekeys = simrows.keys() - proprows.keys() 
+    print(f"There are {len(unreachablekeys)} unreachable nodes, they are:")
+    print(unreachablekeys)
+
+    errorko = 0.0
+    errorki = 0.0 
+    num = 0
+
+    for node, value in simko.items():
+        num += 1
+        if node not in propko:
+            propko[node] = 0.0
+        if node not in propki:
+            propki[node] = 0.0 
+
+        if abs(value - propko[node]) >= 0.005 or abs(simki[node] - propki[node]) >= 0.005:
+            print("{:20} - Correct: KO: {:10} | KI : {:10} - Incorrect KO: {:10} | KI: {:10}".format(node, value, simki[node], propko[node], propki[node]))
+        errorko += (value - propko[node])*(value - propko[node])
+        errorki += (simki[node] - propki[node])*(simki[node] - propki[node])
+
+    wrongrows = 0
+    examinednodes = 0
+
+    keys = sorted(simko.keys()) 
+
+    y_true_ko = np.array([[abs(simko[k]) for k in keys]])
+    y_pred_ko = np.array([[abs(propko[k]) for k in keys]])
+
+    y_true_ki = np.array([[abs(simki[k]) for k in keys]])
+    y_pred_ki = np.array([[abs(propki[k]) for k in keys]]) 
+
+    dncg_ko = round(ndcg_score(y_true_ko, y_pred_ko),4)
+    dncg_ki = round(ndcg_score(y_true_ki, y_pred_ki),4)
+    ave_dncg = (dncg_ko + dncg_ki)/2
+
+    for node in sorted(list(simrows.keys())):
+        if node not in proprows:
+            proprows[node] = set()
+        lack = simrows[node].difference(proprows[node]) 
+        extra = proprows[node].difference(simrows[node])
+        print(node)
+        print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+        print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+        print("Real  {:5}: {}".format(len(simrows[node]), sorted(list(simrows[node]))))
+        print("Prop  {:5}: {}\n".format(len(proprows[node]), sorted(list(proprows[node]))))
+        wrongrows += len(lack) + len(extra)
+        examinednodes += 1
+
+    orispecies = simko.keys()
+
+    print("-----KO RANKING COMPARISON-----")
+    print_ranked_keys(propko, orispecies)
+    print("REFERENCE:")
+    print_ranked_keys(simko)
+    print("=======")
+    print("-----KI RANKING COMPARISON-----")
+    print_ranked_keys(propki, orispecies)
+    print("REFERENCE:")
+    print_ranked_keys(simki)
+    print("============")
+
+    print("Relative_RMSE_KO_is ", (math.sqrt(errorko/num)/(2.0*((numinput)+1))))
+    print("Relative_RMSE_KI_is ", (math.sqrt(errorki/num))/(2.0*((numinput)+1)))
+    print("NDCG_KO_is ", dncg_ko)
+    print("NDCG_KI_is ", dncg_ki)
+
+    korankingres = compare_rankings(simko, propko)
+    kirankingres = compare_rankings(simki, propki)
+    print_rank_comparison(korankingres, kirankingres)
+
+    avewrongrows = wrongrows/examinednodes 
+    averightrows = (len(simtable) - avewrongrows)/(len(simtable))
+    print("AVERAGE_CORRECT_ROWS_ALL_NODES: ", round(averightrows,4))
+    return averightrows, ave_dncg
+    
+
+def estimateErrorFromNodes(siminrows, proprows, nodes):
+    wrongrows = 0
+    for inname in nodes:
+        if inname in proprows and inname in siminrows:
+            lack = siminrows[inname].difference(proprows[inname])
+            extra = proprows[inname].difference(siminrows[inname]) 
+            wrongrows += len(lack) + len(extra)
+            # print("{:20}: lack: {} - extra: {}".format(inname, lack, extra))
+        else: 
+            print("Node {} is not considerred".format(inname))
+        
+    # print(f"Number of wrong rows is: {wrongrows}")
+    avewrongrows = wrongrows/len(nodes)
+    averightrows = (pow(2, len(nodes)) - avewrongrows)/pow(2, len(nodes))
+    return averightrows 
 
 
 def rowstovalues(rowdict, simtable, outname):
@@ -535,6 +916,8 @@ def rowstovalues(rowdict, simtable, outname):
                     kovalues[node] -= row['PROP']
                 else:
                     kivalues[node] -= row ['PROP']
+        kovalues[node] = round(kovalues[node], 4)
+        kivalues[node] = round(kivalues[node], 4)
     return kovalues, kivalues
 
 def topDown(net, formulas, burows, inrows, node_layers):   
@@ -616,3 +999,191 @@ def mergeUnrollNodes(unrollednodes, rowsofnodes):
             finalrowsofnodes[originalnode] = set()
         finalrowsofnodes[originalnode].update(rows)
     return finalrowsofnodes
+
+def runmetric(bikoinshapss, bikiinshapss, koshaps, kishaps, outname, propko, propki, binet, inputnames, korows, kirows, koinrows, kiinrows, rowsofnodes, orispeciesnames):
+    simko = bikoinshapss[outname] | koshaps[outname]
+    simki = bikiinshapss[outname] | kishaps[outname]
+
+    if orispeciesnames:
+        print("Consider only original nodes")
+        oricalko, oricalki, oripropko, oripropki = dict(), dict(), dict(), dict()
+        for spe in orispeciesnames:
+            if spe != outname:
+                try:
+                    oricalko[spe] = simko[spe]
+                    oricalki[spe] = simki[spe]
+                    oripropko[spe] = propko[spe]
+                    oripropki[spe] = propki[spe]
+                except:
+                    print(f"Cannot find node {spe} in the result lists, set zero")
+                    oricalko[spe] = 0.0
+                    oricalki[spe] = 0.0
+                    oripropko[spe] = 0.0
+                    oripropki[spe] = 0.0
+
+    unreachablekeys = simko.keys() - propko.keys() 
+    print(f"There are {len(unreachablekeys)} unreachable nodes, they are:")
+    print(unreachablekeys)
+
+    errorko = 0.0
+    errorki = 0.0 
+    num = 0
+    showNetwork(binet, bikoinshapss[outname], bikiinshapss[outname], koshaps[outname], kishaps[outname], "binary.html")
+    for node, value in simko.items():
+        if orispeciesnames:
+            if node not in orispeciesnames:
+                continue
+        num += 1
+        if node not in propko:
+            propko[node] = 0.0
+        if node not in propki:
+            propki[node] = 0.0 
+        if abs(value - propko[node]) >= 0.005 or abs(simki[node] - propki[node]) >= 0.005:
+            print("{:20} - Correct: KO: {:10} | KI : {:10} - Incorrect KO: {:10} | KI: {:10}".format(node, value, simki[node], propko[node], propki[node]))
+        errorko += (value - propko[node])*(value - propko[node])
+        errorki += (simki[node] - propki[node])*(simki[node] - propki[node])
+
+    del propko[outname]
+    del propki[outname]
+
+    wrongrows = 0
+    examinednodes = 0
+
+    if not orispeciesnames:
+        # ensure both have the same keys
+        keys = sorted(simko.keys())
+
+        y_true_ko = np.array([[abs(simko[k]) for k in keys]])
+        y_pred_ko = np.array([[abs(propko[k]) for k in keys]])
+
+        y_true_ki = np.array([[abs(simki[k]) for k in keys]])
+        y_pred_ki = np.array([[abs(propki[k]) for k in keys]])
+
+
+        dncg_ko = ndcg_score(y_true_ko, y_pred_ko)
+        dncg_ki = ndcg_score(y_true_ki, y_pred_ki)
+
+        if korows and kirows:
+            for input in sorted(list(inputnames)):
+                if input in rowsofnodes: 
+                    gt = koinrows[input].union(kiinrows[input])
+                    lack = gt.difference(rowsofnodes[input])
+                    extra = rowsofnodes[input].difference(gt)
+                    print(input)
+                    print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+                    print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+                    print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
+                    print("Prop  {:5}: {}\n".format(len(rowsofnodes[input]), sorted(list(rowsofnodes[input]))))
+                    wrongrows += len(lack) + len(extra)
+                    examinednodes += 1
+
+
+            for inter, row in dict(sorted(korows.items(),key=lambda item: item[0])).items():
+                if inter not in rowsofnodes:
+                    rowsofnodes[inter] = set()
+                
+                gt = row.union(kirows[inter])
+                lack = gt.difference(rowsofnodes[inter])
+                extra = rowsofnodes[inter].difference(gt)
+                print(inter)
+                print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+                print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+                print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
+                print("Prop  {:5}: {}\n".format(len(rowsofnodes[inter]), sorted(list(rowsofnodes[inter]))))
+                wrongrows += len(lack) + len(extra)
+                examinednodes += 1
+                
+
+        print("-----KO RANKING COMPARISON-----")
+        print_ranked_keys(propko)
+        print("REFERENCE:")
+        print_ranked_keys(simko)
+        print("=======")
+        print("-----KI RANKING COMPARISON-----")
+        print_ranked_keys(propki)
+        print("REFERENCE:")
+        print_ranked_keys(simki)
+
+        print("Number of nodes is {}".format(num))
+        print("Number of input nodes is {}".format(len(inputnames)))
+        print("Relative_RMSE_KO_is ", (math.sqrt(errorko/num)/(2.0*(len(inputnames)+1))))
+        print("Relative_RMSE_KI_is ", (math.sqrt(errorki/num))/(2.0*(len(inputnames)+1)))
+        print("NDCG_KO_is ", dncg_ko)
+        print("NDCG_KI_is ", dncg_ki)
+
+        korankingres = compare_rankings(simko, propko)
+        kirankingres = compare_rankings(simki, propki)
+        print_rank_comparison(korankingres, kirankingres)
+    else:
+        # ensure both have the same keys
+        keys = sorted(oricalko.keys())
+
+        y_true_ko = np.array([[abs(oricalko[k]) for k in keys]])
+        y_pred_ko = np.array([[abs(oripropko[k]) for k in keys]])
+
+        y_true_ki = np.array([[abs(oricalki[k]) for k in keys]])
+        y_pred_ki = np.array([[abs(oripropki[k]) for k in keys]])
+
+
+        dncg_ko = ndcg_score(y_true_ko, y_pred_ko)
+        dncg_ki = ndcg_score(y_true_ki, y_pred_ki)
+
+        if korows and kirows:
+            for input in sorted(list(inputnames)):
+                if input in rowsofnodes: 
+                    gt = koinrows[input].union(kiinrows[input])
+                    lack = gt.difference(rowsofnodes[input])
+                    extra = rowsofnodes[input].difference(gt)
+                    print(input)
+                    print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+                    print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+                    print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
+                    print("Prop  {:5}: {}\n".format(len(rowsofnodes[input]), sorted(list(rowsofnodes[input]))))
+                    wrongrows += len(lack) + len(extra)
+                    examinednodes += 1
+
+            for inter, row in dict(sorted(korows.items(),key=lambda item: item[0])).items():
+                if inter not in rowsofnodes:
+                    rowsofnodes[inter] = set()
+
+                if inter not in orispeciesnames:
+                    continue
+                
+                gt = row.union(kirows[inter])
+                lack = gt.difference(rowsofnodes[inter])
+                extra = rowsofnodes[inter].difference(gt)
+                print(inter)
+                print("Lack  {:5}: {}".format(len(lack), sorted(list(lack))))
+                print("Extra {:5}: {}".format(len(extra), sorted(list(extra))))
+                print("Real  {:5}: {}".format(len(gt), sorted(list(gt))))
+                print("Prop  {:5}: {}\n".format(len(rowsofnodes[inter]), sorted(list(rowsofnodes[inter]))))
+                wrongrows += len(lack) + len(extra)
+                examinednodes += 1
+                
+
+        print("-----KO RANKING COMPARISON-----")
+        print_ranked_keys(oripropko)
+        print("REFERENCE:")
+        print_ranked_keys(oricalko)
+        print("=======")
+        print("-----KI RANKING COMPARISON-----")
+        print_ranked_keys(oripropki)
+        print("REFERENCE:")
+        print_ranked_keys(oricalki)
+
+        print("Number of nodes is {}".format(num))
+        print("Number of input nodes is {}".format(len(inputnames)))
+        print("Relative_RMSE_KO_is ", (math.sqrt(errorko/num)/(2.0*(len(inputnames)+1))))
+        print("Relative_RMSE_KI_is ", (math.sqrt(errorki/num))/(2.0*(len(inputnames)+1)))
+        print("NDCG_KO_is ", dncg_ko)
+        print("NDCG_KI_is ", dncg_ki)
+
+        korankingres = compare_rankings(oricalko, oripropko)
+        kirankingres = compare_rankings(oricalki, oripropki)
+        print_rank_comparison(korankingres, kirankingres)
+
+    avewrongrows = wrongrows/examinednodes 
+    averightrows = (pow(2, len(inputnames)) - avewrongrows)/(pow(2, len(inputnames)))
+    return averightrows 
+
+

@@ -335,24 +335,25 @@ def rewireBinet(binet, extranodes, silent=False):
     """
     cycledbinet = copy.deepcopy(binet) 
     if not silent:
-        print("Recycling the binary interaction network by removing extra nodes")
+        print("Recycling the binary interaction network by adding edge to extra nodes")
     for extranode in extranodes:
         root = extranode.split("_to_")[0]
         tip = extranode.split("_to_")[1] 
+        cycledbinet.add_edge(root, extranode, color='#008000', type='arrow', width=3)
         # get the dependent of the extranode 
-        for dep in list(binet.out_edges(extranode)):
-            if not silent:
-                print("Extranode {} has dependent {}".format(extranode, dep[1]))
-            # replace the extranode in the formula of dep[1] with root
-            # create an edge from root to dep 
-            # get color of old edge 
-            color = binet.get_edge_data(extranode, dep[1]).get("color", "#808080")
-            cycledbinet.add_edge(root, dep[1], color = color, type='arrow', width=3)
-            # now remove the old edge
-            cycledbinet.remove_edge(extranode, dep[1])
+        # for dep in list(binet.out_edges(extranode)):
+        #     if not silent:
+        #         print("Extranode {} has dependent {}".format(extranode, dep[1]))
+        #     # replace the extranode in the formula of dep[1] with root
+        #     # create an edge from root to dep 
+        #     # get color of old edge 
+        #     color = binet.get_edge_data(extranode, dep[1]).get("color", "#808080")
+        #     cycledbinet.add_edge(root, dep[1], color = color, type='arrow', width=3)
+        #     # now remove the old edge
+        #     cycledbinet.remove_edge(extranode, dep[1])
 
         # remove the extranode from the network
-        cycledbinet.remove_node(extranode)
+        # cycledbinet.remove_node(extranode)
     
     return cycledbinet
 
@@ -432,7 +433,7 @@ def manipulateNetwork(net, inputnames, formulas, acyclic = False, binary = False
                 aformulas[todeledge[1]].display()
                 print("\n")
             # now add new node and arc to the networkx graph
-            anet.add_node(newnodename, labels = newnodename, color='#FFC0CB', size='25')
+            anet.add_node(newnodename, labels = newnodename, color='#FFC0CB', size='15')
             extranodes.append(newnodename)
             newedgecolor = net.get_edge_data(todeledge[0], todeledge[1], "color")
             if not newedgecolor:

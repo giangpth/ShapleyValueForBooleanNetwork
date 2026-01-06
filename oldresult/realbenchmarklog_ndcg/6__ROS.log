@@ -1,0 +1,653 @@
+The expression file is data/realbenchmark/6.txt
+The interested output is: 
+{'ROS'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'FADD', 'Cyt_c', 'IKK', 'MOMP', 'DISC_TNF', 'BCL2', 'NFkB', 'RIP1k', 'RIP1', 'CASP8', 'FASL', 'apoptosome', 'cFLIP', 'DISC_FAS', 'RIP1ub', 'apoptosis', 'XIAP', 'ATP', 'NonACD', 'BAX', 'survival', 'SMAC', 'TNFR', 'TNF', 'MPT', 'CASP3', 'ROS', 'cIAP'}
+-----Input names-----
+{'FASL', 'FADD', 'TNF'}
+----Intermediate nodes-----
+{'RIP1ub', 'XIAP', 'ATP', 'NonACD', 'BAX', 'Cyt_c', 'IKK', 'MOMP', 'survival', 'SMAC', 'DISC_TNF', 'TNFR', 'DISC_FAS', 'BCL2', 'NFkB', 'RIP1k', 'RIP1', 'MPT', 'CASP3', 'CASP8', 'apoptosome', 'cFLIP', 'cIAP', 'apoptosis'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['FADD', 'FASL', 'TNF']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['ATP', 'BAX', 'BCL2', 'CASP3', 'CASP8', 'Cyt_c', 'DISC_FAS', 'DISC_TNF', 'IKK', 'MOMP', 'MPT', 'NFkB', 'NonACD', 'RIP1', 'RIP1k', 'RIP1ub', 'SMAC', 'TNFR', 'XIAP', 'apoptosis', 'apoptosome', 'cFLIP', 'cIAP', 'survival']
+There are 24 intermediate nodes with the range of inter: 0 16777215
+----Input knockout shapley value-----
+('ROS', {'FASL': 0.3333, 'FADD': 0.3333, 'TNF': 1.0})
+
+
+----Input knockIN shapley value-----
+('ROS', {'FASL': -0.3333, 'FADD': -0.3333, 'TNF': -1.6667})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout RIP1ub
+Knockout XIAP
+Knockout ATP
+Knockout NonACD
+Knockout BAX
+Knockout Cyt_c
+Knockout IKK
+Knockout MOMP
+Knockout survival
+Knockout SMAC
+Knockout DISC_TNF
+Knockout TNFR
+Knockout DISC_FAS
+Knockout BCL2
+Knockout NFkB
+Knockout RIP1k
+Knockout RIP1
+Knockout MPT
+Knockout CASP3
+Knockout CASP8
+Knockout apoptosome
+Knockout cFLIP
+Knockout cIAP
+Knockout apoptosis
+----KNOCKOUT VALUE for output ROS----
+{'ATP': 0.0, 'BAX': 0.0, 'BCL2': 0.0, 'CASP3': 0.0, 'CASP8': 0.0, 'Cyt_c': 0.0, 'DISC_FAS': 0.3333, 'DISC_TNF': 0.0, 'IKK': 0.0, 'MOMP': 0.0, 'MPT': 1.6667, 'NFkB': 0.0, 'NonACD': 0.0, 'RIP1': 2.3333, 'RIP1k': 2.3333, 'RIP1ub': 0.0, 'SMAC': 0.0, 'TNFR': 1.0, 'XIAP': 0.0, 'apoptosis': 0.0, 'apoptosome': 0.0, 'cFLIP': 0.0, 'cIAP': 0.0, 'survival': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin RIP1ub
+Knockin XIAP
+Knockin ATP
+Knockin NonACD
+Knockin BAX
+Knockin Cyt_c
+Knockin IKK
+Knockin MOMP
+Knockin survival
+Knockin SMAC
+Knockin DISC_TNF
+Knockin TNFR
+Knockin DISC_FAS
+Knockin BCL2
+Knockin NFkB
+Knockin RIP1k
+Knockin RIP1
+Knockin MPT
+Knockin CASP3
+Knockin CASP8
+Knockin apoptosome
+Knockin cFLIP
+Knockin cIAP
+Knockin apoptosis
+----KNOCKIN VALUE for output ROS----
+{'ROS': {'RIP1ub': 2.3333, 'XIAP': 0.0, 'ATP': 0.0, 'NonACD': 0.0, 'BAX': 0.0, 'Cyt_c': 0.0, 'IKK': 2.3333, 'MOMP': 0.0, 'survival': 0.0, 'SMAC': 0.0, 'DISC_TNF': 2.3333, 'TNFR': -1.6667, 'DISC_FAS': -1.6667, 'BCL2': 1.6667, 'NFkB': 2.3333, 'RIP1k': -1.6667, 'RIP1': -1.6667, 'MPT': -1.6667, 'CASP3': 2.3333, 'CASP8': 2.3333, 'apoptosome': 0.0, 'cFLIP': 0.0, 'cIAP': 0.6667, 'apoptosis': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['FADD', 'FASL', 'TNF']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['ATP', 'BAX', 'BCL2', 'CASP3', 'CASP8', 'Cyt_c', 'DISC_FAS', 'DISC_TNF', 'IKK', 'MOMP', 'MPT', 'NFkB', 'NonACD', 'RIP1', 'RIP1k', 'RIP1ub', 'SMAC', 'TNFR', 'XIAP', 'apoptosis', 'apoptosome', 'cFLIP', 'cIAP', 'survival']
+There are 24 intermediate nodes with the range of inter: 0 16777215
+----Input shapley value of acyclic network-----
+('ROS', {'FASL': 0.3333, 'FADD': 0.3333, 'TNF': 1.0})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'FASL', 'FADD', 'TNF'}
+Ordinary nodes are 
+{'FADD', 'Cyt_c', 'IKK', 'MOMP', 'DISC_TNF', 'BCL2', 'NFkB', 'RIP1k', 'RIP1', 'CASP8', 'FASL', 'apoptosome', 'cFLIP', 'DISC_FAS', 'RIP1ub', 'apoptosis', 'XIAP', 'ATP', 'NonACD', 'BAX', 'survival', 'SMAC', 'TNFR', 'TNF', 'MPT', 'CASP3', 'ROS', 'cIAP'}
+Extranodes added after removing cycles are 
+['IKK_to_NFkB', 'BAX_to_MOMP', 'CASP3_to_NFkB', 'ROS_to_MPT', 'cIAP_to_cIAP']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[set(), set(), set(), set(), set(), set(), {'_XTR_7_', 'ROS_to_MPT', 'ATP', 'MPT', '_XTR_32_', 'CASP3', 'NonACD'}, {'_XTR_7_', 'ROS_to_MPT', 'ATP', 'MPT', '_XTR_32_', 'CASP3', 'NonACD'}]
+-----Knockout Shapley value of input nodes in the binary network-----
+ROS : {'FASL': 0.3333, 'FADD': 0.3333, 'TNF': 1.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+ROS : {'FASL': -0.3333, 'FADD': -0.3333, 'TNF': -1.6667}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout _XTR_19_
+Knockout _XTR_32_
+Knockout _XTR_37_
+Knockout _XTR_20_
+Knockout Cyt_c
+Knockout IKK
+Knockout MOMP
+Knockout _XTR_13_
+Knockout DISC_TNF
+Knockout BCL2
+Knockout _XTR_7_
+Knockout cIAP_to_cIAP
+Knockout NFkB
+Knockout RIP1k
+Knockout CASP3_to_NFkB
+Knockout RIP1
+Knockout _XTR_11_
+Knockout _XTR_14_
+Knockout _XTR_27_
+Knockout CASP8
+Knockout IKK_to_NFkB
+Knockout _XTR_39_
+Knockout apoptosome
+Knockout cFLIP
+Knockout DISC_FAS
+Knockout _XTR_21_
+Knockout RIP1ub
+Knockout XIAP
+Knockout ROS_to_MPT
+Knockout apoptosis
+Knockout _XTR_16_
+Knockout _XTR_9_
+Knockout _XTR_25_
+Knockout ATP
+Knockout NonACD
+Knockout BAX
+Knockout _XTR_38_
+Knockout survival
+Knockout _XTR_26_
+Knockout SMAC
+Knockout TNFR
+Knockout _XTR_15_
+Knockout BAX_to_MOMP
+Knockout MPT
+Knockout CASP3
+Knockout _XTR_17_
+Knockout _XTR_23_
+Knockout cIAP
+---- Binary KNOCKOUT VALUE for output ROS----
+{'ROS': {'_XTR_19_': 0.0, '_XTR_32_': 0.0, '_XTR_37_': 2.3333, '_XTR_20_': 0.0, 'Cyt_c': 0.0, 'IKK': 0.0, 'MOMP': 0.0, '_XTR_13_': 0.0, 'DISC_TNF': 0.0, 'BCL2': 0.0, '_XTR_7_': 0.0, 'cIAP_to_cIAP': 0.0, 'NFkB': 0.0, 'RIP1k': 2.3333, 'CASP3_to_NFkB': 0.0, 'RIP1': 2.3333, '_XTR_11_': 0.0, '_XTR_14_': 0.0, '_XTR_27_': 0.3333, 'CASP8': 0.0, 'IKK_to_NFkB': 0.0, '_XTR_39_': 1.6667, 'apoptosome': 0.0, 'cFLIP': 0.0, 'DISC_FAS': 0.3333, '_XTR_21_': 0.0, 'RIP1ub': 0.0, 'XIAP': 0.0, 'ROS_to_MPT': 1.6667, 'apoptosis': 0.0, '_XTR_16_': 0.0, '_XTR_9_': 1.6667, '_XTR_25_': 2.3333, 'ATP': 0.0, 'NonACD': 0.0, 'BAX': 0.0, '_XTR_38_': 2.3333, 'survival': 0.0, '_XTR_26_': 1.0, 'SMAC': 0.0, 'TNFR': 1.0, '_XTR_15_': 0.0, 'BAX_to_MOMP': 0.0, 'MPT': 1.6667, 'CASP3': 0.0, '_XTR_17_': 0.0, '_XTR_23_': 0.0, 'cIAP': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN _XTR_19_
+KnockIN _XTR_32_
+KnockIN _XTR_37_
+KnockIN _XTR_20_
+KnockIN Cyt_c
+KnockIN IKK
+KnockIN MOMP
+KnockIN _XTR_13_
+KnockIN DISC_TNF
+KnockIN BCL2
+KnockIN _XTR_7_
+KnockIN cIAP_to_cIAP
+KnockIN NFkB
+KnockIN RIP1k
+KnockIN CASP3_to_NFkB
+KnockIN RIP1
+KnockIN _XTR_11_
+KnockIN _XTR_14_
+KnockIN _XTR_27_
+KnockIN CASP8
+KnockIN IKK_to_NFkB
+KnockIN _XTR_39_
+KnockIN apoptosome
+KnockIN cFLIP
+KnockIN DISC_FAS
+KnockIN _XTR_21_
+KnockIN RIP1ub
+KnockIN XIAP
+KnockIN ROS_to_MPT
+KnockIN apoptosis
+KnockIN _XTR_16_
+KnockIN _XTR_9_
+KnockIN _XTR_25_
+KnockIN ATP
+KnockIN NonACD
+KnockIN BAX
+KnockIN _XTR_38_
+KnockIN survival
+KnockIN _XTR_26_
+KnockIN SMAC
+KnockIN TNFR
+KnockIN _XTR_15_
+KnockIN BAX_to_MOMP
+KnockIN MPT
+KnockIN CASP3
+KnockIN _XTR_17_
+KnockIN _XTR_23_
+KnockIN cIAP
+---- Binary KNOCKIN VALUE for output ROS----
+{'ROS': {'_XTR_19_': 0.0, '_XTR_32_': 0.0, '_XTR_37_': 0.0, '_XTR_20_': 0.6667, 'Cyt_c': 0.0, 'IKK': 2.3333, 'MOMP': 0.0, '_XTR_13_': 0.0, 'DISC_TNF': 2.3333, 'BCL2': 1.6667, '_XTR_7_': 0.0, 'cIAP_to_cIAP': 0.0, 'NFkB': 2.3333, 'RIP1k': -1.6667, 'CASP3_to_NFkB': 0.0, 'RIP1': -1.6667, '_XTR_11_': 0.0, '_XTR_14_': 2.3333, '_XTR_27_': -1.6667, 'CASP8': 2.3333, 'IKK_to_NFkB': 2.3333, '_XTR_39_': -1.6667, 'apoptosome': 0.0, 'cFLIP': 0.0, 'DISC_FAS': -1.6667, '_XTR_21_': 0.6667, 'RIP1ub': 2.3333, 'XIAP': 0.0, 'ROS_to_MPT': -1.6667, 'apoptosis': 0.0, '_XTR_16_': 2.3333, '_XTR_9_': 0.0, '_XTR_25_': 0.0, 'ATP': 0.0, 'NonACD': 0.0, 'BAX': 0.0, '_XTR_38_': -1.6667, 'survival': 0.0, '_XTR_26_': -1.6667, 'SMAC': 0.0, 'TNFR': -1.6667, '_XTR_15_': 2.3333, 'BAX_to_MOMP': 0.0, 'MPT': -1.6667, 'CASP3': 2.3333, '_XTR_17_': 2.3333, '_XTR_23_': 0.0, 'cIAP': 0.6667}}
+
+
+=======PROPAGATE FOR OUTPUT ROS=======
+----Master diamonds-----
+{'_XTR_37_': 'ROS', '_XTR_25_': 'RIP1', 'NFkB': 'ROS', '_XTR_13_': 'RIP1', 'DISC_FAS': 'RIP1', 'TNFR': 'RIP1', 'FADD': 'RIP1', '_XTR_11_': 'RIP1', 'MPT': 'ROS', '_XTR_19_': 'RIP1', '_XTR_9_': 'ROS', 'MOMP': 'RIP1'}
+
+
+--------PROPAGATION--------
+Extranodes IKK_to_NFkB, add IKK to nextlayer
+Extranodes CASP3, add CASP3 to nextlayer
+Extranodes BAX_to_MOMP, add  BAX to nextlayer
+ROS                  			 KO:     2.3332 | KI:    -1.6666
+_XTR_38_             			 KO:        0.0 | KI:    -1.6666
+_XTR_39_             			 KO:     1.6666 | KI:    -1.6666
+RIP1k                			 KO:        0.0 | KI:    -1.6666
+_XTR_37_             			 KO:     2.3332 | KI:        0.0
+MPT                  			 KO:     1.6666 | KI:    -1.6666
+RIP1                 			 KO:        0.0 | KI:    -1.6666
+NFkB                 			 KO:        0.0 | KI:     2.3332
+ROS_to_MPT           			 KO:     1.6666 | KI:    -1.6666
+_XTR_9_              			 KO:     1.6666 | KI:        0.0
+_XTR_26_             			 KO:        0.0 | KI:    -1.6666
+_XTR_27_             			 KO:        0.0 | KI:    -1.6666
+IKK_to_NFkB          			 KO:        0.0 | KI:     2.3332
+_XTR_32_             			 KO:        0.0 | KI:        0.0
+BCL2                 			 KO:        0.0 | KI:     1.6666
+TNFR                 			 KO:        0.0 | KI:    -1.3333
+_XTR_25_             			 KO:        0.0 | KI:        0.0
+DISC_FAS             			 KO:        0.0 | KI:        0.0
+CASP3_to_NFkB        			 KO:        0.0 | KI:        0.0
+IKK                  			 KO:        0.0 | KI:     0.6666
+RIP1ub               			 KO:        0.0 | KI:     0.6666
+CASP8                			 KO:     1.6666 | KI:       -1.0
+CASP3                			 KO:     1.3333 | KI:    -0.6667
+apoptosome           			 KO:     1.3333 | KI:    -0.6667
+_XTR_11_             			 KO:        0.0 | KI:        0.0
+cIAP                 			 KO:        0.0 | KI:     0.6666
+_XTR_16_             			 KO:     0.3333 | KI:       -1.0
+_XTR_17_             			 KO:        0.0 | KI:       -1.0
+_XTR_23_             			 KO:     1.3333 | KI:    -0.6667
+XIAP                 			 KO:        0.0 | KI:        0.0
+_XTR_20_             			 KO:        0.0 | KI:     0.6666
+_XTR_21_             			 KO:        0.0 | KI:     0.6666
+_XTR_14_             			 KO:     0.3333 | KI:       -1.0
+_XTR_15_             			 KO:        0.0 | KI:       -1.0
+_XTR_13_             			 KO:        0.0 | KI:        0.0
+Cyt_c                			 KO:     1.3333 | KI:    -1.6666
+ATP                  			 KO:     1.3333 | KI:     0.9999
+_XTR_19_             			 KO:        0.0 | KI:        0.0
+cIAP_to_cIAP         			 KO:        0.0 | KI:        0.0
+DISC_TNF             			 KO:     0.3333 | KI:       -1.0
+cFLIP                			 KO:        0.0 | KI:        0.0
+MOMP                 			 KO:        0.0 | KI:        0.0
+SMAC                 			 KO:        0.0 | KI:        0.0
+BAX_to_MOMP          			 KO:        0.0 | KI:        0.0
+BAX                  			 KO:     1.6666 | KI:       -1.0
+FASL                 			 KO:     0.3333 | KI:    -0.3333
+FADD                 			 KO:     0.3333 | KI:    -0.3333
+TNF                  			 KO:     0.9999 | KI:    -1.6666
+There are 4 unreachable nodes, they are:
+{'_XTR_7_', 'NonACD', 'survival', 'apoptosis'}
+binary.html
+Cyt_c                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.3333 | KI:    -1.6666
+IKK                  - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:        0.0 | KI:     0.6666
+DISC_TNF             - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:     0.3333 | KI:       -1.0
+RIP1k                - Correct: KO:     2.3333 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:    -1.6666
+RIP1                 - Correct: KO:     2.3333 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:    -1.6666
+_XTR_14_             - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:     0.3333 | KI:       -1.0
+_XTR_27_             - Correct: KO:     0.3333 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:    -1.6666
+CASP8                - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:     1.6666 | KI:       -1.0
+apoptosome           - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.3333 | KI:    -0.6667
+DISC_FAS             - Correct: KO:     0.3333 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:        0.0
+RIP1ub               - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:        0.0 | KI:     0.6666
+_XTR_16_             - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:     0.3333 | KI:       -1.0
+_XTR_25_             - Correct: KO:     2.3333 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+ATP                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.3333 | KI:     0.9999
+BAX                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.6666 | KI:       -1.0
+_XTR_38_             - Correct: KO:     2.3333 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:    -1.6666
+_XTR_26_             - Correct: KO:        1.0 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:    -1.6666
+TNFR                 - Correct: KO:        1.0 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:    -1.3333
+_XTR_15_             - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:        0.0 | KI:       -1.0
+CASP3                - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:     1.3333 | KI:    -0.6667
+_XTR_17_             - Correct: KO:        0.0 | KI :     2.3333 - Incorrect KO:        0.0 | KI:       -1.0
+_XTR_23_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     1.3333 | KI:    -0.6667
+FADD
+Lack      0: []
+Extra     0: []
+Real      2: [2, 6]
+Prop      2: [2, 6]
+
+FASL
+Lack      0: []
+Extra     0: []
+Real      2: [4, 6]
+Prop      2: [4, 6]
+
+TNF
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+ATP
+Lack      0: []
+Extra     5: [1, 3, 5, 6, 7]
+Real      0: []
+Prop      5: [1, 3, 5, 6, 7]
+
+BAX
+Lack      0: []
+Extra     8: [0, 1, 2, 3, 4, 5, 6, 7]
+Real      0: []
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+BAX_to_MOMP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BCL2
+Lack      0: []
+Extra     0: []
+Real      3: [5, 6, 7]
+Prop      3: [5, 6, 7]
+
+CASP3
+Lack      0: []
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+CASP3_to_NFkB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CASP8
+Lack      0: []
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Cyt_c
+Lack      0: []
+Extra     5: [0, 2, 4, 6, 7]
+Real      0: []
+Prop      5: [0, 2, 4, 6, 7]
+
+DISC_FAS
+Lack      4: [0, 2, 4, 6]
+Extra     0: []
+Real      4: [0, 2, 4, 6]
+Prop      0: []
+
+DISC_TNF
+Lack      2: [6, 7]
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+IKK
+Lack      0: []
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+IKK_to_NFkB
+Lack      0: []
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [1, 3, 5, 6, 7]
+
+MOMP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MPT
+Lack      0: []
+Extra     0: []
+Real      6: [0, 2, 4, 5, 6, 7]
+Prop      6: [0, 2, 4, 5, 6, 7]
+
+NFkB
+Lack      0: []
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [1, 3, 5, 6, 7]
+
+NonACD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RIP1
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      3: [0, 2, 4]
+
+RIP1k
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      3: [0, 2, 4]
+
+RIP1ub
+Lack      0: []
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+ROS_to_MPT
+Lack      0: []
+Extra     0: []
+Real      6: [0, 2, 4, 5, 6, 7]
+Prop      6: [0, 2, 4, 5, 6, 7]
+
+SMAC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TNFR
+Lack      4: [1, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      2: [0, 2]
+
+XIAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_11_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_13_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_14_
+Lack      2: [6, 7]
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+_XTR_15_
+Lack      3: [5, 6, 7]
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [0, 1, 2, 3, 4]
+
+_XTR_16_
+Lack      2: [6, 7]
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+_XTR_17_
+Lack      3: [5, 6, 7]
+Extra     3: [0, 2, 4]
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [0, 1, 2, 3, 4]
+
+_XTR_19_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_20_
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+_XTR_21_
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+_XTR_23_
+Lack      0: []
+Extra     8: [0, 1, 2, 3, 4, 5, 6, 7]
+Real      0: []
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+_XTR_25_
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      0: []
+
+_XTR_26_
+Lack      3: [1, 3, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      3: [0, 2, 4]
+
+_XTR_27_
+Lack      1: [6]
+Extra     0: []
+Real      4: [0, 2, 4, 6]
+Prop      3: [0, 2, 4]
+
+_XTR_32_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_37_
+Lack      0: []
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [1, 3, 5, 6, 7]
+
+_XTR_38_
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      3: [0, 2, 4]
+
+_XTR_39_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 2, 4, 5, 6, 7]
+Prop      6: [0, 2, 4, 5, 6, 7]
+
+_XTR_7_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_9_
+Lack      0: []
+Extra     0: []
+Real      3: [5, 6, 7]
+Prop      3: [5, 6, 7]
+
+apoptosis
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+apoptosome
+Lack      0: []
+Extra     8: [0, 1, 2, 3, 4, 5, 6, 7]
+Real      0: []
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+cFLIP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cIAP
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+cIAP_to_cIAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+survival
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Number of nodes is 51
+Number of input nodes is 3
+Relative_RMSE_KO_is  0.108995181749506
+Relative_RMSE_KI_is  0.16584647056361151
+NDCG_KO_is  0.7868371577926841
+NDCG_KI_is  0.9326157687599786
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             51.000       51.000
+Kendall tau-b                         0.227        0.581
+Spearman rho                          0.291        0.699
+Mean abs rank diff                    1.451        1.706
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.263        0.091
+         Precision@10                0.417        0.154
+         Recall@10                   0.417        0.182
+  Top-20 Jaccard                   1.000        0.731
+         Precision@20                1.000        0.864
+         Recall@20                   1.000        0.826
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.200        0.182
+  Top-2  groups Jaccard            0.455        0.500
+  Top-3  groups Jaccard            0.263        0.481
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.0006947517395019531
+TIME simulate original network: 0.01879715919494629
+TIME perform original analysis process: 0.9085240364074707
+TIME perform propagation: 0.20527219772338867
+-----------TOTAL RUNNING TIME---------------
+4.940583874937147

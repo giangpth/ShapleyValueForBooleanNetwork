@@ -1,0 +1,274 @@
+The expression file is data/realbenchmark/12.txt
+The interested output is: 
+PKCa
+List of all species:
+{'PDK1', 'trastuzumab', 'mTOR', 'EGF', 'pertuzumab', 'PKCa', 'PLCg', 'ERBB3', 'ERBB2', 'ERBB1', 'MEK1_2', 'ERK1_2', 'AKT', 'erlotinib', 'p70S6K', 'HRG'}
+-----Input names-----
+{'trastuzumab', 'EGF', 'pertuzumab', 'erlotinib', 'HRG'}
+----Intermediate nodes-----
+{'PDK1', 'mTOR', 'PKCa', 'PLCg', 'ERBB3', 'ERBB2', 'ERBB1', 'MEK1_2', 'ERK1_2', 'AKT', 'p70S6K'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+Sorted input names
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+There are 5 inputs with the range of input: 0 31
+Sorted internames:
+['AKT', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'MEK1_2', 'PDK1', 'PKCa', 'PLCg', 'mTOR', 'p70S6K']
+There are 11 intermediate nodes with the range of inter: 0 2047
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.021332979202270508 seconds===
+----Input knockout shapley value-----
+('trastuzumab', 0.0)
+('EGF', 0.3)
+('pertuzumab', -0.7)
+('erlotinib', -0.7)
+('HRG', 0.3)
+----Input knockIN shapley value-----
+('trastuzumab', 0.0)
+('EGF', -1.2)
+('pertuzumab', 0.8)
+('erlotinib', 0.8)
+('HRG', -1.2)
+-------Now perform the knockout procedure to original network-------
+Knockout PDK1
+Knockout mTOR
+Knockout PLCg
+Knockout ERBB3
+Knockout ERBB2
+Knockout ERBB1
+Knockout MEK1_2
+Knockout ERK1_2
+Knockout AKT
+Knockout p70S6K
+----KNOCKOUT VALUE for output PKCa----
+{'AKT': 0.0, 'ERBB1': 0.3, 'ERBB2': 0.0, 'ERBB3': 0.3, 'ERK1_2': 0.0, 'MEK1_2': 0.0, 'PDK1': 0.0, 'PLCg': 0.8, 'mTOR': 0.0, 'p70S6K': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin PDK1
+Knockin mTOR
+Knockin PLCg
+Knockin ERBB3
+Knockin ERBB2
+Knockin ERBB1
+Knockin MEK1_2
+Knockin ERK1_2
+Knockin AKT
+Knockin p70S6K
+----KNOCKIN VALUE for output PKCa----
+{'AKT': 0.0, 'ERBB1': -5.2, 'ERBB2': -5.2, 'ERBB3': -5.2, 'ERK1_2': 0.0, 'MEK1_2': 0.0, 'PDK1': 0.0, 'PLCg': -5.2, 'mTOR': 0.0, 'p70S6K': 0.0}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'trastuzumab', 'EGF', 'pertuzumab', 'erlotinib', 'HRG'}
+Ordinary nodes are 
+{'PDK1', 'trastuzumab', 'mTOR', 'EGF', 'pertuzumab', 'PKCa', 'PLCg', 'ERBB3', 'ERBB2', 'ERBB1', 'MEK1_2', 'ERK1_2', 'AKT', 'erlotinib', 'p70S6K', 'HRG'}
+Extranodes added after removing cycles are 
+['PDK1_to_PDK1', 'mTOR_to_mTOR', 'PKCa_to_PKCa', 'PLCg_to_PLCg', 'PLCg_to_ERBB1', 'ERBB3_to_ERBB3', 'ERBB2_to_ERBB2', 'ERBB1_to_ERBB1', 'MEK1_2_to_MEK1_2', 'ERK1_2_to_ERK1_2', 'AKT_to_mTOR', 'AKT_to_AKT', 'p70S6K_to_p70S6K']
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+----Generate table from output----
+-----Calculated value of input nodes-----
+EGF                  			 KO:        0.3 | KI:       -1.2
+HRG                  			 KO:        0.3 | KI:       -1.2
+erlotinib            			 KO:       -0.7 | KI:        0.8
+pertuzumab           			 KO:       -0.7 | KI:        0.8
+trastuzumab          			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT PKCa=======
+----Master diamonds-----
+{'_XTR_3_': 'PLCg', '_XTR_1_': 'PLCg'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.9
+=========================
+PROPAGATED VALUES:
+EGF                  			 KO:        0.3 | KI:       -1.2
+ERBB1                			 KO:        0.3 | KI:       -5.2
+ERBB2                			 KO:        0.0 | KI:       -5.2
+ERBB3                			 KO:        0.0 | KI:       -5.2
+HRG                  			 KO:        0.3 | KI:       -1.2
+PKCa                 			 KO:        0.8 | KI:       -5.2
+PLCg                 			 KO:        0.8 | KI:       -5.2
+erlotinib            			 KO:       -0.7 | KI:        0.8
+pertuzumab           			 KO:       -0.7 | KI:        0.8
+trastuzumab          			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	PKCa, PLCg
+2	ERBB1
+3	ERBB2, ERBB3
+=======
+KI RANKING OF NODES:
+1	PKCa, PLCg, ERBB2, ERBB3, ERBB1
+2	HRG, EGF
+3	erlotinib, pertuzumab
+4	trastuzumab
+=======
+NUMBER OF NODES: 16
+NUMBER OF INPUTS: 5
+NUMBER OF EDGES: 41
+TIME process heading: 0.0010650157928466797
+TIME simulate original network: 0.021332979202270508
+TIME perform original analysis process: 0.4879181385040283
+TIME perform propagation: 0.19561195373535156
+There are 6 unreachable nodes, they are:
+{'PDK1', 'mTOR', 'MEK1_2', 'ERK1_2', 'AKT', 'p70S6K'}
+ERBB3                - Correct: KO:        0.3 | KI :       -5.2 - Incorrect KO:        0.0 | KI:       -5.2
+AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+EGF
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 16, 17]
+Prop      4: [0, 1, 16, 17]
+
+ERBB1
+Lack      0: []
+Extra     0: []
+Real     28: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     28: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+ERBB2
+Lack      0: []
+Extra     0: []
+Real     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+ERBB3
+Lack      2: [8, 9]
+Extra     0: []
+Real     28: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+ERK1_2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+HRG
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 8, 9]
+Prop      4: [0, 1, 8, 9]
+
+MEK1_2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PDK1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLCg
+Lack      0: []
+Extra     0: []
+Real     32: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+Prop     32: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+
+erlotinib
+Lack      0: []
+Extra     0: []
+Real     12: [8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+Prop     12: [8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+
+mTOR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p70S6K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pertuzumab
+Lack      0: []
+Extra     0: []
+Real     12: [8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27]
+Prop     12: [8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27]
+
+trastuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	PLCg
+2	erlotinib, pertuzumab
+3	ERBB1, HRG, EGF
+4	ERBB2, ERBB3, trastuzumab, PDK1, mTOR, MEK1_2
+	ERK1_2, AKT, p70S6K
+REFERENCE:
+1	PLCg
+2	pertuzumab, erlotinib
+3	EGF, HRG, ERBB3, ERBB1
+4	trastuzumab, PDK1, mTOR, ERBB2, MEK1_2, ERK1_2
+	AKT, p70S6K
+=======
+-----KI RANKING COMPARISON-----
+1	PLCg, ERBB2, ERBB3, ERBB1
+2	HRG, EGF
+3	erlotinib, pertuzumab
+4	trastuzumab, PDK1, mTOR, MEK1_2, ERK1_2, AKT
+	p70S6K
+REFERENCE:
+1	PLCg, ERBB3, ERBB2, ERBB1
+2	EGF, HRG
+3	pertuzumab, erlotinib
+4	trastuzumab, PDK1, mTOR, MEK1_2, ERK1_2, AKT
+	p70S6K
+============
+Relative_RMSE_KO_is  0.006454972243679028
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  0.9928
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             15.000       15.000
+Kendall tau-b                         0.919        1.000
+Spearman rho                          0.965        1.000
+Mean abs rank diff                    0.067        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            0.857        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9958
+-----------TOTAL RUNNING TIME---------------
+0.8831851249560714

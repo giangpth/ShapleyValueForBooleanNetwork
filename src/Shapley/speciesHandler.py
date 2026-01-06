@@ -75,6 +75,8 @@ def genInput(species, inputnames, debug=False):
     """
     numin = len(inputnames) 
     inputnamelist = sorted(list(inputnames)) # sort to have a fixed order of input names
+    print("INPUT NAMES LIST:")
+    print(inputnamelist)
     coms = list(itertools.product([0, 1], repeat=numin))
     if debug:
         print("There are {} combinations for input".format(len(coms)))

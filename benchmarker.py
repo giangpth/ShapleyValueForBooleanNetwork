@@ -40,10 +40,15 @@ RE_FLOAT = r"([-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?)"
 RE_INT = r"(\d+)"
 
 PATTERNS = {
-    "num_nodes": re.compile(rf"Number of nodes is\s+{RE_INT}", re.IGNORECASE),
-    "num_inputs": re.compile(rf"Number of input nodes is\s+{RE_INT}", re.IGNORECASE),
+    "num_nodes": re.compile(rf"NUMBER OF NODES:\s+{RE_INT}", re.IGNORECASE),
+    "num_inputs": re.compile(rf"NUMBER OF INPUTS:\s+{RE_INT}", re.IGNORECASE),
+    "num_edges": re.compile(rf"NUMBER OF EDGES:\s+{RE_INT}", re.IGNORECASE),
     "error_ko": re.compile(rf"Relative_RMSE_KO_is\s+{RE_FLOAT}", re.IGNORECASE),
     "error_ki": re.compile(rf"Relative_RMSE_KI_is\s+{RE_FLOAT}", re.IGNORECASE),
+
+    # average correct rows 
+    "ave_cor_rows_all": re.compile(rf"AVERAGE_CORRECT_ROWS_ALL_NODES:\s+{RE_FLOAT}", re.IGNORECASE),
+    "ave_cor_rows_input": re.compile(rf"AVE_CORRECT_ROWS_INPUT:\s+{RE_FLOAT}", re.IGNORECASE),
 
     # NDCG
     "ndcg_ko": re.compile(rf"NDCG_KO_is\s+{RE_FLOAT}", re.IGNORECASE),
@@ -72,8 +77,10 @@ PATTERNS = {
     # Times
     "time_heading": re.compile(rf"TIME\s+process\s+heading:\s+{RE_FLOAT}", re.IGNORECASE),
     "time_sim_orig": re.compile(rf"TIME\s+simulate\s+original\s+network:\s+{RE_FLOAT}", re.IGNORECASE),
+    # "time_pre_simulate": re.compile(rf"TIME\s+presimulate\s+to\s+refine\s+results:\s+{RE_FLOAT}", re.IGNORECASE),
     "time_orig_analysis": re.compile(rf"TIME\s+perform\s+original\s+analysis\s+process:\s+{RE_FLOAT}", re.IGNORECASE),
-    "time_propagation": re.compile(rf"TIME\s+perform\s+propagation:\s+{RE_FLOAT}", re.IGNORECASE),
+    "time_propagation": re.compile(rf"TIME\s+perform\s+propagation:\s+{RE_FLOAT}", re.IGNORECASE)
+    # "time_propagate_refine": re.compile(rf"TIME\s+propagate\s+AND\s+refine\s+results:\s+{RE_FLOAT}", re.IGNORECASE)
 }
 
 CSV_COLUMNS = [
@@ -84,10 +91,14 @@ CSV_COLUMNS = [
 
     "num_nodes",
     "num_inputs",
+    "num_edges",
     "ndcg_ko",
     "ndcg_ki",
     "error_ko",
     "error_ki",
+
+    "ave_cor_rows_all",
+    "ave_cor_rows_input",
 
     "n_common_ko", "n_common_ki",
     "kendall_ko", "kendall_ki",
@@ -108,8 +119,10 @@ CSV_COLUMNS = [
 
     "time_heading",
     "time_simulate_original",
+    # "time_pre_simulate",
     "time_original_analysis",
     "time_propagation",
+    # "time_propagate_refine",
 
     "returncode",
     "log_file",
@@ -131,11 +144,11 @@ def parse_line(line: str) -> Optional[Tuple[str, List[str]]]:
     return model, targets
 
 
-def run_command(python_exe: str, model: str, target: str) -> Tuple[int, str]:
+def run_command(python_exe: str, model: str, target: str, mode: str) -> Tuple[int, str]:
     """
     Run the Shapley command and capture stdout+stderr as text.
     """
-    cmd = [python_exe, "-m", "Shapley", "-e", model, "-o", target, "-abpki"]
+    cmd = [python_exe, "-m", "Shapley", "-e", model, "-o", target, "-m", mode]
     try:
         proc = subprocess.run(
             cmd,
@@ -168,6 +181,11 @@ def parse_metrics(text: str) -> Dict[str, Optional[str]]:
     # Singles
     d["num_nodes"] = (m.group(1) if (m := PATTERNS["num_nodes"].search(text)) else None)
     d["num_inputs"] = (m.group(1) if (m := PATTERNS["num_inputs"].search(text)) else None)
+    d["num_edges"] = (m.group(1) if (m := PATTERNS["num_edges"].search(text)) else None)
+
+    d["ave_cor_rows_all"] = (m.group(1) if (m := PATTERNS["ave_cor_rows_all"].search(text)) else None)
+    d["ave_cor_rows_input"] = (m.group(1) if (m := PATTERNS["ave_cor_rows_input"].search(text)) else None)
+
     d["ndcg_ko"] = (m.group(1) if (m := PATTERNS["ndcg_ko"].search(text)) else None)
     d["ndcg_ki"] = (m.group(1) if (m := PATTERNS["ndcg_ki"].search(text)) else None)
     d["error_ko"] = (m.group(1) if (m := PATTERNS["error_ko"].search(text)) else None)
@@ -200,8 +218,10 @@ def parse_metrics(text: str) -> Dict[str, Optional[str]]:
     # Times
     d["time_heading"] = (m.group(1) if (m := PATTERNS["time_heading"].search(text)) else None)
     d["time_simulate_original"] = (m.group(1) if (m := PATTERNS["time_sim_orig"].search(text)) else None)
+    # d["time_pre_simulate"] = (m.group(1) if (m := PATTERNS["time_pre_simulate"].search(text)) else None)
     d["time_original_analysis"] = (m.group(1) if (m := PATTERNS["time_orig_analysis"].search(text)) else None)
     d["time_propagation"] = (m.group(1) if (m := PATTERNS["time_propagation"].search(text)) else None)
+    # d["time_propagate_refine"] = (m.group(1) if (m := PATTERNS["time_propagate_refine"].search(text)) else None)
 
     return d
 
@@ -225,6 +245,7 @@ def main():
     ap.add_argument("--input", required=True, help="Path to models+targets text file")
     ap.add_argument("--results", required=True, help="Path to output CSV (appends)")
     ap.add_argument("--logs", default="logs", help="Directory to write per-run logs")
+    ap.add_argument("--mode", default="Shapley", help="Mode for Shapley (default: Shapley)")
     ap.add_argument("--python-exe", default=sys.executable, help="Python executable to run Shapley (default: current python)")
     args = ap.parse_args()
 
@@ -238,6 +259,7 @@ def main():
 
     jobs = []
     for ln in lines:
+        # print(ln)
         parsed = parse_line(ln)
         if not parsed:
             continue
@@ -255,7 +277,7 @@ def main():
         safe_target = re.sub(r"[^\w\-.]+", "_", target.strip())
         log_file = logs_dir / f"{model_base}__{safe_target}.log"
 
-        rc, out_text = run_command(args.python_exe, str(model_path), target)
+        rc, out_text = run_command(args.python_exe, str(model_path), target, mode=args.mode)
 
         # Write raw log
         ensure_parent(log_file)

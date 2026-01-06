@@ -1,0 +1,330 @@
+The expression file is data/realbenchmark/10.txt
+The interested output is: 
+Easter
+List of all species:
+{'Pipe', 'GramP_Bact', 'Spz', 'Snk', 'Easter', 'DV_patterning', 'DAP', 'Spd', 'Nec', 'GramN_Bact', 'PGRP_SD', 'Grass', 'ModSP', 'GNBP3', 'PGRP_SA', 'Psh', 'SPE', 'Fungi', 'Spirit', 'Gd', 'GNBP1', 'Ndl', 'Viru_Fact', 'Sphinx'}
+-----Input names-----
+{'Pipe', 'Fungi', 'GramP_Bact', 'Nec', 'GramN_Bact', 'DV_patterning'}
+----Intermediate nodes-----
+{'GNBP3', 'PGRP_SA', 'ModSP', 'Spz', 'Snk', 'Psh', 'Easter', 'SPE', 'DAP', 'Spd', 'Spirit', 'Gd', 'GNBP1', 'Ndl', 'Viru_Fact', 'PGRP_SD', 'Grass', 'Sphinx'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+Sorted input names
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['DAP', 'Easter', 'GNBP1', 'GNBP3', 'Gd', 'Grass', 'ModSP', 'Ndl', 'PGRP_SA', 'PGRP_SD', 'Psh', 'SPE', 'Snk', 'Spd', 'Sphinx', 'Spirit', 'Spz', 'Viru_Fact']
+There are 18 intermediate nodes with the range of inter: 0 262143
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.1543419361114502 seconds===
+----Input knockout shapley value-----
+('Pipe', 2.3333)
+('Fungi', 0.0)
+('GramP_Bact', 0.0)
+('Nec', 0.0)
+('GramN_Bact', 0.0)
+('DV_patterning', 2.3333)
+----Input knockIN shapley value-----
+('Pipe', -1.1667)
+('Fungi', 0.0)
+('GramP_Bact', 0.0)
+('Nec', 0.0)
+('GramN_Bact', 0.0)
+('DV_patterning', -1.1667)
+-------Now perform the knockout procedure to original network-------
+Knockout GNBP3
+Knockout PGRP_SA
+Knockout ModSP
+Knockout Spz
+Knockout Snk
+Knockout Psh
+Knockout SPE
+Knockout DAP
+Knockout Spd
+Knockout Spirit
+Knockout Gd
+Knockout GNBP1
+Knockout Ndl
+Knockout Viru_Fact
+Knockout PGRP_SD
+Knockout Grass
+Knockout Sphinx
+----KNOCKOUT VALUE for output Easter----
+{'DAP': 0.0, 'GNBP1': 0.0, 'GNBP3': 0.0, 'Gd': 2.3333, 'Grass': 0.0, 'ModSP': 0.0, 'Ndl': 2.3333, 'PGRP_SA': 0.0, 'PGRP_SD': 0.0, 'Psh': 0.0, 'SPE': 0.0, 'Snk': 2.3333, 'Spd': 0.0, 'Sphinx': 0.0, 'Spirit': 0.0, 'Spz': 0.0, 'Viru_Fact': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin GNBP3
+Knockin PGRP_SA
+Knockin ModSP
+Knockin Spz
+Knockin Snk
+Knockin Psh
+Knockin SPE
+Knockin DAP
+Knockin Spd
+Knockin Spirit
+Knockin Gd
+Knockin GNBP1
+Knockin Ndl
+Knockin Viru_Fact
+Knockin PGRP_SD
+Knockin Grass
+Knockin Sphinx
+----KNOCKIN VALUE for output Easter----
+{'DAP': 0.0, 'GNBP1': 0.0, 'GNBP3': 0.0, 'Gd': -1.1667, 'Grass': 0.0, 'ModSP': 0.0, 'Ndl': -1.1667, 'PGRP_SA': 0.0, 'PGRP_SD': 0.0, 'Psh': 0.0, 'SPE': 0.0, 'Snk': -1.1667, 'Spd': 0.0, 'Sphinx': 0.0, 'Spirit': 0.0, 'Spz': 0.0, 'Viru_Fact': 0.0}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'Pipe', 'Fungi', 'GramP_Bact', 'Nec', 'GramN_Bact', 'DV_patterning'}
+Ordinary nodes are 
+{'Pipe', 'GramP_Bact', 'Spz', 'Snk', 'Easter', 'DV_patterning', 'DAP', 'Spd', 'Nec', 'GramN_Bact', 'PGRP_SD', 'Grass', 'ModSP', 'GNBP3', 'PGRP_SA', 'Psh', 'SPE', 'Fungi', 'Spirit', 'Gd', 'GNBP1', 'Ndl', 'Viru_Fact', 'Sphinx'}
+Extranodes added after removing cycles are 
+[]
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+----Generate table from output----
+-----Calculated value of input nodes-----
+DV_patterning        			 KO:     2.3333 | KI:    -1.1667
+Fungi                			 KO:        0.0 | KI:        0.0
+GramN_Bact           			 KO:        0.0 | KI:        0.0
+GramP_Bact           			 KO:        0.0 | KI:        0.0
+Nec                  			 KO:        0.0 | KI:        0.0
+Pipe                 			 KO:     2.3333 | KI:    -1.1667
+=======PROPAGATE FOR OUTPUT Easter=======
+----Master diamonds-----
+{}
+
+
+--------PROPAGATION WITH ACYCLIC NETWORK--------
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+DV_patterning        			 KO:     2.3337 | KI:     -1.167
+Easter               			 KO:     2.3337 | KI:    -4.6677
+Fungi                			 KO:        0.0 | KI:        0.0
+Gd                   			 KO:     2.3337 | KI:     -1.167
+GramN_Bact           			 KO:        0.0 | KI:        0.0
+GramP_Bact           			 KO:        0.0 | KI:        0.0
+Ndl                  			 KO:     2.3337 | KI:     -1.167
+Nec                  			 KO:        0.0 | KI:        0.0
+Pipe                 			 KO:     2.3337 | KI:     -1.167
+Snk                  			 KO:     2.3337 | KI:     -1.167
+KO RANKING OF NODES:
+1	Easter, Snk, Gd, Ndl
+=======
+KI RANKING OF NODES:
+1	Easter
+2	Snk, Gd, Pipe, Ndl, DV_patterning
+3	Fungi, GramP_Bact, Nec, GramN_Bact
+=======
+NUMBER OF NODES: 24
+NUMBER OF INPUTS: 6
+NUMBER OF EDGES: 28
+TIME process heading: 0.0013911724090576172
+TIME simulate original network: 0.1543419361114502
+TIME perform original analysis process: 4.943192720413208
+TIME perform propagation: 0.21677947044372559
+There are 14 unreachable nodes, they are:
+{'GNBP3', 'PGRP_SA', 'Spz', 'Psh', 'SPE', 'DAP', 'Spd', 'Spirit', 'GNBP1', 'Sphinx', 'Viru_Fact', 'PGRP_SD', 'Grass', 'ModSP'}
+DAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DV_patterning
+Lack      0: []
+Extra     0: []
+Real     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+Prop     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+
+Fungi
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GNBP1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GNBP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Gd
+Lack      0: []
+Extra     0: []
+Real     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+Prop     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+
+GramN_Bact
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GramP_Bact
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Grass
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ModSP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ndl
+Lack      0: []
+Extra     0: []
+Real     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+Prop     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+
+Nec
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PGRP_SA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PGRP_SD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Pipe
+Lack      0: []
+Extra     0: []
+Real     32: [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Prop     32: [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+
+Psh
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SPE
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Snk
+Lack      0: []
+Extra     0: []
+Real     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+Prop     32: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63]
+
+Spd
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Sphinx
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Spirit
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Spz
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Viru_Fact
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	Snk, Gd, Pipe, Ndl, DV_patterning
+2	Fungi, GramP_Bact, Nec, GramN_Bact, GNBP3, PGRP_SA
+	ModSP, Spz, Psh, SPE, DAP, Spd
+	Spirit, GNBP1, Viru_Fact, PGRP_SD, Grass, Sphinx
+REFERENCE:
+1	Pipe, DV_patterning, Snk, Gd, Ndl
+2	Fungi, GramP_Bact, Nec, GramN_Bact, GNBP3, PGRP_SA
+	ModSP, Spz, Psh, SPE, DAP, Spd
+	Spirit, GNBP1, Viru_Fact, PGRP_SD, Grass, Sphinx
+=======
+-----KI RANKING COMPARISON-----
+1	Snk, Gd, Pipe, Ndl, DV_patterning
+2	Fungi, GramP_Bact, Nec, GramN_Bact, GNBP3, PGRP_SA
+	ModSP, Spz, Psh, SPE, DAP, Spd
+	Spirit, GNBP1, Viru_Fact, PGRP_SD, Grass, Sphinx
+REFERENCE:
+1	Pipe, DV_patterning, Snk, Gd, Ndl
+2	Fungi, GramP_Bact, Nec, GramN_Bact, GNBP3, PGRP_SA
+	ModSP, Spz, Psh, SPE, DAP, Spd
+	Spirit, GNBP1, Viru_Fact, PGRP_SD, Grass, Sphinx
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             23.000       23.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  1.0
+-----------TOTAL RUNNING TIME---------------
+5.355277207680047

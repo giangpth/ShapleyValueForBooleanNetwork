@@ -1,8 +1,9 @@
 import networkx as nx
 import copy
+from typing import Dict, Hashable, Iterable, Set, Literal
+
 from Shapley.exceptions import InforError
 from Shapley.utilities import filterrows
-
 from Shapley.visualization import showNetwork 
 from Shapley.booleanFormulaHandler import sim1step, sim1bistep, checkrow
 from Shapley.utilities import dict_hash, merge2states, toDecimal, filterrows
@@ -67,6 +68,8 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
             # merge all the state inside the loop 
             returnstate = copy.deepcopy(inputstate)
             for i in range(numstep-oldstate[hash] - 1):
+                # print("Periodic")
+                # print(inputstate)
                 if isbi:
                     if extranodes:
                         for extranode in extranodes:
@@ -79,8 +82,7 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
                                 print("Cannot find the root of the extra node {}".format(extranode)) 
                                 return
                     inputstate = sim1bistep(formulas, inputstate, debug)
-                    # print("Periodic")
-                    # print(inputstate)
+
                 else:
                     if extranodes:
                         for extranode in extranodes:
@@ -430,7 +432,7 @@ def processOnesidedDiamond(side, antiside, beg, neg, nonneg, target, infordicts,
     return rowstoreturn
 
 
-def processMasterDiamonds(net, table, node, masterDiamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamond, orderedBiNodes, debug=False): 
+def processMasterDiamonds(net, table, node, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamond, orderedBiNodes, debug=False): 
     """
     Process the biggest diamond structures in the network to infer rows for the node of interest, considering negation.
     Parameters:
@@ -750,7 +752,7 @@ def simulateDiamondOneStep(net, table, node, target, formulas, rowsofnode, order
     Returns:
         rowsofnode: Set of rows associated with the current node after simulation 
     """
-    silent = not debug
+    silent = not debug 
     if not silent:
         print("SIMULATE rows {} to decide rows for node {} in diamond to {}".format(sorted(list(rowsofnode)), node, target)) 
     newrowsofnode = set()
@@ -826,6 +828,7 @@ def simulateOneNode(table, node, target, formulas, rowsofnode, extranodes, input
     Returns:
         rowsofnode: Set of rows associated with the current node after simulation 
     """
+    print("SIMULATE node {}".format(node))
     rowstoreturn = set()
     for row in rowsofnode:
         # print("Simulate row {}".format(row))
@@ -835,11 +838,15 @@ def simulateOneNode(table, node, target, formulas, rowsofnode, extranodes, input
         for k, value in rawrow.items():
             if k not in inputnames:
                 rawrow[k] = False
+        
+        rawrowko = copy.deepcopy(rawrow)
+        rawrowki = copy.deepcopy(rawrow)
 
-        knockin, kiblinking = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, True)
-        knockout, koblinking = getKnockoutOutput(formulas, rawrow, [node], True, 1000, False, extranodes, False)
+        knockin, kiblinking = getKnockoutOutput(formulas, rawrowki, [node], False, 1000, False, None, True)
+        knockout, koblinking = getKnockoutOutput(formulas, rawrowko, [node], False, 1000, False, None, False)
 
-        if (oldvalue ^ knockin[target]) or (oldvalue ^ knockout[target]): 
+        if (oldvalue != knockin[target]) or (oldvalue !=  knockout[target]): 
+            # print("Old value of node {} is {}, after knockin it is {}, after knockout it is {}".format(target, oldvalue, knockin[target], knockout[target]))
             rowstoreturn.add(row)
 
     return rowstoreturn
@@ -1045,13 +1052,7 @@ def diamondDigger(binet, outname, biformulas, debug=False):
     silent = not debug
     if not silent:
         print("-------Digging diamonds-------")
-    # reversenet = binet.reverse(copy=True) # reverse the network to get the in-comming edges
-    # relevantnodes = nx.descendants(reversenet, outname) # get all the nodes that are relevant to the output node
-    # relevantnodes.add(outname) # add the output node to the relevant nodes
-    # processed = set() # save all the processed formulas 
-    # relevantgraph = binet.subgraph(relevantnodes) # get the subgraph of the relevant nodes 
-    relevantgraph = binet
-    # showNetwork(relevantgraph, None, None, None, None, "relevantgraph.html")
+    relevantgraph = binet 
     curs = [outname] # start from the output node
     carryOns = dict() # save the nodes that are carried on to the next layer
     sinks = dict() # save the sink nodes that are converged
@@ -1453,3 +1454,140 @@ def refineDiamonds(binet, biformulas, sinks, silent=True):
          
     return diamonds #, {'flipped': None} # dnomaids
 
+def all_descendants(
+    G: nx.Graph,
+    nodes: Iterable[Hashable] | None = None,
+    method: Literal["auto", "naive", "scc_bitset"] = "auto",
+    return_type: Literal["set", "list"] = "set",
+) -> Dict[Hashable, Set[Hashable] | list]:
+    """
+    For each node u, return all v != u such that there exists a path u -> v.
+    Works for directed graphs with cycles. For undirected graphs, returns the
+    connected component of u minus {u}.
+
+    method:
+      - "naive": BFS/DFS from each node (O(V·(V+E)))
+      - "scc_bitset": collapse SCCs and do DAG bitset DP (fast for big graphs)
+      - "auto": choose based on size (uses scc_bitset if V>=5000 or E>=20000)
+
+    return_type: "set" or "list"
+    """
+    if nodes is None:
+        nodes = list(G.nodes())
+    else:
+        nodes = list(nodes)
+
+    is_directed = G.is_directed()
+
+    if not is_directed:
+        # Undirected case: descendants == component minus self
+        comp_map = {}
+        for comp in nx.connected_components(G):
+            for v in comp:
+                comp_map[v] = comp
+        out = {}
+        for u in nodes:
+            res = set(comp_map.get(u, {u})) - {u}
+            out[u] = res if return_type == "set" else list(res)
+        return out
+
+    # Directed case
+    V = G.number_of_nodes()
+    E = G.number_of_edges()
+    if method == "auto":
+        method = "scc_bitset" if (V >= 5000 or E >= 20000) else "naive"
+
+    if method == "naive":
+        out: Dict[Hashable, Set[Hashable]] = {}
+        # networkx.descendants is already efficient; equivalent to BFS/DFS with visited
+        for u in nodes:
+            d = nx.descendants(G, u)
+            out[u] = d
+        if return_type == "list":
+            return {k: list(v) for k, v in out.items()}
+        return out
+
+    if method == "scc_bitset":
+        # 1) Strongly connected components
+        sccs = list(nx.strongly_connected_components(G))
+        comp_id = {}
+        for i, comp in enumerate(sccs):
+            for v in comp:
+                comp_id[v] = i
+        k = len(sccs)
+
+        # 2) Build condensation DAG
+        # Note: nx.condensation exists, but we’ll keep our own lightweight DAG for speed.
+        dag_succ = [set() for _ in range(k)]
+        for u, v in G.edges():
+            cu, cv = comp_id[u], comp_id[v]
+            if cu != cv:
+                dag_succ[cu].add(cv)
+
+        # 3) Bitset for nodes in each SCC
+        # Map nodes to a global bit index to OR quickly
+        node_index = {v: i for i, v in enumerate(G.nodes())}
+        index_node = {i: v for v, i in node_index.items()}
+
+        comp_node_bits = [0] * k
+        for i, comp in enumerate(sccs):
+            bits = 0
+            for v in comp:
+                bits |= 1 << node_index[v]
+            comp_node_bits[i] = bits
+
+        # 4) Topo order of DAG and DP union of descendants’ bits
+        topo = _topo_order_dag(dag_succ)
+        comp_reach_bits = [0] * k  # bits of all nodes reachable in downstream components
+        for c in reversed(topo):
+            bits = 0
+            for w in dag_succ[c]:
+                # include downstream nodes in component w and all below
+                bits |= comp_node_bits[w] | comp_reach_bits[w]
+            comp_reach_bits[c] = bits
+
+        # 5) Build per-node results: same-SCC nodes except self, plus downstream comps
+        out: Dict[Hashable, Set[Hashable] | list] = {}
+        for u in nodes:
+            c = comp_id[u]
+            # include all in same SCC except u
+            same_scc_bits = comp_node_bits[c] & ~(1 << node_index[u])
+            # include all downstream component nodes
+            bits = same_scc_bits | comp_reach_bits[c]
+
+            # convert bitset back to nodes
+            res_set = set()
+            x = bits
+            while x:
+                lsb = x & -x
+                idx = (lsb.bit_length() - 1)
+                res_set.add(index_node[idx])
+                x ^= lsb
+
+            out[u] = res_set if return_type == "set" else list(res_set)
+        return out
+
+    raise ValueError("method must be one of {'auto','naive','scc_bitset'}")
+
+
+def _topo_order_dag(dag_succ: list[set[int]]) -> list[int]:
+    """Topological order for a DAG given successors adjacency."""
+    k = len(dag_succ)
+    indeg = [0] * k
+    for u in range(k):
+        for v in dag_succ[u]:
+            indeg[v] += 1
+    from collections import deque
+    q = deque([i for i in range(k) if indeg[i] == 0])
+    order = []
+    while q:
+        u = q.popleft()
+        order.append(u)
+        for v in dag_succ[u]:
+            indeg[v] -= 1
+            if indeg[v] == 0:
+                q.append(v)
+    if len(order) != k:
+        # Shouldn’t happen; condensation is always a DAG.
+        raise RuntimeError("Condensation graph is not a DAG. Something’s off.")
+    return order

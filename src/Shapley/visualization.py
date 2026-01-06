@@ -1,7 +1,7 @@
 import networkx as nx
 from pyvis.network import Network 
 
-def showNetwork(net, koinshaps, kiinshap, koshaps, kishaps, filename='network.html', isbound=False):
+def showNetwork(net, koinshaps, kiinshap, koshaps, kishaps, filename='network.html'):
     """
     Displays the network using pyvis and saves it to an HTML file.
 
@@ -33,12 +33,7 @@ def showNetwork(net, koinshaps, kiinshap, koshaps, kishaps, filename='network.ht
                 # print(node, shap)
                 # net.get_node(node).update({'labels': str(node) + " ko: " + str(shap['pos'] + shap['neg']) +\
                 #                            " ki: " + str(kiinshap[outname][node]['pos'] + kiinshap[outname][node]['neg'])})
-                if not isbound:
-                    # newlables[node] = str(node) + "\n KO: " + str(shap['pos'] + shap['neg'])
-                    newlables[node] = str(node) + "\n KO: " + str(shap)
-                else:
-                    # newlables[node] = str(node) + "\n KO: ( " + str(shap['pos']['lb'] + shap['neg']['ub']) + " to " + str(shap['pos']['ub'] + shap['neg']['lb']) + " )"
-                    newlables[node] = str(node) + "\n KO: " + str(shap) 
+                newlables[node] = str(node) + "\n KO: " + str(shap) 
         if kishaps:
             # print(kishaps)
             # thiskishaps = kishaps[outname]
@@ -47,12 +42,7 @@ def showNetwork(net, koinshaps, kiinshap, koshaps, kishaps, filename='network.ht
                 # print(node, shap)
                 # net.get_node(node).update({'labels': str(node) + " ko: " + str(shap['pos'] + shap['neg']) +\
                 #                            " ki: " + str(kiinshap[outname][node]['pos'] + kiinshap[outname][node]['neg'])})
-                if not isbound:
-                    # newlables[node] += " | KI: " + str(shap['pos'] + shap['neg'])
-                    newlables[node] += " | KI: " + str(shap)
-                else:
-                    # newlables[node] += " | KI: " + "( " + str(shap['pos']['lb'] + shap['neg']['ub']) + " to " + str(shap['pos']['ub'] + shap['neg']['lb']) + " )"
-                    newlables[node] += " | KI: " + str(shap)
+                newlables[node] += " | KI: " + str(shap)
         labelednet = nx.relabel_nodes(net, newlables, True)
 
     else:

@@ -1,0 +1,575 @@
+The expression file is data/realbenchmark/2.txt
+The interested output is: 
+{'WG_p'}
+Perform normal procedure for input and knockout procedure for intermediate nodes, mode: Shapley
+List of all species:
+{'CIR', 'hh_e', 'HH_p', 'wg', 'PTC_p', 'WG_p', 'ci', 'PH', 'SMO', 'ptc', 'EN_p', 'CIA', 'en', 'WG_e', 'SLP', 'CI_p', 'hh'}
+-----Input names-----
+{'SLP', 'hh_e', 'WG_e'}
+----Intermediate nodes-----
+{'CIR', 'wg', 'PTC_p', 'HH_p', 'ci', 'PH', 'SMO', 'ptc', 'EN_p', 'CIA', 'en', 'CI_p', 'hh'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+Sorted input names
+['SLP', 'WG_e', 'hh_e']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['CIA', 'CIR', 'CI_p', 'EN_p', 'HH_p', 'PH', 'PTC_p', 'SMO', 'ci', 'en', 'hh', 'ptc', 'wg']
+There are 13 intermediate nodes with the range of inter: 0 8191
+----Input knockout shapley value-----
+('WG_p', {'SLP': 1.3333, 'hh_e': 1.3333, 'WG_e': 0.0})
+
+
+----Input knockIN shapley value-----
+('WG_p', {'SLP': -0.6667, 'hh_e': -0.6667, 'WG_e': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout CIR
+Knockout wg
+Knockout PTC_p
+Knockout HH_p
+Knockout ci
+Knockout PH
+Knockout SMO
+Knockout ptc
+Knockout EN_p
+Knockout CIA
+Knockout en
+Knockout CI_p
+Knockout hh
+----KNOCKOUT VALUE for output WG_p----
+{'CIA': 1.3333, 'CIR': -0.6667, 'CI_p': 1.3333, 'EN_p': 0.0, 'HH_p': 0.0, 'PH': 0.0, 'PTC_p': -0.6667, 'SMO': 0.0, 'ci': 1.3333, 'en': 0.0, 'hh': 0.0, 'ptc': -0.6667, 'wg': 1.3333}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin CIR
+Knockin wg
+Knockin PTC_p
+Knockin HH_p
+Knockin ci
+Knockin PH
+Knockin SMO
+Knockin ptc
+Knockin EN_p
+Knockin CIA
+Knockin en
+Knockin CI_p
+Knockin hh
+----KNOCKIN VALUE for output WG_p----
+{'WG_p': {'CIR': 1.3333, 'wg': -2.6667, 'PTC_p': 0.0, 'HH_p': 0.0, 'ci': 0.0, 'PH': 0.0, 'SMO': 0.0, 'ptc': 0.0, 'EN_p': 1.3333, 'CIA': 0.0, 'en': -0.6667, 'CI_p': 0.0, 'hh': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-----Now perform PARTIAL SIMULATION to refine the results according to the ERROR THRESHOLD 0.4-----
+Row IDs to simulate: [0, 1, 2, 4, 7]
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'SLP', 'hh_e', 'WG_e'}
+Ordinary nodes are 
+{'CIR', 'hh_e', 'HH_p', 'wg', 'PTC_p', 'WG_p', 'ci', 'PH', 'SMO', 'ptc', 'EN_p', 'CIA', 'en', 'WG_e', 'SLP', 'CI_p', 'hh'}
+Extranodes added after removing cycles are 
+['wg_to_wg', 'PTC_p_to_CIA', 'PTC_p_to_CIR', 'PTC_p_to_PTC_p']
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+----Generate table from output----
+-----Knockout Shapley value of input nodes in the binary network-----
+WG_p : {'SLP': 1.3333, 'hh_e': 1.3333, 'WG_e': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+WG_p : {'SLP': -0.6667, 'hh_e': -0.6667, 'WG_e': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+Knockout _XTR_12_
+Knockout CIR
+Knockout _XTR_8_
+Knockout _XTR_14_
+Knockout PH
+Knockout EN_p
+Knockout _XTR_23_
+Knockout _XTR_28_
+Knockout _XTR_2_
+Knockout CI_p
+Knockout hh
+Knockout _XTR_16_
+Knockout _XTR_13_
+Knockout PTC_p_to_PTC_p
+Knockout _XTR_24_
+Knockout _XTR_1_
+Knockout CIA
+Knockout _XTR_29_
+Knockout _XTR_3_
+Knockout en
+Knockout _XTR_6_
+Knockout PTC_p
+Knockout wg
+Knockout ci
+Knockout _XTR_10_
+Knockout PTC_p_to_CIA
+Knockout wg_to_wg
+Knockout HH_p
+Knockout _XTR_7_
+Knockout SMO
+Knockout ptc
+Knockout PTC_p_to_CIR
+Knockout _XTR_9_
+Knockout _XTR_26_
+---- Binary KNOCKOUT VALUE for output WG_p----
+{'WG_p': {'_XTR_12_': 0.0, 'CIR': -0.6667, '_XTR_8_': 0.0, '_XTR_14_': 0.0, 'PH': 0.0, 'EN_p': 0.0, '_XTR_23_': -0.6667, '_XTR_28_': 0.0, '_XTR_2_': -0.6667, 'CI_p': 1.3333, 'hh': 0.0, '_XTR_16_': 0.0, '_XTR_13_': 0.0, 'PTC_p_to_PTC_p': -0.6667, '_XTR_24_': -0.6667, '_XTR_1_': -0.6667, 'CIA': 1.3333, '_XTR_29_': 0.0, '_XTR_3_': 1.3333, 'en': 0.0, '_XTR_6_': 0.0, 'PTC_p': -0.6667, 'wg': 1.3333, 'ci': 1.3333, '_XTR_10_': 1.3333, 'PTC_p_to_CIA': 0.0, 'wg_to_wg': 0.0, 'HH_p': 0.0, '_XTR_7_': 0.0, 'SMO': 0.0, 'ptc': -0.6667, 'PTC_p_to_CIR': -0.6667, '_XTR_9_': 1.3333, '_XTR_26_': -0.6667}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+KnockIN _XTR_12_
+KnockIN CIR
+KnockIN _XTR_8_
+KnockIN _XTR_14_
+KnockIN PH
+KnockIN EN_p
+KnockIN _XTR_23_
+KnockIN _XTR_28_
+KnockIN _XTR_2_
+KnockIN CI_p
+KnockIN hh
+KnockIN _XTR_16_
+KnockIN _XTR_13_
+KnockIN PTC_p_to_PTC_p
+KnockIN _XTR_24_
+KnockIN _XTR_1_
+KnockIN CIA
+KnockIN _XTR_29_
+KnockIN _XTR_3_
+KnockIN en
+KnockIN _XTR_6_
+KnockIN PTC_p
+KnockIN wg
+KnockIN ci
+KnockIN _XTR_10_
+KnockIN PTC_p_to_CIA
+KnockIN wg_to_wg
+KnockIN HH_p
+KnockIN _XTR_7_
+KnockIN SMO
+KnockIN ptc
+KnockIN PTC_p_to_CIR
+KnockIN _XTR_9_
+KnockIN _XTR_26_
+---- Binary KNOCKIN VALUE for output WG_p----
+{'WG_p': {'_XTR_12_': 0.0, 'CIR': 1.3333, '_XTR_8_': -2.6667, '_XTR_14_': 0.0, 'PH': 0.0, 'EN_p': 1.3333, '_XTR_23_': 0.0, '_XTR_28_': 0.0, '_XTR_2_': 0.0, 'CI_p': 0.0, 'hh': 0.0, '_XTR_16_': -0.3333, '_XTR_13_': 0.0, 'PTC_p_to_PTC_p': 0.0, '_XTR_24_': 1.3333, '_XTR_1_': 0.0, 'CIA': 0.0, '_XTR_29_': 0.0, '_XTR_3_': -0.6667, 'en': -0.6667, '_XTR_6_': 0.0, 'PTC_p': 0.0, 'wg': -2.6667, 'ci': 0.0, '_XTR_10_': -2.6667, 'PTC_p_to_CIA': 0.0, 'wg_to_wg': -0.3333, 'HH_p': 0.0, '_XTR_7_': -1.0, 'SMO': 0.0, 'ptc': 0.0, 'PTC_p_to_CIR': 0.0, '_XTR_9_': -1.0, '_XTR_26_': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT WG_p=======
+----Master diamonds-----
+{'_XTR_3_': 'wg', 'CIA': 'wg', 'SLP': 'wg', 'hh_e': 'wg', 'CI_p': 'wg', 'EN_p': 'wg'}
+
+
+--------PROPAGATION--------
+Extranodes PTC_p_to_CIR, add  PTC_p_to_CIR to nextlayer
+
+Current node PTC_p_to_CIR is an extra node, wire back to root node PTC_p
+WG_p                 			 KO:     1.3333 | KI:    -2.6665
+wg                   			 KO:     1.3333 | KI:    -2.6665
+_XTR_8_              			 KO:        0.0 | KI:    -2.6665
+_XTR_10_             			 KO:        0.0 | KI:    -2.6665
+_XTR_7_              			 KO:        0.0 | KI:    -0.9999
+_XTR_3_              			 KO:     1.3333 | KI:        0.0
+_XTR_9_              			 KO:        0.0 | KI:    -0.9999
+wg_to_wg             			 KO:        0.0 | KI:    -0.3333
+_XTR_6_              			 KO:        0.0 | KI:        0.0
+CIR                  			 KO:    -0.3333 | KI:     1.3333
+CIA                  			 KO:        1.0 | KI:        0.0
+_XTR_23_             			 KO:    -0.3333 | KI:        0.0
+_XTR_24_             			 KO:    -0.3333 | KI:     1.3333
+_XTR_12_             			 KO:        1.0 | KI:        0.0
+_XTR_14_             			 KO:        0.0 | KI:        0.0
+SLP                  			 KO:     1.3333 | KI:    -0.6666
+CI_p                 			 KO:        1.0 | KI:        0.0
+PTC_p_to_CIR         			 KO:    -0.3333 | KI:        0.0
+_XTR_13_             			 KO:        0.0 | KI:        0.0
+ci                   			 KO:        1.0 | KI:        0.0
+PTC_p                			 KO:    -0.3333 | KI:        0.0
+ptc                  			 KO:        0.0 | KI:    -0.3333
+_XTR_26_             			 KO:    -0.3333 | KI:        0.0
+hh_e                 			 KO:     1.3333 | KI:    -0.6666
+PTC_p_to_CIA         			 KO:        0.0 | KI:        0.0
+EN_p                 			 KO:        0.0 | KI:        1.0
+_XTR_2_              			 KO:        0.0 | KI:        0.0
+PTC_p_to_PTC_p       			 KO:    -0.3333 | KI:        0.0
+en                   			 KO:        0.0 | KI:    -0.3333
+_XTR_1_              			 KO:        0.0 | KI:        0.0
+_XTR_16_             			 KO:        0.0 | KI:        0.0
+WG_e                 			 KO:        0.0 | KI:        0.0
+There are 6 unreachable nodes, they are:
+{'PH', '_XTR_28_', 'hh', '_XTR_29_', 'HH_p', 'SMO'}
+binary.html
+_XTR_12_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+CIR                  - Correct: KO:    -0.6667 | KI :     1.3333 - Incorrect KO:    -0.3333 | KI:     1.3333
+EN_p                 - Correct: KO:        0.0 | KI :     1.3333 - Incorrect KO:        0.0 | KI:        1.0
+_XTR_23_             - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:    -0.3333 | KI:        0.0
+_XTR_2_              - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+CI_p                 - Correct: KO:     1.3333 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_16_             - Correct: KO:        0.0 | KI :    -0.3333 - Incorrect KO:        0.0 | KI:        0.0
+PTC_p_to_PTC_p       - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:    -0.3333 | KI:        0.0
+_XTR_24_             - Correct: KO:    -0.6667 | KI :     1.3333 - Incorrect KO:    -0.3333 | KI:     1.3333
+_XTR_1_              - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+CIA                  - Correct: KO:     1.3333 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_3_              - Correct: KO:     1.3333 | KI :    -0.6667 - Incorrect KO:     1.3333 | KI:        0.0
+en                   - Correct: KO:        0.0 | KI :    -0.6667 - Incorrect KO:        0.0 | KI:    -0.3333
+PTC_p                - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:    -0.3333 | KI:        0.0
+ci                   - Correct: KO:     1.3333 | KI :        0.0 - Incorrect KO:        1.0 | KI:        0.0
+_XTR_10_             - Correct: KO:     1.3333 | KI :    -2.6667 - Incorrect KO:        0.0 | KI:    -2.6665
+ptc                  - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -0.3333
+PTC_p_to_CIR         - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:    -0.3333 | KI:        0.0
+_XTR_9_              - Correct: KO:     1.3333 | KI :       -1.0 - Incorrect KO:        0.0 | KI:    -0.9999
+_XTR_26_             - Correct: KO:    -0.6667 | KI :        0.0 - Incorrect KO:    -0.3333 | KI:        0.0
+SLP
+Lack      0: []
+Extra     0: []
+Real      4: [1, 3, 5, 7]
+Prop      4: [1, 3, 5, 7]
+
+WG_e
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+hh_e
+Lack      0: []
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      4: [4, 5, 6, 7]
+
+CIA
+Lack      1: [5]
+Extra     0: []
+Real      2: [5, 7]
+Prop      1: [7]
+
+CIR
+Lack      1: [6]
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      3: [4, 5, 7]
+
+CI_p
+Lack      1: [5]
+Extra     0: []
+Real      2: [5, 7]
+Prop      1: [7]
+
+EN_p
+Lack      1: [5]
+Extra     0: []
+Real      2: [5, 7]
+Prop      1: [7]
+
+HH_p
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PH
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTC_p
+Lack      1: [6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      1: [4]
+
+PTC_p_to_CIA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTC_p_to_CIR
+Lack      1: [6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      1: [4]
+
+PTC_p_to_PTC_p
+Lack      1: [6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      1: [4]
+
+SMO
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_10_
+Lack      2: [5, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      6: [0, 1, 2, 3, 4, 6]
+
+_XTR_12_
+Lack      0: []
+Extra     1: [7]
+Real      0: []
+Prop      1: [7]
+
+_XTR_13_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_14_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_16_
+Lack      1: [6]
+Extra     0: []
+Real      1: [6]
+Prop      0: []
+
+_XTR_1_
+Lack      2: [4, 6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      0: []
+
+_XTR_23_
+Lack      1: [6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      1: [4]
+
+_XTR_24_
+Lack      1: [6]
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      3: [4, 5, 7]
+
+_XTR_26_
+Lack      1: [6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      1: [4]
+
+_XTR_28_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_29_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_2_
+Lack      2: [4, 6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      0: []
+
+_XTR_3_
+Lack      2: [4, 6]
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      2: [5, 7]
+
+_XTR_6_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_7_
+Lack      0: []
+Extra     0: []
+Real      3: [1, 2, 3]
+Prop      3: [1, 2, 3]
+
+_XTR_8_
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 6]
+Prop      6: [0, 1, 2, 3, 4, 6]
+
+_XTR_9_
+Lack      2: [5, 7]
+Extra     0: []
+Real      5: [1, 2, 3, 5, 7]
+Prop      3: [1, 2, 3]
+
+ci
+Lack      1: [5]
+Extra     0: []
+Real      2: [5, 7]
+Prop      1: [7]
+
+en
+Lack      1: [6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      1: [4]
+
+hh
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ptc
+Lack      1: [6]
+Extra     0: []
+Real      2: [4, 6]
+Prop      1: [4]
+
+wg
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+wg_to_wg
+Lack      0: []
+Extra     0: []
+Real      1: [1]
+Prop      1: [1]
+
+-----KO RANKING COMPARISON-----
+SLP                                      | wg
+hh_e                                     | _XTR_3_
+CI_p                                     | SLP
+CIA                                      | hh_e
+_XTR_3_                                  | CIA
+wg                                       | _XTR_12_
+ci                                       | CI_p
+_XTR_10_                                 | ci
+_XTR_9_                                  | _XTR_8_
+WG_e                                     | _XTR_10_
+_XTR_12_                                 | _XTR_7_
+_XTR_8_                                  | _XTR_9_
+_XTR_14_                                 | wg_to_wg
+PH                                       | _XTR_6_
+EN_p                                     | _XTR_14_
+_XTR_28_                                 | _XTR_13_
+hh                                       | ptc
+_XTR_16_                                 | PTC_p_to_CIA
+_XTR_13_                                 | EN_p
+_XTR_29_                                 | _XTR_2_
+en                                       | en
+_XTR_6_                                  | _XTR_1_
+PTC_p_to_CIA                             | _XTR_16_
+wg_to_wg                                 | WG_e
+HH_p                                     | PH
+_XTR_7_                                  | _XTR_28_
+SMO                                      | hh
+CIR                                      | _XTR_29_
+_XTR_23_                                 | HH_p
+_XTR_2_                                  | SMO
+PTC_p_to_PTC_p                           | CIR
+_XTR_24_                                 | _XTR_23_
+_XTR_1_                                  | _XTR_24_
+PTC_p                                    | PTC_p_to_CIR
+ptc                                      | PTC_p
+PTC_p_to_CIR                             | _XTR_26_
+_XTR_26_                                 | PTC_p_to_PTC_p
+-----KI RANKING COMPARISON-----
+CIR                                      | CIR
+EN_p                                     | _XTR_24_
+_XTR_24_                                 | EN_p
+WG_e                                     | _XTR_3_
+_XTR_12_                                 | _XTR_6_
+_XTR_14_                                 | CIA
+PH                                       | _XTR_23_
+_XTR_23_                                 | _XTR_12_
+_XTR_28_                                 | _XTR_14_
+_XTR_2_                                  | CI_p
+CI_p                                     | PTC_p_to_CIR
+hh                                       | _XTR_13_
+_XTR_13_                                 | ci
+PTC_p_to_PTC_p                           | PTC_p
+_XTR_1_                                  | _XTR_26_
+CIA                                      | PTC_p_to_CIA
+_XTR_29_                                 | _XTR_2_
+_XTR_6_                                  | PTC_p_to_PTC_p
+PTC_p                                    | _XTR_1_
+ci                                       | _XTR_16_
+PTC_p_to_CIA                             | WG_e
+HH_p                                     | PH
+SMO                                      | _XTR_28_
+ptc                                      | hh
+PTC_p_to_CIR                             | _XTR_29_
+_XTR_26_                                 | HH_p
+_XTR_16_                                 | SMO
+wg_to_wg                                 | wg_to_wg
+SLP                                      | ptc
+hh_e                                     | en
+_XTR_3_                                  | SLP
+en                                       | hh_e
+_XTR_7_                                  | _XTR_7_
+_XTR_9_                                  | _XTR_9_
+_XTR_8_                                  | wg
+wg                                       | _XTR_8_
+_XTR_10_                                 | _XTR_10_
+Number of nodes is 37
+Number of input nodes is 3
+Relative_RMSE_KO_is  0.05437063138710486
+Relative_RMSE_KI_is  0.01937485047893483
+NDCG_KO_is  0.9581111195109067
+NDCG_KI_is  0.994009831926816
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             37.000       37.000
+Kendall tau-b                         0.686        0.882
+Spearman rho                          0.723        0.965
+Mean abs rank diff                    1.081        0.162
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.700        0.833
+         Precision@10                0.933        1.000
+         Recall@10                   0.737        0.833
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.444        1.000
+  Top-2  groups Jaccard            0.350        0.833
+  Top-3  groups Jaccard            0.405        1.000
+==========================================================
+NUMBER OF NODES: 17
+NUMBER OF INPUTS: 3
+NUMBER OF EDGES: 29
+TIME process heading: 0.0008981227874755859
+TIME simulate original network: 0.01794123649597168
+TIME presimulate to refine results: 0.23574018478393555
+TIME perform original analysis process: 0.3961050510406494
+TIME perform propagation: 0.18643903732299805
+TIME propagate AND refine results: 0.4221792221069336
+-----------TOTAL RUNNING TIME---------------
+3.671102541964501

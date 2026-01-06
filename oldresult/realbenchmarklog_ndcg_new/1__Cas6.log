@@ -1,0 +1,1031 @@
+The expression file is data/realbenchmark/1.txt
+The interested output is: 
+{'Cas6'}
+Perform normal procedure for input and knockout procedure for intermediate nodes
+List of all species:
+{'IAP', 'TNFR1', 'TRAF', 'JNK', 'DNADamageEvent', 'GF', 'Mito', 'Cas8', 'BID', 'Mdm2', 'NFkB', 'TNFR2', 'Cas9', 'TNF', 'PIP3', 'JNKK', 'PI3K', 'RIP', 'IKK', 'Apaf1', 'TRAF2', 'PTEN', 'TRADD', 'Cas12', 'Cas7', 'IkB', 'p53', 'cFLIP', 'BclX', 'PIP2', 'GFR', 'Cas6', 'AKT', 'Apoptosis', 'NIK', 'APC', 'FADD', 'Cas3', 'A20', 'MEKK1', 'BAD'}
+-----Input names-----
+{'TNF', 'GF'}
+----Intermediate nodes-----
+{'IAP', 'TNFR1', 'TRAF', 'JNK', 'DNADamageEvent', 'Mito', 'Cas8', 'BID', 'Mdm2', 'NFkB', 'TNFR2', 'Cas9', 'PIP3', 'JNKK', 'PI3K', 'RIP', 'IKK', 'Apaf1', 'TRAF2', 'PTEN', 'TRADD', 'Cas12', 'Cas7', 'IkB', 'p53', 'cFLIP', 'BclX', 'PIP2', 'GFR', 'AKT', 'Apoptosis', 'NIK', 'APC', 'FADD', 'Cas3', 'A20', 'MEKK1', 'BAD'}
+Now arrange layout of the original network for visualization
+Sorted input names
+['GF', 'TNF']
+There are 2 inputs with the range of input: 0 3
+Sorted internames:
+['A20', 'AKT', 'APC', 'Apaf1', 'Apoptosis', 'BAD', 'BID', 'BclX', 'Cas12', 'Cas3', 'Cas7', 'Cas8', 'Cas9', 'DNADamageEvent', 'FADD', 'GFR', 'IAP', 'IKK', 'IkB', 'JNK', 'JNKK', 'MEKK1', 'Mdm2', 'Mito', 'NFkB', 'NIK', 'PI3K', 'PIP2', 'PIP3', 'PTEN', 'RIP', 'TNFR1', 'TNFR2', 'TRADD', 'TRAF', 'TRAF2', 'cFLIP', 'p53']
+There are 38 intermediate nodes with the range of inter: 0 274877906943
+----Input knockout shapley value-----
+('Cas6', {'TNF': 0.0, 'GF': 0.0})
+
+
+----Input knockIN shapley value-----
+('Cas6', {'TNF': 0.0, 'GF': 0.0})
+
+
+-------Now perform the knockout procedure to original network-------
+Knockout IAP
+Knockout TNFR1
+Knockout TRAF
+Knockout JNK
+Knockout DNADamageEvent
+Knockout Mito
+Knockout Cas8
+Knockout BID
+Knockout Mdm2
+Knockout NFkB
+Knockout TNFR2
+Knockout Cas9
+Knockout PIP3
+Knockout JNKK
+Knockout PI3K
+Knockout RIP
+Knockout IKK
+Knockout Apaf1
+Knockout TRAF2
+Knockout PTEN
+Knockout TRADD
+Knockout Cas12
+Knockout Cas7
+Knockout IkB
+Knockout p53
+Knockout cFLIP
+Knockout BclX
+Knockout PIP2
+Knockout GFR
+Knockout AKT
+Knockout Apoptosis
+Knockout NIK
+Knockout APC
+Knockout FADD
+Knockout Cas3
+Knockout A20
+Knockout MEKK1
+Knockout BAD
+----KNOCKOUT VALUE for output Cas6----
+{'A20': 0.0, 'AKT': 0.0, 'APC': 0.0, 'Apaf1': 0.0, 'Apoptosis': 0.0, 'BAD': 0.0, 'BID': 0.0, 'BclX': 0.0, 'Cas12': 0.0, 'Cas3': 0.0, 'Cas7': 0.0, 'Cas8': 0.0, 'Cas9': 0.0, 'DNADamageEvent': 0.0, 'FADD': 0.0, 'GFR': 0.0, 'IAP': -1.5, 'IKK': 0.0, 'IkB': 0.0, 'JNK': 0.0, 'JNKK': 0.0, 'MEKK1': 0.0, 'Mdm2': 0.0, 'Mito': 0.0, 'NFkB': -1.5, 'NIK': 0.0, 'PI3K': 0.0, 'PIP2': 0.0, 'PIP3': 0.0, 'PTEN': 0.0, 'RIP': 0.0, 'TNFR1': 0.0, 'TNFR2': 0.0, 'TRADD': 0.0, 'TRAF': -1.5, 'TRAF2': 0.0, 'cFLIP': -1.5, 'p53': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin IAP
+Knockin TNFR1
+Knockin TRAF
+Knockin JNK
+Knockin DNADamageEvent
+Knockin Mito
+Knockin Cas8
+Knockin BID
+Knockin Mdm2
+Knockin NFkB
+Knockin TNFR2
+Knockin Cas9
+Knockin PIP3
+Knockin JNKK
+Knockin PI3K
+Knockin RIP
+Knockin IKK
+Knockin Apaf1
+Knockin TRAF2
+Knockin PTEN
+Knockin TRADD
+Knockin Cas12
+Knockin Cas7
+Knockin IkB
+Knockin p53
+Knockin cFLIP
+Knockin BclX
+Knockin PIP2
+Knockin GFR
+Knockin AKT
+Knockin Apoptosis
+Knockin NIK
+Knockin APC
+Knockin FADD
+Knockin Cas3
+Knockin A20
+Knockin MEKK1
+Knockin BAD
+----KNOCKIN VALUE for output Cas6----
+{'Cas6': {'IAP': 0.0, 'TNFR1': 0.0, 'TRAF': 0.0, 'JNK': 0.0, 'DNADamageEvent': 0.0, 'Mito': -1.5, 'Cas8': -3.0, 'BID': 0.0, 'Mdm2': 0.0, 'NFkB': 0.0, 'TNFR2': 0.0, 'Cas9': 0.0, 'PIP3': 0.0, 'JNKK': 0.0, 'PI3K': 0.0, 'RIP': 0.0, 'IKK': 0.0, 'Apaf1': 0.0, 'TRAF2': 0.0, 'PTEN': 0.0, 'TRADD': 0.0, 'Cas12': 0.0, 'Cas7': 0.0, 'IkB': -1.5, 'p53': 0.0, 'cFLIP': 0.0, 'BclX': 0.0, 'PIP2': 0.0, 'GFR': 0.0, 'AKT': 0.0, 'Apoptosis': 0.0, 'NIK': 0.0, 'APC': -3.0, 'FADD': -1.5, 'Cas3': -3.0, 'A20': 0.0, 'MEKK1': 0.0, 'BAD': 0.0}}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+Sorted input names
+['GF', 'TNF']
+There are 2 inputs with the range of input: 0 3
+Sorted internames:
+['A20', 'AKT', 'APC', 'Apaf1', 'Apoptosis', 'BAD', 'BID', 'BclX', 'Cas12', 'Cas3', 'Cas7', 'Cas8', 'Cas9', 'DNADamageEvent', 'FADD', 'GFR', 'IAP', 'IKK', 'IkB', 'JNK', 'JNKK', 'MEKK1', 'Mdm2', 'Mito', 'NFkB', 'NIK', 'PI3K', 'PIP2', 'PIP3', 'PTEN', 'RIP', 'TNFR1', 'TNFR2', 'TRADD', 'TRAF', 'TRAF2', 'cFLIP', 'p53']
+There are 38 intermediate nodes with the range of inter: 0 274877906943
+----Input shapley value of acyclic network-----
+('Cas6', {'TNF': 0.0, 'GF': 0.0})
+
+
+acyclic.html
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS 0----
+
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'TNF', 'GF'}
+Ordinary nodes are 
+{'IAP', 'TNFR1', 'TRAF', 'JNK', 'DNADamageEvent', 'GF', 'Mito', 'Cas8', 'BID', 'Mdm2', 'NFkB', 'TNFR2', 'Cas9', 'TNF', 'PIP3', 'JNKK', 'PI3K', 'RIP', 'IKK', 'Apaf1', 'TRAF2', 'PTEN', 'TRADD', 'Cas12', 'Cas7', 'IkB', 'p53', 'cFLIP', 'BclX', 'PIP2', 'GFR', 'Cas6', 'AKT', 'Apoptosis', 'NIK', 'APC', 'FADD', 'Cas3', 'A20', 'MEKK1', 'BAD'}
+Extranodes added after removing cycles are 
+['DNADamageEvent_to_p53', 'Mito_to_IAP', 'Mdm2_to_p53', 'Cas9_to_APC', 'PIP3_to_AKT', 'IkB_to_NFkB', 'Cas6_to_Cas8', 'Cas6_to_IAP', 'Cas3_to_Cas6', 'Cas3_to_IAP']
+binary.html
+----Simulate binary network----
+----Generate table from output----
+Blinkings:
+[{'NFkB', '_XTR_32_', 'IAP', 'A20', '_XTR_1_', '_XTR_42_', '_XTR_55_', 'IkB', '_XTR_37_', 'BclX'}, {'IAP', 'Mdm2_to_p53', '_XTR_62_', 'Mito_to_IAP', '_XTR_1_', '_XTR_39_', 'Mito', '_XTR_54_', '_XTR_56_', 'BID', 'Mdm2', 'NFkB', '_XTR_64_', 'IkB_to_NFkB', '_XTR_50_', '_XTR_31_', '_XTR_33_', '_XTR_42_', 'IKK', 'Apaf1', '_XTR_26_', '_XTR_32_', 'PTEN', '_XTR_55_', 'IkB', 'p53', 'BclX', '_XTR_41_', 'A20', 'BAD', '_XTR_37_', '_XTR_66_'}, {'_XTR_32_', 'IAP', '_XTR_1_', '_XTR_55_', 'IkB', 'BclX', 'NFkB', '_XTR_38_', 'A20', 'IkB_to_NFkB', '_XTR_37_', '_XTR_42_', 'IKK'}, {'NFkB', 'IAP', '_XTR_32_', '_XTR_38_', 'A20', '_XTR_62_', 'IkB_to_NFkB', '_XTR_1_', '_XTR_39_', '_XTR_55_', '_XTR_37_', 'IkB', '_XTR_42_', 'IKK', 'BclX'}]
+-------TESTING LINE: 0-------
+{'Mdm2_to_p53': False, 'JNK': False, 'DNADamageEvent': False, 'Mito': False, '_XTR_43_': False, '_XTR_56_': True, 'Mdm2': False, 'NFkB': True, 'TNFR2': False, 'Cas6_to_Cas8': False, 'PI3K': False, '_XTR_5_': False, 'TRAF2': False, '_XTR_4_': False, 'TRADD': False, 'Cas7': False, '_XTR_55_': True, '_XTR_41_': True, 'Cas6': False, '_XTR_3_': False, '_XTR_21_': False, 'A20': True, '_XTR_22_': False, 'PIP3_to_AKT': False, '_XTR_66_': False, 'TRAF': False, '_XTR_1_': True, '_XTR_39_': False, 'GF': False, '_XTR_2_': False, '_XTR_65_': False, '_XTR_50_': False, '_XTR_31_': False, '_XTR_33_': False, 'IKK': False, '_XTR_26_': True, 'Cas3_to_IAP': False, 'Cas12': False, 'p53': False, '_XTR_20_': True, 'GFR': False, 'AKT': False, 'APC': False, 'FADD': False, '_XTR_25_': False, 'Cas3_to_Cas6': False, '_XTR_62_': True, '_XTR_54_': True, 'Cas8': False, 'BID': False, '_XTR_64_': True, 'Cas9': False, '_XTR_13_': False, '_XTR_34_': False, 'Apaf1': False, '_XTR_32_': True, 'PTEN': False, 'IkB': True, '_XTR_11_': False, 'PIP2': False, '_XTR_12_': False, 'NIK': False, 'Cas6_to_IAP': False, 'MEKK1': False, 'Cas9_to_APC': False, 'IAP': True, 'TNFR1': False, 'Mito_to_IAP': False, '_XTR_44_': True, 'DNADamageEvent_to_p53': False, '_XTR_14_': False, 'TNF': False, 'PIP3': False, 'IkB_to_NFkB': True, 'JNKK': False, '_XTR_9_': True, '_XTR_42_': True, 'RIP': False, 'cFLIP': False, '_XTR_51_': False, 'BclX': True, '_XTR_35_': False, 'Apoptosis': False, '_XTR_38_': False, 'Cas3': False, 'BAD': False, '_XTR_37_': True}
+-------TESTING LINE: 1-------
+{'Mdm2_to_p53': True, 'JNK': True, 'DNADamageEvent': False, 'Mito': True, '_XTR_43_': False, '_XTR_56_': True, 'Mdm2': True, 'NFkB': True, 'TNFR2': True, 'Cas6_to_Cas8': False, 'PI3K': False, '_XTR_5_': False, 'TRAF2': True, '_XTR_4_': False, 'TRADD': True, 'Cas7': False, '_XTR_55_': True, '_XTR_41_': True, 'Cas6': False, '_XTR_3_': False, '_XTR_21_': False, 'A20': True, '_XTR_22_': False, 'PIP3_to_AKT': False, '_XTR_66_': True, 'TRAF': True, '_XTR_1_': True, '_XTR_39_': True, 'GF': False, '_XTR_2_': False, '_XTR_65_': False, '_XTR_50_': True, '_XTR_31_': True, '_XTR_33_': True, 'IKK': True, '_XTR_26_': True, 'Cas3_to_IAP': False, 'Cas12': False, 'p53': True, '_XTR_20_': False, 'GFR': False, 'AKT': False, 'APC': False, 'FADD': True, '_XTR_25_': False, 'Cas3_to_Cas6': False, '_XTR_62_': True, '_XTR_54_': True, 'Cas8': False, 'BID': True, '_XTR_64_': True, 'Cas9': False, '_XTR_13_': False, '_XTR_34_': False, 'Apaf1': True, '_XTR_32_': True, 'PTEN': True, 'IkB': True, '_XTR_11_': False, 'PIP2': False, '_XTR_12_': False, 'NIK': True, 'Cas6_to_IAP': False, 'MEKK1': True, 'Cas9_to_APC': False, 'IAP': True, 'TNFR1': True, 'Mito_to_IAP': True, '_XTR_44_': True, 'DNADamageEvent_to_p53': False, '_XTR_14_': False, 'TNF': True, 'PIP3': False, 'IkB_to_NFkB': True, 'JNKK': True, '_XTR_9_': True, '_XTR_42_': True, 'RIP': True, 'cFLIP': True, '_XTR_51_': False, 'BclX': True, '_XTR_35_': False, 'Apoptosis': False, '_XTR_38_': False, 'Cas3': False, 'BAD': True, '_XTR_37_': True}
+-------TESTING LINE: 3-------
+{'Mdm2_to_p53': True, 'JNK': False, 'DNADamageEvent': False, 'Mito': False, '_XTR_43_': False, '_XTR_56_': True, 'Mdm2': True, 'NFkB': True, 'TNFR2': True, 'Cas6_to_Cas8': False, 'PI3K': True, '_XTR_5_': False, 'TRAF2': True, '_XTR_4_': False, 'TRADD': True, 'Cas7': False, '_XTR_55_': True, '_XTR_41_': True, 'Cas6': False, '_XTR_3_': False, '_XTR_21_': False, 'A20': True, '_XTR_22_': False, 'PIP3_to_AKT': True, '_XTR_66_': False, 'TRAF': True, '_XTR_1_': True, '_XTR_39_': True, 'GF': True, '_XTR_2_': False, '_XTR_65_': False, '_XTR_50_': False, '_XTR_31_': False, '_XTR_33_': False, 'IKK': True, '_XTR_26_': True, 'Cas3_to_IAP': False, 'Cas12': False, 'p53': False, '_XTR_20_': False, 'GFR': True, 'AKT': True, 'APC': False, 'FADD': True, '_XTR_25_': True, 'Cas3_to_Cas6': False, '_XTR_62_': True, '_XTR_54_': True, 'Cas8': False, 'BID': False, '_XTR_64_': False, 'Cas9': False, '_XTR_13_': False, '_XTR_34_': False, 'Apaf1': False, '_XTR_32_': True, 'PTEN': False, 'IkB': True, '_XTR_11_': False, 'PIP2': True, '_XTR_12_': False, 'NIK': True, 'Cas6_to_IAP': False, 'MEKK1': True, 'Cas9_to_APC': False, 'IAP': True, 'TNFR1': True, 'Mito_to_IAP': False, '_XTR_44_': True, 'DNADamageEvent_to_p53': False, '_XTR_14_': False, 'TNF': True, 'PIP3': True, 'IkB_to_NFkB': True, 'JNKK': False, '_XTR_9_': False, '_XTR_42_': True, 'RIP': True, 'cFLIP': True, '_XTR_51_': False, 'BclX': True, '_XTR_35_': False, 'Apoptosis': False, '_XTR_38_': True, 'Cas3': False, 'BAD': False, '_XTR_37_': True}
+-----Knockout Shapley value of input nodes in the binary network-----
+Cas6 : {'TNF': 0.0, 'GF': 0.0}
+-----KnockIN Shapley value of input nodes in the binary network-----
+Cas6 : {'TNF': 0.0, 'GF': 0.0}
+binarywithvalue.html
+-----Now do the knockout procedure with the binary network-----
+Knockout Cas3_to_Cas6
+Knockout Mdm2_to_p53
+Knockout _XTR_62_
+Knockout JNK
+Knockout DNADamageEvent
+Knockout Mito
+Knockout _XTR_43_
+Knockout _XTR_56_
+Knockout _XTR_54_
+Knockout Cas8
+Knockout Mdm2
+Knockout BID
+Knockout NFkB
+Knockout TNFR2
+Knockout _XTR_64_
+Knockout Cas9
+Knockout Cas6_to_Cas8
+Knockout _XTR_13_
+Knockout PI3K
+Knockout _XTR_34_
+Knockout _XTR_5_
+Knockout Apaf1
+Knockout TRAF2
+Knockout _XTR_32_
+Knockout _XTR_4_
+Knockout PTEN
+Knockout TRADD
+Knockout Cas7
+Knockout _XTR_55_
+Knockout IkB
+Knockout _XTR_11_
+Knockout PIP2
+Knockout _XTR_41_
+Knockout _XTR_12_
+Knockout NIK
+Knockout _XTR_3_
+Knockout _XTR_21_
+Knockout A20
+Knockout Cas6_to_IAP
+Knockout _XTR_22_
+Knockout MEKK1
+Knockout PIP3_to_AKT
+Knockout Cas9_to_APC
+Knockout _XTR_66_
+Knockout IAP
+Knockout TNFR1
+Knockout Mito_to_IAP
+Knockout TRAF
+Knockout _XTR_44_
+Knockout _XTR_1_
+Knockout _XTR_39_
+Knockout DNADamageEvent_to_p53
+Knockout _XTR_2_
+Knockout _XTR_14_
+Knockout _XTR_65_
+Knockout PIP3
+Knockout _XTR_50_
+Knockout IkB_to_NFkB
+Knockout JNKK
+Knockout _XTR_31_
+Knockout _XTR_9_
+Knockout _XTR_33_
+Knockout _XTR_42_
+Knockout RIP
+Knockout IKK
+Knockout _XTR_26_
+Knockout Cas3_to_IAP
+Knockout Cas12
+Knockout p53
+Knockout cFLIP
+Knockout _XTR_51_
+Knockout BclX
+Knockout _XTR_20_
+Knockout GFR
+Knockout _XTR_35_
+Knockout AKT
+Knockout Apoptosis
+Knockout _XTR_38_
+Knockout APC
+Knockout FADD
+Knockout Cas3
+Knockout _XTR_25_
+Knockout BAD
+Knockout _XTR_37_
+---- Binary KNOCKOUT VALUE for output Cas6----
+{'Cas6': {'Cas3_to_Cas6': 0.0, 'Mdm2_to_p53': 0.0, '_XTR_62_': 0.0, 'JNK': 0.0, 'DNADamageEvent': 0.0, 'Mito': 0.0, '_XTR_43_': 0.0, '_XTR_56_': 0.0, '_XTR_54_': 0.0, 'Cas8': 0.0, 'Mdm2': 0.0, 'BID': 0.0, 'NFkB': -1.5, 'TNFR2': 0.0, '_XTR_64_': 0.0, 'Cas9': 0.0, 'Cas6_to_Cas8': 0.0, '_XTR_13_': 0.0, 'PI3K': 0.0, '_XTR_34_': 0.0, '_XTR_5_': 0.0, 'Apaf1': 0.0, 'TRAF2': 0.0, '_XTR_32_': 0.0, '_XTR_4_': 0.0, 'PTEN': 0.0, 'TRADD': 0.0, 'Cas7': 0.0, '_XTR_55_': 0.0, 'IkB': 0.0, '_XTR_11_': 0.0, 'PIP2': 0.0, '_XTR_41_': -1.5, '_XTR_12_': 0.0, 'NIK': 0.0, '_XTR_3_': 0.0, '_XTR_21_': 0.0, 'A20': 0.0, 'Cas6_to_IAP': 0.0, '_XTR_22_': 0.0, 'MEKK1': 0.0, 'PIP3_to_AKT': 0.0, 'Cas9_to_APC': 0.0, '_XTR_66_': 0.0, 'IAP': -1.5, 'TNFR1': 0.0, 'Mito_to_IAP': 0.0, 'TRAF': -1.5, '_XTR_44_': -1.5, '_XTR_1_': 0.0, '_XTR_39_': 0.0, 'DNADamageEvent_to_p53': 0.0, '_XTR_2_': 0.0, '_XTR_14_': 0.0, '_XTR_65_': 0.0, 'PIP3': 0.0, '_XTR_50_': 0.0, 'IkB_to_NFkB': 0.0, 'JNKK': 0.0, '_XTR_31_': 0.0, '_XTR_9_': 0.0, '_XTR_33_': 0.0, '_XTR_42_': -1.5, 'RIP': 0.0, 'IKK': 0.0, '_XTR_26_': 0.0, 'Cas3_to_IAP': 0.0, 'Cas12': 0.0, 'p53': 0.0, 'cFLIP': -1.5, '_XTR_51_': 0.0, 'BclX': 0.0, '_XTR_20_': 0.0, 'GFR': 0.0, '_XTR_35_': 0.0, 'AKT': 0.0, 'Apoptosis': 0.0, '_XTR_38_': 0.0, 'APC': 0.0, 'FADD': 0.0, 'Cas3': 0.0, '_XTR_25_': 0.0, 'BAD': 0.0, '_XTR_37_': 0.0}}
+
+
+-----Now do the knockIN procedure with the binary network-----
+KnockIN Cas3_to_Cas6
+KnockIN Mdm2_to_p53
+KnockIN _XTR_62_
+KnockIN JNK
+KnockIN DNADamageEvent
+KnockIN Mito
+KnockIN _XTR_43_
+KnockIN _XTR_56_
+KnockIN _XTR_54_
+KnockIN Cas8
+KnockIN Mdm2
+KnockIN BID
+KnockIN NFkB
+KnockIN TNFR2
+KnockIN _XTR_64_
+KnockIN Cas9
+KnockIN Cas6_to_Cas8
+KnockIN _XTR_13_
+KnockIN PI3K
+KnockIN _XTR_34_
+KnockIN _XTR_5_
+KnockIN Apaf1
+KnockIN TRAF2
+KnockIN _XTR_32_
+KnockIN _XTR_4_
+KnockIN PTEN
+KnockIN TRADD
+KnockIN Cas7
+KnockIN _XTR_55_
+KnockIN IkB
+KnockIN _XTR_11_
+KnockIN PIP2
+KnockIN _XTR_41_
+KnockIN _XTR_12_
+KnockIN NIK
+KnockIN _XTR_3_
+KnockIN _XTR_21_
+KnockIN A20
+KnockIN Cas6_to_IAP
+KnockIN _XTR_22_
+KnockIN MEKK1
+KnockIN PIP3_to_AKT
+KnockIN Cas9_to_APC
+KnockIN _XTR_66_
+KnockIN IAP
+KnockIN TNFR1
+KnockIN Mito_to_IAP
+KnockIN TRAF
+KnockIN _XTR_44_
+KnockIN _XTR_1_
+KnockIN _XTR_39_
+KnockIN DNADamageEvent_to_p53
+KnockIN _XTR_2_
+KnockIN _XTR_14_
+KnockIN _XTR_65_
+KnockIN PIP3
+KnockIN _XTR_50_
+KnockIN IkB_to_NFkB
+KnockIN JNKK
+KnockIN _XTR_31_
+KnockIN _XTR_9_
+KnockIN _XTR_33_
+KnockIN _XTR_42_
+KnockIN RIP
+KnockIN IKK
+KnockIN _XTR_26_
+KnockIN Cas3_to_IAP
+KnockIN Cas12
+KnockIN p53
+KnockIN cFLIP
+KnockIN _XTR_51_
+KnockIN BclX
+KnockIN _XTR_20_
+KnockIN GFR
+KnockIN _XTR_35_
+KnockIN AKT
+KnockIN Apoptosis
+KnockIN _XTR_38_
+KnockIN APC
+KnockIN FADD
+KnockIN Cas3
+KnockIN _XTR_25_
+KnockIN BAD
+KnockIN _XTR_37_
+---- Binary KNOCKIN VALUE for output Cas6----
+{'Cas6': {'Cas3_to_Cas6': -3.0, 'Mdm2_to_p53': 0.0, '_XTR_62_': 0.0, 'JNK': 0.0, 'DNADamageEvent': 0.0, 'Mito': -1.5, '_XTR_43_': -1.5, '_XTR_56_': 0.0, '_XTR_54_': 0.0, 'Cas8': -3.0, 'Mdm2': 0.0, 'BID': 0.0, 'NFkB': 0.0, 'TNFR2': 0.0, '_XTR_64_': 0.0, 'Cas9': 0.0, 'Cas6_to_Cas8': -1.5, '_XTR_13_': 0.0, 'PI3K': 0.0, '_XTR_34_': 0.0, '_XTR_5_': -3.0, 'Apaf1': 0.0, 'TRAF2': 0.0, '_XTR_32_': 0.0, '_XTR_4_': -3.0, 'PTEN': 0.0, 'TRADD': 0.0, 'Cas7': 0.0, '_XTR_55_': 0.0, 'IkB': -1.5, '_XTR_11_': 0.0, 'PIP2': 0.0, '_XTR_41_': 0.0, '_XTR_12_': 0.0, 'NIK': 0.0, '_XTR_3_': -3.0, '_XTR_21_': -3.0, 'A20': 0.0, 'Cas6_to_IAP': 0.0, '_XTR_22_': -3.0, 'MEKK1': 0.0, 'PIP3_to_AKT': 0.0, 'Cas9_to_APC': 0.0, '_XTR_66_': 0.0, 'IAP': 0.0, 'TNFR1': 0.0, 'Mito_to_IAP': -1.5, 'TRAF': 0.0, '_XTR_44_': 0.0, '_XTR_1_': -1.5, '_XTR_39_': 0.0, 'DNADamageEvent_to_p53': 0.0, '_XTR_2_': -3.0, '_XTR_14_': 0.0, '_XTR_65_': 0.0, 'PIP3': 0.0, '_XTR_50_': 0.0, 'IkB_to_NFkB': -1.5, 'JNKK': 0.0, '_XTR_31_': 0.0, '_XTR_9_': 0.0, '_XTR_33_': 0.0, '_XTR_42_': 0.0, 'RIP': 0.0, 'IKK': 0.0, '_XTR_26_': 0.0, 'Cas3_to_IAP': 0.0, 'Cas12': 0.0, 'p53': 0.0, 'cFLIP': 0.0, '_XTR_51_': -0.5, 'BclX': 0.0, '_XTR_20_': -1.5, 'GFR': 0.0, '_XTR_35_': 0.0, 'AKT': 0.0, 'Apoptosis': 0.0, '_XTR_38_': 0.0, 'APC': -3.0, 'FADD': -1.5, 'Cas3': -3.0, '_XTR_25_': 0.0, 'BAD': 0.0, '_XTR_37_': 0.0}}
+
+
+=======PROPAGATE FOR OUTPUT Cas6=======
+----Master diamonds-----
+{}
+
+
+--------PROPAGATION--------
+Extranodes Cas3_to_Cas6, add Cas3_to_Cas6 to nextlayer
+
+Current node Cas3_to_Cas6 is an extra node, wire back to root node Cas3
+Extranodes IkB_to_NFkB, add IkB_to_NFkB to nextlayer
+Extranodes Mito_to_IAP, add Mito_to_IAP to nextlayer
+
+Current node IkB_to_NFkB is an extra node, wire back to root node IkB
+
+Current node Mito_to_IAP is an extra node, wire back to root node Mito
+Extranodes Cas9_to_APC, add Cas9_to_APC to nextlayer
+
+Current node Cas9_to_APC is an extra node, wire back to root node Cas9
+Extranodes PIP3_to_AKT, add PIP3_to_AKT to nextlayer
+Extranodes DNADamageEvent_to_p53, add DNADamageEvent_to_p53 to nextlayer
+
+Current node PIP3_to_AKT is an extra node, wire back to root node PIP3
+Extranodes DNADamageEvent_to_p53, add DNADamageEvent_to_p53 to nextlayer
+Extranodes Mdm2_to_p53, add Mdm2_to_p53 to nextlayer
+
+Current node DNADamageEvent_to_p53 is an extra node, wire back to root node DNADamageEvent
+Extranodes Mdm2_to_p53, add Mdm2_to_p53 to nextlayer
+
+Current node DNADamageEvent_to_p53 is an extra node, wire back to root node DNADamageEvent
+
+Current node Mdm2_to_p53 is an extra node, wire back to root node Mdm2
+
+Current node Mdm2_to_p53 is an extra node, wire back to root node Mdm2
+Cas6                 			 KO:        0.0 | KI:       -3.0
+Cas3_to_Cas6         			 KO:        0.0 | KI:       -3.0
+_XTR_1_              			 KO:        0.0 | KI:        0.0
+IAP                  			 KO:        0.0 | KI:        0.0
+Cas3                 			 KO:        0.0 | KI:       -3.0
+_XTR_4_              			 KO:        0.0 | KI:       -3.0
+_XTR_5_              			 KO:        0.0 | KI:       -3.0
+_XTR_42_             			 KO:        0.0 | KI:        0.0
+_XTR_44_             			 KO:        0.0 | KI:        0.0
+_XTR_2_              			 KO:        0.0 | KI:       -3.0
+_XTR_3_              			 KO:        0.0 | KI:       -3.0
+NFkB                 			 KO:        0.0 | KI:        0.0
+_XTR_41_             			 KO:        0.0 | KI:        0.0
+_XTR_43_             			 KO:        0.0 | KI:        0.0
+Cas8                 			 KO:        0.0 | KI:       -3.0
+APC                  			 KO:        0.0 | KI:       -3.0
+IkB_to_NFkB          			 KO:        0.0 | KI:        0.0
+Mito_to_IAP          			 KO:        0.0 | KI:        0.0
+Cas3_to_IAP          			 KO:        0.0 | KI:        0.0
+Cas6_to_IAP          			 KO:        0.0 | KI:        0.0
+_XTR_21_             			 KO:        0.0 | KI:       -3.0
+_XTR_22_             			 KO:        0.0 | KI:       -3.0
+_XTR_51_             			 KO:        0.0 | KI:       -3.0
+IkB                  			 KO:        0.0 | KI:        0.0
+_XTR_62_             			 KO:        0.0 | KI:        0.0
+Mito                 			 KO:        0.0 | KI:        0.0
+BID                  			 KO:        0.0 | KI:        0.0
+_XTR_32_             			 KO:        0.0 | KI:        0.0
+Cas6_to_Cas8         			 KO:        0.0 | KI:       -1.5
+_XTR_20_             			 KO:        0.0 | KI:       -1.5
+FADD                 			 KO:        0.0 | KI:       -1.5
+Cas9_to_APC          			 KO:        0.0 | KI:       -0.5
+_XTR_50_             			 KO:        0.0 | KI:        0.0
+IKK                  			 KO:        0.0 | KI:        0.0
+_XTR_33_             			 KO:        0.0 | KI:        0.0
+_XTR_35_             			 KO:        0.0 | KI:        0.0
+BclX                 			 KO:        0.0 | KI:        0.0
+cFLIP                			 KO:       -1.5 | KI:        0.0
+TRADD                			 KO:       -1.5 | KI:       -1.5
+Apaf1                			 KO:        0.0 | KI:        0.0
+Cas9                 			 KO:        0.0 | KI:       -0.5
+_XTR_12_             			 KO:        0.0 | KI:       -0.5
+_XTR_14_             			 KO:        0.0 | KI:       -0.5
+_XTR_38_             			 KO:        0.0 | KI:        0.0
+_XTR_39_             			 KO:        0.0 | KI:        0.0
+_XTR_31_             			 KO:        0.0 | KI:        0.0
+_XTR_34_             			 KO:        0.0 | KI:        0.0
+_XTR_55_             			 KO:        0.0 | KI:        0.0
+_XTR_56_             			 KO:        0.0 | KI:        0.0
+TRAF                 			 KO:       -1.5 | KI:        0.0
+TNFR1                			 KO:       -1.5 | KI:       -1.5
+p53                  			 KO:        0.0 | KI:        0.0
+_XTR_11_             			 KO:        0.0 | KI:       -0.5
+_XTR_13_             			 KO:        0.0 | KI:       -0.5
+AKT                  			 KO:        0.0 | KI:        0.0
+_XTR_37_             			 KO:        0.0 | KI:        0.0
+NIK                  			 KO:        0.0 | KI:        0.0
+JNK                  			 KO:        0.0 | KI:        0.0
+_XTR_54_             			 KO:        0.0 | KI:        0.0
+BAD                  			 KO:        0.0 | KI:        0.0
+_XTR_65_             			 KO:        0.0 | KI:        0.0
+_XTR_66_             			 KO:        0.0 | KI:        0.0
+Cas12                			 KO:        0.0 | KI:       -0.5
+_XTR_9_              			 KO:        0.0 | KI:        0.0
+PIP3_to_AKT          			 KO:        0.0 | KI:        0.0
+A20                  			 KO:        0.0 | KI:        0.0
+TRAF2                			 KO:        0.0 | KI:        0.0
+JNKK                 			 KO:        0.0 | KI:        0.0
+TNF                  			 KO:        0.0 | KI:        0.0
+DNADamageEvent_to_p53 			 KO:        0.0 | KI:        0.0
+_XTR_64_             			 KO:        0.0 | KI:        0.0
+Cas7                 			 KO:        0.0 | KI:       -0.5
+PIP3                 			 KO:        0.0 | KI:        0.0
+_XTR_25_             			 KO:        0.0 | KI:        0.0
+_XTR_26_             			 KO:        0.0 | KI:        0.0
+RIP                  			 KO:        0.0 | KI:        0.0
+TNFR2                			 KO:        0.0 | KI:        0.0
+MEKK1                			 KO:        0.0 | KI:        0.0
+Mdm2_to_p53          			 KO:        0.0 | KI:        0.0
+DNADamageEvent       			 KO:        0.0 | KI:        0.0
+PI3K                 			 KO:        0.0 | KI:        0.0
+PIP2                 			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:        0.0 | KI:        0.0
+Mdm2                 			 KO:        0.0 | KI:        0.0
+GFR                  			 KO:        0.0 | KI:        0.0
+GF                   			 KO:        0.0 | KI:        0.0
+There are 1 unreachable nodes, they are:
+{'Apoptosis'}
+binary.html
+Mito                 - Correct: KO:        0.0 | KI :       -1.5 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_43_             - Correct: KO:        0.0 | KI :       -1.5 - Incorrect KO:        0.0 | KI:        0.0
+NFkB                 - Correct: KO:       -1.5 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+Cas9                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+_XTR_13_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+TRADD                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:       -1.5 | KI:       -1.5
+Cas7                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+IkB                  - Correct: KO:        0.0 | KI :       -1.5 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_11_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+_XTR_41_             - Correct: KO:       -1.5 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_12_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+Cas9_to_APC          - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+IAP                  - Correct: KO:       -1.5 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+TNFR1                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:       -1.5 | KI:       -1.5
+Mito_to_IAP          - Correct: KO:        0.0 | KI :       -1.5 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_44_             - Correct: KO:       -1.5 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_1_              - Correct: KO:        0.0 | KI :       -1.5 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_14_             - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+IkB_to_NFkB          - Correct: KO:        0.0 | KI :       -1.5 - Incorrect KO:        0.0 | KI:        0.0
+_XTR_42_             - Correct: KO:       -1.5 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+Cas12                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -0.5
+_XTR_51_             - Correct: KO:        0.0 | KI :       -0.5 - Incorrect KO:        0.0 | KI:       -3.0
+GF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TNF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+A20
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+APC
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+Apaf1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Apoptosis
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BAD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BID
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BclX
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas12
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+Cas3
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+Cas3_to_Cas6
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+Cas3_to_IAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas6_to_Cas8
+Lack      0: []
+Extra     0: []
+Real      2: [0, 2]
+Prop      2: [0, 2]
+
+Cas6_to_IAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas7
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+Cas8
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+Cas9
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+Cas9_to_APC
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+DNADamageEvent
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DNADamageEvent_to_p53
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+FADD
+Lack      0: []
+Extra     0: []
+Real      2: [0, 2]
+Prop      2: [0, 2]
+
+GFR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IAP
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+IKK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IkB
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+IkB_to_NFkB
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+JNK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JNKK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MEKK1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mdm2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mdm2_to_p53
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mito
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+Mito_to_IAP
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+NFkB
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+NIK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PI3K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PIP2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PIP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PIP3_to_AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTEN
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RIP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TNFR1
+Lack      0: []
+Extra     4: [0, 1, 2, 3]
+Real      0: []
+Prop      4: [0, 1, 2, 3]
+
+TNFR2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TRADD
+Lack      0: []
+Extra     4: [0, 1, 2, 3]
+Real      0: []
+Prop      4: [0, 1, 2, 3]
+
+TRAF
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+TRAF2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_11_
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+_XTR_12_
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+_XTR_13_
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+_XTR_14_
+Lack      0: []
+Extra     1: [1]
+Real      0: []
+Prop      1: [1]
+
+_XTR_1_
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+_XTR_20_
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+_XTR_21_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_22_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_25_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_26_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_2_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_31_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_32_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_33_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_34_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_35_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_37_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_38_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_39_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_3_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_41_
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+_XTR_42_
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+_XTR_43_
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+_XTR_44_
+Lack      2: [1, 3]
+Extra     0: []
+Real      2: [1, 3]
+Prop      0: []
+
+_XTR_4_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_50_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_51_
+Lack      0: []
+Extra     3: [0, 2, 3]
+Real      1: [1]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_54_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_55_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_56_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_5_
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+_XTR_62_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_64_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_65_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_66_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+_XTR_9_
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cFLIP
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+p53
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Number of nodes is 86
+Number of input nodes is 2
+Relative_RMSE_KO_is  0.07132467526968196
+Relative_RMSE_KI_is  0.0920797598310434
+NDCG_KO_is  0.6243078997539614
+NDCG_KI_is  0.9392776798835758
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             86.000       86.000
+Kendall tau-b                         0.338        0.608
+Spearman rho                          0.338        0.776
+Mean abs rank diff                    0.081        0.302
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        0.909
+         Precision@10                1.000        0.909
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        0.467
+         Precision@20                1.000        0.583
+         Recall@20                   1.000        0.700
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.222        0.909
+  Top-2  groups Jaccard            1.000        0.591
+  Top-3  groups Jaccard            1.000        0.467
+==========================================================
+
+----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS 0----
+
+TIME process heading: 0.0011191368103027344
+TIME simulate original network: 0.03941702842712402
+TIME perform original analysis process: 2.9610750675201416
+TIME perform propagation: 0.15103650093078613
+-----------TOTAL RUNNING TIME---------------
+17.398833165876567

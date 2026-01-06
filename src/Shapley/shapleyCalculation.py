@@ -2,7 +2,7 @@ import math
 from Shapley.exceptions import UnknownError
 from Shapley.utilities import subsets
 
-def extractPhe(inputnames, outputnames, outputstates, debug=False):
+def extractPhe(inputnames, outputname, outputstates, debug=False):
     """
     Extract phenotype information from output states.
     Args:
@@ -26,10 +26,10 @@ def extractPhe(inputnames, outputnames, outputstates, debug=False):
         gen = frozenset(gentem)
 
         phe = set() # will be used as value 
-        for name in outputnames:
-            # print(name, outputstate[name])
-            if outputstate[name]:
-                phe.add(name)
+        # for name in outputnames:
+        #     # print(name, outputstate[name])
+        if outputstate[outputname]:
+            phe.add(outputname)
         # print('')
         genphe[gen] = phe
 
@@ -48,7 +48,7 @@ def extractPhe(inputnames, outputnames, outputstates, debug=False):
     return genphe
 
 
-def calKSV4Input(genphe, inputnames, outputnames, knockin=False, simtable = None, debug=False):
+def calKSV4Input(genphe, inputnames, outputname, knockin=False, mode = 'Shapley', simtable = None,  debug=False):
     """
     Calculate Shapley values for input species based on their contributions to output species.
     Args:
@@ -56,6 +56,7 @@ def calKSV4Input(genphe, inputnames, outputnames, knockin=False, simtable = None
         inputnames (set): A set of input species names.
         outputnames (set): A set of output species names.
         knockin (bool): If True, perform knock-in analysis; if False, perform knock-out analysis.
+        mode (str): Calculation mode: 'Shapley' or 'random'
         simtable (dict): A dictionary mapping row IDs to dictionaries of species states.
         debug (bool): If True, print debug information.
     Returns:
@@ -69,67 +70,69 @@ def calKSV4Input(genphe, inputnames, outputnames, knockin=False, simtable = None
 
     # calculate for each output component
     shapss = dict()
-    for outname in outputnames:
-        shaps = dict()  
-        # for each input component
-        for inname in inputnames: # the knockout one 
-            countedrows[inname] = set()
-            map = dict() 
-            for i in range(len(inputnames)):
-                map[i] = list(inputnames)[i]
-            numrow = 0
-            sum = 0
-            for oneset in allsets:
-                phenotem = set() 
-                for e in oneset:
-                    phenotem.add(map[e])
-                pheintact = frozenset(phenotem)
-                if knockin:
-                    pheknockout = phenotem.union({inname})
-                    pheknockout = frozenset(pheknockout)
-                else: 
-                    pheknockout = frozenset(phenotem - {inname})
-                # print(pheintact, pheknockout)
-                try: 
-                    v_intact = 0
-                    v_knockout = 0
-                    if outname in genphe[pheintact]:
-                        v_intact = 1
-                    if outname in genphe[pheknockout]:
-                        v_knockout = 1
-                    
-                    gain  = v_intact - v_knockout
+    shaps = dict()  
+    # for each input component
+    for inname in inputnames: # the knockout one 
+        countedrows[inname] = set()
+        map = dict() 
+        for i in range(len(inputnames)):
+            map[i] = list(inputnames)[i]
+        numrow = 0
+        sum = 0
+        for oneset in allsets:
+            phenotem = set() 
+            for e in oneset:
+                phenotem.add(map[e])
+            pheintact = frozenset(phenotem)
+            if knockin:
+                pheknockout = phenotem.union({inname})
+                pheknockout = frozenset(pheknockout)
+            else: 
+                pheknockout = frozenset(phenotem - {inname})
+            # print(pheintact, pheknockout)
+            try: 
+                v_intact = 0
+                v_knockout = 0
+                if outputname in genphe[pheintact]:
+                    v_intact = 1
+                if outputname in genphe[pheknockout]:
+                    v_knockout = 1
+                
+                gain  = v_intact - v_knockout
+                if mode == 'random':
                     weightedGain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
-                    sum += weightedGain
-                    if weightedGain != 0:
-                        numrow += 1
-                        if simtable:
-                            for id, line in simtable.items():
-                                ok = True
-                                for input in inputnames:
-                                    if input in pheintact:
-                                        if line[input] == False:
-                                            ok = False
-                                            break
-                                    else:
-                                        if line[input] == True:
-                                            ok = False
-                                            break
-                                if ok:
-                                    countedrows[inname].add(id)
+                else:
+                    weightedGain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
 
-                except UnknownError:
-                    print("Error within calKSV4Input function")
-                    continue
-            shap = round(sum/(math.factorial(len(inputnames))),4)
-            shaps[inname] = shap
-        shapss[outname] = shaps
+                sum += weightedGain
+                if weightedGain != 0:
+                    numrow += 1
+                    if simtable:
+                        for id, line in simtable.items():
+                            ok = True
+                            for input in inputnames:
+                                if input in pheintact:
+                                    if line[input] == False:
+                                        ok = False
+                                        break
+                                else:
+                                    if line[input] == True:
+                                        ok = False
+                                        break
+                            if ok:
+                                countedrows[inname].add(id)
+
+            except UnknownError:
+                print("Error within calKSV4Input function")
+                continue
+        shap = round(sum/(math.factorial(len(inputnames))),4)
+        shaps[inname] = shap
     if simtable:
-        return shapss, countedrows
+        return shaps, countedrows
     else:
-        return shapss
+        return shaps
 
-def calKSV(intactgenphe, knockoutgenphes, outputnames, numinput, simtable=None, inputnames=None, debug=False):
+def calKSV(intactgenphe, knockoutgenphes, outputname, numinput, mode = 'Shapley', simtable=None, inputnames=None, debug=False):
     """
     Calculate Shapley values for intermediate species based on their contributions to output species.
     Args:
@@ -145,61 +148,55 @@ def calKSV(intactgenphe, knockoutgenphes, outputnames, numinput, simtable=None, 
         dict: A dictionary mapping intermediate species names to sets of row IDs where they contributed.
     """
     countedrow = dict()
-    shapss = dict()
-    for output in outputnames:
-        shaps = {}
-        # for each intermediate node 
-        for internode, genphes in knockoutgenphes.items():
-            countedrow[internode] = set()
-            # print("Working with {}".format(internode))
-            sum = 0
-            numrow = 0
-            for gen, phe in genphes.items():
-                # rowid += 1
-                # print(gen, phe)
-                s = len(gen)
-                gain = 0
-                # try:
-                intactphe = intactgenphe[gen]
-                # print("Intact phe")
-                # print(intactphe)
-                pheyes = 0
-                pheno = 0
-                # try:
-                if output in intactphe:
-                    pheyes = 1
-                if output in phe:
-                    pheno = 1
-                gain = pheyes - pheno
 
+    shaps = {}
+    # for each intermediate node 
+    for internode, genphes in knockoutgenphes.items():
+        countedrow[internode] = set()
+        # print("Working with {}".format(internode))
+        sum = 0
+        numrow = 0
+        for gen, phe in genphes.items():
+            # rowid += 1
+            # print(gen, phe)
+            s = len(gen)
+            gain = 0
+            # try:
+            intactphe = intactgenphe[gen]
+            # print("Intact phe")
+            # print(intactphe)
+            pheyes = 0
+            pheno = 0
+            # try:
+            if outputname in intactphe:
+                pheyes = 1
+            if outputname in phe:
+                pheno = 1
+            gain = pheyes - pheno
+            if mode == 'Uniform':
                 weightedgain = gain * math.factorial(s) * math.factorial(numinput - s)
-                sum += weightedgain
-                if weightedgain != 0 and simtable:
-                    numrow += 1
-                    for id, line in simtable.items():
-                        ok = True
-                        for input in inputnames:
-                            if input in gen:
-                                if not line[input]:
-                                    ok = False
-                                    break
-                            if input not in gen:
-                                if line[input]:
-                                    ok = False
-                                    break
-                        if ok:
-                            countedrow[internode].add(id)
-                            # if internode == 'CI_p' or internode == 'ci':
-                            #     print(knockoutgenphes[internode])
-                # except:
-                    # assert False, "Cannot find {} in the output set".format(output)
-                # except:
-                    # assert False, "Cannot find the set {} for the intact network".format(gen)
-            if debug:
-                print("Number of rows for {} is {}".format(internode, numrow))
-            shaps[internode] = round(sum/math.factorial(numinput),4)
-        shapss[output] = shaps
+            else:
+                weightedgain = gain * math.factorial(s) * math.factorial(numinput - s)
+            sum += weightedgain
+            if weightedgain != 0 and simtable:
+                numrow += 1
+                for id, line in simtable.items():
+                    ok = True
+                    for input in inputnames:
+                        if input in gen:
+                            if not line[input]:
+                                ok = False
+                                break
+                        if input not in gen:
+                            if line[input]:
+                                ok = False
+                                break
+                    if ok:
+                        countedrow[internode].add(id)
+        if debug:
+            print("Number of rows for {} is {}".format(internode, numrow))
+        shaps[internode] = round(sum/math.factorial(numinput),4)
     if simtable:
-        return shapss, countedrow
+        return shaps, countedrow
     else:
-        return shapss, None
+        return shaps, None

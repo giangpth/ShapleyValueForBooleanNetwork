@@ -61,6 +61,7 @@ import pandas as pd
 # Performance metric groups: (display name, base key) => uses base_ko / base_ki
 PERF_COLS = [
     ("Error", "error"),
+    ("NDCG", "NDCG"),
     ("Kendall $\\tau$-b", "kendall"),
     ("Spearman $\\rho$", "spearman"),
     ("Mean abs rank diff", "mean_abs_rank_diff"),

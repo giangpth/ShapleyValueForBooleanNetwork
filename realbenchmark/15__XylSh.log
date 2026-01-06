@@ -1,0 +1,345 @@
+The expression file is data/realbenchmark/15.txt
+The interested output is: 
+XylSh
+List of all species:
+{'RpoD', 'RpoS', 'Crc', 'Cold', 'MBz', 'PtsN', 'TurA', 'XylR', 'CellDens', 'ProX', 'm_xyl', 'RpoH', 'Meta2', 'IHF', 'PprA', 'Upper', 'HU', 'Meta', 'Glu', 'Heat', 'RpoN', 'XylSh', 'CAA', 'XylS'}
+-----Input names-----
+{'Glu', 'Heat', 'RpoN', 'Cold', 'MBz', 'HU', 'RpoD', 'CAA', 'CellDens', 'm_xyl'}
+----Intermediate nodes-----
+{'RpoH', 'Meta2', 'Crc', 'XylSh', 'Meta', 'IHF', 'PprA', 'Upper', 'RpoS', 'PtsN', 'XylS', 'TurA', 'XylR', 'ProX'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['CAA', 'CellDens', 'Cold', 'Glu', 'HU', 'Heat', 'MBz', 'RpoD', 'RpoN', 'm_xyl']
+Sorted input names
+['CAA', 'CellDens', 'Cold', 'Glu', 'HU', 'Heat', 'MBz', 'RpoD', 'RpoN', 'm_xyl']
+There are 10 inputs with the range of input: 0 1023
+Sorted internames:
+['Crc', 'IHF', 'Meta', 'Meta2', 'PprA', 'ProX', 'PtsN', 'RpoH', 'RpoS', 'TurA', 'Upper', 'XylR', 'XylS', 'XylSh']
+There are 14 intermediate nodes with the range of inter: 0 16383
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.9160046577453613 seconds===
+----Input knockout shapley value-----
+('Glu', -0.0655)
+('Heat', 0.0)
+('RpoN', 1.8726)
+('Cold', 0.0)
+('MBz', 0.0)
+('HU', 1.8726)
+('RpoD', 1.8726)
+('CAA', -0.0655)
+('CellDens', 1.7679)
+('m_xyl', 1.8726)
+----Input knockIN shapley value-----
+('Glu', 0.0393)
+('Heat', 0.0)
+('RpoN', -0.406)
+('Cold', 0.0)
+('MBz', 0.0)
+('HU', -0.406)
+('RpoD', -0.406)
+('CAA', 0.0393)
+('CellDens', -0.3274)
+('m_xyl', -0.406)
+-------Now perform the knockout procedure to original network-------
+Knockout RpoH
+Knockout Meta2
+Knockout Crc
+Knockout Meta
+Knockout IHF
+Knockout PprA
+Knockout Upper
+Knockout RpoS
+Knockout PtsN
+Knockout TurA
+Knockout XylR
+Knockout ProX
+----KNOCKOUT VALUE for output XylSh----
+{'Crc': -0.0655, 'IHF': 0.0, 'Meta': 0.0, 'Meta2': 0.0, 'PprA': 0.0, 'ProX': 0.0, 'PtsN': 0.0, 'RpoH': 0.0, 'RpoS': 0.0, 'TurA': 0.0, 'Upper': 0.0, 'XylR': 1.8726}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin RpoH
+Knockin Meta2
+Knockin Crc
+Knockin Meta
+Knockin IHF
+Knockin PprA
+Knockin Upper
+Knockin RpoS
+Knockin PtsN
+Knockin TurA
+Knockin XylR
+Knockin ProX
+----KNOCKIN VALUE for output XylSh----
+{'Crc': 1.8726, 'IHF': 0.0, 'Meta': 0.0, 'Meta2': 0.0, 'PprA': 0.0, 'ProX': 1.8726, 'PtsN': 1.8726, 'RpoH': 0.0, 'RpoS': 0.0, 'TurA': 0.0, 'Upper': 0.0, 'XylR': -0.406}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac _XTR_2_ANDUpper, try UpperAND_XTR_2_
+Input are {'Glu', 'Heat', 'RpoN', 'Cold', 'MBz', 'HU', 'RpoD', 'CAA', 'CellDens', 'm_xyl'}
+Ordinary nodes are 
+{'RpoD', 'RpoS', 'Crc', 'Cold', 'MBz', 'PtsN', 'TurA', 'XylR', 'CellDens', 'ProX', 'm_xyl', 'RpoH', 'Meta2', 'IHF', 'PprA', 'Upper', 'HU', 'Meta', 'Glu', 'Heat', 'RpoN', 'XylSh', 'CAA', 'XylS'}
+Extranodes added after removing cycles are 
+[]
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['CAA', 'CellDens', 'Cold', 'Glu', 'HU', 'Heat', 'MBz', 'RpoD', 'RpoN', 'm_xyl']
+----Generate table from output----
+-----Calculated value of input nodes-----
+CAA                  			 KO:    -0.0655 | KI:     0.0393
+CellDens             			 KO:     1.7679 | KI:    -0.3274
+Cold                 			 KO:        0.0 | KI:        0.0
+Glu                  			 KO:    -0.0655 | KI:     0.0393
+HU                   			 KO:     1.8726 | KI:     -0.406
+Heat                 			 KO:        0.0 | KI:        0.0
+MBz                  			 KO:        0.0 | KI:        0.0
+RpoD                 			 KO:     1.8726 | KI:     -0.406
+RpoN                 			 KO:     1.8726 | KI:     -0.406
+m_xyl                			 KO:     1.8726 | KI:     -0.406
+=======PROPAGATE FOR OUTPUT XylSh=======
+----Master diamonds-----
+{'_XTR_15_': 'XylSh', 'CellDens': 'XylSh', '_XTR_5_': '_XTR_39_', 'Glu': 'XylSh'}
+
+
+--------PROPAGATION WITH ACYCLIC NETWORK--------
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+CAA                  			 KO:    -0.0655 | KI:     0.0395
+CellDens             			 KO:     1.7675 | KI:    -0.3273
+Cold                 			 KO:        0.0 | KI:        0.0
+Crc                  			 KO:    -0.0655 | KI:     1.8725
+Glu                  			 KO:    -0.0655 | KI:     0.0395
+HU                   			 KO:     1.8725 | KI:    -0.4063
+Heat                 			 KO:        0.0 | KI:        0.0
+MBz                  			 KO:        0.0 | KI:        0.0
+ProX                 			 KO:        0.0 | KI:     1.8725
+PtsN                 			 KO:        0.0 | KI:     1.8725
+RpoD                 			 KO:     1.8725 | KI:    -0.4063
+RpoN                 			 KO:     1.8725 | KI:    -0.4063
+XylR                 			 KO:     1.8725 | KI:    -0.4063
+XylSh                			 KO:     1.8725 | KI:    -9.1415
+m_xyl                			 KO:     1.8725 | KI:    -0.4063
+KO RANKING OF NODES:
+1	XylSh, XylR
+2	Crc
+3	PtsN, ProX
+=======
+KI RANKING OF NODES:
+1	XylSh
+2	PtsN, Crc, ProX
+3	m_xyl, XylR, HU, RpoN, RpoD
+4	CellDens
+5	Glu, CAA
+6	Heat, Cold, MBz
+=======
+NUMBER OF NODES: 24
+NUMBER OF INPUTS: 10
+NUMBER OF EDGES: 48
+TIME process heading: 0.010842084884643555
+TIME simulate original network: 0.9160046577453613
+TIME perform original analysis process: 22.95731282234192
+TIME perform propagation: 9.207979202270508
+There are 8 unreachable nodes, they are:
+{'RpoH', 'Meta2', 'IHF', 'PprA', 'Upper', 'RpoS', 'Meta', 'TurA'}
+CAA
+Lack      0: []
+Extra     0: []
+Real     16: [39, 47, 55, 63, 167, 175, 183, 191, 551, 559, 567, 575, 679, 687, 695, 703]
+Prop     16: [39, 47, 55, 63, 167, 175, 183, 191, 551, 559, 567, 575, 679, 687, 695, 703]
+
+CellDens
+Lack      0: []
+Extra     0: []
+Real     48: [103, 111, 119, 127, 231, 239, 247, 255, 359, 367, 375, 383, 487, 495, 503, 511, 551, 559, 567, 575, 615, 623, 631, 639, 679, 687, 695, 703, 743, 751, 759, 767, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+Prop     48: [103, 111, 119, 127, 231, 239, 247, 255, 359, 367, 375, 383, 487, 495, 503, 511, 551, 559, 567, 575, 615, 623, 631, 639, 679, 687, 695, 703, 743, 751, 759, 767, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+
+Cold
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Crc
+Lack      0: []
+Extra     0: []
+Real     48: [39, 47, 55, 63, 167, 175, 183, 191, 295, 303, 311, 319, 359, 367, 375, 383, 423, 431, 439, 447, 487, 495, 503, 511, 551, 559, 567, 575, 679, 687, 695, 703, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+Prop     48: [39, 47, 55, 63, 167, 175, 183, 191, 295, 303, 311, 319, 359, 367, 375, 383, 423, 431, 439, 447, 487, 495, 503, 511, 551, 559, 567, 575, 679, 687, 695, 703, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+
+Glu
+Lack      0: []
+Extra     0: []
+Real     16: [39, 47, 55, 63, 103, 111, 119, 127, 167, 175, 183, 191, 231, 239, 247, 255]
+Prop     16: [39, 47, 55, 63, 103, 111, 119, 127, 167, 175, 183, 191, 231, 239, 247, 255]
+
+HU
+Lack      0: []
+Extra     0: []
+Real     80: [7, 15, 23, 31, 39, 47, 55, 63, 135, 143, 151, 159, 167, 175, 183, 191, 263, 271, 279, 287, 295, 303, 311, 319, 327, 335, 343, 351, 359, 367, 375, 383, 391, 399, 407, 415, 423, 431, 439, 447, 455, 463, 471, 479, 487, 495, 503, 511, 775, 783, 791, 799, 807, 815, 823, 831, 839, 847, 855, 863, 871, 879, 887, 895, 903, 911, 919, 927, 935, 943, 951, 959, 967, 975, 983, 991, 999, 1007, 1015, 1023]
+Prop     80: [7, 15, 23, 31, 39, 47, 55, 63, 135, 143, 151, 159, 167, 175, 183, 191, 263, 271, 279, 287, 295, 303, 311, 319, 327, 335, 343, 351, 359, 367, 375, 383, 391, 399, 407, 415, 423, 431, 439, 447, 455, 463, 471, 479, 487, 495, 503, 511, 775, 783, 791, 799, 807, 815, 823, 831, 839, 847, 855, 863, 871, 879, 887, 895, 903, 911, 919, 927, 935, 943, 951, 959, 967, 975, 983, 991, 999, 1007, 1015, 1023]
+
+Heat
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IHF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MBz
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Meta
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Meta2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PprA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ProX
+Lack      0: []
+Extra     0: []
+Real     40: [39, 47, 55, 63, 167, 175, 183, 191, 295, 303, 311, 319, 359, 367, 375, 383, 423, 431, 439, 447, 487, 495, 503, 511, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+Prop     40: [39, 47, 55, 63, 167, 175, 183, 191, 295, 303, 311, 319, 359, 367, 375, 383, 423, 431, 439, 447, 487, 495, 503, 511, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+
+PtsN
+Lack      0: []
+Extra     0: []
+Real     40: [39, 47, 55, 63, 167, 175, 183, 191, 295, 303, 311, 319, 359, 367, 375, 383, 423, 431, 439, 447, 487, 495, 503, 511, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+Prop     40: [39, 47, 55, 63, 167, 175, 183, 191, 295, 303, 311, 319, 359, 367, 375, 383, 423, 431, 439, 447, 487, 495, 503, 511, 807, 815, 823, 831, 871, 879, 887, 895, 935, 943, 951, 959, 999, 1007, 1015, 1023]
+
+RpoD
+Lack      0: []
+Extra     0: []
+Real     80: [35, 39, 43, 47, 51, 55, 59, 63, 163, 167, 171, 175, 179, 183, 187, 191, 291, 295, 299, 303, 307, 311, 315, 319, 355, 359, 363, 367, 371, 375, 379, 383, 419, 423, 427, 431, 435, 439, 443, 447, 483, 487, 491, 495, 499, 503, 507, 511, 803, 807, 811, 815, 819, 823, 827, 831, 867, 871, 875, 879, 883, 887, 891, 895, 931, 935, 939, 943, 947, 951, 955, 959, 995, 999, 1003, 1007, 1011, 1015, 1019, 1023]
+Prop     80: [35, 39, 43, 47, 51, 55, 59, 63, 163, 167, 171, 175, 179, 183, 187, 191, 291, 295, 299, 303, 307, 311, 315, 319, 355, 359, 363, 367, 371, 375, 379, 383, 419, 423, 427, 431, 435, 439, 443, 447, 483, 487, 491, 495, 499, 503, 507, 511, 803, 807, 811, 815, 819, 823, 827, 831, 867, 871, 875, 879, 883, 887, 891, 895, 931, 935, 939, 943, 947, 951, 955, 959, 995, 999, 1003, 1007, 1011, 1015, 1019, 1023]
+
+RpoH
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RpoN
+Lack      0: []
+Extra     0: []
+Real     80: [37, 39, 45, 47, 53, 55, 61, 63, 165, 167, 173, 175, 181, 183, 189, 191, 293, 295, 301, 303, 309, 311, 317, 319, 357, 359, 365, 367, 373, 375, 381, 383, 421, 423, 429, 431, 437, 439, 445, 447, 485, 487, 493, 495, 501, 503, 509, 511, 805, 807, 813, 815, 821, 823, 829, 831, 869, 871, 877, 879, 885, 887, 893, 895, 933, 935, 941, 943, 949, 951, 957, 959, 997, 999, 1005, 1007, 1013, 1015, 1021, 1023]
+Prop     80: [37, 39, 45, 47, 53, 55, 61, 63, 165, 167, 173, 175, 181, 183, 189, 191, 293, 295, 301, 303, 309, 311, 317, 319, 357, 359, 365, 367, 373, 375, 381, 383, 421, 423, 429, 431, 437, 439, 445, 447, 485, 487, 493, 495, 501, 503, 509, 511, 805, 807, 813, 815, 821, 823, 829, 831, 869, 871, 877, 879, 885, 887, 893, 895, 933, 935, 941, 943, 949, 951, 957, 959, 997, 999, 1005, 1007, 1013, 1015, 1021, 1023]
+
+RpoS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TurA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Upper
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+XylR
+Lack      0: []
+Extra     0: []
+Real     80: [35, 39, 43, 47, 51, 55, 59, 63, 163, 167, 171, 175, 179, 183, 187, 191, 291, 295, 299, 303, 307, 311, 315, 319, 355, 359, 363, 367, 371, 375, 379, 383, 419, 423, 427, 431, 435, 439, 443, 447, 483, 487, 491, 495, 499, 503, 507, 511, 803, 807, 811, 815, 819, 823, 827, 831, 867, 871, 875, 879, 883, 887, 891, 895, 931, 935, 939, 943, 947, 951, 955, 959, 995, 999, 1003, 1007, 1011, 1015, 1019, 1023]
+Prop     80: [35, 39, 43, 47, 51, 55, 59, 63, 163, 167, 171, 175, 179, 183, 187, 191, 291, 295, 299, 303, 307, 311, 315, 319, 355, 359, 363, 367, 371, 375, 379, 383, 419, 423, 427, 431, 435, 439, 443, 447, 483, 487, 491, 495, 499, 503, 507, 511, 803, 807, 811, 815, 819, 823, 827, 831, 867, 871, 875, 879, 883, 887, 891, 895, 931, 935, 939, 943, 947, 951, 955, 959, 995, 999, 1003, 1007, 1011, 1015, 1019, 1023]
+
+m_xyl
+Lack      0: []
+Extra     0: []
+Real     80: [38, 39, 46, 47, 54, 55, 62, 63, 166, 167, 174, 175, 182, 183, 190, 191, 294, 295, 302, 303, 310, 311, 318, 319, 358, 359, 366, 367, 374, 375, 382, 383, 422, 423, 430, 431, 438, 439, 446, 447, 486, 487, 494, 495, 502, 503, 510, 511, 806, 807, 814, 815, 822, 823, 830, 831, 870, 871, 878, 879, 886, 887, 894, 895, 934, 935, 942, 943, 950, 951, 958, 959, 998, 999, 1006, 1007, 1014, 1015, 1022, 1023]
+Prop     80: [38, 39, 46, 47, 54, 55, 62, 63, 166, 167, 174, 175, 182, 183, 190, 191, 294, 295, 302, 303, 310, 311, 318, 319, 358, 359, 366, 367, 374, 375, 382, 383, 422, 423, 430, 431, 438, 439, 446, 447, 486, 487, 494, 495, 502, 503, 510, 511, 806, 807, 814, 815, 822, 823, 830, 831, 870, 871, 878, 879, 886, 887, 894, 895, 934, 935, 942, 943, 950, 951, 958, 959, 998, 999, 1006, 1007, 1014, 1015, 1022, 1023]
+
+-----KO RANKING COMPARISON-----
+1	m_xyl, XylR, HU, RpoN, RpoD
+2	CellDens
+3	Crc, Glu, CAA
+4	PtsN, ProX, Heat, Cold, MBz, RpoH
+	Meta2, Meta, IHF, PprA, Upper, RpoS
+	TurA
+REFERENCE:
+1	RpoN, HU, RpoD, m_xyl, XylR
+2	CellDens
+3	Glu, CAA, Crc
+4	Heat, Cold, MBz, RpoH, Meta2, Meta
+	IHF, PprA, Upper, RpoS, PtsN, TurA
+	ProX
+=======
+-----KI RANKING COMPARISON-----
+1	PtsN, Crc, ProX
+2	m_xyl, XylR, HU, RpoN, RpoD
+3	CellDens
+4	Glu, CAA
+5	Heat, Cold, MBz, RpoH, Meta2, Meta
+	IHF, PprA, Upper, RpoS, TurA
+REFERENCE:
+1	Crc, PtsN, ProX
+2	RpoN, HU, RpoD, m_xyl, XylR
+3	CellDens
+4	Glu, CAA
+5	Heat, Cold, MBz, RpoH, Meta2, Meta
+	IHF, PprA, Upper, RpoS, TurA
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             22.000       22.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  1.0
+-----------TOTAL RUNNING TIME---------------
+32.3687029578723
