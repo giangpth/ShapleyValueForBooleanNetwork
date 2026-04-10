@@ -1,0 +1,1991 @@
+The expression file is data/realbenchmark/6.txt
+The interested output is: 
+ROS
+List of all species:
+{'NonACD', 'XIAP', 'ATP', 'TNFR', 'FADD', 'Cyt_c', 'RIP1ub', 'RIP1k', 'survival', 'MOMP', 'NFkB', 'BCL2', 'cIAP', 'cFLIP', 'SMAC', 'TNF', 'RIP1', 'IKK', 'CASP3', 'MPT', 'apoptosome', 'DISC_TNF', 'FASL', 'BAX', 'CASP8', 'ROS', 'apoptosis', 'DISC_FAS'}
+-----Input names-----
+{'FADD', 'TNF', 'FASL'}
+----Intermediate nodes-----
+{'cIAP', 'cFLIP', 'SMAC', 'NonACD', 'RIP1', 'XIAP', 'ATP', 'IKK', 'TNFR', 'CASP3', 'MPT', 'apoptosome', 'DISC_TNF', 'Cyt_c', 'BAX', 'CASP8', 'RIP1ub', 'RIP1k', 'survival', 'ROS', 'MOMP', 'apoptosis', 'NFkB', 'BCL2', 'DISC_FAS'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['FADD', 'FASL', 'TNF']
+Sorted input names
+['FADD', 'FASL', 'TNF']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['ATP', 'BAX', 'BCL2', 'CASP3', 'CASP8', 'Cyt_c', 'DISC_FAS', 'DISC_TNF', 'IKK', 'MOMP', 'MPT', 'NFkB', 'NonACD', 'RIP1', 'RIP1k', 'RIP1ub', 'ROS', 'SMAC', 'TNFR', 'XIAP', 'apoptosis', 'apoptosome', 'cFLIP', 'cIAP', 'survival']
+There are 25 intermediate nodes with the range of inter: 0 33554431
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.02739715576171875 seconds===
+----Input knockout shapley value-----
+('FADD', 0.0208)
+('TNF', 0.0625)
+('FASL', 0.0208)
+----Input knockIN shapley value-----
+('FADD', -0.0208)
+('TNF', -0.0625)
+('FASL', -0.0208)
+-------Now perform the knockout procedure to original network-------
+Knockout cIAP
+Knockout cFLIP
+Knockout SMAC
+Knockout NonACD
+Knockout RIP1
+Knockout XIAP
+Knockout ATP
+Knockout IKK
+Knockout TNFR
+Knockout CASP3
+Knockout MPT
+Knockout apoptosome
+Knockout DISC_TNF
+Knockout Cyt_c
+Knockout BAX
+Knockout CASP8
+Knockout RIP1ub
+Knockout RIP1k
+Knockout survival
+Knockout MOMP
+Knockout apoptosis
+Knockout NFkB
+Knockout BCL2
+Knockout DISC_FAS
+----KNOCKOUT VALUE for output ROS----
+{'ATP': 0.0, 'BAX': 0.0, 'BCL2': 0.0, 'CASP3': 0.0, 'CASP8': 0.0, 'Cyt_c': 0.0, 'DISC_FAS': 0.0208, 'DISC_TNF': 0.0, 'IKK': 0.0, 'MOMP': 0.0, 'MPT': 0.0625, 'NFkB': 0.0, 'NonACD': 0.0, 'RIP1': 0.1042, 'RIP1k': 0.1042, 'RIP1ub': 0.0, 'SMAC': 0.0, 'TNFR': 0.0625, 'XIAP': 0.0, 'apoptosis': 0.0, 'apoptosome': 0.0, 'cFLIP': 0.0, 'cIAP': 0.0, 'survival': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin cIAP
+Knockin cFLIP
+Knockin SMAC
+Knockin NonACD
+Knockin RIP1
+Knockin XIAP
+Knockin ATP
+Knockin IKK
+Knockin TNFR
+Knockin CASP3
+Knockin MPT
+Knockin apoptosome
+Knockin DISC_TNF
+Knockin Cyt_c
+Knockin BAX
+Knockin CASP8
+Knockin RIP1ub
+Knockin RIP1k
+Knockin survival
+Knockin MOMP
+Knockin apoptosis
+Knockin NFkB
+Knockin BCL2
+Knockin DISC_FAS
+----KNOCKIN VALUE for output ROS----
+{'ATP': 0.0, 'BAX': 0.0, 'BCL2': 0.0625, 'CASP3': 0.1042, 'CASP8': 0.1042, 'Cyt_c': 0.0, 'DISC_FAS': -0.0625, 'DISC_TNF': 0.1042, 'IKK': 0.1042, 'MOMP': 0.0, 'MPT': -0.0625, 'NFkB': 0.1042, 'NonACD': 0.0, 'RIP1': -0.0625, 'RIP1k': -0.0625, 'RIP1ub': 0.1042, 'SMAC': 0.0, 'TNFR': -0.0625, 'XIAP': 0.0, 'apoptosis': 0.0, 'apoptosome': 0.0, 'cFLIP': 0.0, 'cIAP': 0.0417, 'survival': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 1.318922996520996 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'FADD', 'TNF', 'FASL'}
+Ordinary nodes are 
+{'NonACD', 'XIAP', 'ATP', 'TNFR', 'FADD', 'Cyt_c', 'RIP1ub', 'RIP1k', 'survival', 'MOMP', 'NFkB', 'BCL2', 'cIAP', 'cFLIP', 'SMAC', 'TNF', 'RIP1', 'IKK', 'CASP3', 'MPT', 'apoptosome', 'DISC_TNF', 'FASL', 'BAX', 'CASP8', 'ROS', 'apoptosis', 'DISC_FAS'}
+Extranodes added after removing cycles are 
+['cIAP_to_cIAP', 'SMAC_to_XIAP', 'IKK_to_NFkB', 'CASP3_to_NFkB', 'BAX_to_MOMP', 'ROS_to_MPT']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['FADD', 'FASL', 'TNF']
+----Generate table from output----
+-----Calculated value of input nodes-----
+FADD                 			 KO:     0.3333 | KI:    -0.3333
+FASL                 			 KO:     0.3333 | KI:    -0.3333
+TNF                  			 KO:        1.0 | KI:    -1.6667
+=======PROPAGATE FOR OUTPUT ROS=======
+----Master diamonds-----
+{'_XTR_39_': 'ROS', '_XTR_27_': 'RIP1', 'NFkB': 'ROS', '_XTR_13_': 'RIP1', 'DISC_FAS': 'RIP1', 'TNFR': 'RIP1', 'FADD': 'RIP1', '_XTR_11_': 'RIP1', 'MPT': 'ROS', '_XTR_9_': 'ROS'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['ROS']---
+At TARGET node ROS, count all rows
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+ROS ==== _XTR_40_ OR _XTR_41_
+After operator OR, _XTR_40_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_41_ count only rows: 
+[0, 2, 4, 5, 6, 7]
+			---------------
+
+
+---Processing layers of ['_XTR_40_', '_XTR_41_']---
+
+Counted row for current node _XTR_40_ is 
+[0, 2, 4]
+_XTR_40_ ==== RIP1k AND _XTR_39_
+After operator AND, RIP1k count only rows: 
+[0, 2, 4]
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node _XTR_39_ in diamond to ROS
+Affected nodes between _XTR_39_ and ROS are: {'_XTR_40_', '_XTR_41_', 'ROS'}
+Rows after simulate a step for diamond _XTR_39_ to ROS are: 
+[1, 3, 5, 6, 7]
+Rows after process diamond _XTR_39_ to ROS are: 
+[1, 3, 5, 6, 7]
+			---------------
+
+Counted row for current node _XTR_41_ is 
+[0, 2, 4, 5, 6, 7]
+_XTR_41_ ==== MPT AND _XTR_39_
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node MPT in diamond to ROS
+Affected nodes between MPT and ROS are: {'Cyt_c', '_XTR_40_', 'CASP8', '_XTR_29_', 'RIP1k', 'RIP1', '_XTR_41_', 'ROS', 'MOMP', 'ATP', '_XTR_17_', '_XTR_23_', 'CASP3', '_XTR_28_', 'apoptosome', '_XTR_27_'}
+Rows after simulate a step for diamond MPT to ROS are: 
+[0, 2, 4, 5, 6, 7]
+Rows after process diamond MPT to ROS are: 
+[0, 2, 4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+
+---Processing layers of ['RIP1k', '_XTR_39_', 'MPT']---
+
+Counted row for current node RIP1k is 
+[0, 2, 4]
+RIP1k === RIP1
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[1, 3, 5, 6, 7]
+_XTR_39_ === NOT NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node NFkB in diamond to ROS
+Affected nodes between NFkB and ROS are: {'XIAP', 'ATP', '_XTR_23_', '_XTR_28_', '_XTR_13_', 'Cyt_c', 'RIP1k', 'MOMP', '_XTR_15_', '_XTR_17_', '_XTR_16_', 'BCL2', '_XTR_14_', 'cFLIP', '_XTR_40_', 'RIP1', '_XTR_41_', 'CASP3', 'MPT', 'apoptosome', '_XTR_27_', '_XTR_9_', '_XTR_39_', 'CASP8', '_XTR_29_', '_XTR_11_', 'ROS'}
+Rows after simulate a step for diamond NFkB to ROS are: 
+[1, 3, 5, 6, 7]
+Rows after process diamond NFkB to ROS are: 
+[1, 3, 5, 6, 7]
+			---------------
+
+Counted row for current node MPT is 
+[0, 2, 4, 5, 6, 7]
+MPT ==== ROS_to_MPT AND _XTR_9_
+Left node ROS_to_MPT is an extra node
+After operator AND, ROS_to_MPT count only rows: 
+[0, 2, 4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node _XTR_9_ in diamond to ROS
+Affected nodes between _XTR_9_ and ROS are: {'Cyt_c', '_XTR_40_', 'CASP8', '_XTR_29_', 'RIP1k', 'RIP1', '_XTR_41_', 'ROS', 'MOMP', 'ATP', '_XTR_17_', '_XTR_23_', 'CASP3', '_XTR_28_', 'MPT', 'apoptosome', '_XTR_27_'}
+Rows after simulate a step for diamond _XTR_9_ to ROS are: 
+[5, 6, 7]
+Rows after process diamond _XTR_9_ to ROS are: 
+[5, 6, 7]
+			---------------
+
+
+---Processing layers of ['RIP1', 'NFkB', '_XTR_9_', 'ROS_to_MPT']---
+
+Counted row for current node RIP1 is 
+[0, 2, 4]
+RIP1 ==== _XTR_28_ OR _XTR_29_
+After operator OR, _XTR_28_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_29_ count only rows: 
+[0, 2, 4]
+			---------------
+
+Counted row for current node NFkB is 
+[1, 3, 5, 6, 7]
+NFkB ==== IKK_to_NFkB AND _XTR_34_
+Left node IKK_to_NFkB is an extra node
+After operator AND, IKK_to_NFkB count only rows: 
+[1, 3, 5, 6, 7]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[5, 6, 7]
+_XTR_9_ === NOT BCL2
+			---------------
+
+Counted row for current node ROS is 
+[0, 2, 4, 5, 6, 7]
+ROS ==== _XTR_40_ OR _XTR_41_
+After operator OR, _XTR_40_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_41_ count only rows: 
+[0, 2, 4, 5, 6, 7]
+			---------------
+
+
+---Processing layers of ['_XTR_28_', '_XTR_29_', '_XTR_34_', 'IKK_to_NFkB', 'BCL2', '_XTR_40_', '_XTR_41_']---
+
+Counted row for current node _XTR_28_ is 
+[0, 2, 4]
+_XTR_28_ ==== TNFR AND _XTR_27_
+PROCESS DIAMONDS for TNFR
+PROCESS DIAMOND for node TNFR
+Process diamond from TNFR to RIP1
+SIMULATE rows [0, 2, 4] to decide rows for node TNFR in diamond to RIP1
+Affected nodes between TNFR and RIP1 are: {'CASP8', '_XTR_29_', 'RIP1', '_XTR_28_', 'DISC_TNF', '_XTR_16_', '_XTR_14_', '_XTR_27_'}
+Rows after simulate a step for diamond TNFR to RIP1 are: 
+[0, 2]
+Rows after process diamond TNFR to RIP1 are: 
+[0, 2]
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+SIMULATE rows [0, 2, 4] to decide rows for node _XTR_27_ in diamond to RIP1
+Affected nodes between _XTR_27_ and RIP1 are: {'_XTR_29_', 'RIP1', '_XTR_28_'}
+Rows after simulate a step for diamond _XTR_27_ to RIP1 are: 
+[]
+Rows after process diamond _XTR_27_ to RIP1 are: 
+[]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 2, 4]
+_XTR_29_ ==== DISC_FAS AND _XTR_27_
+PROCESS DIAMONDS for DISC_FAS
+PROCESS DIAMOND for node DISC_FAS
+Process diamond from DISC_FAS to RIP1
+SIMULATE rows [0, 2, 4] to decide rows for node DISC_FAS in diamond to RIP1
+Affected nodes between DISC_FAS and RIP1 are: {'CASP8', '_XTR_29_', 'RIP1', '_XTR_15_', '_XTR_28_', '_XTR_16_', '_XTR_27_'}
+Rows after simulate a step for diamond DISC_FAS to RIP1 are: 
+[]
+Rows after process diamond DISC_FAS to RIP1 are: 
+[]
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+Diamond from _XTR_27_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT CASP3_to_NFkB
+			---------------
+
+Counted row for current node IKK is 
+[1, 3, 5, 6, 7]
+IKK === RIP1ub
+			---------------
+
+Counted row for current node BCL2 is 
+[5, 6, 7]
+BCL2 === NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_40_ is 
+[0, 2, 4]
+_XTR_40_ ==== RIP1k AND _XTR_39_
+After operator AND, RIP1k count only rows: 
+[0, 2, 4]
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_41_ is 
+[0, 2, 4, 5, 6, 7]
+_XTR_41_ ==== MPT AND _XTR_39_
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+
+---Processing layers of ['TNFR', '_XTR_27_', 'DISC_FAS', 'CASP3_to_NFkB', 'RIP1ub', 'NFkB', 'RIP1k', '_XTR_39_', 'MPT']---
+
+Counted row for current node TNFR is 
+[0, 2]
+TNFR === TNF
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ === NOT CASP8
+			---------------
+
+Counted row for current node DISC_FAS is 
+[]
+DISC_FAS ==== FASL AND FADD
+After operator AND, FASL count only rows: 
+[]
+PROCESS DIAMONDS for FADD
+PROCESS DIAMOND for node FADD
+Process diamond from FADD to RIP1
+SIMULATE rows [0, 2, 4] to decide rows for node FADD in diamond to RIP1
+Affected nodes between FADD and RIP1 are: {'CASP8', '_XTR_29_', 'DISC_FAS', 'RIP1', '_XTR_15_', '_XTR_28_', 'DISC_TNF', '_XTR_16_', '_XTR_14_', '_XTR_27_'}
+Rows after simulate a step for diamond FADD to RIP1 are: 
+[]
+Rows after process diamond FADD to RIP1 are: 
+[]
+			---------------
+
+Counted row for current node CASP3 is 
+[]
+CASP3 ==== apoptosome AND _XTR_11_
+After operator AND, apoptosome count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+SIMULATE rows [0, 2, 4] to decide rows for node _XTR_11_ in diamond to RIP1
+Affected nodes between _XTR_11_ and RIP1 are: {'CASP8', '_XTR_29_', 'RIP1', '_XTR_17_', 'CASP3', '_XTR_28_', 'apoptosome', '_XTR_27_'}
+Rows after simulate a step for diamond _XTR_11_ to RIP1 are: 
+[]
+Rows after process diamond _XTR_11_ to RIP1 are: 
+[]
+			---------------
+
+Counted row for current node RIP1ub is 
+[1, 3, 5, 6, 7]
+RIP1ub ==== cIAP AND RIP1
+After operator AND, cIAP count only rows: 
+[1, 3]
+After operator AND, RIP1 count only rows: 
+[]
+			---------------
+
+Counted row for current node NFkB is 
+[1, 3, 5, 6, 7]
+NFkB ==== IKK_to_NFkB AND _XTR_34_
+Left node IKK_to_NFkB is an extra node
+After operator AND, IKK_to_NFkB count only rows: 
+[1, 3, 5, 6, 7]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node RIP1k is 
+[0, 2, 4]
+RIP1k === RIP1
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[1, 3, 5, 6, 7]
+_XTR_39_ === NOT NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Counted row for current node MPT is 
+[0, 2, 4, 5, 6, 7]
+MPT ==== ROS_to_MPT AND _XTR_9_
+Left node ROS_to_MPT is an extra node
+After operator AND, ROS_to_MPT count only rows: 
+[0, 2, 4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+Diamond from _XTR_9_ to ROS has been processed already, continue
+			---------------
+
+
+---Processing layers of ['TNF', 'CASP8', 'FASL', 'FADD', 'apoptosome', '_XTR_11_', 'cIAP', 'RIP1', '_XTR_34_', 'IKK_to_NFkB', 'NFkB', '_XTR_9_', 'ROS_to_MPT']---
+
+Reach node TNF without in-comming edges
+
+Counted row for current node CASP8 is 
+[]
+CASP8 ==== _XTR_16_ OR _XTR_17_
+After operator OR, _XTR_16_ count only rows: 
+[]
+After operator OR, _XTR_17_ count only rows: 
+[]
+			---------------
+
+Reach node FASL without in-comming edges
+
+Reach node FADD without in-comming edges
+
+Counted row for current node apoptosome is 
+[]
+apoptosome ==== _XTR_23_ AND _XTR_11_
+After operator AND, _XTR_23_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT XIAP
+			---------------
+
+Counted row for current node cIAP is 
+[1, 3]
+cIAP ==== _XTR_20_ OR _XTR_21_
+After operator OR, _XTR_20_ count only rows: 
+[1, 3]
+After operator OR, _XTR_21_ count only rows: 
+[1, 3]
+			---------------
+
+Counted row for current node RIP1 is 
+[0, 2, 4]
+RIP1 ==== _XTR_28_ OR _XTR_29_
+After operator OR, _XTR_28_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_29_ count only rows: 
+[0, 2, 4]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT CASP3_to_NFkB
+			---------------
+
+Counted row for current node IKK is 
+[1, 3, 5, 6, 7]
+IKK === RIP1ub
+			---------------
+
+Counted row for current node NFkB is 
+[1, 3, 5, 6, 7]
+NFkB ==== IKK_to_NFkB AND _XTR_34_
+Left node IKK_to_NFkB is an extra node
+After operator AND, IKK_to_NFkB count only rows: 
+[1, 3, 5, 6, 7]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[5, 6, 7]
+_XTR_9_ === NOT BCL2
+			---------------
+
+Counted row for current node ROS is 
+[0, 2, 4, 5, 6, 7]
+ROS ==== _XTR_40_ OR _XTR_41_
+After operator OR, _XTR_40_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_41_ count only rows: 
+[0, 2, 4, 5, 6, 7]
+			---------------
+
+
+---Processing layers of ['_XTR_16_', '_XTR_17_', '_XTR_23_', '_XTR_11_', 'XIAP', '_XTR_20_', '_XTR_21_', '_XTR_28_', '_XTR_29_', 'CASP3_to_NFkB', 'RIP1ub', '_XTR_34_', 'IKK_to_NFkB', 'BCL2', '_XTR_40_', '_XTR_41_']---
+
+Counted row for current node _XTR_16_ is 
+[]
+_XTR_16_ ==== _XTR_14_ OR _XTR_15_
+After operator OR, _XTR_14_ count only rows: 
+[]
+After operator OR, _XTR_15_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_17_ is 
+[]
+_XTR_17_ ==== CASP3 AND _XTR_13_
+After operator AND, CASP3 count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_13_
+PROCESS DIAMOND for node _XTR_13_
+Process diamond from _XTR_13_ to RIP1
+SIMULATE rows [0, 2, 4] to decide rows for node _XTR_13_ in diamond to RIP1
+Affected nodes between _XTR_13_ and RIP1 are: {'CASP8', '_XTR_29_', 'RIP1', '_XTR_15_', '_XTR_17_', '_XTR_28_', '_XTR_16_', '_XTR_14_', '_XTR_27_'}
+Rows after simulate a step for diamond _XTR_13_ to RIP1 are: 
+[]
+Rows after process diamond _XTR_13_ to RIP1 are: 
+[]
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Cyt_c AND ATP
+After operator AND, Cyt_c count only rows: 
+[]
+After operator AND, ATP count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT XIAP
+			---------------
+
+Counted row for current node XIAP is 
+[]
+XIAP ==== NFkB AND _XTR_25_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[1, 3]
+_XTR_20_ ==== cIAP_to_cIAP AND _XTR_19_
+Left node cIAP_to_cIAP is an extra node
+After operator AND, cIAP_to_cIAP count only rows: 
+[]
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[1, 3]
+_XTR_21_ ==== NFkB AND _XTR_19_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[0, 2, 4]
+_XTR_28_ ==== TNFR AND _XTR_27_
+PROCESS DIAMONDS for TNFR
+PROCESS DIAMOND for node TNFR
+Process diamond from TNFR to RIP1
+Diamond from TNFR to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+Diamond from _XTR_27_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 2, 4]
+_XTR_29_ ==== DISC_FAS AND _XTR_27_
+PROCESS DIAMONDS for DISC_FAS
+PROCESS DIAMOND for node DISC_FAS
+Process diamond from DISC_FAS to RIP1
+Diamond from DISC_FAS to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+Diamond from _XTR_27_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node CASP3 is 
+[]
+CASP3 ==== apoptosome AND _XTR_11_
+After operator AND, apoptosome count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node RIP1ub is 
+[1, 3, 5, 6, 7]
+RIP1ub ==== cIAP AND RIP1
+After operator AND, cIAP count only rows: 
+[1, 3]
+After operator AND, RIP1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT CASP3_to_NFkB
+			---------------
+
+Counted row for current node IKK is 
+[1, 3, 5, 6, 7]
+IKK === RIP1ub
+			---------------
+
+Counted row for current node BCL2 is 
+[5, 6, 7]
+BCL2 === NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_40_ is 
+[0, 2, 4]
+_XTR_40_ ==== RIP1k AND _XTR_39_
+After operator AND, RIP1k count only rows: 
+[0, 2, 4]
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_41_ is 
+[0, 2, 4, 5, 6, 7]
+_XTR_41_ ==== MPT AND _XTR_39_
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_14_', '_XTR_15_', 'CASP3', '_XTR_13_', 'Cyt_c', 'ATP', 'XIAP', 'NFkB', '_XTR_25_', '_XTR_19_', 'cIAP_to_cIAP', 'TNFR', '_XTR_27_', 'DISC_FAS', 'apoptosome', '_XTR_11_', 'cIAP', 'RIP1', 'RIP1ub', 'RIP1k', '_XTR_39_', 'MPT']---
+
+Counted row for current node _XTR_14_ is 
+[]
+_XTR_14_ ==== DISC_TNF AND _XTR_13_
+After operator AND, DISC_TNF count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_13_
+PROCESS DIAMOND for node _XTR_13_
+Process diamond from _XTR_13_ to RIP1
+Diamond from _XTR_13_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ ==== DISC_FAS AND _XTR_13_
+PROCESS DIAMONDS for DISC_FAS
+PROCESS DIAMOND for node DISC_FAS
+Process diamond from DISC_FAS to RIP1
+Diamond from DISC_FAS to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_13_
+PROCESS DIAMOND for node _XTR_13_
+Process diamond from _XTR_13_ to RIP1
+Diamond from _XTR_13_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node CASP3 is 
+[]
+CASP3 ==== apoptosome AND _XTR_11_
+After operator AND, apoptosome count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[]
+_XTR_13_ === NOT cFLIP
+			---------------
+
+Counted row for current node Cyt_c is 
+[]
+Cyt_c === MOMP
+			---------------
+
+Counted row for current node ATP is 
+[]
+ATP === NOT MPT
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+			---------------
+
+Counted row for current node XIAP is 
+[]
+XIAP ==== NFkB AND _XTR_25_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Counted row for current node NFkB is 
+[1, 3, 5, 6, 7]
+NFkB ==== IKK_to_NFkB AND _XTR_34_
+Left node IKK_to_NFkB is an extra node
+After operator AND, IKK_to_NFkB count only rows: 
+[1, 3, 5, 6, 7]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ === NOT SMAC_to_XIAP
+			---------------
+
+Counted row for current node _XTR_19_ is 
+[]
+_XTR_19_ === NOT SMAC
+			---------------
+
+Counted row for current node cIAP is 
+[]
+cIAP ==== _XTR_20_ OR _XTR_21_
+After operator OR, _XTR_20_ count only rows: 
+[]
+After operator OR, _XTR_21_ count only rows: 
+[]
+			---------------
+
+Counted row for current node TNFR is 
+[0, 2]
+TNFR === TNF
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ === NOT CASP8
+			---------------
+
+Counted row for current node DISC_FAS is 
+[]
+DISC_FAS ==== FASL AND FADD
+After operator AND, FASL count only rows: 
+[]
+PROCESS DIAMONDS for FADD
+PROCESS DIAMOND for node FADD
+Process diamond from FADD to RIP1
+Diamond from FADD to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node apoptosome is 
+[]
+apoptosome ==== _XTR_23_ AND _XTR_11_
+After operator AND, _XTR_23_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT XIAP
+			---------------
+
+Counted row for current node cIAP is 
+[1, 3]
+cIAP ==== _XTR_20_ OR _XTR_21_
+After operator OR, _XTR_20_ count only rows: 
+[1, 3]
+After operator OR, _XTR_21_ count only rows: 
+[1, 3]
+			---------------
+
+Counted row for current node RIP1 is 
+[0, 2, 4]
+RIP1 ==== _XTR_28_ OR _XTR_29_
+After operator OR, _XTR_28_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_29_ count only rows: 
+[0, 2, 4]
+			---------------
+
+Counted row for current node RIP1ub is 
+[1, 3, 5, 6, 7]
+RIP1ub ==== cIAP AND RIP1
+After operator AND, cIAP count only rows: 
+[1, 3]
+After operator AND, RIP1 count only rows: 
+[]
+			---------------
+
+Counted row for current node RIP1k is 
+[0, 2, 4]
+RIP1k === RIP1
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[1, 3, 5, 6, 7]
+_XTR_39_ === NOT NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Counted row for current node MPT is 
+[0, 2, 4, 5, 6, 7]
+MPT ==== ROS_to_MPT AND _XTR_9_
+Left node ROS_to_MPT is an extra node
+After operator AND, ROS_to_MPT count only rows: 
+[0, 2, 4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+Diamond from _XTR_9_ to ROS has been processed already, continue
+			---------------
+
+
+---Processing layers of ['DISC_TNF', '_XTR_13_', 'DISC_FAS', 'apoptosome', '_XTR_11_', 'cFLIP', 'MOMP', 'MPT', 'NFkB', '_XTR_25_', '_XTR_34_', 'IKK_to_NFkB', 'SMAC_to_XIAP', 'SMAC', '_XTR_20_', '_XTR_21_', 'TNF', 'CASP8', 'FASL', 'FADD', '_XTR_23_', 'XIAP', '_XTR_28_', '_XTR_29_', 'cIAP', 'RIP1', '_XTR_9_', 'ROS_to_MPT']---
+
+Counted row for current node DISC_TNF is 
+[]
+DISC_TNF ==== TNFR AND FADD
+PROCESS DIAMONDS for TNFR
+PROCESS DIAMOND for node TNFR
+Process diamond from TNFR to RIP1
+Diamond from TNFR to RIP1 has been processed already, continue
+PROCESS DIAMONDS for FADD
+PROCESS DIAMOND for node FADD
+Process diamond from FADD to RIP1
+Diamond from FADD to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[]
+_XTR_13_ === NOT cFLIP
+			---------------
+
+Counted row for current node DISC_FAS is 
+[]
+DISC_FAS ==== FASL AND FADD
+After operator AND, FASL count only rows: 
+[]
+PROCESS DIAMONDS for FADD
+PROCESS DIAMOND for node FADD
+Process diamond from FADD to RIP1
+Diamond from FADD to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node apoptosome is 
+[]
+apoptosome ==== _XTR_23_ AND _XTR_11_
+After operator AND, _XTR_23_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT XIAP
+			---------------
+
+Counted row for current node cFLIP is 
+[]
+cFLIP === NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Counted row for current node MOMP is 
+[]
+MOMP ==== MPT OR BAX_to_MOMP
+Right node BAX_to_MOMP is an extra node
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+After operator OR, BAX_to_MOMP count only rows: 
+[]
+			---------------
+
+Counted row for current node MPT is 
+[0, 2, 4, 5, 6, 7]
+MPT ==== ROS_to_MPT AND _XTR_9_
+Left node ROS_to_MPT is an extra node
+After operator AND, ROS_to_MPT count only rows: 
+[0, 2, 4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+Diamond from _XTR_9_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node NFkB is 
+[1, 3, 5, 6, 7]
+NFkB ==== IKK_to_NFkB AND _XTR_34_
+Left node IKK_to_NFkB is an extra node
+After operator AND, IKK_to_NFkB count only rows: 
+[1, 3, 5, 6, 7]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ === NOT SMAC_to_XIAP
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT CASP3_to_NFkB
+			---------------
+
+Counted row for current node IKK is 
+[1, 3, 5, 6, 7]
+IKK === RIP1ub
+			---------------
+
+Counted row for current node SMAC is 
+[]
+SMAC === MOMP
+			---------------
+
+Counted row for current node SMAC is 
+[]
+SMAC === MOMP
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[1, 3]
+_XTR_20_ ==== cIAP_to_cIAP AND _XTR_19_
+Left node cIAP_to_cIAP is an extra node
+After operator AND, cIAP_to_cIAP count only rows: 
+[]
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[1, 3]
+_XTR_21_ ==== NFkB AND _XTR_19_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Reach node TNF without in-comming edges
+
+Counted row for current node CASP8 is 
+[]
+CASP8 ==== _XTR_16_ OR _XTR_17_
+After operator OR, _XTR_16_ count only rows: 
+[]
+After operator OR, _XTR_17_ count only rows: 
+[]
+			---------------
+
+Reach node FASL without in-comming edges
+
+Reach node FADD without in-comming edges
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Cyt_c AND ATP
+After operator AND, Cyt_c count only rows: 
+[]
+After operator AND, ATP count only rows: 
+[]
+			---------------
+
+Counted row for current node XIAP is 
+[]
+XIAP ==== NFkB AND _XTR_25_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[0, 2, 4]
+_XTR_28_ ==== TNFR AND _XTR_27_
+PROCESS DIAMONDS for TNFR
+PROCESS DIAMOND for node TNFR
+Process diamond from TNFR to RIP1
+Diamond from TNFR to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+Diamond from _XTR_27_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 2, 4]
+_XTR_29_ ==== DISC_FAS AND _XTR_27_
+PROCESS DIAMONDS for DISC_FAS
+PROCESS DIAMOND for node DISC_FAS
+Process diamond from DISC_FAS to RIP1
+Diamond from DISC_FAS to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+Diamond from _XTR_27_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node cIAP is 
+[1, 3]
+cIAP ==== _XTR_20_ OR _XTR_21_
+After operator OR, _XTR_20_ count only rows: 
+[1, 3]
+After operator OR, _XTR_21_ count only rows: 
+[1, 3]
+			---------------
+
+Counted row for current node RIP1 is 
+[0, 2, 4]
+RIP1 ==== _XTR_28_ OR _XTR_29_
+After operator OR, _XTR_28_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_29_ count only rows: 
+[0, 2, 4]
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[5, 6, 7]
+_XTR_9_ === NOT BCL2
+			---------------
+
+Counted row for current node ROS is 
+[0, 2, 4, 5, 6, 7]
+ROS ==== _XTR_40_ OR _XTR_41_
+After operator OR, _XTR_40_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_41_ count only rows: 
+[0, 2, 4, 5, 6, 7]
+			---------------
+
+
+---Processing layers of ['TNFR', 'FADD', 'cFLIP', 'FASL', '_XTR_23_', '_XTR_11_', 'XIAP', 'NFkB', 'MPT', 'BAX_to_MOMP', '_XTR_9_', 'ROS_to_MPT', '_XTR_34_', 'IKK_to_NFkB', 'SMAC_to_XIAP', 'CASP3_to_NFkB', 'RIP1ub', 'MOMP', '_XTR_19_', 'cIAP_to_cIAP', '_XTR_16_', '_XTR_17_', 'Cyt_c', 'ATP', '_XTR_25_', '_XTR_27_', 'DISC_FAS', '_XTR_20_', '_XTR_21_', '_XTR_28_', '_XTR_29_', 'BCL2', '_XTR_40_', '_XTR_41_']---
+
+Counted row for current node TNFR is 
+[0, 2]
+TNFR === TNF
+			---------------
+
+Reach node FADD without in-comming edges
+
+Counted row for current node cFLIP is 
+[]
+cFLIP === NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Reach node FASL without in-comming edges
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Cyt_c AND ATP
+After operator AND, Cyt_c count only rows: 
+[]
+After operator AND, ATP count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT XIAP
+			---------------
+
+Counted row for current node XIAP is 
+[]
+XIAP ==== NFkB AND _XTR_25_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Counted row for current node NFkB is 
+[1, 3, 5, 6, 7]
+NFkB ==== IKK_to_NFkB AND _XTR_34_
+Left node IKK_to_NFkB is an extra node
+After operator AND, IKK_to_NFkB count only rows: 
+[1, 3, 5, 6, 7]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node MPT is 
+[0, 2, 4, 5, 6, 7]
+MPT ==== ROS_to_MPT AND _XTR_9_
+Left node ROS_to_MPT is an extra node
+After operator AND, ROS_to_MPT count only rows: 
+[0, 2, 4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+Diamond from _XTR_9_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node BAX is 
+[]
+BAX ==== CASP8 AND _XTR_9_
+After operator AND, CASP8 count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+Diamond from _XTR_9_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[5, 6, 7]
+_XTR_9_ === NOT BCL2
+			---------------
+
+Counted row for current node ROS is 
+[0, 2, 4, 5, 6, 7]
+ROS ==== _XTR_40_ OR _XTR_41_
+After operator OR, _XTR_40_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_41_ count only rows: 
+[0, 2, 4, 5, 6, 7]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT CASP3_to_NFkB
+			---------------
+
+Counted row for current node IKK is 
+[1, 3, 5, 6, 7]
+IKK === RIP1ub
+			---------------
+
+Counted row for current node SMAC is 
+[]
+SMAC === MOMP
+			---------------
+
+Counted row for current node CASP3 is 
+[]
+CASP3 ==== apoptosome AND _XTR_11_
+After operator AND, apoptosome count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node RIP1ub is 
+[1, 3, 5, 6, 7]
+RIP1ub ==== cIAP AND RIP1
+After operator AND, cIAP count only rows: 
+[1, 3]
+After operator AND, RIP1 count only rows: 
+[]
+			---------------
+
+Counted row for current node MOMP is 
+[]
+MOMP ==== MPT OR BAX_to_MOMP
+Right node BAX_to_MOMP is an extra node
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+After operator OR, BAX_to_MOMP count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_19_ is 
+[]
+_XTR_19_ === NOT SMAC
+			---------------
+
+Counted row for current node cIAP is 
+[]
+cIAP ==== _XTR_20_ OR _XTR_21_
+After operator OR, _XTR_20_ count only rows: 
+[]
+After operator OR, _XTR_21_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_16_ is 
+[]
+_XTR_16_ ==== _XTR_14_ OR _XTR_15_
+After operator OR, _XTR_14_ count only rows: 
+[]
+After operator OR, _XTR_15_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_17_ is 
+[]
+_XTR_17_ ==== CASP3 AND _XTR_13_
+After operator AND, CASP3 count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_13_
+PROCESS DIAMOND for node _XTR_13_
+Process diamond from _XTR_13_ to RIP1
+Diamond from _XTR_13_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node Cyt_c is 
+[]
+Cyt_c === MOMP
+			---------------
+
+Counted row for current node ATP is 
+[]
+ATP === NOT MPT
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ === NOT SMAC_to_XIAP
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ === NOT CASP8
+			---------------
+
+Counted row for current node DISC_FAS is 
+[]
+DISC_FAS ==== FASL AND FADD
+After operator AND, FASL count only rows: 
+[]
+PROCESS DIAMONDS for FADD
+PROCESS DIAMOND for node FADD
+Process diamond from FADD to RIP1
+Diamond from FADD to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[1, 3]
+_XTR_20_ ==== cIAP_to_cIAP AND _XTR_19_
+Left node cIAP_to_cIAP is an extra node
+After operator AND, cIAP_to_cIAP count only rows: 
+[]
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[1, 3]
+_XTR_21_ ==== NFkB AND _XTR_19_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[0, 2, 4]
+_XTR_28_ ==== TNFR AND _XTR_27_
+PROCESS DIAMONDS for TNFR
+PROCESS DIAMOND for node TNFR
+Process diamond from TNFR to RIP1
+Diamond from TNFR to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+Diamond from _XTR_27_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 2, 4]
+_XTR_29_ ==== DISC_FAS AND _XTR_27_
+PROCESS DIAMONDS for DISC_FAS
+PROCESS DIAMOND for node DISC_FAS
+Process diamond from DISC_FAS to RIP1
+Diamond from DISC_FAS to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_27_
+PROCESS DIAMOND for node _XTR_27_
+Process diamond from _XTR_27_ to RIP1
+Diamond from _XTR_27_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node BCL2 is 
+[5, 6, 7]
+BCL2 === NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_40_ is 
+[0, 2, 4]
+_XTR_40_ ==== RIP1k AND _XTR_39_
+After operator AND, RIP1k count only rows: 
+[0, 2, 4]
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_41_ is 
+[0, 2, 4, 5, 6, 7]
+_XTR_41_ ==== MPT AND _XTR_39_
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+
+---Processing layers of ['TNF', 'NFkB', 'Cyt_c', 'ATP', 'XIAP', '_XTR_25_', '_XTR_34_', 'IKK_to_NFkB', '_XTR_9_', 'ROS_to_MPT', 'CASP8', 'BCL2', '_XTR_40_', '_XTR_41_', 'CASP3_to_NFkB', 'RIP1ub', 'MOMP', 'apoptosome', '_XTR_11_', 'cIAP', 'RIP1', 'MPT', 'BAX_to_MOMP', 'SMAC', '_XTR_20_', '_XTR_21_', '_XTR_14_', '_XTR_15_', 'CASP3', '_XTR_13_', 'FASL', 'FADD', '_XTR_19_', 'TNFR', '_XTR_27_', 'DISC_FAS', 'RIP1k', '_XTR_39_']---
+
+Reach node TNF without in-comming edges
+
+Counted row for current node NFkB is 
+[1, 3, 5, 6, 7]
+NFkB ==== IKK_to_NFkB AND _XTR_34_
+Left node IKK_to_NFkB is an extra node
+After operator AND, IKK_to_NFkB count only rows: 
+[1, 3, 5, 6, 7]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cyt_c is 
+[]
+Cyt_c === MOMP
+			---------------
+
+Counted row for current node ATP is 
+[]
+ATP === NOT MPT
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+			---------------
+
+Counted row for current node XIAP is 
+[]
+XIAP ==== NFkB AND _XTR_25_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ === NOT SMAC_to_XIAP
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT CASP3_to_NFkB
+			---------------
+
+Counted row for current node IKK is 
+[1, 3, 5, 6, 7]
+IKK === RIP1ub
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[5, 6, 7]
+_XTR_9_ === NOT BCL2
+			---------------
+
+Counted row for current node ROS is 
+[0, 2, 4, 5, 6, 7]
+ROS ==== _XTR_40_ OR _XTR_41_
+After operator OR, _XTR_40_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_41_ count only rows: 
+[0, 2, 4, 5, 6, 7]
+			---------------
+
+Counted row for current node CASP8 is 
+[]
+CASP8 ==== _XTR_16_ OR _XTR_17_
+After operator OR, _XTR_16_ count only rows: 
+[]
+After operator OR, _XTR_17_ count only rows: 
+[]
+			---------------
+
+Counted row for current node BCL2 is 
+[5, 6, 7]
+BCL2 === NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_40_ is 
+[0, 2, 4]
+_XTR_40_ ==== RIP1k AND _XTR_39_
+After operator AND, RIP1k count only rows: 
+[0, 2, 4]
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_41_ is 
+[0, 2, 4, 5, 6, 7]
+_XTR_41_ ==== MPT AND _XTR_39_
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+PROCESS DIAMONDS for _XTR_39_
+PROCESS DIAMOND for node _XTR_39_
+Process diamond from _XTR_39_ to ROS
+Diamond from _XTR_39_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node CASP3 is 
+[]
+CASP3 ==== apoptosome AND _XTR_11_
+After operator AND, apoptosome count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node RIP1ub is 
+[1, 3, 5, 6, 7]
+RIP1ub ==== cIAP AND RIP1
+After operator AND, cIAP count only rows: 
+[1, 3]
+After operator AND, RIP1 count only rows: 
+[]
+			---------------
+
+Counted row for current node MOMP is 
+[]
+MOMP ==== MPT OR BAX_to_MOMP
+Right node BAX_to_MOMP is an extra node
+PROCESS DIAMONDS for MPT
+PROCESS DIAMOND for node MPT
+Process diamond from MPT to ROS
+Diamond from MPT to ROS has been processed already, continue
+After operator OR, BAX_to_MOMP count only rows: 
+[]
+			---------------
+
+Counted row for current node apoptosome is 
+[]
+apoptosome ==== _XTR_23_ AND _XTR_11_
+After operator AND, _XTR_23_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT XIAP
+			---------------
+
+Counted row for current node cIAP is 
+[1, 3]
+cIAP ==== _XTR_20_ OR _XTR_21_
+After operator OR, _XTR_20_ count only rows: 
+[1, 3]
+After operator OR, _XTR_21_ count only rows: 
+[1, 3]
+			---------------
+
+Counted row for current node RIP1 is 
+[0, 2, 4]
+RIP1 ==== _XTR_28_ OR _XTR_29_
+After operator OR, _XTR_28_ count only rows: 
+[0, 2, 4]
+After operator OR, _XTR_29_ count only rows: 
+[0, 2, 4]
+			---------------
+
+Counted row for current node MPT is 
+[0, 2, 4, 5, 6, 7]
+MPT ==== ROS_to_MPT AND _XTR_9_
+Left node ROS_to_MPT is an extra node
+After operator AND, ROS_to_MPT count only rows: 
+[0, 2, 4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+Diamond from _XTR_9_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node BAX is 
+[]
+BAX ==== CASP8 AND _XTR_9_
+After operator AND, CASP8 count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_9_
+PROCESS DIAMOND for node _XTR_9_
+Process diamond from _XTR_9_ to ROS
+Diamond from _XTR_9_ to ROS has been processed already, continue
+			---------------
+
+Counted row for current node SMAC is 
+[]
+SMAC === MOMP
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[1, 3]
+_XTR_20_ ==== cIAP_to_cIAP AND _XTR_19_
+Left node cIAP_to_cIAP is an extra node
+After operator AND, cIAP_to_cIAP count only rows: 
+[]
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[1, 3]
+_XTR_21_ ==== NFkB AND _XTR_19_
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+After operator AND, _XTR_19_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_14_ is 
+[]
+_XTR_14_ ==== DISC_TNF AND _XTR_13_
+After operator AND, DISC_TNF count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_13_
+PROCESS DIAMOND for node _XTR_13_
+Process diamond from _XTR_13_ to RIP1
+Diamond from _XTR_13_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ ==== DISC_FAS AND _XTR_13_
+PROCESS DIAMONDS for DISC_FAS
+PROCESS DIAMOND for node DISC_FAS
+Process diamond from DISC_FAS to RIP1
+Diamond from DISC_FAS to RIP1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_13_
+PROCESS DIAMOND for node _XTR_13_
+Process diamond from _XTR_13_ to RIP1
+Diamond from _XTR_13_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node CASP3 is 
+[]
+CASP3 ==== apoptosome AND _XTR_11_
+After operator AND, apoptosome count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_11_
+PROCESS DIAMOND for node _XTR_11_
+Process diamond from _XTR_11_ to RIP1
+Diamond from _XTR_11_ to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[]
+_XTR_13_ === NOT cFLIP
+			---------------
+
+Reach node FASL without in-comming edges
+
+Reach node FADD without in-comming edges
+
+Counted row for current node _XTR_19_ is 
+[]
+_XTR_19_ === NOT SMAC
+			---------------
+
+Counted row for current node TNFR is 
+[0, 2]
+TNFR === TNF
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ === NOT CASP8
+			---------------
+
+Counted row for current node DISC_FAS is 
+[]
+DISC_FAS ==== FASL AND FADD
+After operator AND, FASL count only rows: 
+[]
+PROCESS DIAMONDS for FADD
+PROCESS DIAMOND for node FADD
+Process diamond from FADD to RIP1
+Diamond from FADD to RIP1 has been processed already, continue
+			---------------
+
+Counted row for current node RIP1k is 
+[0, 2, 4]
+RIP1k === RIP1
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[1, 3, 5, 6, 7]
+_XTR_39_ === NOT NFkB
+PROCESS DIAMONDS for NFkB
+PROCESS DIAMOND for node NFkB
+Process diamond from NFkB to ROS
+Diamond from NFkB to ROS has been processed already, continue
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node ROS: processed 6 times
+Node IKK: processed 7 times
+Node CASP3: processed 5 times
+Node cIAP: processed 2 times
+Node SMAC: processed 3 times
+Node BAX: processed 3 times
+SIMULATE 0 nodes over 24 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.6667
+=========================
+PROPAGATED VALUES:
+ATP                  			 KO:        0.0 | KI:        0.0
+BAX                  			 KO:        0.0 | KI:        0.0
+BCL2                 			 KO:        0.0 | KI:      0.375
+CASP3                			 KO:        0.0 | KI:        0.0
+CASP8                			 KO:        0.0 | KI:        0.0
+Cyt_c                			 KO:        0.0 | KI:        0.0
+DISC_FAS             			 KO:        0.0 | KI:        0.0
+DISC_TNF             			 KO:        0.0 | KI:        0.0
+FADD                 			 KO:      0.125 | KI:     -0.125
+FASL                 			 KO:      0.125 | KI:     -0.125
+IKK                  			 KO:        0.0 | KI:      0.625
+MOMP                 			 KO:        0.0 | KI:        0.0
+MPT                  			 KO:      0.375 | KI:     -0.375
+NFkB                 			 KO:        0.0 | KI:      0.625
+RIP1                 			 KO:        0.0 | KI:     -0.375
+RIP1k                			 KO:        0.0 | KI:     -0.375
+RIP1ub               			 KO:        0.0 | KI:      0.625
+ROS                  			 KO:      0.625 | KI:     -0.375
+SMAC                 			 KO:        0.0 | KI:        0.0
+TNF                  			 KO:      0.375 | KI:     -0.375
+TNFR                 			 KO:        0.0 | KI:      -0.25
+XIAP                 			 KO:        0.0 | KI:        0.0
+apoptosome           			 KO:        0.0 | KI:        0.0
+cFLIP                			 KO:        0.0 | KI:        0.0
+cIAP                 			 KO:        0.0 | KI:       0.25
+KO RANKING OF NODES:
+1	ROS
+2	MPT
+3	RIP1k, RIP1, NFkB, BCL2, TNFR, DISC_FAS
+	IKK, RIP1ub, CASP8, CASP3, apoptosome, cIAP
+	XIAP, Cyt_c, ATP, DISC_TNF, cFLIP, MOMP
+	SMAC, BAX
+=======
+KI RANKING OF NODES:
+1	NFkB, IKK, RIP1ub
+2	ROS, RIP1k, MPT, RIP1
+3	BCL2
+4	TNF
+5	TNFR
+6	cIAP
+7	FASL, FADD
+8	DISC_FAS, CASP8, CASP3, apoptosome, XIAP, Cyt_c
+	ATP, DISC_TNF, cFLIP, MOMP, SMAC, BAX
+=======
+NUMBER OF NODES: 28
+NUMBER OF INPUTS: 3
+NUMBER OF EDGES: 45
+TIME process heading: 0.00115203857421875
+TIME simulate original network: 0.02739715576171875
+TIME perform original analysis process: 1.318922996520996
+TIME perform propagation: 0.19074392318725586
+There are 3 unreachable nodes, they are:
+{'apoptosis', 'NonACD', 'survival'}
+RIP1                 - Correct: KO:       0.25 | KI :        0.0 - Incorrect KO:        0.0 | KI:     -0.375
+TNFR                 - Correct: KO:      0.375 | KI :     -0.375 - Incorrect KO:        0.0 | KI:      -0.25
+CASP3                - Correct: KO:       0.25 | KI :      0.375 - Incorrect KO:        0.0 | KI:        0.0
+DISC_TNF             - Correct: KO:       0.25 | KI :      0.375 - Incorrect KO:        0.0 | KI:        0.0
+CASP8                - Correct: KO:      0.375 | KI :       0.25 - Incorrect KO:        0.0 | KI:        0.0
+RIP1k                - Correct: KO:       0.25 | KI :        0.0 - Incorrect KO:        0.0 | KI:     -0.375
+DISC_FAS             - Correct: KO:      0.125 | KI :     -0.375 - Incorrect KO:        0.0 | KI:        0.0
+ATP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BAX
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BCL2
+Lack      0: []
+Extra     0: []
+Real      3: [5, 6, 7]
+Prop      3: [5, 6, 7]
+
+CASP3
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      0: []
+
+CASP8
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      0: []
+
+Cyt_c
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DISC_FAS
+Lack      4: [0, 2, 4, 6]
+Extra     0: []
+Real      4: [0, 2, 4, 6]
+Prop      0: []
+
+DISC_TNF
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      0: []
+
+FADD
+Lack      0: []
+Extra     0: []
+Real      2: [2, 6]
+Prop      2: [2, 6]
+
+FASL
+Lack      0: []
+Extra     0: []
+Real      2: [4, 6]
+Prop      2: [4, 6]
+
+IKK
+Lack      0: []
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [1, 3, 5, 6, 7]
+
+MOMP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MPT
+Lack      0: []
+Extra     0: []
+Real      6: [0, 2, 4, 5, 6, 7]
+Prop      6: [0, 2, 4, 5, 6, 7]
+
+NFkB
+Lack      0: []
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [1, 3, 5, 6, 7]
+
+NonACD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RIP1
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      3: [0, 2, 4]
+
+RIP1k
+Lack      5: [1, 3, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      3: [0, 2, 4]
+
+RIP1ub
+Lack      0: []
+Extra     0: []
+Real      5: [1, 3, 5, 6, 7]
+Prop      5: [1, 3, 5, 6, 7]
+
+SMAC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TNF
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+TNFR
+Lack      4: [1, 3, 4, 5]
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      2: [0, 2]
+
+XIAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+apoptosis
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+apoptosome
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cFLIP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cIAP
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+survival
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	MPT, TNF
+2	FASL, FADD
+3	RIP1k, RIP1, NFkB, BCL2, TNFR, DISC_FAS
+	IKK, RIP1ub, CASP8, CASP3, apoptosome, cIAP
+	XIAP, Cyt_c, ATP, DISC_TNF, cFLIP, MOMP
+	SMAC, BAX, NonACD, survival, apoptosis
+REFERENCE:
+1	TNF, TNFR, MPT, CASP8
+2	RIP1, CASP3, DISC_TNF, RIP1k
+3	FADD, FASL, DISC_FAS
+4	cIAP, cFLIP, SMAC, NonACD, XIAP, ATP
+	IKK, apoptosome, Cyt_c, BAX, RIP1ub, survival
+	MOMP, apoptosis, NFkB, BCL2
+=======
+-----KI RANKING COMPARISON-----
+1	NFkB, IKK, RIP1ub
+2	RIP1k, MPT, RIP1
+3	BCL2
+4	TNF
+5	TNFR
+6	cIAP
+7	FASL, FADD
+8	DISC_FAS, CASP8, CASP3, apoptosome, XIAP, Cyt_c
+	ATP, DISC_TNF, cFLIP, MOMP, SMAC, BAX
+	NonACD, survival, apoptosis
+REFERENCE:
+1	IKK, RIP1ub, NFkB
+2	TNF, TNFR
+3	CASP3
+4	MPT
+5	DISC_TNF, BCL2
+6	DISC_FAS
+7	cIAP, CASP8
+8	FADD, FASL
+9	cFLIP, SMAC, NonACD, RIP1, XIAP, ATP
+	apoptosome, Cyt_c, BAX, RIP1k, survival, MOMP
+	apoptosis
+============
+Relative_RMSE_KO_is  0.01778984507979097
+Relative_RMSE_KI_is  0.021262931794992865
+NDCG_KO_is  0.8581
+NDCG_KI_is  0.948
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             27.000       27.000
+Kendall tau-b                         0.458        0.582
+Spearman rho                          0.507        0.618
+Mean abs rank diff                    0.963        0.667
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.407        0.538
+         Precision@10                0.407        0.700
+         Recall@10                   1.000        0.700
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.500        1.000
+  Top-2  groups Jaccard            0.200        0.500
+  Top-3  groups Jaccard            0.407        0.571
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.8472
+Average number of correct rows after binarization: 0.8472222222222222 
+Average DNCG after binarization: 0.9030499999999999 
+-----------TOTAL RUNNING TIME---------------
+1.7804879159957636

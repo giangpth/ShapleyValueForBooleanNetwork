@@ -73,10 +73,8 @@ def BooleanShapleyAnalysis():
         sortedinput, sortedinter = getOrderedList(inputnames, internames, verbose)
         anet, aformulas, extranodes, nodes_positions = manipulateNetwork(orinet, inputnames, formulas, True, False, verbose)
         rowsofnodes, averightinrows, table, bidecimalpairs, protime = binarizeAndPropagate(formulas, aformulas, inputnames, outputname, \
-                    speciesnames, "abinetwork", sortedinput, sortedinter, extranodes, mode, 15, totest = False, debug=verbose)
+                    speciesnames, "abinetwork", sortedinput, sortedinter, extranodes, mode, 15, totest = False, debug=True)
         print("Boolean Shapley Analysis completed")
-
-
 
 
 def testEachModel(modpath, target, simprops):
@@ -126,7 +124,7 @@ def testEachModel(modpath, target, simprops):
         final_protime = 0
         final_averightinrows = 0
         final_dncg = 0
-        numsamples = 5
+        numsamples = 3
         for i in range(numsamples):
             sortedinput, sortedinter = getOrderedList(inputnames, internames, False)
             anet, aformulas, extranodes, nodes_positions = manipulateNetwork(orinet, inputnames, formulas, True, False, False)
@@ -147,7 +145,7 @@ def testEachModel(modpath, target, simprops):
         onejob['propercentage'][simprop]['dncg'] = final_dncg / numsamples    
     return onejob
 
-def percentageTest(inputfile, outputpath):
+def runBatchTest(inputfile, outputpath):
     # load csv file 
     txtpath = Path(inputfile)
     with txtpath.open("r", encoding="utf-8") as f:
@@ -163,7 +161,8 @@ def percentageTest(inputfile, outputpath):
         for tgt in targets:
             jobs.append((model, tgt))
     print(jobs)
-    perlist = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+    # perlist = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+    perlist = [0]
 
     stat = dict()
     for job in jobs:
@@ -177,7 +176,6 @@ def percentageTest(inputfile, outputpath):
     data_str_keys = {str(k): v for k, v in stat.items()}
     with open(outputpath, "w") as f:
         json.dump(data_str_keys, f, indent=4)
-
 
 
 def BooleanShapleyTest():
@@ -327,7 +325,7 @@ def BooleanShapleyTest():
 
     
         prorowsofnodes, averightinrows, table,  bidecimalpairs, protime = binarizeAndPropagate(formulas, aformulas, inputnames, outputname, \
-            speciesnames, "abinetwork", sortedinput, sortedinter, extranodes, mode, 15, totest = False, debug=debug)
+            speciesnames, "abinetwork", sortedinput, sortedinter, extranodes, mode, 0, totest = False, debug=debug)
         timePropagation += protime 
         # if 1:
         #     bicount = 0
@@ -345,6 +343,8 @@ def BooleanShapleyTest():
         print(f"TIME perform propagation: {timePropagation}")
 
         averightrows, ave_dncg = evaluation(prorowsofnodes, simrowsofnodes, table, outputname)
+        print(f"Average number of correct rows after binarization: {averightrows} ")
+        print(f"Average DNCG after binarization: {ave_dncg} ")
         
 
         '''
@@ -747,7 +747,705 @@ def propagateAcyclic(net, simtable, index, aindex, outname, formulas, masterDiam
    
     return countedrowsofnode
 
-def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas, simformulas, originalspecies, extranodes, masterDiamonds, inputnames, orderedBiNodes, simpercent = 15, debug=False):
+
+# def propagateCyclic0(net, simtable, index, aindex, descendants, outname, formulas, simformulas, originalspecies, extranodes, masterDiamonds, inputnames, orderedBiNodes, simpercent = 15, debug=False):
+#     """
+#     Propagate values through the network considering diamond structures to determine the rows of nodes.
+#     Parameters:
+#         net: The directed graph
+#         simtable: The simulation table with input-output mappings
+#         index: Dictionary mapping nodes to rows where they are True 
+#         aindex: Dictionary mapping nodes to rows where they are False
+#         outname: The output node name
+#         formulas: Dictionary of boolean formulas for the network
+#         extranodes: List of extra nodes added to the network
+#         diamonds: Dictionary of diamond structures in the network
+#     Returns:
+#         countedrowsofnode: Dictionary mapping each node to the set of rows it is associated with
+#     """
+#     print("\n\n--------PROPAGATION WITH CYCLIC NETWORK--------")
+#     if simpercent > 0.0:
+#         print("Simulate {} percent of node".format(simpercent))
+#         internames = originalspecies.difference(inputnames)
+#         if outname in internames:
+#             internames.remove(outname)
+#         selected = random_percentage_selection(internames, simpercent)
+#         print("Selected nodes to simulate:")
+#         print(selected)
+#     else:
+#         selected = set()
+
+#     curs = [outname]
+#     countedrowsofnode = dict() # countedrowsofnode[node] = set of rows that make node count
+#     rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
+#     solddiamonds = set() # save the diamonds that are already converged for a node (key) to avoid doing it again
+#     alreadysimulated = set() # save the nodes that are already simulated to avoid doing it again
+#     changed = True
+    
+#     # potentiallylack = dict() # save the rows that are potentially lacky 
+#     # potentiallyextra = dict() # save the rows that are potentially extra 
+#     # encountered = set()
+#     while curs and changed:
+#         changed = False
+#         if debug:
+#             print("\n\n---Processing layers of {}---".format(curs))
+#         nextlayer = []
+#         for cur in curs:
+#             if '_to_' in cur: # if cur is the node that is wired back from an extra node
+#                 root, des = cur.split("_to_")[0], cur.split("_to_")[1]
+#                 # print("\nCurrent node {} is an extra node, wire back to root node {}".format(cur, root))
+
+#                 '''
+#                 # inherit the potentially lack and extra from cur to root
+#                 if root not in potentiallylack:
+#                     potentiallylack[root] = set()
+#                 if cur in potentiallylack:
+#                     potentiallylack[root].update(potentiallylack[cur])
+#                 if root not in potentiallyextra:
+#                     potentiallyextra[root] = set()
+#                 if cur in potentiallyextra:
+#                     potentiallyextra[root].update(potentiallyextra[cur])
+#                 '''
+#                 if cur not in countedrowsofnode: # count all rows
+#                     countrows = set(range(len(simtable)))
+#                     countedrowsofnode[cur] = countrows  
+#                     changed = True
+#                     print("WARNING: Extra node {} not counted yet, count all rows to wire back to root node {}".format(cur, root)) 
+#                 else: # count only rows that cur is counted
+#                     countrows = countedrowsofnode[cur]
+#                 cur = root 
+
+#                 # FROM HERE CUR IS WIRED BACK TO ROOT NODE
+#                 if cur not in countedrowsofnode: # count all rows
+#                     countedrowsofnode[cur] = countrows
+#                     changed = True # cur is touched for the first time
+#                 else:
+#                     if countrows.difference(countedrowsofnode[cur]):
+#                         changed = True 
+#                     countedrowsofnode[cur].update(countrows)
+#             else:
+#                 if cur not in countedrowsofnode: # count all rows
+#                     print("At TARGET node {}, count all rows".format(cur))
+#                     countrows = set(range(len(simtable)))
+#                     countedrowsofnode[cur] = countrows
+#                     changed = True
+#                 else: # count only rows that cur is counted
+#                     countrows = countedrowsofnode[cur]
+
+#             try:
+#                 form = formulas[cur]
+#             except:
+#                 if debug:
+#                     print("\nReach node {} without in-comming edges".format(cur))
+#                 continue
+#             # first, check if cur is an extranode 
+            
+
+#             # get incoming edge to cur node
+#             inedges = list(net.in_edges(cur))
+#             assert len(inedges) <= 2, print("Support only binary network")
+            
+#             if debug:
+#                 print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
+#             if len(inedges) == 2: 
+#                 if debug:
+#                     print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                
+#                 '''
+#                 leftdependent = False
+#                 rightdependent = False
+#                 doubledependent = False
+#                 if form.left.val in descendants[form.right.val]:
+#                     if debug:
+#                         print(f"Left node {form.left.val} depends on right node {form.right.val}")
+#                     leftdependent = True
+#                 if form.right.val in descendants[form.left.val]:
+#                     if debug:
+#                         print(f"Right node {form.right.val} depends on left node {form.left.val}")
+#                     if leftdependent:
+#                         doubledependent = True
+#                     else:
+#                         rightdependent = True
+
+#                 # tocheckrows = countrows.union(potentiallylack.get(cur, set()))
+#                 tocheckrows = set(range(len(simtable)))
+#                 bothtrue, bothfalse, leftTrightF, leftFrightT = agreement(index, aindex, form.left.val, form.right.val, tocheckrows)
+#                 if doubledependent:
+#                     if form.left.val not in potentiallylack:
+#                         potentiallylack[form.left.val] = set()
+#                     if form.right.val not in potentiallylack:
+#                         potentiallylack[form.right.val] = set()
+
+#                     if form.left.val not in potentiallyextra:
+#                         potentiallyextra[form.left.val] = set()
+#                     if form.right.val not in potentiallyextra:
+#                         potentiallyextra[form.right.val] = set()
+#                     if debug:
+#                         print("MUTALLY DEPENDENT nodes detected")
+#                     if form.val == 'OR': # if no cycles, for left takes right = F and for right takes left = F 
+#                         potentiallylack[form.left.val].update(bothtrue)
+#                         # potentiallylack[form.left.val].update(leftFrightT)
+#                         potentiallyextra[form.left.val].update(leftTrightF) 
+
+#                         potentiallylack[form.right.val].update(bothtrue)
+#                         # potentiallylack[form.right.val].update(leftTrightF)
+#                         potentiallyextra[form.right.val].update(leftFrightT)
+                        
+#                     if form.val == 'AND': # if no cycles, for left takes right = T and for right takes left = T
+#                         potentiallylack[form.left.val].update(bothfalse)
+#                         potentiallyextra[form.left.val].update(leftFrightT)
+                        
+#                         potentiallylack[form.right.val].update(bothfalse) 
+#                         potentiallyextra[form.right.val].update(leftTrightF)
+                        
+#                 elif rightdependent: # right node depends on left node
+#                     if form.left.val not in potentiallylack:
+#                         potentiallylack[form.left.val] = set()
+#                     if debug:
+#                         print("RIGHT node depends on LEFT node") 
+#                     potentiallylack[form.left.val].update(bothtrue)
+#                     if form.val == 'AND':
+#                         if form.left.val not in potentiallyextra:
+#                             potentiallyextra[form.left.val] = set()
+#                         potentiallyextra[form.left.val].update(leftFrightT)
+                    
+                        
+#                 elif leftdependent: # left node depends on right node
+#                     if form.right.val not in potentiallylack:
+#                         potentiallylack[form.right.val] = set()
+#                     if debug:
+#                         print("LEFT node depends on RIGHT node")
+#                     potentiallylack[form.right.val].update(bothtrue)
+#                     if form.val == 'AND':
+#                         if form.right.val not in potentiallyextra:
+#                             potentiallyextra[form.right.val] = set()
+#                         potentiallyextra[form.right.val].update(leftTrightF)
+                    
+#                 # also update with the potential lack and extra from current node
+#                 if cur in potentiallylack:
+#                     if form.left.val not in potentiallylack:
+#                         potentiallylack[form.left.val] = set()
+#                     if form.right.val not in potentiallylack:
+#                         potentiallylack[form.right.val] = set()
+#                     potentiallylack[form.left.val].update(potentiallylack[cur])
+#                     potentiallylack[form.right.val].update(potentiallylack[cur])    
+
+#                 if cur in potentiallyextra:
+#                     if form.left.val not in potentiallyextra:
+#                         potentiallyextra[form.left.val] = set()
+#                     if form.right.val not in potentiallyextra:
+#                         potentiallyextra[form.right.val] = set()
+#                     potentiallyextra[form.left.val].update(potentiallyextra[cur])
+#                     potentiallyextra[form.right.val].update(potentiallyextra[cur])
+#                 '''
+                
+#                 # get operator
+#                 op = form.val 
+#                 # check if one of the node is extranode 
+#                 leftselfloop, rightselfloop = False, False
+#                 leftroot, rightroot = None, None
+#                 leftdes, rightdes = None, None
+#                 if form.left.val in extranodes: 
+#                     if debug:
+#                         print(f"Left node {form.left.val} is an extra node")
+#                     # get the root node of the extra node 
+#                     leftroot = form.left.val.split("_to_")[0]
+#                     leftdes = form.left.val.split("_to_")[1]
+#                     if leftroot == leftdes:
+#                         leftselfloop = True
+
+#                 if form.right.val in extranodes:
+#                     if debug:
+#                         print(f"Right node {form.right.val} is an extra node")
+#                     # get the root node of the extra node
+#                     rightroot = form.right.val.split("_to_")[0]
+#                     rightdes = form.right.val.split("_to_")[1]
+#                     if rightroot == rightdes:
+#                         rightselfloop = True
+
+#                 # now start to process 
+#                 if op == 'OR': 
+#                     # rows that left counted are rows that right = False 
+#                     if not rightselfloop:
+#                         leftrows = aindex[form.right.val]
+#                     else:
+#                         leftrows = countedrowsofnode[cur]
+
+#                     # rows that right counted are rows that left = False 
+#                     if not leftselfloop:
+#                         rightrows = aindex[form.left.val]
+#                     else:
+#                         rightrows = countedrowsofnode[cur]
+#                 elif op == 'AND':
+#                     leftrows = index[form.right.val]
+#                     # rows that right counted are rows that left = True 
+#                     rightrows = index[form.left.val]
+#                 else:
+#                     print(f"Do not support operator {op}")
+#                     break
+                    
+#                 # rowsofsinknodes[cur] = countedrowsofnode[cur] # save the rows of the sink node
+#                 rowsofsinknodes[cur] = countrows
+                
+#                 # if form.left.val not in inputnames: 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if form.left.val not in countedrowsofnode:
+#                         countedrowsofnode[form.left.val] = set()
+#                         changed = True # cur is touched for the first time
+                    
+#                     if form.left.val in selected and form.left.val not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(form.left.val)
+#                         if debug:
+#                             print(f"Left node {form.left.val} is a node to SIMULATE, simulate it with all rows")
+#                         ressimrows = simulateOneNode(simtable, form.left.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[form.left.val] = ressimrows
+#                         if ressimrows.difference(countedrowsofnode[form.left.val]):
+#                             changed = True
+
+#                     if form.left.val not in alreadysimulated:   
+#                         if form.left.val not in masterDiamonds:
+#                             # intersect with rows that cur is count 
+#                             leftrows = leftrows.intersection(countrows)
+#                             if debug:
+#                                 print(f"After operator {op}, {form.left.val} count only rows: \n{sorted(list(leftrows))}")
+#                             countedrowsofnode[form.left.val].update(leftrows)
+#                             if leftrows.difference(countedrowsofnode[form.left.val]):
+#                                 changed = True
+#                         else: 
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(form.left.val))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.left.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, form.left.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[form.left.val].update(rowsfromdiamonds) 
+#                             if rowsfromdiamonds:
+#                                 changed = True
+               
+#                 # if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if form.right.val not in countedrowsofnode:
+#                         countedrowsofnode[form.right.val] = set()
+#                         changed = True # this is touched for the first time
+                    
+#                     if form.right.val in selected and form.right.val not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(form.right.val)
+#                         if debug:
+#                             print(f"Right node {form.right.val} is a node to SIMULATE, simulate it with all rows")
+#                         ressimrows = simulateOneNode(simtable, form.right.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[form.right.val] = ressimrows
+#                         if ressimrows.difference(countedrowsofnode[form.right.val]):
+#                             changed = True
+
+#                     if form.right.val not in alreadysimulated:
+#                         if form.right.val not in masterDiamonds:
+#                             # intersect with rows that cur is count 
+#                             rightrows = rightrows.intersection(countrows)
+#                             if debug:
+#                                 print(f"After operator {op}, {form.right.val} count only rows: \n{sorted(list(rightrows))}")
+#                             countedrowsofnode[form.right.val].update(rightrows)
+#                             if rightrows.difference(countedrowsofnode[form.right.val]):
+#                                 changed = True
+#                         else:
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(form.right.val))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.right.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, form.right.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[form.right.val].update(rowsfromdiamonds)
+#                             if rowsfromdiamonds:
+#                                 changed = True
+
+#                 if form.left.val not in nextlayer and not leftroot: 
+#                     nextlayer.append(form.left.val)
+#                 if form.right.val not in nextlayer and not rightroot:
+#                     nextlayer.append(form.right.val)
+
+#                 if leftroot and (leftroot not in countedrowsofnode) and (leftroot not in nextlayer):
+#                     # print(f"Extranodes {form.left.val}, add {form.left.val} to nextlayer")
+#                     nextlayer.append(form.left.val)
+#                 if rightroot and (rightroot not in countedrowsofnode) and (rightroot not in nextlayer):
+#                     # print(f"Extranodes {form.right.val}, add  {form.right.val} to nextlayer")
+#                     nextlayer.append(form.right.val)
+
+#                 '''
+#                 if debug:
+#                     print(f"Operator is {form.val}")
+#                     print(f"POTENTIALLY lacky rows for left node {form.left.val}: {sorted(list(potentiallylack.get(form.left.val, set()).difference(countedrowsofnode.get(form.left.val, set()))) )}")
+#                     print(f"POTENTIALLY lacky rows for right node {form.right.val}: {sorted(list(potentiallylack.get(form.right.val, set()).difference(countedrowsofnode.get(form.right.val, set()))))}")
+#                     print(f"POTENTIALLY extra rows for left node {form.left.val}: {sorted(list(countedrowsofnode.get(form.left.val, set()).intersection(potentiallyextra.get(form.left.val, set()))))}")
+#                     print(f"POTENTIALLY extra rows for right node {form.right.val}: {sorted(list(countedrowsofnode.get(form.right.val, set()).intersection(potentiallyextra.get(form.right.val, set()))))}")
+#                 '''
+#             else:
+#                 if form.val == 'NOT':
+#                     singlemom = form.right.val
+#                     if debug:
+#                         print(f"{cur} === NOT {singlemom}")
+#                 else:
+#                     singlemom = form.val
+#                     if debug:
+#                         print(f"{cur} === {singlemom}")
+#                 '''
+#                 if singlemom not in potentiallylack:
+#                     potentiallylack[singlemom] = set()
+#                 if singlemom not in potentiallyextra:
+#                     potentiallyextra[singlemom] = set() 
+#                 # also update with the potential lack and extra from current node
+#                 if cur in potentiallylack:
+#                     potentiallylack[singlemom].update(potentiallylack[cur])
+#                 if cur in potentiallyextra:
+#                     potentiallyextra[singlemom].update(potentiallyextra[cur])
+#                 '''
+#                 singleroot, singledes = None, None 
+#                 if singlemom in extranodes:
+#                     singleroot = singlemom.split("_to_")[0]
+#                     singledes = singlemom.split("_to_")[1]
+                
+                
+#                 # if singlemom not in inputnames: 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if singlemom in selected and singlemom not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(singlemom)
+#                         if debug:
+#                             print(f"Node {singlemom} is a node to simulate, SIMULATE it with all rows")
+#                         ressimrows = simulateOneNode(simtable, singlemom, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[singlemom] = ressimrows
+#                         if ressimrows:
+#                             changed = True
+#                     if singlemom not in alreadysimulated:
+#                         if singlemom not in countedrowsofnode:
+#                             countedrowsofnode[singlemom] = set()
+#                             changed = True # this is touched for the first time
+#                         # check if current node cur is in a diamond of singlemom
+#                         if singlemom not in masterDiamonds:
+#                             countedrowsofnode[singlemom].update(countrows)
+#                             if countrows.difference(countedrowsofnode[singlemom]):
+#                                 changed = True
+#                         else:
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(singlemom))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, singlemom, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, singlemom, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[singlemom].update(rowsfromdiamonds)
+#                             if rowsfromdiamonds:
+#                                 changed = True
+
+#                 if singlemom not in nextlayer and not singleroot:
+#                     nextlayer.append(singlemom)
+#                 if singleroot and singleroot not in countedrowsofnode and singleroot not in nextlayer:
+#                     # print(f"Extranodes {singlemom}, add {singlemom} to nextlayer")
+#                     nextlayer.append(singlemom)
+#             if debug:
+#                 print("\t\t\t---------------")
+#         curs = nextlayer
+#     if changed:
+#         print("WARNING: Propagation ended but some nodes may not have converged due to cycles.")
+#     else:
+#         print("Propagation converged for all nodes.")
+#     print("SIMULATE {} nodes over {} nodes".format(len(alreadysimulated), len(originalspecies) - len(inputnames)- 1))
+#     return countedrowsofnode #, potentiallylack, potentiallyextra
+
+# def propagateCyclic0_1(net, simtable, index, aindex, descendants, outname, formulas, simformulas, originalspecies, extranodes, masterDiamonds, inputnames, orderedBiNodes, simpercent = 15, debug=False):
+#     """
+#     Propagate values through the network considering diamond structures to determine the rows of nodes.
+#     Parameters:
+#         net: The directed graph
+#         simtable: The simulation table with input-output mappings
+#         index: Dictionary mapping nodes to rows where they are True 
+#         aindex: Dictionary mapping nodes to rows where they are False
+#         outname: The output node name
+#         formulas: Dictionary of boolean formulas for the network
+#         extranodes: List of extra nodes added to the network
+#         diamonds: Dictionary of diamond structures in the network
+#     Returns:
+#         countedrowsofnode: Dictionary mapping each node to the set of rows it is associated with
+#     """
+#     print("\n\n--------PROPAGATION WITH CYCLIC NETWORK--------")
+#     if simpercent > 0.0:
+#         print("Simulate {} percent of node".format(simpercent))
+#         internames = originalspecies.difference(inputnames)
+#         if outname in internames:
+#             internames.remove(outname)
+#         selected = random_percentage_selection(internames, simpercent)
+#         print("Selected nodes to simulate:")
+#         print(selected)
+#     else:
+#         selected = set()
+
+#     curs = [outname]
+#     countedrowsofnode = dict() # countedrowsofnode[node] = set of rows that make node count
+#     rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
+#     solddiamonds = set() # save the diamonds that are already converged for a node (key) to avoid doing it again
+#     alreadysimulated = set() # save the nodes that are already simulated to avoid doing it again
+#     changed = True
+    
+#     # potentiallylack = dict() # save the rows that are potentially lacky 
+#     # potentiallyextra = dict() # save the rows that are potentially extra 
+#     # encountered = set()
+#     while curs and changed:
+#         changed = False
+#         if debug:
+#             print("\n\n---Processing layers of {}---".format(curs))
+#         nextlayer = []
+#         for cur in curs:
+#             if '_to_' in cur: # if cur is the node that is wired back from an extra node
+#                 root, des = cur.split("_to_")[0], cur.split("_to_")[1]
+#                 # print("\nCurrent node {} is an extra node, wire back to root node {}".format(cur, root))
+
+#                 if cur not in countedrowsofnode: # count all rows
+#                     countrows = set(range(len(simtable)))
+#                     countedrowsofnode[cur] = countrows  
+#                     changed = True
+#                     print("WARNING: Extra node {} not counted yet, count all rows to wire back to root node {}".format(cur, root)) 
+#                 else: # count only rows that cur is counted
+#                     countrows = countedrowsofnode[cur]
+#                 cur = root 
+
+#                 # FROM HERE CUR IS WIRED BACK TO ROOT NODE
+#                 if cur not in countedrowsofnode: # count all rows
+#                     countedrowsofnode[cur] = countrows
+#                     changed = True # cur is touched for the first time
+#                 else:
+#                     if countrows.difference(countedrowsofnode[cur]):
+#                         changed = True 
+#                     countedrowsofnode[cur].update(countrows)
+#             else:
+#                 if cur not in countedrowsofnode: # count all rows
+#                     print("At TARGET node {}, count all rows".format(cur))
+#                     countrows = set(range(len(simtable)))
+#                     countedrowsofnode[cur] = countrows
+#                     changed = True
+#                 else: # count only rows that cur is counted
+#                     countrows = countedrowsofnode[cur]
+
+#             try:
+#                 form = formulas[cur]
+#             except:
+#                 if debug:
+#                     print("\nReach node {} without in-comming edges".format(cur))
+#                 continue
+#             # first, check if cur is an extranode 
+            
+
+#             # get incoming edge to cur node
+#             inedges = list(net.in_edges(cur))
+#             assert len(inedges) <= 2, print("Support only binary network")
+            
+#             if debug:
+#                 print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
+#             if len(inedges) == 2: 
+#                 if debug:
+#                     print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                
+                
+#                 # get operator
+#                 op = form.val 
+#                 # check if one of the node is extranode 
+#                 leftselfloop, rightselfloop = False, False
+#                 leftroot, rightroot = None, None
+#                 leftdes, rightdes = None, None
+#                 if form.left.val in extranodes: 
+#                     if debug:
+#                         print(f"Left node {form.left.val} is an extra node")
+#                     # get the root node of the extra node 
+#                     leftroot = form.left.val.split("_to_")[0]
+#                     leftdes = form.left.val.split("_to_")[1]
+#                     if leftroot == leftdes:
+#                         leftselfloop = True
+
+#                 if form.right.val in extranodes:
+#                     if debug:
+#                         print(f"Right node {form.right.val} is an extra node")
+#                     # get the root node of the extra node
+#                     rightroot = form.right.val.split("_to_")[0]
+#                     rightdes = form.right.val.split("_to_")[1]
+#                     if rightroot == rightdes:
+#                         rightselfloop = True
+
+#                 # now start to process 
+#                 if op == 'OR': 
+#                     # rows that left counted are rows that right = False 
+#                     if not rightselfloop:
+#                         leftrows = aindex[form.right.val]
+#                     else:
+#                         leftrows = countedrowsofnode[cur]
+
+#                     # rows that right counted are rows that left = False 
+#                     if not leftselfloop:
+#                         rightrows = aindex[form.left.val]
+#                     else:
+#                         rightrows = countedrowsofnode[cur]
+#                 elif op == 'AND':
+#                     leftrows = index[form.right.val]
+#                     # rows that right counted are rows that left = True 
+#                     rightrows = index[form.left.val]
+#                 else:
+#                     print(f"Do not support operator {op}")
+#                     break
+                    
+#                 # rowsofsinknodes[cur] = countedrowsofnode[cur] # save the rows of the sink node
+#                 rowsofsinknodes[cur] = countrows
+                
+#                 # if form.left.val not in inputnames: 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if form.left.val not in countedrowsofnode:
+#                         countedrowsofnode[form.left.val] = set()
+#                         changed = True # cur is touched for the first time
+                    
+#                     if form.left.val in selected and form.left.val not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(form.left.val)
+#                         if debug:
+#                             print(f"Left node {form.left.val} is a node to SIMULATE, simulate it with all rows")
+#                         ressimrows = simulateOneNode(simtable, form.left.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[form.left.val] = ressimrows
+#                         if ressimrows.difference(countedrowsofnode[form.left.val]):
+#                             changed = True
+
+#                     if form.left.val not in alreadysimulated:   
+#                         if form.left.val not in masterDiamonds:
+#                             # intersect with rows that cur is count 
+#                             leftrows = leftrows.intersection(countrows)
+#                             if debug:
+#                                 print(f"After operator {op}, {form.left.val} count only rows: \n{sorted(list(leftrows))}")
+#                             countedrowsofnode[form.left.val].update(leftrows)
+#                             if leftrows.difference(countedrowsofnode[form.left.val]):
+#                                 changed = True
+#                         else: 
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(form.left.val))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.left.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, form.left.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[form.left.val].update(rowsfromdiamonds) 
+#                             if rowsfromdiamonds:
+#                                 changed = True
+               
+#                 # if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if form.right.val not in countedrowsofnode:
+#                         countedrowsofnode[form.right.val] = set()
+#                         changed = True # this is touched for the first time
+                    
+#                     if form.right.val in selected and form.right.val not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(form.right.val)
+#                         if debug:
+#                             print(f"Right node {form.right.val} is a node to SIMULATE, simulate it with all rows")
+#                         ressimrows = simulateOneNode(simtable, form.right.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[form.right.val] = ressimrows
+#                         if ressimrows.difference(countedrowsofnode[form.right.val]):
+#                             changed = True
+
+#                     if form.right.val not in alreadysimulated:
+#                         if form.right.val not in masterDiamonds:
+#                             # intersect with rows that cur is count 
+#                             rightrows = rightrows.intersection(countrows)
+#                             if debug:
+#                                 print(f"After operator {op}, {form.right.val} count only rows: \n{sorted(list(rightrows))}")
+#                             countedrowsofnode[form.right.val].update(rightrows)
+#                             if rightrows.difference(countedrowsofnode[form.right.val]):
+#                                 changed = True
+#                         else:
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(form.right.val))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.right.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, form.right.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[form.right.val].update(rowsfromdiamonds)
+#                             if rowsfromdiamonds:
+#                                 changed = True
+
+#                 if form.left.val not in nextlayer and not leftroot: 
+#                     nextlayer.append(form.left.val)
+#                 if form.right.val not in nextlayer and not rightroot:
+#                     nextlayer.append(form.right.val)
+
+#                 if leftroot and (leftroot not in countedrowsofnode) and (leftroot not in nextlayer):
+#                     # print(f"Extranodes {form.left.val}, add {form.left.val} to nextlayer")
+#                     nextlayer.append(form.left.val)
+#                 if rightroot and (rightroot not in countedrowsofnode) and (rightroot not in nextlayer):
+#                     # print(f"Extranodes {form.right.val}, add  {form.right.val} to nextlayer")
+#                     nextlayer.append(form.right.val)
+
+#                 '''
+#                 if debug:
+#                     print(f"Operator is {form.val}")
+#                     print(f"POTENTIALLY lacky rows for left node {form.left.val}: {sorted(list(potentiallylack.get(form.left.val, set()).difference(countedrowsofnode.get(form.left.val, set()))) )}")
+#                     print(f"POTENTIALLY lacky rows for right node {form.right.val}: {sorted(list(potentiallylack.get(form.right.val, set()).difference(countedrowsofnode.get(form.right.val, set()))))}")
+#                     print(f"POTENTIALLY extra rows for left node {form.left.val}: {sorted(list(countedrowsofnode.get(form.left.val, set()).intersection(potentiallyextra.get(form.left.val, set()))))}")
+#                     print(f"POTENTIALLY extra rows for right node {form.right.val}: {sorted(list(countedrowsofnode.get(form.right.val, set()).intersection(potentiallyextra.get(form.right.val, set()))))}")
+#                 '''
+#             else:
+#                 if form.val == 'NOT':
+#                     singlemom = form.right.val
+#                     if debug:
+#                         print(f"{cur} === NOT {singlemom}")
+#                 else:
+#                     singlemom = form.val
+#                     if debug:
+#                         print(f"{cur} === {singlemom}")
+#                 '''
+#                 if singlemom not in potentiallylack:
+#                     potentiallylack[singlemom] = set()
+#                 if singlemom not in potentiallyextra:
+#                     potentiallyextra[singlemom] = set() 
+#                 # also update with the potential lack and extra from current node
+#                 if cur in potentiallylack:
+#                     potentiallylack[singlemom].update(potentiallylack[cur])
+#                 if cur in potentiallyextra:
+#                     potentiallyextra[singlemom].update(potentiallyextra[cur])
+#                 '''
+#                 singleroot, singledes = None, None 
+#                 if singlemom in extranodes:
+#                     singleroot = singlemom.split("_to_")[0]
+#                     singledes = singlemom.split("_to_")[1]
+                
+                
+#                 # if singlemom not in inputnames: 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if singlemom in selected and singlemom not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(singlemom)
+#                         if debug:
+#                             print(f"Node {singlemom} is a node to simulate, SIMULATE it with all rows")
+#                         ressimrows = simulateOneNode(simtable, singlemom, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[singlemom] = ressimrows
+#                         if ressimrows:
+#                             changed = True
+#                     if singlemom not in alreadysimulated:
+#                         if singlemom not in countedrowsofnode:
+#                             countedrowsofnode[singlemom] = set()
+#                             changed = True # this is touched for the first time
+#                         # check if current node cur is in a diamond of singlemom
+#                         if singlemom not in masterDiamonds:
+#                             countedrowsofnode[singlemom].update(countrows)
+#                             if countrows.difference(countedrowsofnode[singlemom]):
+#                                 changed = True
+#                         else:
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(singlemom))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, singlemom, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, singlemom, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[singlemom].update(rowsfromdiamonds)
+#                             if rowsfromdiamonds:
+#                                 changed = True
+
+#                 if singlemom not in nextlayer and not singleroot:
+#                     nextlayer.append(singlemom)
+#                 if singleroot and singleroot not in countedrowsofnode and singleroot not in nextlayer:
+#                     # print(f"Extranodes {singlemom}, add {singlemom} to nextlayer")
+#                     nextlayer.append(singlemom)
+#             if debug:
+#                 print("\t\t\t---------------")
+#         curs = nextlayer
+#     if changed:
+#         print("WARNING: Propagation ended but some nodes may not have converged due to cycles.")
+#     else:
+#         print("Propagation converged for all nodes.")
+#     print("SIMULATE {} nodes over {} nodes".format(len(alreadysimulated), len(originalspecies) - len(inputnames)- 1))
+#     return countedrowsofnode #, potentiallylack, potentiallyextra
+
+
+def propagateCyclic1(net, simtable, index, aindex, descendants, outname, formulas, simformulas, originalspecies, extranodes, masterDiamonds, inputnames, orderedBiNodes, simpercent = 0, debug=False):
     """
     Propagate values through the network considering diamond structures to determine the rows of nodes.
     Parameters:
@@ -774,160 +1472,70 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
     else:
         selected = set()
 
+    MAX_PROCESS_PER_NODE = 100
     curs = [outname]
     countedrowsofnode = dict() # countedrowsofnode[node] = set of rows that make node count
     rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
     solddiamonds = set() # save the diamonds that are already converged for a node (key) to avoid doing it again
     alreadysimulated = set() # save the nodes that are already simulated to avoid doing it again
+    counterofnodes = dict() # count how many times a node is processed to avoid infinite loop 
+    changed = True
 
-    
-    # potentiallylack = dict() # save the rows that are potentially lacky 
-    # potentiallyextra = dict() # save the rows that are potentially extra 
-    # encountered = set()
-    while curs:
+    while curs and changed:
+        changed = False # flag to indicate if any node's counted rows changed in the last iteration
         if debug:
             print("\n\n---Processing layers of {}---".format(curs))
         nextlayer = []
         for cur in curs:
-            if '_to_' in cur: # if cur is the node that is wired back from an extra node
-                root, des = cur.split("_to_")[0], cur.split("_to_")[1]
-                # print("\nCurrent node {} is an extra node, wire back to root node {}".format(cur, root))
+            if '_to_' in cur: # if cur is an extranode that is wired back from an extra node
+                root, des = cur.split("_to_")[0], cur.split("_to_")[1] 
 
-                '''
-                # inherit the potentially lack and extra from cur to root
-                if root not in potentiallylack:
-                    potentiallylack[root] = set()
-                if cur in potentiallylack:
-                    potentiallylack[root].update(potentiallylack[cur])
-                if root not in potentiallyextra:
-                    potentiallyextra[root] = set()
-                if cur in potentiallyextra:
-                    potentiallyextra[root].update(potentiallyextra[cur])
-                '''
-                if cur not in countedrowsofnode: # count all rows
-                    countrows = set(range(len(simtable)))
-                    countedrowsofnode[cur] = countrows  
+                if cur not in countedrowsofnode: # count all rows, should be impossible 
+                    countrows = set(range(len(simtable))) 
+                    countedrowsofnode[cur] = countrows 
+                    changed = True 
+                    print("WARNING: Extra node {} not counted yet, count all rows to wire back to root node {}".format(cur, root)) 
                 else: # count only rows that cur is counted
-
-                    countrows = countedrowsofnode[cur]
+                    countrows = countedrowsofnode[cur] 
                 cur = root 
-                if cur not in countedrowsofnode: # count all rows
-                    countedrowsofnode[cur] = countrows
-                else:
-                    countedrowsofnode[cur].update(countrows)
-            else:
-                if cur not in countedrowsofnode: # count all rows
-                    countrows = set(range(len(simtable)))
-                    countedrowsofnode[cur] = countrows
-                else: # count only rows that cur is counted
-                    countrows = countedrowsofnode[cur]
 
+                # FROM HERE CUR IS WIRED BACK TO ROOT NODE 
+                if cur not in countedrowsofnode: # 
+                    countedrowsofnode[cur] = countrows 
+                    changed = True # cur is touched for the first time, so even countrows is empty, still count as changed
+                else: 
+                    if countrows.difference(countedrowsofnode[cur]): 
+                        changed = True # cur is changed if new rows are added 
+                    countedrowsofnode[cur].update(countrows) 
+            else:
+                if cur not in countedrowsofnode: # count all rows, case of target node 
+                    print("At TARGET node {}, count all rows".format(cur))
+                    countrows = set(range(len(simtable))) 
+                    countedrowsofnode[cur] = countrows
+                    changed = True # cur is touched for the first time
+                else: # count only rows that cur is counted
+                    countrows = countedrowsofnode[cur] 
             try:
                 form = formulas[cur]
+                # if cur == 'PP2A':
+                #     print("FORMULA for PP2A is:")
+                #     form.display()
             except:
                 if debug:
                     print("\nReach node {} without in-comming edges".format(cur))
                 continue
-            # first, check if cur is an extranode 
             
 
             # get incoming edge to cur node
-            inedges = list(net.in_edges(cur))
+            inedges = list(net.in_edges(cur)) # cur here is already wired back if it is an extranode, otherwise normal node
             assert len(inedges) <= 2, print("Support only binary network")
             
             if debug:
                 print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
-            if len(inedges) == 2: 
+            # if len(inedges) == 2: 
+            if form.left and form.right: # to be more robust to support non-binary network, as long as the formula is in the form of (A AND B) or (A OR B)
                 if debug:
                     print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
-                
-                '''
-                leftdependent = False
-                rightdependent = False
-                doubledependent = False
-                if form.left.val in descendants[form.right.val]:
-                    if debug:
-                        print(f"Left node {form.left.val} depends on right node {form.right.val}")
-                    leftdependent = True
-                if form.right.val in descendants[form.left.val]:
-                    if debug:
-                        print(f"Right node {form.right.val} depends on left node {form.left.val}")
-                    if leftdependent:
-                        doubledependent = True
-                    else:
-                        rightdependent = True
-
-                # tocheckrows = countrows.union(potentiallylack.get(cur, set()))
-                tocheckrows = set(range(len(simtable)))
-                bothtrue, bothfalse, leftTrightF, leftFrightT = agreement(index, aindex, form.left.val, form.right.val, tocheckrows)
-                if doubledependent:
-                    if form.left.val not in potentiallylack:
-                        potentiallylack[form.left.val] = set()
-                    if form.right.val not in potentiallylack:
-                        potentiallylack[form.right.val] = set()
-
-                    if form.left.val not in potentiallyextra:
-                        potentiallyextra[form.left.val] = set()
-                    if form.right.val not in potentiallyextra:
-                        potentiallyextra[form.right.val] = set()
-                    if debug:
-                        print("MUTALLY DEPENDENT nodes detected")
-                    if form.val == 'OR': # if no cycles, for left takes right = F and for right takes left = F 
-                        potentiallylack[form.left.val].update(bothtrue)
-                        # potentiallylack[form.left.val].update(leftFrightT)
-                        potentiallyextra[form.left.val].update(leftTrightF) 
-
-                        potentiallylack[form.right.val].update(bothtrue)
-                        # potentiallylack[form.right.val].update(leftTrightF)
-                        potentiallyextra[form.right.val].update(leftFrightT)
-                        
-                    if form.val == 'AND': # if no cycles, for left takes right = T and for right takes left = T
-                        potentiallylack[form.left.val].update(bothfalse)
-                        potentiallyextra[form.left.val].update(leftFrightT)
-                        
-                        potentiallylack[form.right.val].update(bothfalse) 
-                        potentiallyextra[form.right.val].update(leftTrightF)
-                        
-                elif rightdependent: # right node depends on left node
-                    if form.left.val not in potentiallylack:
-                        potentiallylack[form.left.val] = set()
-                    if debug:
-                        print("RIGHT node depends on LEFT node") 
-                    potentiallylack[form.left.val].update(bothtrue)
-                    if form.val == 'AND':
-                        if form.left.val not in potentiallyextra:
-                            potentiallyextra[form.left.val] = set()
-                        potentiallyextra[form.left.val].update(leftFrightT)
-                    
-                        
-                elif leftdependent: # left node depends on right node
-                    if form.right.val not in potentiallylack:
-                        potentiallylack[form.right.val] = set()
-                    if debug:
-                        print("LEFT node depends on RIGHT node")
-                    potentiallylack[form.right.val].update(bothtrue)
-                    if form.val == 'AND':
-                        if form.right.val not in potentiallyextra:
-                            potentiallyextra[form.right.val] = set()
-                        potentiallyextra[form.right.val].update(leftTrightF)
-                    
-                # also update with the potential lack and extra from current node
-                if cur in potentiallylack:
-                    if form.left.val not in potentiallylack:
-                        potentiallylack[form.left.val] = set()
-                    if form.right.val not in potentiallylack:
-                        potentiallylack[form.right.val] = set()
-                    potentiallylack[form.left.val].update(potentiallylack[cur])
-                    potentiallylack[form.right.val].update(potentiallylack[cur])    
-
-                if cur in potentiallyextra:
-                    if form.left.val not in potentiallyextra:
-                        potentiallyextra[form.left.val] = set()
-                    if form.right.val not in potentiallyextra:
-                        potentiallyextra[form.right.val] = set()
-                    potentiallyextra[form.left.val].update(potentiallyextra[cur])
-                    potentiallyextra[form.right.val].update(potentiallyextra[cur])
-                '''
                 
                 # get operator
                 op = form.val 
@@ -980,15 +1588,17 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                 # if form.left.val not in inputnames: 
                 if 1: # propagate also to input nodes to estimate error 
                     if form.left.val not in countedrowsofnode:
-                        countedrowsofnode[form.left.val] = set()
+                        countedrowsofnode[form.left.val] = set() 
+                        changed = True # node is touched for the first time
                     
-                    if form.left.val in selected and form.left.val not in alreadysimulated:
-                        # check probablity to simulate this node 
+                    if form.left.val in selected and form.left.val not in alreadysimulated: # case to simulate
                         alreadysimulated.add(form.left.val)
                         if debug:
                             print(f"Left node {form.left.val} is a node to SIMULATE, simulate it with all rows")
                         ressimrows = simulateOneNode(simtable, form.left.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
                         countedrowsofnode[form.left.val] = ressimrows
+                        if ressimrows.difference(countedrowsofnode[form.left.val]):
+                            changed = True
 
                     if form.left.val not in alreadysimulated:   
                         if form.left.val not in masterDiamonds:
@@ -997,17 +1607,22 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                             if debug:
                                 print(f"After operator {op}, {form.left.val} count only rows: \n{sorted(list(leftrows))}")
                             countedrowsofnode[form.left.val].update(leftrows)
+                            if leftrows.difference(countedrowsofnode[form.left.val]):
+                                changed = True
                         else: 
                             if debug:
                                 print("PROCESS DIAMONDS for {}".format(form.left.val))
                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.left.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
                             # rowsfromdiamonds = processDiamond(net, simtable, form.left.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
                             countedrowsofnode[form.left.val].update(rowsfromdiamonds) 
+                            if rowsfromdiamonds:
+                                changed = True
                
                 # if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
                 if 1: # propagate also to input nodes to estimate error 
                     if form.right.val not in countedrowsofnode:
                         countedrowsofnode[form.right.val] = set()
+                        changed = True
                     
                     if form.right.val in selected and form.right.val not in alreadysimulated:
                         # check probablity to simulate this node 
@@ -1016,6 +1631,8 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                             print(f"Right node {form.right.val} is a node to SIMULATE, simulate it with all rows")
                         ressimrows = simulateOneNode(simtable, form.right.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
                         countedrowsofnode[form.right.val] = ressimrows
+                        if ressimrows:
+                            changed = True
 
                     if form.right.val not in alreadysimulated:
                         if form.right.val not in masterDiamonds:
@@ -1024,33 +1641,48 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                             if debug:
                                 print(f"After operator {op}, {form.right.val} count only rows: \n{sorted(list(rightrows))}")
                             countedrowsofnode[form.right.val].update(rightrows)
+                            if rightrows.difference(countedrowsofnode[form.right.val]):
+                                changed = True
                         else:
                             if debug:
                                 print("PROCESS DIAMONDS for {}".format(form.right.val))
                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.right.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
                             # rowsfromdiamonds = processDiamond(net, simtable, form.right.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
                             countedrowsofnode[form.right.val].update(rowsfromdiamonds)
+                            if rowsfromdiamonds:
+                                changed = True
 
                 if form.left.val not in nextlayer and not leftroot: 
                     nextlayer.append(form.left.val)
                 if form.right.val not in nextlayer and not rightroot:
                     nextlayer.append(form.right.val)
 
-                if leftroot and (leftroot not in countedrowsofnode) and (leftroot not in nextlayer):
-                    # print(f"Extranodes {form.left.val}, add {form.left.val} to nextlayer")
-                    nextlayer.append(form.left.val)
-                if rightroot and (rightroot not in countedrowsofnode) and (rightroot not in nextlayer):
-                    # print(f"Extranodes {form.right.val}, add  {form.right.val} to nextlayer")
-                    nextlayer.append(form.right.val)
-
-                '''
-                if debug:
-                    print(f"Operator is {form.val}")
-                    print(f"POTENTIALLY lacky rows for left node {form.left.val}: {sorted(list(potentiallylack.get(form.left.val, set()).difference(countedrowsofnode.get(form.left.val, set()))) )}")
-                    print(f"POTENTIALLY lacky rows for right node {form.right.val}: {sorted(list(potentiallylack.get(form.right.val, set()).difference(countedrowsofnode.get(form.right.val, set()))))}")
-                    print(f"POTENTIALLY extra rows for left node {form.left.val}: {sorted(list(countedrowsofnode.get(form.left.val, set()).intersection(potentiallyextra.get(form.left.val, set()))))}")
-                    print(f"POTENTIALLY extra rows for right node {form.right.val}: {sorted(list(countedrowsofnode.get(form.right.val, set()).intersection(potentiallyextra.get(form.right.val, set()))))}")
-                '''
+                # if leftroot and (leftroot not in countedrowsofnode) and (leftroot not in nextlayer):
+                if leftroot and (leftroot not in nextlayer):
+                    if leftroot in countedrowsofnode:
+                        # if leftroot is already counted, increment its counted rows with those from left extra node
+                        counterofnodes[leftroot] = counterofnodes.get(leftroot, 0) + 1
+                    else:
+                        counterofnodes[leftroot] = 1
+                    if counterofnodes[leftroot] > MAX_PROCESS_PER_NODE:
+                        if debug:
+                            print(f"Node {leftroot} has been processed {counterofnodes[leftroot]} times, skip further processing to avoid infinite loop")
+                    else:
+                        # print(f"Extranodes {form.left.val}, add {form.left.val} to nextlayer")
+                        nextlayer.append(form.left.val)
+                # if rightroot and (rightroot not in countedrowsofnode) and (rightroot not in nextlayer):
+                if rightroot  and (rightroot not in nextlayer):
+                    if rightroot in countedrowsofnode:
+                        # if rightroot is already counted, increment its counted rows with those from right extra node
+                        counterofnodes[rightroot] = counterofnodes.get(rightroot, 0) + 1    
+                    else:
+                        counterofnodes[rightroot] = 1
+                    if counterofnodes[rightroot] > MAX_PROCESS_PER_NODE:
+                        if debug:
+                            print(f"Node {rightroot} has been processed {counterofnodes[rightroot]} times, skip further processing to avoid infinite loop")
+                    else:
+                        # print(f"Extranodes {form.right.val}, add  {form.right.val} to nextlayer")
+                        nextlayer.append(form.right.val)
             else:
                 if form.val == 'NOT':
                     singlemom = form.right.val
@@ -1060,17 +1692,7 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                     singlemom = form.val
                     if debug:
                         print(f"{cur} === {singlemom}")
-                '''
-                if singlemom not in potentiallylack:
-                    potentiallylack[singlemom] = set()
-                if singlemom not in potentiallyextra:
-                    potentiallyextra[singlemom] = set() 
-                # also update with the potential lack and extra from current node
-                if cur in potentiallylack:
-                    potentiallylack[singlemom].update(potentiallylack[cur])
-                if cur in potentiallyextra:
-                    potentiallyextra[singlemom].update(potentiallyextra[cur])
-                '''
+
                 singleroot, singledes = None, None 
                 if singlemom in extranodes:
                     singleroot = singlemom.split("_to_")[0]
@@ -1086,29 +1708,372 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                             print(f"Node {singlemom} is a node to simulate, SIMULATE it with all rows")
                         ressimrows = simulateOneNode(simtable, singlemom, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
                         countedrowsofnode[singlemom] = ressimrows
+                        if ressimrows:
+                            changed = True
+
                     if singlemom not in alreadysimulated:
                         if singlemom not in countedrowsofnode:
                             countedrowsofnode[singlemom] = set()
+                            changed = True # node is touched for the first time
                         # check if current node cur is in a diamond of singlemom
                         if singlemom not in masterDiamonds:
                             countedrowsofnode[singlemom].update(countrows)
+                            if countrows.difference(countedrowsofnode[singlemom]):
+                                changed = True
                         else:
                             if debug:
                                 print("PROCESS DIAMONDS for {}".format(singlemom))
                             rowsfromdiamonds = processMasterDiamonds(net, simtable, singlemom, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
                             # rowsfromdiamonds = processDiamond(net, simtable, singlemom, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
                             countedrowsofnode[singlemom].update(rowsfromdiamonds)
+                            if rowsfromdiamonds:
+                                changed = True
 
                 if singlemom not in nextlayer and not singleroot:
                     nextlayer.append(singlemom)
-                if singleroot and singleroot not in countedrowsofnode and singleroot not in nextlayer:
-                    # print(f"Extranodes {singlemom}, add {singlemom} to nextlayer")
-                    nextlayer.append(singlemom)
+                if singleroot and singleroot not in nextlayer:
+                    if singleroot in countedrowsofnode:
+                        # if singleroot is already counted, increment its counted rows with those from single extra node
+                        counterofnodes[singleroot] = counterofnodes.get(singleroot, 0) + 1
+                    else:
+                        counterofnodes[singleroot] = 1
+                    if counterofnodes[singleroot] > MAX_PROCESS_PER_NODE:
+                        if debug:
+                            print(f"Node {singleroot} has been processed {counterofnodes[singleroot]} times, skip further processing to avoid infinite loop")
+                    else:
+                        # print(f"Extranodes {singlemom}, add {singlemom} to nextlayer")
+                        nextlayer.append(singlemom)
             if debug:
                 print("\t\t\t---------------")
         curs = nextlayer
+    if changed:
+        print("Warning: Propagation ended but some nodes may not have converged due to cycles.")
+        print("Consider increasing MAX_PROCESS_PER_NODE or checking for cycles.")
+        print("Counter of processed nodes:")
+        for node, count in counterofnodes.items():
+            print(f"Node {node}: processed {count} times")
+    else:
+        print("Propagation converged for all nodes.")
+        print("Counter of processed nodes:")
+        for node, count in counterofnodes.items():
+            print(f"Node {node}: processed {count} times")
+
     print("SIMULATE {} nodes over {} nodes".format(len(alreadysimulated), len(originalspecies) - len(inputnames)- 1))
     return countedrowsofnode #, potentiallylack, potentiallyextra
+
+# def propagateCyclic1_1(net, simtable, index, aindex, descendants, outname, formulas, simformulas, originalspecies, extranodes, masterDiamonds, inputnames, orderedBiNodes, simpercent = 0, debug=False):
+#     """
+#     Propagate values through the network considering diamond structures to determine the rows of nodes.
+#     Parameters:
+#         net: The directed graph
+#         simtable: The simulation table with input-output mappings
+#         index: Dictionary mapping nodes to rows where they are True 
+#         aindex: Dictionary mapping nodes to rows where they are False
+#         outname: The output node name
+#         formulas: Dictionary of boolean formulas for the network
+#         extranodes: List of extra nodes added to the network
+#         diamonds: Dictionary of diamond structures in the network
+#     Returns:
+#         countedrowsofnode: Dictionary mapping each node to the set of rows it is associated with
+#     """
+#     print("\n\n--------PROPAGATION WITH CYCLIC NETWORK--------")
+#     if simpercent > 0.0:
+#         print("Simulate {} percent of node".format(simpercent))
+#         internames = originalspecies.difference(inputnames)
+#         if outname in internames:
+#             internames.remove(outname)
+#         selected = random_percentage_selection(internames, simpercent)
+#         print("Selected nodes to simulate:")
+#         print(selected)
+#     else:
+#         selected = set()
+
+#     MAX_PROCESS_PER_NODE = 100
+#     curs = [outname]
+#     countedrowsofnode = dict() # countedrowsofnode[node] = set of rows that make node count
+#     rowsofsinknodes = dict() # rows that are about to be filter for a diamond 
+#     solddiamonds = set() # save the diamonds that are already converged for a node (key) to avoid doing it again
+#     alreadysimulated = set() # save the nodes that are already simulated to avoid doing it again
+#     counterofnodes = dict() # count how many times a node is processed to avoid infinite loop 
+#     changed = True
+
+#     while curs and changed:
+#         changed = False # flag to indicate if any node's counted rows changed in the last iteration
+#         if debug:
+#             print("\n\n---Processing layers of {}---".format(curs))
+#         nextlayer = []
+#         for cur in curs:
+#             if '_to_' in cur: # if cur is an extranode that is wired back from an extra node
+#                 root, des = cur.split("_to_")[0], cur.split("_to_")[1] 
+
+#                 if cur not in countedrowsofnode: # count all rows, should be impossible 
+#                     countrows = set(range(len(simtable))) 
+#                     countedrowsofnode[cur] = countrows 
+#                     changed = True 
+#                     print("WARNING: Extra node {} not counted yet, count all rows to wire back to root node {}".format(cur, root)) 
+#                 else: # count only rows that cur is counted
+#                     countrows = countedrowsofnode[cur] 
+#                 cur = root 
+
+#                 # FROM HERE CUR IS WIRED BACK TO ROOT NODE 
+#                 if cur not in countedrowsofnode: # 
+#                     countedrowsofnode[cur] = countrows 
+#                     changed = True # cur is touched for the first time, so even countrows is empty, still count as changed
+#                 else: 
+#                     if countrows.difference(countedrowsofnode[cur]): 
+#                         changed = True # cur is changed if new rows are added 
+#                     countedrowsofnode[cur] = countedrowsofnode[cur].intersection(countrows) 
+#             else:
+#                 if cur not in countedrowsofnode: # count all rows, case of target node 
+#                     print("At TARGET node {}, count all rows".format(cur))
+#                     countrows = set(range(len(simtable))) 
+#                     countedrowsofnode[cur] = countrows
+#                     changed = True # cur is touched for the first time
+#                 else: # count only rows that cur is counted
+#                     countrows = countedrowsofnode[cur] 
+#             try:
+#                 form = formulas[cur]
+#             except:
+#                 if debug:
+#                     print("\nReach node {} without in-comming edges".format(cur))
+#                 continue
+            
+
+#             # get incoming edge to cur node
+#             inedges = list(net.in_edges(cur)) # cur here is already wired back if it is an extranode, otherwise normal node
+#             assert len(inedges) <= 2, print("Support only binary network")
+            
+#             if debug:
+#                 print("\nCounted row for current node {} is \n{}".format(cur, sorted(list(countrows))))
+#             if len(inedges) == 2: 
+#                 if debug:
+#                     print(f"{cur} ==== {form.left.val} {form.val} {form.right.val}")
+                
+#                 # get operator
+#                 op = form.val 
+#                 # check if one of the node is extranode 
+#                 leftselfloop, rightselfloop = False, False
+#                 leftroot, rightroot = None, None
+#                 leftdes, rightdes = None, None
+#                 if form.left.val in extranodes: 
+#                     if debug:
+#                         print(f"Left node {form.left.val} is an extra node")
+#                     # get the root node of the extra node 
+#                     leftroot = form.left.val.split("_to_")[0]
+#                     leftdes = form.left.val.split("_to_")[1]
+#                     if leftroot == leftdes:
+#                         leftselfloop = True
+
+#                 if form.right.val in extranodes:
+#                     if debug:
+#                         print(f"Right node {form.right.val} is an extra node")
+#                     # get the root node of the extra node
+#                     rightroot = form.right.val.split("_to_")[0]
+#                     rightdes = form.right.val.split("_to_")[1]
+#                     if rightroot == rightdes:
+#                         rightselfloop = True
+
+#                 # now start to process 
+#                 if op == 'OR': 
+#                     # rows that left counted are rows that right = False 
+#                     if not rightselfloop:
+#                         leftrows = aindex[form.right.val]
+#                     else:
+#                         leftrows = countedrowsofnode[cur]
+
+#                     # rows that right counted are rows that left = False 
+#                     if not leftselfloop:
+#                         rightrows = aindex[form.left.val]
+#                     else:
+#                         rightrows = countedrowsofnode[cur]
+#                 elif op == 'AND':
+#                     leftrows = index[form.right.val]
+#                     # rows that right counted are rows that left = True 
+#                     rightrows = index[form.left.val]
+#                 else:
+#                     print(f"Do not support operator {op}")
+#                     break
+                    
+#                 # rowsofsinknodes[cur] = countedrowsofnode[cur] # save the rows of the sink node
+#                 rowsofsinknodes[cur] = countrows
+                
+#                 # if form.left.val not in inputnames: 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if form.left.val not in countedrowsofnode:
+#                         countedrowsofnode[form.left.val] = set() 
+#                         changed = True # node is touched for the first time
+                    
+#                     if form.left.val in selected and form.left.val not in alreadysimulated: # case to simulate
+#                         alreadysimulated.add(form.left.val)
+#                         if debug:
+#                             print(f"Left node {form.left.val} is a node to SIMULATE, simulate it with all rows")
+#                         ressimrows = simulateOneNode(simtable, form.left.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[form.left.val] = ressimrows
+#                         if ressimrows.difference(countedrowsofnode[form.left.val]):
+#                             changed = True
+
+#                     if form.left.val not in alreadysimulated:   
+#                         if form.left.val not in masterDiamonds:
+#                             # intersect with rows that cur is count 
+#                             leftrows = leftrows.intersection(countrows)
+#                             if debug:
+#                                 print(f"After operator {op}, {form.left.val} count only rows: \n{sorted(list(leftrows))}")
+#                             countedrowsofnode[form.left.val].update(leftrows)
+#                             if leftrows.difference(countedrowsofnode[form.left.val]):
+#                                 changed = True
+#                         else: 
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(form.left.val))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.left.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, form.left.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[form.left.val].update(rowsfromdiamonds) 
+#                             if rowsfromdiamonds:
+#                                 changed = True
+               
+#                 # if form.right.val not in inputnames: # value for input is already calculated, no need to bother 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if form.right.val not in countedrowsofnode:
+#                         countedrowsofnode[form.right.val] = set()
+#                         changed = True
+                    
+#                     if form.right.val in selected and form.right.val not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(form.right.val)
+#                         if debug:
+#                             print(f"Right node {form.right.val} is a node to SIMULATE, simulate it with all rows")
+#                         ressimrows = simulateOneNode(simtable, form.right.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[form.right.val] = ressimrows
+#                         if ressimrows:
+#                             changed = True
+
+#                     if form.right.val not in alreadysimulated:
+#                         if form.right.val not in masterDiamonds:
+#                             # intersect with rows that cur is count 
+#                             rightrows = rightrows.intersection(countrows)
+#                             if debug:
+#                                 print(f"After operator {op}, {form.right.val} count only rows: \n{sorted(list(rightrows))}")
+#                             countedrowsofnode[form.right.val].update(rightrows)
+#                             if rightrows.difference(countedrowsofnode[form.right.val]):
+#                                 changed = True
+#                         else:
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(form.right.val))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, form.right.val, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, form.right.val, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[form.right.val].update(rowsfromdiamonds)
+#                             if rowsfromdiamonds:
+#                                 changed = True
+
+#                 if form.left.val not in nextlayer and not leftroot: 
+#                     nextlayer.append(form.left.val)
+#                 if form.right.val not in nextlayer and not rightroot:
+#                     nextlayer.append(form.right.val)
+
+#                 # if leftroot and (leftroot not in countedrowsofnode) and (leftroot not in nextlayer):
+#                 if leftroot and (leftroot not in nextlayer):
+#                     if leftroot in countedrowsofnode:
+#                         # if leftroot is already counted, increment its counted rows with those from left extra node
+#                         counterofnodes[leftroot] = counterofnodes.get(leftroot, 0) + 1
+#                     else:
+#                         counterofnodes[leftroot] = 1
+#                     if counterofnodes[leftroot] > MAX_PROCESS_PER_NODE:
+#                         if debug:
+#                             print(f"Node {leftroot} has been processed {counterofnodes[leftroot]} times, skip further processing to avoid infinite loop")
+#                     else:
+#                         # print(f"Extranodes {form.left.val}, add {form.left.val} to nextlayer")
+#                         nextlayer.append(form.left.val)
+#                 # if rightroot and (rightroot not in countedrowsofnode) and (rightroot not in nextlayer):
+#                 if rightroot  and (rightroot not in nextlayer):
+#                     if rightroot in countedrowsofnode:
+#                         # if rightroot is already counted, increment its counted rows with those from right extra node
+#                         counterofnodes[rightroot] = counterofnodes.get(rightroot, 0) + 1    
+#                     else:
+#                         counterofnodes[rightroot] = 1
+#                     if counterofnodes[rightroot] > MAX_PROCESS_PER_NODE:
+#                         if debug:
+#                             print(f"Node {rightroot} has been processed {counterofnodes[rightroot]} times, skip further processing to avoid infinite loop")
+#                     else:
+#                         # print(f"Extranodes {form.right.val}, add  {form.right.val} to nextlayer")
+#                         nextlayer.append(form.right.val)
+#             else:
+#                 if form.val == 'NOT':
+#                     singlemom = form.right.val
+#                     if debug:
+#                         print(f"{cur} === NOT {singlemom}")
+#                 else:
+#                     singlemom = form.val
+#                     if debug:
+#                         print(f"{cur} === {singlemom}")
+
+#                 singleroot, singledes = None, None 
+#                 if singlemom in extranodes:
+#                     singleroot = singlemom.split("_to_")[0]
+#                     singledes = singlemom.split("_to_")[1]
+                
+                
+#                 # if singlemom not in inputnames: 
+#                 if 1: # propagate also to input nodes to estimate error 
+#                     if singlemom in selected and singlemom not in alreadysimulated:
+#                         # check probablity to simulate this node 
+#                         alreadysimulated.add(singlemom)
+#                         if debug:
+#                             print(f"Node {singlemom} is a node to simulate, SIMULATE it with all rows")
+#                         ressimrows = simulateOneNode(simtable, singlemom, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+#                         countedrowsofnode[singlemom] = ressimrows
+#                         if ressimrows:
+#                             changed = True
+
+#                     if singlemom not in alreadysimulated:
+#                         if singlemom not in countedrowsofnode:
+#                             countedrowsofnode[singlemom] = set()
+#                             changed = True # node is touched for the first time
+#                         # check if current node cur is in a diamond of singlemom
+#                         if singlemom not in masterDiamonds:
+#                             countedrowsofnode[singlemom].update(countrows)
+#                             if countrows.difference(countedrowsofnode[singlemom]):
+#                                 changed = True
+#                         else:
+#                             if debug:
+#                                 print("PROCESS DIAMONDS for {}".format(singlemom))
+#                             rowsfromdiamonds = processMasterDiamonds(net, simtable, singlemom, masterDiamonds, rowsofsinknodes, index, aindex, formulas, solddiamonds, orderedBiNodes, debug)
+#                             # rowsfromdiamonds = processDiamond(net, simtable, singlemom, masterDiamonds, diamonds, rowsofsinknodes, index, aindex, extranodes, formulas, solddiamonds)
+#                             countedrowsofnode[singlemom].update(rowsfromdiamonds)
+#                             if rowsfromdiamonds:
+#                                 changed = True
+
+#                 if singlemom not in nextlayer and not singleroot:
+#                     nextlayer.append(singlemom)
+#                 if singleroot and singleroot not in nextlayer:
+#                     if singleroot in countedrowsofnode:
+#                         # if singleroot is already counted, increment its counted rows with those from single extra node
+#                         counterofnodes[singleroot] = counterofnodes.get(singleroot, 0) + 1
+#                     else:
+#                         counterofnodes[singleroot] = 1
+#                     if counterofnodes[singleroot] > MAX_PROCESS_PER_NODE:
+#                         if debug:
+#                             print(f"Node {singleroot} has been processed {counterofnodes[singleroot]} times, skip further processing to avoid infinite loop")
+#                     else:
+#                         # print(f"Extranodes {singlemom}, add {singlemom} to nextlayer")
+#                         nextlayer.append(singlemom)
+#             if debug:
+#                 print("\t\t\t---------------")
+#         curs = nextlayer
+#     if changed:
+#         print("Warning: Propagation ended but some nodes may not have converged due to cycles.")
+#         print("Consider increasing MAX_PROCESS_PER_NODE or checking for cycles.")
+#         print("Counter of processed nodes:")
+#         for node, count in counterofnodes.items():
+#             print(f"Node {node}: processed {count} times")
+#     else:
+#         print("Propagation converged for all nodes.")
+#         print("Counter of processed nodes:")
+#         for node, count in counterofnodes.items():
+#             print(f"Node {node}: processed {count} times")
+
+#     print("SIMULATE {} nodes over {} nodes".format(len(alreadysimulated), len(originalspecies) - len(inputnames)- 1))
+#     return countedrowsofnode #, potentiallylack, potentiallyextra
+
+
 '''
 def propagate(net, simtable, index, aindex, outname, formulas, simformulas, extranodes, nodestosim, masterDiamonds, inputnames, orderedBiNodes, debug=False):
     """
@@ -1470,7 +2435,7 @@ def propagateWithDiamonds(net, simtable, index, aindex, outname, formulas, extra
 '''
 
 # do everything with binary network (convert, get speciesnames, simulate...)          
-def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispeciesnames, networkname, sortedinput, sortedinter, extranodes, mode = 'Shapley', simpercent = 15, totest=True, debug=False):
+def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispeciesnames, networkname, sortedinput, sortedinter, extranodes, mode = 'Shapley', simpercent = 0, totest=True, debug=False):
     """
     Work with the binary network to calculate Shapley values and perform knockout/knockin analyses.
     Parameters:
@@ -1500,7 +2465,7 @@ def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispec
     # unfinised work on handling cycles
     
     '''
-    cycledbinet = rewireBinet(binet, extranodes) # rewire the binet to remove self-loop caused by extra nodes
+    cycledbinet = rewireBinet(binet, extranodes)
     desc = all_descendants(cycledbinet, method='auto')
     '''
     # if True:
@@ -1521,8 +2486,11 @@ def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispec
     #     print(relatednodes)
     #     nodetosimulate = nodesincycles.union(relatednodes)
     #     print("Need to simulate {} nodes".format(len(nodetosimulate))) 
+
+    #  # rewire the binet to remove self-loop caused by extra nodes
     protime += time.time() - time1 
 
+    # cycledbinet = rewireBinet(binet, extranodes)
     showNetwork(binet, None, None, None, None, 'binary.html')
 
     time2 = time.time()
@@ -1539,7 +2507,7 @@ def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispec
 
         thisbiformula = dict()
         thisbiformula['term'] = term
-        thisbiformula['formula'] = parseFormula(thisfor, debug) 
+        thisbiformula['formula'] = parseFormula(thisfor, False) 
         biformulasdict[term] = thisbiformula['formula'] 
 
         biformulas.append(thisbiformula)
@@ -1565,10 +2533,10 @@ def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispec
 
     table, index, aindex, bindex = genTableFromOutput(realbioutputs, inputnames, blinkings, biinternames, outputname, mode, False) 
 
-    if debug:
-        print("BINDEX")
-        for node, rows in dict(sorted(bindex.items())).items():
-            print("Node {:20}: Rows {}".format(node, sorted(list(rows))))
+    # if debug:
+    #     print("BINDEX")
+    #     for node, rows in dict(sorted(bindex.items())).items():
+    #         print("Node {:20}: Rows {}".format(node, sorted(list(rows))))
 
     # print("-----Binary network simulation table-----")
     # for i, row in table.items():
@@ -1581,9 +2549,9 @@ def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispec
         # print(intactbigenphe)
     
 
-    bikoinshapss, koinrows = calKSV4Input(intactbigenphe, inputnames, outputname, False, 'Shapley', table)
+    bikoinshapss, koinrows = calKSV4Input(intactbigenphe, inputnames, outputname, False, mode, table)
 
-    bikiinshapss, kiinrows = calKSV4Input(intactbigenphe, inputnames, outputname, True, 'Shapley', table)
+    bikiinshapss, kiinrows = calKSV4Input(intactbigenphe, inputnames, outputname, True, mode, table)
     print("-----Calculated value of input nodes-----")
     for out, item in dict(sorted(bikoinshapss.items())).items():
         # print(out, ":", item) 
@@ -1619,12 +2587,12 @@ def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispec
     averightinrows = 1.0
     if extranodes:
         desc = None
-        rowsofnodes = propagateCyclic(binet, table, index, aindex, \
+        rowsofnodes = propagateCyclic1(binet, table, index, aindex, \
                                     desc, outputname, biformulasdict, oriformulas, orispeciesnames, \
                                     extranodes, masterDiamonds, inputnames, \
                                     orderedBiNodes, simpercent=simpercent, debug=debug)
         print("IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR")
-        averightinrows = estimateErrorFromNodes(inrows, rowsofnodes, inputnames)
+        averightinrows = estimateErrorFromNodes(inrows, rowsofnodes, inputnames) 
 
     else:
         rowsofnodes = propagateAcyclic(binet, table, index, aindex, outputname, biformulasdict, masterDiamonds, inputnames, orderedBiNodes, debug=debug)

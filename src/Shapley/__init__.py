@@ -1,11 +1,11 @@
-from ._core import BooleanShapleyTest, BooleanShapleyAnalysis, testEachModel, percentageTest
+from ._core import BooleanShapleyTest, BooleanShapleyAnalysis, testEachModel, runBatchTest
 from .exceptions import ShapleyError, InvalidDataError, ComputationError, ConfigError
 
 __all__ = [
     "BooleanShapleyTest",
     "BooleanShapleyAnalysis",
     "testEachModel",
-    "percentageTest",
+    "runBatchTest",
     "ShapleyError",
     "InvalidDataError",
     "ComputationError",

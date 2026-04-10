@@ -1,0 +1,569 @@
+The expression file is data/realbenchmark/17.txt
+The interested output is: 
+GATA3
+List of all species:
+{'STAT4', 'IL4R', 'IL21', 'TGFb', 'STAT5', 'SOCS1', 'STAT6', 'IFNg', 'Tbet', 'IL12R', 'TGFbR', 'IL2', 'IL23R', 'GATA3', 'IL23', 'IL18R', 'Jak1', 'IL21R', 'Foxp3', 'NFAT', 'STAT3', 'IRAK', 'IL17', 'IL6_e', 'IL6', 'IL6R', 'IFNgR', 'IL12', 'IFNg_e', 'IL18', 'IL2R', 'TCR', 'IL4', 'RORgt', 'STAT1', 'IL27', 'IL4_e', 'NFkB'}
+-----Input names-----
+{'TCR', 'TGFb', 'IL6_e', 'IL23', 'IL12', 'IL27', 'IFNg_e', 'IL4_e', 'IL18'}
+----Intermediate nodes-----
+{'STAT4', 'IL4R', 'IL21', 'IRAK', 'IL17', 'STAT5', 'IL6', 'SOCS1', 'IL6R', 'STAT6', 'IFNg', 'IFNgR', 'Tbet', 'IL12R', 'IL2R', 'TGFbR', 'IL2', 'IL23R', 'GATA3', 'IL4', 'RORgt', 'IL18R', 'Jak1', 'STAT1', 'IL21R', 'Foxp3', 'NFAT', 'NFkB', 'STAT3'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['IFNg_e', 'IL12', 'IL18', 'IL23', 'IL27', 'IL4_e', 'IL6_e', 'TCR', 'TGFb']
+Sorted input names
+['IFNg_e', 'IL12', 'IL18', 'IL23', 'IL27', 'IL4_e', 'IL6_e', 'TCR', 'TGFb']
+There are 9 inputs with the range of input: 0 511
+Sorted internames:
+['Foxp3', 'GATA3', 'IFNg', 'IFNgR', 'IL12R', 'IL17', 'IL18R', 'IL2', 'IL21', 'IL21R', 'IL23R', 'IL2R', 'IL4', 'IL4R', 'IL6', 'IL6R', 'IRAK', 'Jak1', 'NFAT', 'NFkB', 'RORgt', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT5', 'STAT6', 'TGFbR', 'Tbet']
+There are 29 intermediate nodes with the range of inter: 0 536870911
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 2.366260051727295 seconds===
+----Input knockout shapley value-----
+('TCR', 0.131)
+('TGFb', -0.1071)
+('IL6_e', -0.0357)
+('IL23', 0.0)
+('IL12', -0.1071)
+('IL27', -0.1071)
+('IFNg_e', -0.0357)
+('IL4_e', 0.131)
+('IL18', 0.0)
+----Input knockIN shapley value-----
+('TCR', -0.2976)
+('TGFb', 0.131)
+('IL6_e', 0.0357)
+('IL23', 0.0)
+('IL12', 0.131)
+('IL27', 0.131)
+('IFNg_e', 0.0357)
+('IL4_e', -0.2976)
+('IL18', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout STAT4
+Knockout IL4R
+Knockout IL21
+Knockout IRAK
+Knockout IL17
+Knockout STAT5
+Knockout IL6
+Knockout SOCS1
+Knockout IL6R
+Knockout STAT6
+Knockout IFNg
+Knockout IFNgR
+Knockout Tbet
+Knockout IL12R
+Knockout IL2R
+Knockout TGFbR
+Knockout IL2
+Knockout IL23R
+Knockout IL4
+Knockout RORgt
+Knockout IL18R
+Knockout Jak1
+Knockout STAT1
+Knockout IL21R
+Knockout Foxp3
+Knockout NFAT
+Knockout NFkB
+Knockout STAT3
+----KNOCKOUT VALUE for output GATA3----
+{'Foxp3': 0.0, 'IFNg': 0.0357, 'IFNgR': -0.0357, 'IL12R': -0.2381, 'IL17': 0.0, 'IL18R': 0.0, 'IL2': 0.0, 'IL21': 0.0, 'IL21R': 0.0, 'IL23R': 0.0, 'IL2R': 0.0, 'IL4': 0.0, 'IL4R': 0.131, 'IL6': 0.0, 'IL6R': -0.0357, 'IRAK': 0.0, 'Jak1': -0.0357, 'NFAT': 0.131, 'NFkB': 0.0, 'RORgt': 0.0, 'SOCS1': 0.0198, 'STAT1': -0.2024, 'STAT3': -0.0357, 'STAT4': -0.2381, 'STAT5': 0.0, 'STAT6': 0.131, 'TGFbR': 0.0, 'Tbet': -0.869}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin STAT4
+Knockin IL4R
+Knockin IL21
+Knockin IRAK
+Knockin IL17
+Knockin STAT5
+Knockin IL6
+Knockin SOCS1
+Knockin IL6R
+Knockin STAT6
+Knockin IFNg
+Knockin IFNgR
+Knockin Tbet
+Knockin IL12R
+Knockin IL2R
+Knockin TGFbR
+Knockin IL2
+Knockin IL23R
+Knockin IL4
+Knockin RORgt
+Knockin IL18R
+Knockin Jak1
+Knockin STAT1
+Knockin IL21R
+Knockin Foxp3
+Knockin NFAT
+Knockin NFkB
+Knockin STAT3
+----KNOCKIN VALUE for output GATA3----
+{'Foxp3': 0.131, 'IFNg': 0.131, 'IFNgR': 0.0357, 'IL12R': 0.0, 'IL17': 0.0, 'IL18R': -0.4405, 'IL2': -0.4048, 'IL21': 0.0357, 'IL21R': 0.0357, 'IL23R': 0.0357, 'IL2R': -3.8333, 'IL4': -0.2976, 'IL4R': -0.3333, 'IL6': 0.0357, 'IL6R': 0.0357, 'IRAK': -0.4762, 'Jak1': 0.131, 'NFAT': -0.2976, 'NFkB': -0.369, 'RORgt': 0.131, 'SOCS1': 0.131, 'STAT1': 0.131, 'STAT3': 0.0357, 'STAT4': 0.131, 'STAT5': -3.9841, 'STAT6': -0.631, 'TGFbR': 0.0952, 'Tbet': 0.131}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 129.1568751335144 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac STAT3ANDIL6R, try IL6RANDSTAT3
+Input are {'TCR', 'TGFb', 'IL6_e', 'IL23', 'IL12', 'IL27', 'IFNg_e', 'IL4_e', 'IL18'}
+Ordinary nodes are 
+{'STAT4', 'IL4R', 'IL21', 'TGFb', 'STAT5', 'SOCS1', 'STAT6', 'IFNg', 'Tbet', 'IL12R', 'TGFbR', 'IL2', 'IL23R', 'GATA3', 'IL23', 'IL18R', 'Jak1', 'IL21R', 'Foxp3', 'NFAT', 'STAT3', 'IRAK', 'IL17', 'IL6_e', 'IL6', 'IL6R', 'IFNgR', 'IL12', 'IFNg_e', 'IL18', 'IL2R', 'TCR', 'IL4', 'RORgt', 'STAT1', 'IL27', 'IL4_e', 'NFkB'}
+Extranodes added after removing cycles are 
+['STAT4_to_Tbet', 'STAT6_to_GATA3', 'IFNg_to_STAT6', 'IFNg_to_Tbet', 'Tbet_to_Tbet', 'IL12R_to_STAT4', 'IL23R_to_STAT3', 'GATA3_to_GATA3', 'Jak1_to_STAT1', 'IL21R_to_STAT3', 'Foxp3_to_GATA3', 'Foxp3_to_Tbet', 'Foxp3_to_NFAT', 'IL17_to_IL17', 'IL6_to_IL6R', 'IL6R_to_STAT3', 'IL2R_to_STAT5', 'RORgt_to_GATA3', 'RORgt_to_Tbet']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['IFNg_e', 'IL12', 'IL18', 'IL23', 'IL27', 'IL4_e', 'IL6_e', 'TCR', 'TGFb']
+----Generate table from output----
+-----Calculated value of input nodes-----
+IFNg_e               			 KO:    -0.0357 | KI:     0.0357
+IL12                 			 KO:    -0.1071 | KI:      0.131
+IL18                 			 KO:        0.0 | KI:        0.0
+IL23                 			 KO:        0.0 | KI:        0.0
+IL27                 			 KO:    -0.1071 | KI:      0.131
+IL4_e                			 KO:      0.131 | KI:    -0.2976
+IL6_e                			 KO:    -0.0357 | KI:     0.0357
+TCR                  			 KO:      0.131 | KI:    -0.2976
+TGFb                 			 KO:    -0.1071 | KI:      0.131
+=======PROPAGATE FOR OUTPUT GATA3=======
+----Master diamonds-----
+{'_XTR_38_': 'GATA3', '_XTR_36_': 'GATA3', '_XTR_34_': 'GATA3', '_XTR_19_': 'GATA3', 'TGFb': 'GATA3', 'Tbet': 'GATA3', '_XTR_64_': 'GATA3', '_XTR_62_': 'GATA3', 'NFAT': 'GATA3', 'STAT1': 'GATA3', 'TCR': 'GATA3', 'IL12': 'GATA3'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+At TARGET node GATA3, count all rows
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node GATA3: processed 4 times
+Node RORgt: processed 13 times
+Node Foxp3: processed 11 times
+Node IL2R: processed 7 times
+Node STAT6: processed 3 times
+Node STAT4: processed 5 times
+Node Jak1: processed 6 times
+Node IFNg: processed 5 times
+Node Tbet: processed 1 times
+Node IL12R: processed 4 times
+Node IL6: processed 6 times
+Node IL23R: processed 4 times
+Node IL21R: processed 1 times
+Node IL6R: processed 3 times
+SIMULATE 0 nodes over 28 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.9714
+=========================
+PROPAGATED VALUES:
+Foxp3                			 KO:        0.0 | KI:        0.0
+GATA3                			 KO:     0.1307 | KI:    -9.8607
+IFNg                 			 KO:        0.0 | KI:        0.0
+IFNgR                			 KO:        0.0 | KI:        0.0
+IFNg_e               			 KO:    -0.0356 | KI:     0.0356
+IL12                 			 KO:    -0.1068 | KI:     0.1307
+IL12R                			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+IL18R                			 KO:        0.0 | KI:    -0.2976
+IL2                  			 KO:        0.0 | KI:    -0.2976
+IL21                 			 KO:        0.0 | KI:        0.0
+IL21R                			 KO:        0.0 | KI:        0.0
+IL23                 			 KO:        0.0 | KI:        0.0
+IL23R                			 KO:        0.0 | KI:        0.0
+IL27                 			 KO:    -0.1068 | KI:     0.1307
+IL2R                 			 KO:        0.0 | KI:    -3.6291
+IL4                  			 KO:        0.0 | KI:    -0.2976
+IL4R                 			 KO:        0.0 | KI:    -0.2976
+IL4_e                			 KO:     0.1307 | KI:    -0.2976
+IL6                  			 KO:        0.0 | KI:        0.0
+IL6R                 			 KO:        0.0 | KI:        0.0
+IL6_e                			 KO:    -0.0356 | KI:     0.0356
+IRAK                 			 KO:        0.0 | KI:    -0.2976
+Jak1                 			 KO:        0.0 | KI:        0.0
+NFAT                 			 KO:        0.0 | KI:    -0.4995
+NFkB                 			 KO:        0.0 | KI:    -0.2976
+RORgt                			 KO:        0.0 | KI:        0.0
+SOCS1                			 KO:        0.0 | KI:        0.0
+STAT1                			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+STAT4                			 KO:        0.0 | KI:     0.0951
+STAT5                			 KO:        0.0 | KI:    -3.6291
+STAT6                			 KO:        0.0 | KI:    -0.2976
+TCR                  			 KO:     0.1307 | KI:    -0.2976
+TGFb                 			 KO:    -0.1068 | KI:     0.1307
+TGFbR                			 KO:        0.0 | KI:        0.0
+Tbet                 			 KO:        0.0 | KI:     0.0951
+KO RANKING OF NODES:
+1	GATA3
+2	Tbet, RORgt, STAT5, Foxp3, NFAT, STAT1
+	IL2R, IL2, TGFbR, STAT6, IL21R, IL4R
+	STAT4, Jak1, IFNgR, NFkB, IL21, IL6R
+	STAT3, SOCS1, IFNg, IRAK, IL4, IL12R
+	IL18R, IL6, IL23R
+=======
+KI RANKING OF NODES:
+1	GATA3
+2	STAT5, IL2R
+3	NFAT
+4	IL2, TCR, STAT6, IL4R, NFkB, IL4_e
+	IRAK, IL4, IL18R
+5	TGFb, IL27, IL12
+6	Tbet, STAT4
+7	IL6_e, IFNg_e
+8	RORgt, Foxp3, STAT1, TGFbR, IL21R, Jak1
+	IFNgR, IL21, IL6R, STAT3, SOCS1, IFNg
+	IL12R, IL6, IL23R, IL18, IL23
+=======
+NUMBER OF NODES: 38
+NUMBER OF INPUTS: 9
+NUMBER OF EDGES: 96
+TIME process heading: 0.00917816162109375
+TIME simulate original network: 2.366260051727295
+TIME perform original analysis process: 129.1568751335144
+TIME perform propagation: 30.18281388282776
+There are 1 unreachable nodes, they are:
+{'IL17'}
+STAT4                - Correct: KO:    -0.2375 | KI :     0.1307 - Incorrect KO:        0.0 | KI:     0.0951
+IL4R                 - Correct: KO:     0.1149 | KI :    -0.3174 - Incorrect KO:        0.0 | KI:    -0.2976
+IL21                 - Correct: KO:        0.0 | KI :     0.0356 - Incorrect KO:        0.0 | KI:        0.0
+IRAK                 - Correct: KO:    -0.0198 | KI :    -0.4558 - Incorrect KO:        0.0 | KI:    -0.2976
+STAT5                - Correct: KO:        0.0 | KI :    -3.9815 - Incorrect KO:        0.0 | KI:    -3.6291
+IL6                  - Correct: KO:        0.0 | KI :     0.0356 - Incorrect KO:        0.0 | KI:        0.0
+SOCS1                - Correct: KO:     0.0198 | KI :     0.0951 - Incorrect KO:        0.0 | KI:        0.0
+IL6R                 - Correct: KO:    -0.0356 | KI :     0.0356 - Incorrect KO:        0.0 | KI:        0.0
+STAT6                - Correct: KO:     0.1307 | KI :    -0.6302 - Incorrect KO:        0.0 | KI:    -0.2976
+IFNg                 - Correct: KO:     0.0356 | KI :     0.0951 - Incorrect KO:        0.0 | KI:        0.0
+IFNgR                - Correct: KO:    -0.0356 | KI :     0.0356 - Incorrect KO:        0.0 | KI:        0.0
+Tbet                 - Correct: KO:    -0.8321 | KI :     0.0951 - Incorrect KO:        0.0 | KI:     0.0951
+IL12R                - Correct: KO:    -0.2375 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+IL2R                 - Correct: KO:        0.0 | KI :     -3.831 - Incorrect KO:        0.0 | KI:    -3.6291
+TGFbR                - Correct: KO:        0.0 | KI :     0.0951 - Incorrect KO:        0.0 | KI:        0.0
+IL2                  - Correct: KO:        0.0 | KI :    -0.4044 - Incorrect KO:        0.0 | KI:    -0.2976
+IL23R                - Correct: KO:        0.0 | KI :     0.0356 - Incorrect KO:        0.0 | KI:        0.0
+RORgt                - Correct: KO:        0.0 | KI :     0.1307 - Incorrect KO:        0.0 | KI:        0.0
+IL18R                - Correct: KO:    -0.0356 | KI :    -0.4044 - Incorrect KO:        0.0 | KI:    -0.2976
+Jak1                 - Correct: KO:     0.0356 | KI :     0.0595 - Incorrect KO:        0.0 | KI:        0.0
+STAT1                - Correct: KO:    -0.1307 | KI :     0.0595 - Incorrect KO:        0.0 | KI:        0.0
+IL21R                - Correct: KO:        0.0 | KI :     0.0356 - Incorrect KO:        0.0 | KI:        0.0
+Foxp3                - Correct: KO:        0.0 | KI :     0.1307 - Incorrect KO:        0.0 | KI:        0.0
+NFAT                 - Correct: KO:     0.1307 | KI :    -0.2976 - Incorrect KO:        0.0 | KI:    -0.4995
+NFkB                 - Correct: KO:        0.0 | KI :    -0.3688 - Incorrect KO:        0.0 | KI:    -0.2976
+STAT3                - Correct: KO:    -0.0356 | KI :     0.0356 - Incorrect KO:        0.0 | KI:        0.0
+Foxp3
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+IFNg
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+IFNgR
+Lack      8: [14, 46, 78, 110, 270, 302, 334, 366]
+Extra     0: []
+Real      8: [14, 46, 78, 110, 270, 302, 334, 366]
+Prop      0: []
+
+IFNg_e
+Lack      0: []
+Extra     0: []
+Real      8: [14, 46, 78, 110, 270, 302, 334, 366]
+Prop      8: [14, 46, 78, 110, 270, 302, 334, 366]
+
+IL12
+Lack      0: []
+Extra     0: []
+Real     24: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 202, 206, 234, 238, 266, 298, 330, 362, 394, 426, 458, 490]
+Prop     24: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 202, 206, 234, 238, 266, 298, 330, 362, 394, 426, 458, 490]
+
+IL12R
+Lack     24: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     24: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      0: []
+
+IL17
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18R
+Lack     16: [138, 142, 170, 174, 202, 206, 234, 238, 262, 270, 294, 302, 326, 334, 358, 366]
+Extra     0: []
+Real     28: [2, 6, 34, 38, 66, 70, 98, 102, 138, 142, 170, 174, 202, 206, 234, 238, 258, 262, 270, 290, 294, 302, 322, 326, 334, 354, 358, 366]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+IL2
+Lack     12: [26, 58, 90, 122, 142, 174, 206, 238, 282, 314, 346, 378]
+Extra     0: []
+Real     24: [2, 6, 26, 34, 38, 58, 66, 70, 90, 98, 102, 122, 142, 174, 206, 238, 258, 282, 290, 314, 322, 346, 354, 378]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+IL21
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL21R
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL23
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL23R
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL27
+Lack      0: []
+Extra     0: []
+Real     24: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 282, 298, 314, 330, 346, 362, 378]
+Prop     24: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 282, 298, 314, 330, 346, 362, 378]
+
+IL2R
+Lack     32: [130, 134, 138, 142, 146, 154, 162, 166, 170, 174, 178, 186, 202, 206, 210, 218, 234, 238, 242, 250, 266, 298, 330, 362, 390, 398, 422, 430, 454, 462, 486, 494]
+Extra     4: [258, 290, 322, 354]
+Real    168: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 152, 154, 156, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 184, 186, 188, 192, 196, 200, 202, 204, 206, 208, 210, 212, 216, 218, 220, 224, 228, 232, 234, 236, 238, 240, 242, 244, 248, 250, 252, 256, 260, 264, 266, 268, 272, 276, 280, 284, 288, 292, 296, 298, 300, 304, 308, 312, 316, 320, 324, 328, 330, 332, 336, 340, 344, 348, 352, 356, 360, 362, 364, 368, 372, 376, 380, 384, 388, 390, 392, 396, 398, 400, 404, 408, 412, 416, 420, 422, 424, 428, 430, 432, 436, 440, 444, 448, 452, 454, 456, 460, 462, 464, 468, 472, 476, 480, 484, 486, 488, 492, 494, 496, 500, 504, 508]
+Prop    140: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 184, 188, 192, 196, 200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248, 252, 256, 258, 260, 264, 268, 272, 276, 280, 284, 288, 290, 292, 296, 300, 304, 308, 312, 316, 320, 322, 324, 328, 332, 336, 340, 344, 348, 352, 354, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400, 404, 408, 412, 416, 420, 424, 428, 432, 436, 440, 444, 448, 452, 456, 460, 464, 468, 472, 476, 480, 484, 488, 492, 496, 500, 504, 508]
+
+IL4
+Lack      0: []
+Extra     0: []
+Real     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+IL4R
+Lack     16: [10, 14, 42, 46, 74, 78, 106, 110, 134, 142, 166, 174, 266, 298, 330, 362]
+Extra     0: []
+Real     28: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 134, 142, 166, 174, 258, 266, 290, 298, 322, 330, 354, 362]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+IL4_e
+Lack      0: []
+Extra     0: []
+Real     24: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 258, 266, 290, 298, 322, 330, 354, 362]
+Prop     24: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 258, 266, 290, 298, 322, 330, 354, 362]
+
+IL6
+Lack      4: [266, 298, 330, 362]
+Extra     0: []
+Real      4: [266, 298, 330, 362]
+Prop      0: []
+
+IL6R
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+IL6_e
+Lack      0: []
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      8: [266, 270, 298, 302, 330, 334, 362, 366]
+
+IRAK
+Lack     20: [26, 58, 90, 122, 142, 174, 206, 238, 262, 270, 282, 294, 302, 314, 326, 334, 346, 358, 366, 378]
+Extra     0: []
+Real     32: [2, 6, 26, 34, 38, 58, 66, 70, 90, 98, 102, 122, 142, 174, 206, 238, 258, 262, 270, 282, 290, 294, 302, 314, 322, 326, 334, 346, 354, 358, 366, 378]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+Jak1
+Lack     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+NFAT
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra    20: [136, 140, 168, 172, 200, 204, 232, 236, 268, 300, 332, 364, 392, 396, 424, 428, 456, 460, 488, 492]
+Real     24: [8, 10, 12, 14, 40, 42, 44, 46, 72, 74, 76, 78, 104, 106, 108, 110, 264, 266, 296, 298, 328, 330, 360, 362]
+Prop     32: [8, 12, 40, 44, 72, 76, 104, 108, 136, 140, 168, 172, 200, 204, 232, 236, 264, 268, 296, 300, 328, 332, 360, 364, 392, 396, 424, 428, 456, 460, 488, 492]
+
+NFkB
+Lack      8: [262, 270, 294, 302, 326, 334, 358, 366]
+Extra     0: []
+Real     20: [2, 6, 34, 38, 66, 70, 98, 102, 258, 262, 270, 290, 294, 302, 322, 326, 334, 354, 358, 366]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+RORgt
+Lack     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Extra     0: []
+Real     12: [10, 14, 42, 46, 74, 78, 106, 110, 266, 298, 330, 362]
+Prop      0: []
+
+SOCS1
+Lack     14: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362]
+Extra     0: []
+Real     14: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362]
+Prop      0: []
+
+STAT1
+Lack     32: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382]
+Extra     0: []
+Real     32: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382]
+Prop      0: []
+
+STAT3
+Lack      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Extra     0: []
+Real      8: [266, 270, 298, 302, 330, 334, 362, 366]
+Prop      0: []
+
+STAT4
+Lack     28: [138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     36: [10, 14, 42, 46, 74, 78, 106, 110, 138, 142, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 394, 398, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+STAT5
+Lack     46: [130, 134, 138, 142, 146, 154, 162, 166, 170, 174, 178, 186, 206, 210, 218, 238, 242, 250, 266, 298, 330, 362, 386, 390, 394, 398, 402, 410, 418, 422, 426, 430, 434, 442, 450, 454, 458, 462, 466, 474, 482, 486, 490, 494, 498, 506]
+Extra     4: [258, 290, 322, 354]
+Real    182: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 152, 154, 156, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 184, 186, 188, 192, 196, 200, 204, 206, 208, 210, 212, 216, 218, 220, 224, 228, 232, 236, 238, 240, 242, 244, 248, 250, 252, 256, 260, 264, 266, 268, 272, 276, 280, 284, 288, 292, 296, 298, 300, 304, 308, 312, 316, 320, 324, 328, 330, 332, 336, 340, 344, 348, 352, 356, 360, 362, 364, 368, 372, 376, 380, 384, 386, 388, 390, 392, 394, 396, 398, 400, 402, 404, 408, 410, 412, 416, 418, 420, 422, 424, 426, 428, 430, 432, 434, 436, 440, 442, 444, 448, 450, 452, 454, 456, 458, 460, 462, 464, 466, 468, 472, 474, 476, 480, 482, 484, 486, 488, 490, 492, 494, 496, 498, 500, 504, 506, 508]
+Prop    140: [0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 34, 36, 38, 40, 44, 48, 52, 56, 60, 64, 66, 68, 70, 72, 76, 80, 84, 88, 92, 96, 98, 100, 102, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144, 148, 152, 156, 160, 164, 168, 172, 176, 180, 184, 188, 192, 196, 200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248, 252, 256, 258, 260, 264, 268, 272, 276, 280, 284, 288, 290, 292, 296, 300, 304, 308, 312, 316, 320, 322, 324, 328, 332, 336, 340, 344, 348, 352, 354, 356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396, 400, 404, 408, 412, 416, 420, 424, 428, 432, 436, 440, 444, 448, 452, 456, 460, 464, 468, 472, 476, 480, 484, 488, 492, 496, 500, 504, 508]
+
+STAT6
+Lack     44: [10, 14, 42, 46, 74, 78, 106, 110, 130, 134, 138, 142, 162, 166, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 266, 298, 330, 362, 386, 390, 394, 398, 418, 422, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Extra     0: []
+Real     56: [2, 6, 10, 14, 34, 38, 42, 46, 66, 70, 74, 78, 98, 102, 106, 110, 130, 134, 138, 142, 162, 166, 170, 174, 194, 198, 202, 206, 226, 230, 234, 238, 258, 266, 290, 298, 322, 330, 354, 362, 386, 390, 394, 398, 418, 422, 426, 430, 450, 454, 458, 462, 482, 486, 490, 494]
+Prop     12: [2, 6, 34, 38, 66, 70, 98, 102, 258, 290, 322, 354]
+
+TCR
+Lack      0: []
+Extra     0: []
+Real     24: [8, 10, 12, 14, 40, 42, 44, 46, 72, 74, 76, 78, 104, 106, 108, 110, 264, 266, 296, 298, 328, 330, 360, 362]
+Prop     24: [8, 10, 12, 14, 40, 42, 44, 46, 72, 74, 76, 78, 104, 106, 108, 110, 264, 266, 296, 298, 328, 330, 360, 362]
+
+TGFb
+Lack      0: []
+Extra     0: []
+Real     24: [10, 11, 14, 15, 42, 43, 46, 47, 74, 75, 78, 79, 106, 107, 110, 111, 266, 267, 298, 299, 330, 331, 362, 363]
+Prop     24: [10, 11, 14, 15, 42, 43, 46, 47, 74, 75, 78, 79, 106, 107, 110, 111, 266, 267, 298, 299, 330, 331, 362, 363]
+
+TGFbR
+Lack     16: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362, 398, 430]
+Extra     0: []
+Real     16: [10, 14, 42, 46, 74, 78, 106, 110, 142, 174, 266, 298, 330, 362, 398, 430]
+Prop      0: []
+
+Tbet
+Lack     72: [26, 30, 58, 62, 90, 94, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Extra     0: []
+Real     80: [10, 14, 26, 30, 42, 46, 58, 62, 74, 78, 90, 94, 106, 110, 122, 126, 138, 142, 154, 158, 170, 174, 186, 190, 194, 198, 202, 206, 210, 214, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 266, 270, 282, 286, 298, 302, 314, 318, 330, 334, 346, 350, 362, 366, 378, 382, 394, 398, 410, 414, 426, 430, 442, 446, 450, 454, 458, 462, 466, 470, 474, 478, 482, 486, 490, 494, 498, 502, 506, 510]
+Prop      8: [10, 14, 42, 46, 74, 78, 106, 110]
+
+-----KO RANKING COMPARISON-----
+1	TCR, IL4_e
+2	TGFb, IL27, IL12
+3	IL6_e, IFNg_e
+4	Tbet, RORgt, STAT5, Foxp3, NFAT, STAT1
+	IL2R, IL2, TGFbR, STAT6, IL21R, IL4R
+	STAT4, Jak1, IFNgR, NFkB, IL21, IL6R
+	STAT3, SOCS1, IFNg, IRAK, IL4, IL12R
+	IL18R, IL6, IL23R, IL18, IL23, IL17
+REFERENCE:
+1	Tbet
+2	STAT4, IL12R
+3	TCR, IL4_e, STAT6
+4	STAT1
+5	NFAT
+6	IL4R
+7	TGFb, IL12, IL27
+8	IL6_e, IFNg_e, IL6R
+9	IFNg
+10	IFNgR, IL18R
+11	Jak1
+12	STAT3
+13	IRAK
+14	SOCS1
+15	IL23, IL18, IL21, IL17, STAT5, IL6
+	IL2R, TGFbR, IL2, IL23R, IL4, RORgt
+	IL21R, Foxp3, NFkB
+=======
+-----KI RANKING COMPARISON-----
+1	STAT5, IL2R
+2	NFAT
+3	IL2, TCR, STAT6, IL4R, NFkB, IL4_e
+	IRAK, IL4, IL18R
+4	TGFb, IL27, IL12
+5	Tbet, STAT4
+6	IL6_e, IFNg_e
+7	RORgt, Foxp3, STAT1, TGFbR, IL21R, Jak1
+	IFNgR, IL21, IL6R, STAT3, SOCS1, IFNg
+	IL12R, IL6, IL23R, IL18, IL23, IL17
+REFERENCE:
+1	STAT5
+2	IL2R
+3	STAT6
+4	IRAK
+5	IL2, IL18R
+6	NFkB
+7	IL4R
+8	TCR, IL4_e, IL4, NFAT
+9	TGFb, IL12, IL27, STAT4, RORgt, Foxp3
+10	SOCS1, IFNg, Tbet, TGFbR
+11	Jak1, STAT1
+12	IL6_e, IFNg_e, IL21, IL6, IL6R, IFNgR
+	IL23R, IL21R, STAT3
+13	IL23, IL18, IL17, IL12R
+============
+Relative_RMSE_KO_is  0.007702406740402287
+Relative_RMSE_KI_is  0.005502783877766362
+NDCG_KO_is  0.5536
+NDCG_KI_is  0.9851
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             37.000       37.000
+Kendall tau-b                         0.368        0.748
+Spearman rho                          0.350        0.872
+Mean abs rank diff                    2.892        4.054
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.324        1.000
+         Precision@10                0.324        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   0.541        0.595
+         Precision@20                0.541        0.595
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.000        0.500
+  Top-2  groups Jaccard            0.000        0.667
+  Top-3  groups Jaccard            0.154        0.250
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.973
+Average number of correct rows after binarization: 0.972972972972973 
+Average DNCG after binarization: 0.76935 
+-----------TOTAL RUNNING TIME---------------
+159.6288212090003

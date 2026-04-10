@@ -1,0 +1,351 @@
+The expression file is data/acyclicbenchmark/13.txt
+The interested output is: 
+IL4R
+List of all species:
+{'TCR', 'STAT1', 'IL4R', 'dummy2', 'dummy1', 'GATA3', 'IFNgR', 'IRAK', 'STAT6', 'IL12', 'IL12R', 'JAK1', 'IL10', 'IFNb', 'IFNbR', 'IFNg', 'SOCS1', 'STAT3', 'IL4', 'IL10R', 'IL18', 'IL18R', 'STAT4', 'NFAT', 'Tbet'}
+-----Input names-----
+{'TCR', 'IFNb', 'dummy2', 'dummy1', 'IL12', 'IL18'}
+----Intermediate nodes-----
+{'IFNg', 'IL4R', 'STAT1', 'SOCS1', 'STAT3', 'IL4', 'IL10R', 'IFNgR', 'IRAK', 'STAT6', 'IL12R', 'JAK1', 'IL10', 'IL18R', 'STAT4', 'Tbet', 'IFNbR', 'NFAT', 'GATA3'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['IFNb', 'IL12', 'IL18', 'TCR', 'dummy1', 'dummy2']
+Sorted input names
+['IFNb', 'IL12', 'IL18', 'TCR', 'dummy1', 'dummy2']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+There are 19 intermediate nodes with the range of inter: 0 524287
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.1597440242767334 seconds===
+----Input knockout shapley value-----
+('TCR', 0.0)
+('IFNb', 0.0)
+('dummy2', 0.0)
+('dummy1', 0.0)
+('IL12', 0.0)
+('IL18', 0.0)
+----Input knockIN shapley value-----
+('TCR', 0.0)
+('IFNb', 0.0)
+('dummy2', 0.0)
+('dummy1', 0.0)
+('IL12', 0.0)
+('IL18', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout IFNg
+Knockout STAT1
+Knockout SOCS1
+Knockout STAT3
+Knockout IL10R
+Knockout IFNgR
+Knockout IRAK
+Knockout STAT6
+Knockout IL12R
+Knockout JAK1
+Knockout IL10
+Knockout IL18R
+Knockout STAT4
+Knockout Tbet
+Knockout IFNbR
+Knockout NFAT
+Knockout GATA3
+----KNOCKOUT VALUE for output IL4R----
+{'GATA3': 0.0, 'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IRAK': 0.0, 'JAK1': 0.0, 'NFAT': 0.0, 'SOCS1': 0.0, 'STAT1': -2.3333, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': 0.0, 'Tbet': -0.5833}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin IFNg
+Knockin STAT1
+Knockin SOCS1
+Knockin STAT3
+Knockin IL10R
+Knockin IFNgR
+Knockin IRAK
+Knockin STAT6
+Knockin IL12R
+Knockin JAK1
+Knockin IL10
+Knockin IL18R
+Knockin STAT4
+Knockin Tbet
+Knockin IFNbR
+Knockin NFAT
+Knockin GATA3
+----KNOCKIN VALUE for output IL4R----
+{'GATA3': -1.75, 'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IRAK': 0.0, 'JAK1': 0.0, 'NFAT': 0.0, 'SOCS1': 0.0, 'STAT1': 0.0, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': -1.75, 'Tbet': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 5.109153985977173 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'TCR', 'IFNb', 'dummy2', 'dummy1', 'IL12', 'IL18'}
+Ordinary nodes are 
+{'TCR', 'STAT1', 'IL4R', 'dummy2', 'dummy1', 'GATA3', 'IFNgR', 'IRAK', 'STAT6', 'IL12', 'IL12R', 'JAK1', 'IL10', 'IFNb', 'IFNbR', 'IFNg', 'SOCS1', 'STAT3', 'IL4', 'IL10R', 'IL18', 'IL18R', 'STAT4', 'NFAT', 'Tbet'}
+Extranodes added after removing cycles are 
+[]
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['IFNb', 'IL12', 'IL18', 'TCR', 'dummy1', 'dummy2']
+----Generate table from output----
+-----Calculated value of input nodes-----
+IFNb                 			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+dummy1               			 KO:        0.0 | KI:        0.0
+dummy2               			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT IL4R=======
+----Master diamonds-----
+{'STAT1': 'IL4R', '_XTR_11_': 'GATA3', 'Tbet': 'IL4R', 'dummy1': 'IL4R', '_XTR_21_': 'IL4R', 'dummy2': 'IL4R'}
+
+
+--------PROPAGATION WITH ACYCLIC NETWORK--------
+{'IL4R': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, 'IL4': {0, 4, 8, 12, 16, 20, 24, 28}, '_XTR_5_': set(), 'GATA3': {0, 4, 8, 12, 16, 20, 24, 28}, '_XTR_26_': set(), 'SOCS1': set(), '_XTR_12_': {0, 4, 8, 12, 16, 20, 24, 28}, '_XTR_13_': {0, 4, 8, 12, 16, 20, 24, 28}, 'STAT1': {3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63}, 'Tbet': {2, 6, 10, 14, 18, 22, 26, 30}, '_XTR_11_': set(), 'STAT6': {0, 4, 8, 12, 16, 20, 24, 28}, 'IFNbR': set(), '_XTR_22_': set(), '_XTR_23_': {2, 6, 10, 14, 18, 22, 26, 30}, 'dummy1': set(), 'IFNb': set(), 'dummy2': set(), '_XTR_21_': {2, 6, 10, 14, 18, 22, 26, 30}, 'TCR': set(), 'IL12': set(), 'IL18': set()}
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+GATA3                			 KO:        0.0 | KI:    -1.7502
+IFNb                 			 KO:        0.0 | KI:        0.0
+IFNbR                			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+IL4                  			 KO:        0.0 | KI:    -1.7502
+IL4R                 			 KO:        0.0 | KI:    -7.0014
+SOCS1                			 KO:        0.0 | KI:        0.0
+STAT1                			 KO:    -2.3337 | KI:        0.0
+STAT6                			 KO:        0.0 | KI:    -1.7502
+TCR                  			 KO:        0.0 | KI:        0.0
+Tbet                 			 KO:    -0.5835 | KI:        0.0
+dummy1               			 KO:        0.0 | KI:        0.0
+dummy2               			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	STAT1
+2	Tbet
+3	IL4R, IL4, GATA3, SOCS1, STAT6, IFNbR
+=======
+KI RANKING OF NODES:
+1	IL4R
+2	IL4, GATA3, STAT6
+3	SOCS1, STAT1, Tbet, IFNbR, dummy1, IFNb
+	dummy2, TCR, IL12, IL18
+=======
+NUMBER OF NODES: 25
+NUMBER OF INPUTS: 6
+NUMBER OF EDGES: 34
+TIME process heading: 0.0016307830810546875
+TIME simulate original network: 0.1597440242767334
+TIME perform original analysis process: 5.109153985977173
+TIME perform propagation: 0.8538408279418945
+{'IL4R': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, 'IL4': {0, 4, 8, 12, 16, 20, 24, 28}, '_XTR_5_': set(), 'GATA3': {0, 4, 8, 12, 16, 20, 24, 28}, '_XTR_26_': set(), 'SOCS1': set(), '_XTR_12_': {0, 4, 8, 12, 16, 20, 24, 28}, '_XTR_13_': {0, 4, 8, 12, 16, 20, 24, 28}, 'STAT1': {3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63}, 'Tbet': {2, 6, 10, 14, 18, 22, 26, 30}, '_XTR_11_': set(), 'STAT6': {0, 4, 8, 12, 16, 20, 24, 28}, 'IFNbR': set(), '_XTR_22_': set(), '_XTR_23_': {2, 6, 10, 14, 18, 22, 26, 30}, 'dummy1': set(), 'IFNb': set(), 'dummy2': set(), '_XTR_21_': {2, 6, 10, 14, 18, 22, 26, 30}, 'TCR': set(), 'IL12': set(), 'IL18': set()}
+{'TCR': set(), 'IFNb': set(), 'dummy2': set(), 'dummy1': set(), 'IL12': set(), 'IL18': set(), 'IFNg': set(), 'STAT1': {3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63}, 'SOCS1': set(), 'STAT3': set(), 'IL10R': set(), 'IFNgR': set(), 'IRAK': set(), 'STAT6': {0, 4, 8, 12, 16, 20, 24, 28}, 'IL12R': set(), 'JAK1': set(), 'IL10': set(), 'IL18R': set(), 'STAT4': set(), 'Tbet': {2, 6, 10, 14, 18, 22, 26, 30}, 'IFNbR': set(), 'NFAT': set(), 'GATA3': {0, 4, 8, 12, 16, 20, 24, 28}}
+There are 11 unreachable nodes, they are:
+{'IFNg', 'STAT3', 'IL10R', 'IFNgR', 'IRAK', 'IL12R', 'JAK1', 'IL10', 'IL18R', 'STAT4', 'NFAT'}
+GATA3
+Lack      0: []
+Extra     0: []
+Real      8: [0, 4, 8, 12, 16, 20, 24, 28]
+Prop      8: [0, 4, 8, 12, 16, 20, 24, 28]
+
+IFNb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNbR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNg
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNgR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL10R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IRAK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JAK1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NFAT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SOCS1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT1
+Lack      0: []
+Extra     0: []
+Real     16: [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63]
+Prop     16: [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63]
+
+STAT3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT6
+Lack      0: []
+Extra     0: []
+Real      8: [0, 4, 8, 12, 16, 20, 24, 28]
+Prop      8: [0, 4, 8, 12, 16, 20, 24, 28]
+
+TCR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Tbet
+Lack      0: []
+Extra     0: []
+Real      8: [2, 6, 10, 14, 18, 22, 26, 30]
+Prop      8: [2, 6, 10, 14, 18, 22, 26, 30]
+
+dummy1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+dummy2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	STAT1
+2	Tbet
+3	GATA3, SOCS1, STAT6, IFNbR, dummy1, IFNb
+	dummy2, TCR, IL12, IL18, IFNg, STAT3
+	IL10R, IFNgR, IRAK, IL12R, JAK1, IL10
+	IL18R, STAT4, NFAT
+REFERENCE:
+1	STAT1
+2	Tbet
+3	TCR, IFNb, dummy2, dummy1, IL12, IL18
+	IFNg, SOCS1, STAT3, IL10R, IFNgR, IRAK
+	STAT6, IL12R, JAK1, IL10, IL18R, STAT4
+	IFNbR, NFAT, GATA3
+=======
+-----KI RANKING COMPARISON-----
+1	GATA3, STAT6
+2	SOCS1, STAT1, Tbet, IFNbR, dummy1, IFNb
+	dummy2, TCR, IL12, IL18, IFNg, STAT3
+	IL10R, IFNgR, IRAK, IL12R, JAK1, IL10
+	IL18R, STAT4, NFAT
+REFERENCE:
+1	STAT6, GATA3
+2	TCR, IFNb, dummy2, dummy1, IL12, IL18
+	IFNg, STAT1, SOCS1, STAT3, IL10R, IFNgR
+	IRAK, IL12R, JAK1, IL10, IL18R, STAT4
+	Tbet, IFNbR, NFAT
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             23.000       23.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  1.0
+Average number of correct rows after binarization: 1.0 
+Average DNCG after binarization: 1.0 
+-----------TOTAL RUNNING TIME---------------
+6.251553833018988

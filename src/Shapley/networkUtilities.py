@@ -97,9 +97,8 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
                     inputstate = sim1step(formulas, inputstate, debug)
                 returnstate, thisblink = merge2states(returnstate, inputstate)
                 blinking.update(thisblink)
-            # if toshow:
-            #     print("Converge at step {}".format(numstep)) 
-            #     print(returnstate)
+            # if True:
+            #     print("Attractor {} contains {} states ".format(returnstate, numstep-oldstate[hash])) 
             return returnstate, blinking
     # print(type(inputstate))
     print("Cannot converge after {} steps".format(maxStep))

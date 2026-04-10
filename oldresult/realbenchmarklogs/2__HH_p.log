@@ -1,0 +1,802 @@
+The expression file is data/realbenchmark/2.txt
+The interested output is: 
+HH_p
+List of all species:
+{'ptc', 'wg', 'CIA', 'SLP', 'ci', 'HH_p', 'WG_e', 'en', 'CI_p', 'hh_e', 'PTC_p', 'SMO', 'EN_p', 'CIR', 'PH', 'WG_p', 'hh'}
+-----Input names-----
+{'WG_e', 'hh_e', 'SLP'}
+----Intermediate nodes-----
+{'wg', 'ptc', 'CIA', 'ci', 'HH_p', 'en', 'CI_p', 'PTC_p', 'SMO', 'EN_p', 'CIR', 'PH', 'WG_p', 'hh'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+Sorted input names
+['SLP', 'WG_e', 'hh_e']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['CIA', 'CIR', 'CI_p', 'EN_p', 'HH_p', 'PH', 'PTC_p', 'SMO', 'WG_p', 'ci', 'en', 'hh', 'ptc', 'wg']
+There are 14 intermediate nodes with the range of inter: 0 16383
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.019916772842407227 seconds===
+----Input knockout shapley value-----
+('WG_e', 0.6667)
+('hh_e', 0.0)
+('SLP', -1.3333)
+----Input knockIN shapley value-----
+('WG_e', -1.3333)
+('hh_e', 0.0)
+('SLP', 0.6667)
+-------Now perform the knockout procedure to original network-------
+Knockout wg
+Knockout ptc
+Knockout CIA
+Knockout ci
+Knockout en
+Knockout CI_p
+Knockout PTC_p
+Knockout SMO
+Knockout EN_p
+Knockout CIR
+Knockout PH
+Knockout WG_p
+Knockout hh
+----KNOCKOUT VALUE for output HH_p----
+{'CIA': 0.0, 'CIR': 0.0, 'CI_p': 0.0, 'EN_p': 0.6667, 'PH': 0.0, 'PTC_p': 0.0, 'SMO': 0.0, 'WG_p': 0.0, 'ci': 0.0, 'en': 0.6667, 'hh': 0.6667, 'ptc': 0.0, 'wg': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin wg
+Knockin ptc
+Knockin CIA
+Knockin ci
+Knockin en
+Knockin CI_p
+Knockin PTC_p
+Knockin SMO
+Knockin EN_p
+Knockin CIR
+Knockin PH
+Knockin WG_p
+Knockin hh
+----KNOCKIN VALUE for output HH_p----
+{'CIA': 0.0, 'CIR': 0.6667, 'CI_p': 0.3333, 'EN_p': -3.3333, 'PH': 0.0, 'PTC_p': 0.0, 'SMO': 0.0, 'WG_p': 0.0, 'ci': 0.0, 'en': -3.3333, 'hh': -3.3333, 'ptc': 0.0, 'wg': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 0.4043242931365967 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'WG_e', 'hh_e', 'SLP'}
+Ordinary nodes are 
+{'ptc', 'wg', 'CIA', 'SLP', 'ci', 'HH_p', 'WG_e', 'en', 'CI_p', 'hh_e', 'PTC_p', 'SMO', 'EN_p', 'CIR', 'PH', 'WG_p', 'hh'}
+Extranodes added after removing cycles are 
+['wg_to_wg', 'PTC_p_to_CIA', 'PTC_p_to_CIR', 'PTC_p_to_PTC_p']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['SLP', 'WG_e', 'hh_e']
+----Generate table from output----
+-----Calculated value of input nodes-----
+SLP                  			 KO:    -1.3333 | KI:     0.6667
+WG_e                 			 KO:     0.6667 | KI:    -1.3333
+hh_e                 			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT HH_p=======
+----Master diamonds-----
+{'EN_p': 'hh', 'SLP': 'hh'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['HH_p']---
+At TARGET node HH_p, count all rows
+
+Counted row for current node HH_p is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+HH_p === hh
+			---------------
+
+
+---Processing layers of ['hh']---
+
+Counted row for current node hh is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+hh ==== EN_p AND _XTR_3_
+PROCESS DIAMONDS for EN_p
+PROCESS DIAMOND for node EN_p
+Process diamond from EN_p to hh
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node EN_p in diamond to hh
+Affected nodes between EN_p and hh are: {'ci', '_XTR_3_', '_XTR_23_', 'CI_p', 'CIR', 'hh'}
+Rows after simulate a step for diamond EN_p to hh are: 
+[0, 1, 2, 3, 4, 5, 6, 7]
+Rows after process diamond EN_p to hh are: 
+[0, 1, 2, 3, 4, 5, 6, 7]
+After operator AND, _XTR_3_ count only rows: 
+[2, 3]
+			---------------
+
+
+---Processing layers of ['EN_p', '_XTR_3_']---
+
+Counted row for current node EN_p is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+EN_p === en
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[2, 3]
+_XTR_3_ === NOT CIR
+			---------------
+
+
+---Processing layers of ['en', 'CIR']---
+
+Counted row for current node en is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+en ==== WG_e AND _XTR_16_
+After operator AND, WG_e count only rows: 
+[0, 1, 2, 3]
+After operator AND, _XTR_16_ count only rows: 
+[2, 3, 6, 7]
+			---------------
+
+Counted row for current node CIR is 
+[2, 3]
+CIR ==== _XTR_23_ AND _XTR_24_
+After operator AND, _XTR_23_ count only rows: 
+[2]
+After operator AND, _XTR_24_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['WG_e', '_XTR_16_', '_XTR_23_', '_XTR_24_']---
+
+Reach node WG_e without in-comming edges
+
+Counted row for current node _XTR_16_ is 
+[2, 3, 6, 7]
+_XTR_16_ === NOT SLP
+PROCESS DIAMONDS for SLP
+PROCESS DIAMOND for node SLP
+Process diamond from SLP to hh
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node SLP in diamond to hh
+Affected nodes between SLP and hh are: {'_XTR_16_', 'ci', 'en', '_XTR_3_', '_XTR_23_', 'CI_p', 'EN_p', 'CIR', 'hh'}
+Rows after simulate a step for diamond SLP to hh are: 
+[2, 3, 6, 7]
+Rows after process diamond SLP to hh are: 
+[2, 3, 6, 7]
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[2]
+_XTR_23_ ==== CI_p AND PTC_p_to_CIR
+Right node PTC_p_to_CIR is an extra node
+After operator AND, CI_p count only rows: 
+[]
+After operator AND, PTC_p_to_CIR count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ === NOT hh_e
+			---------------
+
+
+---Processing layers of ['SLP', 'CI_p', 'PTC_p_to_CIR', 'hh_e']---
+
+Reach node SLP without in-comming edges
+
+Counted row for current node CI_p is 
+[]
+CI_p === ci
+			---------------
+
+Counted row for current node PTC_p is 
+[]
+PTC_p ==== ptc OR _XTR_26_
+After operator OR, ptc count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Reach node hh_e without in-comming edges
+
+
+---Processing layers of ['ci', 'ptc', '_XTR_26_']---
+
+Counted row for current node ci is 
+[]
+ci === NOT EN_p
+PROCESS DIAMONDS for EN_p
+PROCESS DIAMOND for node EN_p
+Process diamond from EN_p to hh
+Diamond from EN_p to hh has been processed already, continue
+			---------------
+
+Counted row for current node ptc is 
+[]
+ptc ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[]
+After operator AND, _XTR_3_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== PTC_p_to_PTC_p AND _XTR_24_
+Left node PTC_p_to_PTC_p is an extra node
+After operator AND, PTC_p_to_PTC_p count only rows: 
+[]
+After operator AND, _XTR_24_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['EN_p', '_XTR_2_', '_XTR_3_', '_XTR_24_', 'PTC_p_to_PTC_p']---
+
+Counted row for current node EN_p is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+EN_p === en
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[]
+_XTR_2_ ==== CIA AND _XTR_1_
+After operator AND, CIA count only rows: 
+[]
+After operator AND, _XTR_1_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[2, 3]
+_XTR_3_ === NOT CIR
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ === NOT hh_e
+			---------------
+
+Counted row for current node PTC_p is 
+[]
+PTC_p ==== ptc OR _XTR_26_
+After operator OR, ptc count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['en', 'CIA', '_XTR_1_', 'CIR', 'hh_e', 'ptc', '_XTR_26_']---
+
+Counted row for current node en is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+en ==== WG_e AND _XTR_16_
+After operator AND, WG_e count only rows: 
+[0, 1, 2, 3]
+After operator AND, _XTR_16_ count only rows: 
+[2, 3, 6, 7]
+			---------------
+
+Counted row for current node CIA is 
+[]
+CIA ==== _XTR_12_ OR _XTR_14_
+After operator OR, _XTR_12_ count only rows: 
+[]
+After operator OR, _XTR_14_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[]
+_XTR_1_ === NOT EN_p
+PROCESS DIAMONDS for EN_p
+PROCESS DIAMOND for node EN_p
+Process diamond from EN_p to hh
+Diamond from EN_p to hh has been processed already, continue
+			---------------
+
+Counted row for current node CIR is 
+[2, 3]
+CIR ==== _XTR_23_ AND _XTR_24_
+After operator AND, _XTR_23_ count only rows: 
+[2]
+After operator AND, _XTR_24_ count only rows: 
+[]
+			---------------
+
+Reach node hh_e without in-comming edges
+
+Counted row for current node ptc is 
+[]
+ptc ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[]
+After operator AND, _XTR_3_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== PTC_p_to_PTC_p AND _XTR_24_
+Left node PTC_p_to_PTC_p is an extra node
+After operator AND, PTC_p_to_PTC_p count only rows: 
+[]
+After operator AND, _XTR_24_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['WG_e', '_XTR_16_', '_XTR_12_', '_XTR_14_', 'EN_p', '_XTR_23_', '_XTR_24_', '_XTR_2_', '_XTR_3_', 'PTC_p_to_PTC_p']---
+
+Reach node WG_e without in-comming edges
+
+Counted row for current node _XTR_16_ is 
+[2, 3, 6, 7]
+_XTR_16_ === NOT SLP
+PROCESS DIAMONDS for SLP
+PROCESS DIAMOND for node SLP
+Process diamond from SLP to hh
+Diamond from SLP to hh has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[]
+_XTR_12_ ==== hh_e AND CI_p
+After operator AND, hh_e count only rows: 
+[]
+After operator AND, CI_p count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_14_ is 
+[]
+_XTR_14_ ==== CI_p AND _XTR_13_
+After operator AND, CI_p count only rows: 
+[]
+After operator AND, _XTR_13_ count only rows: 
+[]
+			---------------
+
+Counted row for current node EN_p is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+EN_p === en
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[2]
+_XTR_23_ ==== CI_p AND PTC_p_to_CIR
+Right node PTC_p_to_CIR is an extra node
+After operator AND, CI_p count only rows: 
+[]
+After operator AND, PTC_p_to_CIR count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ === NOT hh_e
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[]
+_XTR_2_ ==== CIA AND _XTR_1_
+After operator AND, CIA count only rows: 
+[]
+After operator AND, _XTR_1_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[2, 3]
+_XTR_3_ === NOT CIR
+			---------------
+
+Counted row for current node PTC_p is 
+[]
+PTC_p ==== ptc OR _XTR_26_
+After operator OR, ptc count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['SLP', 'hh_e', 'CI_p', '_XTR_13_', 'en', 'PTC_p_to_CIR', 'CIA', '_XTR_1_', 'CIR', 'ptc', '_XTR_26_']---
+
+Reach node SLP without in-comming edges
+
+Reach node hh_e without in-comming edges
+
+Counted row for current node CI_p is 
+[]
+CI_p === ci
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[]
+_XTR_13_ === NOT PTC_p_to_CIA
+			---------------
+
+Counted row for current node en is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+en ==== WG_e AND _XTR_16_
+After operator AND, WG_e count only rows: 
+[0, 1, 2, 3]
+After operator AND, _XTR_16_ count only rows: 
+[2, 3, 6, 7]
+			---------------
+
+Counted row for current node PTC_p is 
+[]
+PTC_p ==== ptc OR _XTR_26_
+After operator OR, ptc count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node CIA is 
+[]
+CIA ==== _XTR_12_ OR _XTR_14_
+After operator OR, _XTR_12_ count only rows: 
+[]
+After operator OR, _XTR_14_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[]
+_XTR_1_ === NOT EN_p
+PROCESS DIAMONDS for EN_p
+PROCESS DIAMOND for node EN_p
+Process diamond from EN_p to hh
+Diamond from EN_p to hh has been processed already, continue
+			---------------
+
+Counted row for current node CIR is 
+[2, 3]
+CIR ==== _XTR_23_ AND _XTR_24_
+After operator AND, _XTR_23_ count only rows: 
+[2]
+After operator AND, _XTR_24_ count only rows: 
+[]
+			---------------
+
+Counted row for current node ptc is 
+[]
+ptc ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[]
+After operator AND, _XTR_3_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== PTC_p_to_PTC_p AND _XTR_24_
+Left node PTC_p_to_PTC_p is an extra node
+After operator AND, PTC_p_to_PTC_p count only rows: 
+[]
+After operator AND, _XTR_24_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['ci', 'PTC_p_to_CIA', 'WG_e', '_XTR_16_', 'ptc', '_XTR_26_', '_XTR_12_', '_XTR_14_', 'EN_p', '_XTR_23_', '_XTR_24_', '_XTR_2_', '_XTR_3_', 'PTC_p_to_PTC_p']---
+
+Counted row for current node ci is 
+[]
+ci === NOT EN_p
+PROCESS DIAMONDS for EN_p
+PROCESS DIAMOND for node EN_p
+Process diamond from EN_p to hh
+Diamond from EN_p to hh has been processed already, continue
+			---------------
+
+Counted row for current node PTC_p is 
+[]
+PTC_p ==== ptc OR _XTR_26_
+After operator OR, ptc count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Reach node WG_e without in-comming edges
+
+Counted row for current node _XTR_16_ is 
+[2, 3, 6, 7]
+_XTR_16_ === NOT SLP
+PROCESS DIAMONDS for SLP
+PROCESS DIAMOND for node SLP
+Process diamond from SLP to hh
+Diamond from SLP to hh has been processed already, continue
+			---------------
+
+Counted row for current node ptc is 
+[]
+ptc ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[]
+After operator AND, _XTR_3_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== PTC_p_to_PTC_p AND _XTR_24_
+Left node PTC_p_to_PTC_p is an extra node
+After operator AND, PTC_p_to_PTC_p count only rows: 
+[]
+After operator AND, _XTR_24_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[]
+_XTR_12_ ==== hh_e AND CI_p
+After operator AND, hh_e count only rows: 
+[]
+After operator AND, CI_p count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_14_ is 
+[]
+_XTR_14_ ==== CI_p AND _XTR_13_
+After operator AND, CI_p count only rows: 
+[]
+After operator AND, _XTR_13_ count only rows: 
+[]
+			---------------
+
+Counted row for current node EN_p is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+EN_p === en
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[2]
+_XTR_23_ ==== CI_p AND PTC_p_to_CIR
+Right node PTC_p_to_CIR is an extra node
+After operator AND, CI_p count only rows: 
+[]
+After operator AND, PTC_p_to_CIR count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ === NOT hh_e
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[]
+_XTR_2_ ==== CIA AND _XTR_1_
+After operator AND, CIA count only rows: 
+[]
+After operator AND, _XTR_1_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[2, 3]
+_XTR_3_ === NOT CIR
+			---------------
+
+Counted row for current node PTC_p is 
+[]
+PTC_p ==== ptc OR _XTR_26_
+After operator OR, ptc count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node PTC_p: processed 8 times
+SIMULATE 0 nodes over 13 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+CIA                  			 KO:        0.0 | KI:        0.0
+CIR                  			 KO:        0.0 | KI:     0.6666
+CI_p                 			 KO:        0.0 | KI:        0.0
+EN_p                 			 KO:     0.6666 | KI:    -3.3332
+HH_p                 			 KO:     0.6666 | KI:    -3.3332
+PTC_p                			 KO:        0.0 | KI:        0.0
+SLP                  			 KO:    -1.3333 | KI:     0.6666
+WG_e                 			 KO:     0.6666 | KI:    -1.3333
+ci                   			 KO:        0.0 | KI:        0.0
+en                   			 KO:     0.6666 | KI:    -3.3332
+hh                   			 KO:     0.6666 | KI:    -3.3332
+hh_e                 			 KO:        0.0 | KI:        0.0
+ptc                  			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	HH_p, hh, EN_p, en
+2	CIR, CI_p, ci, PTC_p, ptc, CIA
+=======
+KI RANKING OF NODES:
+1	HH_p, hh, EN_p, en
+2	WG_e
+3	CIR, SLP
+4	CI_p, hh_e, ci, PTC_p, ptc, CIA
+=======
+NUMBER OF NODES: 17
+NUMBER OF INPUTS: 3
+NUMBER OF EDGES: 29
+TIME process heading: 0.0009369850158691406
+TIME simulate original network: 0.019916772842407227
+TIME perform original analysis process: 0.4043242931365967
+TIME perform propagation: 0.07675623893737793
+There are 4 unreachable nodes, they are:
+{'wg', 'SMO', 'PH', 'WG_p'}
+CI_p                 - Correct: KO:        0.0 | KI :     0.3333 - Incorrect KO:        0.0 | KI:        0.0
+CIA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CIR
+Lack      0: []
+Extra     0: []
+Real      2: [2, 3]
+Prop      2: [2, 3]
+
+CI_p
+Lack      1: [2]
+Extra     0: []
+Real      1: [2]
+Prop      0: []
+
+EN_p
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+PH
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTC_p
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SLP
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+SMO
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+WG_e
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 2, 3]
+Prop      4: [0, 1, 2, 3]
+
+WG_p
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ci
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+en
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+hh
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+hh_e
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ptc
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+wg
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	SLP
+2	hh, EN_p, en, WG_e
+3	CIR, CI_p, hh_e, ci, PTC_p, ptc
+	CIA, wg, SMO, PH, WG_p
+REFERENCE:
+1	SLP
+2	WG_e, en, EN_p, hh
+3	hh_e, wg, ptc, CIA, ci, CI_p
+	PTC_p, SMO, CIR, PH, WG_p
+=======
+-----KI RANKING COMPARISON-----
+1	hh, EN_p, en
+2	WG_e
+3	CIR, SLP
+4	CI_p, hh_e, ci, PTC_p, ptc, CIA
+	wg, SMO, PH, WG_p
+REFERENCE:
+1	en, EN_p, hh
+2	WG_e
+3	SLP, CIR
+4	CI_p
+5	hh_e, wg, ptc, CIA, ci, PTC_p
+	SMO, PH, WG_p
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.010415625
+NDCG_KO_is  1.0
+NDCG_KI_is  0.9979
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             16.000       16.000
+Kendall tau-b                         1.000        0.942
+Spearman rho                          1.000        0.981
+Mean abs rank diff                    0.000        0.562
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9922
+Average number of correct rows after binarization: 0.9921875 
+Average DNCG after binarization: 0.99895 
+-----------TOTAL RUNNING TIME---------------
+0.731016792007722

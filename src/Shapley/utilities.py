@@ -502,8 +502,8 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
                 size += 1
         line['SIZE'] = size
         if mode == 'Uniform':
-            # line['PROP'] = round(1.0 / pow(2, len(inputnames)),4)
-            line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
+            line['PROP'] = round(1.0 / pow(2, len(inputnames)),4)
+            # line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
         else: # Shapley mode
             line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
         blinking = blinkings[id] # this is the set of nodes that blink in this row 
@@ -899,6 +899,7 @@ def rowstovalues(rowdict, simtable, outname):
         dict: A dictionary mapping node names to their KO values.
         dict: A dictionary mapping node names to their KI values.
     """
+    # print(rowdict)
     kovalues = dict()
     kivalues = dict()
     for node, rowids in rowdict.items():

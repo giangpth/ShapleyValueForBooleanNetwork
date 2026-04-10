@@ -1,0 +1,2734 @@
+The expression file is data/realbenchmark/12.txt
+The interested output is: 
+AKT
+List of all species:
+{'AKT', 'ERBB3', 'PDK1', 'PLCg', 'ERK1_2', 'ERBB1', 'PKCa', 'MEK1_2', 'erlotinib', 'p70S6K', 'EGF', 'HRG', 'pertuzumab', 'mTOR', 'ERBB2', 'trastuzumab'}
+-----Input names-----
+{'erlotinib', 'EGF', 'HRG', 'pertuzumab', 'trastuzumab'}
+----Intermediate nodes-----
+{'AKT', 'ERBB3', 'PDK1', 'PLCg', 'ERK1_2', 'ERBB1', 'PKCa', 'MEK1_2', 'p70S6K', 'mTOR', 'ERBB2'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+Sorted input names
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+There are 5 inputs with the range of input: 0 31
+Sorted internames:
+['AKT', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'MEK1_2', 'PDK1', 'PKCa', 'PLCg', 'mTOR', 'p70S6K']
+There are 11 intermediate nodes with the range of inter: 0 2047
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.021230220794677734 seconds===
+----Input knockout shapley value-----
+('erlotinib', -0.0016)
+('EGF', 0.0005)
+('HRG', 0.0005)
+('pertuzumab', -0.0016)
+('trastuzumab', 0.0)
+----Input knockIN shapley value-----
+('erlotinib', 0.0016)
+('EGF', -0.0005)
+('HRG', -0.0005)
+('pertuzumab', 0.0016)
+('trastuzumab', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout ERBB3
+Knockout PDK1
+Knockout PLCg
+Knockout ERK1_2
+Knockout ERBB1
+Knockout PKCa
+Knockout MEK1_2
+Knockout p70S6K
+Knockout mTOR
+Knockout ERBB2
+----KNOCKOUT VALUE for output AKT----
+{'ERBB1': 0.0005, 'ERBB2': 0.0, 'ERBB3': 0.0005, 'ERK1_2': 0.0, 'MEK1_2': 0.0, 'PDK1': 0.0005, 'PKCa': 0.0, 'PLCg': 0.0, 'mTOR': 0.0, 'p70S6K': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin ERBB3
+Knockin PDK1
+Knockin PLCg
+Knockin ERK1_2
+Knockin ERBB1
+Knockin PKCa
+Knockin MEK1_2
+Knockin p70S6K
+Knockin mTOR
+Knockin ERBB2
+----KNOCKIN VALUE for output AKT----
+{'ERBB1': -0.0068, 'ERBB2': -0.0068, 'ERBB3': -0.0068, 'ERK1_2': 0.0, 'MEK1_2': 0.0, 'PDK1': -0.0068, 'PKCa': 0.0, 'PLCg': -0.0005, 'mTOR': -0.0068, 'p70S6K': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 0.4901878833770752 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'erlotinib', 'EGF', 'HRG', 'pertuzumab', 'trastuzumab'}
+Ordinary nodes are 
+{'AKT', 'ERBB3', 'PDK1', 'PLCg', 'ERK1_2', 'ERBB1', 'PKCa', 'MEK1_2', 'erlotinib', 'p70S6K', 'EGF', 'HRG', 'pertuzumab', 'mTOR', 'ERBB2', 'trastuzumab'}
+Extranodes added after removing cycles are 
+['AKT_to_AKT', 'ERBB3_to_ERBB3', 'PDK1_to_PDK1', 'PLCg_to_PLCg', 'PLCg_to_ERBB1', 'ERK1_2_to_ERK1_2', 'ERBB1_to_ERBB1', 'PKCa_to_PKCa', 'MEK1_2_to_MEK1_2', 'p70S6K_to_p70S6K', 'mTOR_to_mTOR', 'mTOR_to_AKT', 'ERBB2_to_ERBB2']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+----Generate table from output----
+-----Calculated value of input nodes-----
+EGF                  			 KO:        0.3 | KI:       -1.2
+HRG                  			 KO:        0.3 | KI:       -1.2
+erlotinib            			 KO:       -0.7 | KI:        0.8
+pertuzumab           			 KO:       -0.7 | KI:        0.8
+trastuzumab          			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT AKT=======
+----Master diamonds-----
+{'_XTR_3_': 'AKT', 'ERBB3': 'AKT', '_XTR_1_': 'AKT'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['AKT']---
+At TARGET node AKT, count all rows
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] to decide rows for node ERBB3 in diamond to AKT
+Affected nodes between ERBB3 and AKT are: {'AKT', '_XTR_37_', 'PDK1', '_XTR_38_'}
+Rows after simulate a step for diamond ERBB3 to AKT are: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Rows after process diamond ERBB3 to AKT are: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['_XTR_38_', 'ERBB3']---
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['_XTR_37_', 'mTOR_to_AKT', '_XTR_4_', '_XTR_6_']---
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] to decide rows for node _XTR_3_ in diamond to AKT
+Affected nodes between _XTR_3_ and AKT are: {'_XTR_35_', '_XTR_37_', 'ERBB3', 'AKT', '_XTR_32_', 'PDK1', '_XTR_38_', 'ERBB1', '_XTR_10_', '_XTR_29_', '_XTR_6_', '_XTR_33_', '_XTR_30_', '_XTR_4_', '_XTR_31_', 'ERBB2', '_XTR_34_', '_XTR_9_'}
+Rows after simulate a step for diamond _XTR_3_ to AKT are: 
+[12, 13, 20, 21, 28, 29]
+Rows after process diamond _XTR_3_ to AKT are: 
+[12, 13, 20, 21, 28, 29]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+
+---Processing layers of ['PDK1', 'AKT_to_AKT', 'AKT', 'mTOR_to_mTOR', '_XTR_2_', '_XTR_3_', '_XTR_5_']---
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31] to decide rows for node _XTR_1_ in diamond to AKT
+Affected nodes between _XTR_1_ and AKT are: {'_XTR_35_', '_XTR_37_', 'ERBB3', 'AKT', '_XTR_9_', 'PDK1', '_XTR_38_', 'ERBB1', '_XTR_10_', '_XTR_6_', '_XTR_33_', '_XTR_30_', '_XTR_27_', '_XTR_4_', '_XTR_5_', 'ERBB2', '_XTR_32_', '_XTR_2_'}
+Rows after simulate a step for diamond _XTR_1_ to AKT are: 
+[10, 11, 18, 19, 26, 27]
+Rows after process diamond _XTR_1_ to AKT are: 
+[10, 11, 18, 19, 26, 27]
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_10_', 'ERBB3', '_XTR_38_', 'AKT', 'mTOR_to_mTOR', '_XTR_1_', 'erlotinib', 'HRG']---
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[10, 11, 18, 19, 26, 27]
+_XTR_1_ === NOT pertuzumab
+			---------------
+
+Reach node erlotinib without in-comming edges
+
+Reach node HRG without in-comming edges
+
+
+---Processing layers of ['_XTR_9_', 'PDK1_to_PDK1', '_XTR_4_', '_XTR_6_', '_XTR_37_', 'mTOR_to_AKT', '_XTR_38_', 'ERBB3', 'AKT', 'mTOR_to_mTOR', 'pertuzumab']---
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_9_ ==== ERBB1 OR ERBB2
+After operator OR, ERBB1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, ERBB2 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Reach node pertuzumab without in-comming edges
+
+
+---Processing layers of ['ERBB1', 'ERBB2', '_XTR_10_', 'ERBB3', '_XTR_2_', '_XTR_3_', '_XTR_5_', 'PDK1', 'AKT_to_AKT', 'AKT', 'mTOR_to_mTOR', '_XTR_37_', 'mTOR_to_AKT', '_XTR_4_', '_XTR_6_', '_XTR_38_', 'mTOR_to_mTOR']---
+
+Counted row for current node ERBB1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB1 ==== _XTR_33_ OR _XTR_35_
+After operator OR, _XTR_33_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['_XTR_33_', '_XTR_35_', '_XTR_27_', '_XTR_3_', '_XTR_9_', 'PDK1_to_PDK1', '_XTR_4_', '_XTR_6_', '_XTR_1_', 'ERBB3_to_ERBB3', 'erlotinib', 'HRG', '_XTR_10_', 'ERBB3', '_XTR_38_', 'AKT', 'mTOR_to_mTOR', 'PDK1', 'mTOR_to_mTOR', '_XTR_2_', '_XTR_5_', '_XTR_37_', 'mTOR_to_AKT', 'mTOR_to_mTOR']---
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_33_ ==== _XTR_30_ OR _XTR_32_
+After operator OR, _XTR_30_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_32_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_35_ ==== _XTR_34_ AND _XTR_1_
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_27_ ==== _XTR_26_ AND _XTR_1_
+After operator AND, _XTR_26_ count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_9_ ==== ERBB1 OR ERBB2
+After operator OR, ERBB1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, ERBB2 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[10, 11, 18, 19, 26, 27]
+_XTR_1_ === NOT pertuzumab
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1]
+			---------------
+
+Reach node erlotinib without in-comming edges
+
+Reach node HRG without in-comming edges
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['_XTR_30_', '_XTR_32_', '_XTR_34_', '_XTR_1_', '_XTR_26_', 'erlotinib', 'ERBB1', 'ERBB2', '_XTR_10_', 'ERBB3', '_XTR_2_', '_XTR_3_', '_XTR_5_', 'pertuzumab', '_XTR_4_', '_XTR_6_', '_XTR_9_', 'PDK1_to_PDK1', '_XTR_37_', 'mTOR_to_AKT', '_XTR_38_', 'AKT', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'HRG', 'PDK1', 'mTOR_to_mTOR', 'mTOR_to_mTOR']---
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_30_ ==== _XTR_29_ AND _XTR_1_
+After operator AND, _XTR_29_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_32_ ==== _XTR_31_ AND _XTR_1_
+After operator AND, _XTR_31_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_34_ ==== PLCg_to_ERBB1 AND _XTR_3_
+Left node PLCg_to_ERBB1 is an extra node
+After operator AND, PLCg_to_ERBB1 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[10, 11, 18, 19, 26, 27]
+_XTR_1_ === NOT pertuzumab
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[0, 1]
+_XTR_26_ ==== ERBB2_to_ERBB2 AND _XTR_25_
+Left node ERBB2_to_ERBB2 is an extra node
+After operator AND, ERBB2_to_ERBB2 count only rows: 
+[0]
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Reach node erlotinib without in-comming edges
+
+Counted row for current node ERBB1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB1 ==== _XTR_33_ OR _XTR_35_
+After operator OR, _XTR_33_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Reach node pertuzumab without in-comming edges
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_9_ ==== ERBB1 OR ERBB2
+After operator OR, ERBB1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, ERBB2 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Reach node HRG without in-comming edges
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['_XTR_29_', '_XTR_1_', '_XTR_31_', '_XTR_3_', 'PLCg_to_ERBB1', 'pertuzumab', '_XTR_25_', 'ERBB2_to_ERBB2', '_XTR_33_', '_XTR_35_', '_XTR_27_', '_XTR_9_', 'PDK1_to_PDK1', '_XTR_4_', '_XTR_6_', 'ERBB3_to_ERBB3', 'erlotinib', 'HRG', '_XTR_2_', '_XTR_5_', 'ERBB1', 'ERBB2', '_XTR_10_', 'ERBB3', 'PDK1', 'AKT_to_AKT', 'AKT', 'mTOR_to_mTOR', '_XTR_37_', 'mTOR_to_AKT', '_XTR_38_', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR']---
+
+Counted row for current node _XTR_29_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_29_ ==== ERBB1_to_ERBB1 AND _XTR_3_
+Left node ERBB1_to_ERBB1 is an extra node
+After operator AND, ERBB1_to_ERBB1 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[10, 11, 18, 19, 26, 27]
+_XTR_1_ === NOT pertuzumab
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_31_ ==== EGF AND _XTR_3_
+After operator AND, EGF count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Counted row for current node PLCg is 
+[0, 1]
+PLCg ==== _XTR_20_ OR ERBB2
+After operator OR, _XTR_20_ count only rows: 
+[0, 1]
+After operator OR, ERBB2 count only rows: 
+[0, 1]
+			---------------
+
+Reach node pertuzumab without in-comming edges
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ === NOT trastuzumab
+			---------------
+
+Counted row for current node ERBB2 is 
+[0]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_33_ ==== _XTR_30_ OR _XTR_32_
+After operator OR, _XTR_30_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_32_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_35_ ==== _XTR_34_ AND _XTR_1_
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_27_ ==== _XTR_26_ AND _XTR_1_
+After operator AND, _XTR_26_ count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_9_ ==== ERBB1 OR ERBB2
+After operator OR, ERBB1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, ERBB2 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1]
+			---------------
+
+Reach node erlotinib without in-comming edges
+
+Reach node HRG without in-comming edges
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node ERBB1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB1 ==== _XTR_33_ OR _XTR_35_
+After operator OR, _XTR_33_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['_XTR_3_', 'ERBB1_to_ERBB1', 'pertuzumab', 'EGF', 'erlotinib', '_XTR_20_', 'ERBB2', 'trastuzumab', '_XTR_27_', '_XTR_30_', '_XTR_32_', '_XTR_34_', '_XTR_1_', '_XTR_26_', 'ERBB1', '_XTR_10_', 'ERBB3', '_XTR_2_', '_XTR_5_', '_XTR_4_', '_XTR_6_', 'HRG', '_XTR_33_', '_XTR_35_', '_XTR_9_', 'PDK1_to_PDK1', '_XTR_38_', 'AKT', 'mTOR_to_mTOR', 'PDK1', 'mTOR_to_mTOR', '_XTR_37_', 'mTOR_to_AKT', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR']---
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Counted row for current node ERBB1 is 
+[0, 1]
+ERBB1 ==== _XTR_33_ OR _XTR_35_
+After operator OR, _XTR_33_ count only rows: 
+[0, 1]
+After operator OR, _XTR_35_ count only rows: 
+[0, 1]
+			---------------
+
+Reach node pertuzumab without in-comming edges
+
+Reach node EGF without in-comming edges
+
+Reach node erlotinib without in-comming edges
+
+Counted row for current node _XTR_20_ is 
+[0, 1]
+_XTR_20_ ==== _XTR_19_ OR ERBB3
+After operator OR, _XTR_19_ count only rows: 
+[0, 1]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node ERBB2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Reach node trastuzumab without in-comming edges
+
+Counted row for current node _XTR_27_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_27_ ==== _XTR_26_ AND _XTR_1_
+After operator AND, _XTR_26_ count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_30_ ==== _XTR_29_ AND _XTR_1_
+After operator AND, _XTR_29_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_32_ ==== _XTR_31_ AND _XTR_1_
+After operator AND, _XTR_31_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_34_ ==== PLCg_to_ERBB1 AND _XTR_3_
+Left node PLCg_to_ERBB1 is an extra node
+After operator AND, PLCg_to_ERBB1 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[10, 11, 18, 19, 26, 27]
+_XTR_1_ === NOT pertuzumab
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[0, 1]
+_XTR_26_ ==== ERBB2_to_ERBB2 AND _XTR_25_
+Left node ERBB2_to_ERBB2 is an extra node
+After operator AND, ERBB2_to_ERBB2 count only rows: 
+[0]
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Counted row for current node ERBB1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB1 ==== _XTR_33_ OR _XTR_35_
+After operator OR, _XTR_33_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Reach node HRG without in-comming edges
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_33_ ==== _XTR_30_ OR _XTR_32_
+After operator OR, _XTR_30_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_32_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_35_ ==== _XTR_34_ AND _XTR_1_
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_9_ ==== ERBB1 OR ERBB2
+After operator OR, ERBB1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, ERBB2 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['erlotinib', '_XTR_33_', '_XTR_35_', '_XTR_19_', 'ERBB3', '_XTR_27_', '_XTR_3_', '_XTR_26_', '_XTR_1_', '_XTR_29_', '_XTR_31_', 'PLCg_to_ERBB1', 'pertuzumab', '_XTR_25_', 'ERBB2_to_ERBB2', '_XTR_9_', 'PDK1_to_PDK1', '_XTR_4_', '_XTR_6_', 'HRG', '_XTR_2_', '_XTR_5_', '_XTR_30_', '_XTR_32_', '_XTR_34_', 'ERBB1', 'ERBB2', '_XTR_10_', '_XTR_37_', 'mTOR_to_AKT', '_XTR_38_', 'AKT', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'PDK1', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR']---
+
+Reach node erlotinib without in-comming edges
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_33_ ==== _XTR_30_ OR _XTR_32_
+After operator OR, _XTR_30_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_32_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_35_ ==== _XTR_34_ AND _XTR_1_
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_19_ is 
+[0, 1]
+_XTR_19_ ==== PLCg_to_PLCg OR ERBB1
+Left node PLCg_to_PLCg is an extra node
+After operator OR, PLCg_to_PLCg count only rows: 
+[0, 1]
+After operator OR, ERBB1 count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_27_ ==== _XTR_26_ AND _XTR_1_
+After operator AND, _XTR_26_ count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[0, 1]
+_XTR_26_ ==== ERBB2_to_ERBB2 AND _XTR_25_
+Left node ERBB2_to_ERBB2 is an extra node
+After operator AND, ERBB2_to_ERBB2 count only rows: 
+[0]
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[10, 11, 18, 19, 26, 27]
+_XTR_1_ === NOT pertuzumab
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_29_ ==== ERBB1_to_ERBB1 AND _XTR_3_
+Left node ERBB1_to_ERBB1 is an extra node
+After operator AND, ERBB1_to_ERBB1 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_31_ ==== EGF AND _XTR_3_
+After operator AND, EGF count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node PLCg is 
+[0, 1]
+PLCg ==== _XTR_20_ OR ERBB2
+After operator OR, _XTR_20_ count only rows: 
+[0, 1]
+After operator OR, ERBB2 count only rows: 
+[0, 1]
+			---------------
+
+Reach node pertuzumab without in-comming edges
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ === NOT trastuzumab
+			---------------
+
+Counted row for current node ERBB2 is 
+[0]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_9_ ==== ERBB1 OR ERBB2
+After operator OR, ERBB1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, ERBB2 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Reach node HRG without in-comming edges
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_30_ ==== _XTR_29_ AND _XTR_1_
+After operator AND, _XTR_29_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_32_ ==== _XTR_31_ AND _XTR_1_
+After operator AND, _XTR_31_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_34_ ==== PLCg_to_ERBB1 AND _XTR_3_
+Left node PLCg_to_ERBB1 is an extra node
+After operator AND, PLCg_to_ERBB1 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node ERBB1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB1 ==== _XTR_33_ OR _XTR_35_
+After operator OR, _XTR_33_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+
+---Processing layers of ['_XTR_30_', '_XTR_32_', '_XTR_34_', '_XTR_1_', 'ERBB1', 'PLCg_to_PLCg', '_XTR_4_', '_XTR_6_', '_XTR_26_', 'erlotinib', '_XTR_25_', 'ERBB2_to_ERBB2', 'pertuzumab', '_XTR_3_', 'EGF', '_XTR_20_', 'ERBB2', 'trastuzumab', '_XTR_27_', '_XTR_10_', 'ERBB3', '_XTR_2_', '_XTR_5_', 'HRG', '_XTR_29_', '_XTR_31_', 'PLCg_to_ERBB1', '_XTR_33_', '_XTR_35_', '_XTR_9_', 'PDK1_to_PDK1', 'PDK1', 'AKT_to_AKT', 'AKT', 'mTOR_to_mTOR', '_XTR_37_', 'mTOR_to_AKT', '_XTR_38_', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR', 'mTOR_to_mTOR']---
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_30_ ==== _XTR_29_ AND _XTR_1_
+After operator AND, _XTR_29_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_32_ ==== _XTR_31_ AND _XTR_1_
+After operator AND, _XTR_31_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_34_ ==== PLCg_to_ERBB1 AND _XTR_3_
+Left node PLCg_to_ERBB1 is an extra node
+After operator AND, PLCg_to_ERBB1 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[10, 11, 18, 19, 26, 27]
+_XTR_1_ === NOT pertuzumab
+			---------------
+
+Counted row for current node ERBB1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB1 ==== _XTR_33_ OR _XTR_35_
+After operator OR, _XTR_33_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PLCg is 
+[0, 1]
+PLCg ==== _XTR_20_ OR ERBB2
+After operator OR, _XTR_20_ count only rows: 
+[0, 1]
+After operator OR, ERBB2 count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_4_ ==== _XTR_2_ AND _XTR_3_
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_6_ ==== _XTR_5_ AND _XTR_3_
+After operator AND, _XTR_5_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[0, 1]
+_XTR_26_ ==== ERBB2_to_ERBB2 AND _XTR_25_
+Left node ERBB2_to_ERBB2 is an extra node
+After operator AND, ERBB2_to_ERBB2 count only rows: 
+[0]
+After operator AND, _XTR_25_ count only rows: 
+[]
+			---------------
+
+Reach node erlotinib without in-comming edges
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ === NOT trastuzumab
+			---------------
+
+Counted row for current node ERBB2 is 
+[0]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Reach node pertuzumab without in-comming edges
+
+Counted row for current node _XTR_3_ is 
+[12, 13, 20, 21, 28, 29]
+_XTR_3_ === NOT erlotinib
+			---------------
+
+Reach node EGF without in-comming edges
+
+Counted row for current node _XTR_20_ is 
+[0, 1]
+_XTR_20_ ==== _XTR_19_ OR ERBB3
+After operator OR, _XTR_19_ count only rows: 
+[0, 1]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node ERBB2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB2 ==== _XTR_27_ AND _XTR_3_
+After operator AND, _XTR_27_ count only rows: 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Reach node trastuzumab without in-comming edges
+
+Counted row for current node _XTR_27_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_27_ ==== _XTR_26_ AND _XTR_1_
+After operator AND, _XTR_26_ count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_10_ ==== _XTR_9_ OR PDK1_to_PDK1
+Right node PDK1_to_PDK1 is an extra node
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, PDK1_to_PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node ERBB3 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+ERBB3 ==== _XTR_4_ OR _XTR_6_
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_6_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_2_ ==== ERBB3_to_ERBB3 AND _XTR_1_
+Left node ERBB3_to_ERBB3 is an extra node
+After operator AND, ERBB3_to_ERBB3 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[0, 1, 2, 3, 10, 11, 18, 19, 26, 27]
+_XTR_5_ ==== HRG AND _XTR_1_
+After operator AND, HRG count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Reach node HRG without in-comming edges
+
+Counted row for current node _XTR_29_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_29_ ==== ERBB1_to_ERBB1 AND _XTR_3_
+Left node ERBB1_to_ERBB1 is an extra node
+After operator AND, ERBB1_to_ERBB1 count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+_XTR_31_ ==== EGF AND _XTR_3_
+After operator AND, EGF count only rows: 
+[0, 1]
+PROCESS DIAMONDS for _XTR_3_
+PROCESS DIAMOND for node _XTR_3_
+Process diamond from _XTR_3_ to AKT
+Diamond from _XTR_3_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node PLCg is 
+[0, 1]
+PLCg ==== _XTR_20_ OR ERBB2
+After operator OR, _XTR_20_ count only rows: 
+[0, 1]
+After operator OR, ERBB2 count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_33_ ==== _XTR_30_ OR _XTR_32_
+After operator OR, _XTR_30_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, _XTR_32_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_35_ ==== _XTR_34_ AND _XTR_1_
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to AKT
+Diamond from _XTR_1_ to AKT has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_9_ ==== ERBB1 OR ERBB2
+After operator OR, ERBB1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, ERBB2 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node PDK1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PDK1 ==== _XTR_10_ OR ERBB3
+After operator OR, _XTR_10_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node AKT is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+AKT ==== _XTR_38_ OR ERBB3
+After operator OR, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+PROCESS DIAMONDS for ERBB3
+PROCESS DIAMOND for node ERBB3
+Process diamond from ERBB3 to AKT
+Diamond from ERBB3 to AKT has been processed already, continue
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_37_ ==== PDK1 OR AKT_to_AKT
+Right node AKT_to_AKT is an extra node
+After operator OR, PDK1 count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+_XTR_38_ ==== _XTR_37_ OR mTOR_to_AKT
+Right node mTOR_to_AKT is an extra node
+After operator OR, _XTR_37_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, mTOR_to_AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+
+Counted row for current node mTOR is 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+mTOR ==== mTOR_to_mTOR OR AKT
+Left node mTOR_to_mTOR is an extra node
+After operator OR, mTOR_to_mTOR count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+After operator OR, AKT count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node mTOR: processed 57 times
+Node AKT: processed 4 times
+Node PDK1: processed 8 times
+Node ERBB3: processed 2 times
+Node PLCg: processed 5 times
+Node ERBB2: processed 3 times
+Node ERBB1: processed 2 times
+SIMULATE 0 nodes over 10 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.9
+=========================
+PROPAGATED VALUES:
+AKT                  			 KO:     0.1872 | KI:    -0.8112
+EGF                  			 KO:     0.0624 | KI:    -0.0624
+ERBB1                			 KO:        0.0 | KI:    -0.8112
+ERBB2                			 KO:        0.0 | KI:    -0.8112
+ERBB3                			 KO:        0.0 | KI:    -0.8112
+HRG                  			 KO:     0.0624 | KI:    -0.0624
+PDK1                 			 KO:        0.0 | KI:    -0.8112
+PLCg                 			 KO:        0.0 | KI:    -0.0624
+erlotinib            			 KO:    -0.1872 | KI:     0.1872
+mTOR                 			 KO:        0.0 | KI:    -0.8112
+pertuzumab           			 KO:    -0.1872 | KI:     0.1872
+trastuzumab          			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	AKT
+2	ERBB3, PDK1, mTOR, ERBB1, ERBB2, PLCg
+=======
+KI RANKING OF NODES:
+1	AKT, ERBB3, PDK1, mTOR, ERBB1, ERBB2
+2	erlotinib, pertuzumab
+3	HRG, EGF, PLCg
+4	trastuzumab
+=======
+NUMBER OF NODES: 16
+NUMBER OF INPUTS: 5
+NUMBER OF EDGES: 41
+TIME process heading: 0.0010712146759033203
+TIME simulate original network: 0.021230220794677734
+TIME perform original analysis process: 0.4901878833770752
+TIME perform propagation: 0.2799491882324219
+There are 4 unreachable nodes, they are:
+{'ERK1_2', 'PKCa', 'MEK1_2', 'p70S6K'}
+ERBB3                - Correct: KO:     0.0624 | KI :    -0.8112 - Incorrect KO:        0.0 | KI:    -0.8112
+PDK1                 - Correct: KO:     0.0624 | KI :    -0.8112 - Incorrect KO:        0.0 | KI:    -0.8112
+ERBB1                - Correct: KO:     0.0624 | KI :    -0.8112 - Incorrect KO:        0.0 | KI:    -0.8112
+EGF
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 16, 17]
+Prop      4: [0, 1, 16, 17]
+
+ERBB1
+Lack      2: [16, 17]
+Extra     0: []
+Real     28: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+ERBB2
+Lack      0: []
+Extra     0: []
+Real     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+ERBB3
+Lack      2: [8, 9]
+Extra     0: []
+Real     28: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+ERK1_2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+HRG
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 8, 9]
+Prop      4: [0, 1, 8, 9]
+
+MEK1_2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PDK1
+Lack      2: [16, 17]
+Extra     0: []
+Real     28: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+PKCa
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLCg
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+erlotinib
+Lack      0: []
+Extra     0: []
+Real     12: [8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+Prop     12: [8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+
+mTOR
+Lack      0: []
+Extra     0: []
+Real     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+Prop     26: [0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30, 31]
+
+p70S6K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pertuzumab
+Lack      0: []
+Extra     0: []
+Real     12: [8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27]
+Prop     12: [8, 9, 10, 11, 16, 17, 18, 19, 24, 25, 26, 27]
+
+trastuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	erlotinib, pertuzumab
+2	HRG, EGF
+3	ERBB3, PDK1, mTOR, ERBB1, ERBB2, PLCg
+	trastuzumab, ERK1_2, PKCa, MEK1_2, p70S6K
+REFERENCE:
+1	erlotinib, pertuzumab
+2	EGF, HRG, ERBB3, PDK1, ERBB1
+3	trastuzumab, PLCg, ERK1_2, PKCa, MEK1_2, p70S6K
+	mTOR, ERBB2
+=======
+-----KI RANKING COMPARISON-----
+1	ERBB3, PDK1, mTOR, ERBB1, ERBB2
+2	erlotinib, pertuzumab
+3	HRG, EGF, PLCg
+4	trastuzumab, ERK1_2, PKCa, MEK1_2, p70S6K
+REFERENCE:
+1	ERBB3, PDK1, ERBB1, mTOR, ERBB2
+2	erlotinib, pertuzumab
+3	EGF, HRG, PLCg
+4	trastuzumab, ERK1_2, PKCa, MEK1_2, p70S6K
+============
+Relative_RMSE_KO_is  0.002325510696599781
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  0.9744
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             15.000       15.000
+Kendall tau-b                         0.746        1.000
+Spearman rho                          0.842        1.000
+Mean abs rank diff                    0.200        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            0.571        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9875
+Average number of correct rows after binarization: 0.9875 
+Average DNCG after binarization: 0.9872000000000001 
+-----------TOTAL RUNNING TIME---------------
+1.0461220829965896

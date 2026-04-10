@@ -1,0 +1,1204 @@
+The expression file is data/realbenchmark/14.txt
+The interested output is: 
+Nfkb
+List of all species:
+{'TCRbind', 'Fos', 'CRE', 'SEK', 'TCRlig', 'SLP76', 'PLCg_act', 'PAGCsk', 'Raf', 'IP3', 'Rlk', 'ERK', 'Itk', 'cCbl', 'Ca', 'Lck', 'LAT', 'Rsk', 'RasGRP1', 'TCRphos', 'AP1', 'MEK', 'Jun', 'ZAP70', 'DAG', 'JNK', 'IKKbeta', 'Fyn', 'NFAT', 'CREB', 'Nfkb', 'IkB', 'Calcin', 'CD45', 'CD8', 'Gads', 'PKCth', 'Grb2Sos', 'PLCg_bind', 'Ras'}
+-----Input names-----
+{'CD45', 'TCRlig', 'CD8'}
+----Intermediate nodes-----
+{'TCRbind', 'Fos', 'CRE', 'SEK', 'SLP76', 'PLCg_act', 'PAGCsk', 'Raf', 'IP3', 'Rlk', 'ERK', 'Itk', 'cCbl', 'Ca', 'Lck', 'LAT', 'Rsk', 'RasGRP1', 'TCRphos', 'AP1', 'MEK', 'Jun', 'ZAP70', 'DAG', 'JNK', 'IKKbeta', 'Fyn', 'NFAT', 'CREB', 'Nfkb', 'IkB', 'Calcin', 'Gads', 'PKCth', 'Grb2Sos', 'PLCg_bind', 'Ras'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['CD45', 'CD8', 'TCRlig']
+Sorted input names
+['CD45', 'CD8', 'TCRlig']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['AP1', 'CRE', 'CREB', 'Ca', 'Calcin', 'DAG', 'ERK', 'Fos', 'Fyn', 'Gads', 'Grb2Sos', 'IKKbeta', 'IP3', 'IkB', 'Itk', 'JNK', 'Jun', 'LAT', 'Lck', 'MEK', 'NFAT', 'Nfkb', 'PAGCsk', 'PKCth', 'PLCg_act', 'PLCg_bind', 'Raf', 'Ras', 'RasGRP1', 'Rlk', 'Rsk', 'SEK', 'SLP76', 'TCRbind', 'TCRphos', 'ZAP70', 'cCbl']
+There are 37 intermediate nodes with the range of inter: 0 137438953471
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.04219508171081543 seconds===
+----Input knockout shapley value-----
+('CD45', 0.0)
+('TCRlig', 0.0)
+('CD8', 0.0)
+----Input knockIN shapley value-----
+('CD45', 0.0)
+('TCRlig', 0.0)
+('CD8', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout TCRbind
+Knockout Fos
+Knockout CRE
+Knockout SEK
+Knockout SLP76
+Knockout PLCg_act
+Knockout PAGCsk
+Knockout Raf
+Knockout IP3
+Knockout Rlk
+Knockout ERK
+Knockout Itk
+Knockout cCbl
+Knockout Ca
+Knockout Lck
+Knockout LAT
+Knockout Rsk
+Knockout RasGRP1
+Knockout TCRphos
+Knockout AP1
+Knockout MEK
+Knockout Jun
+Knockout ZAP70
+Knockout DAG
+Knockout JNK
+Knockout IKKbeta
+Knockout Fyn
+Knockout NFAT
+Knockout CREB
+Knockout IkB
+Knockout Calcin
+Knockout Gads
+Knockout PKCth
+Knockout Grb2Sos
+Knockout PLCg_bind
+Knockout Ras
+----KNOCKOUT VALUE for output Nfkb----
+{'AP1': 0.0, 'CRE': 0.0, 'CREB': 0.0, 'Ca': 0.0, 'Calcin': 0.0, 'DAG': 0.0, 'ERK': 0.0, 'Fos': 0.0, 'Fyn': 0.0, 'Gads': 0.0, 'Grb2Sos': 0.0, 'IKKbeta': 0.0, 'IP3': 0.0, 'IkB': -0.1667, 'Itk': 0.0, 'JNK': 0.0, 'Jun': 0.0, 'LAT': 0.0, 'Lck': 0.0, 'MEK': 0.0, 'NFAT': 0.0, 'PAGCsk': 0.0, 'PKCth': 0.0, 'PLCg_act': 0.0, 'PLCg_bind': 0.0, 'Raf': 0.0, 'Ras': 0.0, 'RasGRP1': 0.0, 'Rlk': 0.0, 'Rsk': 0.0, 'SEK': 0.0, 'SLP76': 0.0, 'TCRbind': 0.0, 'TCRphos': 0.0, 'ZAP70': 0.0, 'cCbl': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin TCRbind
+Knockin Fos
+Knockin CRE
+Knockin SEK
+Knockin SLP76
+Knockin PLCg_act
+Knockin PAGCsk
+Knockin Raf
+Knockin IP3
+Knockin Rlk
+Knockin ERK
+Knockin Itk
+Knockin cCbl
+Knockin Ca
+Knockin Lck
+Knockin LAT
+Knockin Rsk
+Knockin RasGRP1
+Knockin TCRphos
+Knockin AP1
+Knockin MEK
+Knockin Jun
+Knockin ZAP70
+Knockin DAG
+Knockin JNK
+Knockin IKKbeta
+Knockin Fyn
+Knockin NFAT
+Knockin CREB
+Knockin IkB
+Knockin Calcin
+Knockin Gads
+Knockin PKCth
+Knockin Grb2Sos
+Knockin PLCg_bind
+Knockin Ras
+----KNOCKIN VALUE for output Nfkb----
+{'AP1': 0.0, 'CRE': 0.0, 'CREB': 0.0, 'Ca': 0.0, 'Calcin': 0.0, 'DAG': -0.1667, 'ERK': 0.0, 'Fos': 0.0, 'Fyn': 0.0, 'Gads': 0.0, 'Grb2Sos': 0.0, 'IKKbeta': -0.1667, 'IP3': 0.0, 'IkB': 0.0, 'Itk': 0.0, 'JNK': 0.0, 'Jun': 0.0, 'LAT': -0.0417, 'Lck': 0.0, 'MEK': 0.0, 'NFAT': 0.0, 'PAGCsk': 0.0, 'PKCth': -0.1667, 'PLCg_act': -0.1667, 'PLCg_bind': 0.0, 'Raf': 0.0, 'Ras': 0.0, 'RasGRP1': 0.0, 'Rlk': 0.0, 'Rsk': 0.0, 'SEK': 0.0, 'SLP76': 0.0, 'TCRbind': 0.0, 'TCRphos': 0.0, 'ZAP70': -0.1667, 'cCbl': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 3.0521111488342285 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'CD45', 'TCRlig', 'CD8'}
+Ordinary nodes are 
+{'TCRbind', 'Fos', 'CRE', 'SEK', 'TCRlig', 'SLP76', 'PLCg_act', 'PAGCsk', 'Raf', 'IP3', 'Rlk', 'ERK', 'Itk', 'cCbl', 'Ca', 'Lck', 'LAT', 'Rsk', 'RasGRP1', 'TCRphos', 'AP1', 'MEK', 'Jun', 'ZAP70', 'DAG', 'JNK', 'IKKbeta', 'Fyn', 'NFAT', 'CREB', 'Nfkb', 'IkB', 'Calcin', 'CD45', 'CD8', 'Gads', 'PKCth', 'Grb2Sos', 'PLCg_bind', 'Ras'}
+Extranodes added after removing cycles are 
+['ZAP70_to_cCbl', 'Fyn_to_PAGCsk']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['CD45', 'CD8', 'TCRlig']
+----Generate table from output----
+-----Calculated value of input nodes-----
+CD45                 			 KO:        0.0 | KI:        0.0
+CD8                  			 KO:        0.0 | KI:        0.0
+TCRlig               			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT Nfkb=======
+----Master diamonds-----
+{'ZAP70': 'PLCg_act', 'SLP76': 'PLCg_act', '_XTR_15_': 'PLCg_act', 'PLCg_bind': 'PLCg_act', 'Lck': 'PLCg_act', 'LAT': 'PLCg_act', 'CD45': 'PLCg_act'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['Nfkb']---
+At TARGET node Nfkb, count all rows
+
+Counted row for current node Nfkb is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+Nfkb === NOT IkB
+			---------------
+
+
+---Processing layers of ['IkB']---
+
+Counted row for current node IkB is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+IkB === NOT IKKbeta
+			---------------
+
+
+---Processing layers of ['IKKbeta']---
+
+Counted row for current node IKKbeta is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+IKKbeta === PKCth
+			---------------
+
+
+---Processing layers of ['PKCth']---
+
+Counted row for current node PKCth is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+PKCth === DAG
+			---------------
+
+
+---Processing layers of ['DAG']---
+
+Counted row for current node DAG is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+DAG === PLCg_act
+			---------------
+
+
+---Processing layers of ['PLCg_act']---
+
+Counted row for current node PLCg_act is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+PLCg_act ==== _XTR_9_ OR _XTR_12_
+After operator OR, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7]
+After operator OR, _XTR_12_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7]
+			---------------
+
+
+---Processing layers of ['_XTR_9_', '_XTR_12_']---
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+_XTR_9_ ==== Itk AND _XTR_8_
+After operator AND, Itk count only rows: 
+[]
+After operator AND, _XTR_8_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+_XTR_12_ ==== ZAP70 AND _XTR_11_
+PROCESS DIAMONDS for ZAP70
+PROCESS DIAMOND for node ZAP70
+Process diamond from ZAP70 to PLCg_act
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node ZAP70 in diamond to PLCg_act
+Affected nodes between ZAP70 and PLCg_act are: {'_XTR_9_', '_XTR_8_', 'Itk', '_XTR_10_', '_XTR_12_', 'SLP76', '_XTR_11_', '_XTR_7_', 'Gads', 'PLCg_act', 'LAT', 'PLCg_bind'}
+Rows after simulate a step for diamond ZAP70 to PLCg_act are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond ZAP70 to PLCg_act are: 
+[0, 1, 2, 3, 4, 5]
+After operator AND, _XTR_11_ count only rows: 
+[6, 7]
+			---------------
+
+
+---Processing layers of ['Itk', '_XTR_8_', 'ZAP70', '_XTR_11_']---
+
+Counted row for current node Itk is 
+[]
+Itk ==== ZAP70 AND SLP76
+PROCESS DIAMONDS for ZAP70
+PROCESS DIAMOND for node ZAP70
+Process diamond from ZAP70 to PLCg_act
+Diamond from ZAP70 to PLCg_act has been processed already, continue
+PROCESS DIAMONDS for SLP76
+PROCESS DIAMOND for node SLP76
+Process diamond from SLP76 to PLCg_act
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node SLP76 in diamond to PLCg_act
+Affected nodes between SLP76 and PLCg_act are: {'_XTR_9_', '_XTR_8_', 'Itk', '_XTR_12_', '_XTR_11_', '_XTR_7_', 'PLCg_act'}
+Rows after simulate a step for diamond SLP76 to PLCg_act are: 
+[]
+Rows after process diamond SLP76 to PLCg_act are: 
+[]
+			---------------
+
+Counted row for current node _XTR_8_ is 
+[]
+_XTR_8_ ==== _XTR_7_ AND ZAP70
+After operator AND, _XTR_7_ count only rows: 
+[]
+PROCESS DIAMONDS for ZAP70
+PROCESS DIAMOND for node ZAP70
+Process diamond from ZAP70 to PLCg_act
+Diamond from ZAP70 to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node ZAP70 is 
+[0, 1, 2, 3, 4, 5]
+ZAP70 ==== _XTR_38_ AND _XTR_15_
+After operator AND, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node _XTR_15_ in diamond to PLCg_act
+Affected nodes between _XTR_15_ and PLCg_act are: {'_XTR_9_', '_XTR_8_', 'TCRbind', 'Itk', '_XTR_10_', '_XTR_12_', 'SLP76', 'TCRphos', '_XTR_25_', '_XTR_38_', '_XTR_11_', '_XTR_7_', 'Gads', 'ZAP70', 'PLCg_act', 'Fyn', 'LAT', 'PLCg_bind'}
+Rows after simulate a step for diamond _XTR_15_ to PLCg_act are: 
+[]
+Rows after process diamond _XTR_15_ to PLCg_act are: 
+[]
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[6, 7]
+_XTR_11_ ==== _XTR_10_ AND SLP76
+After operator AND, _XTR_10_ count only rows: 
+[6, 7]
+PROCESS DIAMONDS for SLP76
+PROCESS DIAMOND for node SLP76
+Process diamond from SLP76 to PLCg_act
+Diamond from SLP76 to PLCg_act has been processed already, continue
+			---------------
+
+
+---Processing layers of ['ZAP70', 'SLP76', '_XTR_7_', '_XTR_38_', '_XTR_15_', '_XTR_10_']---
+
+Counted row for current node ZAP70 is 
+[0, 1, 2, 3, 4, 5]
+ZAP70 ==== _XTR_38_ AND _XTR_15_
+After operator AND, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node SLP76 is 
+[]
+SLP76 === Gads
+			---------------
+
+Counted row for current node _XTR_7_ is 
+[]
+_XTR_7_ ==== PLCg_bind AND SLP76
+PROCESS DIAMONDS for PLCg_bind
+PROCESS DIAMOND for node PLCg_bind
+Process diamond from PLCg_bind to PLCg_act
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node PLCg_bind in diamond to PLCg_act
+Affected nodes between PLCg_bind and PLCg_act are: {'_XTR_9_', '_XTR_8_', '_XTR_10_', '_XTR_12_', '_XTR_11_', '_XTR_7_', 'PLCg_act'}
+Rows after simulate a step for diamond PLCg_bind to PLCg_act are: 
+[]
+Rows after process diamond PLCg_bind to PLCg_act are: 
+[]
+PROCESS DIAMONDS for SLP76
+PROCESS DIAMOND for node SLP76
+Process diamond from SLP76 to PLCg_act
+Diamond from SLP76 to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_38_ ==== TCRphos AND Lck
+After operator AND, TCRphos count only rows: 
+[]
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node Lck in diamond to PLCg_act
+Affected nodes between Lck and PLCg_act are: {'_XTR_9_', '_XTR_8_', 'Rlk', 'Itk', '_XTR_10_', '_XTR_12_', '_XTR_26_', 'SLP76', 'TCRphos', '_XTR_38_', '_XTR_11_', '_XTR_7_', 'Gads', 'ZAP70', 'PLCg_act', 'Fyn', 'LAT', 'PLCg_bind'}
+Rows after simulate a step for diamond Lck to PLCg_act are: 
+[4, 5]
+Rows after process diamond Lck to PLCg_act are: 
+[4, 5]
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT cCbl
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[6, 7]
+_XTR_10_ ==== Rlk AND PLCg_bind
+After operator AND, Rlk count only rows: 
+[6, 7]
+PROCESS DIAMONDS for PLCg_bind
+PROCESS DIAMOND for node PLCg_bind
+Process diamond from PLCg_bind to PLCg_act
+Diamond from PLCg_bind to PLCg_act has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_38_', '_XTR_15_', 'Gads', 'PLCg_bind', 'SLP76', 'TCRphos', 'Lck', 'cCbl', 'Rlk']---
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_38_ ==== TCRphos AND Lck
+After operator AND, TCRphos count only rows: 
+[]
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT cCbl
+			---------------
+
+Counted row for current node Gads is 
+[]
+Gads === LAT
+PROCESS DIAMONDS for LAT
+PROCESS DIAMOND for node LAT
+Process diamond from LAT to PLCg_act
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node LAT in diamond to PLCg_act
+Affected nodes between LAT and PLCg_act are: {'_XTR_9_', '_XTR_8_', 'Itk', '_XTR_10_', '_XTR_12_', 'SLP76', '_XTR_11_', '_XTR_7_', 'Gads', 'PLCg_act', 'PLCg_bind'}
+Rows after simulate a step for diamond LAT to PLCg_act are: 
+[]
+Rows after process diamond LAT to PLCg_act are: 
+[]
+			---------------
+
+Counted row for current node PLCg_bind is 
+[]
+PLCg_bind === LAT
+PROCESS DIAMONDS for LAT
+PROCESS DIAMOND for node LAT
+Process diamond from LAT to PLCg_act
+Diamond from LAT to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node SLP76 is 
+[]
+SLP76 === Gads
+			---------------
+
+Counted row for current node TCRphos is 
+[]
+TCRphos === Fyn
+			---------------
+
+Counted row for current node Lck is 
+[4, 5]
+Lck ==== _XTR_33_ AND _XTR_34_
+After operator AND, _XTR_33_ count only rows: 
+[4]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node cCbl is 
+[]
+cCbl === ZAP70_to_cCbl
+			---------------
+
+Counted row for current node Rlk is 
+[6, 7]
+Rlk === Lck
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+
+---Processing layers of ['TCRphos', 'Lck', 'cCbl', 'LAT', 'Gads', 'Fyn', '_XTR_33_', '_XTR_34_', 'ZAP70_to_cCbl']---
+
+Counted row for current node TCRphos is 
+[]
+TCRphos === Fyn
+			---------------
+
+Counted row for current node Lck is 
+[4, 5]
+Lck ==== _XTR_33_ AND _XTR_34_
+After operator AND, _XTR_33_ count only rows: 
+[4]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node cCbl is 
+[]
+cCbl === ZAP70_to_cCbl
+			---------------
+
+Counted row for current node LAT is 
+[]
+LAT === ZAP70
+PROCESS DIAMONDS for ZAP70
+PROCESS DIAMOND for node ZAP70
+Process diamond from ZAP70 to PLCg_act
+Diamond from ZAP70 to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node Gads is 
+[]
+Gads === LAT
+PROCESS DIAMONDS for LAT
+PROCESS DIAMOND for node LAT
+Process diamond from LAT to PLCg_act
+Diamond from LAT to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node Fyn is 
+[]
+Fyn ==== _XTR_25_ OR _XTR_26_
+After operator OR, _XTR_25_ count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[4]
+_XTR_33_ ==== CD45 AND CD8
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7] to decide rows for node CD45 in diamond to PLCg_act
+Affected nodes between CD45 and PLCg_act are: {'_XTR_8_', 'SLP76', 'PLCg_act', '_XTR_9_', 'Rlk', 'Itk', '_XTR_11_', 'Lck', 'LAT', '_XTR_33_', '_XTR_12_', '_XTR_26_', 'TCRphos', '_XTR_25_', 'ZAP70', 'Fyn', '_XTR_10_', '_XTR_38_', '_XTR_7_', 'Gads', 'PLCg_bind'}
+Rows after simulate a step for diamond CD45 to PLCg_act are: 
+[2, 3]
+Rows after process diamond CD45 to PLCg_act are: 
+[2, 3]
+After operator AND, CD8 count only rows: 
+[4]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT PAGCsk
+			---------------
+
+Counted row for current node ZAP70 is 
+[]
+ZAP70 ==== _XTR_38_ AND _XTR_15_
+After operator AND, _XTR_38_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+
+
+---Processing layers of ['Fyn', '_XTR_33_', '_XTR_34_', 'ZAP70_to_cCbl', 'ZAP70', 'LAT', '_XTR_25_', '_XTR_26_', 'CD45', 'CD8', 'PAGCsk', '_XTR_38_', '_XTR_15_']---
+
+Counted row for current node Fyn is 
+[]
+Fyn ==== _XTR_25_ OR _XTR_26_
+After operator OR, _XTR_25_ count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[4]
+_XTR_33_ ==== CD45 AND CD8
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+After operator AND, CD8 count only rows: 
+[4]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT PAGCsk
+			---------------
+
+Counted row for current node ZAP70 is 
+[]
+ZAP70 ==== _XTR_38_ AND _XTR_15_
+After operator AND, _XTR_38_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node ZAP70 is 
+[0, 1, 2, 3, 4, 5]
+ZAP70 ==== _XTR_38_ AND _XTR_15_
+After operator AND, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node LAT is 
+[]
+LAT === ZAP70
+PROCESS DIAMONDS for ZAP70
+PROCESS DIAMOND for node ZAP70
+Process diamond from ZAP70 to PLCg_act
+Diamond from ZAP70 to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ ==== TCRbind AND CD45
+After operator AND, TCRbind count only rows: 
+[]
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== CD45 AND Lck
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+Reach node CD45 without in-comming edges
+
+Reach node CD8 without in-comming edges
+
+Counted row for current node PAGCsk is 
+[]
+PAGCsk === Fyn_to_PAGCsk
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_38_ ==== TCRphos AND Lck
+After operator AND, TCRphos count only rows: 
+[]
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT cCbl
+			---------------
+
+
+---Processing layers of ['_XTR_25_', '_XTR_26_', 'CD45', 'CD8', 'PAGCsk', '_XTR_38_', '_XTR_15_', 'ZAP70', 'TCRbind', 'Lck', 'Fyn_to_PAGCsk', 'TCRphos', 'cCbl']---
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ ==== TCRbind AND CD45
+After operator AND, TCRbind count only rows: 
+[]
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== CD45 AND Lck
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+Reach node CD45 without in-comming edges
+
+Reach node CD8 without in-comming edges
+
+Counted row for current node PAGCsk is 
+[]
+PAGCsk === Fyn_to_PAGCsk
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_38_ ==== TCRphos AND Lck
+After operator AND, TCRphos count only rows: 
+[]
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT cCbl
+			---------------
+
+Counted row for current node ZAP70 is 
+[0, 1, 2, 3, 4, 5]
+ZAP70 ==== _XTR_38_ AND _XTR_15_
+After operator AND, _XTR_38_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node TCRbind is 
+[]
+TCRbind ==== TCRlig AND _XTR_15_
+After operator AND, TCRlig count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node Lck is 
+[4, 5]
+Lck ==== _XTR_33_ AND _XTR_34_
+After operator AND, _XTR_33_ count only rows: 
+[4]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Fyn is 
+[]
+Fyn ==== _XTR_25_ OR _XTR_26_
+After operator OR, _XTR_25_ count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node TCRphos is 
+[]
+TCRphos === Fyn
+			---------------
+
+Counted row for current node cCbl is 
+[]
+cCbl === ZAP70_to_cCbl
+			---------------
+
+
+---Processing layers of ['TCRbind', 'CD45', 'Lck', 'Fyn_to_PAGCsk', 'TCRphos', 'cCbl', '_XTR_38_', '_XTR_15_', 'TCRlig', '_XTR_33_', '_XTR_34_', '_XTR_25_', '_XTR_26_', 'Fyn', 'ZAP70_to_cCbl']---
+
+Counted row for current node TCRbind is 
+[]
+TCRbind ==== TCRlig AND _XTR_15_
+After operator AND, TCRlig count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+
+Reach node CD45 without in-comming edges
+
+Counted row for current node Lck is 
+[4, 5]
+Lck ==== _XTR_33_ AND _XTR_34_
+After operator AND, _XTR_33_ count only rows: 
+[4]
+After operator AND, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Fyn is 
+[]
+Fyn ==== _XTR_25_ OR _XTR_26_
+After operator OR, _XTR_25_ count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node TCRphos is 
+[]
+TCRphos === Fyn
+			---------------
+
+Counted row for current node cCbl is 
+[]
+cCbl === ZAP70_to_cCbl
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_38_ ==== TCRphos AND Lck
+After operator AND, TCRphos count only rows: 
+[]
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT cCbl
+			---------------
+
+Reach node TCRlig without in-comming edges
+
+Counted row for current node _XTR_33_ is 
+[4]
+_XTR_33_ ==== CD45 AND CD8
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+After operator AND, CD8 count only rows: 
+[4]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT PAGCsk
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ ==== TCRbind AND CD45
+After operator AND, TCRbind count only rows: 
+[]
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== CD45 AND Lck
+PROCESS DIAMONDS for CD45
+PROCESS DIAMOND for node CD45
+Process diamond from CD45 to PLCg_act
+Diamond from CD45 to PLCg_act has been processed already, continue
+PROCESS DIAMONDS for Lck
+PROCESS DIAMOND for node Lck
+Process diamond from Lck to PLCg_act
+Diamond from Lck to PLCg_act has been processed already, continue
+			---------------
+
+Counted row for current node Fyn is 
+[]
+Fyn ==== _XTR_25_ OR _XTR_26_
+After operator OR, _XTR_25_ count only rows: 
+[]
+After operator OR, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node ZAP70 is 
+[]
+ZAP70 ==== _XTR_38_ AND _XTR_15_
+After operator AND, _XTR_38_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to PLCg_act
+Diamond from _XTR_15_ to PLCg_act has been processed already, continue
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node ZAP70: processed 4 times
+Node Fyn: processed 2 times
+SIMULATE 0 nodes over 36 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.875
+=========================
+PROPAGATED VALUES:
+CD45                 			 KO:        0.0 | KI:        0.0
+CD8                  			 KO:        0.0 | KI:        0.0
+DAG                  			 KO:        0.0 | KI:       -1.0
+Fyn                  			 KO:        0.0 | KI:        0.0
+Gads                 			 KO:        0.0 | KI:        0.0
+IKKbeta              			 KO:        0.0 | KI:       -1.0
+IkB                  			 KO:       -1.0 | KI:        0.0
+Itk                  			 KO:        0.0 | KI:        0.0
+LAT                  			 KO:        0.0 | KI:        0.0
+Lck                  			 KO:        0.0 | KI:      -0.25
+Nfkb                 			 KO:        0.0 | KI:       -1.0
+PAGCsk               			 KO:        0.0 | KI:        0.0
+PKCth                			 KO:        0.0 | KI:       -1.0
+PLCg_act             			 KO:        0.0 | KI:       -1.0
+PLCg_bind            			 KO:        0.0 | KI:        0.0
+Rlk                  			 KO:      -0.25 | KI:        0.0
+SLP76                			 KO:        0.0 | KI:        0.0
+TCRbind              			 KO:        0.0 | KI:        0.0
+TCRlig               			 KO:        0.0 | KI:        0.0
+TCRphos              			 KO:        0.0 | KI:        0.0
+ZAP70                			 KO:        0.0 | KI:      -0.75
+cCbl                 			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	IkB
+2	Rlk
+3	Nfkb, IKKbeta, PKCth, DAG, PLCg_act, Itk
+	ZAP70, SLP76, Gads, PLCg_bind, TCRphos, Lck
+	cCbl, LAT, Fyn, PAGCsk, TCRbind
+=======
+KI RANKING OF NODES:
+1	Nfkb, IKKbeta, PKCth, DAG, PLCg_act
+2	ZAP70
+3	Lck
+4	IkB, Itk, SLP76, Gads, PLCg_bind, TCRphos
+	cCbl, Rlk, LAT, Fyn, CD45, CD8
+	PAGCsk, TCRbind, TCRlig
+=======
+NUMBER OF NODES: 40
+NUMBER OF INPUTS: 3
+NUMBER OF EDGES: 52
+TIME process heading: 0.0014209747314453125
+TIME simulate original network: 0.04219508171081543
+TIME perform original analysis process: 3.0521111488342285
+TIME perform propagation: 0.2175452709197998
+There are 18 unreachable nodes, they are:
+{'Fos', 'CRE', 'SEK', 'Raf', 'IP3', 'ERK', 'Ca', 'Rsk', 'RasGRP1', 'AP1', 'MEK', 'Jun', 'JNK', 'NFAT', 'CREB', 'Calcin', 'Grb2Sos', 'Ras'}
+Rlk                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:      -0.25 | KI:        0.0
+Lck                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:      -0.25
+LAT                  - Correct: KO:      -0.25 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+ZAP70                - Correct: KO:      -0.25 | KI :      -0.75 - Incorrect KO:        0.0 | KI:      -0.75
+AP1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CD45
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CD8
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CRE
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CREB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ca
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Calcin
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DAG
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+ERK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Fos
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Fyn
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Gads
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Grb2Sos
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IKKbeta
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+IP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IkB
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Itk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JNK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Jun
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+LAT
+Lack      2: [6, 7]
+Extra     0: []
+Real      2: [6, 7]
+Prop      0: []
+
+Lck
+Lack      0: []
+Extra     2: [4, 5]
+Real      0: []
+Prop      2: [4, 5]
+
+MEK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NFAT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAGCsk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PKCth
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+PLCg_act
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+PLCg_bind
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Raf
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ras
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RasGRP1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Rlk
+Lack      0: []
+Extra     2: [6, 7]
+Real      0: []
+Prop      2: [6, 7]
+
+Rsk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SEK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SLP76
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TCRbind
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TCRlig
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TCRphos
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ZAP70
+Lack      2: [6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+cCbl
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	IkB
+2	Rlk
+3	IKKbeta, PKCth, DAG, PLCg_act, Itk, ZAP70
+	SLP76, Gads, PLCg_bind, TCRphos, Lck, cCbl
+	LAT, Fyn, CD45, CD8, PAGCsk, TCRbind
+	TCRlig, Fos, CRE, SEK, Raf, IP3
+	ERK, Ca, Rsk, RasGRP1, AP1, MEK
+	Jun, JNK, NFAT, CREB, Calcin, Grb2Sos
+	Ras
+REFERENCE:
+1	IkB
+2	LAT, ZAP70
+3	CD45, TCRlig, CD8, TCRbind, Fos, CRE
+	SEK, SLP76, PLCg_act, PAGCsk, Raf, IP3
+	Rlk, ERK, Itk, cCbl, Ca, Lck
+	Rsk, RasGRP1, TCRphos, AP1, MEK, Jun
+	DAG, JNK, IKKbeta, Fyn, NFAT, CREB
+	Calcin, Gads, PKCth, Grb2Sos, PLCg_bind, Ras
+=======
+-----KI RANKING COMPARISON-----
+1	IKKbeta, PKCth, DAG, PLCg_act
+2	ZAP70
+3	Lck
+4	IkB, Itk, SLP76, Gads, PLCg_bind, TCRphos
+	cCbl, Rlk, LAT, Fyn, CD45, CD8
+	PAGCsk, TCRbind, TCRlig, Fos, CRE, SEK
+	Raf, IP3, ERK, Ca, Rsk, RasGRP1
+	AP1, MEK, Jun, JNK, NFAT, CREB
+	Calcin, Grb2Sos, Ras
+REFERENCE:
+1	PLCg_act, DAG, IKKbeta, PKCth
+2	ZAP70
+3	CD45, TCRlig, CD8, TCRbind, Fos, CRE
+	SEK, SLP76, PAGCsk, Raf, IP3, Rlk
+	ERK, Itk, cCbl, Ca, Lck, LAT
+	Rsk, RasGRP1, TCRphos, AP1, MEK, Jun
+	JNK, Fyn, NFAT, CREB, IkB, Calcin
+	Gads, Grb2Sos, PLCg_bind, Ras
+============
+Relative_RMSE_KO_is  0.008667190566019205
+Relative_RMSE_KI_is  0.005004004806408973
+NDCG_KO_is  0.8773
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             39.000       39.000
+Kendall tau-b                         0.396        0.917
+Spearman rho                          0.715        0.983
+Mean abs rank diff                    0.077        0.846
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            0.250        1.000
+  Top-3  groups Jaccard            1.000        0.154
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9744
+Average number of correct rows after binarization: 0.9743589743589743 
+Average DNCG after binarization: 0.93865 
+-----------TOTAL RUNNING TIME---------------
+3.5459065409959294

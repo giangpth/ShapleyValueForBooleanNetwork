@@ -1,0 +1,864 @@
+The expression file is data/realbenchmark/7.txt
+The interested output is: 
+Atrboh
+List of all species:
+{'NO', 'PLC', 'InsPK', 'RCN1', 'Ca2_ATPase', 'Malate', 'Actin', 'KOUT', 'OST1', 'Depolar', 'S1P', 'SphK', 'NOS', 'CaIM', 'HTPase', 'InsP6', 'PEPC', 'NIA12', 'GC', 'AnionEM', 'InsP3', 'ABH1', 'Ca2_c', 'KEV', 'ABI1', 'Closure', 'ROS', 'CIS', 'PA', 'Atrboh', 'ROP10', 'RAC1', 'AGB1', 'cADPR', 'GCR1', 'GPA1', 'ADPRc', 'ABA', 'pH', 'ERA1', 'cGMP', 'PLD', 'KAP', 'ROP2'}
+-----Input names-----
+{'GCR1', 'ERA1', 'ABH1', 'ABA'}
+----Intermediate nodes-----
+{'NO', 'PLC', 'InsPK', 'RCN1', 'Ca2_ATPase', 'Malate', 'Actin', 'KOUT', 'OST1', 'Depolar', 'S1P', 'SphK', 'NOS', 'CaIM', 'HTPase', 'InsP6', 'PEPC', 'NIA12', 'GC', 'AnionEM', 'InsP3', 'Ca2_c', 'KEV', 'ABI1', 'Closure', 'ROS', 'CIS', 'PA', 'Atrboh', 'ROP10', 'RAC1', 'AGB1', 'cADPR', 'GPA1', 'ADPRc', 'pH', 'cGMP', 'PLD', 'KAP', 'ROP2'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+Sorted input names
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Closure', 'Depolar', 'GC', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+There are 40 intermediate nodes with the range of inter: 0 1099511627775
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.15212702751159668 seconds===
+----Input knockout shapley value-----
+('GCR1', 0.0)
+('ERA1', 0.0)
+('ABH1', 0.0)
+('ABA', 0.0)
+----Input knockIN shapley value-----
+('GCR1', 0.0)
+('ERA1', 0.0)
+('ABH1', 0.0)
+('ABA', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout NO
+Knockout PLC
+Knockout InsPK
+Knockout RCN1
+Knockout Ca2_ATPase
+Knockout Malate
+Knockout Actin
+Knockout KOUT
+Knockout OST1
+Knockout Depolar
+Knockout S1P
+Knockout SphK
+Knockout NOS
+Knockout CaIM
+Knockout HTPase
+Knockout InsP6
+Knockout PEPC
+Knockout NIA12
+Knockout GC
+Knockout AnionEM
+Knockout InsP3
+Knockout Ca2_c
+Knockout KEV
+Knockout ABI1
+Knockout Closure
+Knockout ROS
+Knockout CIS
+Knockout PA
+Knockout ROP10
+Knockout RAC1
+Knockout AGB1
+Knockout cADPR
+Knockout GPA1
+Knockout ADPRc
+Knockout pH
+Knockout cGMP
+Knockout PLD
+Knockout KAP
+Knockout ROP2
+----KNOCKOUT VALUE for output Atrboh----
+{'ABI1': 0.0, 'ADPRc': 0.0, 'AGB1': 0.0, 'Actin': 0.0, 'AnionEM': 0.0, 'CIS': 0.0, 'Ca2_ATPase': 0.0, 'Ca2_c': 0.0, 'CaIM': 0.0, 'Closure': 0.0, 'Depolar': 0.0, 'GC': 0.0, 'GPA1': 0.0, 'HTPase': 0.0, 'InsP3': 0.0, 'InsP6': 0.0, 'InsPK': 0.0, 'KAP': 0.0, 'KEV': 0.0, 'KOUT': 0.0, 'Malate': 0.0, 'NIA12': 0.0, 'NO': 0.0, 'NOS': 0.0, 'OST1': 0.0, 'PA': 0.0, 'PEPC': 0.0, 'PLC': 0.0, 'PLD': 0.0, 'RAC1': 0.0, 'RCN1': 0.0, 'ROP10': 0.0, 'ROP2': 0.0, 'ROS': 0.0, 'S1P': 0.0, 'SphK': 0.0, 'cADPR': 0.0, 'cGMP': 0.0, 'pH': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin NO
+Knockin PLC
+Knockin InsPK
+Knockin RCN1
+Knockin Ca2_ATPase
+Knockin Malate
+Knockin Actin
+Knockin KOUT
+Knockin OST1
+Knockin Depolar
+Knockin S1P
+Knockin SphK
+Knockin NOS
+Knockin CaIM
+Knockin HTPase
+Knockin InsP6
+Knockin PEPC
+Knockin NIA12
+Knockin GC
+Knockin AnionEM
+Knockin InsP3
+Knockin Ca2_c
+Knockin KEV
+Knockin ABI1
+Knockin Closure
+Knockin ROS
+Knockin CIS
+Knockin PA
+Knockin ROP10
+Knockin RAC1
+Knockin AGB1
+Knockin cADPR
+Knockin GPA1
+Knockin ADPRc
+Knockin pH
+Knockin cGMP
+Knockin PLD
+Knockin KAP
+Knockin ROP2
+----KNOCKIN VALUE for output Atrboh----
+{'ABI1': 0.0, 'ADPRc': 0.0, 'AGB1': -2.5, 'Actin': 0.0, 'AnionEM': 0.0, 'CIS': 0.0, 'Ca2_ATPase': 0.0, 'Ca2_c': 0.0, 'CaIM': 0.0, 'Closure': 0.0, 'Depolar': 0.0, 'GC': 0.0, 'GPA1': -2.5, 'HTPase': 0.0, 'InsP3': 0.0, 'InsP6': 0.0, 'InsPK': 0.0, 'KAP': 0.0, 'KEV': 0.0, 'KOUT': 0.0, 'Malate': 0.0, 'NIA12': 0.0, 'NO': 0.0, 'NOS': 0.0, 'OST1': 0.0, 'PA': -2.5, 'PEPC': 0.0, 'PLC': 0.0, 'PLD': -2.5, 'RAC1': 0.0, 'RCN1': 0.0, 'ROP10': 0.0, 'ROP2': -2.5, 'ROS': 0.0, 'S1P': 0.0, 'SphK': 0.0, 'cADPR': 0.0, 'cGMP': 0.0, 'pH': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 11.49251389503479 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac AnionEMANDActin, try ActinANDAnionEM
+Input are {'GCR1', 'ERA1', 'ABH1', 'ABA'}
+Ordinary nodes are 
+{'NO', 'PLC', 'InsPK', 'RCN1', 'Ca2_ATPase', 'Malate', 'Actin', 'KOUT', 'OST1', 'Depolar', 'S1P', 'SphK', 'NOS', 'CaIM', 'HTPase', 'InsP6', 'PEPC', 'NIA12', 'GC', 'AnionEM', 'InsP3', 'ABH1', 'Ca2_c', 'KEV', 'ABI1', 'Closure', 'ROS', 'CIS', 'PA', 'Atrboh', 'ROP10', 'RAC1', 'AGB1', 'cADPR', 'GCR1', 'GPA1', 'ADPRc', 'ABA', 'pH', 'ERA1', 'cGMP', 'PLD', 'KAP', 'ROP2'}
+Extranodes added after removing cycles are 
+['Ca2_ATPase_to_Ca2_c', 'Depolar_to_KOUT', 'CaIM_to_Ca2_c', 'CIS_to_Ca2_c', 'Atrboh_to_ROS', 'AGB1_to_GPA1']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+----Generate table from output----
+-----Calculated value of input nodes-----
+ABA                  			 KO:        0.0 | KI:        0.0
+ABH1                 			 KO:        0.0 | KI:        0.0
+ERA1                 			 KO:        0.0 | KI:        0.0
+GCR1                 			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT Atrboh=======
+----Master diamonds-----
+{'ABA': 'Atrboh', 'pH': 'Atrboh', 'PA': 'Atrboh', 'AGB1_to_GPA1': 'Atrboh'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['Atrboh']---
+At TARGET node Atrboh, count all rows
+
+Counted row for current node Atrboh is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7]
+After operator AND, _XTR_1_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_49_', '_XTR_1_']---
+
+Counted row for current node _XTR_49_ is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+_XTR_49_ ==== OST1 AND _XTR_48_
+After operator AND, OST1 count only rows: 
+[]
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[]
+_XTR_1_ === NOT ABI1
+			---------------
+
+
+---Processing layers of ['OST1', '_XTR_48_', 'ABI1']---
+
+Counted row for current node OST1 is 
+[]
+OST1 === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to Atrboh
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node ABA in diamond to Atrboh
+Affected nodes between ABA and Atrboh are: {'OST1', 'GPA1', 'S1P', '_XTR_9_', 'SphK', 'ABI1', '_XTR_49_', '_XTR_10_', '_XTR_48_', 'pH', 'PLD', 'PA', 'Atrboh', '_XTR_1_', '_XTR_89_', 'ROP2'}
+Rows after simulate a step for diamond ABA to Atrboh are: 
+[]
+Rows after process diamond ABA to Atrboh are: 
+[]
+			---------------
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ ==== ROP2 AND pH
+After operator AND, ROP2 count only rows: 
+[]
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to Atrboh
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node pH in diamond to Atrboh
+Affected nodes between pH and Atrboh are: {'_XTR_9_', 'ABI1', '_XTR_49_', '_XTR_48_', 'Atrboh', '_XTR_1_'}
+Rows after simulate a step for diamond pH to Atrboh are: 
+[]
+Rows after process diamond pH to Atrboh are: 
+[]
+			---------------
+
+Counted row for current node ABI1 is 
+[]
+ABI1 ==== _XTR_9_ AND _XTR_10_
+After operator AND, _XTR_9_ count only rows: 
+[]
+After operator AND, _XTR_10_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['ABA', 'ROP2', 'pH', '_XTR_9_', '_XTR_10_']---
+
+Reach node ABA without in-comming edges
+
+Counted row for current node ROP2 is 
+[]
+ROP2 === PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to Atrboh
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node PA in diamond to Atrboh
+Affected nodes between PA and Atrboh are: {'ABI1', '_XTR_49_', '_XTR_10_', '_XTR_48_', 'Atrboh', '_XTR_1_', 'ROP2'}
+Rows after simulate a step for diamond PA to Atrboh are: 
+[8, 9, 10, 11, 12, 13, 14, 15]
+Rows after process diamond PA to Atrboh are: 
+[8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node pH is 
+[]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to Atrboh
+Diamond from ABA to Atrboh has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[]
+_XTR_9_ ==== pH AND _XTR_8_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to Atrboh
+Diamond from pH to Atrboh has been processed already, continue
+After operator AND, _XTR_8_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[]
+_XTR_10_ === NOT PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to Atrboh
+Diamond from PA to Atrboh has been processed already, continue
+			---------------
+
+
+---Processing layers of ['PA', 'ABA', 'pH', '_XTR_8_']---
+
+Counted row for current node PA is 
+[8, 9, 10, 11, 12, 13, 14, 15]
+PA === PLD
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node pH is 
+[]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to Atrboh
+Diamond from ABA to Atrboh has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_8_ is 
+[]
+_XTR_8_ === NOT ROS
+			---------------
+
+
+---Processing layers of ['PLD', 'ABA', 'ROS']---
+
+Counted row for current node PLD is 
+[8, 9, 10, 11, 12, 13, 14, 15]
+PLD === GPA1
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node ROS is 
+[]
+ROS === Atrboh_to_ROS
+			---------------
+
+
+---Processing layers of ['GPA1', 'Atrboh_to_ROS']---
+
+Counted row for current node GPA1 is 
+[8, 9, 10, 11, 12, 13, 14, 15]
+GPA1 ==== _XTR_88_ OR _XTR_89_
+After operator OR, _XTR_88_ count only rows: 
+[8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_89_ count only rows: 
+[8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node Atrboh is 
+[]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_1_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_88_', '_XTR_89_', '_XTR_49_', '_XTR_1_']---
+
+Counted row for current node _XTR_88_ is 
+[8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_88_ ==== AGB1_to_GPA1 AND _XTR_87_
+Left node AGB1_to_GPA1 is an extra node
+PROCESS DIAMONDS for AGB1_to_GPA1
+PROCESS DIAMOND for node AGB1_to_GPA1
+Process diamond from AGB1_to_GPA1 to Atrboh
+End node Atrboh has no rows to be filtered, continue
+After operator AND, _XTR_87_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_89_ is 
+[8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_89_ ==== S1P AND AGB1_to_GPA1
+Right node AGB1_to_GPA1 is an extra node
+After operator AND, S1P count only rows: 
+[]
+PROCESS DIAMONDS for AGB1_to_GPA1
+PROCESS DIAMOND for node AGB1_to_GPA1
+Process diamond from AGB1_to_GPA1 to Atrboh
+Diamond from AGB1_to_GPA1 to Atrboh has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[0, 1, 2, 3, 4, 5, 6, 7]
+_XTR_49_ ==== OST1 AND _XTR_48_
+After operator AND, OST1 count only rows: 
+[]
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[]
+_XTR_1_ === NOT ABI1
+			---------------
+
+
+---Processing layers of ['_XTR_87_', 'AGB1_to_GPA1', 'S1P', 'AGB1_to_GPA1', 'OST1', '_XTR_48_', 'ABI1']---
+
+Counted row for current node _XTR_87_ is 
+[]
+_XTR_87_ === NOT GCR1
+			---------------
+
+Counted row for current node AGB1 is 
+[]
+AGB1 === GPA1
+			---------------
+
+Counted row for current node S1P is 
+[]
+S1P === SphK
+			---------------
+
+Counted row for current node AGB1 is 
+[]
+AGB1 === GPA1
+			---------------
+
+Counted row for current node OST1 is 
+[]
+OST1 === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to Atrboh
+Diamond from ABA to Atrboh has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ ==== ROP2 AND pH
+After operator AND, ROP2 count only rows: 
+[]
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to Atrboh
+Diamond from pH to Atrboh has been processed already, continue
+			---------------
+
+Counted row for current node ABI1 is 
+[]
+ABI1 ==== _XTR_9_ AND _XTR_10_
+After operator AND, _XTR_9_ count only rows: 
+[]
+After operator AND, _XTR_10_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['GCR1', 'GPA1', 'SphK', 'ABA', 'ROP2', 'pH', '_XTR_9_', '_XTR_10_']---
+
+Reach node GCR1 without in-comming edges
+
+Counted row for current node GPA1 is 
+[8, 9, 10, 11, 12, 13, 14, 15]
+GPA1 ==== _XTR_88_ OR _XTR_89_
+After operator OR, _XTR_88_ count only rows: 
+[8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_89_ count only rows: 
+[8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node SphK is 
+[]
+SphK === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to Atrboh
+Diamond from ABA to Atrboh has been processed already, continue
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node ROP2 is 
+[]
+ROP2 === PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to Atrboh
+Diamond from PA to Atrboh has been processed already, continue
+			---------------
+
+Counted row for current node pH is 
+[]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to Atrboh
+Diamond from ABA to Atrboh has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[]
+_XTR_9_ ==== pH AND _XTR_8_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to Atrboh
+Diamond from pH to Atrboh has been processed already, continue
+After operator AND, _XTR_8_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[]
+_XTR_10_ === NOT PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to Atrboh
+Diamond from PA to Atrboh has been processed already, continue
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node Atrboh: processed 1 times
+Node AGB1: processed 1 times
+SIMULATE 0 nodes over 39 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+Node ERA1 is not considerred
+Node ABH1 is not considerred
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+ABA                  			 KO:        0.0 | KI:        0.0
+ABH1                 			 KO:        0.0 | KI:        0.0
+ABI1                 			 KO:        0.0 | KI:        0.0
+AGB1                 			 KO:        0.0 | KI:        0.0
+Atrboh               			 KO:        0.0 | KI:    -5.0002
+ERA1                 			 KO:        0.0 | KI:        0.0
+GCR1                 			 KO:        0.0 | KI:        0.0
+GPA1                 			 KO:        0.0 | KI:    -2.5001
+OST1                 			 KO:        0.0 | KI:        0.0
+PA                   			 KO:        0.0 | KI:    -2.5001
+PLD                  			 KO:        0.0 | KI:    -2.5001
+ROP2                 			 KO:        0.0 | KI:        0.0
+ROS                  			 KO:        0.0 | KI:        0.0
+S1P                  			 KO:        0.0 | KI:        0.0
+SphK                 			 KO:        0.0 | KI:        0.0
+pH                   			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	Atrboh, OST1, ABI1, ROP2, pH, PA
+	PLD, ROS, GPA1, S1P, AGB1, SphK
+=======
+KI RANKING OF NODES:
+1	Atrboh
+2	PA, PLD, GPA1
+3	OST1, ABI1, ABA, ROP2, pH, ROS
+	S1P, GCR1, AGB1, SphK, ERA1, ABH1
+=======
+NUMBER OF NODES: 44
+NUMBER OF INPUTS: 4
+NUMBER OF EDGES: 78
+TIME process heading: 0.0020761489868164062
+TIME simulate original network: 0.15212702751159668
+TIME perform original analysis process: 11.49251389503479
+TIME perform propagation: 0.6793069839477539
+There are 28 unreachable nodes, they are:
+{'NO', 'PLC', 'InsPK', 'RCN1', 'Ca2_ATPase', 'Malate', 'Actin', 'KOUT', 'Depolar', 'NOS', 'CaIM', 'HTPase', 'InsP6', 'PEPC', 'NIA12', 'GC', 'AnionEM', 'InsP3', 'Ca2_c', 'KEV', 'Closure', 'CIS', 'ROP10', 'RAC1', 'cADPR', 'ADPRc', 'cGMP', 'KAP'}
+AGB1                 - Correct: KO:        0.0 | KI :    -2.5001 - Incorrect KO:        0.0 | KI:        0.0
+ROP2                 - Correct: KO:        0.0 | KI :    -2.5001 - Incorrect KO:        0.0 | KI:        0.0
+ABA
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ABH1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ABI1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ADPRc
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AGB1
+Lack      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      0: []
+
+Actin
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AnionEM
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CIS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ca2_ATPase
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ca2_c
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CaIM
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Closure
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Depolar
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ERA1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GCR1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GPA1
+Lack      0: []
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      8: [8, 9, 10, 11, 12, 13, 14, 15]
+
+HTPase
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+InsP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+InsP6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+InsPK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+KAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+KEV
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+KOUT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Malate
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NIA12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NO
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NOS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+OST1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PA
+Lack      0: []
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      8: [8, 9, 10, 11, 12, 13, 14, 15]
+
+PEPC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLD
+Lack      0: []
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      8: [8, 9, 10, 11, 12, 13, 14, 15]
+
+RAC1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RCN1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ROP10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ROP2
+Lack      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Extra     0: []
+Real      8: [8, 9, 10, 11, 12, 13, 14, 15]
+Prop      0: []
+
+ROS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+S1P
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SphK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cADPR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cGMP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pH
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	OST1, ABI1, ABA, ROP2, pH, PA
+	PLD, ROS, GPA1, S1P, GCR1, AGB1
+	SphK, ERA1, ABH1, NO, PLC, InsPK
+	RCN1, Ca2_ATPase, Malate, Actin, KOUT, Depolar
+	NOS, CaIM, HTPase, InsP6, PEPC, NIA12
+	GC, AnionEM, InsP3, Ca2_c, KEV, Closure
+	CIS, ROP10, RAC1, cADPR, ADPRc, cGMP
+	KAP
+REFERENCE:
+1	GCR1, ERA1, ABH1, ABA, NO, PLC
+	InsPK, RCN1, Ca2_ATPase, Malate, Actin, KOUT
+	OST1, Depolar, S1P, SphK, NOS, CaIM
+	HTPase, InsP6, PEPC, NIA12, GC, AnionEM
+	InsP3, Ca2_c, KEV, ABI1, Closure, ROS
+	CIS, PA, ROP10, RAC1, AGB1, cADPR
+	GPA1, ADPRc, pH, cGMP, PLD, KAP
+	ROP2
+=======
+-----KI RANKING COMPARISON-----
+1	PA, PLD, GPA1
+2	OST1, ABI1, ABA, ROP2, pH, ROS
+	S1P, GCR1, AGB1, SphK, ERA1, ABH1
+	NO, PLC, InsPK, RCN1, Ca2_ATPase, Malate
+	Actin, KOUT, Depolar, NOS, CaIM, HTPase
+	InsP6, PEPC, NIA12, GC, AnionEM, InsP3
+	Ca2_c, KEV, Closure, CIS, ROP10, RAC1
+	cADPR, ADPRc, cGMP, KAP
+REFERENCE:
+1	PA, AGB1, GPA1, PLD, ROP2
+2	GCR1, ERA1, ABH1, ABA, NO, PLC
+	InsPK, RCN1, Ca2_ATPase, Malate, Actin, KOUT
+	OST1, Depolar, S1P, SphK, NOS, CaIM
+	HTPase, InsP6, PEPC, NIA12, GC, AnionEM
+	InsP3, Ca2_c, KEV, ABI1, Closure, ROS
+	CIS, ROP10, RAC1, cADPR, ADPRc, pH
+	cGMP, KAP
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.05391854325718328
+NDCG_KO_is  0.0
+NDCG_KI_is  0.884
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             43.000       43.000
+Kendall tau-b                           NaN        0.755
+Spearman rho                          0.000        0.755
+Mean abs rank diff                    0.000        0.047
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        0.600
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9767
+Average number of correct rows after binarization: 0.9767441860465116 
+Average DNCG after binarization: 0.442 
+-----------TOTAL RUNNING TIME---------------
+12.432946583023295

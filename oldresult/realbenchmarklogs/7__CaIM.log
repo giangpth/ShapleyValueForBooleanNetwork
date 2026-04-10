@@ -1,0 +1,3992 @@
+The expression file is data/realbenchmark/7.txt
+The interested output is: 
+CaIM
+List of all species:
+{'InsP6', 'pH', 'ROP10', 'AnionEM', 'GC', 'InsP3', 'AGB1', 'ABH1', 'NIA12', 'ROS', 'ADPRc', 'SphK', 'OST1', 'ABA', 'Atrboh', 'GPA1', 'Closure', 'ROP2', 'CIS', 'Depolar', 'InsPK', 'GCR1', 'PLC', 'RAC1', 'PA', 'ABI1', 'HTPase', 'Ca2_ATPase', 'PEPC', 'KEV', 'Actin', 'PLD', 'ERA1', 'Ca2_c', 'KOUT', 'KAP', 'NO', 'NOS', 'RCN1', 'cADPR', 'S1P', 'cGMP', 'Malate', 'CaIM'}
+-----Input names-----
+{'ABA', 'ERA1', 'ABH1', 'GCR1'}
+----Intermediate nodes-----
+{'InsP6', 'pH', 'ROP10', 'AnionEM', 'GC', 'InsP3', 'AGB1', 'NIA12', 'ROS', 'ADPRc', 'SphK', 'OST1', 'Closure', 'Atrboh', 'GPA1', 'ROP2', 'CIS', 'Depolar', 'InsPK', 'PLC', 'RAC1', 'PA', 'ABI1', 'HTPase', 'Ca2_ATPase', 'PEPC', 'KEV', 'Actin', 'PLD', 'Ca2_c', 'KOUT', 'KAP', 'NO', 'NOS', 'RCN1', 'cADPR', 'S1P', 'cGMP', 'Malate', 'CaIM'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+Sorted input names
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Closure', 'Depolar', 'GC', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+There are 40 intermediate nodes with the range of inter: 0 1099511627775
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.15199589729309082 seconds===
+----Input knockout shapley value-----
+('ABA', -1.25)
+('ERA1', -0.4167)
+('ABH1', -0.4167)
+('GCR1', 0.0)
+----Input knockIN shapley value-----
+('ABA', 2.0833)
+('ERA1', 0.4167)
+('ABH1', 0.4167)
+('GCR1', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout InsP6
+Knockout pH
+Knockout ROP10
+Knockout AnionEM
+Knockout GC
+Knockout InsP3
+Knockout AGB1
+Knockout NIA12
+Knockout ROS
+Knockout ADPRc
+Knockout SphK
+Knockout OST1
+Knockout Closure
+Knockout Atrboh
+Knockout GPA1
+Knockout ROP2
+Knockout CIS
+Knockout Depolar
+Knockout InsPK
+Knockout PLC
+Knockout RAC1
+Knockout PA
+Knockout ABI1
+Knockout HTPase
+Knockout Ca2_ATPase
+Knockout PEPC
+Knockout KEV
+Knockout Actin
+Knockout PLD
+Knockout Ca2_c
+Knockout KOUT
+Knockout KAP
+Knockout NO
+Knockout NOS
+Knockout RCN1
+Knockout cADPR
+Knockout S1P
+Knockout cGMP
+Knockout Malate
+----KNOCKOUT VALUE for output CaIM----
+{'ABI1': 0.0, 'ADPRc': 0.0, 'AGB1': 0.0, 'Actin': 0.0, 'AnionEM': 0.0, 'Atrboh': 0.0, 'CIS': 0.0, 'Ca2_ATPase': 0.0, 'Ca2_c': 0.0, 'Closure': 0.0, 'Depolar': -1.25, 'GC': 0.0, 'GPA1': 0.0, 'HTPase': 2.0833, 'InsP3': 0.0, 'InsP6': 0.0, 'InsPK': 0.0, 'KAP': 0.0, 'KEV': 0.0, 'KOUT': 2.0833, 'Malate': 0.0, 'NIA12': 0.0, 'NO': 0.0, 'NOS': 0.0, 'OST1': 0.0, 'PA': 0.0, 'PEPC': 0.0, 'PLC': 0.0, 'PLD': 0.0, 'RAC1': 0.0, 'RCN1': 0.0, 'ROP10': 0.0, 'ROP2': 0.0, 'ROS': 0.0, 'S1P': 0.0, 'SphK': 0.0, 'cADPR': 0.0, 'cGMP': 0.0, 'pH': -1.25}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin InsP6
+Knockin pH
+Knockin ROP10
+Knockin AnionEM
+Knockin GC
+Knockin InsP3
+Knockin AGB1
+Knockin NIA12
+Knockin ROS
+Knockin ADPRc
+Knockin SphK
+Knockin OST1
+Knockin Closure
+Knockin Atrboh
+Knockin GPA1
+Knockin ROP2
+Knockin CIS
+Knockin Depolar
+Knockin InsPK
+Knockin PLC
+Knockin RAC1
+Knockin PA
+Knockin ABI1
+Knockin HTPase
+Knockin Ca2_ATPase
+Knockin PEPC
+Knockin KEV
+Knockin Actin
+Knockin PLD
+Knockin Ca2_c
+Knockin KOUT
+Knockin KAP
+Knockin NO
+Knockin NOS
+Knockin RCN1
+Knockin cADPR
+Knockin S1P
+Knockin cGMP
+Knockin Malate
+----KNOCKIN VALUE for output CaIM----
+{'ABI1': 0.0, 'ADPRc': 0.0, 'AGB1': 0.0, 'Actin': 0.0, 'AnionEM': 2.0833, 'Atrboh': 2.0833, 'CIS': 0.0, 'Ca2_ATPase': 0.0, 'Ca2_c': 2.0833, 'Closure': 0.0, 'Depolar': 2.0833, 'GC': 0.0, 'GPA1': 0.0, 'HTPase': -1.25, 'InsP3': 0.0, 'InsP6': 0.0, 'InsPK': 0.0, 'KAP': 0.0, 'KEV': 2.0833, 'KOUT': 0.0, 'Malate': 0.0, 'NIA12': 0.0, 'NO': 0.0, 'NOS': 0.0, 'OST1': 0.0, 'PA': 0.0, 'PEPC': 0.0, 'PLC': 0.0, 'PLD': 0.0, 'RAC1': 0.0, 'RCN1': 0.0, 'ROP10': 0.0, 'ROP2': 0.0, 'ROS': 2.0833, 'S1P': 0.0, 'SphK': 0.0, 'cADPR': 0.0, 'cGMP': 0.0, 'pH': 2.0833}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 11.40056824684143 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac AnionEMANDActin, try ActinANDAnionEM
+Input are {'ABA', 'ERA1', 'ABH1', 'GCR1'}
+Ordinary nodes are 
+{'InsP6', 'pH', 'ROP10', 'AnionEM', 'GC', 'InsP3', 'AGB1', 'ABH1', 'NIA12', 'ROS', 'ADPRc', 'SphK', 'OST1', 'ABA', 'Atrboh', 'GPA1', 'Closure', 'ROP2', 'CIS', 'Depolar', 'InsPK', 'GCR1', 'PLC', 'RAC1', 'PA', 'ABI1', 'HTPase', 'Ca2_ATPase', 'PEPC', 'KEV', 'Actin', 'PLD', 'ERA1', 'Ca2_c', 'KOUT', 'KAP', 'NO', 'NOS', 'RCN1', 'cADPR', 'S1P', 'cGMP', 'Malate', 'CaIM'}
+Extranodes added after removing cycles are 
+['AGB1_to_GPA1', 'Atrboh_to_ROS', 'CIS_to_Ca2_c', 'Ca2_ATPase_to_Ca2_c', 'KOUT_to_Depolar', 'CaIM_to_Ca2_c']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+----Generate table from output----
+-----Calculated value of input nodes-----
+ABA                  			 KO:      -1.25 | KI:     2.0833
+ABH1                 			 KO:    -0.4167 | KI:     0.4167
+ERA1                 			 KO:    -0.4167 | KI:     0.4167
+GCR1                 			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT CaIM=======
+----Master diamonds-----
+{'_XTR_20_': '_XTR_27_', 'ROS': 'CaIM', 'ERA1': 'CaIM', 'Depolar': 'CaIM', 'ABH1': 'CaIM', 'Ca2_c': 'CaIM', 'HTPase': 'CaIM', 'KOUT_to_Depolar': 'CaIM', 'AnionEM': 'CaIM', '_XTR_76_': 'CaIM', 'KEV': 'CaIM', '_XTR_15_': 'CaIM', 'pH': 'CaIM', '_XTR_52_': 'CaIM', '_XTR_55_': 'CaIM', '_XTR_1_': 'CaIM', 'ABA': 'CaIM', 'ABI1': 'CaIM', 'PA': 'CaIM', 'GPA1': 'CaIM', 'AGB1_to_GPA1': 'CaIM'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['CaIM']---
+At TARGET node CaIM, count all rows
+
+Counted row for current node CaIM is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+CaIM ==== _XTR_27_ OR _XTR_31_
+After operator OR, _XTR_27_ count only rows: 
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_31_ count only rows: 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+
+---Processing layers of ['_XTR_27_', '_XTR_31_']---
+
+Counted row for current node _XTR_27_ is 
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_27_ ==== _XTR_23_ OR _XTR_26_
+After operator OR, _XTR_23_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_26_ count only rows: 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_31_ === NOT _XTR_30_
+			---------------
+
+
+---Processing layers of ['_XTR_23_', '_XTR_26_', '_XTR_30_']---
+
+Counted row for current node _XTR_23_ is 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_23_ ==== _XTR_21_ OR _XTR_22_
+After operator OR, _XTR_21_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_22_ count only rows: 
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[2, 3, 6, 7]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+SIMULATE rows [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node _XTR_20_ in diamond to _XTR_27_
+Affected nodes between _XTR_20_ and _XTR_27_ are: {'_XTR_23_', '_XTR_27_', '_XTR_22_', '_XTR_21_', '_XTR_26_'}
+Rows after simulate a step for diamond _XTR_20_ to _XTR_27_ are: 
+[2, 3, 4, 5, 10, 11, 12, 13]
+Rows after process diamond _XTR_20_ to _XTR_27_ are: 
+[2, 3, 4, 5, 10, 11, 12, 13]
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_30_ ==== _XTR_29_ OR ROS
+After operator OR, _XTR_29_ count only rows: 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node ROS in diamond to CaIM
+Affected nodes between ROS and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_93_', '_XTR_71_', 'AnionEM', '_XTR_9_', '_XTR_68_', '_XTR_70_', '_XTR_92_', '_XTR_1_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_67_', '_XTR_51_', '_XTR_4_', '_XTR_8_', 'ABI1', '_XTR_30_', '_XTR_21_', '_XTR_2_', '_XTR_60_', 'HTPase', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_53_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_26_', '_XTR_64_', '_XTR_5_', '_XTR_58_', '_XTR_29_', '_XTR_65_', '_XTR_54_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond ROS to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond ROS to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+
+---Processing layers of ['_XTR_21_', '_XTR_22_', '_XTR_25_', '_XTR_20_', '_XTR_29_', 'ROS']---
+
+Counted row for current node _XTR_21_ is 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_21_ ==== _XTR_19_ AND _XTR_20_
+After operator AND, _XTR_19_ count only rows: 
+[4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_22_ ==== ROS AND _XTR_20_
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[2, 3, 6, 7]
+_XTR_25_ ==== ERA1 AND _XTR_24_
+PROCESS DIAMONDS for ERA1
+PROCESS DIAMOND for node ERA1
+Process diamond from ERA1 to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node ERA1 in diamond to CaIM
+Affected nodes between ERA1 and CaIM are: {'_XTR_23_', '_XTR_31_', '_XTR_30_', '_XTR_25_', '_XTR_29_', '_XTR_27_', '_XTR_18_', '_XTR_21_', 'CaIM', '_XTR_26_', '_XTR_19_'}
+Rows after simulate a step for diamond ERA1 to CaIM are: 
+[2, 3, 4, 5, 6, 7]
+Rows after process diamond ERA1 to CaIM are: 
+[2, 3, 4, 5, 6, 7]
+After operator AND, _XTR_24_ count only rows: 
+[2, 3, 6, 7]
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[2, 3, 4, 5, 10, 11, 12, 13]
+_XTR_20_ === NOT Depolar
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Depolar in diamond to CaIM
+Affected nodes between Depolar and CaIM are: {'_XTR_28_', '_XTR_23_', '_XTR_31_', '_XTR_30_', '_XTR_29_', '_XTR_27_', '_XTR_20_', '_XTR_22_', '_XTR_21_', 'CaIM', '_XTR_26_'}
+Rows after simulate a step for diamond Depolar to CaIM are: 
+[8, 9, 10, 11, 12, 13]
+Rows after process diamond Depolar to CaIM are: 
+[8, 9, 10, 11, 12, 13]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_29_ ==== _XTR_28_ OR ERA1
+After operator OR, _XTR_28_ count only rows: 
+[0, 1, 8, 9, 12, 13]
+PROCESS DIAMONDS for ERA1
+PROCESS DIAMOND for node ERA1
+Process diamond from ERA1 to CaIM
+Diamond from ERA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5]
+ROS === Atrboh_to_ROS
+			---------------
+
+
+---Processing layers of ['_XTR_19_', '_XTR_20_', 'ROS', 'ERA1', '_XTR_24_', 'Depolar', '_XTR_28_', 'Atrboh_to_ROS']---
+
+Counted row for current node _XTR_19_ is 
+[4, 5, 6, 7]
+_XTR_19_ ==== ABH1 AND _XTR_18_
+PROCESS DIAMONDS for ABH1
+PROCESS DIAMOND for node ABH1
+Process diamond from ABH1 to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node ABH1 in diamond to CaIM
+Affected nodes between ABH1 and CaIM are: {'_XTR_28_', '_XTR_21_', '_XTR_24_', '_XTR_23_', '_XTR_31_', '_XTR_25_', '_XTR_29_', '_XTR_27_', '_XTR_30_', 'CaIM', '_XTR_26_', '_XTR_19_'}
+Rows after simulate a step for diamond ABH1 to CaIM are: 
+[2, 3, 4, 5, 6, 7]
+Rows after process diamond ABH1 to CaIM are: 
+[2, 3, 4, 5, 6, 7]
+After operator AND, _XTR_18_ count only rows: 
+[4, 5, 6, 7]
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[2, 3, 4, 5, 10, 11, 12, 13]
+_XTR_20_ === NOT Depolar
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5]
+ROS === Atrboh_to_ROS
+			---------------
+
+Reach node ERA1 without in-comming edges
+
+Counted row for current node _XTR_24_ is 
+[2, 3, 6, 7]
+_XTR_24_ === NOT ABH1
+PROCESS DIAMONDS for ABH1
+PROCESS DIAMOND for node ABH1
+Process diamond from ABH1 to CaIM
+Diamond from ABH1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Depolar is 
+[8, 9, 10, 11, 12, 13]
+Depolar ==== _XTR_66_ OR _XTR_71_
+After operator OR, _XTR_66_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_71_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[0, 1, 8, 9, 12, 13]
+_XTR_28_ ==== ABH1 OR Depolar
+PROCESS DIAMONDS for ABH1
+PROCESS DIAMOND for node ABH1
+Process diamond from ABH1 to CaIM
+Diamond from ABH1 to CaIM has been processed already, continue
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Atrboh is 
+[0, 1, 2, 3, 4, 5]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node _XTR_1_ in diamond to CaIM
+Affected nodes between _XTR_1_ and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_71_', 'AnionEM', '_XTR_70_', '_XTR_23_', 'Depolar', '_XTR_51_', '_XTR_4_', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_2_', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_5_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond _XTR_1_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond _XTR_1_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+
+---Processing layers of ['ABH1', '_XTR_18_', 'Depolar', 'Atrboh_to_ROS', '_XTR_66_', '_XTR_71_', '_XTR_49_', '_XTR_1_']---
+
+Reach node ABH1 without in-comming edges
+
+Counted row for current node _XTR_18_ is 
+[4, 5, 6, 7]
+_XTR_18_ === NOT ERA1
+PROCESS DIAMONDS for ERA1
+PROCESS DIAMOND for node ERA1
+Process diamond from ERA1 to CaIM
+Diamond from ERA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Depolar is 
+[8, 9, 10, 11, 12, 13]
+Depolar ==== _XTR_66_ OR _XTR_71_
+After operator OR, _XTR_66_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_71_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Atrboh is 
+[0, 1, 2, 3, 4, 5]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_66_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_66_ ==== _XTR_60_ OR _XTR_65_
+After operator OR, _XTR_60_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_65_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_71_ is 
+[]
+_XTR_71_ === NOT _XTR_70_
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_49_ ==== OST1 AND _XTR_48_
+After operator AND, OST1 count only rows: 
+[]
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_1_ === NOT ABI1
+PROCESS DIAMONDS for ABI1
+PROCESS DIAMOND for node ABI1
+Process diamond from ABI1 to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node ABI1 in diamond to CaIM
+Affected nodes between ABI1 and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_71_', 'AnionEM', '_XTR_70_', '_XTR_1_', '_XTR_23_', 'Depolar', '_XTR_51_', '_XTR_4_', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_2_', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_5_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond ABI1 to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond ABI1 to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+
+---Processing layers of ['ERA1', '_XTR_66_', '_XTR_71_', '_XTR_49_', '_XTR_1_', '_XTR_60_', '_XTR_65_', '_XTR_70_', 'OST1', '_XTR_48_', 'ABI1']---
+
+Reach node ERA1 without in-comming edges
+
+Counted row for current node _XTR_66_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_66_ ==== _XTR_60_ OR _XTR_65_
+After operator OR, _XTR_60_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_65_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_71_ is 
+[]
+_XTR_71_ === NOT _XTR_70_
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_49_ ==== OST1 AND _XTR_48_
+After operator AND, OST1 count only rows: 
+[]
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_1_ === NOT ABI1
+PROCESS DIAMONDS for ABI1
+PROCESS DIAMOND for node ABI1
+Process diamond from ABI1 to CaIM
+Diamond from ABI1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_60_ ==== _XTR_59_ OR Ca2_c
+After operator OR, _XTR_59_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Ca2_c in diamond to CaIM
+Affected nodes between Ca2_c and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_93_', '_XTR_71_', 'AnionEM', '_XTR_61_', '_XTR_68_', '_XTR_70_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_67_', '_XTR_51_', '_XTR_4_', '_XTR_60_', '_XTR_21_', '_XTR_30_', 'HTPase', '_XTR_31_', 'KEV', '_XTR_55_', '_XTR_52_', '_XTR_66_', '_XTR_53_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_26_', '_XTR_64_', '_XTR_5_', '_XTR_58_', '_XTR_29_', '_XTR_54_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond Ca2_c to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond Ca2_c to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_65_ is 
+[]
+_XTR_65_ ==== HTPase AND _XTR_64_
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node HTPase in diamond to CaIM
+Affected nodes between HTPase and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_71_', '_XTR_68_', '_XTR_70_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_67_', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_31_', '_XTR_66_', '_XTR_53_', '_XTR_27_', '_XTR_59_', '_XTR_20_', '_XTR_22_', '_XTR_26_', '_XTR_58_', '_XTR_29_', '_XTR_54_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond HTPase to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond HTPase to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+After operator AND, _XTR_64_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_70_ is 
+[]
+_XTR_70_ ==== _XTR_69_ OR KOUT_to_Depolar
+Right node KOUT_to_Depolar is an extra node
+After operator OR, _XTR_69_ count only rows: 
+[]
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node KOUT_to_Depolar in diamond to CaIM
+Affected nodes between KOUT_to_Depolar and CaIM are: {'_XTR_28_', '_XTR_71_', '_XTR_70_', '_XTR_23_', 'Depolar', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_31_', '_XTR_66_', '_XTR_63_', '_XTR_27_', '_XTR_59_', '_XTR_20_', '_XTR_22_', '_XTR_64_', '_XTR_26_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM'}
+Rows after simulate a step for diamond KOUT_to_Depolar to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond KOUT_to_Depolar to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node OST1 is 
+[]
+OST1 === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node ABA in diamond to CaIM
+Affected nodes between ABA and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_93_', 'pH', '_XTR_71_', '_XTR_10_', 'AnionEM', '_XTR_9_', 'SphK', '_XTR_70_', '_XTR_68_', 'GPA1', '_XTR_92_', '_XTR_1_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_67_', '_XTR_51_', '_XTR_4_', 'PA', 'ABI1', '_XTR_60_', '_XTR_21_', '_XTR_30_', '_XTR_2_', 'HTPase', '_XTR_31_', 'PLD', '_XTR_66_', '_XTR_53_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_26_', '_XTR_64_', '_XTR_5_', '_XTR_58_', '_XTR_89_', '_XTR_29_', 'S1P', '_XTR_54_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond ABA to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond ABA to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ ==== ROP2 AND pH
+After operator AND, ROP2 count only rows: 
+[]
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node pH in diamond to CaIM
+Affected nodes between pH and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_93_', '_XTR_71_', 'AnionEM', '_XTR_9_', '_XTR_70_', '_XTR_68_', '_XTR_92_', '_XTR_1_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_67_', '_XTR_51_', '_XTR_4_', 'ABI1', '_XTR_60_', '_XTR_21_', '_XTR_30_', '_XTR_2_', 'HTPase', '_XTR_31_', '_XTR_66_', '_XTR_53_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_5_', '_XTR_58_', '_XTR_29_', '_XTR_65_', '_XTR_54_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond pH to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond pH to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node ABI1 is 
+[0, 1, 2, 3, 4, 5]
+ABI1 ==== _XTR_9_ AND _XTR_10_
+After operator AND, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator AND, _XTR_10_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_60_', '_XTR_65_', '_XTR_70_', 'OST1', '_XTR_48_', 'ABI1', '_XTR_59_', 'Ca2_c', 'HTPase', '_XTR_64_', '_XTR_69_', 'KOUT_to_Depolar', 'ABA', 'ROP2', 'pH', '_XTR_9_', '_XTR_10_']---
+
+Counted row for current node _XTR_60_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_60_ ==== _XTR_59_ OR Ca2_c
+After operator OR, _XTR_59_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_65_ is 
+[]
+_XTR_65_ ==== HTPase AND _XTR_64_
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+After operator AND, _XTR_64_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_70_ is 
+[]
+_XTR_70_ ==== _XTR_69_ OR KOUT_to_Depolar
+Right node KOUT_to_Depolar is an extra node
+After operator OR, _XTR_69_ count only rows: 
+[]
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node OST1 is 
+[]
+OST1 === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ ==== ROP2 AND pH
+After operator AND, ROP2 count only rows: 
+[]
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ABI1 is 
+[0, 1, 2, 3, 4, 5]
+ABI1 ==== _XTR_9_ AND _XTR_10_
+After operator AND, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator AND, _XTR_10_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[]
+_XTR_59_ ==== _XTR_51_ OR _XTR_58_
+After operator OR, _XTR_51_ count only rows: 
+[]
+After operator OR, _XTR_58_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Ca2_c is 
+[0, 1, 2, 3, 4, 5]
+Ca2_c ==== _XTR_77_ OR _XTR_78_
+After operator OR, _XTR_77_ count only rows: 
+[]
+After operator OR, _XTR_78_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node HTPase is 
+[0, 1, 2, 3, 4, 5]
+HTPase === NOT _XTR_93_
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[]
+_XTR_64_ ==== _XTR_62_ AND _XTR_63_
+After operator AND, _XTR_62_ count only rows: 
+[]
+After operator AND, _XTR_63_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_69_ is 
+[]
+_XTR_69_ ==== _XTR_68_ OR AnionEM
+After operator OR, _XTR_68_ count only rows: 
+[]
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node AnionEM in diamond to CaIM
+Affected nodes between AnionEM and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_71_', '_XTR_70_', '_XTR_23_', 'Depolar', '_XTR_51_', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond AnionEM to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond AnionEM to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node ROP2 is 
+[]
+ROP2 === PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node PA in diamond to CaIM
+Affected nodes between PA and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_10_', 'AnionEM', '_XTR_71_', '_XTR_70_', '_XTR_1_', '_XTR_23_', 'Depolar', '_XTR_51_', '_XTR_4_', 'ABI1', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_2_', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_5_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond PA to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond PA to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node pH is 
+[0, 1, 2, 3, 4, 5]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_9_ ==== pH AND _XTR_8_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_8_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[]
+_XTR_10_ === NOT PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to CaIM
+Diamond from PA to CaIM has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_59_', 'Ca2_c', 'HTPase', '_XTR_64_', '_XTR_69_', 'KOUT_to_Depolar', 'ABA', 'ROP2', 'pH', '_XTR_9_', '_XTR_10_', '_XTR_51_', '_XTR_58_', '_XTR_77_', '_XTR_78_', '_XTR_93_', '_XTR_62_', '_XTR_63_', '_XTR_68_', 'AnionEM', '_XTR_35_', '_XTR_36_', 'PA', '_XTR_8_']---
+
+Counted row for current node _XTR_59_ is 
+[]
+_XTR_59_ ==== _XTR_51_ OR _XTR_58_
+After operator OR, _XTR_51_ count only rows: 
+[]
+After operator OR, _XTR_58_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Ca2_c is 
+[0, 1, 2, 3, 4, 5]
+Ca2_c ==== _XTR_77_ OR _XTR_78_
+After operator OR, _XTR_77_ count only rows: 
+[]
+After operator OR, _XTR_78_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node HTPase is 
+[0, 1, 2, 3, 4, 5]
+HTPase === NOT _XTR_93_
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[]
+_XTR_64_ ==== _XTR_62_ AND _XTR_63_
+After operator AND, _XTR_62_ count only rows: 
+[]
+After operator AND, _XTR_63_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_69_ is 
+[]
+_XTR_69_ ==== _XTR_68_ OR AnionEM
+After operator OR, _XTR_68_ count only rows: 
+[]
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node ROP2 is 
+[]
+ROP2 === PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to CaIM
+Diamond from PA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node pH is 
+[0, 1, 2, 3, 4, 5]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_9_ ==== pH AND _XTR_8_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_8_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[]
+_XTR_10_ === NOT PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to CaIM
+Diamond from PA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_51_ is 
+[]
+_XTR_51_ ==== AnionEM OR KEV
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node KEV in diamond to CaIM
+Affected nodes between KEV and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_71_', '_XTR_61_', '_XTR_68_', '_XTR_70_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_51_', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_31_', '_XTR_55_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_64_', '_XTR_26_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond KEV to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond KEV to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[]
+_XTR_58_ ==== KOUT_to_Depolar AND _XTR_57_
+Left node KOUT_to_Depolar is an extra node
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_57_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_77_ is 
+[]
+_XTR_77_ ==== CIS_to_Ca2_c AND _XTR_76_
+Left node CIS_to_Ca2_c is an extra node
+After operator AND, CIS_to_Ca2_c count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node _XTR_76_ in diamond to CaIM
+Affected nodes between _XTR_76_ and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_93_', '_XTR_71_', 'AnionEM', '_XTR_61_', '_XTR_68_', '_XTR_70_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_67_', '_XTR_51_', '_XTR_4_', '_XTR_60_', '_XTR_21_', '_XTR_30_', 'HTPase', '_XTR_31_', 'KEV', '_XTR_55_', '_XTR_52_', '_XTR_66_', '_XTR_53_', '_XTR_27_', 'Ca2_c', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_77_', '_XTR_5_', '_XTR_58_', '_XTR_78_', '_XTR_29_', '_XTR_54_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond _XTR_76_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond _XTR_76_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_78_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_78_ ==== CaIM_to_Ca2_c AND _XTR_76_
+Left node CaIM_to_Ca2_c is an extra node
+After operator AND, CaIM_to_Ca2_c count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_93_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_93_ ==== _XTR_92_ OR Ca2_c
+After operator OR, _XTR_92_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[]
+_XTR_62_ ==== _XTR_61_ AND _XTR_15_
+After operator AND, _XTR_61_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node _XTR_15_ in diamond to CaIM
+Affected nodes between _XTR_15_ and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_23_', 'Depolar', '_XTR_60_', '_XTR_21_', '_XTR_30_', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_26_', '_XTR_64_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM'}
+Rows after simulate a step for diamond _XTR_15_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond _XTR_15_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[]
+_XTR_63_ === NOT KOUT_to_Depolar
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_68_ is 
+[]
+_XTR_68_ ==== _XTR_67_ OR KEV
+After operator OR, _XTR_67_ count only rows: 
+[]
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node AnionEM is 
+[0, 1, 2, 3, 4, 5]
+AnionEM ==== _XTR_3_ OR _XTR_5_
+After operator OR, _XTR_3_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_35_ ==== Depolar AND _XTR_34_
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_36_ is 
+[]
+_XTR_36_ ==== pH AND Depolar
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node PA is 
+[0, 1, 2, 3, 4, 5]
+PA === PLD
+			---------------
+
+Counted row for current node _XTR_8_ is 
+[]
+_XTR_8_ === NOT ROS
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_51_', '_XTR_58_', '_XTR_77_', '_XTR_78_', '_XTR_93_', '_XTR_62_', '_XTR_63_', '_XTR_68_', 'AnionEM', '_XTR_35_', '_XTR_36_', 'PA', 'ABA', 'pH', '_XTR_8_', 'KEV', '_XTR_57_', 'KOUT_to_Depolar', '_XTR_76_', 'CIS_to_Ca2_c', 'CaIM_to_Ca2_c', '_XTR_92_', 'Ca2_c', '_XTR_61_', '_XTR_15_', 'KOUT_to_Depolar', '_XTR_67_', '_XTR_3_', '_XTR_5_', 'Depolar', '_XTR_34_', 'PLD', 'ROS']---
+
+Counted row for current node _XTR_51_ is 
+[]
+_XTR_51_ ==== AnionEM OR KEV
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[]
+_XTR_58_ ==== KOUT_to_Depolar AND _XTR_57_
+Left node KOUT_to_Depolar is an extra node
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_57_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_77_ is 
+[]
+_XTR_77_ ==== CIS_to_Ca2_c AND _XTR_76_
+Left node CIS_to_Ca2_c is an extra node
+After operator AND, CIS_to_Ca2_c count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_78_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_78_ ==== CaIM_to_Ca2_c AND _XTR_76_
+Left node CaIM_to_Ca2_c is an extra node
+After operator AND, CaIM_to_Ca2_c count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_93_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_93_ ==== _XTR_92_ OR Ca2_c
+After operator OR, _XTR_92_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[]
+_XTR_62_ ==== _XTR_61_ AND _XTR_15_
+After operator AND, _XTR_61_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to CaIM
+Diamond from _XTR_15_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[]
+_XTR_63_ === NOT KOUT_to_Depolar
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_68_ is 
+[]
+_XTR_68_ ==== _XTR_67_ OR KEV
+After operator OR, _XTR_67_ count only rows: 
+[]
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node AnionEM is 
+[0, 1, 2, 3, 4, 5]
+AnionEM ==== _XTR_3_ OR _XTR_5_
+After operator OR, _XTR_3_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_35_ ==== Depolar AND _XTR_34_
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_36_ is 
+[]
+_XTR_36_ ==== pH AND Depolar
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node PA is 
+[0, 1, 2, 3, 4, 5]
+PA === PLD
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node pH is 
+[0, 1, 2, 3, 4, 5]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_8_ is 
+[]
+_XTR_8_ === NOT ROS
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KEV is 
+[0, 1, 2, 3, 4, 5]
+KEV === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[]
+_XTR_57_ ==== _XTR_56_ AND _XTR_15_
+After operator AND, _XTR_56_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to CaIM
+Diamond from _XTR_15_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_76_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_76_ === NOT Ca2_ATPase_to_Ca2_c
+			---------------
+
+Counted row for current node CIS is 
+[]
+CIS ==== _XTR_73_ OR _XTR_74_
+After operator OR, _XTR_73_ count only rows: 
+[]
+After operator OR, _XTR_74_ count only rows: 
+[]
+			---------------
+
+Counted row for current node CaIM is 
+[0, 1, 2, 3, 4, 5]
+CaIM ==== _XTR_27_ OR _XTR_31_
+After operator OR, _XTR_27_ count only rows: 
+[2, 3, 4, 5]
+After operator OR, _XTR_31_ count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node _XTR_92_ is 
+[]
+_XTR_92_ ==== ROS OR pH
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Ca2_c is 
+[0, 1, 2, 3, 4, 5]
+Ca2_c ==== _XTR_77_ OR _XTR_78_
+After operator OR, _XTR_77_ count only rows: 
+[]
+After operator OR, _XTR_78_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[]
+_XTR_61_ ==== _XTR_52_ AND _XTR_55_
+PROCESS DIAMONDS for _XTR_52_
+PROCESS DIAMOND for node _XTR_52_
+Process diamond from _XTR_52_ to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5] to decide rows for node _XTR_52_ in diamond to CaIM
+Affected nodes between _XTR_52_ and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_61_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_26_', '_XTR_64_', '_XTR_58_', '_XTR_29_', '_XTR_54_', '_XTR_65_', 'CaIM'}
+Rows after simulate a step for diamond _XTR_52_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond _XTR_52_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_55_
+PROCESS DIAMOND for node _XTR_55_
+Process diamond from _XTR_55_ to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5] to decide rows for node _XTR_55_ in diamond to CaIM
+Affected nodes between _XTR_55_ and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_61_', '_XTR_23_', '_XTR_56_', 'Depolar', '_XTR_60_', '_XTR_30_', '_XTR_21_', '_XTR_31_', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_64_', '_XTR_26_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM'}
+Rows after simulate a step for diamond _XTR_55_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond _XTR_55_ to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_15_ === NOT AnionEM
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_67_ is 
+[]
+_XTR_67_ ==== Ca2_c OR HTPase
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_3_ ==== Ca2_c AND _XTR_2_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== pH AND _XTR_4_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_4_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Depolar is 
+[8, 9, 10, 11, 12, 13]
+Depolar ==== _XTR_66_ OR _XTR_71_
+After operator OR, _XTR_66_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_71_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node PLD is 
+[0, 1, 2, 3, 4, 5]
+PLD === GPA1
+PROCESS DIAMONDS for GPA1
+PROCESS DIAMOND for node GPA1
+Process diamond from GPA1 to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5] to decide rows for node GPA1 in diamond to CaIM
+Affected nodes between GPA1 and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_10_', 'AnionEM', '_XTR_71_', '_XTR_70_', '_XTR_1_', '_XTR_23_', 'Depolar', '_XTR_51_', '_XTR_4_', 'PA', 'ABI1', '_XTR_30_', '_XTR_60_', '_XTR_21_', '_XTR_2_', '_XTR_31_', 'PLD', '_XTR_66_', '_XTR_27_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_5_', '_XTR_58_', '_XTR_29_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond GPA1 to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond GPA1 to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5]
+ROS === Atrboh_to_ROS
+			---------------
+
+
+---Processing layers of ['AnionEM', 'KEV', '_XTR_57_', 'KOUT_to_Depolar', '_XTR_76_', 'CIS_to_Ca2_c', 'CaIM_to_Ca2_c', '_XTR_92_', 'Ca2_c', '_XTR_61_', '_XTR_15_', 'KOUT_to_Depolar', '_XTR_67_', '_XTR_3_', '_XTR_5_', 'Depolar', '_XTR_34_', 'pH', 'PLD', 'ABA', 'ROS', '_XTR_56_', '_XTR_35_', '_XTR_36_', 'Ca2_ATPase_to_Ca2_c', '_XTR_73_', '_XTR_74_', '_XTR_27_', '_XTR_31_', '_XTR_77_', '_XTR_78_', '_XTR_52_', '_XTR_55_', 'HTPase', '_XTR_2_', '_XTR_4_', '_XTR_66_', '_XTR_71_', '_XTR_33_', 'GPA1', 'Atrboh_to_ROS']---
+
+Counted row for current node AnionEM is 
+[0, 1, 2, 3, 4, 5]
+AnionEM ==== _XTR_3_ OR _XTR_5_
+After operator OR, _XTR_3_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node KEV is 
+[0, 1, 2, 3, 4, 5]
+KEV === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[]
+_XTR_57_ ==== _XTR_56_ AND _XTR_15_
+After operator AND, _XTR_56_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to CaIM
+Diamond from _XTR_15_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_76_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_76_ === NOT Ca2_ATPase_to_Ca2_c
+			---------------
+
+Counted row for current node CIS is 
+[]
+CIS ==== _XTR_73_ OR _XTR_74_
+After operator OR, _XTR_73_ count only rows: 
+[]
+After operator OR, _XTR_74_ count only rows: 
+[]
+			---------------
+
+Counted row for current node CaIM is 
+[0, 1, 2, 3, 4, 5]
+CaIM ==== _XTR_27_ OR _XTR_31_
+After operator OR, _XTR_27_ count only rows: 
+[2, 3, 4, 5]
+After operator OR, _XTR_31_ count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node _XTR_92_ is 
+[]
+_XTR_92_ ==== ROS OR pH
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Ca2_c is 
+[0, 1, 2, 3, 4, 5]
+Ca2_c ==== _XTR_77_ OR _XTR_78_
+After operator OR, _XTR_77_ count only rows: 
+[]
+After operator OR, _XTR_78_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[]
+_XTR_61_ ==== _XTR_52_ AND _XTR_55_
+PROCESS DIAMONDS for _XTR_52_
+PROCESS DIAMOND for node _XTR_52_
+Process diamond from _XTR_52_ to CaIM
+Diamond from _XTR_52_ to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_55_
+PROCESS DIAMOND for node _XTR_55_
+Process diamond from _XTR_55_ to CaIM
+Diamond from _XTR_55_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_15_ === NOT AnionEM
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_67_ is 
+[]
+_XTR_67_ ==== Ca2_c OR HTPase
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_3_ ==== Ca2_c AND _XTR_2_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== pH AND _XTR_4_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_4_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Depolar is 
+[8, 9, 10, 11, 12, 13]
+Depolar ==== _XTR_66_ OR _XTR_71_
+After operator OR, _XTR_66_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_71_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node pH is 
+[0, 1, 2, 3, 4, 5]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node PLD is 
+[0, 1, 2, 3, 4, 5]
+PLD === GPA1
+PROCESS DIAMONDS for GPA1
+PROCESS DIAMOND for node GPA1
+Process diamond from GPA1 to CaIM
+Diamond from GPA1 to CaIM has been processed already, continue
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5]
+ROS === Atrboh_to_ROS
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[]
+_XTR_56_ ==== _XTR_54_ AND _XTR_55_
+After operator AND, _XTR_54_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_55_
+PROCESS DIAMOND for node _XTR_55_
+Process diamond from _XTR_55_ to CaIM
+Diamond from _XTR_55_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_35_ ==== Depolar AND _XTR_34_
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_36_ is 
+[]
+_XTR_36_ ==== pH AND Depolar
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Ca2_ATPase is 
+[0, 1, 2, 3, 4, 5]
+Ca2_ATPase === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_73_ is 
+[]
+_XTR_73_ ==== InsP3 AND InsP6
+After operator AND, InsP3 count only rows: 
+[]
+After operator AND, InsP6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_74_ is 
+[]
+_XTR_74_ ==== cGMP AND cADPR
+After operator AND, cGMP count only rows: 
+[]
+After operator AND, cADPR count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_27_ ==== _XTR_23_ OR _XTR_26_
+After operator OR, _XTR_23_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_26_ count only rows: 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_31_ === NOT _XTR_30_
+			---------------
+
+Counted row for current node _XTR_77_ is 
+[]
+_XTR_77_ ==== CIS_to_Ca2_c AND _XTR_76_
+Left node CIS_to_Ca2_c is an extra node
+After operator AND, CIS_to_Ca2_c count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_78_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_78_ ==== CaIM_to_Ca2_c AND _XTR_76_
+Left node CaIM_to_Ca2_c is an extra node
+After operator AND, CaIM_to_Ca2_c count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_52_ === NOT Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_55_ === NOT KEV
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node HTPase is 
+[0, 1, 2, 3, 4, 5]
+HTPase === NOT _XTR_93_
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_2_ ==== _XTR_1_ OR pH
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[]
+_XTR_4_ ==== Ca2_c OR _XTR_1_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_66_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_66_ ==== _XTR_60_ OR _XTR_65_
+After operator OR, _XTR_60_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_65_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_71_ is 
+[]
+_XTR_71_ === NOT _XTR_70_
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_33_ ==== ROS AND NO
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+After operator AND, NO count only rows: 
+[]
+			---------------
+
+Counted row for current node GPA1 is 
+[0, 1, 2, 3, 4, 5]
+GPA1 ==== _XTR_88_ OR _XTR_89_
+After operator OR, _XTR_88_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_89_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node Atrboh is 
+[0, 1, 2, 3, 4, 5]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_3_', '_XTR_5_', 'Ca2_c', '_XTR_56_', '_XTR_15_', '_XTR_35_', '_XTR_36_', 'Ca2_ATPase_to_Ca2_c', '_XTR_73_', '_XTR_74_', '_XTR_27_', '_XTR_31_', 'ROS', 'pH', '_XTR_77_', '_XTR_78_', '_XTR_52_', '_XTR_55_', 'AnionEM', 'HTPase', '_XTR_2_', '_XTR_4_', '_XTR_66_', '_XTR_71_', '_XTR_33_', 'ABA', 'GPA1', 'Atrboh_to_ROS', '_XTR_54_', 'Depolar', '_XTR_34_', 'InsP3', 'InsP6', 'cGMP', 'cADPR', '_XTR_23_', '_XTR_26_', '_XTR_30_', '_XTR_76_', 'CIS_to_Ca2_c', 'CaIM_to_Ca2_c', 'KEV', '_XTR_93_', '_XTR_1_', '_XTR_60_', '_XTR_65_', '_XTR_70_', 'NO', '_XTR_88_', '_XTR_89_', '_XTR_49_']---
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_3_ ==== Ca2_c AND _XTR_2_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== pH AND _XTR_4_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_4_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Ca2_c is 
+[0, 1, 2, 3, 4, 5]
+Ca2_c ==== _XTR_77_ OR _XTR_78_
+After operator OR, _XTR_77_ count only rows: 
+[]
+After operator OR, _XTR_78_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[]
+_XTR_56_ ==== _XTR_54_ AND _XTR_55_
+After operator AND, _XTR_54_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_55_
+PROCESS DIAMOND for node _XTR_55_
+Process diamond from _XTR_55_ to CaIM
+Diamond from _XTR_55_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_15_ === NOT AnionEM
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_35_ ==== Depolar AND _XTR_34_
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_36_ is 
+[]
+_XTR_36_ ==== pH AND Depolar
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Ca2_ATPase is 
+[0, 1, 2, 3, 4, 5]
+Ca2_ATPase === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_73_ is 
+[]
+_XTR_73_ ==== InsP3 AND InsP6
+After operator AND, InsP3 count only rows: 
+[]
+After operator AND, InsP6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_74_ is 
+[]
+_XTR_74_ ==== cGMP AND cADPR
+After operator AND, cGMP count only rows: 
+[]
+After operator AND, cADPR count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_27_ ==== _XTR_23_ OR _XTR_26_
+After operator OR, _XTR_23_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_26_ count only rows: 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_31_ === NOT _XTR_30_
+			---------------
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5]
+ROS === Atrboh_to_ROS
+			---------------
+
+Counted row for current node pH is 
+[0, 1, 2, 3, 4, 5]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_77_ is 
+[]
+_XTR_77_ ==== CIS_to_Ca2_c AND _XTR_76_
+Left node CIS_to_Ca2_c is an extra node
+After operator AND, CIS_to_Ca2_c count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_78_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_78_ ==== CaIM_to_Ca2_c AND _XTR_76_
+Left node CaIM_to_Ca2_c is an extra node
+After operator AND, CaIM_to_Ca2_c count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_52_ === NOT Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_55_ === NOT KEV
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node AnionEM is 
+[0, 1, 2, 3, 4, 5]
+AnionEM ==== _XTR_3_ OR _XTR_5_
+After operator OR, _XTR_3_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node HTPase is 
+[0, 1, 2, 3, 4, 5]
+HTPase === NOT _XTR_93_
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_2_ ==== _XTR_1_ OR pH
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[]
+_XTR_4_ ==== Ca2_c OR _XTR_1_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_66_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_66_ ==== _XTR_60_ OR _XTR_65_
+After operator OR, _XTR_60_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_65_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_71_ is 
+[]
+_XTR_71_ === NOT _XTR_70_
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_33_ ==== ROS AND NO
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+After operator AND, NO count only rows: 
+[]
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node GPA1 is 
+[0, 1, 2, 3, 4, 5]
+GPA1 ==== _XTR_88_ OR _XTR_89_
+After operator OR, _XTR_88_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_89_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node Atrboh is 
+[0, 1, 2, 3, 4, 5]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[]
+_XTR_54_ ==== _XTR_52_ AND _XTR_53_
+PROCESS DIAMONDS for _XTR_52_
+PROCESS DIAMOND for node _XTR_52_
+Process diamond from _XTR_52_ to CaIM
+Diamond from _XTR_52_ to CaIM has been processed already, continue
+After operator AND, _XTR_53_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Depolar is 
+[8, 9, 10, 11, 12, 13]
+Depolar ==== _XTR_66_ OR _XTR_71_
+After operator OR, _XTR_66_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_71_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node InsP3 is 
+[]
+InsP3 === PLC
+			---------------
+
+Counted row for current node InsP6 is 
+[]
+InsP6 === InsPK
+			---------------
+
+Counted row for current node cGMP is 
+[]
+cGMP === GC
+			---------------
+
+Counted row for current node cADPR is 
+[]
+cADPR === ADPRc
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_23_ ==== _XTR_21_ OR _XTR_22_
+After operator OR, _XTR_21_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_22_ count only rows: 
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[2, 3, 6, 7]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_30_ ==== _XTR_29_ OR ROS
+After operator OR, _XTR_29_ count only rows: 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_76_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_76_ === NOT Ca2_ATPase_to_Ca2_c
+			---------------
+
+Counted row for current node CIS is 
+[]
+CIS ==== _XTR_73_ OR _XTR_74_
+After operator OR, _XTR_73_ count only rows: 
+[]
+After operator OR, _XTR_74_ count only rows: 
+[]
+			---------------
+
+Counted row for current node CaIM is 
+[0, 1, 2, 3, 4, 5]
+CaIM ==== _XTR_27_ OR _XTR_31_
+After operator OR, _XTR_27_ count only rows: 
+[2, 3, 4, 5]
+After operator OR, _XTR_31_ count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node KEV is 
+[0, 1, 2, 3, 4, 5]
+KEV === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_93_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_93_ ==== _XTR_92_ OR Ca2_c
+After operator OR, _XTR_92_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_1_ === NOT ABI1
+PROCESS DIAMONDS for ABI1
+PROCESS DIAMOND for node ABI1
+Process diamond from ABI1 to CaIM
+Diamond from ABI1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_60_ ==== _XTR_59_ OR Ca2_c
+After operator OR, _XTR_59_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_65_ is 
+[]
+_XTR_65_ ==== HTPase AND _XTR_64_
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+After operator AND, _XTR_64_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_70_ is 
+[]
+_XTR_70_ ==== _XTR_69_ OR KOUT_to_Depolar
+Right node KOUT_to_Depolar is an extra node
+After operator OR, _XTR_69_ count only rows: 
+[]
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node NO is 
+[]
+NO ==== NOS AND NIA12
+After operator AND, NOS count only rows: 
+[]
+After operator AND, NIA12 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_88_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_88_ ==== AGB1_to_GPA1 AND _XTR_87_
+Left node AGB1_to_GPA1 is an extra node
+PROCESS DIAMONDS for AGB1_to_GPA1
+PROCESS DIAMOND for node AGB1_to_GPA1
+Process diamond from AGB1_to_GPA1 to CaIM
+SIMULATE rows [0, 1, 2, 3, 4, 5] to decide rows for node AGB1_to_GPA1 in diamond to CaIM
+Affected nodes between AGB1_to_GPA1 and CaIM are: {'_XTR_28_', '_XTR_57_', '_XTR_3_', '_XTR_10_', 'AnionEM', '_XTR_71_', '_XTR_70_', 'GPA1', '_XTR_1_', '_XTR_23_', 'Depolar', '_XTR_51_', '_XTR_4_', 'PA', 'ABI1', '_XTR_30_', '_XTR_60_', '_XTR_21_', '_XTR_2_', '_XTR_31_', 'PLD', '_XTR_66_', '_XTR_27_', '_XTR_88_', '_XTR_59_', '_XTR_62_', '_XTR_20_', '_XTR_22_', '_XTR_15_', '_XTR_64_', '_XTR_26_', '_XTR_5_', '_XTR_58_', '_XTR_89_', '_XTR_29_', '_XTR_65_', 'CaIM', '_XTR_69_'}
+Rows after simulate a step for diamond AGB1_to_GPA1 to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+Rows after process diamond AGB1_to_GPA1 to CaIM are: 
+[0, 1, 2, 3, 4, 5]
+After operator AND, _XTR_87_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_89_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_89_ ==== S1P AND AGB1_to_GPA1
+Right node AGB1_to_GPA1 is an extra node
+After operator AND, S1P count only rows: 
+[]
+PROCESS DIAMONDS for AGB1_to_GPA1
+PROCESS DIAMOND for node AGB1_to_GPA1
+Process diamond from AGB1_to_GPA1 to CaIM
+Diamond from AGB1_to_GPA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_49_ ==== OST1 AND _XTR_48_
+After operator AND, OST1 count only rows: 
+[]
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['Ca2_c', '_XTR_2_', 'pH', '_XTR_4_', '_XTR_77_', '_XTR_78_', '_XTR_54_', '_XTR_55_', 'AnionEM', 'Depolar', '_XTR_34_', 'InsP3', 'InsP6', 'cGMP', 'cADPR', '_XTR_23_', '_XTR_26_', '_XTR_30_', 'Atrboh_to_ROS', 'ABA', '_XTR_76_', 'CIS_to_Ca2_c', 'CaIM_to_Ca2_c', 'KEV', '_XTR_3_', '_XTR_5_', '_XTR_93_', '_XTR_1_', '_XTR_60_', '_XTR_65_', '_XTR_70_', 'ROS', 'NO', '_XTR_88_', '_XTR_89_', '_XTR_49_', '_XTR_52_', '_XTR_53_', '_XTR_66_', '_XTR_71_', '_XTR_33_', 'PLC', 'InsPK', 'GC', 'ADPRc', '_XTR_21_', '_XTR_22_', '_XTR_25_', '_XTR_20_', '_XTR_29_', 'Ca2_ATPase_to_Ca2_c', '_XTR_73_', '_XTR_74_', '_XTR_27_', '_XTR_31_', '_XTR_92_', 'ABI1', '_XTR_59_', 'HTPase', '_XTR_64_', '_XTR_69_', 'KOUT_to_Depolar', 'NOS', 'NIA12', '_XTR_87_', 'AGB1_to_GPA1', 'S1P', 'AGB1_to_GPA1', 'OST1', '_XTR_48_']---
+
+Counted row for current node Ca2_c is 
+[0, 1, 2, 3, 4, 5]
+Ca2_c ==== _XTR_77_ OR _XTR_78_
+After operator OR, _XTR_77_ count only rows: 
+[]
+After operator OR, _XTR_78_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_2_ ==== _XTR_1_ OR pH
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node pH is 
+[0, 1, 2, 3, 4, 5]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[]
+_XTR_4_ ==== Ca2_c OR _XTR_1_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_77_ is 
+[]
+_XTR_77_ ==== CIS_to_Ca2_c AND _XTR_76_
+Left node CIS_to_Ca2_c is an extra node
+After operator AND, CIS_to_Ca2_c count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_78_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_78_ ==== CaIM_to_Ca2_c AND _XTR_76_
+Left node CaIM_to_Ca2_c is an extra node
+After operator AND, CaIM_to_Ca2_c count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[]
+_XTR_54_ ==== _XTR_52_ AND _XTR_53_
+PROCESS DIAMONDS for _XTR_52_
+PROCESS DIAMOND for node _XTR_52_
+Process diamond from _XTR_52_ to CaIM
+Diamond from _XTR_52_ to CaIM has been processed already, continue
+After operator AND, _XTR_53_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_55_ === NOT KEV
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node AnionEM is 
+[0, 1, 2, 3, 4, 5]
+AnionEM ==== _XTR_3_ OR _XTR_5_
+After operator OR, _XTR_3_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Depolar is 
+[8, 9, 10, 11, 12, 13]
+Depolar ==== _XTR_66_ OR _XTR_71_
+After operator OR, _XTR_66_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_71_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node InsP3 is 
+[]
+InsP3 === PLC
+			---------------
+
+Counted row for current node InsP6 is 
+[]
+InsP6 === InsPK
+			---------------
+
+Counted row for current node cGMP is 
+[]
+cGMP === GC
+			---------------
+
+Counted row for current node cADPR is 
+[]
+cADPR === ADPRc
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_23_ ==== _XTR_21_ OR _XTR_22_
+After operator OR, _XTR_21_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_22_ count only rows: 
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[2, 3, 6, 7]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_30_ ==== _XTR_29_ OR ROS
+After operator OR, _XTR_29_ count only rows: 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Atrboh is 
+[0, 1, 2, 3, 4, 5]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node _XTR_76_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_76_ === NOT Ca2_ATPase_to_Ca2_c
+			---------------
+
+Counted row for current node CIS is 
+[]
+CIS ==== _XTR_73_ OR _XTR_74_
+After operator OR, _XTR_73_ count only rows: 
+[]
+After operator OR, _XTR_74_ count only rows: 
+[]
+			---------------
+
+Counted row for current node CaIM is 
+[0, 1, 2, 3, 4, 5]
+CaIM ==== _XTR_27_ OR _XTR_31_
+After operator OR, _XTR_27_ count only rows: 
+[2, 3, 4, 5]
+After operator OR, _XTR_31_ count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node KEV is 
+[0, 1, 2, 3, 4, 5]
+KEV === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_3_ ==== Ca2_c AND _XTR_2_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== pH AND _XTR_4_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_4_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_93_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_93_ ==== _XTR_92_ OR Ca2_c
+After operator OR, _XTR_92_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_1_ === NOT ABI1
+PROCESS DIAMONDS for ABI1
+PROCESS DIAMOND for node ABI1
+Process diamond from ABI1 to CaIM
+Diamond from ABI1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_60_ ==== _XTR_59_ OR Ca2_c
+After operator OR, _XTR_59_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_65_ is 
+[]
+_XTR_65_ ==== HTPase AND _XTR_64_
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+After operator AND, _XTR_64_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_70_ is 
+[]
+_XTR_70_ ==== _XTR_69_ OR KOUT_to_Depolar
+Right node KOUT_to_Depolar is an extra node
+After operator OR, _XTR_69_ count only rows: 
+[]
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5]
+ROS === Atrboh_to_ROS
+			---------------
+
+Counted row for current node NO is 
+[]
+NO ==== NOS AND NIA12
+After operator AND, NOS count only rows: 
+[]
+After operator AND, NIA12 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_88_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_88_ ==== AGB1_to_GPA1 AND _XTR_87_
+Left node AGB1_to_GPA1 is an extra node
+PROCESS DIAMONDS for AGB1_to_GPA1
+PROCESS DIAMOND for node AGB1_to_GPA1
+Process diamond from AGB1_to_GPA1 to CaIM
+Diamond from AGB1_to_GPA1 to CaIM has been processed already, continue
+After operator AND, _XTR_87_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_89_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_89_ ==== S1P AND AGB1_to_GPA1
+Right node AGB1_to_GPA1 is an extra node
+After operator AND, S1P count only rows: 
+[]
+PROCESS DIAMONDS for AGB1_to_GPA1
+PROCESS DIAMOND for node AGB1_to_GPA1
+Process diamond from AGB1_to_GPA1 to CaIM
+Diamond from AGB1_to_GPA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_49_ ==== OST1 AND _XTR_48_
+After operator AND, OST1 count only rows: 
+[]
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_52_ === NOT Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_53_ is 
+[]
+_XTR_53_ === NOT HTPase
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_66_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_66_ ==== _XTR_60_ OR _XTR_65_
+After operator OR, _XTR_60_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_65_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_71_ is 
+[]
+_XTR_71_ === NOT _XTR_70_
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_33_ ==== ROS AND NO
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+After operator AND, NO count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC is 
+[]
+PLC ==== ABA AND Ca2_c
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node InsPK is 
+[]
+InsPK === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node GC is 
+[]
+GC === NO
+			---------------
+
+Counted row for current node ADPRc is 
+[]
+ADPRc === NO
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_21_ ==== _XTR_19_ AND _XTR_20_
+After operator AND, _XTR_19_ count only rows: 
+[4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_22_ ==== ROS AND _XTR_20_
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[2, 3, 6, 7]
+_XTR_25_ ==== ERA1 AND _XTR_24_
+PROCESS DIAMONDS for ERA1
+PROCESS DIAMOND for node ERA1
+Process diamond from ERA1 to CaIM
+Diamond from ERA1 to CaIM has been processed already, continue
+After operator AND, _XTR_24_ count only rows: 
+[2, 3, 6, 7]
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[2, 3, 4, 5, 10, 11, 12, 13]
+_XTR_20_ === NOT Depolar
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_29_ ==== _XTR_28_ OR ERA1
+After operator OR, _XTR_28_ count only rows: 
+[0, 1, 8, 9, 12, 13]
+PROCESS DIAMONDS for ERA1
+PROCESS DIAMOND for node ERA1
+Process diamond from ERA1 to CaIM
+Diamond from ERA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Ca2_ATPase is 
+[0, 1, 2, 3, 4, 5]
+Ca2_ATPase === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_73_ is 
+[]
+_XTR_73_ ==== InsP3 AND InsP6
+After operator AND, InsP3 count only rows: 
+[]
+After operator AND, InsP6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_74_ is 
+[]
+_XTR_74_ ==== cGMP AND cADPR
+After operator AND, cGMP count only rows: 
+[]
+After operator AND, cADPR count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_27_ ==== _XTR_23_ OR _XTR_26_
+After operator OR, _XTR_23_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_26_ count only rows: 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_31_ === NOT _XTR_30_
+			---------------
+
+Counted row for current node _XTR_92_ is 
+[]
+_XTR_92_ ==== ROS OR pH
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ABI1 is 
+[0, 1, 2, 3, 4, 5]
+ABI1 ==== _XTR_9_ AND _XTR_10_
+After operator AND, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator AND, _XTR_10_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[]
+_XTR_59_ ==== _XTR_51_ OR _XTR_58_
+After operator OR, _XTR_51_ count only rows: 
+[]
+After operator OR, _XTR_58_ count only rows: 
+[]
+			---------------
+
+Counted row for current node HTPase is 
+[0, 1, 2, 3, 4, 5]
+HTPase === NOT _XTR_93_
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[]
+_XTR_64_ ==== _XTR_62_ AND _XTR_63_
+After operator AND, _XTR_62_ count only rows: 
+[]
+After operator AND, _XTR_63_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_69_ is 
+[]
+_XTR_69_ ==== _XTR_68_ OR AnionEM
+After operator OR, _XTR_68_ count only rows: 
+[]
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Counted row for current node NOS is 
+[]
+NOS === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node NIA12 is 
+[]
+NIA12 === RCN1
+			---------------
+
+Counted row for current node _XTR_87_ is 
+[]
+_XTR_87_ === NOT GCR1
+			---------------
+
+Counted row for current node AGB1 is 
+[0, 1, 2, 3, 4, 5]
+AGB1 === GPA1
+PROCESS DIAMONDS for GPA1
+PROCESS DIAMOND for node GPA1
+Process diamond from GPA1 to CaIM
+Diamond from GPA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node S1P is 
+[]
+S1P === SphK
+			---------------
+
+Counted row for current node AGB1 is 
+[0, 1, 2, 3, 4, 5]
+AGB1 === GPA1
+PROCESS DIAMONDS for GPA1
+PROCESS DIAMOND for node GPA1
+Process diamond from GPA1 to CaIM
+Diamond from GPA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node OST1 is 
+[]
+OST1 === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ ==== ROP2 AND pH
+After operator AND, ROP2 count only rows: 
+[]
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_77_', '_XTR_78_', '_XTR_1_', 'pH', 'ABA', 'Ca2_c', '_XTR_76_', 'CIS_to_Ca2_c', 'CaIM_to_Ca2_c', '_XTR_52_', '_XTR_53_', 'KEV', '_XTR_3_', '_XTR_5_', '_XTR_66_', '_XTR_71_', '_XTR_33_', 'PLC', 'InsPK', 'GC', 'ADPRc', '_XTR_21_', '_XTR_22_', '_XTR_25_', '_XTR_20_', '_XTR_29_', 'ROS', '_XTR_49_', 'Ca2_ATPase_to_Ca2_c', '_XTR_73_', '_XTR_74_', '_XTR_27_', '_XTR_31_', '_XTR_2_', '_XTR_4_', '_XTR_92_', 'ABI1', '_XTR_59_', 'HTPase', '_XTR_64_', '_XTR_69_', 'KOUT_to_Depolar', 'Atrboh_to_ROS', 'NOS', 'NIA12', '_XTR_87_', 'AGB1_to_GPA1', 'S1P', 'AGB1_to_GPA1', 'OST1', '_XTR_48_', '_XTR_60_', '_XTR_65_', '_XTR_70_', 'NO', '_XTR_19_', 'ERA1', '_XTR_24_', 'Depolar', '_XTR_28_', 'InsP3', 'InsP6', 'cGMP', 'cADPR', '_XTR_23_', '_XTR_26_', '_XTR_30_', '_XTR_9_', '_XTR_10_', '_XTR_51_', '_XTR_58_', '_XTR_93_', '_XTR_62_', '_XTR_63_', '_XTR_68_', 'AnionEM', '_XTR_35_', '_XTR_36_', 'RCN1', 'GCR1', 'GPA1', 'SphK', 'ROP2']---
+
+Counted row for current node _XTR_77_ is 
+[]
+_XTR_77_ ==== CIS_to_Ca2_c AND _XTR_76_
+Left node CIS_to_Ca2_c is an extra node
+After operator AND, CIS_to_Ca2_c count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_78_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_78_ ==== CaIM_to_Ca2_c AND _XTR_76_
+Left node CaIM_to_Ca2_c is an extra node
+After operator AND, CaIM_to_Ca2_c count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_76_
+PROCESS DIAMOND for node _XTR_76_
+Process diamond from _XTR_76_ to CaIM
+Diamond from _XTR_76_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_1_ === NOT ABI1
+PROCESS DIAMONDS for ABI1
+PROCESS DIAMOND for node ABI1
+Process diamond from ABI1 to CaIM
+Diamond from ABI1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node pH is 
+[0, 1, 2, 3, 4, 5]
+pH === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Reach node ABA without in-comming edges
+
+Counted row for current node Ca2_c is 
+[0, 1, 2, 3, 4, 5]
+Ca2_c ==== _XTR_77_ OR _XTR_78_
+After operator OR, _XTR_77_ count only rows: 
+[]
+After operator OR, _XTR_78_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_76_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_76_ === NOT Ca2_ATPase_to_Ca2_c
+			---------------
+
+Counted row for current node CIS is 
+[]
+CIS ==== _XTR_73_ OR _XTR_74_
+After operator OR, _XTR_73_ count only rows: 
+[]
+After operator OR, _XTR_74_ count only rows: 
+[]
+			---------------
+
+Counted row for current node CaIM is 
+[0, 1, 2, 3, 4, 5]
+CaIM ==== _XTR_27_ OR _XTR_31_
+After operator OR, _XTR_27_ count only rows: 
+[2, 3, 4, 5]
+After operator OR, _XTR_31_ count only rows: 
+[0, 1]
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_52_ === NOT Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_53_ is 
+[]
+_XTR_53_ === NOT HTPase
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KEV is 
+[0, 1, 2, 3, 4, 5]
+KEV === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_3_ ==== Ca2_c AND _XTR_2_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+After operator AND, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== pH AND _XTR_4_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_4_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_66_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_66_ ==== _XTR_60_ OR _XTR_65_
+After operator OR, _XTR_60_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_65_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_71_ is 
+[]
+_XTR_71_ === NOT _XTR_70_
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_33_ ==== ROS AND NO
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+After operator AND, NO count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC is 
+[]
+PLC ==== ABA AND Ca2_c
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node InsPK is 
+[]
+InsPK === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node GC is 
+[]
+GC === NO
+			---------------
+
+Counted row for current node ADPRc is 
+[]
+ADPRc === NO
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_21_ ==== _XTR_19_ AND _XTR_20_
+After operator AND, _XTR_19_ count only rows: 
+[4, 5, 6, 7]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_22_ ==== ROS AND _XTR_20_
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[2, 3, 6, 7]
+_XTR_25_ ==== ERA1 AND _XTR_24_
+PROCESS DIAMONDS for ERA1
+PROCESS DIAMOND for node ERA1
+Process diamond from ERA1 to CaIM
+Diamond from ERA1 to CaIM has been processed already, continue
+After operator AND, _XTR_24_ count only rows: 
+[2, 3, 6, 7]
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[2, 3, 4, 5, 10, 11, 12, 13]
+_XTR_20_ === NOT Depolar
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_29_ ==== _XTR_28_ OR ERA1
+After operator OR, _XTR_28_ count only rows: 
+[0, 1, 8, 9, 12, 13]
+PROCESS DIAMONDS for ERA1
+PROCESS DIAMOND for node ERA1
+Process diamond from ERA1 to CaIM
+Diamond from ERA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ROS is 
+[0, 1, 2, 3, 4, 5]
+ROS === Atrboh_to_ROS
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_49_ ==== OST1 AND _XTR_48_
+After operator AND, OST1 count only rows: 
+[]
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Ca2_ATPase is 
+[0, 1, 2, 3, 4, 5]
+Ca2_ATPase === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_73_ is 
+[]
+_XTR_73_ ==== InsP3 AND InsP6
+After operator AND, InsP3 count only rows: 
+[]
+After operator AND, InsP6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_74_ is 
+[]
+_XTR_74_ ==== cGMP AND cADPR
+After operator AND, cGMP count only rows: 
+[]
+After operator AND, cADPR count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_27_ ==== _XTR_23_ OR _XTR_26_
+After operator OR, _XTR_23_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_26_ count only rows: 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_31_ === NOT _XTR_30_
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_2_ ==== _XTR_1_ OR pH
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[]
+_XTR_4_ ==== Ca2_c OR _XTR_1_
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_92_ is 
+[]
+_XTR_92_ ==== ROS OR pH
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ABI1 is 
+[0, 1, 2, 3, 4, 5]
+ABI1 ==== _XTR_9_ AND _XTR_10_
+After operator AND, _XTR_9_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator AND, _XTR_10_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[]
+_XTR_59_ ==== _XTR_51_ OR _XTR_58_
+After operator OR, _XTR_51_ count only rows: 
+[]
+After operator OR, _XTR_58_ count only rows: 
+[]
+			---------------
+
+Counted row for current node HTPase is 
+[0, 1, 2, 3, 4, 5]
+HTPase === NOT _XTR_93_
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[]
+_XTR_64_ ==== _XTR_62_ AND _XTR_63_
+After operator AND, _XTR_62_ count only rows: 
+[]
+After operator AND, _XTR_63_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_69_ is 
+[]
+_XTR_69_ ==== _XTR_68_ OR AnionEM
+After operator OR, _XTR_68_ count only rows: 
+[]
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node KOUT is 
+[0, 1, 2, 3, 4, 5]
+KOUT ==== _XTR_35_ OR _XTR_36_
+After operator OR, _XTR_35_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_36_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Atrboh is 
+[0, 1, 2, 3, 4, 5]
+Atrboh ==== _XTR_49_ AND _XTR_1_
+After operator AND, _XTR_49_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+PROCESS DIAMONDS for _XTR_1_
+PROCESS DIAMOND for node _XTR_1_
+Process diamond from _XTR_1_ to CaIM
+Diamond from _XTR_1_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node NOS is 
+[]
+NOS === Ca2_c
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node NIA12 is 
+[]
+NIA12 === RCN1
+			---------------
+
+Counted row for current node _XTR_87_ is 
+[]
+_XTR_87_ === NOT GCR1
+			---------------
+
+Counted row for current node AGB1 is 
+[0, 1, 2, 3, 4, 5]
+AGB1 === GPA1
+PROCESS DIAMONDS for GPA1
+PROCESS DIAMOND for node GPA1
+Process diamond from GPA1 to CaIM
+Diamond from GPA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node S1P is 
+[]
+S1P === SphK
+			---------------
+
+Counted row for current node AGB1 is 
+[0, 1, 2, 3, 4, 5]
+AGB1 === GPA1
+PROCESS DIAMONDS for GPA1
+PROCESS DIAMOND for node GPA1
+Process diamond from GPA1 to CaIM
+Diamond from GPA1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node OST1 is 
+[]
+OST1 === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ ==== ROP2 AND pH
+After operator AND, ROP2 count only rows: 
+[]
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[8, 9, 10, 11, 12, 13]
+_XTR_60_ ==== _XTR_59_ OR Ca2_c
+After operator OR, _XTR_59_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_65_ is 
+[]
+_XTR_65_ ==== HTPase AND _XTR_64_
+PROCESS DIAMONDS for HTPase
+PROCESS DIAMOND for node HTPase
+Process diamond from HTPase to CaIM
+Diamond from HTPase to CaIM has been processed already, continue
+After operator AND, _XTR_64_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_70_ is 
+[]
+_XTR_70_ ==== _XTR_69_ OR KOUT_to_Depolar
+Right node KOUT_to_Depolar is an extra node
+After operator OR, _XTR_69_ count only rows: 
+[]
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node NO is 
+[]
+NO ==== NOS AND NIA12
+After operator AND, NOS count only rows: 
+[]
+After operator AND, NIA12 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_19_ is 
+[4, 5, 6, 7]
+_XTR_19_ ==== ABH1 AND _XTR_18_
+PROCESS DIAMONDS for ABH1
+PROCESS DIAMOND for node ABH1
+Process diamond from ABH1 to CaIM
+Diamond from ABH1 to CaIM has been processed already, continue
+After operator AND, _XTR_18_ count only rows: 
+[4, 5, 6, 7]
+			---------------
+
+Reach node ERA1 without in-comming edges
+
+Counted row for current node _XTR_24_ is 
+[2, 3, 6, 7]
+_XTR_24_ === NOT ABH1
+PROCESS DIAMONDS for ABH1
+PROCESS DIAMOND for node ABH1
+Process diamond from ABH1 to CaIM
+Diamond from ABH1 to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node Depolar is 
+[8, 9, 10, 11, 12, 13]
+Depolar ==== _XTR_66_ OR _XTR_71_
+After operator OR, _XTR_66_ count only rows: 
+[8, 9, 10, 11, 12, 13]
+After operator OR, _XTR_71_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[0, 1, 8, 9, 12, 13]
+_XTR_28_ ==== ABH1 OR Depolar
+PROCESS DIAMONDS for ABH1
+PROCESS DIAMOND for node ABH1
+Process diamond from ABH1 to CaIM
+Diamond from ABH1 to CaIM has been processed already, continue
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node InsP3 is 
+[]
+InsP3 === PLC
+			---------------
+
+Counted row for current node InsP6 is 
+[]
+InsP6 === InsPK
+			---------------
+
+Counted row for current node cGMP is 
+[]
+cGMP === GC
+			---------------
+
+Counted row for current node cADPR is 
+[]
+cADPR === ADPRc
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_23_ ==== _XTR_21_ OR _XTR_22_
+After operator OR, _XTR_21_ count only rows: 
+[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+After operator OR, _XTR_22_ count only rows: 
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[2, 3, 6, 7]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_27_
+Diamond from _XTR_20_ to _XTR_27_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+_XTR_30_ ==== _XTR_29_ OR ROS
+After operator OR, _XTR_29_ count only rows: 
+[0, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+PROCESS DIAMONDS for ROS
+PROCESS DIAMOND for node ROS
+Process diamond from ROS to CaIM
+Diamond from ROS to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_9_ ==== pH AND _XTR_8_
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+After operator AND, _XTR_8_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_10_ is 
+[]
+_XTR_10_ === NOT PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to CaIM
+Diamond from PA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_51_ is 
+[]
+_XTR_51_ ==== AnionEM OR KEV
+PROCESS DIAMONDS for AnionEM
+PROCESS DIAMOND for node AnionEM
+Process diamond from AnionEM to CaIM
+Diamond from AnionEM to CaIM has been processed already, continue
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[]
+_XTR_58_ ==== KOUT_to_Depolar AND _XTR_57_
+Left node KOUT_to_Depolar is an extra node
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_57_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_93_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_93_ ==== _XTR_92_ OR Ca2_c
+After operator OR, _XTR_92_ count only rows: 
+[]
+PROCESS DIAMONDS for Ca2_c
+PROCESS DIAMOND for node Ca2_c
+Process diamond from Ca2_c to CaIM
+Diamond from Ca2_c to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[]
+_XTR_62_ ==== _XTR_61_ AND _XTR_15_
+After operator AND, _XTR_61_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to CaIM
+Diamond from _XTR_15_ to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[]
+_XTR_63_ === NOT KOUT_to_Depolar
+PROCESS DIAMONDS for KOUT_to_Depolar
+PROCESS DIAMOND for node KOUT_to_Depolar
+Process diamond from KOUT_to_Depolar to CaIM
+Diamond from KOUT_to_Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_68_ is 
+[]
+_XTR_68_ ==== _XTR_67_ OR KEV
+After operator OR, _XTR_67_ count only rows: 
+[]
+PROCESS DIAMONDS for KEV
+PROCESS DIAMOND for node KEV
+Process diamond from KEV to CaIM
+Diamond from KEV to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node AnionEM is 
+[0, 1, 2, 3, 4, 5]
+AnionEM ==== _XTR_3_ OR _XTR_5_
+After operator OR, _XTR_3_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[0, 1, 2, 3, 4, 5]
+_XTR_35_ ==== Depolar AND _XTR_34_
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+After operator AND, _XTR_34_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node _XTR_36_ is 
+[]
+_XTR_36_ ==== pH AND Depolar
+PROCESS DIAMONDS for pH
+PROCESS DIAMOND for node pH
+Process diamond from pH to CaIM
+Diamond from pH to CaIM has been processed already, continue
+PROCESS DIAMONDS for Depolar
+PROCESS DIAMOND for node Depolar
+Process diamond from Depolar to CaIM
+Diamond from Depolar to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node RCN1 is 
+[]
+RCN1 === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Reach node GCR1 without in-comming edges
+
+Counted row for current node GPA1 is 
+[0, 1, 2, 3, 4, 5]
+GPA1 ==== _XTR_88_ OR _XTR_89_
+After operator OR, _XTR_88_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+After operator OR, _XTR_89_ count only rows: 
+[0, 1, 2, 3, 4, 5]
+			---------------
+
+Counted row for current node SphK is 
+[]
+SphK === ABA
+PROCESS DIAMONDS for ABA
+PROCESS DIAMOND for node ABA
+Process diamond from ABA to CaIM
+Diamond from ABA to CaIM has been processed already, continue
+			---------------
+
+Counted row for current node ROP2 is 
+[]
+ROP2 === PA
+PROCESS DIAMONDS for PA
+PROCESS DIAMOND for node PA
+Process diamond from PA to CaIM
+Diamond from PA to CaIM has been processed already, continue
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node Atrboh: processed 6 times
+Node KOUT: processed 10 times
+Node CIS: processed 5 times
+Node CaIM: processed 6 times
+Node Ca2_ATPase: processed 4 times
+Node AGB1: processed 1 times
+SIMULATE 0 nodes over 39 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.8438
+=========================
+PROPAGATED VALUES:
+ABA                  			 KO:    -1.2501 | KI:     2.0834
+ABH1                 			 KO:    -0.4167 | KI:     0.4167
+ABI1                 			 KO:        0.0 | KI:     2.0834
+ADPRc                			 KO:        0.0 | KI:        0.0
+AGB1                 			 KO:        0.0 | KI:     2.0834
+AnionEM              			 KO:     2.0834 | KI:        0.0
+Atrboh               			 KO:        0.0 | KI:     2.0834
+CIS                  			 KO:        0.0 | KI:        0.0
+Ca2_ATPase           			 KO:     2.0834 | KI:        0.0
+Ca2_c                			 KO:     2.0834 | KI:        0.0
+CaIM                 			 KO:     2.0834 | KI:    -2.9168
+Depolar              			 KO:    -1.2501 | KI:        0.0
+ERA1                 			 KO:    -0.4167 | KI:     0.4167
+GC                   			 KO:        0.0 | KI:        0.0
+GCR1                 			 KO:        0.0 | KI:        0.0
+GPA1                 			 KO:        0.0 | KI:     2.0834
+HTPase               			 KO:     2.0834 | KI:        0.0
+InsP3                			 KO:        0.0 | KI:        0.0
+InsP6                			 KO:        0.0 | KI:        0.0
+InsPK                			 KO:        0.0 | KI:        0.0
+KEV                  			 KO:     2.0834 | KI:        0.0
+KOUT                 			 KO:     2.0834 | KI:        0.0
+NIA12                			 KO:        0.0 | KI:        0.0
+NO                   			 KO:        0.0 | KI:        0.0
+NOS                  			 KO:        0.0 | KI:        0.0
+OST1                 			 KO:        0.0 | KI:        0.0
+PA                   			 KO:        0.0 | KI:     2.0834
+PLC                  			 KO:        0.0 | KI:        0.0
+PLD                  			 KO:        0.0 | KI:     2.0834
+RCN1                 			 KO:        0.0 | KI:        0.0
+ROP2                 			 KO:        0.0 | KI:        0.0
+ROS                  			 KO:        0.0 | KI:     2.0834
+S1P                  			 KO:        0.0 | KI:        0.0
+SphK                 			 KO:        0.0 | KI:        0.0
+cADPR                			 KO:        0.0 | KI:        0.0
+cGMP                 			 KO:        0.0 | KI:        0.0
+pH                   			 KO:        0.0 | KI:     2.0834
+KO RANKING OF NODES:
+1	CaIM, Ca2_c, HTPase, AnionEM, KOUT, KEV
+	Ca2_ATPase
+2	Depolar
+3	ROS, Atrboh, OST1, ABI1, ROP2, pH
+	PA, PLD, CIS, GPA1, InsP3, InsP6
+	cGMP, cADPR, NO, PLC, InsPK, GC
+	ADPRc, NOS, NIA12, S1P, RCN1, AGB1
+	SphK
+=======
+KI RANKING OF NODES:
+1	CaIM
+2	ROS, Atrboh, ABI1, ABA, pH, PA
+	PLD, GPA1, AGB1
+3	ERA1, ABH1
+4	Depolar, OST1, Ca2_c, HTPase, ROP2, AnionEM
+	KOUT, KEV, CIS, Ca2_ATPase, InsP3, InsP6
+	cGMP, cADPR, NO, PLC, InsPK, GC
+	ADPRc, NOS, NIA12, S1P, RCN1, GCR1
+	SphK
+=======
+NUMBER OF NODES: 44
+NUMBER OF INPUTS: 4
+NUMBER OF EDGES: 78
+TIME process heading: 0.002129793167114258
+TIME simulate original network: 0.15199589729309082
+TIME perform original analysis process: 11.40056824684143
+TIME perform propagation: 1.7181918621063232
+There are 7 unreachable nodes, they are:
+{'Closure', 'PEPC', 'ROP10', 'Actin', 'Malate', 'RAC1', 'KAP'}
+pH                   - Correct: KO:    -1.2501 | KI :     2.0834 - Incorrect KO:        0.0 | KI:     2.0834
+AGB1                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:     2.0834
+GPA1                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:     2.0834
+Depolar              - Correct: KO:     0.8333 | KI :        0.0 - Incorrect KO:    -1.2501 | KI:        0.0
+PA                   - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:     2.0834
+ABI1                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:     2.0834
+HTPase               - Correct: KO:     2.0834 | KI :    -1.2501 - Incorrect KO:     2.0834 | KI:        0.0
+Ca2_ATPase           - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     2.0834 | KI:        0.0
+PLD                  - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:     2.0834
+ABA
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+ABH1
+Lack      0: []
+Extra     0: []
+Real      4: [2, 3, 6, 7]
+Prop      4: [2, 3, 6, 7]
+
+ABI1
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+ADPRc
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AGB1
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+Actin
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AnionEM
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+Atrboh
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+CIS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ca2_ATPase
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+Ca2_c
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+Closure
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Depolar
+Lack      6: [0, 1, 2, 3, 4, 5]
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop      6: [8, 9, 10, 11, 12, 13]
+
+ERA1
+Lack      0: []
+Extra     0: []
+Real      4: [4, 5, 6, 7]
+Prop      4: [4, 5, 6, 7]
+
+GC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GCR1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GPA1
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+HTPase
+Lack      6: [8, 9, 10, 11, 12, 13]
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+InsP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+InsP6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+InsPK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+KAP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+KEV
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+KOUT
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+Malate
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NIA12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NO
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NOS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+OST1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PA
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+PEPC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLD
+Lack      0: []
+Extra     6: [0, 1, 2, 3, 4, 5]
+Real      0: []
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+RAC1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RCN1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ROP10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ROP2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ROS
+Lack      0: []
+Extra     0: []
+Real      6: [0, 1, 2, 3, 4, 5]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+S1P
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SphK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cADPR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cGMP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pH
+Lack      6: [8, 9, 10, 11, 12, 13]
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+Prop      6: [0, 1, 2, 3, 4, 5]
+
+-----KO RANKING COMPARISON-----
+1	Ca2_c, HTPase, AnionEM, KOUT, KEV, Ca2_ATPase
+2	Depolar, ABA
+3	ERA1, ABH1
+4	ROS, Atrboh, OST1, ABI1, ROP2, pH
+	PA, PLD, CIS, GPA1, InsP3, InsP6
+	cGMP, cADPR, NO, PLC, InsPK, GC
+	ADPRc, NOS, NIA12, S1P, RCN1, GCR1
+	AGB1, SphK, ROP10, Closure, RAC1, PEPC
+	Actin, KAP, Malate
+REFERENCE:
+1	AnionEM, HTPase, KEV, Ca2_c, KOUT
+2	ABA, pH
+3	Depolar
+4	ERA1, ABH1
+5	GCR1, InsP6, ROP10, GC, InsP3, AGB1
+	NIA12, ROS, ADPRc, SphK, OST1, Closure
+	Atrboh, GPA1, ROP2, CIS, InsPK, PLC
+	RAC1, PA, ABI1, Ca2_ATPase, PEPC, Actin
+	PLD, KAP, NO, NOS, RCN1, cADPR
+	S1P, cGMP, Malate
+=======
+-----KI RANKING COMPARISON-----
+1	ROS, Atrboh, ABI1, ABA, pH, PA
+	PLD, GPA1, AGB1
+2	ERA1, ABH1
+3	Depolar, OST1, Ca2_c, HTPase, ROP2, AnionEM
+	KOUT, KEV, CIS, Ca2_ATPase, InsP3, InsP6
+	cGMP, cADPR, NO, PLC, InsPK, GC
+	ADPRc, NOS, NIA12, S1P, RCN1, GCR1
+	SphK, ROP10, Closure, RAC1, PEPC, Actin
+	KAP, Malate
+REFERENCE:
+1	ABA, pH, ROS, Atrboh
+2	HTPase
+3	ERA1, ABH1
+4	GCR1, InsP6, ROP10, AnionEM, GC, InsP3
+	AGB1, NIA12, ADPRc, SphK, OST1, Closure
+	GPA1, ROP2, CIS, Depolar, InsPK, PLC
+	RAC1, PA, ABI1, Ca2_ATPase, PEPC, KEV
+	Actin, PLD, Ca2_c, KOUT, KAP, NO
+	NOS, RCN1, cADPR, S1P, cGMP, Malate
+============
+Relative_RMSE_KO_is  0.048808741901902285
+Relative_RMSE_KI_is  0.07355669828636069
+NDCG_KO_is  0.9221
+NDCG_KI_is  0.7274
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             43.000       43.000
+Kendall tau-b                         0.857        0.577
+Spearman rho                          0.852        0.577
+Mean abs rank diff                    0.953        1.140
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.818        0.256
+         Precision@10                0.900        1.000
+         Recall@10                   0.900        0.256
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.833        0.444
+  Top-2  groups Jaccard            0.667        0.333
+  Top-3  groups Jaccard            0.636        0.163
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9215
+Average number of correct rows after binarization: 0.9215116279069767 
+Average DNCG after binarization: 0.8247500000000001 
+-----------TOTAL RUNNING TIME---------------
+13.370042541995645

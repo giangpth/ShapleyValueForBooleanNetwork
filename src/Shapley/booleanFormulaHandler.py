@@ -226,8 +226,7 @@ def parseNuclearTerm(toprocess, debug=False):
                 orcount += 1
 
     if andcount + orcount >= 2:
-        if debug:
-            print("More than 1 binary operator, dont allow NOT")
+        print("More than 1 binary operator, dont allow NOT")
     if andcount >= 1 and orcount >= 1:
         assert False, "Non-homogenous binary operators {}".format(toprocess)
 
@@ -237,6 +236,8 @@ def parseNuclearTerm(toprocess, debug=False):
 
         # in case of NOT A, create node with only right term
         if type(toprocess[0]) == str and toprocess[0].upper() == "NOT":
+            if debug:
+                print("Parsing NOT operator with term {}".format(toprocess[1]))
             assert len(toprocess) == 2, "Confusing term found: {}, , add parentheses to clarify scope of NOT operator".format((toprocess))
             node = Node("NOT")
             if type(toprocess[1]) == Node:
@@ -245,26 +246,36 @@ def parseNuclearTerm(toprocess, debug=False):
                 node.insert_right(Node(toprocess[1]))
             return node 
         else:
-            
+            if debug:
+                print("Parsing binary operator with terms {}".format(toprocess))
             # case of A and/or not B ( and/or B ...)
             if type(toprocess[0]) == str:
                 assert toprocess[0].upper() not in biopelist, "Stand alone binary operator found {}".format((toprocess))
-
             
             
             node = Node(toprocess[1].upper())
+            if debug:
+                print("Node after adding operator")
+                node.display()
 
             if type(toprocess[0]) == Node:
                 node.insert_left((toprocess[0]))
             else:
                 node.insert_left(Node(toprocess[0]))
 
+            if debug:
+                print("Node after adding left term")
+                node.display()
+
             assert len(toprocess) >= 3, "Uncomplete binary operator found {}".format((toprocess))
             
             # case of "A and/or not B"
             if type(toprocess[2]) == str and toprocess[2].upper() == "NOT":
+                if debug:
+                    print("Parsing combined binary operator with NOT operator with term {}".format(toprocess))
                 assert len(toprocess) == 4, "Confusing term found: {}, add parentheses to clarify scope of NOT operator".format((toprocess))
                 morenode = Node("NOT") 
+
 
                 if type(toprocess[3]) == Node:
                     morenode.insert_right((toprocess[3]))
@@ -272,12 +283,20 @@ def parseNuclearTerm(toprocess, debug=False):
                     morenode.insert_right(Node(toprocess[3]))
 
                 node.insert_right(morenode)
+                if debug:
+                    print("Node after adding right term with NOT operator")
+                    node.display()
+
                 return node 
             else:
                 if type(toprocess[2]) == Node:
                     node.insert_right((toprocess[2]))
                 else:
                     node.insert_right(Node(toprocess[2]))
+
+                if debug:
+                    print("Node after adding right term")
+                    node.display()
                 
                 idx = 3
                 oldnode = node
@@ -293,8 +312,10 @@ def parseNuclearTerm(toprocess, debug=False):
                         assert False, "Uncomplete binary operator".format(toprocess)
                     oldnode = newnode
                     idx += 2
-                return oldnode
-                 
+                if debug:
+                    print("Node after adding more right terms")
+                    oldnode.display()
+                return oldnode          
                     
             
     else: # case of only 1 term 
@@ -408,6 +429,9 @@ def parseFormula(formula, debug=False):
         Node: The root node of the binary tree representing the boolean expression.
     """
     words = formula['right'].split() # split by space
+    if debug:
+        print("Parsing formula: {} = {}".format(formula['left'], formula['right']))
+        print("Split into words: {}".format(words))
 
     level = find_parens(words) # dictionary with keys are the opening parathesis, value of each key is the corresponding closing parathese
 

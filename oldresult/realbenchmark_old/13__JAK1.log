@@ -1,0 +1,356 @@
+The expression file is data/realbenchmark/13.txt
+The interested output is: 
+JAK1
+List of all species:
+{'JAK1', 'IL10', 'STAT6', 'Tbet', 'IFNb', 'IL4R', 'IL4', 'NFAT', 'IL12', 'IRAK', 'IL18', 'IFNbR', 'STAT3', 'IL12R', 'SOCS1', 'GATA3', 'IFNg', 'STAT4', 'IL18R', 'TCR', 'IL10R', 'IFNgR', 'STAT1'}
+-----Input names-----
+{'IL12', 'TCR', 'IFNb', 'IL18'}
+----Intermediate nodes-----
+{'JAK1', 'STAT3', 'IL10', 'STAT6', 'IL12R', 'SOCS1', 'GATA3', 'IFNg', 'Tbet', 'STAT4', 'IL4R', 'IL18R', 'IL4', 'NFAT', 'IL10R', 'IRAK', 'IFNgR', 'STAT1', 'IFNbR'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['IFNb', 'IL12', 'IL18', 'TCR']
+Sorted input names
+['IFNb', 'IL12', 'IL18', 'TCR']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+There are 19 intermediate nodes with the range of inter: 0 524287
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.04214310646057129 seconds===
+----Input knockout shapley value-----
+('IL12', 0.0)
+('TCR', 0.0)
+('IFNb', 0.0)
+('IL18', 0.0)
+----Input knockIN shapley value-----
+('IL12', 0.0)
+('TCR', 0.0)
+('IFNb', 0.0)
+('IL18', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout STAT3
+Knockout IL10
+Knockout STAT6
+Knockout IL12R
+Knockout SOCS1
+Knockout GATA3
+Knockout IFNg
+Knockout Tbet
+Knockout STAT4
+Knockout IL4R
+Knockout IL18R
+Knockout IL4
+Knockout NFAT
+Knockout IL10R
+Knockout IRAK
+Knockout IFNgR
+Knockout STAT1
+Knockout IFNbR
+----KNOCKOUT VALUE for output JAK1----
+{'GATA3': 0.0, 'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IL4': 0.0, 'IL4R': 0.0, 'IRAK': 0.0, 'NFAT': 0.0, 'SOCS1': -4.0, 'STAT1': -3.75, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': 0.0, 'Tbet': -1.5}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin STAT3
+Knockin IL10
+Knockin STAT6
+Knockin IL12R
+Knockin SOCS1
+Knockin GATA3
+Knockin IFNg
+Knockin Tbet
+Knockin STAT4
+Knockin IL4R
+Knockin IL18R
+Knockin IL4
+Knockin NFAT
+Knockin IL10R
+Knockin IRAK
+Knockin IFNgR
+Knockin STAT1
+Knockin IFNbR
+----KNOCKIN VALUE for output JAK1----
+{'GATA3': 0.0, 'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IL4': 0.0, 'IL4R': 0.0, 'IRAK': 0.0, 'NFAT': 0.0, 'SOCS1': 0.0, 'STAT1': 0.0, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': 0.0, 'Tbet': 0.0}
+
+
+original.html
+----------WITH ACYCLIC FLAG-------------
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'IL12', 'TCR', 'IFNb', 'IL18'}
+Ordinary nodes are 
+{'JAK1', 'IL10', 'STAT6', 'Tbet', 'IFNb', 'IL4R', 'IL4', 'NFAT', 'IL12', 'IRAK', 'IL18', 'IFNbR', 'STAT3', 'IL12R', 'SOCS1', 'GATA3', 'IFNg', 'STAT4', 'IL18R', 'TCR', 'IL10R', 'IFNgR', 'STAT1'}
+Extranodes added after removing cycles are 
+['JAK1_to_STAT1', 'STAT6_to_GATA3', 'Tbet_to_GATA3', 'Tbet_to_Tbet', 'GATA3_to_GATA3']
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['IFNb', 'IL12', 'IL18', 'TCR']
+----Generate table from output----
+-----Calculated value of input nodes-----
+IFNb                 			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT JAK1=======
+----Master diamonds-----
+{'Tbet': 'JAK1', '_XTR_28_': 'IFNg', 'STAT1': 'JAK1', '_XTR_18_': 'JAK1', 'GATA3': 'JAK1', '_XTR_11_': 'JAK1', '_XTR_5_': 'JAK1'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.9531
+=========================
+PROPAGATED VALUES:
+GATA3                			 KO:        0.0 | KI:        0.0
+IFNb                 			 KO:        0.0 | KI:        0.0
+IFNbR                			 KO:        0.0 | KI:        0.0
+IFNg                 			 KO:        0.0 | KI:       -1.0
+IFNgR                			 KO:        0.0 | KI:       -1.0
+IL10                 			 KO:        0.0 | KI:        0.0
+IL10R                			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL12R                			 KO:        0.0 | KI:       -1.0
+IL18                 			 KO:        0.0 | KI:        0.0
+IL18R                			 KO:        0.0 | KI:       -1.0
+IL4                  			 KO:        0.0 | KI:        0.0
+IL4R                 			 KO:        0.0 | KI:        0.0
+IRAK                 			 KO:        0.0 | KI:       -1.0
+JAK1                 			 KO:        0.0 | KI:    -5.0002
+NFAT                 			 KO:        0.0 | KI:       -1.0
+SOCS1                			 KO:    -4.0002 | KI:        0.0
+STAT1                			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+STAT4                			 KO:        0.0 | KI:       -1.0
+STAT6                			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+Tbet                 			 KO:    -1.5001 | KI:        0.0
+KO RANKING OF NODES:
+1	SOCS1
+2	Tbet
+3	JAK1, IFNgR, IFNg, STAT1, IFNbR, STAT4
+	STAT3, NFAT, IRAK, IL12R, IL10R, GATA3
+	IL18R, IL10, STAT6, IL4R, IL4
+=======
+KI RANKING OF NODES:
+1	JAK1
+2	IFNgR, IFNg, STAT4, NFAT, IRAK, IL12R
+	IL18R
+3	SOCS1, Tbet, STAT1, IFNbR, STAT3, IFNb
+	IL10R, GATA3, TCR, IL12, IL10, IL18
+	STAT6, IL4R, IL4
+=======
+NUMBER OF NODES: 23
+NUMBER OF INPUTS: 4
+NUMBER OF EDGES: 34
+TIME process heading: 0.0022377967834472656
+TIME simulate original network: 0.04214310646057129
+TIME perform original analysis process: 1.4430530071258545
+TIME perform propagation: 0.30009007453918457
+There are 0 unreachable nodes, they are:
+set()
+IL12R                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+IFNg                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+STAT4                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+IL18R                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+NFAT                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+IRAK                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+IFNgR                - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       -1.0
+STAT1                - Correct: KO:    -2.2501 | KI :    -1.5001 - Incorrect KO:        0.0 | KI:        0.0
+GATA3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNbR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNg
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IFNgR
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IL10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL10R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12R
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IL18
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18R
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+IL4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL4R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IRAK
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+NFAT
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+SOCS1
+Lack      0: []
+Extra     0: []
+Real     15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Prop     15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+STAT1
+Lack     14: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15]
+Extra     0: []
+Real     14: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15]
+Prop      0: []
+
+STAT3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT4
+Lack      0: []
+Extra     1: [0]
+Real      0: []
+Prop      1: [0]
+
+STAT6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TCR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Tbet
+Lack      0: []
+Extra     0: []
+Real      7: [1, 2, 3, 4, 5, 6, 7]
+Prop      7: [1, 2, 3, 4, 5, 6, 7]
+
+-----KO RANKING COMPARISON-----
+1	SOCS1
+2	Tbet
+3	IFNgR, IFNg, STAT1, IFNbR, STAT4, STAT3
+	IFNb, NFAT, IRAK, IL12R, IL10R, GATA3
+	TCR, IL18R, IL12, IL10, IL18, STAT6
+	IL4R, IL4
+REFERENCE:
+1	SOCS1
+2	STAT1
+3	Tbet
+4	IL12, TCR, IFNb, IL18, STAT3, IL10
+	STAT6, IL12R, GATA3, IFNg, STAT4, IL4R
+	IL18R, IL4, NFAT, IL10R, IRAK, IFNgR
+	IFNbR
+=======
+-----KI RANKING COMPARISON-----
+1	IFNgR, IFNg, STAT4, NFAT, IRAK, IL12R
+	IL18R
+2	SOCS1, Tbet, STAT1, IFNbR, STAT3, IFNb
+	IL10R, GATA3, TCR, IL12, IL10, IL18
+	STAT6, IL4R, IL4
+REFERENCE:
+1	STAT1
+2	IL12, TCR, IFNb, IL18, STAT3, IL10
+	STAT6, IL12R, SOCS1, GATA3, IFNg, Tbet
+	STAT4, IL4R, IL18R, IL4, NFAT, IL10R
+	IRAK, IFNgR, IFNbR
+============
+Relative_RMSE_KO_is  0.047972293187175906
+Relative_RMSE_KI_is  0.06484351797001202
+NDCG_KO_is  0.9085
+NDCG_KI_is  0.2565
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             22.000       22.000
+Kendall tau-b                         0.786       -0.149
+Spearman rho                          0.821       -0.149
+Mean abs rank diff                    0.955        0.364
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        0.000
+  Top-2  groups Jaccard            0.333        1.000
+  Top-3  groups Jaccard            0.136        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9403
+-----------TOTAL RUNNING TIME---------------
+1.9446455002762377

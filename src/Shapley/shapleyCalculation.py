@@ -56,7 +56,7 @@ def calKSV4Input(genphe, inputnames, outputname, knockin=False, mode = 'Shapley'
         inputnames (set): A set of input species names.
         outputnames (set): A set of output species names.
         knockin (bool): If True, perform knock-in analysis; if False, perform knock-out analysis.
-        mode (str): Calculation mode: 'Shapley' or 'random'
+        mode (str): Calculation mode: 'Shapley' or 'Uniform'
         simtable (dict): A dictionary mapping row IDs to dictionaries of species states.
         debug (bool): If True, print debug information.
     Returns:
@@ -99,8 +99,9 @@ def calKSV4Input(genphe, inputnames, outputname, knockin=False, mode = 'Shapley'
                     v_knockout = 1
                 
                 gain  = v_intact - v_knockout
-                if mode == 'random':
-                    weightedGain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
+                if mode == 'Uniform':
+                    # weightedGain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
+                    weightedGain = gain * 1.0 / pow(2, len(inputnames))
                 else:
                     weightedGain = gain * math.factorial(len(oneset)) * math.factorial(len(inputnames) - len(oneset))
 
@@ -174,7 +175,8 @@ def calKSV(intactgenphe, knockoutgenphes, outputname, numinput, mode = 'Shapley'
                 pheno = 1
             gain = pheyes - pheno
             if mode == 'Uniform':
-                weightedgain = gain * math.factorial(s) * math.factorial(numinput - s)
+                # weightedgain = gain * math.factorial(s) * math.factorial(numinput - s)
+                weightedgain = gain * 1.0 / pow(2, numinput)
             else:
                 weightedgain = gain * math.factorial(s) * math.factorial(numinput - s)
             sum += weightedgain

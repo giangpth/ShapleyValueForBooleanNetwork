@@ -1,0 +1,1096 @@
+The expression file is data/realbenchmark/18.txt
+The interested output is: 
+p27k
+List of all species:
+{'bclxl', 'gadd45', 'ikkab', 'cd45', 'camk4', 'plcga', 'plcgb', 'rac1p1', 'shp1', 'raf', 'fyn', 'tcrb', 'lckr', 'jun', 'cabin1', 'mekk1', 'Dummy', 'cyc1', 'vav3', 'p70s', 'gap', 'pkb', 'mkk4', 'malt1', 'ras', 'pten', 'ca', 'camk2', 'fkhr', 'cd28_input', 'shp2', 'ikb', 'cre', 'xx', 'grb2', 'pkcth', 'akap79', 'cd4', 'cam', 'lat', 'unknown_input2', 'ccblp1', 'cblb', 'abl', 'cd28', 'p27k', 'vav1', 'lckp2', 'pip3', 'ccblr', 'lckr_input', 'pdk1', 'erk', 'ip3', 'csk', 'bcl10', 'gab2', 'tcrlig_input', 'jnk', 'itk', 'mek', 'ikkg', 'unknown_input', 'hpk1', 'tcrp', 'creb', 'p21c', 'dgk', 'card11a', 'rasgrp', 'gads', 'fos', 'sos', 'nfat', 'sh3bp2', 'calpr1', 'dag', 'slp76', 'ccblp2', 'rac1p2', 'pag', 'sre', 'pi3k', 'nfkb', 'lckp1', 'calcin', 'bad', 'p38', 'cdc42', 'card11', 'bcat', 'unknown_input3', 'ship1', 'rac1r', 'gsk3', 'ap1', 'rsk', 'rlk', 'mlk3', 'tcrlig', 'zap70'}
+-----Input names-----
+{'lckr_input', 'cd28_input', 'unknown_input2', 'tcrlig_input', 'unknown_input3', 'unknown_input', 'cd4'}
+----Intermediate nodes-----
+{'pip3', 'bclxl', 'gadd45', 'ccblr', 'ikkab', 'cd45', 'pdk1', 'camk4', 'erk', 'plcga', 'plcgb', 'rac1p1', 'shp1', 'ip3', 'raf', 'fyn', 'csk', 'bcl10', 'gab2', 'jnk', 'itk', 'mek', 'ikkg', 'hpk1', 'tcrb', 'lckr', 'tcrp', 'creb', 'jun', 'cabin1', 'p21c', 'mekk1', 'Dummy', 'cyc1', 'dgk', 'vav3', 'p70s', 'gap', 'card11a', 'rasgrp', 'gads', 'pkb', 'mkk4', 'fos', 'sos', 'malt1', 'ras', 'pten', 'ca', 'camk2', 'fkhr', 'shp2', 'ikb', 'nfat', 'sh3bp2', 'calpr1', 'cre', 'xx', 'dag', 'slp76', 'ccblp2', 'rac1p2', 'pag', 'grb2', 'sre', 'pi3k', 'nfkb', 'pkcth', 'akap79', 'cam', 'lat', 'lckp1', 'calcin', 'bad', 'p38', 'cdc42', 'ccblp1', 'card11', 'bcat', 'ship1', 'rac1r', 'gsk3', 'ap1', 'rsk', 'cblb', 'rlk', 'abl', 'cd28', 'p27k', 'mlk3', 'tcrlig', 'vav1', 'zap70', 'lckp2'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+Sorted input names
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+There are 7 inputs with the range of input: 0 127
+Sorted internames:
+['Dummy', 'abl', 'akap79', 'ap1', 'bad', 'bcat', 'bcl10', 'bclxl', 'ca', 'cabin1', 'calcin', 'calpr1', 'cam', 'camk2', 'camk4', 'card11', 'card11a', 'cblb', 'ccblp1', 'ccblp2', 'ccblr', 'cd28', 'cd45', 'cdc42', 'cre', 'creb', 'csk', 'cyc1', 'dag', 'dgk', 'erk', 'fkhr', 'fos', 'fyn', 'gab2', 'gadd45', 'gads', 'gap', 'grb2', 'gsk3', 'hpk1', 'ikb', 'ikkab', 'ikkg', 'ip3', 'itk', 'jnk', 'jun', 'lat', 'lckp1', 'lckp2', 'lckr', 'malt1', 'mek', 'mekk1', 'mkk4', 'mlk3', 'nfat', 'nfkb', 'p21c', 'p27k', 'p38', 'p70s', 'pag', 'pdk1', 'pi3k', 'pip3', 'pkb', 'pkcth', 'plcga', 'plcgb', 'pten', 'rac1p1', 'rac1p2', 'rac1r', 'raf', 'ras', 'rasgrp', 'rlk', 'rsk', 'sh3bp2', 'ship1', 'shp1', 'shp2', 'slp76', 'sos', 'sre', 'tcrb', 'tcrlig', 'tcrp', 'vav1', 'vav3', 'xx', 'zap70']
+There are 94 intermediate nodes with the range of inter: 0 19807040628566084398385987583
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 2.30952787399292 seconds===
+----Input knockout shapley value-----
+('lckr_input', 0.0)
+('cd28_input', -0.0)
+('unknown_input2', 0.0)
+('tcrlig_input', 0.0)
+('unknown_input3', 0.0)
+('unknown_input', 0.0)
+('cd4', 0.0)
+----Input knockIN shapley value-----
+('lckr_input', 0.0)
+('cd28_input', 0.0)
+('unknown_input2', -0.0)
+('tcrlig_input', 0.0)
+('unknown_input3', 0.0)
+('unknown_input', 0.0)
+('cd4', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout pip3
+Knockout bclxl
+Knockout gadd45
+Knockout ccblr
+Knockout ikkab
+Knockout cd45
+Knockout pdk1
+Knockout camk4
+Knockout erk
+Knockout plcga
+Knockout plcgb
+Knockout rac1p1
+Knockout shp1
+Knockout ip3
+Knockout raf
+Knockout fyn
+Knockout csk
+Knockout bcl10
+Knockout gab2
+Knockout jnk
+Knockout itk
+Knockout mek
+Knockout ikkg
+Knockout hpk1
+Knockout tcrb
+Knockout lckr
+Knockout tcrp
+Knockout creb
+Knockout jun
+Knockout cabin1
+Knockout p21c
+Knockout mekk1
+Knockout Dummy
+Knockout cyc1
+Knockout dgk
+Knockout vav3
+Knockout p70s
+Knockout gap
+Knockout card11a
+Knockout rasgrp
+Knockout gads
+Knockout pkb
+Knockout mkk4
+Knockout fos
+Knockout sos
+Knockout malt1
+Knockout ras
+Knockout pten
+Knockout ca
+Knockout camk2
+Knockout fkhr
+Knockout shp2
+Knockout ikb
+Knockout nfat
+Knockout sh3bp2
+Knockout calpr1
+Knockout cre
+Knockout xx
+Knockout dag
+Knockout slp76
+Knockout ccblp2
+Knockout rac1p2
+Knockout pag
+Knockout grb2
+Knockout sre
+Knockout pi3k
+Knockout nfkb
+Knockout pkcth
+Knockout akap79
+Knockout cam
+Knockout lat
+Knockout lckp1
+Knockout calcin
+Knockout bad
+Knockout p38
+Knockout cdc42
+Knockout ccblp1
+Knockout card11
+Knockout bcat
+Knockout ship1
+Knockout rac1r
+Knockout gsk3
+Knockout ap1
+Knockout rsk
+Knockout cblb
+Knockout rlk
+Knockout abl
+Knockout cd28
+Knockout mlk3
+Knockout tcrlig
+Knockout vav1
+Knockout zap70
+Knockout lckp2
+----KNOCKOUT VALUE for output p27k----
+{'Dummy': 0.0, 'abl': 0.0, 'akap79': 0.0, 'ap1': 0.0, 'bad': 0.0, 'bcat': 0.0, 'bcl10': 0.0, 'bclxl': 0.0, 'ca': 0.0, 'cabin1': 0.0, 'calcin': 0.0, 'calpr1': 0.0, 'cam': 0.0, 'camk2': 0.0, 'camk4': 0.0, 'card11': 0.0, 'card11a': 0.0, 'cblb': 0.0, 'ccblp1': 0.0, 'ccblp2': 0.0, 'ccblr': 0.0, 'cd28': -0.0, 'cd45': 0.0, 'cdc42': 0.0, 'cre': 0.0, 'creb': 0.0, 'csk': 0.0, 'cyc1': 0.0, 'dag': 0.0, 'dgk': 0.0, 'erk': 0.0, 'fkhr': 0.0, 'fos': 0.0, 'fyn': 0.0, 'gab2': 0.0, 'gadd45': 0.0, 'gads': 0.0, 'gap': 0.0, 'grb2': 0.0, 'gsk3': 0.0, 'hpk1': 0.0, 'ikb': 0.0, 'ikkab': 0.0, 'ikkg': 0.0, 'ip3': 0.0, 'itk': 0.0, 'jnk': 0.0, 'jun': 0.0, 'lat': 0.0, 'lckp1': 0.0, 'lckp2': 0.0, 'lckr': 0.0, 'malt1': 0.0, 'mek': 0.0, 'mekk1': 0.0, 'mkk4': 0.0, 'mlk3': 0.0, 'nfat': 0.0, 'nfkb': 0.0, 'p21c': 0.0, 'p38': 0.0, 'p70s': 0.0, 'pag': 0.0, 'pdk1': -0.0, 'pi3k': -0.0, 'pip3': -0.0, 'pkb': -0.0, 'pkcth': 0.0, 'plcga': 0.0, 'plcgb': 0.0, 'pten': 0.0, 'rac1p1': 0.0, 'rac1p2': 0.0, 'rac1r': 0.0, 'raf': 0.0, 'ras': 0.0, 'rasgrp': 0.0, 'rlk': 0.0, 'rsk': 0.0, 'sh3bp2': 0.0, 'ship1': 0.0, 'shp1': 0.0, 'shp2': 0.0, 'slp76': 0.0, 'sos': 0.0, 'sre': 0.0, 'tcrb': 0.0, 'tcrlig': 0.0, 'tcrp': 0.0, 'vav1': 0.0, 'vav3': 0.0, 'xx': -0.0, 'zap70': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin pip3
+Knockin bclxl
+Knockin gadd45
+Knockin ccblr
+Knockin ikkab
+Knockin cd45
+Knockin pdk1
+Knockin camk4
+Knockin erk
+Knockin plcga
+Knockin plcgb
+Knockin rac1p1
+Knockin shp1
+Knockin ip3
+Knockin raf
+Knockin fyn
+Knockin csk
+Knockin bcl10
+Knockin gab2
+Knockin jnk
+Knockin itk
+Knockin mek
+Knockin ikkg
+Knockin hpk1
+Knockin tcrb
+Knockin lckr
+Knockin tcrp
+Knockin creb
+Knockin jun
+Knockin cabin1
+Knockin p21c
+Knockin mekk1
+Knockin Dummy
+Knockin cyc1
+Knockin dgk
+Knockin vav3
+Knockin p70s
+Knockin gap
+Knockin card11a
+Knockin rasgrp
+Knockin gads
+Knockin pkb
+Knockin mkk4
+Knockin fos
+Knockin sos
+Knockin malt1
+Knockin ras
+Knockin pten
+Knockin ca
+Knockin camk2
+Knockin fkhr
+Knockin shp2
+Knockin ikb
+Knockin nfat
+Knockin sh3bp2
+Knockin calpr1
+Knockin cre
+Knockin xx
+Knockin dag
+Knockin slp76
+Knockin ccblp2
+Knockin rac1p2
+Knockin pag
+Knockin grb2
+Knockin sre
+Knockin pi3k
+Knockin nfkb
+Knockin pkcth
+Knockin akap79
+Knockin cam
+Knockin lat
+Knockin lckp1
+Knockin calcin
+Knockin bad
+Knockin p38
+Knockin cdc42
+Knockin ccblp1
+Knockin card11
+Knockin bcat
+Knockin ship1
+Knockin rac1r
+Knockin gsk3
+Knockin ap1
+Knockin rsk
+Knockin cblb
+Knockin rlk
+Knockin abl
+Knockin cd28
+Knockin mlk3
+Knockin tcrlig
+Knockin vav1
+Knockin zap70
+Knockin lckp2
+----KNOCKIN VALUE for output p27k----
+{'Dummy': 0.0, 'abl': 0.0, 'akap79': 0.0, 'ap1': 0.0, 'bad': 0.0, 'bcat': 0.0, 'bcl10': 0.0, 'bclxl': 0.0, 'ca': 0.0, 'cabin1': 0.0, 'calcin': 0.0, 'calpr1': 0.0, 'cam': 0.0, 'camk2': 0.0, 'camk4': 0.0, 'card11': 0.0, 'card11a': 0.0, 'cblb': -0.0, 'ccblp1': 0.0, 'ccblp2': 0.0, 'ccblr': 0.0, 'cd28': 0.0, 'cd45': 0.0, 'cdc42': 0.0, 'cre': 0.0, 'creb': 0.0, 'csk': 0.0, 'cyc1': 0.0, 'dag': 0.0, 'dgk': 0.0, 'erk': 0.0, 'fkhr': 0.0, 'fos': 0.0, 'fyn': 0.0, 'gab2': 0.0, 'gadd45': 0.0, 'gads': 0.0, 'gap': 0.0, 'grb2': 0.0, 'gsk3': 0.0, 'hpk1': 0.0, 'ikb': 0.0, 'ikkab': 0.0, 'ikkg': 0.0, 'ip3': 0.0, 'itk': 0.0, 'jnk': 0.0, 'jun': 0.0, 'lat': 0.0, 'lckp1': 0.0, 'lckp2': 0.0, 'lckr': 0.0, 'malt1': 0.0, 'mek': 0.0, 'mekk1': 0.0, 'mkk4': 0.0, 'mlk3': 0.0, 'nfat': 0.0, 'nfkb': 0.0, 'p21c': 0.0, 'p38': 0.0, 'p70s': 0.0, 'pag': 0.0, 'pdk1': 0.0001, 'pi3k': 0.0, 'pip3': 0.0001, 'pkb': 0.0001, 'pkcth': 0.0, 'plcga': 0.0, 'plcgb': 0.0, 'pten': -0.0, 'rac1p1': 0.0, 'rac1p2': 0.0, 'rac1r': 0.0, 'raf': 0.0, 'ras': 0.0, 'rasgrp': 0.0, 'rlk': 0.0, 'rsk': 0.0, 'sh3bp2': 0.0, 'ship1': -0.0, 'shp1': 0.0, 'shp2': 0.0, 'slp76': 0.0, 'sos': 0.0, 'sre': 0.0, 'tcrb': 0.0, 'tcrlig': 0.0, 'tcrp': 0.0, 'vav1': 0.0, 'vav3': 0.0, 'xx': 0.0, 'zap70': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 424.43872904777527 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac lckrANDtcrb, try tcrbANDlckr
+No node with syntac lckp1ORfyn, try fynORlckp1
+Input are {'lckr_input', 'cd28_input', 'unknown_input2', 'tcrlig_input', 'unknown_input3', 'unknown_input', 'cd4'}
+Ordinary nodes are 
+{'bclxl', 'gadd45', 'ikkab', 'cd45', 'camk4', 'plcga', 'plcgb', 'rac1p1', 'shp1', 'raf', 'fyn', 'tcrb', 'lckr', 'jun', 'cabin1', 'mekk1', 'Dummy', 'cyc1', 'vav3', 'p70s', 'gap', 'pkb', 'mkk4', 'malt1', 'ras', 'pten', 'ca', 'camk2', 'fkhr', 'cd28_input', 'shp2', 'ikb', 'cre', 'xx', 'grb2', 'pkcth', 'akap79', 'cd4', 'cam', 'lat', 'unknown_input2', 'ccblp1', 'cblb', 'abl', 'cd28', 'p27k', 'vav1', 'lckp2', 'pip3', 'ccblr', 'lckr_input', 'pdk1', 'erk', 'ip3', 'csk', 'bcl10', 'gab2', 'tcrlig_input', 'jnk', 'itk', 'mek', 'ikkg', 'unknown_input', 'hpk1', 'tcrp', 'creb', 'p21c', 'dgk', 'card11a', 'rasgrp', 'gads', 'fos', 'sos', 'nfat', 'sh3bp2', 'calpr1', 'dag', 'slp76', 'ccblp2', 'rac1p2', 'pag', 'sre', 'pi3k', 'nfkb', 'lckp1', 'calcin', 'bad', 'p38', 'cdc42', 'card11', 'bcat', 'unknown_input3', 'ship1', 'rac1r', 'gsk3', 'ap1', 'rsk', 'rlk', 'mlk3', 'tcrlig', 'zap70'}
+Extranodes added after removing cycles are 
+['ccblp1_to_zap70', 'abl_to_zap70', 'tcrp_to_zap70', 'lckp1_to_fyn', 'lckp1_to_shp1']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+----Generate table from output----
+-----Calculated value of input nodes-----
+cd28_input           			 KO:       -0.0 | KI:        0.0
+cd4                  			 KO:        0.0 | KI:        0.0
+lckr_input           			 KO:        0.0 | KI:        0.0
+tcrlig_input         			 KO:        0.0 | KI:        0.0
+unknown_input        			 KO:        0.0 | KI:        0.0
+unknown_input2       			 KO:        0.0 | KI:       -0.0
+unknown_input3       			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT p27k=======
+----Master diamonds-----
+{'_XTR_41_': 'pi3k', 'unknown_input2': 'pip3', 'cd28': 'pi3k'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+At TARGET node p27k, count all rows
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node tcrp: processed 17 times
+Node abl: processed 17 times
+Node ccblp1: processed 7 times
+Node lckp1: processed 21 times
+SIMULATE 0 nodes over 93 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+abl                  			 KO:        0.0 | KI:        0.0
+cblb                 			 KO:     0.0624 | KI:    -0.2496
+ccblp1               			 KO:        0.0 | KI:        0.0
+ccblp2               			 KO:        0.0 | KI:        0.0
+ccblr                			 KO:        0.0 | KI:        0.0
+cd28                 			 KO:    -0.2496 | KI:     0.2496
+cd28_input           			 KO:    -0.2496 | KI:     0.2496
+cd4                  			 KO:        0.0 | KI:        0.0
+cd45                 			 KO:        0.0 | KI:        0.0
+csk                  			 KO:        0.0 | KI:        0.0
+dag                  			 KO:        0.0 | KI:        0.0
+dgk                  			 KO:        0.0 | KI:        0.0
+erk                  			 KO:        0.0 | KI:        0.0
+fyn                  			 KO:        0.0 | KI:        0.0
+gab2                 			 KO:        0.0 | KI:        0.0
+gads                 			 KO:        0.0 | KI:        0.0
+gap                  			 KO:        0.0 | KI:        0.0
+grb2                 			 KO:        0.0 | KI:        0.0
+itk                  			 KO:        0.0 | KI:        0.0
+lat                  			 KO:        0.0 | KI:        0.0
+lckp1                			 KO:        0.0 | KI:        0.0
+lckp2                			 KO:        0.0 | KI:        0.0
+lckr                 			 KO:        0.0 | KI:        0.0
+lckr_input           			 KO:        0.0 | KI:        0.0
+mek                  			 KO:        0.0 | KI:        0.0
+p27k                 			 KO:     0.7488 | KI:    -0.2496
+pag                  			 KO:        0.0 | KI:        0.0
+pdk1                 			 KO:    -0.2496 | KI:     0.7488
+pi3k                 			 KO:    -0.2496 | KI:     0.2496
+pip3                 			 KO:    -0.2496 | KI:     0.7488
+pkb                  			 KO:    -0.2496 | KI:     0.7488
+plcga                			 KO:        0.0 | KI:        0.0
+plcgb                			 KO:        0.0 | KI:        0.0
+pten                 			 KO:        0.0 | KI:    -0.2496
+raf                  			 KO:        0.0 | KI:        0.0
+ras                  			 KO:        0.0 | KI:        0.0
+rasgrp               			 KO:        0.0 | KI:        0.0
+sh3bp2               			 KO:        0.0 | KI:        0.0
+ship1                			 KO:        0.0 | KI:    -0.2496
+shp1                 			 KO:        0.0 | KI:        0.0
+slp76                			 KO:        0.0 | KI:        0.0
+sos                  			 KO:        0.0 | KI:        0.0
+tcrb                 			 KO:        0.0 | KI:        0.0
+tcrlig               			 KO:        0.0 | KI:        0.0
+tcrlig_input         			 KO:        0.0 | KI:        0.0
+tcrp                 			 KO:        0.0 | KI:        0.0
+unknown_input        			 KO:        0.0 | KI:        0.0
+unknown_input2       			 KO:     0.2496 | KI:    -0.2496
+unknown_input3       			 KO:        0.0 | KI:        0.0
+vav1                 			 KO:        0.0 | KI:        0.0
+xx                   			 KO:    -0.1872 | KI:        0.0
+zap70                			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	p27k
+2	pkb, pdk1, pip3, pi3k, cd28
+3	xx
+4	cblb
+5	ship1, pten, lckp2, tcrb, lckr, tcrlig
+	ccblp1, ccblr, zap70, tcrp, abl, fyn
+	lckp1, cd45, shp1, csk, erk, pag
+	mek, raf, ras, sos, rasgrp, gap
+	grb2, dag, lat, plcga, dgk, plcgb
+	ccblp2, itk, vav1, slp76, sh3bp2, gads
+	gab2
+=======
+KI RANKING OF NODES:
+1	pkb, pdk1, pip3
+2	p27k
+3	pi3k
+4	ship1, pten, unknown_input2
+5	cd28
+6	cblb
+7	cd28_input
+8	xx, lckp2, tcrb, lckr, tcrlig, lckr_input
+	tcrlig_input, ccblp1, ccblr, zap70, unknown_input, tcrp
+	abl, fyn, lckp1, cd45, shp1, cd4
+	csk, erk, pag, mek, raf, ras
+	sos, rasgrp, gap, grb2, dag, unknown_input3
+	lat, plcga, dgk, plcgb, ccblp2, itk
+	vav1, slp76, sh3bp2, gads, gab2
+=======
+NUMBER OF NODES: 101
+NUMBER OF INPUTS: 7
+NUMBER OF EDGES: 158
+TIME process heading: 0.007650136947631836
+TIME simulate original network: 2.30952787399292
+TIME perform original analysis process: 424.43872904777527
+TIME perform propagation: 4.712464809417725
+There are 49 unreachable nodes, they are:
+{'bclxl', 'gadd45', 'ikkab', 'camk4', 'rac1p1', 'ip3', 'bcl10', 'jnk', 'ikkg', 'hpk1', 'creb', 'jun', 'cabin1', 'p21c', 'mekk1', 'Dummy', 'cyc1', 'vav3', 'p70s', 'card11a', 'mkk4', 'fos', 'malt1', 'ca', 'camk2', 'fkhr', 'shp2', 'ikb', 'nfat', 'calpr1', 'cre', 'rac1p2', 'sre', 'nfkb', 'pkcth', 'akap79', 'cam', 'calcin', 'bad', 'p38', 'cdc42', 'card11', 'bcat', 'rac1r', 'gsk3', 'ap1', 'rsk', 'rlk', 'mlk3'}
+xx                   - Correct: KO:    -0.2184 | KI :        0.0 - Incorrect KO:    -0.1872 | KI:        0.0
+cblb                 - Correct: KO:     0.0312 | KI :    -0.2496 - Incorrect KO:     0.0624 | KI:    -0.2496
+Dummy
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+abl
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+akap79
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ap1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+bad
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+bcat
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+bcl10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+bclxl
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ca
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cabin1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+calcin
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+calpr1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cam
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+camk2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+camk4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+card11
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+card11a
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cblb
+Lack      0: []
+Extra     4: [28, 29, 60, 61]
+Real     36: [24, 25, 56, 57, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+Prop     40: [24, 25, 28, 29, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+
+ccblp1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ccblp2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ccblr
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cd28
+Lack      0: []
+Extra     0: []
+Real     64: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+Prop     64: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+
+cd28_input
+Lack      0: []
+Extra     0: []
+Real     64: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+Prop     64: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+
+cd4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cd45
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cdc42
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cre
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+creb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+csk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cyc1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+dag
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+dgk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+erk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+fkhr
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+fos
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+fyn
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+gab2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+gadd45
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+gads
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+gap
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+grb2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+gsk3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+hpk1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ikb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ikkab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ikkg
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ip3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+itk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+jnk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+jun
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+lat
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+lckp1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+lckp2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+lckr
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+lckr_input
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+malt1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+mek
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+mekk1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+mkk4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+mlk3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+nfat
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+nfkb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p21c
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p38
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p70s
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pag
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pdk1
+Lack      0: []
+Extra     0: []
+Real    128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+Prop    128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+
+pi3k
+Lack      0: []
+Extra     0: []
+Real     64: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+Prop     64: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+
+pip3
+Lack      0: []
+Extra     0: []
+Real    128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+Prop    128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+
+pkb
+Lack      0: []
+Extra     0: []
+Real    128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+Prop    128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+
+pkcth
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+plcga
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+plcgb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pten
+Lack      0: []
+Extra     0: []
+Real     32: [64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+Prop     32: [64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+
+rac1p1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+rac1p2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+rac1r
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+raf
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ras
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+rasgrp
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+rlk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+rsk
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+sh3bp2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ship1
+Lack      0: []
+Extra     0: []
+Real     32: [64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+Prop     32: [64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 120, 121, 124, 125]
+
+shp1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+shp2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+slp76
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+sos
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+sre
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+tcrb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+tcrlig
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+tcrlig_input
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+tcrp
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+unknown_input
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+unknown_input2
+Lack      0: []
+Extra     0: []
+Real     64: [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+Prop     64: [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+
+unknown_input3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+vav1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+vav3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+xx
+Lack      4: [92, 93, 124, 125]
+Extra     0: []
+Real     28: [64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117, 124, 125]
+Prop     24: [64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117]
+
+zap70
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	pkb, pdk1, pip3, pi3k
+2	unknown_input2
+3	cd28, cd28_input
+4	xx
+5	cblb
+6	ship1, pten, lckp2, tcrb, lckr, tcrlig
+	lckr_input, tcrlig_input, ccblp1, ccblr, zap70, unknown_input
+	tcrp, abl, fyn, lckp1, cd45, shp1
+	cd4, csk, erk, pag, mek, raf
+	ras, sos, rasgrp, gap, grb2, dag
+	unknown_input3, lat, plcga, dgk, plcgb, ccblp2
+	itk, vav1, slp76, sh3bp2, gads, gab2
+	bclxl, gadd45, ikkab, camk4, rac1p1, ip3
+	bcl10, jnk, ikkg, hpk1, creb, jun
+	cabin1, p21c, mekk1, Dummy, cyc1, vav3
+	p70s, card11a, mkk4, fos, malt1, ca
+	camk2, fkhr, shp2, ikb, nfat, calpr1
+	cre, rac1p2, sre, nfkb, pkcth, akap79
+	cam, calcin, bad, p38, cdc42, card11
+	bcat, rac1r, gsk3, ap1, rsk, rlk
+	mlk3
+REFERENCE:
+1	cd28_input
+2	unknown_input2
+3	pip3, pdk1, pkb, pi3k, cd28
+4	xx
+5	cblb
+6	lckr_input, tcrlig_input, unknown_input3, unknown_input, cd4, bclxl
+	gadd45, ccblr, ikkab, cd45, camk4, erk
+	plcga, plcgb, rac1p1, shp1, ip3, raf
+	fyn, csk, bcl10, gab2, jnk, itk
+	mek, ikkg, hpk1, tcrb, lckr, tcrp
+	creb, jun, cabin1, p21c, mekk1, Dummy
+	cyc1, dgk, vav3, p70s, gap, card11a
+	rasgrp, gads, mkk4, fos, sos, malt1
+	ras, pten, ca, camk2, fkhr, shp2
+	ikb, nfat, sh3bp2, calpr1, cre, dag
+	slp76, ccblp2, rac1p2, pag, grb2, sre
+	nfkb, pkcth, akap79, cam, lat, lckp1
+	calcin, bad, p38, cdc42, ccblp1, card11
+	bcat, ship1, rac1r, gsk3, ap1, rsk
+	rlk, abl, mlk3, tcrlig, vav1, zap70
+	lckp2
+=======
+-----KI RANKING COMPARISON-----
+1	pkb, pdk1, pip3
+2	pi3k
+3	ship1, pten, unknown_input2
+4	cd28
+5	cblb
+6	cd28_input
+7	xx, lckp2, tcrb, lckr, tcrlig, lckr_input
+	tcrlig_input, ccblp1, ccblr, zap70, unknown_input, tcrp
+	abl, fyn, lckp1, cd45, shp1, cd4
+	csk, erk, pag, mek, raf, ras
+	sos, rasgrp, gap, grb2, dag, unknown_input3
+	lat, plcga, dgk, plcgb, ccblp2, itk
+	vav1, slp76, sh3bp2, gads, gab2, bclxl
+	gadd45, ikkab, camk4, rac1p1, ip3, bcl10
+	jnk, ikkg, hpk1, creb, jun, cabin1
+	p21c, mekk1, Dummy, cyc1, vav3, p70s
+	card11a, mkk4, fos, malt1, ca, camk2
+	fkhr, shp2, ikb, nfat, calpr1, cre
+	rac1p2, sre, nfkb, pkcth, akap79, cam
+	calcin, bad, p38, cdc42, card11, bcat
+	rac1r, gsk3, ap1, rsk, rlk, mlk3
+REFERENCE:
+1	pip3, pdk1, pkb
+2	cd28_input
+3	unknown_input2, pten
+4	pi3k
+5	ship1, cblb
+6	cd28
+7	lckr_input, tcrlig_input, unknown_input3, unknown_input, cd4, bclxl
+	gadd45, ccblr, ikkab, cd45, camk4, erk
+	plcga, plcgb, rac1p1, shp1, ip3, raf
+	fyn, csk, bcl10, gab2, jnk, itk
+	mek, ikkg, hpk1, tcrb, lckr, tcrp
+	creb, jun, cabin1, p21c, mekk1, Dummy
+	cyc1, dgk, vav3, p70s, gap, card11a
+	rasgrp, gads, mkk4, fos, sos, malt1
+	ras, ca, camk2, fkhr, shp2, ikb
+	nfat, sh3bp2, calpr1, cre, xx, dag
+	slp76, ccblp2, rac1p2, pag, grb2, sre
+	nfkb, pkcth, akap79, cam, lat, lckp1
+	calcin, bad, p38, cdc42, ccblp1, card11
+	bcat, rac1r, gsk3, ap1, rsk, rlk
+	abl, mlk3, tcrlig, vav1, zap70, lckp2
+============
+Relative_RMSE_KO_is  0.00027577164466275353
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                            100.000      100.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9994
+Average number of correct rows after binarization: 0.999375 
+Average DNCG after binarization: 1.0 
+-----------TOTAL RUNNING TIME---------------
+429.44465820799815

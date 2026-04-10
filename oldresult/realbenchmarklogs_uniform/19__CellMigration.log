@@ -1,0 +1,4274 @@
+The expression file is data/realbenchmark/19.txt
+The interested output is: 
+CellMigration
+List of all species:
+{'AKAP12', 'Rap1', 'Shc', 'ECM', 'SOS', 'PLC_g', 'Elk1', 'Mek', 'cJUN', 'Cdc42_Rac1', 'CCL20', 'cMYC', 'Integrins', 'Akt', 'MMP1_10', 'RSK', 'PAK1', 'Erk', 'Raf', 'DOCK180', 'PTGS2', 'CDKN2A', 'CDK2', 'PTEN', 'Mkk6', 'Ras', 'CRKL', 'Grb2', 'CTGF', 'EGFR', 'DAG', 'Plasmin', 'MLK3', 'EGF', 'PAK2', 'CDKN1A', 'Fak', 'HBEGF', 'CellMigration', 'Ca', 'uPA', 'MET', 'cFOS', 'ETS', 'CREB', 'DUSP1', 'JNK', 'STAT3', 'p38', 'uPAR', 'Mekk1', 'Mkk3', 'PAI_1', 'HGF', 'PI3K', 'EGR1', 'Mkk4', 'IP3', 'PKC', 'Mekk7', 'PAK3', 'AP1', 'Mekk4', 'CyclinD', 'Proliferation', 'C3G', 'ATF2', 'IL8'}
+-----Input names-----
+{'AKAP12', 'PAI_1', 'HGF', 'PTEN', 'DUSP1', 'EGF'}
+----Intermediate nodes-----
+{'Rap1', 'Shc', 'ECM', 'SOS', 'PLC_g', 'Elk1', 'Mek', 'cJUN', 'cMYC', 'CCL20', 'Cdc42_Rac1', 'MMP1_10', 'Akt', 'Integrins', 'RSK', 'PAK1', 'Erk', 'Raf', 'DOCK180', 'PTGS2', 'CDKN2A', 'CDK2', 'Mkk6', 'Ras', 'CRKL', 'Grb2', 'CTGF', 'EGFR', 'AP1', 'IL8', 'DAG', 'Plasmin', 'MLK3', 'PAK2', 'CDKN1A', 'Fak', 'ATF2', 'HBEGF', 'CellMigration', 'Ca', 'MET', 'cFOS', 'ETS', 'CREB', 'JNK', 'STAT3', 'p38', 'uPAR', 'Mekk1', 'Mkk3', 'PI3K', 'EGR1', 'Mkk4', 'IP3', 'Mekk7', 'CyclinD', 'Proliferation', 'PKC', 'Mekk4', 'C3G', 'PAK3', 'uPA'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+Sorted input names
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['AP1', 'ATF2', 'Akt', 'C3G', 'CCL20', 'CDK2', 'CDKN1A', 'CDKN2A', 'CREB', 'CRKL', 'CTGF', 'Ca', 'Cdc42_Rac1', 'CellMigration', 'CyclinD', 'DAG', 'DOCK180', 'ECM', 'EGFR', 'EGR1', 'ETS', 'Elk1', 'Erk', 'Fak', 'Grb2', 'HBEGF', 'IL8', 'IP3', 'Integrins', 'JNK', 'MET', 'MLK3', 'MMP1_10', 'Mek', 'Mekk1', 'Mekk4', 'Mekk7', 'Mkk3', 'Mkk4', 'Mkk6', 'PAK1', 'PAK2', 'PAK3', 'PI3K', 'PKC', 'PLC_g', 'PTGS2', 'Plasmin', 'Proliferation', 'RSK', 'Raf', 'Rap1', 'Ras', 'SOS', 'STAT3', 'Shc', 'cFOS', 'cJUN', 'cMYC', 'p38', 'uPA', 'uPAR']
+There are 62 intermediate nodes with the range of inter: 0 4611686018427387903
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.635901927947998 seconds===
+----Input knockout shapley value-----
+('AKAP12', 0.0)
+('PAI_1', 0.0)
+('HGF', 0.0003)
+('PTEN', -0.0003)
+('DUSP1', 0.0)
+('EGF', 0.0)
+----Input knockIN shapley value-----
+('AKAP12', 0.0)
+('PAI_1', 0.0)
+('HGF', -0.0003)
+('PTEN', 0.0003)
+('DUSP1', 0.0)
+('EGF', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout Rap1
+Knockout Shc
+Knockout ECM
+Knockout SOS
+Knockout PLC_g
+Knockout Elk1
+Knockout Mek
+Knockout cJUN
+Knockout cMYC
+Knockout CCL20
+Knockout Cdc42_Rac1
+Knockout MMP1_10
+Knockout Akt
+Knockout Integrins
+Knockout RSK
+Knockout PAK1
+Knockout Erk
+Knockout Raf
+Knockout DOCK180
+Knockout PTGS2
+Knockout CDKN2A
+Knockout CDK2
+Knockout Mkk6
+Knockout Ras
+Knockout CRKL
+Knockout Grb2
+Knockout CTGF
+Knockout EGFR
+Knockout AP1
+Knockout IL8
+Knockout DAG
+Knockout Plasmin
+Knockout MLK3
+Knockout PAK2
+Knockout CDKN1A
+Knockout Fak
+Knockout ATF2
+Knockout HBEGF
+Knockout Ca
+Knockout MET
+Knockout cFOS
+Knockout ETS
+Knockout CREB
+Knockout JNK
+Knockout STAT3
+Knockout p38
+Knockout uPAR
+Knockout Mekk1
+Knockout Mkk3
+Knockout PI3K
+Knockout EGR1
+Knockout Mkk4
+Knockout IP3
+Knockout Mekk7
+Knockout CyclinD
+Knockout Proliferation
+Knockout PKC
+Knockout Mekk4
+Knockout C3G
+Knockout PAK3
+Knockout uPA
+----KNOCKOUT VALUE for output CellMigration----
+{'AP1': 0.0, 'ATF2': 0.0, 'Akt': 0.0003, 'C3G': 0.0, 'CCL20': 0.0003, 'CDK2': 0.0, 'CDKN1A': 0.0, 'CDKN2A': 0.0, 'CREB': 0.0, 'CRKL': 0.0003, 'CTGF': 0.0003, 'Ca': 0.0, 'Cdc42_Rac1': 0.0003, 'CyclinD': 0.0, 'DAG': 0.0, 'DOCK180': 0.0003, 'ECM': 0.0, 'EGFR': 0.0, 'EGR1': 0.0, 'ETS': 0.0, 'Elk1': 0.0, 'Erk': 0.0003, 'Fak': 0.0, 'Grb2': 0.0003, 'HBEGF': 0.0, 'IL8': 0.0003, 'IP3': 0.0, 'Integrins': 0.0, 'JNK': 0.0003, 'MET': 0.0003, 'MLK3': 0.0, 'MMP1_10': 0.0, 'Mek': 0.0003, 'Mekk1': 0.0002, 'Mekk4': 0.0, 'Mekk7': 0.0, 'Mkk3': 0.0, 'Mkk4': 0.0, 'Mkk6': 0.0, 'PAK1': 0.0002, 'PAK2': 0.0, 'PAK3': 0.0, 'PI3K': 0.0003, 'PKC': 0.0, 'PLC_g': 0.0, 'PTGS2': 0.0003, 'Plasmin': 0.0, 'Proliferation': 0.0, 'RSK': 0.0, 'Raf': 0.0, 'Rap1': 0.0, 'Ras': 0.0003, 'SOS': 0.0003, 'STAT3': 0.0, 'Shc': 0.0003, 'cFOS': 0.0, 'cJUN': 0.0, 'cMYC': 0.0, 'p38': 0.0003, 'uPA': 0.0, 'uPAR': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin Rap1
+Knockin Shc
+Knockin ECM
+Knockin SOS
+Knockin PLC_g
+Knockin Elk1
+Knockin Mek
+Knockin cJUN
+Knockin cMYC
+Knockin CCL20
+Knockin Cdc42_Rac1
+Knockin MMP1_10
+Knockin Akt
+Knockin Integrins
+Knockin RSK
+Knockin PAK1
+Knockin Erk
+Knockin Raf
+Knockin DOCK180
+Knockin PTGS2
+Knockin CDKN2A
+Knockin CDK2
+Knockin Mkk6
+Knockin Ras
+Knockin CRKL
+Knockin Grb2
+Knockin CTGF
+Knockin EGFR
+Knockin AP1
+Knockin IL8
+Knockin DAG
+Knockin Plasmin
+Knockin MLK3
+Knockin PAK2
+Knockin CDKN1A
+Knockin Fak
+Knockin ATF2
+Knockin HBEGF
+Knockin Ca
+Knockin MET
+Knockin cFOS
+Knockin ETS
+Knockin CREB
+Knockin JNK
+Knockin STAT3
+Knockin p38
+Knockin uPAR
+Knockin Mekk1
+Knockin Mkk3
+Knockin PI3K
+Knockin EGR1
+Knockin Mkk4
+Knockin IP3
+Knockin Mekk7
+Knockin CyclinD
+Knockin Proliferation
+Knockin PKC
+Knockin Mekk4
+Knockin C3G
+Knockin PAK3
+Knockin uPA
+----KNOCKIN VALUE for output CellMigration----
+{'AP1': -0.0001, 'ATF2': 0.0, 'Akt': -0.0007, 'C3G': 0.0, 'CCL20': 0.0, 'CDK2': 0.0, 'CDKN1A': 0.0, 'CDKN2A': 0.0, 'CREB': 0.0, 'CRKL': 0.0, 'CTGF': 0.0, 'Ca': 0.0, 'Cdc42_Rac1': -0.001, 'CyclinD': 0.0, 'DAG': 0.0, 'DOCK180': 0.0, 'ECM': -0.0002, 'EGFR': 0.0, 'EGR1': 0.0, 'ETS': 0.0, 'Elk1': 0.0, 'Erk': 0.0, 'Fak': -0.0002, 'Grb2': 0.0, 'HBEGF': 0.0, 'IL8': 0.0, 'IP3': 0.0, 'Integrins': -0.0002, 'JNK': 0.0, 'MET': -0.0003, 'MLK3': 0.0, 'MMP1_10': -0.0002, 'Mek': 0.0, 'Mekk1': 0.0, 'Mekk4': 0.0, 'Mekk7': 0.0, 'Mkk3': 0.0, 'Mkk4': 0.0, 'Mkk6': 0.0, 'PAK1': 0.0, 'PAK2': 0.0, 'PAK3': 0.0, 'PI3K': -0.0002, 'PKC': 0.0, 'PLC_g': 0.0, 'PTGS2': 0.0, 'Plasmin': -0.0002, 'Proliferation': 0.0, 'RSK': 0.0, 'Raf': 0.0, 'Rap1': 0.0, 'Ras': 0.0, 'SOS': 0.0, 'STAT3': 0.0, 'Shc': 0.0, 'cFOS': 0.0, 'cJUN': 0.0, 'cMYC': 0.0, 'p38': 0.0, 'uPA': -0.0001, 'uPAR': -0.0001}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 77.62254309654236 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'AKAP12', 'PAI_1', 'HGF', 'PTEN', 'DUSP1', 'EGF'}
+Ordinary nodes are 
+{'AKAP12', 'Rap1', 'Shc', 'ECM', 'SOS', 'PLC_g', 'Elk1', 'Mek', 'cJUN', 'Cdc42_Rac1', 'CCL20', 'cMYC', 'Integrins', 'Akt', 'MMP1_10', 'RSK', 'PAK1', 'Erk', 'Raf', 'DOCK180', 'PTGS2', 'CDKN2A', 'CDK2', 'PTEN', 'Mkk6', 'Ras', 'CRKL', 'Grb2', 'CTGF', 'EGFR', 'DAG', 'Plasmin', 'MLK3', 'EGF', 'PAK2', 'CDKN1A', 'Fak', 'HBEGF', 'CellMigration', 'Ca', 'uPA', 'MET', 'cFOS', 'ETS', 'CREB', 'DUSP1', 'JNK', 'STAT3', 'p38', 'uPAR', 'Mekk1', 'Mkk3', 'PAI_1', 'HGF', 'PI3K', 'EGR1', 'Mkk4', 'IP3', 'PKC', 'Mekk7', 'PAK3', 'AP1', 'Mekk4', 'CyclinD', 'Proliferation', 'C3G', 'ATF2', 'IL8'}
+Extranodes added after removing cycles are 
+['Mek_to_Erk', 'Akt_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'Ras_to_Cdc42_Rac1', 'EGFR_to_PLC_g', 'C3G_to_Rap1']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+----Generate table from output----
+-----Calculated value of input nodes-----
+AKAP12               			 KO:        0.0 | KI:        0.0
+DUSP1                			 KO:        0.0 | KI:        0.0
+EGF                  			 KO:        0.0 | KI:        0.0
+HGF                  			 KO:     1.1667 | KI:    -2.3333
+PAI_1                			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:    -2.3333 | KI:     1.1667
+=======PROPAGATE FOR OUTPUT CellMigration=======
+----Master diamonds-----
+{'Erk': 'CellMigration', 'p38': 'CellMigration', 'MLK3': 'CellMigration', 'Cdc42_Rac1': 'CellMigration', 'JNK': 'PTGS2', 'Mekk1': 'PTGS2'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['CellMigration']---
+At TARGET node CellMigration, count all rows
+
+Counted row for current node CellMigration is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+CellMigration ==== IL8 AND _XTR_2_
+After operator AND, IL8 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_2_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+
+---Processing layers of ['IL8', '_XTR_2_']---
+
+Counted row for current node IL8 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+IL8 ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63] to decide rows for node p38 in diamond to CellMigration
+Affected nodes between p38 and CellMigration are: {'_XTR_1_', '_XTR_2_', 'PTGS2', 'CellMigration', 'cJUN', 'CTGF', '_XTR_21_', 'ATF2', 'IL8'}
+Rows after simulate a step for diamond p38 to CellMigration are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Rows after process diamond p38 to CellMigration are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63] to decide rows for node Erk in diamond to CellMigration
+Affected nodes between Erk and CellMigration are: {'_XTR_21_', '_XTR_1_', '_XTR_2_', 'PTGS2', 'CellMigration', 'CCL20', 'cFOS', 'CTGF', 'IL8'}
+Rows after simulate a step for diamond Erk to CellMigration are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Rows after process diamond Erk to CellMigration are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_2_ ==== _XTR_1_ AND CCL20
+After operator AND, _XTR_1_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, CCL20 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+
+---Processing layers of ['p38', 'Erk', '_XTR_1_', 'CCL20']---
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_1_ ==== CTGF AND PTGS2
+After operator AND, CTGF count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, PTGS2 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node CCL20 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CCL20 === Erk
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+
+---Processing layers of ['PAK1', '_XTR_44_', 'Mek_to_Erk', 'CTGF', 'PTGS2', 'Erk']---
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63] to decide rows for node Cdc42_Rac1 in diamond to CellMigration
+Affected nodes between Cdc42_Rac1 and CellMigration are: {'cJUN', 'PAK1', '_XTR_1_', 'PTGS2', '_XTR_42_', 'Mkk6', 'CTGF', '_XTR_50_', 'MLK3', 'PAK2', 'CellMigration', '_XTR_21_', 'JNK', '_XTR_14_', '_XTR_44_', 'p38', 'Mekk1', 'Mkk3', '_XTR_2_', 'Mkk4', 'Mekk7', 'Mekk4', 'ATF2', 'IL8'}
+Rows after simulate a step for diamond Cdc42_Rac1 to CellMigration are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Rows after process diamond Cdc42_Rac1 to CellMigration are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+End node PTGS2 has no rows yet to be filtered, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node CTGF is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CTGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PTGS2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PTGS2 ==== ATF2 OR _XTR_21_
+After operator OR, ATF2 count only rows: 
+[]
+After operator OR, _XTR_21_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+
+---Processing layers of ['Cdc42_Rac1', '_XTR_42_', '_XTR_43_', 'Mekk1', 'Raf', 'p38', 'Erk', 'ATF2', '_XTR_21_', 'Mek_to_Erk']---
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node ATF2 is 
+[]
+ATF2 ==== JNK AND p38
+PROCESS DIAMONDS for JNK
+PROCESS DIAMOND for node JNK
+Process diamond from JNK to PTGS2
+SIMULATE rows [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62] to decide rows for node JNK in diamond to PTGS2
+Affected nodes between JNK and PTGS2 are: {'PTGS2', 'cJUN', 'ATF2', '_XTR_21_'}
+Rows after simulate a step for diamond JNK to PTGS2 are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Rows after process diamond JNK to PTGS2 are: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ ==== cFOS AND cJUN
+After operator AND, cFOS count only rows: 
+[]
+After operator AND, cJUN count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+SIMULATE rows [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62] to decide rows for node Mekk1 in diamond to PTGS2
+Affected nodes between Mekk1 and PTGS2 are: {'ATF2', 'PTGS2', 'cJUN', 'Mkk4', 'Mekk7', '_XTR_21_', 'JNK', '_XTR_14_', '_XTR_50_'}
+Rows after simulate a step for diamond Mekk1 to PTGS2 are: 
+[]
+Rows after process diamond Mekk1 to PTGS2 are: 
+[]
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_29_', 'Akt_to_Cdc42_Rac1', 'Mkk3', 'Mkk6', 'DUSP1', 'Cdc42_Rac1', 'Ras', '_XTR_55_', 'PAK1', '_XTR_44_', 'Mek_to_Erk', 'JNK', 'p38', 'cFOS', 'cJUN', 'Mekk1', 'Raf']---
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63] to decide rows for node MLK3 in diamond to CellMigration
+Affected nodes between MLK3 and CellMigration are: {'_XTR_44_', '_XTR_21_', '_XTR_1_', 'p38', 'Mkk3', '_XTR_2_', 'PTGS2', 'ATF2', 'cJUN', '_XTR_42_', 'CellMigration', 'Mkk4', 'Mkk6', 'CTGF', 'JNK', '_XTR_14_', 'IL8'}
+Rows after simulate a step for diamond MLK3 to CellMigration are: 
+[]
+Rows after process diamond MLK3 to CellMigration are: 
+[]
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Ras is 
+[]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node JNK is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+JNK ==== _XTR_14_ OR PAK2
+After operator OR, _XTR_14_ count only rows: 
+[]
+After operator OR, PAK2 count only rows: 
+[]
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node cFOS is 
+[]
+cFOS === Erk
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node cJUN is 
+[]
+cJUN ==== JNK AND p38
+PROCESS DIAMONDS for JNK
+PROCESS DIAMOND for node JNK
+Process diamond from JNK to PTGS2
+Diamond from JNK to PTGS2 has been processed already, continue
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', '_XTR_26_', 'MLK3', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'SOS', 'PAK3', 'PKC', 'Cdc42_Rac1', '_XTR_42_', '_XTR_43_', 'Mekk1', 'Raf', '_XTR_14_', 'PAK2', 'PAK1', '_XTR_44_', 'Erk', 'JNK', 'p38', 'Ras', '_XTR_55_']---
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node MLK3 is 
+[]
+MLK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node PAK3 is 
+[]
+PAK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PKC is 
+[]
+PKC ==== _XTR_5_ AND _XTR_6_
+After operator AND, _XTR_5_ count only rows: 
+[]
+After operator AND, _XTR_6_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_14_ is 
+[]
+_XTR_14_ ==== Mekk7 AND Mkk4
+After operator AND, Mekk7 count only rows: 
+[]
+After operator AND, Mkk4 count only rows: 
+[]
+			---------------
+
+Counted row for current node PAK2 is 
+[]
+PAK2 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node JNK is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+JNK ==== _XTR_14_ OR PAK2
+After operator OR, _XTR_14_ count only rows: 
+[]
+After operator OR, PAK2 count only rows: 
+[]
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['SOS', 'CRKL', 'MET', '_XTR_39_', 'PTEN', 'Cdc42_Rac1', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', '_XTR_26_', 'Grb2', '_XTR_5_', '_XTR_6_', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'Mkk3', 'Mkk6', 'DUSP1', 'Ras', '_XTR_55_', 'Mekk7', 'Mkk4', '_XTR_42_', '_XTR_43_', 'Mek_to_Erk', '_XTR_14_', 'PAK2', 'PAK1', '_XTR_44_', 'PAK3', 'PKC']---
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== DAG AND Ca
+After operator AND, DAG count only rows: 
+[]
+After operator AND, Ca count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[]
+_XTR_6_ === NOT AKAP12
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+Counted row for current node Mekk7 is 
+[]
+Mekk7 === Mekk1
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+			---------------
+
+Counted row for current node Mkk4 is 
+[]
+Mkk4 ==== _XTR_50_ OR MLK3
+After operator OR, _XTR_50_ count only rows: 
+[]
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_14_ is 
+[]
+_XTR_14_ ==== Mekk7 AND Mkk4
+After operator AND, Mekk7 count only rows: 
+[]
+After operator AND, Mkk4 count only rows: 
+[]
+			---------------
+
+Counted row for current node PAK2 is 
+[]
+PAK2 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node PAK3 is 
+[]
+PAK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PKC is 
+[]
+PKC ==== _XTR_5_ AND _XTR_6_
+After operator AND, _XTR_5_ count only rows: 
+[]
+After operator AND, _XTR_6_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['Grb2', 'HGF', 'EGFR', 'Fak', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'SOS', 'CRKL', 'MET', '_XTR_39_', 'PTEN', 'Shc', 'DAG', 'Ca', 'AKAP12', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', '_XTR_26_', 'MLK3', 'PAK3', 'PKC', 'Mekk1', '_XTR_50_', 'Mkk3', 'Mkk6', 'DUSP1', 'Raf', 'Mekk7', 'Mkk4', 'Cdc42_Rac1', '_XTR_42_', '_XTR_43_', '_XTR_5_', '_XTR_6_']---
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Reach node HGF without in-comming edges
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node DAG is 
+[]
+DAG === PLC_g
+			---------------
+
+Counted row for current node Ca is 
+[]
+Ca === IP3
+			---------------
+
+Reach node AKAP12 without in-comming edges
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node MLK3 is 
+[]
+MLK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PAK3 is 
+[]
+PAK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PKC is 
+[]
+PKC ==== _XTR_5_ AND _XTR_6_
+After operator AND, _XTR_5_ count only rows: 
+[]
+After operator AND, _XTR_6_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ ==== Mekk4 OR Mekk1
+After operator OR, Mekk4 count only rows: 
+[]
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mekk7 is 
+[]
+Mekk7 === Mekk1
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+			---------------
+
+Counted row for current node Mkk4 is 
+[]
+Mkk4 ==== _XTR_50_ OR MLK3
+After operator OR, _XTR_50_ count only rows: 
+[]
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== DAG AND Ca
+After operator AND, DAG count only rows: 
+[]
+After operator AND, Ca count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[]
+_XTR_6_ === NOT AKAP12
+			---------------
+
+
+---Processing layers of ['Shc', 'HBEGF', 'EGF', '_XTR_52_', '_XTR_26_', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', 'Grb2', 'HGF', 'EGFR', 'Fak', '_XTR_31_', 'PLC_g', 'IP3', 'SOS', 'CRKL', 'MET', '_XTR_39_', 'PTEN', 'Cdc42_Rac1', '_XTR_5_', '_XTR_6_', 'Mekk4', 'Mekk1', 'MLK3', 'Ras', '_XTR_55_', '_XTR_50_', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'Mkk3', 'Mkk6', 'DUSP1', 'DAG', 'Ca', 'AKAP12']---
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Reach node HGF without in-comming edges
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC_g is 
+[]
+PLC_g ==== EGFR_to_PLC_g OR MET
+Left node EGFR_to_PLC_g is an extra node
+After operator OR, EGFR_to_PLC_g count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node IP3 is 
+[]
+IP3 === PLC_g
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== DAG AND Ca
+After operator AND, DAG count only rows: 
+[]
+After operator AND, Ca count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[]
+_XTR_6_ === NOT AKAP12
+			---------------
+
+Counted row for current node Mekk4 is 
+[]
+Mekk4 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node MLK3 is 
+[]
+MLK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ ==== Mekk4 OR Mekk1
+After operator OR, Mekk4 count only rows: 
+[]
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node DAG is 
+[]
+DAG === PLC_g
+			---------------
+
+Counted row for current node Ca is 
+[]
+Ca === IP3
+			---------------
+
+Reach node AKAP12 without in-comming edges
+
+
+---Processing layers of ['_XTR_31_', 'Fak', 'p38', 'Erk', 'Integrins', 'Rap1', 'PTEN', 'SOS', 'CRKL', 'MET', '_XTR_39_', 'Shc', 'HBEGF', 'EGF', '_XTR_52_', '_XTR_26_', 'EGFR', 'PLC_g', 'Grb2', 'HGF', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'DAG', 'Ca', 'AKAP12', 'Cdc42_Rac1', 'PAK3', 'PKC', 'Mekk4', 'Mekk1', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', 'MLK3', 'IP3']---
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node Integrins is 
+[]
+Integrins === ECM
+			---------------
+
+Counted row for current node Rap1 is 
+[]
+Rap1 === C3G_to_Rap1
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC_g is 
+[]
+PLC_g ==== EGFR_to_PLC_g OR MET
+Left node EGFR_to_PLC_g is an extra node
+After operator OR, EGFR_to_PLC_g count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Reach node HGF without in-comming edges
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node DAG is 
+[]
+DAG === PLC_g
+			---------------
+
+Counted row for current node Ca is 
+[]
+Ca === IP3
+			---------------
+
+Reach node AKAP12 without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node PAK3 is 
+[]
+PAK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PKC is 
+[]
+PKC ==== _XTR_5_ AND _XTR_6_
+After operator AND, _XTR_5_ count only rows: 
+[]
+After operator AND, _XTR_6_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mekk4 is 
+[]
+Mekk4 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node MLK3 is 
+[]
+MLK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node IP3 is 
+[]
+IP3 === PLC_g
+			---------------
+
+
+---Processing layers of ['EGFR', 'MET', '_XTR_52_', '_XTR_26_', 'PAK1', '_XTR_44_', 'Mek_to_Erk', 'ECM', 'C3G_to_Rap1', 'Grb2', 'HGF', 'Fak', '_XTR_31_', 'p38', 'Erk', 'Integrins', 'Rap1', 'PTEN', 'HBEGF', 'EGF', 'Shc', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', 'PLC_g', 'IP3', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'Cdc42_Rac1', '_XTR_5_', '_XTR_6_', 'SOS', 'CRKL', '_XTR_39_']---
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node ECM is 
+[]
+ECM === MMP1_10
+			---------------
+
+Counted row for current node C3G is 
+[]
+C3G === CRKL
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Reach node HGF without in-comming edges
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node Integrins is 
+[]
+Integrins === ECM
+			---------------
+
+Counted row for current node Rap1 is 
+[]
+Rap1 === C3G_to_Rap1
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC_g is 
+[]
+PLC_g ==== EGFR_to_PLC_g OR MET
+Left node EGFR_to_PLC_g is an extra node
+After operator OR, EGFR_to_PLC_g count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node IP3 is 
+[]
+IP3 === PLC_g
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== DAG AND Ca
+After operator AND, DAG count only rows: 
+[]
+After operator AND, Ca count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[]
+_XTR_6_ === NOT AKAP12
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['HBEGF', 'EGF', 'HGF', 'Integrins', 'Rap1', 'PTEN', 'Cdc42_Rac1', '_XTR_42_', '_XTR_43_', 'Mekk1', 'Raf', 'MMP1_10', 'CRKL', 'Shc', '_XTR_52_', '_XTR_26_', 'EGFR', 'MET', 'PAK1', '_XTR_44_', 'Mek_to_Erk', 'ECM', 'C3G_to_Rap1', 'p38', 'Erk', '_XTR_31_', 'Fak', 'SOS', '_XTR_39_', 'PLC_g', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'DAG', 'Ca', 'AKAP12', 'Grb2']---
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+
+Reach node HGF without in-comming edges
+
+Counted row for current node Integrins is 
+[]
+Integrins === ECM
+			---------------
+
+Counted row for current node Rap1 is 
+[]
+Rap1 === C3G_to_Rap1
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node MMP1_10 is 
+[]
+MMP1_10 === Plasmin
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node ECM is 
+[]
+ECM === MMP1_10
+			---------------
+
+Counted row for current node C3G is 
+[]
+C3G === CRKL
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC_g is 
+[]
+PLC_g ==== EGFR_to_PLC_g OR MET
+Left node EGFR_to_PLC_g is an extra node
+After operator OR, EGFR_to_PLC_g count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node DAG is 
+[]
+DAG === PLC_g
+			---------------
+
+Counted row for current node Ca is 
+[]
+Ca === IP3
+			---------------
+
+Reach node AKAP12 without in-comming edges
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+
+---Processing layers of ['p38', 'Erk', 'ECM', 'C3G_to_Rap1', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'Mkk3', 'Mkk6', 'DUSP1', 'Cdc42_Rac1', 'Ras', '_XTR_55_', 'Plasmin', 'Grb2', '_XTR_31_', 'Fak', 'Integrins', 'Rap1', 'PTEN', 'HBEGF', 'EGF', 'HGF', '_XTR_42_', '_XTR_43_', 'Mekk1', 'Raf', 'MMP1_10', 'CRKL', 'PAK1', '_XTR_44_', 'Mek_to_Erk', 'EGFR', 'MET', '_XTR_52_', '_XTR_26_', 'SOS', '_XTR_39_', 'DOCK180_to_Cdc42_Rac1', 'PI3K', 'PLC_g', 'IP3', 'Shc']---
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node ECM is 
+[]
+ECM === MMP1_10
+			---------------
+
+Counted row for current node C3G is 
+[]
+C3G === CRKL
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+Counted row for current node Plasmin is 
+[]
+Plasmin ==== uPA AND PAI_1
+After operator AND, uPA count only rows: 
+[]
+After operator AND, PAI_1 count only rows: 
+[]
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Integrins is 
+[]
+Integrins === ECM
+			---------------
+
+Counted row for current node Rap1 is 
+[]
+Rap1 === C3G_to_Rap1
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+
+Reach node HGF without in-comming edges
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node MMP1_10 is 
+[]
+MMP1_10 === Plasmin
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC_g is 
+[]
+PLC_g ==== EGFR_to_PLC_g OR MET
+Left node EGFR_to_PLC_g is an extra node
+After operator OR, EGFR_to_PLC_g count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node IP3 is 
+[]
+IP3 === PLC_g
+			---------------
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['PAK1', '_XTR_44_', 'Mek_to_Erk', 'MMP1_10', 'CRKL', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', '_XTR_26_', 'MLK3', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'SOS', 'PAK3', 'PKC', 'uPA', 'PAI_1', 'Shc', 'EGFR', 'MET', '_XTR_52_', 'ECM', 'C3G_to_Rap1', 'p38', 'Erk', 'Mkk3', 'Mkk6', 'DUSP1', 'Cdc42_Rac1', 'Ras', '_XTR_55_', 'Plasmin', 'Grb2', '_XTR_42_', '_XTR_43_', 'Mekk1', 'Raf', 'HBEGF', 'EGF', 'HGF', 'Integrins', 'Rap1', 'PTEN', 'Fak', '_XTR_39_', 'PLC_g', '_XTR_31_']---
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node MMP1_10 is 
+[]
+MMP1_10 === Plasmin
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node MLK3 is 
+[]
+MLK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node PAK3 is 
+[]
+PAK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PKC is 
+[]
+PKC ==== _XTR_5_ AND _XTR_6_
+After operator AND, _XTR_5_ count only rows: 
+[]
+After operator AND, _XTR_6_ count only rows: 
+[]
+			---------------
+
+Counted row for current node uPA is 
+[]
+uPA === uPAR
+			---------------
+
+Reach node PAI_1 without in-comming edges
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node ECM is 
+[]
+ECM === MMP1_10
+			---------------
+
+Counted row for current node C3G is 
+[]
+C3G === CRKL
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+Counted row for current node Plasmin is 
+[]
+Plasmin ==== uPA AND PAI_1
+After operator AND, uPA count only rows: 
+[]
+After operator AND, PAI_1 count only rows: 
+[]
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+
+Reach node HGF without in-comming edges
+
+Counted row for current node Integrins is 
+[]
+Integrins === ECM
+			---------------
+
+Counted row for current node Rap1 is 
+[]
+Rap1 === C3G_to_Rap1
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node PLC_g is 
+[]
+PLC_g ==== EGFR_to_PLC_g OR MET
+Left node EGFR_to_PLC_g is an extra node
+After operator OR, EGFR_to_PLC_g count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['Cdc42_Rac1', '_XTR_42_', '_XTR_43_', 'Mekk1', 'Raf', 'Plasmin', 'Grb2', 'SOS', 'CRKL', 'MET', '_XTR_39_', 'PTEN', 'Ras_to_Cdc42_Rac1', 'DOCK180_to_Cdc42_Rac1', 'PI3K', '_XTR_26_', '_XTR_5_', '_XTR_6_', 'uPAR', '_XTR_31_', 'Fak', 'HBEGF', 'EGF', 'HGF', 'Integrins', 'Rap1', 'MMP1_10', 'PAK1', '_XTR_44_', 'Mek_to_Erk', 'MLK3', '_XTR_29_', 'Akt_to_Cdc42_Rac1', 'PAK3', 'PKC', 'uPA', 'PAI_1', 'Shc', 'Mkk3', 'Mkk6', 'DUSP1', 'Ras', '_XTR_55_', 'p38', 'Erk', 'ECM', 'C3G_to_Rap1', '_XTR_52_', 'EGFR']---
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Plasmin is 
+[]
+Plasmin ==== uPA AND PAI_1
+After operator AND, uPA count only rows: 
+[]
+After operator AND, PAI_1 count only rows: 
+[]
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== DAG AND Ca
+After operator AND, DAG count only rows: 
+[]
+After operator AND, Ca count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[]
+_XTR_6_ === NOT AKAP12
+			---------------
+
+Counted row for current node uPAR is 
+[]
+uPAR === AP1
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+
+Reach node HGF without in-comming edges
+
+Counted row for current node Integrins is 
+[]
+Integrins === ECM
+			---------------
+
+Counted row for current node Rap1 is 
+[]
+Rap1 === C3G_to_Rap1
+			---------------
+
+Counted row for current node MMP1_10 is 
+[]
+MMP1_10 === Plasmin
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node MLK3 is 
+[]
+MLK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node PAK3 is 
+[]
+PAK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PKC is 
+[]
+PKC ==== _XTR_5_ AND _XTR_6_
+After operator AND, _XTR_5_ count only rows: 
+[]
+After operator AND, _XTR_6_ count only rows: 
+[]
+			---------------
+
+Counted row for current node uPA is 
+[]
+uPA === uPAR
+			---------------
+
+Reach node PAI_1 without in-comming edges
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node ECM is 
+[]
+ECM === MMP1_10
+			---------------
+
+Counted row for current node C3G is 
+[]
+C3G === CRKL
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_29_', 'Akt_to_Cdc42_Rac1', 'Mkk3', 'Mkk6', 'DUSP1', 'Cdc42_Rac1', 'Ras', '_XTR_55_', 'uPA', 'PAI_1', 'Shc', 'Grb2', 'HGF', 'EGFR', 'Fak', 'SOS', 'CRKL', 'MET', '_XTR_39_', 'PTEN', 'DAG', 'Ca', 'AKAP12', 'AP1', '_XTR_52_', '_XTR_26_', 'p38', 'Erk', 'ECM', 'C3G_to_Rap1', 'Plasmin', '_XTR_42_', '_XTR_43_', 'Mekk1', 'Raf', 'DOCK180_to_Cdc42_Rac1', 'PI3K', '_XTR_5_', '_XTR_6_', 'uPAR', '_XTR_31_', 'MLK3', 'PAK3', 'PKC', 'PAK1', '_XTR_44_', 'Mek_to_Erk', 'MMP1_10', 'Integrins', 'Rap1', 'HBEGF', 'EGF']---
+
+Counted row for current node _XTR_29_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_29_ ==== Ras_to_Cdc42_Rac1 AND DOCK180_to_Cdc42_Rac1
+Left node Ras_to_Cdc42_Rac1 is an extra node
+Right node DOCK180_to_Cdc42_Rac1 is an extra node
+After operator AND, Ras_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, DOCK180_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Akt is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Akt ==== PI3K AND _XTR_26_
+After operator AND, PI3K count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_26_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Mkk3 is 
+[]
+Mkk3 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Mkk6 is 
+[]
+Mkk6 === MLK3
+PROCESS DIAMONDS for MLK3
+PROCESS DIAMOND for node MLK3
+Process diamond from MLK3 to CellMigration
+Diamond from MLK3 to CellMigration has been processed already, continue
+			---------------
+
+Reach node DUSP1 without in-comming edges
+
+Counted row for current node Cdc42_Rac1 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Cdc42_Rac1 ==== Akt_to_Cdc42_Rac1 AND _XTR_29_
+Left node Akt_to_Cdc42_Rac1 is an extra node
+After operator AND, Akt_to_Cdc42_Rac1 count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+After operator AND, _XTR_29_ count only rows: 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+			---------------
+
+Counted row for current node Ras is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Ras === SOS
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[]
+_XTR_55_ ==== PAK3 AND PKC
+After operator AND, PAK3 count only rows: 
+[]
+After operator AND, PKC count only rows: 
+[]
+			---------------
+
+Counted row for current node uPA is 
+[]
+uPA === uPAR
+			---------------
+
+Reach node PAI_1 without in-comming edges
+
+Counted row for current node Shc is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Shc ==== _XTR_31_ OR Fak
+After operator OR, _XTR_31_ count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, Fak count only rows: 
+[]
+			---------------
+
+Counted row for current node Grb2 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Grb2 === Shc
+			---------------
+
+Reach node HGF without in-comming edges
+
+Counted row for current node EGFR is 
+[]
+EGFR ==== HBEGF OR EGF
+After operator OR, HBEGF count only rows: 
+[]
+After operator OR, EGF count only rows: 
+[]
+			---------------
+
+Counted row for current node Fak is 
+[]
+Fak ==== _XTR_52_ AND _XTR_26_
+After operator AND, _XTR_52_ count only rows: 
+[]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SOS is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+SOS === Grb2
+			---------------
+
+Counted row for current node CRKL is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+CRKL === Grb2
+			---------------
+
+Counted row for current node MET is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+MET === HGF
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[]
+_XTR_39_ ==== EGFR AND Fak
+After operator AND, EGFR count only rows: 
+[]
+After operator AND, Fak count only rows: 
+[]
+			---------------
+
+Reach node PTEN without in-comming edges
+
+Counted row for current node DAG is 
+[]
+DAG === PLC_g
+			---------------
+
+Counted row for current node Ca is 
+[]
+Ca === IP3
+			---------------
+
+Reach node AKAP12 without in-comming edges
+
+Counted row for current node AP1 is 
+[]
+AP1 ==== cFOS AND cJUN
+After operator AND, cFOS count only rows: 
+[]
+After operator AND, cJUN count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ ==== Integrins AND Rap1
+After operator AND, Integrins count only rows: 
+[]
+After operator AND, Rap1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+_XTR_26_ === NOT PTEN
+			---------------
+
+Counted row for current node p38 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+p38 ==== PAK1 OR _XTR_44_
+After operator OR, PAK1 count only rows: 
+[20, 22, 28, 30, 52, 54, 60, 62]
+After operator OR, _XTR_44_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Erk is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Erk === Mek_to_Erk
+			---------------
+
+Counted row for current node ECM is 
+[]
+ECM === MMP1_10
+			---------------
+
+Counted row for current node C3G is 
+[]
+C3G === CRKL
+			---------------
+
+Counted row for current node Plasmin is 
+[]
+Plasmin ==== uPA AND PAI_1
+After operator AND, uPA count only rows: 
+[]
+After operator AND, PAI_1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ ==== Mkk3 AND Mkk6
+After operator AND, Mkk3 count only rows: 
+[]
+After operator AND, Mkk6 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_43_ is 
+[]
+_XTR_43_ === NOT DUSP1
+			---------------
+
+Counted row for current node Mekk1 is 
+[]
+Mekk1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node Raf is 
+[]
+Raf ==== Ras AND _XTR_55_
+After operator AND, Ras count only rows: 
+[]
+After operator AND, _XTR_55_ count only rows: 
+[]
+			---------------
+
+Counted row for current node DOCK180 is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+DOCK180 === CRKL
+			---------------
+
+Counted row for current node PI3K is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+PI3K ==== MET OR _XTR_39_
+After operator OR, MET count only rows: 
+[4, 12, 20, 28, 36, 44, 52, 60]
+After operator OR, _XTR_39_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ ==== DAG AND Ca
+After operator AND, DAG count only rows: 
+[]
+After operator AND, Ca count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[]
+_XTR_6_ === NOT AKAP12
+			---------------
+
+Counted row for current node uPAR is 
+[]
+uPAR === AP1
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[4, 12, 20, 28, 36, 44, 52, 60]
+_XTR_31_ ==== EGFR OR MET
+After operator OR, EGFR count only rows: 
+[]
+After operator OR, MET count only rows: 
+[]
+			---------------
+
+Counted row for current node MLK3 is 
+[]
+MLK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PAK3 is 
+[]
+PAK3 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node PKC is 
+[]
+PKC ==== _XTR_5_ AND _XTR_6_
+After operator AND, _XTR_5_ count only rows: 
+[]
+After operator AND, _XTR_6_ count only rows: 
+[]
+			---------------
+
+Counted row for current node PAK1 is 
+[20, 22, 28, 30, 52, 54, 60, 62]
+PAK1 === Cdc42_Rac1
+PROCESS DIAMONDS for Cdc42_Rac1
+PROCESS DIAMOND for node Cdc42_Rac1
+Process diamond from Cdc42_Rac1 to CellMigration
+Diamond from Cdc42_Rac1 to CellMigration has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_44_ is 
+[]
+_XTR_44_ ==== _XTR_42_ AND _XTR_43_
+After operator AND, _XTR_42_ count only rows: 
+[]
+After operator AND, _XTR_43_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Mek is 
+[4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Mek ==== Mekk1 OR Raf
+PROCESS DIAMONDS for Mekk1
+PROCESS DIAMOND for node Mekk1
+Process diamond from Mekk1 to PTGS2
+Diamond from Mekk1 to PTGS2 has been processed already, continue
+After operator OR, Raf count only rows: 
+[]
+			---------------
+
+Counted row for current node MMP1_10 is 
+[]
+MMP1_10 === Plasmin
+			---------------
+
+Counted row for current node Integrins is 
+[]
+Integrins === ECM
+			---------------
+
+Counted row for current node Rap1 is 
+[]
+Rap1 === C3G_to_Rap1
+			---------------
+
+Counted row for current node HBEGF is 
+[]
+HBEGF ==== p38 OR Erk
+PROCESS DIAMONDS for p38
+PROCESS DIAMOND for node p38
+Process diamond from p38 to CellMigration
+Diamond from p38 to CellMigration has been processed already, continue
+PROCESS DIAMONDS for Erk
+PROCESS DIAMOND for node Erk
+Process diamond from Erk to CellMigration
+Diamond from Erk to CellMigration has been processed already, continue
+			---------------
+
+Reach node EGF without in-comming edges
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node Mek: processed 11 times
+Node Akt: processed 13 times
+Node Ras: processed 10 times
+Node DOCK180: processed 12 times
+Node C3G: processed 7 times
+SIMULATE 0 nodes over 61 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.8958
+=========================
+PROPAGATED VALUES:
+AKAP12               			 KO:        0.0 | KI:        0.0
+AP1                  			 KO:        0.0 | KI:        0.0
+ATF2                 			 KO:        0.0 | KI:        0.0
+Akt                  			 KO:     0.2496 | KI:        0.0
+C3G                  			 KO:        0.0 | KI:        0.0
+CCL20                			 KO:     0.2496 | KI:        0.0
+CRKL                 			 KO:     0.2496 | KI:        0.0
+CTGF                 			 KO:     0.2496 | KI:        0.0
+Ca                   			 KO:        0.0 | KI:        0.0
+Cdc42_Rac1           			 KO:     0.2496 | KI:        0.0
+CellMigration        			 KO:     0.2496 | KI:    -0.7488
+DAG                  			 KO:        0.0 | KI:        0.0
+DOCK180              			 KO:     0.2496 | KI:        0.0
+DUSP1                			 KO:        0.0 | KI:        0.0
+ECM                  			 KO:        0.0 | KI:        0.0
+EGF                  			 KO:        0.0 | KI:        0.0
+EGFR                 			 KO:        0.0 | KI:        0.0
+Erk                  			 KO:     0.2496 | KI:        0.0
+Fak                  			 KO:        0.0 | KI:        0.0
+Grb2                 			 KO:     0.2496 | KI:        0.0
+HBEGF                			 KO:        0.0 | KI:        0.0
+HGF                  			 KO:     0.2496 | KI:    -0.2496
+IL8                  			 KO:     0.2496 | KI:        0.0
+IP3                  			 KO:        0.0 | KI:        0.0
+Integrins            			 KO:        0.0 | KI:        0.0
+JNK                  			 KO:     0.2496 | KI:        0.0
+MET                  			 KO:     0.1248 | KI:        0.0
+MLK3                 			 KO:        0.0 | KI:        0.0
+MMP1_10              			 KO:        0.0 | KI:        0.0
+Mek                  			 KO:     0.2496 | KI:        0.0
+Mekk1                			 KO:        0.0 | KI:        0.0
+Mekk4                			 KO:        0.0 | KI:        0.0
+Mekk7                			 KO:        0.0 | KI:        0.0
+Mkk3                 			 KO:        0.0 | KI:        0.0
+Mkk4                 			 KO:        0.0 | KI:        0.0
+Mkk6                 			 KO:        0.0 | KI:        0.0
+PAI_1                			 KO:        0.0 | KI:        0.0
+PAK1                 			 KO:     0.1248 | KI:        0.0
+PAK2                 			 KO:        0.0 | KI:        0.0
+PAK3                 			 KO:        0.0 | KI:        0.0
+PI3K                 			 KO:     0.2496 | KI:        0.0
+PKC                  			 KO:        0.0 | KI:        0.0
+PLC_g                			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:    -0.2496 | KI:     0.2496
+PTGS2                			 KO:     0.2496 | KI:        0.0
+Plasmin              			 KO:        0.0 | KI:        0.0
+Raf                  			 KO:        0.0 | KI:        0.0
+Rap1                 			 KO:        0.0 | KI:        0.0
+Ras                  			 KO:     0.2496 | KI:        0.0
+SOS                  			 KO:     0.2496 | KI:        0.0
+Shc                  			 KO:     0.2496 | KI:        0.0
+cFOS                 			 KO:        0.0 | KI:        0.0
+cJUN                 			 KO:        0.0 | KI:        0.0
+p38                  			 KO:     0.2496 | KI:        0.0
+uPA                  			 KO:        0.0 | KI:        0.0
+uPAR                 			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	CellMigration, IL8, p38, Erk, CCL20, CTGF
+	PTGS2, Cdc42_Rac1, Mek, Ras, JNK, Akt
+	PI3K, SOS, DOCK180, CRKL, Grb2, Shc
+2	PAK1, MET
+3	Mekk1, Raf, ATF2, Mkk3, Mkk6, cFOS
+	cJUN, MLK3, PAK3, PKC, PAK2, Mekk7
+	Mkk4, EGFR, Fak, DAG, Ca, HBEGF
+	PLC_g, IP3, Mekk4, Integrins, Rap1, ECM
+	MMP1_10, C3G, Plasmin, uPA, uPAR, AP1
+=======
+KI RANKING OF NODES:
+1	CellMigration
+2	PTEN
+3	HGF
+4	IL8, p38, Erk, CCL20, PAK1, CTGF
+	PTGS2, Cdc42_Rac1, Mek, Mekk1, Raf, ATF2
+	Mkk3, Mkk6, DUSP1, Ras, JNK, cFOS
+	cJUN, Akt, PI3K, MLK3, SOS, PAK3
+	PKC, PAK2, DOCK180, CRKL, MET, Grb2
+	Mekk7, Mkk4, EGFR, Fak, Shc, DAG
+	Ca, AKAP12, HBEGF, EGF, PLC_g, IP3
+	Mekk4, Integrins, Rap1, ECM, MMP1_10, C3G
+	Plasmin, uPA, PAI_1, uPAR, AP1
+=======
+NUMBER OF NODES: 68
+NUMBER OF INPUTS: 6
+NUMBER OF EDGES: 103
+TIME process heading: 0.0035581588745117188
+TIME simulate original network: 0.635901927947998
+TIME perform original analysis process: 77.62254309654236
+TIME perform propagation: 2.0429420471191406
+There are 12 unreachable nodes, they are:
+{'cMYC', 'RSK', 'CDKN2A', 'CDK2', 'CDKN1A', 'ETS', 'CREB', 'STAT3', 'CyclinD', 'Proliferation', 'Elk1', 'EGR1'}
+ECM                  - Correct: KO:        0.0 | KI :    -0.1248 - Incorrect KO:        0.0 | KI:        0.0
+Cdc42_Rac1           - Correct: KO:     0.2496 | KI :    -0.7488 - Incorrect KO:     0.2496 | KI:        0.0
+MMP1_10              - Correct: KO:        0.0 | KI :    -0.1248 - Incorrect KO:        0.0 | KI:        0.0
+Akt                  - Correct: KO:     0.2496 | KI :    -0.4992 - Incorrect KO:     0.2496 | KI:        0.0
+Integrins            - Correct: KO:        0.0 | KI :    -0.1248 - Incorrect KO:        0.0 | KI:        0.0
+AP1                  - Correct: KO:        0.0 | KI :    -0.0624 - Incorrect KO:        0.0 | KI:        0.0
+Plasmin              - Correct: KO:        0.0 | KI :    -0.1248 - Incorrect KO:        0.0 | KI:        0.0
+Fak                  - Correct: KO:        0.0 | KI :    -0.1248 - Incorrect KO:        0.0 | KI:        0.0
+MET                  - Correct: KO:     0.2496 | KI :    -0.2496 - Incorrect KO:     0.1248 | KI:        0.0
+uPAR                 - Correct: KO:        0.0 | KI :    -0.0624 - Incorrect KO:        0.0 | KI:        0.0
+Mekk1                - Correct: KO:     0.1248 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+PI3K                 - Correct: KO:     0.2496 | KI :    -0.1248 - Incorrect KO:     0.2496 | KI:        0.0
+uPA                  - Correct: KO:        0.0 | KI :    -0.0624 - Incorrect KO:        0.0 | KI:        0.0
+AKAP12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AP1
+Lack      4: [10, 26, 42, 58]
+Extra     0: []
+Real      4: [10, 26, 42, 58]
+Prop      0: []
+
+ATF2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Akt
+Lack     32: [5, 7, 8, 9, 10, 11, 13, 15, 21, 23, 24, 25, 26, 27, 29, 31, 37, 39, 40, 41, 42, 43, 45, 47, 53, 55, 56, 57, 58, 59, 61, 63]
+Extra     0: []
+Real     48: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+C3G
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CCL20
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+CDK2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CDKN1A
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CDKN2A
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CREB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+CRKL
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+CTGF
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+Ca
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cdc42_Rac1
+Lack     48: [0, 1, 2, 3, 5, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 21, 23, 24, 25, 26, 27, 29, 31, 32, 33, 34, 35, 37, 39, 40, 41, 42, 43, 45, 47, 48, 49, 50, 51, 53, 55, 56, 57, 58, 59, 61, 63]
+Extra     0: []
+Real     64: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+CyclinD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DAG
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DOCK180
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+DUSP1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ECM
+Lack      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      0: []
+
+EGF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+EGFR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+EGR1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ETS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Elk1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Erk
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+Fak
+Lack      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      0: []
+
+Grb2
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+HBEGF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+HGF
+Lack      0: []
+Extra     0: []
+Real     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+Prop     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+
+IL8
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+IP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Integrins
+Lack      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      0: []
+
+JNK
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+MET
+Lack     24: [0, 2, 6, 8, 10, 14, 16, 18, 22, 24, 26, 30, 32, 34, 38, 40, 42, 46, 48, 50, 54, 56, 58, 62]
+Extra     0: []
+Real     32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+Prop      8: [4, 12, 20, 28, 36, 44, 52, 60]
+
+MLK3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MMP1_10
+Lack      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      0: []
+
+Mek
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+Mekk1
+Lack      8: [36, 38, 44, 46, 52, 54, 60, 62]
+Extra     0: []
+Real      8: [36, 38, 44, 46, 52, 54, 60, 62]
+Prop      0: []
+
+Mekk4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mekk7
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mkk3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mkk4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mkk6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAI_1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAK1
+Lack      0: []
+Extra     0: []
+Real      8: [20, 22, 28, 30, 52, 54, 60, 62]
+Prop      8: [20, 22, 28, 30, 52, 54, 60, 62]
+
+PAK2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PAK3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PI3K
+Lack      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Extra     0: []
+Real     24: [4, 6, 8, 10, 12, 14, 20, 22, 24, 26, 28, 30, 36, 38, 40, 42, 44, 46, 52, 54, 56, 58, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+PKC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLC_g
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTEN
+Lack      0: []
+Extra     0: []
+Real     32: [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55, 60, 61, 62, 63]
+Prop     32: [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55, 60, 61, 62, 63]
+
+PTGS2
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+Plasmin
+Lack      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Extra     0: []
+Real      8: [8, 10, 24, 26, 40, 42, 56, 58]
+Prop      0: []
+
+Proliferation
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RSK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Raf
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Rap1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Ras
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+SOS
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+STAT3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Shc
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+cFOS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cJUN
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cMYC
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p38
+Lack      0: []
+Extra     0: []
+Real     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+Prop     16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+
+uPA
+Lack      4: [10, 26, 42, 58]
+Extra     0: []
+Real      4: [10, 26, 42, 58]
+Prop      0: []
+
+uPAR
+Lack      4: [10, 26, 42, 58]
+Extra     0: []
+Real      4: [10, 26, 42, 58]
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	IL8, p38, Erk, CCL20, CTGF, PTGS2
+	Cdc42_Rac1, Mek, Ras, JNK, Akt, PI3K
+	SOS, DOCK180, CRKL
+2	PTEN
+3	Grb2, HGF, Shc
+4	PAK1, MET
+5	Mekk1, Raf, ATF2, Mkk3, Mkk6, DUSP1
+	cFOS, cJUN, MLK3, PAK3, PKC, PAK2
+	Mekk7, Mkk4, EGFR, Fak, DAG, Ca
+	AKAP12, HBEGF, EGF, PLC_g, IP3, Mekk4
+	Integrins, Rap1, ECM, MMP1_10, C3G, Plasmin
+	uPA, PAI_1, uPAR, AP1, Elk1, cMYC
+	RSK, CDKN2A, CDK2, CDKN1A, ETS, CREB
+	STAT3, EGR1, CyclinD, Proliferation
+REFERENCE:
+1	HGF
+2	PTEN
+3	Shc, SOS, Mek, CCL20, Cdc42_Rac1, Akt
+	Erk, DOCK180, PTGS2, Ras, CRKL, Grb2
+	CTGF, IL8, MET, JNK, p38, PI3K
+4	PAK1, Mekk1
+5	AKAP12, PAI_1, DUSP1, EGF, Rap1, ECM
+	PLC_g, Elk1, cJUN, cMYC, MMP1_10, Integrins
+	RSK, Raf, CDKN2A, CDK2, Mkk6, EGFR
+	AP1, DAG, Plasmin, MLK3, PAK2, CDKN1A
+	Fak, ATF2, HBEGF, Ca, cFOS, ETS
+	CREB, STAT3, uPAR, Mkk3, EGR1, Mkk4
+	IP3, Mekk7, CyclinD, Proliferation, PKC, Mekk4
+	C3G, PAK3, uPA
+=======
+-----KI RANKING COMPARISON-----
+1	PTEN
+2	HGF
+3	IL8, p38, Erk, CCL20, PAK1, CTGF
+	PTGS2, Cdc42_Rac1, Mek, Mekk1, Raf, ATF2
+	Mkk3, Mkk6, DUSP1, Ras, JNK, cFOS
+	cJUN, Akt, PI3K, MLK3, SOS, PAK3
+	PKC, PAK2, DOCK180, CRKL, MET, Grb2
+	Mekk7, Mkk4, EGFR, Fak, Shc, DAG
+	Ca, AKAP12, HBEGF, EGF, PLC_g, IP3
+	Mekk4, Integrins, Rap1, ECM, MMP1_10, C3G
+	Plasmin, uPA, PAI_1, uPAR, AP1, Elk1
+	cMYC, RSK, CDKN2A, CDK2, CDKN1A, ETS
+	CREB, STAT3, EGR1, CyclinD, Proliferation
+REFERENCE:
+1	Cdc42_Rac1
+2	Akt
+3	HGF
+4	PTEN
+5	MET
+6	ECM, MMP1_10, Integrins, Plasmin, Fak, PI3K
+7	AP1, uPAR, uPA
+8	AKAP12, PAI_1, DUSP1, EGF, Rap1, Shc
+	SOS, PLC_g, Elk1, Mek, cJUN, cMYC
+	CCL20, RSK, PAK1, Erk, Raf, DOCK180
+	PTGS2, CDKN2A, CDK2, Mkk6, Ras, CRKL
+	Grb2, CTGF, EGFR, IL8, DAG, MLK3
+	PAK2, CDKN1A, ATF2, HBEGF, Ca, cFOS
+	ETS, CREB, JNK, STAT3, p38, Mekk1
+	Mkk3, EGR1, Mkk4, IP3, Mekk7, CyclinD
+	Proliferation, PKC, Mekk4, C3G, PAK3
+============
+Relative_RMSE_KO_is  0.0015401539930364819
+Relative_RMSE_KI_is  0.008626924820647426
+NDCG_KO_is  0.9974
+NDCG_KI_is  0.559
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             67.000       67.000
+Kendall tau-b                         0.968        0.369
+Spearman rho                          0.982        0.406
+Mean abs rank diff                    0.030        3.567
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.950        0.164
+         Precision@10                1.000        0.164
+         Recall@10                   0.950        1.000
+  Top-20 Jaccard                   0.952        1.000
+         Precision@20                0.952        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.950        0.000
+  Top-2  groups Jaccard            0.955        0.030
+  Top-3  groups Jaccard            1.000        0.075
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9599
+Average number of correct rows after binarization: 0.9598880597014925 
+Average DNCG after binarization: 0.7782 
+-----------TOTAL RUNNING TIME---------------
+79.93982116600091

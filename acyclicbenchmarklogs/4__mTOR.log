@@ -1,0 +1,285 @@
+The expression file is data/acyclicbenchmark/4.txt
+The interested output is: 
+mTOR
+List of all species:
+{'MEK1_2', 'PDK1', 'PLCg', 'mTOR', 'ERBB3', 'ERBB2', 'ERK1_2', 'erlotinib', 'p70S6K', 'EGF', 'pertuzumab', 'HRG', 'AKT', 'PKCa', 'trastuzumab', 'ERBB1'}
+-----Input names-----
+{'erlotinib', 'EGF', 'HRG', 'pertuzumab', 'trastuzumab'}
+----Intermediate nodes-----
+{'MEK1_2', 'PDK1', 'PLCg', 'mTOR', 'ERBB3', 'ERBB2', 'p70S6K', 'AKT', 'PKCa', 'ERK1_2', 'ERBB1'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+Sorted input names
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+There are 5 inputs with the range of input: 0 31
+Sorted internames:
+['AKT', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'MEK1_2', 'PDK1', 'PKCa', 'PLCg', 'mTOR', 'p70S6K']
+There are 11 intermediate nodes with the range of inter: 0 2047
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.026236772537231445 seconds===
+----Input knockout shapley value-----
+('erlotinib', -0.7)
+('EGF', 0.3)
+('HRG', 0.3)
+('pertuzumab', 2.3)
+('trastuzumab', 0.0)
+----Input knockIN shapley value-----
+('erlotinib', 0.8)
+('EGF', -1.2)
+('HRG', -1.2)
+('pertuzumab', -2.2)
+('trastuzumab', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout MEK1_2
+Knockout PDK1
+Knockout PLCg
+Knockout ERBB3
+Knockout ERBB2
+Knockout p70S6K
+Knockout AKT
+Knockout PKCa
+Knockout ERK1_2
+Knockout ERBB1
+----KNOCKOUT VALUE for output mTOR----
+{'AKT': 0.8, 'ERBB1': 0.0, 'ERBB2': 0.0, 'ERBB3': 0.0, 'ERK1_2': 0.0, 'MEK1_2': 0.0, 'PDK1': 0.0, 'PKCa': 0.0, 'PLCg': 0.0, 'p70S6K': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin MEK1_2
+Knockin PDK1
+Knockin PLCg
+Knockin ERBB3
+Knockin ERBB2
+Knockin p70S6K
+Knockin AKT
+Knockin PKCa
+Knockin ERK1_2
+Knockin ERBB1
+----KNOCKIN VALUE for output mTOR----
+{'AKT': -2.2, 'ERBB1': -2.2, 'ERBB2': -2.2, 'ERBB3': -2.2, 'ERK1_2': 0.0, 'MEK1_2': -2.2, 'PDK1': -2.2, 'PKCa': 0.0, 'PLCg': 0.0, 'p70S6K': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 0.5416419506072998 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'erlotinib', 'EGF', 'HRG', 'pertuzumab', 'trastuzumab'}
+Ordinary nodes are 
+{'MEK1_2', 'PDK1', 'PLCg', 'mTOR', 'ERBB3', 'ERBB2', 'ERK1_2', 'erlotinib', 'p70S6K', 'EGF', 'pertuzumab', 'HRG', 'AKT', 'PKCa', 'trastuzumab', 'ERBB1'}
+Extranodes added after removing cycles are 
+[]
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+----Generate table from output----
+-----Calculated value of input nodes-----
+EGF                  			 KO:        0.3 | KI:       -1.2
+HRG                  			 KO:        0.3 | KI:       -1.2
+erlotinib            			 KO:       -0.7 | KI:        0.8
+pertuzumab           			 KO:        2.3 | KI:       -2.2
+trastuzumab          			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT mTOR=======
+----Master diamonds-----
+{'ERBB3': 'AKT', '_XTR_1_': 'AKT', '_XTR_5_': 'AKT', 'pertuzumab': 'mTOR', '_XTR_11_': 'AKT', 'ERBB2': 'PDK1', 'ERBB1': '_XTR_36_', '_XTR_18_': '_XTR_36_', '_XTR_7_': 'AKT', '_XTR_3_': 'PDK1', 'EGF': 'AKT', 'HRG': 'AKT'}
+
+
+--------PROPAGATION WITH ACYCLIC NETWORK--------
+{'mTOR': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 'AKT': {0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, 'pertuzumab': {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31}, 'PDK1': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'ERBB3': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_37_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'ERBB2': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_25_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_27_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_36_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_10_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_13_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_24_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_1_': {16, 17, 25, 8, 9, 24}, '_XTR_26_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'MEK1_2': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'ERBB1': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_6_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_9_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_12_': {0, 1}, '_XTR_5_': {8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, '_XTR_11_': {0, 1}, '_XTR_7_': {0, 1}, '_XTR_30_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_19_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_18_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_4_': {0, 1}, '_XTR_8_': {0, 1}, '_XTR_3_': set(), 'erlotinib': {8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, '_XTR_16_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_17_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_2_': {0}, 'trastuzumab': set(), 'EGF': {16, 17, 0, 1}, 'HRG': {8, 9, 0, 1}, '_XTR_15_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}}
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+AKT                  			 KO:        0.8 | KI:       -2.2
+EGF                  			 KO:        0.3 | KI:       -1.2
+ERBB1                			 KO:        0.0 | KI:       -2.2
+ERBB2                			 KO:        0.0 | KI:       -2.2
+ERBB3                			 KO:        0.0 | KI:       -2.2
+HRG                  			 KO:        0.3 | KI:       -1.2
+MEK1_2               			 KO:        0.0 | KI:       -2.2
+PDK1                 			 KO:        0.0 | KI:       -2.2
+erlotinib            			 KO:       -0.7 | KI:        0.8
+mTOR                 			 KO:        3.8 | KI:       -2.2
+pertuzumab           			 KO:        2.3 | KI:       -2.2
+trastuzumab          			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	mTOR
+2	AKT
+3	PDK1, ERBB3, ERBB2, MEK1_2, ERBB1
+=======
+KI RANKING OF NODES:
+1	mTOR, AKT, pertuzumab, PDK1, ERBB3, ERBB2
+	MEK1_2, ERBB1
+2	EGF, HRG
+3	erlotinib
+4	trastuzumab
+=======
+NUMBER OF NODES: 16
+NUMBER OF INPUTS: 5
+NUMBER OF EDGES: 36
+TIME process heading: 0.0010437965393066406
+TIME simulate original network: 0.026236772537231445
+TIME perform original analysis process: 0.5416419506072998
+TIME perform propagation: 0.37013983726501465
+{'mTOR': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}, 'AKT': {0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, 'pertuzumab': {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31}, 'PDK1': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'ERBB3': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_37_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'ERBB2': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_25_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_27_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_36_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_10_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_13_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_24_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_1_': {16, 17, 25, 8, 9, 24}, '_XTR_26_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'MEK1_2': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'ERBB1': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_6_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_9_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_12_': {0, 1}, '_XTR_5_': {8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, '_XTR_11_': {0, 1}, '_XTR_7_': {0, 1}, '_XTR_30_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_19_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_18_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_4_': {0, 1}, '_XTR_8_': {0, 1}, '_XTR_3_': set(), 'erlotinib': {8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, '_XTR_16_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_17_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, '_XTR_2_': {0}, 'trastuzumab': set(), 'EGF': {16, 17, 0, 1}, 'HRG': {8, 9, 0, 1}, '_XTR_15_': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}}
+{'erlotinib': {8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, 'EGF': {16, 17, 0, 1}, 'HRG': {8, 9, 0, 1}, 'pertuzumab': {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31}, 'trastuzumab': set(), 'MEK1_2': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'PDK1': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'PLCg': set(), 'ERBB3': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'ERBB2': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}, 'p70S6K': set(), 'AKT': {0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29}, 'PKCa': set(), 'ERK1_2': set(), 'ERBB1': {0, 1, 4, 5, 12, 13, 20, 21, 28, 29}}
+There are 4 unreachable nodes, they are:
+{'PLCg', 'p70S6K', 'PKCa', 'ERK1_2'}
+AKT
+Lack      0: []
+Extra     0: []
+Real     16: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+Prop     16: [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+
+EGF
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 16, 17]
+Prop      4: [0, 1, 16, 17]
+
+ERBB1
+Lack      0: []
+Extra     0: []
+Real     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+Prop     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+
+ERBB2
+Lack      0: []
+Extra     0: []
+Real     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+Prop     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+
+ERBB3
+Lack      0: []
+Extra     0: []
+Real     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+Prop     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+
+ERK1_2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+HRG
+Lack      0: []
+Extra     0: []
+Real      4: [0, 1, 8, 9]
+Prop      4: [0, 1, 8, 9]
+
+MEK1_2
+Lack      0: []
+Extra     0: []
+Real     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+Prop     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+
+PDK1
+Lack      0: []
+Extra     0: []
+Real     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+Prop     10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+
+PKCa
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PLCg
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+erlotinib
+Lack      0: []
+Extra     0: []
+Real     12: [8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+Prop     12: [8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29]
+
+p70S6K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pertuzumab
+Lack      0: []
+Extra     0: []
+Real     20: [0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31]
+Prop     20: [0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31]
+
+trastuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	pertuzumab
+2	AKT
+3	erlotinib
+4	EGF, HRG
+5	PDK1, ERBB3, ERBB2, MEK1_2, ERBB1, trastuzumab
+	PLCg, p70S6K, PKCa, ERK1_2
+REFERENCE:
+1	pertuzumab
+2	AKT
+3	erlotinib
+4	EGF, HRG
+5	trastuzumab, MEK1_2, PDK1, PLCg, ERBB3, ERBB2
+	p70S6K, PKCa, ERK1_2, ERBB1
+=======
+-----KI RANKING COMPARISON-----
+1	AKT, pertuzumab, PDK1, ERBB3, ERBB2, MEK1_2
+	ERBB1
+2	EGF, HRG
+3	erlotinib
+4	trastuzumab, PLCg, p70S6K, PKCa, ERK1_2
+REFERENCE:
+1	pertuzumab, MEK1_2, PDK1, ERBB3, ERBB2, AKT
+	ERBB1
+2	EGF, HRG
+3	erlotinib
+4	trastuzumab, PLCg, p70S6K, PKCa, ERK1_2
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             15.000       15.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  1.0
+Average number of correct rows after binarization: 1.0 
+Average DNCG after binarization: 1.0 
+-----------TOTAL RUNNING TIME---------------
+1.2056837909622118

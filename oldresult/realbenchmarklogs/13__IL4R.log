@@ -1,0 +1,1920 @@
+The expression file is data/realbenchmark/13.txt
+The interested output is: 
+IL4R
+List of all species:
+{'IFNgR', 'IL4', 'STAT4', 'IFNbR', 'TCR', 'STAT6', 'STAT3', 'IFNb', 'STAT1', 'IL4R', 'IL18', 'IL18R', 'SOCS1', 'IFNg', 'IL10R', 'IL12R', 'Tbet', 'IRAK', 'IL10', 'IL12', 'JAK1', 'GATA3', 'NFAT'}
+-----Input names-----
+{'IFNb', 'IL18', 'IL12', 'TCR'}
+----Intermediate nodes-----
+{'IFNgR', 'IL4', 'STAT4', 'IFNg', 'IL10R', 'IFNbR', 'IL12R', 'Tbet', 'STAT6', 'IRAK', 'STAT3', 'IL10', 'JAK1', 'STAT1', 'GATA3', 'NFAT', 'IL4R', 'IL18R', 'SOCS1'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['IFNb', 'IL12', 'IL18', 'TCR']
+Sorted input names
+['IFNb', 'IL12', 'IL18', 'TCR']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+There are 19 intermediate nodes with the range of inter: 0 524287
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.04246783256530762 seconds===
+----Input knockout shapley value-----
+('IFNb', 0.0)
+('IL18', 0.0)
+('IL12', 0.0)
+('TCR', 0.0)
+----Input knockIN shapley value-----
+('IFNb', 0.0)
+('IL18', 0.0)
+('IL12', 0.0)
+('TCR', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout IFNgR
+Knockout STAT4
+Knockout IFNg
+Knockout IL10R
+Knockout IFNbR
+Knockout IL12R
+Knockout Tbet
+Knockout STAT6
+Knockout IRAK
+Knockout STAT3
+Knockout IL10
+Knockout JAK1
+Knockout STAT1
+Knockout GATA3
+Knockout NFAT
+Knockout IL18R
+Knockout SOCS1
+----KNOCKOUT VALUE for output IL4R----
+{'GATA3': 0.0, 'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IRAK': 0.0, 'JAK1': 0.0, 'NFAT': 0.0, 'SOCS1': 0.0, 'STAT1': 0.0, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': 0.0, 'Tbet': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin IFNgR
+Knockin STAT4
+Knockin IFNg
+Knockin IL10R
+Knockin IFNbR
+Knockin IL12R
+Knockin Tbet
+Knockin STAT6
+Knockin IRAK
+Knockin STAT3
+Knockin IL10
+Knockin JAK1
+Knockin STAT1
+Knockin GATA3
+Knockin NFAT
+Knockin IL18R
+Knockin SOCS1
+----KNOCKIN VALUE for output IL4R----
+{'GATA3': -2.5, 'IFNbR': 0.0, 'IFNg': 0.0, 'IFNgR': 0.0, 'IL10': 0.0, 'IL10R': 0.0, 'IL12R': 0.0, 'IL18R': 0.0, 'IRAK': 0.0, 'JAK1': 0.0, 'NFAT': 0.0, 'SOCS1': 0.0, 'STAT1': 0.0, 'STAT3': 0.0, 'STAT4': 0.0, 'STAT6': -2.5, 'Tbet': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 1.3035080432891846 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'IFNb', 'IL18', 'IL12', 'TCR'}
+Ordinary nodes are 
+{'IFNgR', 'IL4', 'STAT4', 'IFNbR', 'TCR', 'STAT6', 'STAT3', 'IFNb', 'STAT1', 'IL4R', 'IL18', 'IL18R', 'SOCS1', 'IFNg', 'IL10R', 'IL12R', 'Tbet', 'IRAK', 'IL10', 'IL12', 'JAK1', 'GATA3', 'NFAT'}
+Extranodes added after removing cycles are 
+['Tbet_to_Tbet', 'JAK1_to_STAT1', 'GATA3_to_GATA3', 'GATA3_to_Tbet', 'GATA3_to_IL4']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['IFNb', 'IL12', 'IL18', 'TCR']
+----Generate table from output----
+-----Calculated value of input nodes-----
+IFNb                 			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT IL4R=======
+----Master diamonds-----
+{'STAT1': 'IL4R', '_XTR_21_': 'Tbet'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['IL4R']---
+At TARGET node IL4R, count all rows
+
+Counted row for current node IL4R is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+IL4R ==== IL4 AND _XTR_5_
+After operator AND, IL4 count only rows: 
+[0]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['IL4', '_XTR_5_']---
+
+Counted row for current node IL4 is 
+[0]
+IL4 ==== GATA3_to_IL4 AND _XTR_26_
+Left node GATA3_to_IL4 is an extra node
+After operator AND, GATA3_to_IL4 count only rows: 
+[0]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+
+---Processing layers of ['_XTR_26_', 'GATA3_to_IL4', 'SOCS1']---
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ === NOT STAT1
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node STAT1 in diamond to IL4R
+Affected nodes between STAT1 and IL4R are: {'IL4', '_XTR_26_', 'IL4R', 'Tbet', '_XTR_5_', 'SOCS1', '_XTR_22_'}
+Rows after simulate a step for diamond STAT1 to IL4R are: 
+[]
+Rows after process diamond STAT1 to IL4R are: 
+[]
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+
+---Processing layers of ['STAT1', '_XTR_12_', '_XTR_13_', 'Tbet']---
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['IFNbR', 'JAK1_to_STAT1', '_XTR_11_', 'GATA3_to_GATA3', 'STAT6', '_XTR_22_', '_XTR_23_']---
+
+Counted row for current node IFNbR is 
+[]
+IFNbR === IFNb
+			---------------
+
+Counted row for current node JAK1 is 
+[]
+JAK1 ==== IFNgR AND _XTR_5_
+After operator AND, IFNgR count only rows: 
+[]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT Tbet
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node STAT6 is 
+[0]
+STAT6 === IL4R
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== STAT1 AND _XTR_21_
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+End node Tbet has no rows to be filtered, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Tbet_to_Tbet AND _XTR_21_
+Left node Tbet_to_Tbet is an extra node
+After operator AND, Tbet_to_Tbet count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+
+---Processing layers of ['IFNb', 'IFNgR', '_XTR_5_', 'Tbet', '_XTR_12_', '_XTR_13_', 'IL4R', 'STAT1', '_XTR_21_']---
+
+Reach node IFNb without in-comming edges
+
+Counted row for current node IFNgR is 
+[]
+IFNgR === IFNg
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL4R is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+IL4R ==== IL4 AND _XTR_5_
+After operator AND, IL4 count only rows: 
+[0]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ === NOT GATA3_to_Tbet
+			---------------
+
+
+---Processing layers of ['IFNg', 'SOCS1', '_XTR_22_', '_XTR_23_', '_XTR_11_', 'GATA3_to_GATA3', 'STAT6', 'IL4', '_XTR_5_', 'IFNbR', 'JAK1_to_STAT1', 'GATA3_to_Tbet']---
+
+Counted row for current node IFNg is 
+[]
+IFNg ==== _XTR_34_ OR _XTR_35_
+After operator OR, _XTR_34_ count only rows: 
+[]
+After operator OR, _XTR_35_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== STAT1 AND _XTR_21_
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Tbet_to_Tbet AND _XTR_21_
+Left node Tbet_to_Tbet is an extra node
+After operator AND, Tbet_to_Tbet count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT Tbet
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node STAT6 is 
+[0]
+STAT6 === IL4R
+			---------------
+
+Counted row for current node IL4 is 
+[0]
+IL4 ==== GATA3_to_IL4 AND _XTR_26_
+Left node GATA3_to_IL4 is an extra node
+After operator AND, GATA3_to_IL4 count only rows: 
+[0]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+Counted row for current node IFNbR is 
+[]
+IFNbR === IFNb
+			---------------
+
+Counted row for current node JAK1 is 
+[]
+JAK1 ==== IFNgR AND _XTR_5_
+After operator AND, IFNgR count only rows: 
+[]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node GATA3 is 
+[]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[]
+After operator OR, _XTR_13_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_34_', '_XTR_35_', 'Tbet', 'STAT1', '_XTR_21_', '_XTR_12_', '_XTR_13_', 'IL4R', '_XTR_26_', 'GATA3_to_IL4', 'SOCS1', 'IFNb', 'IFNgR', '_XTR_5_']---
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ ==== _XTR_32_ OR _XTR_33_
+After operator OR, _XTR_32_ count only rows: 
+[]
+After operator OR, _XTR_33_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[]
+_XTR_35_ ==== Tbet AND _XTR_29_
+After operator AND, Tbet count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ === NOT GATA3_to_Tbet
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL4R is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+IL4R ==== IL4 AND _XTR_5_
+After operator AND, IL4 count only rows: 
+[0]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ === NOT STAT1
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Reach node IFNb without in-comming edges
+
+Counted row for current node IFNgR is 
+[]
+IFNgR === IFNg
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+
+---Processing layers of ['_XTR_32_', '_XTR_33_', 'Tbet', '_XTR_29_', '_XTR_22_', '_XTR_23_', 'IFNbR', 'JAK1_to_STAT1', 'GATA3_to_Tbet', '_XTR_11_', 'GATA3_to_GATA3', 'STAT6', 'IL4', '_XTR_5_', 'STAT1', '_XTR_12_', '_XTR_13_', 'IFNg', 'SOCS1']---
+
+Counted row for current node _XTR_32_ is 
+[]
+_XTR_32_ ==== _XTR_30_ OR _XTR_31_
+After operator OR, _XTR_30_ count only rows: 
+[]
+After operator OR, _XTR_31_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== STAT4 AND _XTR_29_
+After operator AND, STAT4 count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[]
+_XTR_29_ === NOT STAT3
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== STAT1 AND _XTR_21_
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Tbet_to_Tbet AND _XTR_21_
+Left node Tbet_to_Tbet is an extra node
+After operator AND, Tbet_to_Tbet count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node IFNbR is 
+[]
+IFNbR === IFNb
+			---------------
+
+Counted row for current node JAK1 is 
+[]
+JAK1 ==== IFNgR AND _XTR_5_
+After operator AND, IFNgR count only rows: 
+[]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node GATA3 is 
+[]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[]
+After operator OR, _XTR_13_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT Tbet
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node STAT6 is 
+[0]
+STAT6 === IL4R
+			---------------
+
+Counted row for current node IL4 is 
+[0]
+IL4 ==== GATA3_to_IL4 AND _XTR_26_
+Left node GATA3_to_IL4 is an extra node
+After operator AND, GATA3_to_IL4 count only rows: 
+[0]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IFNg is 
+[]
+IFNg ==== _XTR_34_ OR _XTR_35_
+After operator OR, _XTR_34_ count only rows: 
+[]
+After operator OR, _XTR_35_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+
+---Processing layers of ['_XTR_30_', '_XTR_31_', 'STAT4', '_XTR_29_', '_XTR_22_', '_XTR_23_', 'STAT3', 'STAT1', '_XTR_21_', 'Tbet_to_Tbet', 'IFNb', 'IFNgR', '_XTR_5_', '_XTR_12_', '_XTR_13_', 'Tbet', 'IL4R', '_XTR_26_', 'GATA3_to_IL4', 'SOCS1', 'IFNbR', 'JAK1_to_STAT1', '_XTR_11_', 'GATA3_to_GATA3', 'STAT6', '_XTR_34_', '_XTR_35_']---
+
+Counted row for current node _XTR_30_ is 
+[]
+_XTR_30_ ==== NFAT AND _XTR_29_
+After operator AND, NFAT count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[]
+_XTR_31_ ==== IRAK AND _XTR_29_
+After operator AND, IRAK count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node STAT4 is 
+[]
+STAT4 ==== IL12R AND _XTR_18_
+After operator AND, IL12R count only rows: 
+[]
+After operator AND, _XTR_18_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[]
+_XTR_29_ === NOT STAT3
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== STAT1 AND _XTR_21_
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Tbet_to_Tbet AND _XTR_21_
+Left node Tbet_to_Tbet is an extra node
+After operator AND, Tbet_to_Tbet count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node STAT3 is 
+[]
+STAT3 === IL10R
+			---------------
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ === NOT GATA3_to_Tbet
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Reach node IFNb without in-comming edges
+
+Counted row for current node IFNgR is 
+[]
+IFNgR === IFNg
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL4R is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+IL4R ==== IL4 AND _XTR_5_
+After operator AND, IL4 count only rows: 
+[0]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ === NOT STAT1
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node IFNbR is 
+[]
+IFNbR === IFNb
+			---------------
+
+Counted row for current node JAK1 is 
+[]
+JAK1 ==== IFNgR AND _XTR_5_
+After operator AND, IFNgR count only rows: 
+[]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT Tbet
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node STAT6 is 
+[0]
+STAT6 === IL4R
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ ==== _XTR_32_ OR _XTR_33_
+After operator OR, _XTR_32_ count only rows: 
+[]
+After operator OR, _XTR_33_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[]
+_XTR_35_ ==== Tbet AND _XTR_29_
+After operator AND, Tbet count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['NFAT', '_XTR_29_', 'IRAK', 'IL12R', '_XTR_18_', 'STAT3', 'STAT1', '_XTR_21_', 'Tbet_to_Tbet', 'IL10R', 'IFNbR', 'JAK1_to_STAT1', 'GATA3_to_Tbet', '_XTR_22_', '_XTR_23_', 'IFNg', 'SOCS1', '_XTR_11_', 'GATA3_to_GATA3', 'STAT6', 'IL4', '_XTR_5_', '_XTR_12_', '_XTR_13_', 'Tbet', 'IFNb', 'IFNgR', 'IL4R', '_XTR_32_', '_XTR_33_']---
+
+Counted row for current node NFAT is 
+[]
+NFAT === TCR
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[]
+_XTR_29_ === NOT STAT3
+			---------------
+
+Counted row for current node IRAK is 
+[]
+IRAK === IL18R
+			---------------
+
+Counted row for current node IL12R is 
+[]
+IL12R === IL12
+			---------------
+
+Counted row for current node _XTR_18_ is 
+[]
+_XTR_18_ === NOT GATA3
+			---------------
+
+Counted row for current node STAT3 is 
+[]
+STAT3 === IL10R
+			---------------
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ === NOT GATA3_to_Tbet
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL10R is 
+[]
+IL10R === IL10
+			---------------
+
+Counted row for current node IFNbR is 
+[]
+IFNbR === IFNb
+			---------------
+
+Counted row for current node JAK1 is 
+[]
+JAK1 ==== IFNgR AND _XTR_5_
+After operator AND, IFNgR count only rows: 
+[]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node GATA3 is 
+[]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[]
+After operator OR, _XTR_13_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== STAT1 AND _XTR_21_
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Tbet_to_Tbet AND _XTR_21_
+Left node Tbet_to_Tbet is an extra node
+After operator AND, Tbet_to_Tbet count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node IFNg is 
+[]
+IFNg ==== _XTR_34_ OR _XTR_35_
+After operator OR, _XTR_34_ count only rows: 
+[]
+After operator OR, _XTR_35_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT Tbet
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node STAT6 is 
+[0]
+STAT6 === IL4R
+			---------------
+
+Counted row for current node IL4 is 
+[0]
+IL4 ==== GATA3_to_IL4 AND _XTR_26_
+Left node GATA3_to_IL4 is an extra node
+After operator AND, GATA3_to_IL4 count only rows: 
+[0]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Reach node IFNb without in-comming edges
+
+Counted row for current node IFNgR is 
+[]
+IFNgR === IFNg
+			---------------
+
+Counted row for current node IL4R is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+IL4R ==== IL4 AND _XTR_5_
+After operator AND, IL4 count only rows: 
+[0]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[]
+_XTR_32_ ==== _XTR_30_ OR _XTR_31_
+After operator OR, _XTR_30_ count only rows: 
+[]
+After operator OR, _XTR_31_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== STAT4 AND _XTR_29_
+After operator AND, STAT4 count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['TCR', 'STAT3', 'IL18R', 'IL12', 'GATA3', 'IL10R', 'IFNbR', 'JAK1_to_STAT1', '_XTR_22_', '_XTR_23_', 'IL10', 'IFNb', 'IFNgR', '_XTR_5_', '_XTR_12_', '_XTR_13_', 'STAT1', '_XTR_21_', 'Tbet_to_Tbet', '_XTR_34_', '_XTR_35_', 'Tbet', 'IL4R', '_XTR_26_', 'SOCS1', '_XTR_11_', 'STAT6', 'IFNg', 'IL4', '_XTR_30_', '_XTR_31_', 'STAT4', '_XTR_29_']---
+
+Reach node TCR without in-comming edges
+
+Counted row for current node STAT3 is 
+[]
+STAT3 === IL10R
+			---------------
+
+Counted row for current node IL18R is 
+[]
+IL18R ==== IL18 AND _XTR_2_
+After operator AND, IL18 count only rows: 
+[]
+After operator AND, _XTR_2_ count only rows: 
+[]
+			---------------
+
+Reach node IL12 without in-comming edges
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node IL10R is 
+[]
+IL10R === IL10
+			---------------
+
+Counted row for current node IFNbR is 
+[]
+IFNbR === IFNb
+			---------------
+
+Counted row for current node JAK1 is 
+[]
+JAK1 ==== IFNgR AND _XTR_5_
+After operator AND, IFNgR count only rows: 
+[]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== STAT1 AND _XTR_21_
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Tbet_to_Tbet AND _XTR_21_
+Left node Tbet_to_Tbet is an extra node
+After operator AND, Tbet_to_Tbet count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node IL10 is 
+[]
+IL10 === GATA3
+			---------------
+
+Reach node IFNb without in-comming edges
+
+Counted row for current node IFNgR is 
+[]
+IFNgR === IFNg
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ === NOT GATA3_to_Tbet
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ ==== _XTR_32_ OR _XTR_33_
+After operator OR, _XTR_32_ count only rows: 
+[]
+After operator OR, _XTR_33_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[]
+_XTR_35_ ==== Tbet AND _XTR_29_
+After operator AND, Tbet count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL4R is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+IL4R ==== IL4 AND _XTR_5_
+After operator AND, IL4 count only rows: 
+[0]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ === NOT STAT1
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT Tbet
+			---------------
+
+Counted row for current node STAT6 is 
+[0]
+STAT6 === IL4R
+			---------------
+
+Counted row for current node IFNg is 
+[]
+IFNg ==== _XTR_34_ OR _XTR_35_
+After operator OR, _XTR_34_ count only rows: 
+[]
+After operator OR, _XTR_35_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL4 is 
+[0]
+IL4 ==== GATA3_to_IL4 AND _XTR_26_
+Left node GATA3_to_IL4 is an extra node
+After operator AND, GATA3_to_IL4 count only rows: 
+[0]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[]
+_XTR_30_ ==== NFAT AND _XTR_29_
+After operator AND, NFAT count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[]
+_XTR_31_ ==== IRAK AND _XTR_29_
+After operator AND, IRAK count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node STAT4 is 
+[]
+STAT4 ==== IL12R AND _XTR_18_
+After operator AND, IL12R count only rows: 
+[]
+After operator AND, _XTR_18_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[]
+_XTR_29_ === NOT STAT3
+			---------------
+
+
+---Processing layers of ['IL10R', 'IL18', '_XTR_2_', '_XTR_12_', '_XTR_13_', 'IL10', 'IFNb', 'IFNgR', '_XTR_5_', 'STAT1', '_XTR_21_', 'Tbet_to_Tbet', 'GATA3', 'IFNg', 'SOCS1', '_XTR_11_', 'STAT6', 'IFNbR', 'JAK1_to_STAT1', '_XTR_22_', '_XTR_23_', '_XTR_32_', '_XTR_33_', 'Tbet', '_XTR_29_', 'IL4', 'IL4R', '_XTR_34_', '_XTR_35_', '_XTR_26_', 'NFAT', 'IRAK', 'IL12R', '_XTR_18_', 'STAT3']---
+
+Counted row for current node IL10R is 
+[]
+IL10R === IL10
+			---------------
+
+Reach node IL18 without in-comming edges
+
+Counted row for current node _XTR_2_ is 
+[]
+_XTR_2_ === NOT STAT6
+			---------------
+
+Counted row for current node _XTR_12_ is 
+[0]
+_XTR_12_ ==== GATA3_to_GATA3 AND _XTR_11_
+Left node GATA3_to_GATA3 is an extra node
+After operator AND, GATA3_to_GATA3 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_13_ is 
+[0]
+_XTR_13_ ==== STAT6 AND _XTR_11_
+After operator AND, STAT6 count only rows: 
+[0]
+After operator AND, _XTR_11_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL10 is 
+[]
+IL10 === GATA3
+			---------------
+
+Reach node IFNb without in-comming edges
+
+Counted row for current node IFNgR is 
+[]
+IFNgR === IFNg
+			---------------
+
+Counted row for current node _XTR_5_ is 
+[]
+_XTR_5_ === NOT SOCS1
+			---------------
+
+Counted row for current node STAT1 is 
+[]
+STAT1 ==== IFNbR OR JAK1_to_STAT1
+Right node JAK1_to_STAT1 is an extra node
+After operator OR, IFNbR count only rows: 
+[]
+After operator OR, JAK1_to_STAT1 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ === NOT GATA3_to_Tbet
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node GATA3 is 
+[0]
+GATA3 ==== _XTR_12_ OR _XTR_13_
+After operator OR, _XTR_12_ count only rows: 
+[0]
+After operator OR, _XTR_13_ count only rows: 
+[0]
+			---------------
+
+Counted row for current node IFNg is 
+[]
+IFNg ==== _XTR_34_ OR _XTR_35_
+After operator OR, _XTR_34_ count only rows: 
+[]
+After operator OR, _XTR_35_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SOCS1 is 
+[]
+SOCS1 ==== Tbet OR STAT1
+After operator OR, Tbet count only rows: 
+[]
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_11_ is 
+[]
+_XTR_11_ === NOT Tbet
+			---------------
+
+Counted row for current node STAT6 is 
+[0]
+STAT6 === IL4R
+			---------------
+
+Counted row for current node IFNbR is 
+[]
+IFNbR === IFNb
+			---------------
+
+Counted row for current node JAK1 is 
+[]
+JAK1 ==== IFNgR AND _XTR_5_
+After operator AND, IFNgR count only rows: 
+[]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== STAT1 AND _XTR_21_
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ ==== Tbet_to_Tbet AND _XTR_21_
+Left node Tbet_to_Tbet is an extra node
+After operator AND, Tbet_to_Tbet count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_21_
+PROCESS DIAMOND for node _XTR_21_
+Process diamond from _XTR_21_ to Tbet
+Diamond from _XTR_21_ to Tbet has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[]
+_XTR_32_ ==== _XTR_30_ OR _XTR_31_
+After operator OR, _XTR_30_ count only rows: 
+[]
+After operator OR, _XTR_31_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== STAT4 AND _XTR_29_
+After operator AND, STAT4 count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Tbet is 
+[]
+Tbet ==== _XTR_22_ OR _XTR_23_
+After operator OR, _XTR_22_ count only rows: 
+[]
+After operator OR, _XTR_23_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[]
+_XTR_29_ === NOT STAT3
+			---------------
+
+Counted row for current node IL4 is 
+[0]
+IL4 ==== GATA3_to_IL4 AND _XTR_26_
+Left node GATA3_to_IL4 is an extra node
+After operator AND, GATA3_to_IL4 count only rows: 
+[0]
+After operator AND, _XTR_26_ count only rows: 
+[]
+			---------------
+
+Counted row for current node IL4R is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+IL4R ==== IL4 AND _XTR_5_
+After operator AND, IL4 count only rows: 
+[0]
+After operator AND, _XTR_5_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ ==== _XTR_32_ OR _XTR_33_
+After operator OR, _XTR_32_ count only rows: 
+[]
+After operator OR, _XTR_33_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_35_ is 
+[]
+_XTR_35_ ==== Tbet AND _XTR_29_
+After operator AND, Tbet count only rows: 
+[]
+After operator AND, _XTR_29_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ === NOT STAT1
+PROCESS DIAMONDS for STAT1
+PROCESS DIAMOND for node STAT1
+Process diamond from STAT1 to IL4R
+Diamond from STAT1 to IL4R has been processed already, continue
+			---------------
+
+Counted row for current node NFAT is 
+[]
+NFAT === TCR
+			---------------
+
+Counted row for current node IRAK is 
+[]
+IRAK === IL18R
+			---------------
+
+Counted row for current node IL12R is 
+[]
+IL12R === IL12
+			---------------
+
+Counted row for current node _XTR_18_ is 
+[]
+_XTR_18_ === NOT GATA3
+			---------------
+
+Counted row for current node STAT3 is 
+[]
+STAT3 === IL10R
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node GATA3: processed 12 times
+Node JAK1: processed 8 times
+Node Tbet: processed 4 times
+SIMULATE 0 nodes over 18 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+GATA3                			 KO:        0.0 | KI:       -1.0
+IFNb                 			 KO:        0.0 | KI:        0.0
+IFNbR                			 KO:        0.0 | KI:        0.0
+IFNg                 			 KO:        0.0 | KI:        0.0
+IFNgR                			 KO:        0.0 | KI:        0.0
+IL10                 			 KO:        0.0 | KI:        0.0
+IL10R                			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL12R                			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+IL18R                			 KO:        0.0 | KI:        0.0
+IL4                  			 KO:        0.0 | KI:       -1.0
+IL4R                 			 KO:        0.0 | KI:    -5.0002
+IRAK                 			 KO:        0.0 | KI:        0.0
+JAK1                 			 KO:        0.0 | KI:        0.0
+NFAT                 			 KO:        0.0 | KI:        0.0
+SOCS1                			 KO:        0.0 | KI:        0.0
+STAT1                			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+STAT4                			 KO:        0.0 | KI:        0.0
+STAT6                			 KO:        0.0 | KI:       -1.0
+TCR                  			 KO:        0.0 | KI:        0.0
+Tbet                 			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	IL4R, IL4, SOCS1, STAT1, GATA3, Tbet
+	IFNbR, STAT6, JAK1, IFNgR, IFNg, STAT4
+	STAT3, NFAT, IRAK, IL12R, IL10R, IL18R
+	IL10
+=======
+KI RANKING OF NODES:
+1	IL4R
+2	IL4, GATA3, STAT6
+3	SOCS1, STAT1, Tbet, IFNbR, IFNb, JAK1
+	IFNgR, IFNg, STAT4, STAT3, NFAT, IRAK
+	IL12R, IL10R, TCR, IL18R, IL12, IL10
+	IL18
+=======
+NUMBER OF NODES: 23
+NUMBER OF INPUTS: 4
+NUMBER OF EDGES: 34
+TIME process heading: 0.0010328292846679688
+TIME simulate original network: 0.04246783256530762
+TIME perform original analysis process: 1.3035080432891846
+TIME perform propagation: 0.11689877510070801
+There are 0 unreachable nodes, they are:
+set()
+STAT6                - Correct: KO:        0.0 | KI :    -2.5001 - Incorrect KO:        0.0 | KI:       -1.0
+GATA3                - Correct: KO:        0.0 | KI :    -2.5001 - Incorrect KO:        0.0 | KI:       -1.0
+GATA3
+Lack      7: [1, 2, 3, 4, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      1: [0]
+
+IFNb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNbR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNg
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IFNgR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL10
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL10R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL12R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IL18R
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IRAK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JAK1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NFAT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SOCS1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT4
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+STAT6
+Lack      7: [1, 2, 3, 4, 5, 6, 7]
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      1: [0]
+
+TCR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Tbet
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	SOCS1, STAT1, GATA3, Tbet, IFNbR, STAT6
+	IFNb, JAK1, IFNgR, IFNg, STAT4, STAT3
+	NFAT, IRAK, IL12R, IL10R, TCR, IL18R
+	IL12, IL10, IL18
+REFERENCE:
+1	IFNb, IL18, IL12, TCR, IFNgR, STAT4
+	IFNg, IL10R, IFNbR, IL12R, Tbet, STAT6
+	IRAK, STAT3, IL10, JAK1, STAT1, GATA3
+	NFAT, IL18R, SOCS1
+=======
+-----KI RANKING COMPARISON-----
+1	GATA3, STAT6
+2	SOCS1, STAT1, Tbet, IFNbR, IFNb, JAK1
+	IFNgR, IFNg, STAT4, STAT3, NFAT, IRAK
+	IL12R, IL10R, TCR, IL18R, IL12, IL10
+	IL18
+REFERENCE:
+1	STAT6, GATA3
+2	IFNb, IL18, IL12, TCR, IFNgR, STAT4
+	IFNg, IL10R, IFNbR, IL12R, Tbet, IRAK
+	STAT3, IL10, JAK1, STAT1, NFAT, IL18R
+	SOCS1
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.04629409105562682
+NDCG_KO_is  0.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             21.000       21.000
+Kendall tau-b                           NaN        1.000
+Spearman rho                          0.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9583
+Average number of correct rows after binarization: 0.9583333333333334 
+Average DNCG after binarization: 0.5 
+-----------TOTAL RUNNING TIME---------------
+1.6493022500071675

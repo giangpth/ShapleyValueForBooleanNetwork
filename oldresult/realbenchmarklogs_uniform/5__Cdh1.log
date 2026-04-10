@@ -1,0 +1,4232 @@
+The expression file is data/realbenchmark/5.txt
+The interested output is: 
+Cdh1
+List of all species:
+{'Size', 'SFF', 'Swi5', 'Sic1', 'Yhp1', 'BuddingCP', 'Cdc14', 'Whi5', 'Cdh1', 'Cln2', 'Cln3', 'FEAR', 'SMBF', 'Start', 'Swe1', 'Clb2', 'SpindleCP', 'Cdc20', 'Clb5', 'MEN'}
+-----Input names-----
+{'SpindleCP', 'Size', 'Start', 'BuddingCP'}
+----Intermediate nodes-----
+{'Cdh1', 'Cln2', 'SFF', 'Swi5', 'Sic1', 'Cln3', 'FEAR', 'Yhp1', 'SMBF', 'Swe1', 'Clb2', 'Cdc20', 'Cdc14', 'Clb5', 'Whi5', 'MEN'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+Sorted input names
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Whi5', 'Yhp1']
+There are 16 intermediate nodes with the range of inter: 0 65535
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.04469799995422363 seconds===
+----Input knockout shapley value-----
+('SpindleCP', 0.0052)
+('Size', 0.0)
+('Start', -0.0052)
+('BuddingCP', -0.0052)
+----Input knockIN shapley value-----
+('SpindleCP', -0.0052)
+('Size', 0.0)
+('Start', 0.0052)
+('BuddingCP', 0.0052)
+-------Now perform the knockout procedure to original network-------
+Knockout Cln2
+Knockout SFF
+Knockout Swi5
+Knockout Sic1
+Knockout Cln3
+Knockout FEAR
+Knockout Yhp1
+Knockout SMBF
+Knockout Swe1
+Knockout Clb2
+Knockout Cdc20
+Knockout Cdc14
+Knockout Clb5
+Knockout Whi5
+Knockout MEN
+----KNOCKOUT VALUE for output Cdh1----
+{'Cdc14': 0.0052, 'Cdc20': 0.0052, 'Clb2': -0.0052, 'Clb5': 0.0, 'Cln2': -0.0052, 'Cln3': 0.0, 'FEAR': 0.0052, 'MEN': 0.0052, 'SFF': 0.0052, 'SMBF': -0.0052, 'Sic1': 0.0052, 'Swe1': 0.0052, 'Swi5': 0.0, 'Whi5': 0.0104, 'Yhp1': 0.0052}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin Cln2
+Knockin SFF
+Knockin Swi5
+Knockin Sic1
+Knockin Cln3
+Knockin FEAR
+Knockin Yhp1
+Knockin SMBF
+Knockin Swe1
+Knockin Clb2
+Knockin Cdc20
+Knockin Cdc14
+Knockin Clb5
+Knockin Whi5
+Knockin MEN
+----KNOCKIN VALUE for output Cdh1----
+{'Cdc14': -0.0052, 'Cdc20': -0.0052, 'Clb2': 0.0156, 'Clb5': 0.026, 'Cln2': 0.026, 'Cln3': 0.0104, 'FEAR': -0.0052, 'MEN': 0.0, 'SFF': 0.0052, 'SMBF': 0.0104, 'Sic1': -0.0052, 'Swe1': -0.0052, 'Swi5': 0.0, 'Whi5': -0.0052, 'Yhp1': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 1.2614450454711914 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac Cdh1_to_Clb2ANDCdc20_to_Clb2, try Cdc20_to_Clb2ANDCdh1_to_Clb2
+Input are {'SpindleCP', 'Size', 'Start', 'BuddingCP'}
+Ordinary nodes are 
+{'Size', 'SFF', 'Swi5', 'Sic1', 'Yhp1', 'BuddingCP', 'Cdc14', 'Whi5', 'Cdh1', 'Cln2', 'Cln3', 'FEAR', 'SMBF', 'Start', 'Swe1', 'Clb2', 'SpindleCP', 'Cdc20', 'Clb5', 'MEN'}
+Extranodes added after removing cycles are 
+['SFF_to_Clb2', 'Swi5_to_Swi5', 'Sic1_to_Sic1', 'Sic1_to_Clb2', 'Whi5_to_SMBF', 'Cdh1_to_Clb2', 'Cdc20_to_Clb2', 'Clb5_to_Sic1']
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+----Generate table from output----
+-----Calculated value of input nodes-----
+BuddingCP            			 KO:    -0.4167 | KI:     0.4167
+Size                 			 KO:        0.0 | KI:        0.0
+SpindleCP            			 KO:       1.25 | KI:    -0.4167
+Start                			 KO:    -0.4167 | KI:     0.4167
+=======PROPAGATE FOR OUTPUT Cdh1=======
+----Master diamonds-----
+{'FEAR': 'Cdh1', 'Cdc20': 'Cdh1', 'Clb2': 'Cdh1', 'Cdc14': 'Cdh1', 'SMBF': '_XTR_3_', 'SFF': 'Cdh1', '_XTR_57_': 'Cdh1', 'Cdc20_to_Clb2': 'Cdh1', 'SFF_to_Clb2': 'Cdh1', 'Cdh1_to_Clb2': 'Cdh1', '_XTR_23_': '_XTR_28_', 'Swe1': 'Cdh1', '_XTR_20_': '_XTR_28_', 'Cln2': '_XTR_3_', 'Clb5_to_Sic1': 'Sic1', '_XTR_17_': '_XTR_28_', 'Swi5': 'Sic1', 'Start': '_XTR_3_', '_XTR_15_': '_XTR_28_', 'Sic1_to_Sic1': 'Sic1'}
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+
+
+---Processing layers of ['Cdh1']---
+At TARGET node Cdh1, count all rows
+
+Counted row for current node Cdh1 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Cdc14 in diamond to Cdh1
+Affected nodes between Cdc14 and Cdh1 are: {'_XTR_18_', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_8_', '_XTR_20_', '_XTR_21_', '_XTR_26_', '_XTR_3_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_2_', 'Cdh1', '_XTR_19_', '_XTR_17_', '_XTR_22_', '_XTR_33_', '_XTR_29_', '_XTR_34_', '_XTR_16_', 'Clb5', '_XTR_23_', '_XTR_50_', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond Cdc14 to Cdh1 are: 
+[9, 13, 15]
+Rows after process diamond Cdc14 to Cdh1 are: 
+[9, 13, 15]
+After operator OR, _XTR_4_ count only rows: 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+			---------------
+
+
+---Processing layers of ['Cdc14', '_XTR_4_']---
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node FEAR in diamond to Cdh1
+Affected nodes between FEAR and Cdh1 are: {'_XTR_18_', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_8_', '_XTR_20_', '_XTR_21_', 'Cdc14', '_XTR_3_', '_XTR_26_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_2_', 'Cdh1', '_XTR_19_', '_XTR_17_', '_XTR_22_', '_XTR_33_', '_XTR_29_', '_XTR_34_', '_XTR_16_', 'Clb5', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond FEAR to Cdh1 are: 
+[1, 3, 5, 7, 9, 13, 15]
+Rows after process diamond FEAR to Cdh1 are: 
+[1, 3, 5, 7, 9, 13, 15]
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+
+---Processing layers of ['MEN', 'FEAR', '_XTR_3_']---
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Clb2 in diamond to Cdh1
+Affected nodes between Clb2 and Cdh1 are: {'_XTR_18_', 'SFF', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_8_', '_XTR_45_', '_XTR_20_', '_XTR_21_', '_XTR_49_', 'Cdc14', '_XTR_3_', '_XTR_26_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_7_', '_XTR_2_', 'Cln2', 'Cdh1', '_XTR_12_', '_XTR_9_', 'FEAR', '_XTR_19_', 'SMBF', '_XTR_17_', '_XTR_22_', '_XTR_33_', 'Cdc20', '_XTR_48_', '_XTR_29_', '_XTR_16_', 'Clb5', '_XTR_34_', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond Clb2 to Cdh1 are: 
+[0, 1, 4, 5, 9]
+Rows after process diamond Clb2 to Cdh1 are: 
+[0, 1, 4, 5, 9]
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Cdc20 in diamond to Cdh1
+Affected nodes between Cdc20 and Cdh1 are: {'_XTR_18_', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_8_', '_XTR_20_', '_XTR_21_', '_XTR_49_', 'Cdc14', '_XTR_3_', '_XTR_26_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_2_', 'Cdh1', 'FEAR', '_XTR_19_', '_XTR_17_', '_XTR_22_', '_XTR_33_', '_XTR_48_', '_XTR_29_', 'Clb5', '_XTR_16_', '_XTR_34_', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond Cdc20 to Cdh1 are: 
+[1, 3, 5, 7, 9, 13, 15]
+Rows after process diamond Cdc20 to Cdh1 are: 
+[1, 3, 5, 7, 9, 13, 15]
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_3_ ==== _XTR_2_ OR Clb5
+After operator OR, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+After operator OR, Clb5 count only rows: 
+[0, 2, 4, 6, 11]
+			---------------
+
+
+---Processing layers of ['FEAR', 'Clb2', 'Cdc20', '_XTR_2_', 'Clb5']---
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_2_ ==== _XTR_1_ OR Cln2
+After operator OR, _XTR_1_ count only rows: 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] to decide rows for node Cln2 in diamond to _XTR_3_
+Affected nodes between Cln2 and _XTR_3_ are: {'_XTR_2_', '_XTR_26_', '_XTR_28_', '_XTR_34_', '_XTR_3_', 'Clb5', '_XTR_19_', 'Sic1', '_XTR_50_', '_XTR_24_', '_XTR_32_', '_XTR_20_', '_XTR_27_', '_XTR_21_', '_XTR_33_'}
+Rows after simulate a step for diamond Cln2 to _XTR_3_ are: 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Rows after process diamond Cln2 to _XTR_3_ are: 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+			---------------
+
+Counted row for current node Clb5 is 
+[0, 2, 4, 6, 11]
+Clb5 ==== _XTR_49_ AND _XTR_50_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_50_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['Cdc20', '_XTR_59_', '_XTR_64_', 'SpindleCP', '_XTR_12_', '_XTR_1_', 'Cln2', '_XTR_49_', '_XTR_50_']---
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node _XTR_57_ in diamond to Cdh1
+Affected nodes between _XTR_57_ and Cdh1 are: {'_XTR_18_', 'SFF', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_8_', '_XTR_45_', '_XTR_20_', '_XTR_21_', '_XTR_49_', 'Cdc14', '_XTR_3_', '_XTR_26_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_7_', '_XTR_2_', 'Cln2', 'Cdh1', '_XTR_12_', '_XTR_9_', '_XTR_58_', '_XTR_59_', 'FEAR', 'SMBF', '_XTR_19_', 'Clb2', '_XTR_17_', '_XTR_22_', '_XTR_33_', 'Cdc20', '_XTR_48_', '_XTR_29_', '_XTR_16_', 'Clb5', '_XTR_34_', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond _XTR_57_ to Cdh1 are: 
+[9]
+Rows after process diamond _XTR_57_ to Cdh1 are: 
+[9]
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node SFF in diamond to Cdh1
+Affected nodes between SFF and Cdh1 are: {'_XTR_18_', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_8_', '_XTR_20_', '_XTR_21_', '_XTR_49_', 'Cdc14', '_XTR_26_', '_XTR_3_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_7_', '_XTR_2_', 'Cdh1', '_XTR_12_', 'FEAR', '_XTR_19_', '_XTR_17_', '_XTR_22_', '_XTR_33_', 'Cdc20', '_XTR_48_', '_XTR_29_', 'Clb5', '_XTR_16_', '_XTR_34_', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond SFF to Cdh1 are: 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+Rows after process diamond SFF to Cdh1 are: 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_1_ ==== Cdc14 OR Clb2
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cln2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Cln2 ==== SMBF AND Start
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] to decide rows for node SMBF in diamond to _XTR_3_
+Affected nodes between SMBF and _XTR_3_ are: {'Cln2', '_XTR_2_', '_XTR_49_', '_XTR_26_', '_XTR_28_', '_XTR_34_', '_XTR_3_', 'Clb5', '_XTR_19_', 'Sic1', '_XTR_50_', '_XTR_24_', '_XTR_32_', '_XTR_20_', '_XTR_27_', '_XTR_21_', '_XTR_33_'}
+Rows after simulate a step for diamond SMBF to _XTR_3_ are: 
+[1, 3, 5, 7, 11]
+Rows after process diamond SMBF to _XTR_3_ are: 
+[1, 3, 5, 7, 11]
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] to decide rows for node Start in diamond to _XTR_3_
+Affected nodes between Start and _XTR_3_ are: {'Cln2', '_XTR_2_', '_XTR_26_', '_XTR_28_', '_XTR_34_', '_XTR_3_', 'Clb5', '_XTR_19_', 'Sic1', '_XTR_50_', '_XTR_24_', '_XTR_32_', '_XTR_20_', '_XTR_27_', '_XTR_21_', '_XTR_33_'}
+Rows after simulate a step for diamond Start to _XTR_3_ are: 
+[1, 3, 5, 7]
+Rows after process diamond Start to _XTR_3_ are: 
+[1, 3, 5, 7]
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[]
+_XTR_49_ ==== SMBF AND _XTR_48_
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ === NOT Sic1
+			---------------
+
+
+---Processing layers of ['SpindleCP', '_XTR_12_', '_XTR_58_', '_XTR_57_', '_XTR_63_', 'SFF', 'Clb2', 'Cdc14', 'SMBF', 'Start', '_XTR_48_', 'Sic1']---
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Cdc20_to_Clb2 in diamond to Cdh1
+Affected nodes between Cdc20_to_Clb2 and Cdh1 are: {'_XTR_18_', 'SFF', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_57_', '_XTR_24_', '_XTR_8_', '_XTR_45_', '_XTR_20_', '_XTR_21_', '_XTR_49_', 'Cdc14', '_XTR_3_', '_XTR_26_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_7_', '_XTR_2_', 'Cln2', 'Cdh1', '_XTR_64_', '_XTR_12_', '_XTR_9_', '_XTR_58_', '_XTR_59_', 'FEAR', 'SMBF', '_XTR_19_', 'Clb2', '_XTR_17_', '_XTR_63_', '_XTR_22_', '_XTR_33_', 'Cdc20', '_XTR_48_', '_XTR_29_', '_XTR_16_', 'Clb5', '_XTR_34_', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_', '_XTR_56_'}
+Rows after simulate a step for diamond Cdc20_to_Clb2 to Cdh1 are: 
+[]
+Rows after process diamond Cdc20_to_Clb2 to Cdh1 are: 
+[]
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SMBF is 
+[1, 3, 5, 7, 11]
+SMBF === NOT _XTR_45_
+			---------------
+
+Reach node Start without in-comming edges
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ === NOT Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['SFF', 'Clb2', '_XTR_55_', '_XTR_57_', '_XTR_56_', '_XTR_62_', 'Cdc20_to_Clb2', '_XTR_59_', '_XTR_64_', 'MEN', 'FEAR', '_XTR_45_', 'Cdc20', '_XTR_28_', '_XTR_34_']---
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node SFF_to_Clb2 in diamond to Cdh1
+Affected nodes between SFF_to_Clb2 and Cdh1 are: {'_XTR_18_', '_XTR_62_', 'Swi5', 'SFF', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_8_', '_XTR_45_', '_XTR_20_', '_XTR_21_', '_XTR_49_', 'Cdc14', '_XTR_3_', '_XTR_26_', '_XTR_1_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_7_', '_XTR_2_', 'Cln2', 'Cdh1', '_XTR_64_', '_XTR_12_', '_XTR_9_', '_XTR_58_', '_XTR_59_', 'FEAR', 'SMBF', '_XTR_19_', 'Clb2', '_XTR_17_', '_XTR_55_', '_XTR_63_', '_XTR_22_', '_XTR_33_', 'Cdc20', '_XTR_48_', '_XTR_29_', '_XTR_16_', 'Clb5', '_XTR_34_', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond SFF_to_Clb2 to Cdh1 are: 
+[]
+Rows after process diamond SFF_to_Clb2 to Cdh1 are: 
+[]
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Cdh1_to_Clb2 in diamond to Cdh1
+Affected nodes between Cdh1_to_Clb2 and Cdh1 are: {'_XTR_18_', 'SFF', '_XTR_62_', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_57_', '_XTR_24_', '_XTR_45_', '_XTR_8_', '_XTR_20_', '_XTR_21_', '_XTR_49_', '_XTR_60_', '_XTR_61_', 'Cdc14', '_XTR_1_', '_XTR_3_', '_XTR_26_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_7_', 'Cln2', '_XTR_2_', 'Cdh1', '_XTR_64_', '_XTR_12_', '_XTR_9_', '_XTR_58_', '_XTR_19_', '_XTR_59_', 'SMBF', 'FEAR', 'Clb2', '_XTR_17_', '_XTR_22_', '_XTR_63_', '_XTR_33_', 'Cdc20', '_XTR_34_', '_XTR_48_', '_XTR_29_', '_XTR_16_', 'Clb5', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_', '_XTR_56_'}
+Rows after simulate a step for diamond Cdh1_to_Clb2 to Cdh1 are: 
+[8, 12]
+Rows after process diamond Cdh1_to_Clb2 to Cdh1 are: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_45_ is 
+[1, 3, 5, 7, 11]
+_XTR_45_ ==== Whi5_to_SMBF OR Clb2
+Left node Whi5_to_SMBF is an extra node
+After operator OR, Whi5_to_SMBF count only rows: 
+[1, 3, 5, 7, 11]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[]
+_XTR_28_ ==== _XTR_24_ OR _XTR_27_
+After operator OR, _XTR_24_ count only rows: 
+[]
+After operator OR, _XTR_27_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+
+---Processing layers of ['Clb2', '_XTR_59_', '_XTR_64_', '_XTR_54_', 'SFF_to_Clb2', '_XTR_56_', 'Cdc20_to_Clb2', 'Cdh1_to_Clb2', '_XTR_61_', 'SFF_to_Clb2', 'SpindleCP', '_XTR_12_', '_XTR_58_', '_XTR_57_', '_XTR_63_', 'FEAR', 'Cdc20', 'Whi5_to_SMBF', '_XTR_24_', '_XTR_27_', '_XTR_33_']---
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[9]
+_XTR_54_ === NOT Swe1
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+SIMULATE rows [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] to decide rows for node Swe1 in diamond to Cdh1
+Affected nodes between Swe1 and Cdh1 are: {'_XTR_18_', 'SFF', '_XTR_62_', 'Swi5', 'Sic1', '_XTR_30_', '_XTR_15_', '_XTR_24_', '_XTR_45_', '_XTR_8_', '_XTR_20_', '_XTR_21_', '_XTR_49_', '_XTR_60_', '_XTR_61_', 'Cdc14', '_XTR_1_', '_XTR_3_', '_XTR_26_', '_XTR_31_', '_XTR_32_', '_XTR_28_', '_XTR_25_', '_XTR_7_', 'Cln2', '_XTR_2_', 'Cdh1', '_XTR_64_', '_XTR_12_', '_XTR_9_', '_XTR_58_', '_XTR_19_', '_XTR_59_', 'SMBF', 'FEAR', 'Clb2', '_XTR_17_', '_XTR_54_', '_XTR_55_', '_XTR_22_', '_XTR_63_', '_XTR_33_', 'Cdc20', '_XTR_34_', '_XTR_48_', '_XTR_29_', '_XTR_16_', 'Clb5', '_XTR_23_', '_XTR_50_', 'MEN', '_XTR_4_', '_XTR_27_'}
+Rows after simulate a step for diamond Swe1 to Cdh1 are: 
+[9]
+Rows after process diamond Swe1 to Cdh1 are: 
+[9]
+			---------------
+
+Counted row for current node SFF is 
+[]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[0, 1, 4, 5]
+_XTR_61_ ==== _XTR_60_ OR Sic1_to_Clb2
+Right node Sic1_to_Clb2 is an extra node
+After operator OR, _XTR_60_ count only rows: 
+[]
+After operator OR, Sic1_to_Clb2 count only rows: 
+[]
+			---------------
+
+Counted row for current node SFF is 
+[]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node Whi5 is 
+[1, 3, 5, 7, 11]
+Whi5 ==== _XTR_39_ OR _XTR_42_
+After operator OR, _XTR_39_ count only rows: 
+[1, 3, 5, 7, 11]
+After operator OR, _XTR_42_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ ==== _XTR_21_ AND _XTR_23_
+After operator AND, _XTR_21_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+End node _XTR_28_ has no rows to be filtered, continue
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ ==== _XTR_26_ AND _XTR_23_
+After operator AND, _XTR_26_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== _XTR_32_ OR Clb5_to_Sic1
+Right node Clb5_to_Sic1 is an extra node
+After operator OR, _XTR_32_ count only rows: 
+[]
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+End node Sic1 has no rows to be filtered, continue
+			---------------
+
+
+---Processing layers of ['_XTR_59_', '_XTR_64_', '_XTR_58_', '_XTR_57_', '_XTR_63_', 'Swe1', 'Clb2', 'Cdc20_to_Clb2', 'Cdh1_to_Clb2', 'SpindleCP', '_XTR_12_', 'Cdc14', '_XTR_4_', '_XTR_60_', 'Sic1_to_Clb2', 'SFF', '_XTR_55_', '_XTR_56_', '_XTR_62_', 'Cdc20_to_Clb2', 'Cdc20', '_XTR_39_', '_XTR_42_', '_XTR_21_', '_XTR_23_', '_XTR_26_', '_XTR_32_', 'Clb5_to_Sic1']---
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Swe1 is 
+[9]
+Swe1 === NOT BuddingCP
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[]
+_XTR_60_ ==== Swe1 OR Cdh1_to_Clb2
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[1, 3, 5, 7, 11]
+_XTR_39_ === NOT _XTR_38_
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ === NOT _XTR_41_
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ ==== _XTR_18_ AND _XTR_20_
+After operator AND, _XTR_18_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+End node _XTR_28_ has no rows to be filtered, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ === NOT _XTR_22_
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+Diamond from _XTR_20_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[]
+_XTR_32_ ==== _XTR_31_ OR Cln2
+After operator OR, _XTR_31_ count only rows: 
+[]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Clb5 is 
+[]
+Clb5 ==== _XTR_49_ AND _XTR_50_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_50_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_58_', '_XTR_57_', '_XTR_63_', '_XTR_55_', '_XTR_56_', '_XTR_62_', 'Cdc20_to_Clb2', 'BuddingCP', '_XTR_59_', '_XTR_64_', 'SpindleCP', '_XTR_12_', 'Cdc14', '_XTR_4_', 'SFF', 'Clb2', 'MEN', 'FEAR', '_XTR_3_', 'Swe1', 'Cdh1_to_Clb2', '_XTR_28_', '_XTR_34_', '_XTR_54_', 'Cdc20_to_Clb2', 'Cdh1_to_Clb2', '_XTR_61_', '_XTR_38_', '_XTR_41_', '_XTR_18_', '_XTR_20_', '_XTR_22_', '_XTR_25_', '_XTR_31_', 'Cln2', '_XTR_49_', '_XTR_50_']---
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Reach node BuddingCP without in-comming edges
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_3_ ==== _XTR_2_ OR Clb5
+After operator OR, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+After operator OR, Clb5 count only rows: 
+[0, 2, 4, 6, 11]
+			---------------
+
+Counted row for current node Swe1 is 
+[9]
+Swe1 === NOT BuddingCP
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[]
+_XTR_28_ ==== _XTR_24_ OR _XTR_27_
+After operator OR, _XTR_24_ count only rows: 
+[]
+After operator OR, _XTR_27_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[9]
+_XTR_54_ === NOT Swe1
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[0, 1, 4, 5]
+_XTR_61_ ==== _XTR_60_ OR Sic1_to_Clb2
+Right node Sic1_to_Clb2 is an extra node
+After operator OR, _XTR_60_ count only rows: 
+[]
+After operator OR, Sic1_to_Clb2 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[1, 3, 5, 7, 11]
+_XTR_38_ ==== _XTR_36_ OR _XTR_37_
+After operator OR, _XTR_36_ count only rows: 
+[11]
+After operator OR, _XTR_37_ count only rows: 
+[1, 3, 11]
+			---------------
+
+Counted row for current node _XTR_41_ is 
+[]
+_XTR_41_ ==== _XTR_40_ OR Cln2
+After operator OR, _XTR_40_ count only rows: 
+[]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_18_ is 
+[]
+_XTR_18_ ==== Sic1_to_Sic1 AND _XTR_17_
+Left node Sic1_to_Sic1 is an extra node
+PROCESS DIAMONDS for Sic1_to_Sic1
+PROCESS DIAMOND for node Sic1_to_Sic1
+Process diamond from Sic1_to_Sic1 to Sic1
+End node Sic1 has no rows to be filtered, continue
+PROCESS DIAMONDS for _XTR_17_
+PROCESS DIAMOND for node _XTR_17_
+Process diamond from _XTR_17_ to _XTR_28_
+End node _XTR_28_ has no rows to be filtered, continue
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[]
+_XTR_20_ === NOT _XTR_19_
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== Clb5_to_Sic1 AND _XTR_15_
+Left node Clb5_to_Sic1 is an extra node
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+Diamond from Clb5_to_Sic1 to Sic1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to _XTR_28_
+End node _XTR_28_ has no rows to be filtered, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ ==== Swi5 AND _XTR_17_
+PROCESS DIAMONDS for Swi5
+PROCESS DIAMOND for node Swi5
+Process diamond from Swi5 to Sic1
+End node Sic1 has no rows to be filtered, continue
+PROCESS DIAMONDS for _XTR_17_
+PROCESS DIAMOND for node _XTR_17_
+Process diamond from _XTR_17_ to _XTR_28_
+Diamond from _XTR_17_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[]
+_XTR_31_ ==== _XTR_30_ OR Swi5
+After operator OR, _XTR_30_ count only rows: 
+[]
+PROCESS DIAMONDS for Swi5
+PROCESS DIAMOND for node Swi5
+Process diamond from Swi5 to Sic1
+Diamond from Swi5 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node Cln2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Cln2 ==== SMBF AND Start
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[]
+_XTR_49_ ==== SMBF AND _XTR_48_
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ === NOT Sic1
+			---------------
+
+
+---Processing layers of ['_XTR_55_', '_XTR_57_', '_XTR_56_', '_XTR_62_', 'Cdc20_to_Clb2', '_XTR_54_', 'SFF_to_Clb2', 'Cdc20_to_Clb2', 'Cdh1_to_Clb2', '_XTR_61_', 'SFF_to_Clb2', 'SpindleCP', '_XTR_12_', '_XTR_58_', '_XTR_63_', 'SFF', 'Clb2', 'MEN', 'FEAR', '_XTR_3_', '_XTR_59_', '_XTR_64_', 'Cdc20', '_XTR_2_', 'Clb5', 'BuddingCP', 'Cdc14', '_XTR_4_', '_XTR_24_', '_XTR_27_', '_XTR_33_', 'Swe1', '_XTR_60_', 'Sic1_to_Clb2', '_XTR_36_', '_XTR_37_', '_XTR_40_', 'Cln2', '_XTR_17_', 'Sic1_to_Sic1', '_XTR_19_', '_XTR_15_', 'Swi5', '_XTR_30_', 'SMBF', 'Start', '_XTR_48_', 'Sic1']---
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[9]
+_XTR_54_ === NOT Swe1
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SFF is 
+[]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[0, 1, 4, 5]
+_XTR_61_ ==== _XTR_60_ OR Sic1_to_Clb2
+Right node Sic1_to_Clb2 is an extra node
+After operator OR, _XTR_60_ count only rows: 
+[]
+After operator OR, Sic1_to_Clb2 count only rows: 
+[]
+			---------------
+
+Counted row for current node SFF is 
+[]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_3_ ==== _XTR_2_ OR Clb5
+After operator OR, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+After operator OR, Clb5 count only rows: 
+[0, 2, 4, 6, 11]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_2_ ==== _XTR_1_ OR Cln2
+After operator OR, _XTR_1_ count only rows: 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Clb5 is 
+[0, 2, 4, 6, 11]
+Clb5 ==== _XTR_49_ AND _XTR_50_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_50_ count only rows: 
+[]
+			---------------
+
+Reach node BuddingCP without in-comming edges
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ ==== _XTR_21_ AND _XTR_23_
+After operator AND, _XTR_21_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ ==== _XTR_26_ AND _XTR_23_
+After operator AND, _XTR_26_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== _XTR_32_ OR Clb5_to_Sic1
+Right node Clb5_to_Sic1 is an extra node
+After operator OR, _XTR_32_ count only rows: 
+[]
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+Diamond from Clb5_to_Sic1 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node Swe1 is 
+[9]
+Swe1 === NOT BuddingCP
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[]
+_XTR_60_ ==== Swe1 OR Cdh1_to_Clb2
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_36_ is 
+[11]
+_XTR_36_ ==== Cln3 AND Start
+After operator AND, Cln3 count only rows: 
+[11]
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_37_ is 
+[1, 3, 11]
+_XTR_37_ ==== Cln2 AND Start
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_40_ is 
+[]
+_XTR_40_ ==== Start OR Cln3
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+After operator OR, Cln3 count only rows: 
+[]
+			---------------
+
+Counted row for current node Cln2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Cln2 ==== SMBF AND Start
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_17_ is 
+[]
+_XTR_17_ === NOT _XTR_16_
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_19_ is 
+[]
+_XTR_19_ ==== Cln2 AND _XTR_15_
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to _XTR_28_
+Diamond from _XTR_15_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT Cdc14
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Swi5 is 
+[]
+Swi5 ==== _XTR_8_ AND _XTR_9_
+After operator AND, _XTR_8_ count only rows: 
+[]
+After operator AND, _XTR_9_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[]
+_XTR_30_ ==== _XTR_29_ OR Clb2
+After operator OR, _XTR_29_ count only rows: 
+[]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SMBF is 
+[1, 3, 5, 7, 11]
+SMBF === NOT _XTR_45_
+			---------------
+
+Reach node Start without in-comming edges
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ === NOT Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['_XTR_54_', 'SFF_to_Clb2', '_XTR_56_', 'Cdc20_to_Clb2', 'Cdh1_to_Clb2', '_XTR_61_', 'SFF_to_Clb2', 'SpindleCP', '_XTR_12_', 'Swe1', 'Clb2', 'Cdc14', '_XTR_4_', '_XTR_60_', 'Sic1_to_Clb2', 'SFF', '_XTR_55_', '_XTR_57_', '_XTR_62_', 'Cdc20_to_Clb2', '_XTR_59_', '_XTR_64_', 'FEAR', 'Cdc20', '_XTR_2_', 'Clb5', '_XTR_58_', '_XTR_63_', '_XTR_1_', 'Cln2', '_XTR_49_', '_XTR_50_', 'MEN', '_XTR_3_', '_XTR_21_', '_XTR_23_', '_XTR_26_', '_XTR_32_', 'BuddingCP', 'Cdh1_to_Clb2', '_XTR_28_', '_XTR_34_', 'Cln3', 'Start', 'SMBF', '_XTR_16_', '_XTR_15_', '_XTR_8_', '_XTR_9_', '_XTR_29_', '_XTR_45_']---
+
+Counted row for current node _XTR_54_ is 
+[9]
+_XTR_54_ === NOT Swe1
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SFF is 
+[]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[0, 1, 4, 5]
+_XTR_61_ ==== _XTR_60_ OR Sic1_to_Clb2
+Right node Sic1_to_Clb2 is an extra node
+After operator OR, _XTR_60_ count only rows: 
+[]
+After operator OR, Sic1_to_Clb2 count only rows: 
+[]
+			---------------
+
+Counted row for current node SFF is 
+[]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Swe1 is 
+[9]
+Swe1 === NOT BuddingCP
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[]
+_XTR_60_ ==== Swe1 OR Cdh1_to_Clb2
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_2_ ==== _XTR_1_ OR Cln2
+After operator OR, _XTR_1_ count only rows: 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Clb5 is 
+[0, 2, 4, 6, 11]
+Clb5 ==== _XTR_49_ AND _XTR_50_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_50_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_1_ ==== Cdc14 OR Clb2
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cln2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Cln2 ==== SMBF AND Start
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[]
+_XTR_49_ ==== SMBF AND _XTR_48_
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ === NOT Sic1
+			---------------
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_3_ ==== _XTR_2_ OR Clb5
+After operator OR, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+After operator OR, Clb5 count only rows: 
+[0, 2, 4, 6, 11]
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ ==== _XTR_18_ AND _XTR_20_
+After operator AND, _XTR_18_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+Diamond from _XTR_20_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ === NOT _XTR_22_
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+Diamond from _XTR_20_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[]
+_XTR_32_ ==== _XTR_31_ OR Cln2
+After operator OR, _XTR_31_ count only rows: 
+[]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Reach node BuddingCP without in-comming edges
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[]
+_XTR_28_ ==== _XTR_24_ OR _XTR_27_
+After operator OR, _XTR_24_ count only rows: 
+[]
+After operator OR, _XTR_27_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node Cln3 is 
+[11]
+Cln3 ==== Size AND _XTR_52_
+After operator AND, Size count only rows: 
+[11]
+After operator AND, _XTR_52_ count only rows: 
+[]
+			---------------
+
+Reach node Start without in-comming edges
+
+Counted row for current node SMBF is 
+[1, 3, 5, 7, 11]
+SMBF === NOT _XTR_45_
+			---------------
+
+Counted row for current node _XTR_16_ is 
+[]
+_XTR_16_ ==== Clb2 AND _XTR_15_
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to _XTR_28_
+Diamond from _XTR_15_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT Cdc14
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_8_ is 
+[]
+_XTR_8_ ==== Cdc14 AND _XTR_7_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator AND, _XTR_7_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[]
+_XTR_9_ === NOT Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[]
+_XTR_29_ ==== Cdc14 OR Sic1_to_Sic1
+Right node Sic1_to_Sic1 is an extra node
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Sic1_to_Sic1
+PROCESS DIAMOND for node Sic1_to_Sic1
+Process diamond from Sic1_to_Sic1 to Sic1
+Diamond from Sic1_to_Sic1 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_45_ is 
+[1, 3, 5, 7, 11]
+_XTR_45_ ==== Whi5_to_SMBF OR Clb2
+Left node Whi5_to_SMBF is an extra node
+After operator OR, Whi5_to_SMBF count only rows: 
+[1, 3, 5, 7, 11]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+
+---Processing layers of ['Swe1', 'Clb2', 'Cdc20_to_Clb2', 'Cdh1_to_Clb2', 'SpindleCP', '_XTR_12_', 'Cdc14', '_XTR_4_', '_XTR_60_', 'Sic1_to_Clb2', 'SFF', 'BuddingCP', '_XTR_59_', '_XTR_64_', 'MEN', 'FEAR', '_XTR_3_', 'Cdh1_to_Clb2', '_XTR_28_', '_XTR_34_', '_XTR_54_', '_XTR_56_', '_XTR_61_', '_XTR_58_', '_XTR_57_', '_XTR_63_', 'Cdc20', '_XTR_1_', 'Cln2', '_XTR_49_', '_XTR_50_', '_XTR_55_', '_XTR_62_', 'SMBF', 'Start', '_XTR_48_', 'Sic1', '_XTR_2_', 'Clb5', '_XTR_18_', '_XTR_20_', '_XTR_22_', '_XTR_25_', '_XTR_31_', '_XTR_24_', '_XTR_27_', '_XTR_33_', 'Size', '_XTR_52_', '_XTR_45_', '_XTR_15_', '_XTR_7_', 'Whi5_to_SMBF']---
+
+Counted row for current node Swe1 is 
+[9]
+Swe1 === NOT BuddingCP
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node Cdc20 is 
+[]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[]
+After operator AND, _XTR_12_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[]
+_XTR_60_ ==== Swe1 OR Cdh1_to_Clb2
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Reach node BuddingCP without in-comming edges
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_3_ ==== _XTR_2_ OR Clb5
+After operator OR, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+After operator OR, Clb5 count only rows: 
+[0, 2, 4, 6, 11]
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[]
+_XTR_28_ ==== _XTR_24_ OR _XTR_27_
+After operator OR, _XTR_24_ count only rows: 
+[]
+After operator OR, _XTR_27_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[9]
+_XTR_54_ === NOT Swe1
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[0, 1, 4, 5]
+_XTR_61_ ==== _XTR_60_ OR Sic1_to_Clb2
+Right node Sic1_to_Clb2 is an extra node
+After operator OR, _XTR_60_ count only rows: 
+[]
+After operator OR, Sic1_to_Clb2 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_1_ ==== Cdc14 OR Clb2
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cln2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Cln2 ==== SMBF AND Start
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[]
+_XTR_49_ ==== SMBF AND _XTR_48_
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ === NOT Sic1
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SMBF is 
+[1, 3, 5, 7, 11]
+SMBF === NOT _XTR_45_
+			---------------
+
+Reach node Start without in-comming edges
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ === NOT Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_2_ ==== _XTR_1_ OR Cln2
+After operator OR, _XTR_1_ count only rows: 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Clb5 is 
+[0, 2, 4, 6, 11]
+Clb5 ==== _XTR_49_ AND _XTR_50_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_50_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_18_ is 
+[]
+_XTR_18_ ==== Sic1_to_Sic1 AND _XTR_17_
+Left node Sic1_to_Sic1 is an extra node
+PROCESS DIAMONDS for Sic1_to_Sic1
+PROCESS DIAMOND for node Sic1_to_Sic1
+Process diamond from Sic1_to_Sic1 to Sic1
+Diamond from Sic1_to_Sic1 to Sic1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_17_
+PROCESS DIAMOND for node _XTR_17_
+Process diamond from _XTR_17_ to _XTR_28_
+Diamond from _XTR_17_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[]
+_XTR_20_ === NOT _XTR_19_
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== Clb5_to_Sic1 AND _XTR_15_
+Left node Clb5_to_Sic1 is an extra node
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+Diamond from Clb5_to_Sic1 to Sic1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to _XTR_28_
+Diamond from _XTR_15_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ ==== Swi5 AND _XTR_17_
+PROCESS DIAMONDS for Swi5
+PROCESS DIAMOND for node Swi5
+Process diamond from Swi5 to Sic1
+Diamond from Swi5 to Sic1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_17_
+PROCESS DIAMOND for node _XTR_17_
+Process diamond from _XTR_17_ to _XTR_28_
+Diamond from _XTR_17_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[]
+_XTR_31_ ==== _XTR_30_ OR Swi5
+After operator OR, _XTR_30_ count only rows: 
+[]
+PROCESS DIAMONDS for Swi5
+PROCESS DIAMOND for node Swi5
+Process diamond from Swi5 to Sic1
+Diamond from Swi5 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ ==== _XTR_21_ AND _XTR_23_
+After operator AND, _XTR_21_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ ==== _XTR_26_ AND _XTR_23_
+After operator AND, _XTR_26_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== _XTR_32_ OR Clb5_to_Sic1
+Right node Clb5_to_Sic1 is an extra node
+After operator OR, _XTR_32_ count only rows: 
+[]
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+Diamond from Clb5_to_Sic1 to Sic1 has been processed already, continue
+			---------------
+
+Reach node Size without in-comming edges
+
+Counted row for current node _XTR_52_ is 
+[]
+_XTR_52_ === NOT Yhp1
+			---------------
+
+Counted row for current node _XTR_45_ is 
+[1, 3, 5, 7, 11]
+_XTR_45_ ==== Whi5_to_SMBF OR Clb2
+Left node Whi5_to_SMBF is an extra node
+After operator OR, Whi5_to_SMBF count only rows: 
+[1, 3, 5, 7, 11]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT Cdc14
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_7_ is 
+[]
+_XTR_7_ ==== _XTR_6_ AND SFF
+After operator AND, _XTR_6_ count only rows: 
+[]
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Whi5 is 
+[1, 3, 5, 7, 11]
+Whi5 ==== _XTR_39_ OR _XTR_42_
+After operator OR, _XTR_39_ count only rows: 
+[1, 3, 5, 7, 11]
+After operator OR, _XTR_42_ count only rows: 
+[]
+			---------------
+
+
+---Processing layers of ['BuddingCP', '_XTR_59_', '_XTR_64_', 'SpindleCP', '_XTR_12_', 'Cdc14', '_XTR_4_', 'SFF', 'Clb2', 'MEN', 'FEAR', '_XTR_3_', 'Swe1', 'Cdh1_to_Clb2', '_XTR_28_', '_XTR_34_', '_XTR_58_', '_XTR_57_', '_XTR_63_', 'Cdc20', '_XTR_2_', 'Clb5', '_XTR_24_', '_XTR_27_', '_XTR_33_', 'Cdh1_to_Clb2', '_XTR_60_', 'Sic1_to_Clb2', '_XTR_55_', '_XTR_56_', '_XTR_62_', 'SMBF', 'Start', '_XTR_48_', 'Sic1', '_XTR_54_', '_XTR_61_', '_XTR_45_', '_XTR_1_', 'Cln2', '_XTR_49_', '_XTR_50_', '_XTR_17_', '_XTR_19_', '_XTR_15_', 'Swi5', '_XTR_30_', '_XTR_21_', '_XTR_23_', '_XTR_26_', '_XTR_32_', 'Yhp1', 'Whi5_to_SMBF', '_XTR_6_', '_XTR_39_', '_XTR_42_']---
+
+Reach node BuddingCP without in-comming edges
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_3_ ==== _XTR_2_ OR Clb5
+After operator OR, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+After operator OR, Clb5 count only rows: 
+[0, 2, 4, 6, 11]
+			---------------
+
+Counted row for current node Swe1 is 
+[9]
+Swe1 === NOT BuddingCP
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[]
+_XTR_28_ ==== _XTR_24_ OR _XTR_27_
+After operator OR, _XTR_24_ count only rows: 
+[]
+After operator OR, _XTR_27_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_2_ ==== _XTR_1_ OR Cln2
+After operator OR, _XTR_1_ count only rows: 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Clb5 is 
+[0, 2, 4, 6, 11]
+Clb5 ==== _XTR_49_ AND _XTR_50_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_50_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ ==== _XTR_21_ AND _XTR_23_
+After operator AND, _XTR_21_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ ==== _XTR_26_ AND _XTR_23_
+After operator AND, _XTR_26_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== _XTR_32_ OR Clb5_to_Sic1
+Right node Clb5_to_Sic1 is an extra node
+After operator OR, _XTR_32_ count only rows: 
+[]
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+Diamond from Clb5_to_Sic1 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[]
+_XTR_60_ ==== Swe1 OR Cdh1_to_Clb2
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SMBF is 
+[1, 3, 5, 7, 11]
+SMBF === NOT _XTR_45_
+			---------------
+
+Reach node Start without in-comming edges
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ === NOT Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[9]
+_XTR_54_ === NOT Swe1
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[0, 1, 4, 5]
+_XTR_61_ ==== _XTR_60_ OR Sic1_to_Clb2
+Right node Sic1_to_Clb2 is an extra node
+After operator OR, _XTR_60_ count only rows: 
+[]
+After operator OR, Sic1_to_Clb2 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_45_ is 
+[1, 3, 5, 7, 11]
+_XTR_45_ ==== Whi5_to_SMBF OR Clb2
+Left node Whi5_to_SMBF is an extra node
+After operator OR, Whi5_to_SMBF count only rows: 
+[1, 3, 5, 7, 11]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_1_ ==== Cdc14 OR Clb2
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cln2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Cln2 ==== SMBF AND Start
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[]
+_XTR_49_ ==== SMBF AND _XTR_48_
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ === NOT Sic1
+			---------------
+
+Counted row for current node _XTR_17_ is 
+[]
+_XTR_17_ === NOT _XTR_16_
+			---------------
+
+Counted row for current node _XTR_19_ is 
+[]
+_XTR_19_ ==== Cln2 AND _XTR_15_
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to _XTR_28_
+Diamond from _XTR_15_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT Cdc14
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Swi5 is 
+[]
+Swi5 ==== _XTR_8_ AND _XTR_9_
+After operator AND, _XTR_8_ count only rows: 
+[]
+After operator AND, _XTR_9_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_30_ is 
+[]
+_XTR_30_ ==== _XTR_29_ OR Clb2
+After operator OR, _XTR_29_ count only rows: 
+[]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ ==== _XTR_18_ AND _XTR_20_
+After operator AND, _XTR_18_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+Diamond from _XTR_20_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ === NOT _XTR_22_
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+Diamond from _XTR_20_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[]
+_XTR_32_ ==== _XTR_31_ OR Cln2
+After operator OR, _XTR_31_ count only rows: 
+[]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Yhp1 is 
+[]
+Yhp1 === SMBF
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Whi5 is 
+[1, 3, 5, 7, 11]
+Whi5 ==== _XTR_39_ OR _XTR_42_
+After operator OR, _XTR_39_ count only rows: 
+[1, 3, 5, 7, 11]
+After operator OR, _XTR_42_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_6_ is 
+[]
+_XTR_6_ === NOT Swi5_to_Swi5
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[1, 3, 5, 7, 11]
+_XTR_39_ === NOT _XTR_38_
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ === NOT _XTR_41_
+			---------------
+
+
+---Processing layers of ['_XTR_58_', '_XTR_57_', '_XTR_63_', 'SFF', 'Clb2', 'MEN', 'FEAR', '_XTR_3_', '_XTR_59_', '_XTR_64_', 'Cdc20', '_XTR_2_', 'Clb5', 'BuddingCP', 'Cdc14', '_XTR_4_', '_XTR_24_', '_XTR_27_', '_XTR_33_', '_XTR_55_', '_XTR_56_', '_XTR_62_', 'SpindleCP', '_XTR_12_', '_XTR_1_', 'Cln2', '_XTR_49_', '_XTR_50_', '_XTR_21_', '_XTR_23_', '_XTR_26_', '_XTR_32_', 'Swe1', 'Cdh1_to_Clb2', '_XTR_28_', '_XTR_34_', '_XTR_54_', 'Cdh1_to_Clb2', '_XTR_61_', '_XTR_45_', '_XTR_60_', 'Sic1_to_Clb2', 'Whi5_to_SMBF', 'SMBF', 'Start', '_XTR_48_', 'Sic1', '_XTR_16_', '_XTR_15_', '_XTR_8_', '_XTR_9_', '_XTR_29_', '_XTR_18_', '_XTR_20_', '_XTR_22_', '_XTR_25_', '_XTR_31_', '_XTR_39_', '_XTR_42_', 'Swi5_to_Swi5', '_XTR_38_', '_XTR_41_']---
+
+Counted row for current node _XTR_58_ is 
+[0, 1, 4, 5, 9]
+_XTR_58_ ==== _XTR_55_ AND _XTR_57_
+After operator AND, _XTR_55_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_57_ is 
+[9]
+_XTR_57_ === NOT _XTR_56_
+			---------------
+
+Counted row for current node _XTR_63_ is 
+[0, 1, 4, 5]
+_XTR_63_ ==== _XTR_62_ OR Cdc20_to_Clb2
+Right node Cdc20_to_Clb2 is an extra node
+After operator OR, _XTR_62_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node SFF is 
+[1, 3, 5, 7, 8, 10, 12, 14, 15]
+SFF === Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Clb2 is 
+[0, 1, 4, 5, 9]
+Clb2 ==== _XTR_59_ OR _XTR_64_
+After operator OR, _XTR_59_ count only rows: 
+[0, 1, 4, 5, 9]
+After operator OR, _XTR_64_ count only rows: 
+[0, 1, 4, 5]
+			---------------
+
+Counted row for current node MEN is 
+[15]
+MEN ==== FEAR AND Clb2
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node FEAR is 
+[1, 3, 5, 7, 9, 13, 15]
+FEAR === Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_3_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_3_ ==== _XTR_2_ OR Clb5
+After operator OR, _XTR_2_ count only rows: 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+After operator OR, Clb5 count only rows: 
+[0, 2, 4, 6, 11]
+			---------------
+
+Counted row for current node _XTR_59_ is 
+[0, 1, 4, 5, 9]
+_XTR_59_ ==== _XTR_58_ AND _XTR_57_
+After operator AND, _XTR_58_ count only rows: 
+[0, 1, 4, 5, 9]
+PROCESS DIAMONDS for _XTR_57_
+PROCESS DIAMOND for node _XTR_57_
+Process diamond from _XTR_57_ to Cdh1
+Diamond from _XTR_57_ to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_64_ is 
+[0, 1, 4, 5]
+_XTR_64_ === NOT _XTR_63_
+			---------------
+
+Counted row for current node Cdc20 is 
+[1, 3, 5, 7, 9, 13, 15]
+Cdc20 ==== SpindleCP AND _XTR_12_
+After operator AND, SpindleCP count only rows: 
+[9, 13, 15]
+After operator AND, _XTR_12_ count only rows: 
+[3, 7, 15]
+			---------------
+
+Counted row for current node _XTR_2_ is 
+[0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_2_ ==== _XTR_1_ OR Cln2
+After operator OR, _XTR_1_ count only rows: 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Clb5 is 
+[0, 2, 4, 6, 11]
+Clb5 ==== _XTR_49_ AND _XTR_50_
+After operator AND, _XTR_49_ count only rows: 
+[]
+After operator AND, _XTR_50_ count only rows: 
+[]
+			---------------
+
+Reach node BuddingCP without in-comming edges
+
+Counted row for current node Cdc14 is 
+[9, 13, 15]
+Cdc14 ==== MEN AND FEAR
+After operator AND, MEN count only rows: 
+[15]
+PROCESS DIAMONDS for FEAR
+PROCESS DIAMOND for node FEAR
+Process diamond from FEAR to Cdh1
+Diamond from FEAR to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_4_ is 
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+_XTR_4_ === NOT _XTR_3_
+			---------------
+
+Counted row for current node _XTR_24_ is 
+[]
+_XTR_24_ ==== _XTR_21_ AND _XTR_23_
+After operator AND, _XTR_21_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_27_ is 
+[]
+_XTR_27_ ==== _XTR_26_ AND _XTR_23_
+After operator AND, _XTR_26_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_23_
+PROCESS DIAMOND for node _XTR_23_
+Process diamond from _XTR_23_ to _XTR_28_
+Diamond from _XTR_23_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_33_ is 
+[]
+_XTR_33_ ==== _XTR_32_ OR Clb5_to_Sic1
+Right node Clb5_to_Sic1 is an extra node
+After operator OR, _XTR_32_ count only rows: 
+[]
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+Diamond from Clb5_to_Sic1 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_55_ is 
+[0, 1, 4, 5, 9]
+_XTR_55_ ==== SFF_to_Clb2 AND _XTR_54_
+Left node SFF_to_Clb2 is an extra node
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+After operator AND, _XTR_54_ count only rows: 
+[9]
+			---------------
+
+Counted row for current node _XTR_56_ is 
+[9]
+_XTR_56_ ==== Cdc20_to_Clb2 AND Cdh1_to_Clb2
+Left node Cdc20_to_Clb2 is an extra node
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Cdc20_to_Clb2
+PROCESS DIAMOND for node Cdc20_to_Clb2
+Process diamond from Cdc20_to_Clb2 to Cdh1
+Diamond from Cdc20_to_Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_62_ is 
+[0, 1, 4, 5]
+_XTR_62_ ==== _XTR_61_ OR SFF_to_Clb2
+Right node SFF_to_Clb2 is an extra node
+After operator OR, _XTR_61_ count only rows: 
+[0, 1, 4, 5]
+PROCESS DIAMONDS for SFF_to_Clb2
+PROCESS DIAMOND for node SFF_to_Clb2
+Process diamond from SFF_to_Clb2 to Cdh1
+Diamond from SFF_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Reach node SpindleCP without in-comming edges
+
+Counted row for current node _XTR_12_ is 
+[3, 7, 15]
+_XTR_12_ ==== SFF AND Clb2
+PROCESS DIAMONDS for SFF
+PROCESS DIAMOND for node SFF
+Process diamond from SFF to Cdh1
+Diamond from SFF to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_1_ is 
+[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14]
+_XTR_1_ ==== Cdc14 OR Clb2
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cln2 is 
+[0, 1, 2, 3, 4, 5, 6, 7, 11]
+Cln2 ==== SMBF AND Start
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+PROCESS DIAMONDS for Start
+PROCESS DIAMOND for node Start
+Process diamond from Start to _XTR_3_
+Diamond from Start to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_49_ is 
+[]
+_XTR_49_ ==== SMBF AND _XTR_48_
+PROCESS DIAMONDS for SMBF
+PROCESS DIAMOND for node SMBF
+Process diamond from SMBF to _XTR_3_
+Diamond from SMBF to _XTR_3_ has been processed already, continue
+After operator AND, _XTR_48_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_50_ is 
+[]
+_XTR_50_ === NOT Sic1
+			---------------
+
+Counted row for current node _XTR_21_ is 
+[]
+_XTR_21_ ==== _XTR_18_ AND _XTR_20_
+After operator AND, _XTR_18_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+Diamond from _XTR_20_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_23_ is 
+[]
+_XTR_23_ === NOT _XTR_22_
+			---------------
+
+Counted row for current node _XTR_26_ is 
+[]
+_XTR_26_ ==== _XTR_25_ AND _XTR_20_
+After operator AND, _XTR_25_ count only rows: 
+[]
+PROCESS DIAMONDS for _XTR_20_
+PROCESS DIAMOND for node _XTR_20_
+Process diamond from _XTR_20_ to _XTR_28_
+Diamond from _XTR_20_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_32_ is 
+[]
+_XTR_32_ ==== _XTR_31_ OR Cln2
+After operator OR, _XTR_31_ count only rows: 
+[]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+
+Counted row for current node Swe1 is 
+[9]
+Swe1 === NOT BuddingCP
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_28_ is 
+[]
+_XTR_28_ ==== _XTR_24_ OR _XTR_27_
+After operator OR, _XTR_24_ count only rows: 
+[]
+After operator OR, _XTR_27_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_34_ is 
+[]
+_XTR_34_ === NOT _XTR_33_
+			---------------
+
+Counted row for current node _XTR_54_ is 
+[9]
+_XTR_54_ === NOT Swe1
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Cdh1 is 
+[8, 12]
+Cdh1 ==== Cdc14 OR _XTR_4_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator OR, _XTR_4_ count only rows: 
+[8, 12]
+			---------------
+
+Counted row for current node _XTR_61_ is 
+[0, 1, 4, 5]
+_XTR_61_ ==== _XTR_60_ OR Sic1_to_Clb2
+Right node Sic1_to_Clb2 is an extra node
+After operator OR, _XTR_60_ count only rows: 
+[]
+After operator OR, Sic1_to_Clb2 count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_45_ is 
+[1, 3, 5, 7, 11]
+_XTR_45_ ==== Whi5_to_SMBF OR Clb2
+Left node Whi5_to_SMBF is an extra node
+After operator OR, Whi5_to_SMBF count only rows: 
+[1, 3, 5, 7, 11]
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_60_ is 
+[]
+_XTR_60_ ==== Swe1 OR Cdh1_to_Clb2
+Right node Cdh1_to_Clb2 is an extra node
+PROCESS DIAMONDS for Swe1
+PROCESS DIAMOND for node Swe1
+Process diamond from Swe1 to Cdh1
+Diamond from Swe1 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Cdh1_to_Clb2
+PROCESS DIAMOND for node Cdh1_to_Clb2
+Process diamond from Cdh1_to_Clb2 to Cdh1
+Diamond from Cdh1_to_Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node Whi5 is 
+[1, 3, 5, 7, 11]
+Whi5 ==== _XTR_39_ OR _XTR_42_
+After operator OR, _XTR_39_ count only rows: 
+[1, 3, 5, 7, 11]
+After operator OR, _XTR_42_ count only rows: 
+[]
+			---------------
+
+Counted row for current node SMBF is 
+[1, 3, 5, 7, 11]
+SMBF === NOT _XTR_45_
+			---------------
+
+Reach node Start without in-comming edges
+
+Counted row for current node _XTR_48_ is 
+[]
+_XTR_48_ === NOT Cdc20
+PROCESS DIAMONDS for Cdc20
+PROCESS DIAMOND for node Cdc20
+Process diamond from Cdc20 to Cdh1
+Diamond from Cdc20 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node Sic1 is 
+[]
+Sic1 ==== _XTR_28_ OR _XTR_34_
+After operator OR, _XTR_28_ count only rows: 
+[]
+After operator OR, _XTR_34_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_16_ is 
+[]
+_XTR_16_ ==== Clb2 AND _XTR_15_
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to _XTR_28_
+Diamond from _XTR_15_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_15_ is 
+[]
+_XTR_15_ === NOT Cdc14
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_8_ is 
+[]
+_XTR_8_ ==== Cdc14 AND _XTR_7_
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+After operator AND, _XTR_7_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_9_ is 
+[]
+_XTR_9_ === NOT Clb2
+PROCESS DIAMONDS for Clb2
+PROCESS DIAMOND for node Clb2
+Process diamond from Clb2 to Cdh1
+Diamond from Clb2 to Cdh1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_29_ is 
+[]
+_XTR_29_ ==== Cdc14 OR Sic1_to_Sic1
+Right node Sic1_to_Sic1 is an extra node
+PROCESS DIAMONDS for Cdc14
+PROCESS DIAMOND for node Cdc14
+Process diamond from Cdc14 to Cdh1
+Diamond from Cdc14 to Cdh1 has been processed already, continue
+PROCESS DIAMONDS for Sic1_to_Sic1
+PROCESS DIAMOND for node Sic1_to_Sic1
+Process diamond from Sic1_to_Sic1 to Sic1
+Diamond from Sic1_to_Sic1 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_18_ is 
+[]
+_XTR_18_ ==== Sic1_to_Sic1 AND _XTR_17_
+Left node Sic1_to_Sic1 is an extra node
+PROCESS DIAMONDS for Sic1_to_Sic1
+PROCESS DIAMOND for node Sic1_to_Sic1
+Process diamond from Sic1_to_Sic1 to Sic1
+Diamond from Sic1_to_Sic1 to Sic1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_17_
+PROCESS DIAMOND for node _XTR_17_
+Process diamond from _XTR_17_ to _XTR_28_
+Diamond from _XTR_17_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_20_ is 
+[]
+_XTR_20_ === NOT _XTR_19_
+			---------------
+
+Counted row for current node _XTR_22_ is 
+[]
+_XTR_22_ ==== Clb5_to_Sic1 AND _XTR_15_
+Left node Clb5_to_Sic1 is an extra node
+PROCESS DIAMONDS for Clb5_to_Sic1
+PROCESS DIAMOND for node Clb5_to_Sic1
+Process diamond from Clb5_to_Sic1 to Sic1
+Diamond from Clb5_to_Sic1 to Sic1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_15_
+PROCESS DIAMOND for node _XTR_15_
+Process diamond from _XTR_15_ to _XTR_28_
+Diamond from _XTR_15_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_25_ is 
+[]
+_XTR_25_ ==== Swi5 AND _XTR_17_
+PROCESS DIAMONDS for Swi5
+PROCESS DIAMOND for node Swi5
+Process diamond from Swi5 to Sic1
+Diamond from Swi5 to Sic1 has been processed already, continue
+PROCESS DIAMONDS for _XTR_17_
+PROCESS DIAMOND for node _XTR_17_
+Process diamond from _XTR_17_ to _XTR_28_
+Diamond from _XTR_17_ to _XTR_28_ has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_31_ is 
+[]
+_XTR_31_ ==== _XTR_30_ OR Swi5
+After operator OR, _XTR_30_ count only rows: 
+[]
+PROCESS DIAMONDS for Swi5
+PROCESS DIAMOND for node Swi5
+Process diamond from Swi5 to Sic1
+Diamond from Swi5 to Sic1 has been processed already, continue
+			---------------
+
+Counted row for current node _XTR_39_ is 
+[1, 3, 5, 7, 11]
+_XTR_39_ === NOT _XTR_38_
+			---------------
+
+Counted row for current node _XTR_42_ is 
+[]
+_XTR_42_ === NOT _XTR_41_
+			---------------
+
+Counted row for current node Swi5 is 
+[]
+Swi5 ==== _XTR_8_ AND _XTR_9_
+After operator AND, _XTR_8_ count only rows: 
+[]
+After operator AND, _XTR_9_ count only rows: 
+[]
+			---------------
+
+Counted row for current node _XTR_38_ is 
+[1, 3, 5, 7, 11]
+_XTR_38_ ==== _XTR_36_ OR _XTR_37_
+After operator OR, _XTR_36_ count only rows: 
+[11]
+After operator OR, _XTR_37_ count only rows: 
+[1, 3, 11]
+			---------------
+
+Counted row for current node _XTR_41_ is 
+[]
+_XTR_41_ ==== _XTR_40_ OR Cln2
+After operator OR, _XTR_40_ count only rows: 
+[]
+PROCESS DIAMONDS for Cln2
+PROCESS DIAMOND for node Cln2
+Process diamond from Cln2 to _XTR_3_
+Diamond from Cln2 to _XTR_3_ has been processed already, continue
+			---------------
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node Cdc20: processed 12 times
+Node SFF: processed 8 times
+Node Cdh1: processed 15 times
+Node Whi5: processed 5 times
+Node Sic1: processed 7 times
+Node Clb5: processed 1 times
+Node Swi5: processed 1 times
+SIMULATE 0 nodes over 15 nodes
+IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR
+AVE_CORRECT_ROWS_INPUT: 0.7969
+=========================
+PROPAGATED VALUES:
+BuddingCP            			 KO:     -0.125 | KI:      0.125
+Cdc14                			 KO:     0.0625 | KI:     -0.125
+Cdc20                			 KO:     0.0625 | KI:      0.125
+Cdh1                 			 KO:      0.875 | KI:     -0.125
+Clb2                 			 KO:    -0.0625 | KI:       0.25
+Clb5                 			 KO:        0.0 | KI:     0.3125
+Cln2                 			 KO:       0.25 | KI:     0.3125
+Cln3                 			 KO:        0.0 | KI:     0.0625
+FEAR                 			 KO:     0.0625 | KI:      0.125
+MEN                  			 KO:     0.0625 | KI:        0.0
+SFF                  			 KO:     0.3125 | KI:       0.25
+SMBF                 			 KO:       0.25 | KI:     0.0625
+Sic1                 			 KO:        0.0 | KI:        0.0
+Size                 			 KO:        0.0 | KI:        0.0
+SpindleCP            			 KO:      0.125 | KI:     -0.125
+Start                			 KO:     -0.125 | KI:      0.125
+Swe1                 			 KO:        0.0 | KI:    -0.0625
+Swi5                 			 KO:        0.0 | KI:        0.0
+Whi5                 			 KO:     0.3125 | KI:        0.0
+Yhp1                 			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	Cdh1
+2	SFF, Whi5
+3	Cln2, SMBF
+4	Cdc14, MEN, FEAR
+5	Clb2
+6	Cdc20
+7	Clb5, Sic1, Swe1, Swi5, Cln3, Yhp1
+=======
+KI RANKING OF NODES:
+1	Clb5, Cln2
+2	Clb2, SFF
+3	Cdh1, Cdc14
+4	FEAR, Cdc20
+5	SpindleCP
+6	Start, BuddingCP
+7	SMBF
+8	Swe1
+9	Cln3
+10	MEN, Sic1, Whi5, Swi5, Size, Yhp1
+=======
+NUMBER OF NODES: 20
+NUMBER OF INPUTS: 4
+NUMBER OF EDGES: 42
+TIME process heading: 0.0013022422790527344
+TIME simulate original network: 0.04469799995422363
+TIME perform original analysis process: 1.2614450454711914
+TIME perform propagation: 1.0927069187164307
+There are 0 unreachable nodes, they are:
+set()
+Cln2                 - Correct: KO:       0.25 | KI :       0.25 - Incorrect KO:       0.25 | KI:     0.3125
+SFF                  - Correct: KO:     0.1875 | KI :     0.0625 - Incorrect KO:     0.3125 | KI:       0.25
+Sic1                 - Correct: KO:      0.125 | KI :     -0.125 - Incorrect KO:        0.0 | KI:        0.0
+Cln3                 - Correct: KO:      0.125 | KI :      0.125 - Incorrect KO:        0.0 | KI:     0.0625
+FEAR                 - Correct: KO:     0.0625 | KI :    -0.0625 - Incorrect KO:     0.0625 | KI:      0.125
+Yhp1                 - Correct: KO:      0.125 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+SMBF                 - Correct: KO:       0.25 | KI :     -0.125 - Incorrect KO:       0.25 | KI:     0.0625
+Swe1                 - Correct: KO:      0.125 | KI :     -0.125 - Incorrect KO:        0.0 | KI:    -0.0625
+Clb2                 - Correct: KO:        0.0 | KI :       0.25 - Incorrect KO:    -0.0625 | KI:       0.25
+Cdc20                - Correct: KO:     0.0625 | KI :    -0.0625 - Incorrect KO:     0.0625 | KI:      0.125
+Cdc14                - Correct: KO:     0.0625 | KI :    -0.0625 - Incorrect KO:     0.0625 | KI:     -0.125
+Clb5                 - Correct: KO:      0.125 | KI :        0.5 - Incorrect KO:        0.0 | KI:     0.3125
+Whi5                 - Correct: KO:     0.1875 | KI :    -0.0625 - Incorrect KO:     0.3125 | KI:        0.0
+MEN                  - Correct: KO:     0.0625 | KI :     0.0625 - Incorrect KO:     0.0625 | KI:        0.0
+BuddingCP
+Lack      0: []
+Extra     0: []
+Real      4: [1, 5, 9, 13]
+Prop      4: [1, 5, 9, 13]
+
+Cdc14
+Lack      1: [11]
+Extra     0: []
+Real      4: [9, 11, 13, 15]
+Prop      3: [9, 13, 15]
+
+Cdc20
+Lack      1: [11]
+Extra     4: [1, 3, 5, 7]
+Real      4: [9, 11, 13, 15]
+Prop      7: [1, 3, 5, 7, 9, 13, 15]
+
+Clb2
+Lack      3: [8, 12, 13]
+Extra     0: []
+Real      8: [0, 1, 4, 5, 8, 9, 12, 13]
+Prop      5: [0, 1, 4, 5, 9]
+
+Clb5
+Lack      6: [1, 3, 5, 7, 8, 12]
+Extra     1: [11]
+Real     10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 12]
+Prop      5: [0, 2, 4, 6, 11]
+
+Cln2
+Lack      4: [8, 9, 12, 13]
+Extra     1: [11]
+Real     12: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+Prop      9: [0, 1, 2, 3, 4, 5, 6, 7, 11]
+
+Cln3
+Lack      4: [1, 3, 5, 7]
+Extra     1: [11]
+Real      4: [1, 3, 5, 7]
+Prop      1: [11]
+
+FEAR
+Lack      1: [11]
+Extra     4: [1, 3, 5, 7]
+Real      4: [9, 11, 13, 15]
+Prop      7: [1, 3, 5, 7, 9, 13, 15]
+
+MEN
+Lack      1: [11]
+Extra     0: []
+Real      2: [11, 15]
+Prop      1: [15]
+
+SFF
+Lack      1: [11]
+Extra     6: [1, 3, 5, 7, 10, 14]
+Real      4: [8, 11, 12, 15]
+Prop      9: [1, 3, 5, 7, 8, 10, 12, 14, 15]
+
+SMBF
+Lack      2: [9, 13]
+Extra     1: [11]
+Real      6: [1, 3, 5, 7, 9, 13]
+Prop      5: [1, 3, 5, 7, 11]
+
+Sic1
+Lack      4: [8, 9, 12, 13]
+Extra     0: []
+Real      4: [8, 9, 12, 13]
+Prop      0: []
+
+Size
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SpindleCP
+Lack      0: []
+Extra     0: []
+Real      4: [9, 11, 13, 15]
+Prop      4: [9, 11, 13, 15]
+
+Start
+Lack      0: []
+Extra     0: []
+Real      4: [8, 9, 12, 13]
+Prop      4: [8, 9, 12, 13]
+
+Swe1
+Lack      3: [1, 5, 13]
+Extra     0: []
+Real      4: [1, 5, 9, 13]
+Prop      1: [9]
+
+Swi5
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Whi5
+Lack      2: [9, 13]
+Extra     1: [11]
+Real      6: [1, 3, 5, 7, 9, 13]
+Prop      5: [1, 3, 5, 7, 11]
+
+Yhp1
+Lack      2: [5, 7]
+Extra     0: []
+Real      2: [5, 7]
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	SFF, Whi5
+2	Cln2, SMBF
+3	SpindleCP
+4	Start, BuddingCP
+5	Cdc14, MEN, FEAR
+6	Clb2
+7	Cdc20
+8	Clb5, Sic1, Swe1, Swi5, Cln3, Size
+	Yhp1
+REFERENCE:
+1	Cln2, SMBF
+2	SFF, Whi5
+3	SpindleCP
+4	Start, BuddingCP
+5	Sic1, Cln3, Yhp1, Swe1, Clb5
+6	FEAR, Cdc20, Cdc14, MEN
+7	Size, Swi5, Clb2
+=======
+-----KI RANKING COMPARISON-----
+1	Clb5, Cln2
+2	Clb2, SFF
+3	Cdc14
+4	FEAR, Cdc20
+5	SpindleCP
+6	Start, BuddingCP
+7	SMBF
+8	Swe1
+9	Cln3
+10	MEN, Sic1, Whi5, Swi5, Size, Yhp1
+REFERENCE:
+1	Clb5
+2	Cln2, Clb2
+3	SpindleCP
+4	Start, BuddingCP
+5	Sic1
+6	Cln3
+7	SMBF, Swe1
+8	SFF
+9	FEAR, Cdc20, Cdc14, Whi5
+10	MEN
+11	Size, Swi5, Yhp1
+============
+Relative_RMSE_KO_is  0.007721509601516778
+Relative_RMSE_KI_is  0.010633703865292509
+NDCG_KO_is  0.9349
+NDCG_KI_is  0.9349
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             19.000       19.000
+Kendall tau-b                         0.449        0.532
+Spearman rho                          0.658        0.701
+Mean abs rank diff                    0.789        0.684
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.412        0.429
+         Precision@10                0.583        0.600
+         Recall@10                   0.583        0.600
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.000        0.500
+  Top-2  groups Jaccard            1.000        0.750
+  Top-3  groups Jaccard            0.583        0.429
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.8224
+Average number of correct rows after binarization: 0.8223684210526316 
+Average DNCG after binarization: 0.9349 
+-----------TOTAL RUNNING TIME---------------
+2.6219695420004427

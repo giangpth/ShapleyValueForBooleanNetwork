@@ -180,10 +180,10 @@ def convertBiBooleanFormulas2Network(biformulas, inputnames, speciesnames, filen
         if not net.has_node(left):
             if left in inputnames:
                 # print("Input node {}".format(left))
-                net.add_node(left, labels = left, color='#FFFF00', size='15') 
+                net.add_node(left, labels = left, color='#FFFF00') 
             elif left in speciesnames:
                 # print("Original node {}".format(left))
-                net.add_node(left, labels = left, color='#0000FF',  size='15')   
+                net.add_node(left, labels = left, color='#0000FF')   
             else:
                 if extranodes:
                     if left in extranodes:
@@ -339,7 +339,8 @@ def rewireBinet(binet, extranodes, silent=False):
     for extranode in extranodes:
         root = extranode.split("_to_")[0]
         tip = extranode.split("_to_")[1] 
-        cycledbinet.add_edge(root, extranode, color='#008000', type='arrow', width=3)
+        cycledbinet.add_edge(root, tip, color='#008000', type='arrow', width=3)
+        cycledbinet.remove_node(extranode)
         # get the dependent of the extranode 
         # for dep in list(binet.out_edges(extranode)):
         #     if not silent:
