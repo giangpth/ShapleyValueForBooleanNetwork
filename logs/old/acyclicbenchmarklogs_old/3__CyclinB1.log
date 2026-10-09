@@ -1,0 +1,369 @@
+The expression file is data/acyclicbenchmark/3.txt
+The interested output is: 
+CyclinB1
+List of all species:
+{'pertuzumab', 'ERK1_2', 'PRAS', 'CyclinB1', 'stimulus', 'AKT', 'p53', 'trastuzumab', 'erlotinib', 'GSK3a_b', 'RPS6', 'CyclinD1', 'ERBB3', 'FoxO1_3a', 'cRAF', 'p38', 'ERBB1', 'PTEN', 'TSC2', 'cJUN', 'p70S6K', 'ERBB2', 'Nfkb', 'RB'}
+-----Input names-----
+{'erlotinib', 'pertuzumab', 'ERK1_2', 'Nfkb', 'stimulus', 'trastuzumab'}
+----Intermediate nodes-----
+{'cRAF', 'p38', 'ERBB1', 'PTEN', 'PRAS', 'CyclinB1', 'TSC2', 'AKT', 'p53', 'cJUN', 'CyclinD1', 'p70S6K', 'ERBB2', 'GSK3a_b', 'RPS6', 'ERBB3', 'RB', 'FoxO1_3a'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['ERK1_2', 'Nfkb', 'erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+Sorted input names
+['ERK1_2', 'Nfkb', 'erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['AKT', 'CyclinB1', 'CyclinD1', 'ERBB1', 'ERBB2', 'ERBB3', 'FoxO1_3a', 'GSK3a_b', 'PRAS', 'PTEN', 'RB', 'RPS6', 'TSC2', 'cJUN', 'cRAF', 'p38', 'p53', 'p70S6K']
+There are 18 intermediate nodes with the range of inter: 0 262143
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.11128020286560059 seconds===
+----Input knockout shapley value-----
+('erlotinib', 0.0)
+('pertuzumab', 0.0)
+('ERK1_2', 0.0)
+('Nfkb', 0.0)
+('stimulus', 0.0)
+('trastuzumab', 0.0)
+----Input knockIN shapley value-----
+('erlotinib', 0.0)
+('pertuzumab', 0.0)
+('ERK1_2', 0.0)
+('Nfkb', 0.0)
+('stimulus', 0.0)
+('trastuzumab', 0.0)
+-------Now perform the knockout procedure to original network-------
+Knockout cRAF
+Knockout p38
+Knockout ERBB1
+Knockout PTEN
+Knockout PRAS
+Knockout TSC2
+Knockout AKT
+Knockout p53
+Knockout cJUN
+Knockout CyclinD1
+Knockout p70S6K
+Knockout ERBB2
+Knockout GSK3a_b
+Knockout RPS6
+Knockout ERBB3
+Knockout RB
+Knockout FoxO1_3a
+----KNOCKOUT VALUE for output CyclinB1----
+{'AKT': -0.2333, 'CyclinD1': 0.0, 'ERBB1': 0.0, 'ERBB2': 0.0, 'ERBB3': 0.0, 'FoxO1_3a': 0.0, 'GSK3a_b': 0.0, 'PRAS': 0.0, 'PTEN': 0.0, 'RB': -0.5833, 'RPS6': 0.0, 'TSC2': 0.0, 'cJUN': 0.0, 'cRAF': 0.0, 'p38': -1.4, 'p53': -5.25, 'p70S6K': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin cRAF
+Knockin p38
+Knockin ERBB1
+Knockin PTEN
+Knockin PRAS
+Knockin TSC2
+Knockin AKT
+Knockin p53
+Knockin cJUN
+Knockin CyclinD1
+Knockin p70S6K
+Knockin ERBB2
+Knockin GSK3a_b
+Knockin RPS6
+Knockin ERBB3
+Knockin RB
+Knockin FoxO1_3a
+----KNOCKIN VALUE for output CyclinB1----
+{'AKT': 0.0, 'CyclinD1': -0.5833, 'ERBB1': -0.2333, 'ERBB2': 0.0, 'ERBB3': -0.2333, 'FoxO1_3a': 0.0, 'GSK3a_b': 0.0, 'PRAS': 0.0, 'PTEN': 0.0, 'RB': 0.0, 'RPS6': 0.0, 'TSC2': 0.0, 'cJUN': 0.0, 'cRAF': 0.0, 'p38': 0.0, 'p53': 0.0, 'p70S6K': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 3.705482006072998 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'erlotinib', 'pertuzumab', 'ERK1_2', 'Nfkb', 'stimulus', 'trastuzumab'}
+Ordinary nodes are 
+{'pertuzumab', 'ERK1_2', 'PRAS', 'CyclinB1', 'stimulus', 'AKT', 'p53', 'trastuzumab', 'erlotinib', 'GSK3a_b', 'RPS6', 'CyclinD1', 'ERBB3', 'FoxO1_3a', 'cRAF', 'p38', 'ERBB1', 'PTEN', 'TSC2', 'cJUN', 'p70S6K', 'ERBB2', 'Nfkb', 'RB'}
+Extranodes added after removing cycles are 
+[]
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['ERK1_2', 'Nfkb', 'erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+----Generate table from output----
+-----Calculated value of input nodes-----
+ERK1_2               			 KO:        0.0 | KI:        0.0
+Nfkb                 			 KO:        0.0 | KI:        0.0
+erlotinib            			 KO:        0.0 | KI:        0.0
+pertuzumab           			 KO:        0.0 | KI:        0.0
+stimulus             			 KO:        0.0 | KI:        0.0
+trastuzumab          			 KO:        0.0 | KI:        0.0
+=======PROPAGATE FOR OUTPUT CyclinB1=======
+----Master diamonds-----
+{'_XTR_26_': 'CyclinB1', '_XTR_21_': 'CyclinB1', 'PTEN': 'CyclinB1', 'trastuzumab': 'CyclinB1', '_XTR_19_': 'CyclinB1', 'stimulus': 'CyclinB1', '_XTR_17_': 'CyclinB1', '_XTR_24_': 'CyclinB1', '_XTR_54_': 'ERBB3', 'GSK3a_b': 'CyclinB1', 'erlotinib': 'CyclinB1', 'AKT': 'CyclinB1', '_XTR_63_': 'CyclinB1', 'Nfkb': 'CyclinB1', '_XTR_20_': 'CyclinB1', 'ERBB2': 'CyclinB1', '_XTR_7_': 'CyclinB1', 'RPS6': 'CyclinB1', '_XTR_5_': 'CyclinB1', 'ERBB1': 'CyclinB1', 'ERK1_2': 'CyclinB1', '_XTR_3_': 'CyclinB1', '_XTR_47_': 'CyclinB1', '_XTR_15_': 'CyclinB1'}
+
+
+--------PROPAGATION WITH ACYCLIC NETWORK--------
+{'CyclinB1': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_29_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_30_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_27_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_28_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, 'ERBB1': {36, 60, 44, 52}, '_XTR_26_': {0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63}, 'ERBB3': {36, 52, 60, 44}, '_XTR_22_': {36, 44, 52, 60}, '_XTR_24_': {36, 60, 44, 52}, 'p53': {0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63}, 'trastuzumab': set(), '_XTR_58_': {36, 44, 52, 60}, '_XTR_61_': {36, 44, 52, 60}, '_XTR_20_': set(), '_XTR_21_': set(), '_XTR_23_': {36, 52}, '_XTR_33_': {0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63}, 'PTEN': set(), '_XTR_55_': {36, 60, 44, 52}, '_XTR_57_': {36, 60, 44, 52}, '_XTR_60_': {36, 60, 44, 52}, '_XTR_54_': set(), '_XTR_19_': set(), 'erlotinib': set(), '_XTR_32_': {0, 1, 5, 9, 13, 16, 17, 21, 25, 29, 32, 33, 37, 41, 45, 48, 49, 53, 57, 61}, '_XTR_17_': set(), '_XTR_56_': {36, 52, 60, 44}, '_XTR_59_': {36, 52}, 'pertuzumab': set(), 'stimulus': set(), 'p38': {0, 32, 16, 48}, 'RB': {37, 5, 13, 45, 61, 21, 53, 29}, 'GSK3a_b': set(), 'RPS6': set(), 'AKT': {32, 48}, '_XTR_63_': {37, 5, 13, 45, 61, 21, 53, 29}, '_XTR_64_': set(), 'p70S6K': set(), '_XTR_68_': set(), '_XTR_69_': set(), 'CyclinD1': {37, 5, 13, 45, 61, 21, 53, 29}, '_XTR_8_': set(), '_XTR_11_': set(), '_XTR_67_': set(), 'ERBB2': set(), '_XTR_39_': {5, 37, 45, 13, 29, 21, 53, 61}, '_XTR_40_': {5, 37, 45, 13, 29, 21, 53, 61}, 'Nfkb': set(), '_XTR_6_': set(), '_XTR_7_': set(), '_XTR_10_': set(), '_XTR_66_': set(), '_XTR_49_': set(), '_XTR_52_': set(), '_XTR_37_': {37, 5, 45, 13, 61, 21, 53, 29}, '_XTR_38_': {37, 5, 45, 13, 61, 21, 53, 29}, '_XTR_4_': set(), '_XTR_5_': set(), '_XTR_9_': set(), '_XTR_48_': set(), '_XTR_51_': set(), '_XTR_35_': {5, 37, 13, 45, 29, 21, 53, 61}, '_XTR_36_': {5, 37, 13, 45, 29, 21, 53, 61}, '_XTR_3_': set(), 'PRAS': set(), '_XTR_47_': set(), '_XTR_50_': set(), 'ERK1_2': set(), 'TSC2': set(), '_XTR_16_': set(), '_XTR_14_': set(), '_XTR_15_': set(), '_XTR_1_': set()}
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+AKT                  			 KO:    -0.2334 | KI:        0.0
+CyclinB1             			 KO:        0.0 | KI:    -7.0014
+CyclinD1             			 KO:        0.0 | KI:    -0.5835
+ERBB1                			 KO:        0.0 | KI:    -0.2334
+ERBB2                			 KO:        0.0 | KI:        0.0
+ERBB3                			 KO:        0.0 | KI:    -0.2334
+ERK1_2               			 KO:        0.0 | KI:        0.0
+GSK3a_b              			 KO:        0.0 | KI:        0.0
+Nfkb                 			 KO:        0.0 | KI:        0.0
+PRAS                 			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:        0.0 | KI:        0.0
+RB                   			 KO:    -0.5835 | KI:        0.0
+RPS6                 			 KO:        0.0 | KI:        0.0
+TSC2                 			 KO:        0.0 | KI:        0.0
+erlotinib            			 KO:        0.0 | KI:        0.0
+p38                  			 KO:    -1.4001 | KI:        0.0
+p53                  			 KO:    -5.2509 | KI:        0.0
+p70S6K               			 KO:        0.0 | KI:        0.0
+pertuzumab           			 KO:        0.0 | KI:        0.0
+stimulus             			 KO:        0.0 | KI:        0.0
+trastuzumab          			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	p53
+2	p38
+3	RB
+4	AKT
+5	CyclinB1, ERBB1, ERBB3, PTEN, GSK3a_b, RPS6
+	p70S6K, CyclinD1, ERBB2, PRAS, TSC2
+=======
+KI RANKING OF NODES:
+1	CyclinB1
+2	CyclinD1
+3	ERBB1, ERBB3
+4	p53, trastuzumab, PTEN, erlotinib, pertuzumab, stimulus
+	p38, RB, GSK3a_b, RPS6, AKT, p70S6K
+	ERBB2, Nfkb, PRAS, ERK1_2, TSC2
+=======
+NUMBER OF NODES: 24
+NUMBER OF INPUTS: 6
+NUMBER OF EDGES: 53
+TIME process heading: 0.0031669139862060547
+TIME simulate original network: 0.11128020286560059
+TIME perform original analysis process: 3.705482006072998
+TIME perform propagation: 5.344765901565552
+{'CyclinB1': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_29_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_30_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_27_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, '_XTR_28_': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63}, 'ERBB1': {36, 60, 44, 52}, '_XTR_26_': {0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63}, 'ERBB3': {36, 52, 60, 44}, '_XTR_22_': {36, 44, 52, 60}, '_XTR_24_': {36, 60, 44, 52}, 'p53': {0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63}, 'trastuzumab': set(), '_XTR_58_': {36, 44, 52, 60}, '_XTR_61_': {36, 44, 52, 60}, '_XTR_20_': set(), '_XTR_21_': set(), '_XTR_23_': {36, 52}, '_XTR_33_': {0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63}, 'PTEN': set(), '_XTR_55_': {36, 60, 44, 52}, '_XTR_57_': {36, 60, 44, 52}, '_XTR_60_': {36, 60, 44, 52}, '_XTR_54_': set(), '_XTR_19_': set(), 'erlotinib': set(), '_XTR_32_': {0, 1, 5, 9, 13, 16, 17, 21, 25, 29, 32, 33, 37, 41, 45, 48, 49, 53, 57, 61}, '_XTR_17_': set(), '_XTR_56_': {36, 52, 60, 44}, '_XTR_59_': {36, 52}, 'pertuzumab': set(), 'stimulus': set(), 'p38': {0, 32, 16, 48}, 'RB': {37, 5, 13, 45, 61, 21, 53, 29}, 'GSK3a_b': set(), 'RPS6': set(), 'AKT': {32, 48}, '_XTR_63_': {37, 5, 13, 45, 61, 21, 53, 29}, '_XTR_64_': set(), 'p70S6K': set(), '_XTR_68_': set(), '_XTR_69_': set(), 'CyclinD1': {37, 5, 13, 45, 61, 21, 53, 29}, '_XTR_8_': set(), '_XTR_11_': set(), '_XTR_67_': set(), 'ERBB2': set(), '_XTR_39_': {5, 37, 45, 13, 29, 21, 53, 61}, '_XTR_40_': {5, 37, 45, 13, 29, 21, 53, 61}, 'Nfkb': set(), '_XTR_6_': set(), '_XTR_7_': set(), '_XTR_10_': set(), '_XTR_66_': set(), '_XTR_49_': set(), '_XTR_52_': set(), '_XTR_37_': {37, 5, 45, 13, 61, 21, 53, 29}, '_XTR_38_': {37, 5, 45, 13, 61, 21, 53, 29}, '_XTR_4_': set(), '_XTR_5_': set(), '_XTR_9_': set(), '_XTR_48_': set(), '_XTR_51_': set(), '_XTR_35_': {5, 37, 13, 45, 29, 21, 53, 61}, '_XTR_36_': {5, 37, 13, 45, 29, 21, 53, 61}, '_XTR_3_': set(), 'PRAS': set(), '_XTR_47_': set(), '_XTR_50_': set(), 'ERK1_2': set(), 'TSC2': set(), '_XTR_16_': set(), '_XTR_14_': set(), '_XTR_15_': set(), '_XTR_1_': set()}
+{'erlotinib': set(), 'pertuzumab': set(), 'ERK1_2': set(), 'Nfkb': set(), 'stimulus': set(), 'trastuzumab': set(), 'cRAF': set(), 'p38': {0, 16, 32, 48}, 'ERBB1': {36, 60, 44, 52}, 'PTEN': set(), 'PRAS': set(), 'TSC2': set(), 'AKT': {32, 48}, 'p53': {0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63}, 'cJUN': set(), 'CyclinD1': {37, 5, 13, 45, 61, 21, 53, 29}, 'p70S6K': set(), 'ERBB2': set(), 'GSK3a_b': set(), 'RPS6': set(), 'ERBB3': {36, 60, 44, 52}, 'RB': {37, 5, 13, 45, 61, 21, 53, 29}, 'FoxO1_3a': set()}
+There are 3 unreachable nodes, they are:
+{'cJUN', 'cRAF', 'FoxO1_3a'}
+AKT
+Lack      0: []
+Extra     0: []
+Real      2: [32, 48]
+Prop      2: [32, 48]
+
+CyclinD1
+Lack      0: []
+Extra     0: []
+Real      8: [5, 13, 21, 29, 37, 45, 53, 61]
+Prop      8: [5, 13, 21, 29, 37, 45, 53, 61]
+
+ERBB1
+Lack      0: []
+Extra     0: []
+Real      4: [36, 44, 52, 60]
+Prop      4: [36, 44, 52, 60]
+
+ERBB2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+ERBB3
+Lack      0: []
+Extra     0: []
+Real      4: [36, 44, 52, 60]
+Prop      4: [36, 44, 52, 60]
+
+ERK1_2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+FoxO1_3a
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+GSK3a_b
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Nfkb
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PRAS
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTEN
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RB
+Lack      0: []
+Extra     0: []
+Real      8: [5, 13, 21, 29, 37, 45, 53, 61]
+Prop      8: [5, 13, 21, 29, 37, 45, 53, 61]
+
+RPS6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TSC2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cJUN
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cRAF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+erlotinib
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+p38
+Lack      0: []
+Extra     0: []
+Real      4: [0, 16, 32, 48]
+Prop      4: [0, 16, 32, 48]
+
+p53
+Lack      0: []
+Extra     0: []
+Real     40: [0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63]
+Prop     40: [0, 1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 21, 23, 25, 27, 29, 31, 32, 33, 34, 35, 37, 39, 41, 43, 45, 47, 48, 49, 50, 51, 53, 55, 57, 59, 61, 63]
+
+p70S6K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+pertuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+stimulus
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+trastuzumab
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	p53
+2	p38
+3	RB
+4	AKT
+5	ERBB1, ERBB3, trastuzumab, PTEN, erlotinib, pertuzumab
+	stimulus, GSK3a_b, RPS6, p70S6K, CyclinD1, ERBB2
+	Nfkb, PRAS, ERK1_2, TSC2, cRAF, cJUN
+	FoxO1_3a
+REFERENCE:
+1	p53
+2	p38
+3	RB
+4	AKT
+5	erlotinib, pertuzumab, ERK1_2, Nfkb, stimulus, trastuzumab
+	cRAF, ERBB1, PTEN, PRAS, TSC2, cJUN
+	CyclinD1, p70S6K, ERBB2, GSK3a_b, RPS6, ERBB3
+	FoxO1_3a
+=======
+-----KI RANKING COMPARISON-----
+1	CyclinD1
+2	ERBB1, ERBB3
+3	p53, trastuzumab, PTEN, erlotinib, pertuzumab, stimulus
+	p38, RB, GSK3a_b, RPS6, AKT, p70S6K
+	ERBB2, Nfkb, PRAS, ERK1_2, TSC2, cRAF
+	cJUN, FoxO1_3a
+REFERENCE:
+1	CyclinD1
+2	ERBB1, ERBB3
+3	erlotinib, pertuzumab, ERK1_2, Nfkb, stimulus, trastuzumab
+	cRAF, p38, PTEN, PRAS, TSC2, AKT
+	p53, cJUN, p70S6K, ERBB2, GSK3a_b, RPS6
+	RB, FoxO1_3a
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             23.000       23.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  1.0
+Average number of correct rows after binarization: 1.0 
+Average DNCG after binarization: 1.0 
+-----------TOTAL RUNNING TIME---------------
+9.330347583978437

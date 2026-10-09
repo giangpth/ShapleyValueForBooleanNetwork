@@ -164,42 +164,60 @@ def parseArgumentsAnalysis():
     """
     
     parser = ap.ArgumentParser(description='Input the expression file and ')
+    parser.add_argument('-n', '--name', help="Name of the system", required=True)
     parser.add_argument('-e', '--expression', type=str, help="path to expression file", required=True)
     parser.add_argument('-o', '--output', type=str, help='list of interested components to examine', required=True)
-    parser.add_argument('-m', '--mode', help='Mode of calculation, can be "Shapley" or "Uniform", default is "Shapley" ', type=str, default='Shapley')
+    parser.add_argument('-r', '--sampling', help='Sampling strategy for input states: "all" (default), "uniform", "antithetic", or "stratified"', type=str, default='all')
+    parser.add_argument('-p', '--samplePer', help='Percentage of combinations to sample if using a sampling strategy different from "all". Default is 60.0', type=float, default=60)
+    parser.add_argument('-c', '--simPer', help='Percentage of nodes to be simulated. Default is 0.0', type=float, default=0)
+    parser.add_argument('-k', '--scheme', help='Scheme of calculation, can be "Shapley" or "Uniform", default is "Shapley" ', type=str, default='Shapley')
+    parser.add_argument('-m', '--mode', help='Mode of calculation, can be "Test" or "Propagation" or "Simulation", default is "Propagation" ', type=str, default='Propagation')
     parser.add_argument('-s', '--simprop', help='Probability to simulate an original node during the propagation', type = float, default=0.3)
     parser.add_argument('-v', '--verbose', help="Print log or not", action='store_true')
+    parser.add_argument('-d', '--decimal', help="Log decimal mappings for hardcore debug mode", action='store_true')
+    parser.add_argument('-t', '--test', help="Perform full network perturbation to test with the obtained result", action='store_true')
+    
     
     return parser 
 
 
-def parseArgumentsTest():
-    """
-    Parse command line arguments.
+def decimal_pairs(sortedinput, target):
+    n = len(sortedinput)
+    k = n - 1 - sortedinput.index(target)   # target's bit position
+    bit = 1 << k
+    for r in range(1 << (n - 1)):
+        low = r & (bit - 1)                 # bits below the target
+        high = (r >> k) << (k + 1)          # bits above the target, shifted up
+        off = high | low
+        yield off | bit, off                # (target=1, target=0)
 
-    Returns:
-        argparse.ArgumentParser: The argument parser with defined options. 
-    """
+# def parseArgumentsTest():
+#     """
+#     Parse command line arguments.
+
+#     Returns:
+#         argparse.ArgumentParser: The argument parser with defined options. 
+#     """
     
-    parser = ap.ArgumentParser(description='Input the expression file and ')
-    parser.add_argument('-e', '--expression', type=str, help="path to expression file", required=True)
-    parser.add_argument('-o', '--output', type=str, help='list of interested components to examine', required=True)
-    # parser.add_argument('-k', '--knockout', help='Perform knockout or not', \
-                        # action='store_true')
-    # parser.add_argument('-i', '--knockin', help='Perform knockin or not', \
-    #                     action='store_true')
-    # parser.add_argument('-b', '--binary', help='Work with binary network or not', \
-    #                     action='store_true')
-    # parser.add_argument('-a', '--acyclic', help='Extract acyclic network with respect to output node', \
-    #                     action='store_true')
-    # parser.add_argument('-p', '--propagate', help='Run propagation for binary network or not', \
-    #                     action='store_true')
-    parser.add_argument('-d', '--debug', help="Print log to debug or not", \
-                        action='store_true')
-    # parser.add_argument('-t', '--threshold', type=float, help="Threshold for error", default=0.6) # e.g. 0.6 mean need to simulate at least 40% of the rows
-    parser.add_argument('-m', '--mode', type=str, help="Mode: 'Shapley' or 'Uniform' ", default='Shapley')
+#     parser = ap.ArgumentParser(description='Input the expression file and ')
+#     parser.add_argument('-e', '--expression', type=str, help="path to expression file", required=True)
+#     parser.add_argument('-o', '--output', type=str, help='list of interested components to examine', required=True)
+#     # parser.add_argument('-k', '--knockout', help='Perform knockout or not', \
+#                         # action='store_true')
+#     # parser.add_argument('-i', '--knockin', help='Perform knockin or not', \
+#     #                     action='store_true')
+#     # parser.add_argument('-b', '--binary', help='Work with binary network or not', \
+#     #                     action='store_true')
+#     # parser.add_argument('-a', '--acyclic', help='Extract acyclic network with respect to output node', \
+#     #                     action='store_true')
+#     # parser.add_argument('-p', '--propagate', help='Run propagation for binary network or not', \
+#     #                     action='store_true')
+#     parser.add_argument('-d', '--debug', help="Print log to debug or not", \
+#                         action='store_true')
+#     # parser.add_argument('-t', '--threshold', type=float, help="Threshold for error", default=0.6) # e.g. 0.6 mean need to simulate at least 40% of the rows
+#     parser.add_argument('-m', '--mode', type=str, help="Mode: 'Shapley' or 'Uniform' ", default='Shapley')
 
-    return parser
+#     return parser
 
 def genRowids2simulate(numinputs, errthreshold, mode='Shapley', debug=False):
     """
@@ -330,39 +348,47 @@ def getOrderedList(inputnames, internames, debug=False):
         print("There are {} intermediate nodes with the range of inter: {} {}".format(len(sortedinter), 0,2**(len(sortedinter)) - 1))
     return sortedinput, sortedinter 
 
-def toDecimal(state, sortedinput, sortedinter, debug=False):
-    """
-    Convert the state of a Boolean network to decimal representations for inputs and intermediate nodes.
-    Args:
-        state (dict): A dictionary with species names as keys and their boolean states as values.
-        sortedinput (list): A sorted list of input species names.
-        sortedinter (list): A sorted list of intermediate species names.
-        debug (bool): If True, print debug information.
-    Returns:   
-        tuple: A tuple containing two integers - decimal representation of inputs and intermediate nodes.
-    """
-    try:
-        inputbitstr = ''
-        for input in sortedinput:
-            if state[input]:
-                inputbitstr += '1'
-            else:
-                inputbitstr += '0'
-        try:
-            interbitstr = ''
-            for inter in sortedinter:
-                if state[inter]:
-                    interbitstr += '1'
-                else:
-                    interbitstr += '0'
+# def toDecimal(state, sortedinput, sortedinter, debug=False):
+#     """
+#     Convert the state of a Boolean network to decimal representations for inputs and intermediate nodes.
+#     Args:
+#         state (dict): A dictionary with species names as keys and their boolean states as values.
+#         sortedinput (list): A sorted list of input species names.
+#         sortedinter (list): A sorted list of intermediate species names.
+#         debug (bool): If True, print debug information.
+#     Returns:   
+#         tuple: A tuple containing two integers - decimal representation of inputs and intermediate nodes.
+#     """
+#     try:
+#         inputbitstr = ''
+#         for input in sortedinput:
+#             if state[input]:
+#                 inputbitstr += '1'
+#             else:
+#                 inputbitstr += '0'
+#         try:
+#             interbitstr = ''
+#             for inter in sortedinter:
+#                 if state[inter]:
+#                     interbitstr += '1'
+#                 else:
+#                     interbitstr += '0'
             
-            intinputs = int(inputbitstr, 2)
-            intinters = int(interbitstr, 2)
-            return intinputs, intinters 
-        except InforError:
-            print("Cannot find intermediate node {} in the state dictionary".format(inter))
-    except InforError:
-        print("Cannot find input node {} in the state dictionary".format(input))
+#             intinputs = int(inputbitstr, 2)
+#             intinters = int(interbitstr, 2)
+#             return intinputs, intinters 
+#         except InforError:
+#             print("Cannot find intermediate node {} in the state dictionary".format(inter))
+#     except InforError:
+#         print("Cannot find input node {} in the state dictionary".format(input))
+
+def toDecimal(state, sortedinput, sortedinter=[], debug=False):
+    def bits(names):
+        return ''.join('1' if state[n] is True else '0' for n in names)
+    inbits, interbits = bits(sortedinput), bits(sortedinter)
+    if debug:
+        print(inbits, interbits)
+    return int(inbits, 2), (int(interbits, 2) if interbits else 0)
 
 
 def merge2states(state1, state2, debug=False):
@@ -442,10 +468,75 @@ def processPrecomputSimulations(intactbitable, output, rowids, KOres, KIres, deb
                 
     return precountedrow
 
-# def print_rank(dict1, dict2):
+def compareOutputs(orioutput, outputnode, inputnames, kooutput = None, kioutput = None, debug=False):
+    korow, kirow = set(), set() 
+    # kovalue, kivalue = 0.0, 0.0 
+    sortedinputs = sorted(list(inputnames))
+    if kooutput or kioutput:
+        if kooutput:
+            assert len(orioutput) == len(kooutput)
+            for rowid, oristate in enumerate(orioutput):
+                bitlist = [0 if not oristate[input] else 1 for input in sortedinputs]
+                inputid = int(''.join(map(str, bitlist)), 2)
+
+                kostate = kooutput[rowid]
+                # print(kostate)
+                if kostate[outputnode] != oristate[outputnode]:
+                    # if kostate[pernode] == oristate[pernode]:
+                    #     print("SUSPICOUS situation: no perturbation but output changes")
+                    # else:
+                    korow.add(inputid)
+                else:
+                    if debug:
+                        print(inputid)
+        if kioutput:
+            assert len(orioutput) == len(kioutput)
+            for rowid, oristate in enumerate(orioutput):
+                bitlist = [0 if not oristate[input] else 1 for input in sortedinputs]
+                inputid = int(''.join(map(str, bitlist)), 2)
+                kistate = kioutput[rowid]
+                if kistate[outputnode] != oristate[outputnode]:
+                    # if kistate[pernode] == oristate[pernode]:
+                        
+                    #     print("SUSPICOUS situation: no perturbation but output changes")
+                    # else:
+                    kirow.add(inputid)
+    else:
+        print("No perturbed table provided")
+
+    return korow, kirow
     
 
-def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputname, mode='Shapley', debug=False):
+def reportResults(kovalues, kivalues, inputnames, internames, outputnames, korows = None, kirows = None, debug = False):
+    print(f"-------RESULT for output {outputnames}--------")
+    if korows and kirows:
+        print("Ordered input nodes:")
+        print(sorted(inputnames))
+        for internode in inputnames + internames: 
+            print(f"----{internode}-----")
+            print("KO\t{}: {}".format(len(korows[internode]), sorted(list(korows[internode]))))
+            print("KI\t{}: {}".format(len(kirows[internode]), sorted(list(kirows[internode]))))
+            print("All\t{}: {}".format(len(set(korows[internode]).union(set((kirows[internode])))), \
+                                      sorted(list(set(korows[internode]).union(set((kirows[internode])))))))
+
+    for internode in inputnames + internames:
+            kovalues[internode] = round(kovalues[internode], 4)
+            kivalues[internode] = round(kivalues[internode], 4)
+            print("{:20} \t\t\t KO: {:10} | KI: {:10}".format(internode, kovalues[internode], kivalues[internode]))
+
+    orispecies = kovalues.keys()
+    print("-----KO RANKING-----")
+    print_ranked_keys(kovalues, orispecies)
+    print("-----KI RANKING-----")
+    print_ranked_keys(kivalues, orispecies)
+        
+
+    
+
+
+
+
+def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputname, scheme='Shapley', debug=False):
     """
     Generate a table from simulation outputs, indexing rows by species states.
     Args:
@@ -454,6 +545,7 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
         sortedinput (list): A sorted list of input species names.
         sortedinter (list): A sorted list of intermediate species names.
         outputnames (set): A set of output species names.
+        scheme (str): The scheme of calculation, can be 'Shapley' or 'Uniform', default is 'Shapley'.
         debug (bool): If True, print debug information.
     Returns:
         dict: A dictionary mapping row IDs to dictionaries of species states.
@@ -461,16 +553,16 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
         dict: A dictionary mapping species names to sets of row IDs where they are False.
     """
     print("----Generate table from output----")
-    if debug:
-        print("Blinkings:")
-        print(blinkings)
-        for id, bset in enumerate(blinkings):
-            print(f"Row {id}: blinking nodes: {bset}")
+    # if debug:
+    #     print("Blinkings:")
+    #     for inputid, bset in enumerate(blinkings):
+    #         print(f"Row {inputid}: blinking nodes: {bset}")
     index = dict() # for each node, save the IDs of row that the node is TRUE
     aindex = dict() # for each node, save the IDs of row that the node is TRUE
     bindex = dict() # for each node, save the IDs of row that the node is BLINKING
 
     dictresult = dict()
+    sortedintput = sorted(list(inputnames))
     for inter in sortedinter:
         index[inter] = set()
         aindex[inter] = set()
@@ -485,15 +577,17 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
     bindex[outputname] = set()
     
     # print("Integer verson of output:")
-    for id, line in enumerate(simoutputs):
+    for rowid, line in enumerate(simoutputs):
+        bitlist = [0 if not line[input] else 1 for input in sortedintput]
+        inputid = int(''.join(map(str, bitlist)), 2)
         # inp, inter = toDecimal(line, sortedinput, sortedinter)
         # print(inp, inter)
         # print(line)
         # each line is a dictionary with keys are name of species and value is true or false
         
         # for test 
-        # if id in [0, 1, 3, 4, 5, 6, 7]:
-        #     print(f"-------TESTING LINE: {id}-------")
+        # if inputid in [0, 1, 3, 4, 5, 6, 7]:
+        #     print(f"-------TESTING LINE: {inputid}-------")
         #     print(line)
         # print(line)
         size = 0
@@ -501,35 +595,35 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
             if line[input]:
                 size += 1
         line['SIZE'] = size
-        if mode == 'Uniform':
+        if scheme == 'Uniform':
             line['PROP'] = round(1.0 / pow(2, len(inputnames)),4)
             # line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
         else: # Shapley mode
             line['PROP'] = round(math.factorial(size)*math.factorial(len(inputnames) - size)/math.factorial(len(inputnames)),4)
-        blinking = blinkings[id] # this is the set of nodes that blink in this row 
+        blinking = blinkings[rowid] # this is the set of nodes that blink in this row 
         for inter in sortedinter:
             if line[inter]:
                 if inter in blinking:
-                    bindex[inter].add(id)
-                index[inter].add(id)
+                    bindex[inter].add(inputid)
+                index[inter].add(inputid)
             else:
-                aindex[inter].add(id)
+                aindex[inter].add(inputid)
         for input in inputnames:
             if line[input]:
                 if input in blinking:
-                    bindex[input].add(id)
-                index[input].add(id)
+                    bindex[input].add(inputid)
+                index[input].add(inputid)
             else:
-                aindex[input].add(id)
+                aindex[input].add(inputid)
        
         if line[outputname]:
             if outputname in blinking:
-                bindex[outputname].add(id)
-            index[outputname].add(id)
+                bindex[outputname].add(inputid)
+            index[outputname].add(inputid)
         else:
-            aindex[outputname].add(id)
+            aindex[outputname].add(inputid)
 
-        dictresult[id] = line
+        dictresult[inputid] = line
     return dictresult, index, aindex, bindex
 
 # def agreement(index, aindex, node1, node2, countedrows, debug=False):
@@ -783,7 +877,92 @@ def genRandomInputForSHAP(numfeature, numsample):
     # return inputs 
 
 
-def evaluation(proprows, simrows, simtable, outname):
+def evaluation2(calkorows, calkirows, calkovalues, calkivalues, gtkorows, gtkirows, gtkovalues, gtkivalues, inputnames, outname, debug=False):
+    wrongrows = 0
+    examinednodes = 0
+    for node, rows in calkorows.items():
+        print(f"----Report rows for node {node} ------")
+        korow = sorted(list(calkorows.get(node, [])))
+        kirow = sorted(list(calkirows.get(node, [])))
+        gtkorow = sorted(list(gtkorows.get(node, [])))
+        gtkirow = sorted(list(gtkirows.get(node, [])))
+        kolack = sorted(list(set(gtkorow).difference(set(korow))))
+        koextra = sorted(list(set(korow).difference(set(gtkorow)))) 
+        print("KO Lack {:5}: {}".format(len(kolack), sorted(list(kolack))))
+        print("KO Extr {:5}: {}".format(len(koextra), sorted(list(koextra))))
+        print("KO Real {:5}: {}".format(len(gtkorow), sorted(list(gtkorow))))
+        print("KO Calc {:5}: {}\n".format(len(korow), sorted(list(korow))))
+        kilack = sorted(list(set(gtkirow).difference(set(kirow))))
+        kiextra = sorted(list(set(kirow).difference(set(gtkirow)))) 
+        print("KI Lack {:5}: {}".format(len(kilack), sorted(list(kilack))))
+        print("KI Extr {:5}: {}".format(len(kiextra), sorted(list(kiextra))))
+        print("KI Real {:5}: {}".format(len(gtkirow), sorted(list(gtkirow))))
+        print("KI Calc {:5}: {}\n".format(len(kirow), sorted(list(kirow))))
+
+        wrongrows += len(kolack) + len(koextra) + len(kilack) + len(kiextra)
+        examinednodes += 1
+
+    errorko = 0.0
+    errorki = 0.0 
+    num = 0
+    for node, value in calkovalues.items():
+        kovalue = round(calkovalues[node], 4)
+        kivalue = round(calkivalues[node], 4)
+        
+        gtkovalue = round(gtkovalues[node], 4)
+        gtkivalue = round(gtkivalues[node], 4)
+        num += 1
+
+        if abs(gtkovalue - kovalue) >= 0.005 or abs(gtkivalue - kivalue) >= 0.005:
+            print("{:20} - Correct: KO: {:10} | KI : {:10} - Incorrect KO: {:10} | KI: {:10}".format(node, gtkovalue, gtkivalue, kovalue, kivalue))
+        errorko += (gtkovalue - kovalue)*(gtkovalue - kovalue)
+        errorki += (gtkivalue - kivalue)*(gtkivalue - kivalue)
+
+    keys = sorted(gtkovalues.keys()) 
+
+    y_true_ko = np.array([[abs(gtkovalues[k]) for k in keys]])
+    y_pred_ko = np.array([[abs(calkovalues[k]) for k in keys]])
+
+    y_true_ki = np.array([[abs(gtkivalues[k]) for k in keys]])
+    y_pred_ki = np.array([[abs(calkivalues[k]) for k in keys]]) 
+
+    dncg_ko = round(ndcg_score(y_true_ko, y_pred_ko),4)
+    dncg_ki = round(ndcg_score(y_true_ki, y_pred_ki),4)
+    ave_dncg = (dncg_ko + dncg_ki)/2
+
+        
+
+    orispecies = gtkovalues.keys()
+
+    print("-----KO RANKING COMPARISON-----")
+    print_ranked_keys(calkovalues, orispecies)
+    print("REFERENCE:")
+    print_ranked_keys(gtkovalues)
+    print("=======")
+    print("-----KI RANKING COMPARISON-----")
+    print_ranked_keys(calkivalues, orispecies)
+    print("REFERENCE:")
+    print_ranked_keys(gtkivalues)
+    print("============")
+
+    print("Relative_RMSE_KO_is ", (math.sqrt(errorko/num)/(2.0*((len(inputnames))+1))))
+    print("Relative_RMSE_KI_is ", (math.sqrt(errorki/num))/(2.0*((len(inputnames))+1)))
+    print("NDCG_KO_is ", dncg_ko)
+    print("NDCG_KI_is ", dncg_ki)
+
+    korankingres = compare_rankings(gtkovalues, calkovalues)
+    kirankingres = compare_rankings(gtkivalues, calkivalues)
+    print_rank_comparison(korankingres, kirankingres)
+
+    avewrongrows = wrongrows/examinednodes 
+    tabsize = 2**len(inputnames)
+    averightrows = ((tabsize) - avewrongrows)/((tabsize))
+    print("AVERAGE_CORRECT_ROWS_ALL_NODES: ", round(averightrows,4))
+    return averightrows, ave_dncg
+
+
+
+def evaluation1(proprows, simrows, simtable, outname):
     numinput = math.log2(len(simtable))
 
     propko, propki = rowstovalues(proprows, simtable, outname)
@@ -871,21 +1050,29 @@ def evaluation(proprows, simrows, simtable, outname):
     return averightrows, ave_dncg
     
 
-def estimateErrorFromNodes(siminrows, proprows, nodes):
-    wrongrows = 0
+def estimateErrorFromInputs(siminrows, proprows, nodes):
+    average_wrong_rows = 0
     for inname in nodes:
+        wrongrow = 0
         if inname in proprows and inname in siminrows:
-            lack = siminrows[inname].difference(proprows[inname])
-            extra = proprows[inname].difference(siminrows[inname]) 
-            wrongrows += len(lack) + len(extra)
+            # print("Comparing node {}".format(inname))
+            # print("Simulated rows: {}".format(sorted(list(siminrows[inname]))))
+            # print("Proposed rows: {}".format(sorted(list(proprows[inname]))))
+            
+            lack = set(siminrows[inname]).difference(set(proprows[inname]))
+            extra = set(proprows[inname]).difference(set(siminrows[inname]))
+            wrongrow += len(lack) + len(extra)
             # print("{:20}: lack: {} - extra: {}".format(inname, lack, extra))
         else: 
             print("Node {} is not considerred".format(inname))
+        if len(siminrows[inname]) > 0:
+            average_wrong_rows += wrongrow/len(siminrows[inname])
+        else:
+            if wrongrow > 0:
+                average_wrong_rows += 1
         
-    # print(f"Number of wrong rows is: {wrongrows}")
-    avewrongrows = wrongrows/len(nodes)
-    averightrows = (pow(2, len(nodes)) - avewrongrows)/pow(2, len(nodes))
-    return averightrows 
+    average_wrong_rows = (average_wrong_rows/len(nodes))/(2**len(nodes))
+    return average_wrong_rows 
 
 
 def rowstovalues(rowdict, simtable, outname):
@@ -905,8 +1092,8 @@ def rowstovalues(rowdict, simtable, outname):
     for node, rowids in rowdict.items():
         kovalues[node] = 0.0
         kivalues[node] = 0.0
-        for id in rowids:
-            row = simtable[id]
+        for inputid in rowids:
+            row = simtable[inputid]
             if row[outname]:
                 if row[node]:
                     kovalues[node] += row['PROP']

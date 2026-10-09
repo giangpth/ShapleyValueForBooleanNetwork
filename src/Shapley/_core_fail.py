@@ -10,9 +10,9 @@ from pathlib import Path
 
 
 from Shapley.visualization import showNetwork
-from Shapley.utilities import parseArgumentsTest, parseArgumentsAnalysis, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput, evaluation, print_ranked_keys, estimateErrorFromNodes, random_percentage_selection
-from Shapley.shapleyCalculation import extractPhe, calKSV4Input, calKSV 
-from Shapley.networkUtilities import diamondDigger, getOutput, getKnockoutOutput, simBinaryNetwork, findMasterDiamond, processMasterDiamonds, simulateOneNode, nodes_on_cycles_digraph, all_descendants
+from Shapley.utilities import parseArgumentsTest, parseArgumentsAnalysis, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput, evaluation1, print_ranked_keys, estimateErrorFromInputs, random_percentage_selection
+from Shapley.shapleyCalculation import extractPhe, calKSV4Input, calKSVVanilla 
+from Shapley.networkUtilities import diamondDigger, getOutput, getPertubedOutput, simBinaryNetwork, findMasterDiamond, processMasterDiamonds, simulateDiamond, nodes_on_cycles_digraph, all_descendants
 from Shapley.speciesHandler import getSpeciesName, getInputNames, genInput, initSpeciesStates
 from Shapley.booleanFormulaHandler import parseFormula, toBinaryFormulas, getFormula
 from Shapley.networkHandler import convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, manipulateNetwork, rewireBinet
@@ -133,7 +133,7 @@ def testEachModel(modpath, target, simprops):
                     speciesnames, "abinetwork", sortedinput, sortedinter, extranodes, 'Shapley', simprop, totest = True, debug=False)
             print(f"Boolean Shapley Analysis with {simprop} percentage of nodes to simulate completed")
             # print(f"Propagation time is: {protime}")
-            averightrows, avg_dncg = evaluation(proprows, simrowsofnodes, table, outname)
+            averightrows, avg_dncg = evaluation1(proprows, simrowsofnodes, table, outname)
             # print(f"Average number of correct rows: {averightrows}")
             final_averightrows += averightrows
             final_protime += protime
@@ -306,7 +306,7 @@ def BooleanShapleyTest():
         print(f"TIME perform original analysis process: {timePerformOriginalAnalysis}")
         print(f"TIME perform propagation: {timePropagation}")
 
-        averightrows, ave_dncg = evaluation(rowsofnodes, simrowsofnodes, table, outputname)
+        averightrows, ave_dncg = evaluation1(rowsofnodes, simrowsofnodes, table, outputname)
         
 
         '''
@@ -509,13 +509,13 @@ def workWithOriginalNetwork(net, inputnames, inputstates, outputname, internames
                 koouputs = []
                 koblinkings = []
                 for inputstate in clone2inputstates:
-                    output, koblinking = getKnockoutOutput(formulas, inputstate, [internode], False, 1000, False)
+                    output, koblinking = getPertubedOutput(formulas, inputstate, [internode], False, 1000, False)
                     koouputs.append(output)
                     koblinkings.append(koblinking)
                 kogenphe = extractPhe(inputnames, outputname, koouputs)
                 vs[internode] = kogenphe 
         # for outname in outputnames:
-        koshaps, korows = calKSV(genphe, vs, outputname, len(inputnames), mode=mode, simtable=simtable, inputnames=inputnames)
+        koshaps, korows = calKSVVanilla(genphe, vs, outputname, len(inputnames), mode=mode, simtable=simtable, inputnames=inputnames)
         print("----KNOCKOUT VALUE for output {}----".format(outputname))
         print(dict(sorted(koshaps.items())))
         print("\n")
@@ -531,14 +531,14 @@ def workWithOriginalNetwork(net, inputnames, inputstates, outputname, internames
                 kiouputs = []
                 kiblinkings = []
                 for inputstate in clone3inputstates:
-                    output, kiblingking = getKnockoutOutput(formulas, inputstate, [internode],\
+                    output, kiblingking = getPertubedOutput(formulas, inputstate, [internode],\
                                                 False, 1000, False, None, True)
                     kiouputs.append(output)
                     kiblinkings.append(kiblingking)
                 kigenphe = extractPhe(inputnames, outputname, kiouputs)
                 vski[internode] = kigenphe 
         
-        kishaps, kirows = calKSV(genphe, vski, outputname, len(inputnames), mode=mode, simtable=simtable, inputnames=inputnames)
+        kishaps, kirows = calKSVVanilla(genphe, vski, outputname, len(inputnames), mode=mode, simtable=simtable, inputnames=inputnames)
         print("----KNOCKIN VALUE for output {}----".format(outputname))
         print(dict(sorted(kishaps.items())))
         print("\n")
@@ -949,7 +949,7 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                         alreadysimulated.add(form.left.val)
                         if debug:
                             print(f"Left node {form.left.val} is a node to SIMULATE, simulate it with all rows")
-                        ressimrows = simulateOneNode(simtable, form.left.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+                        ressimrows = simulateDiamond(simtable, form.left.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
                         countedrowsofnode[form.left.val] = ressimrows
 
                     if form.left.val not in alreadysimulated:   
@@ -976,7 +976,7 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                         alreadysimulated.add(form.right.val)
                         if debug:
                             print(f"Right node {form.right.val} is a node to SIMULATE, simulate it with all rows")
-                        ressimrows = simulateOneNode(simtable, form.right.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+                        ressimrows = simulateDiamond(simtable, form.right.val, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
                         countedrowsofnode[form.right.val] = ressimrows
 
                     if form.right.val not in alreadysimulated:
@@ -1046,7 +1046,7 @@ def propagateCyclic(net, simtable, index, aindex, descendants, outname, formulas
                         alreadysimulated.add(singlemom)
                         if debug:
                             print(f"Node {singlemom} is a node to simulate, SIMULATE it with all rows")
-                        ressimrows = simulateOneNode(simtable, singlemom, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
+                        ressimrows = simulateDiamond(simtable, singlemom, outname, simformulas, set(range(len(simtable))), extranodes, inputnames)
                         countedrowsofnode[singlemom] = ressimrows
                     if singlemom not in alreadysimulated:
                         if singlemom not in countedrowsofnode:
@@ -1588,7 +1588,7 @@ def binarizeAndPropagate(oriformulas, aformulas, inputnames, outputname, orispec
                                     extranodes, masterDiamonds, inputnames, \
                                     orderedBiNodes, simpercent=simpercent, debug=True)
         print("IN CYCLIC NETWORK: COMPARE ROWS PROPAGTED TO INPUT NODES AND BASELINE TO ESTIMATE ERROR")
-        averightinrows = estimateErrorFromNodes(inrows, rowsofnodes, inputnames)
+        averightinrows = estimateErrorFromInputs(inrows, rowsofnodes, inputnames)
 
     else:
         rowsofnodes = propagateAcyclic(binet, table, index, aindex, outputname, biformulasdict, masterDiamonds, inputnames, orderedBiNodes, True)

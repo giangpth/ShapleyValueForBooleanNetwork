@@ -1,5 +1,6 @@
 import itertools
 import copy
+from random import random, sample, randint
 
 def getSpeciesName(lines, debug=False):
     """
@@ -63,39 +64,88 @@ def getInputNames(lines, speciesnames, debug=False):
     return input
 
 #species is a dictionary, inputnames is a list 
-def genInput(species, inputnames, debug=False):
+def genInput(species, inputnames, samplingStrategy='all', samplePercentage=60, debug=False):
     """
     Generate all possible input states for the given species and input names.
     Args:
         species (dict): A dictionary with species names as keys and their boolean states as values.
         inputnames (set): A set of input species names.
+        samplingStrategy (str): Can be: "all" (default), "uniform", "antithetic" or "stratified" .
+        samplePercentage (int): The percentage of combinations to sample if using a sampling strategy different from "all". Default is 60.
         debug (bool): If True, print debug information.
     Returns:
         list: A list of dictionaries, each representing a unique input state with all species.
     """
+    print("Generating input states using strategy: {}".format(samplingStrategy))
+    if samplingStrategy != 'all':
+        if samplePercentage <= 0 or samplePercentage > 100:
+            raise ValueError("IN GENERATE INPUT STATES: samplePercentage must be between 0 and 100.")
+        print("Sample percentage: {}%".format(samplePercentage))
+    
     numin = len(inputnames) 
     inputnamelist = sorted(list(inputnames)) # sort to have a fixed order of input names
-    print("INPUT NAMES LIST:")
+
+    print(f"{numin} inputs causing in total {2**numin} combinations")
+    print("Input list:")
     print(inputnamelist)
-    coms = list(itertools.product([0, 1], repeat=numin))
-    if debug:
-        print("There are {} combinations for input".format(len(coms)))
-        # print (coms)
+
+    if samplingStrategy == 'all':
+        coms = list(itertools.product([0, 1], repeat=numin))
+
+    elif samplingStrategy == 'uniform':
+        numSamples = int((samplePercentage/100) * (2**numin))
+        random_numbers = sample(range(2**numin), numSamples)
+
+        coms = [list(map(int, bin(num)[2:].zfill(numin))) for num in random_numbers]
+    elif samplingStrategy == 'antithetic':
+        numSamples = int((samplePercentage/100) * (2**numin))
+        half_samples = numSamples // 2
+
+        random_numbers = sample(range(2**numin), half_samples)
+        antithetic_numbers = [(2**numin - 1) - num for num in random_numbers]
+
+        combined_numbers = random_numbers + antithetic_numbers
+        coms = [list(map(int, bin(num)[2:].zfill(numin))) for num in combined_numbers]
+    elif samplingStrategy == 'stratified':
+        numSamples = int((samplePercentage/100) * (2**numin))
+        strata_size = 2**numin // numSamples
+
+        random_numbers = []
+        for i in range(numSamples):
+            start = i * strata_size
+            end = start + strata_size - 1
+            random_num = randint(start, end)
+            random_numbers.append(random_num)
+
+        coms = [list(map(int, bin(num)[2:].zfill(numin))) for num in random_numbers]
+    else:
+        raise ValueError("IN GENERATE INPUT STATES: Invalid sampling strategy. Choose from 'all', 'uniform', 'antithetic', or 'stratified'.")
+
+    coms = sorted(coms, key=lambda x: int(''.join(map(str, x)), 2))  # Sort combinations by their decimal value
+
     inputstates = []
-    for com in coms:
+    mappingrow2inputs = dict()
+    for comid, com in enumerate(coms):
+        value = int(''.join(map(str, com)), 2)
         inp = copy.deepcopy(species)
-        # print(inp)
+        mappingrow2inputs[value] = [] 
         for id, name in enumerate(inputnamelist):
             try:
                 # print(name, id)
                 if com[id] == 1:
                     inp[name] = True
+                    mappingrow2inputs[value].append(name)
                 elif com[id] == 0:
                     inp[name] = False
                 else:
                     inp[name] = com[id]
             except KeyError:
-                print("There is no key named {}".format(name))
+                print("IN GENERATE INPUT STATES: There is no key named {}".format(name))
         inputstates.append(inp)
-    
-    return inputstates
+    print("Number of samples in total: {}".format(len(inputstates)))
+
+    # UNCOMMNENT THE FOLLOWING LINES TO PRINT EACH GENERATED INPUT STATE
+    # for i, state in enumerate(inputstates):
+    #     print(f"Sample {i+1}: {state}")
+
+    return inputstates, mappingrow2inputs

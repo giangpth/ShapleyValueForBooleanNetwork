@@ -1,0 +1,706 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_5_Sic1 -e data/realbenchmark/5.txt -o Sic1 -r all -p 60.0 -c 0.0 -k Shapley -m Propagation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_5_Sic1                                  =========
+========== EXPRESSION FILE IS data/realbenchmark/5.txt                                                         =========
+========== THE OUTPUT OF INTEREST IS: Sic1                                                                     =========
+========== SAMPLING STRATEGY IS: all                                                                           =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Propagation                                                                                =========
+LIST OF ALL SPECIES:
+['BuddingCP', 'Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Size', 'SpindleCP', 'Start', 'Swe1', 'Swi5', 'Whi5', 'Yhp1']
+-----INPUT NAMES-----
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+----INTERMEDIATE NODES-----
+['Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Whi5', 'Yhp1']
+===============================================================
+Sorted input names
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Whi5', 'Yhp1']
+There are 16 intermediate nodes with the range of inter: 0 65535
+SORTED INPUT
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+SORTED INTER
+['Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Whi5', 'Yhp1']
+More than 1 binary operator, dont allow NOT in formula: Cdc14 or Clb2 or Cln2 or Clb5 
+More than 1 binary operator, dont allow NOT in formula: Cdc14 or Sic1 or Clb2 or Swi5 or Cln2 or Clb5 
+More than 1 binary operator, dont allow NOT in formula: Start or Cln3 or Cln2 
+More than 1 binary operator, dont allow NOT in formula: Swe1 or Cdh1 or Sic1 or SFF or Cdc20 
+Now arrange layout of the original network for visualization
+THERE ARE 8 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('Swi5', 'Swi5'), ('Sic1', 'Sic1'), ('Sic1', 'Clb2'), ('SFF', 'Clb2'), ('Whi5', 'SMBF'), ('Cdh1', 'Clb2'), ('Cdc20', 'Clb2'), ('Clb5', 'Sic1')]
+orimodel_5_Sic1.html
+Generating input states using strategy: all
+4 inputs causing in total 16 combinations
+Input list:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+Number of samples in total: 16
+-----Mapping rowid to inputs:-----
+0: []
+1: ['Start']
+2: ['SpindleCP']
+3: ['SpindleCP', 'Start']
+4: ['Size']
+5: ['Size', 'Start']
+6: ['Size', 'SpindleCP']
+7: ['Size', 'SpindleCP', 'Start']
+8: ['BuddingCP']
+9: ['BuddingCP', 'Start']
+10: ['BuddingCP', 'SpindleCP']
+11: ['BuddingCP', 'SpindleCP', 'Start']
+12: ['BuddingCP', 'Size']
+13: ['BuddingCP', 'Size', 'Start']
+14: ['BuddingCP', 'Size', 'SpindleCP']
+15: ['BuddingCP', 'Size', 'SpindleCP', 'Start']
+Generating input states using strategy: all
+4 inputs causing in total 16 combinations
+Input list:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+Number of samples in total: 16
+TEST: Mapping rowid to inputs:
+0: []
+1: ['Start']
+2: ['SpindleCP']
+3: ['SpindleCP', 'Start']
+4: ['Size']
+5: ['Size', 'Start']
+6: ['Size', 'SpindleCP']
+7: ['Size', 'SpindleCP', 'Start']
+8: ['BuddingCP']
+9: ['BuddingCP', 'Start']
+10: ['BuddingCP', 'SpindleCP']
+11: ['BuddingCP', 'SpindleCP', 'Start']
+12: ['BuddingCP', 'Size']
+13: ['BuddingCP', 'Size', 'Start']
+14: ['BuddingCP', 'Size', 'SpindleCP']
+15: ['BuddingCP', 'Size', 'SpindleCP', 'Start']
+-------------Now convert the original network to the acyclic network---------------
+-------------Now convert the acyclic network to the binary network---------------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac Cdh1_to_Clb2ANDCdc20_to_Clb2, try Cdc20_to_Clb2ANDCdh1_to_Clb2
+Input are {'Start', 'SpindleCP', 'BuddingCP', 'Size'}
+Ordinary nodes are 
+{'SMBF', 'Swi5', 'Yhp1', 'Sic1', 'Cln2', 'Size', 'FEAR', 'SpindleCP', 'Clb2', 'Swe1', 'Cln3', 'SFF', 'Whi5', 'Start', 'MEN', 'BuddingCP', 'Cdc14', 'Cdh1', 'Cdc20', 'Clb5'}
+Extranodes added after removing cycles are 
+['Swi5_to_Swi5', 'Sic1_to_Sic1', 'Sic1_to_Clb2', 'SFF_to_Clb2', 'Whi5_to_SMBF', 'Cdh1_to_Clb2', 'Cdc20_to_Clb2', 'Clb5_to_Sic1']
+binetmodel_5_Sic1.html
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node BuddingCP is -0.4167, 0.4167 with 2 KO rows and 2 KI rows
+Shapley value for input node Size is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node SpindleCP is 1.25, -0.4167 with 2 KO rows and 2 KI rows
+Shapley value for input node Start is -0.4167, 0.4167 with 2 KO rows and 2 KI rows
+Simulating original network then inferring values for extranodes and binary formulas
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node BuddingCP is -0.4167, 0.4167 with 2 KO rows and 2 KI rows
+Shapley value for input node Size is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node SpindleCP is 1.25, -0.4167 with 2 KO rows and 2 KI rows
+Shapley value for input node Start is -0.4167, 0.4167 with 2 KO rows and 2 KI rows
+-----------Now propagate within binarized network for output Sic1-------------
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+At TARGET node Sic1, count all rows
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node Clb5: processed 7 times
+Node Sic1: processed 8 times
+Node Whi5: processed 6 times
+Node Swi5: processed 3 times
+Node Cdc20: processed 6 times
+Node Cdh1: processed 9 times
+Node SFF: processed 2 times
+SIMULATE 0 nodes over 15 nodes
+-----Now estimate the error by comparing propagated values to simulation values of input nodes-----
+For KO values
+For KI values
+=========PROPAGATION RESULTS=========
+-------RESULT for output Sic1--------
+Ordered input nodes:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+----BuddingCP-----
+KO	2: [9, 15]
+KI	2: [5, 7]
+All	4: [5, 7, 9, 15]
+----Size-----
+KO	0: []
+KI	1: [11]
+All	1: [11]
+----SpindleCP-----
+KO	0: []
+KI	0: []
+All	0: []
+----Start-----
+KO	0: []
+KI	4: [8, 10, 12, 14]
+All	4: [8, 10, 12, 14]
+----Cdc14-----
+KO	0: []
+KI	0: []
+All	0: []
+----Cdc20-----
+KO	0: []
+KI	4: [1, 3, 5, 7]
+All	4: [1, 3, 5, 7]
+----Cdh1-----
+KO	4: [5, 7, 8, 12]
+KI	0: []
+All	4: [5, 7, 8, 12]
+----Clb2-----
+KO	0: []
+KI	2: [1, 5]
+All	2: [1, 5]
+----Clb5-----
+KO	2: [5, 7]
+KI	11: [0, 1, 2, 3, 4, 6, 8, 10, 11, 12, 14]
+All	13: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14]
+----Cln2-----
+KO	0: []
+KI	9: [0, 2, 4, 6, 8, 10, 11, 12, 14]
+All	9: [0, 2, 4, 6, 8, 10, 11, 12, 14]
+----Cln3-----
+KO	0: []
+KI	1: [11]
+All	1: [11]
+----FEAR-----
+KO	1: [15]
+KI	4: [1, 3, 5, 7]
+All	5: [1, 3, 5, 7, 15]
+----MEN-----
+KO	0: []
+KI	0: []
+All	0: []
+----SFF-----
+KO	5: [8, 10, 12, 14, 15]
+KI	4: [1, 3, 5, 7]
+All	9: [1, 3, 5, 7, 8, 10, 12, 14, 15]
+----SMBF-----
+KO	0: []
+KI	5: [8, 10, 11, 12, 14]
+All	5: [8, 10, 11, 12, 14]
+----Sic1-----
+KO	14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15]
+KI	2: [9, 13]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Swe1-----
+KO	2: [5, 7]
+KI	2: [9, 15]
+All	4: [5, 7, 9, 15]
+----Swi5-----
+KO	1: [15]
+KI	0: []
+All	1: [15]
+----Whi5-----
+KO	1: [11]
+KI	0: []
+All	1: [11]
+----Yhp1-----
+KO	0: []
+KI	0: []
+All	0: []
+BuddingCP            			 KO:     0.8333 | KI:     0.4167
+Size                 			 KO:        0.0 | KI:       0.25
+SpindleCP            			 KO:        0.0 | KI:        0.0
+Start                			 KO:        0.0 | KI:     0.8334
+Cdc14                			 KO:        0.0 | KI:        0.0
+Cdc20                			 KO:        0.0 | KI:     0.8334
+Cdh1                 			 KO:     0.8334 | KI:        0.0
+Clb2                 			 KO:        0.0 | KI:     0.4167
+Clb5                 			 KO:     0.4167 | KI:     3.1668
+Cln2                 			 KO:        0.0 | KI:     2.7501
+Cln3                 			 KO:        0.0 | KI:       0.25
+FEAR                 			 KO:        1.0 | KI:     0.8334
+MEN                  			 KO:        0.0 | KI:        0.0
+SFF                  			 KO:     1.8334 | KI:     0.8334
+SMBF                 			 KO:        0.0 | KI:     1.0834
+Sic1                 			 KO:     4.5835 | KI:    -0.4167
+Swe1                 			 KO:     0.4167 | KI:     0.8333
+Swi5                 			 KO:        1.0 | KI:        0.0
+Whi5                 			 KO:       0.25 | KI:        0.0
+Yhp1                 			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	Sic1
+2	SFF
+3	Swi5, FEAR
+4	Cdh1
+5	BuddingCP
+6	Clb5, Swe1
+7	Whi5
+8	Cln2, SMBF, Start, Cdc14, Clb2, Cdc20
+	MEN, SpindleCP, Cln3, Size, Yhp1
+-----KI RANKING-----
+1	Clb5
+2	Cln2
+3	SMBF
+4	Start, Cdc20, FEAR, SFF
+5	Swe1
+6	Sic1
+7	Clb2, BuddingCP
+8	Cln3, Size
+9	Swi5, Cdc14, MEN, Whi5, SpindleCP, Cdh1
+	Yhp1
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output Sic1--------
+Ordered input nodes:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+----BuddingCP-----
+KO	2: [9, 13]
+KI	2: [1, 5]
+All	4: [1, 5, 9, 13]
+----Size-----
+KO	0: []
+KI	0: []
+All	0: []
+----SpindleCP-----
+KO	2: [11, 15]
+KI	2: [9, 13]
+All	4: [9, 11, 13, 15]
+----Start-----
+KO	2: [9, 13]
+KI	2: [8, 12]
+All	4: [8, 9, 12, 13]
+----Cdc14-----
+KO	2: [11, 15]
+KI	2: [9, 13]
+All	4: [9, 11, 13, 15]
+----Cdc20-----
+KO	2: [11, 15]
+KI	2: [9, 13]
+All	4: [9, 11, 13, 15]
+----Cdh1-----
+KO	2: [11, 15]
+KI	2: [9, 13]
+All	4: [9, 11, 13, 15]
+----Clb2-----
+KO	2: [9, 13]
+KI	14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Clb5-----
+KO	0: []
+KI	10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 12]
+All	10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 12]
+----Cln2-----
+KO	2: [9, 13]
+KI	10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 12]
+All	12: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+----Cln3-----
+KO	0: []
+KI	4: [1, 3, 5, 7]
+All	4: [1, 3, 5, 7]
+----FEAR-----
+KO	2: [11, 15]
+KI	0: []
+All	2: [11, 15]
+----MEN-----
+KO	2: [11, 15]
+KI	0: []
+All	2: [11, 15]
+----SFF-----
+KO	2: [11, 15]
+KI	2: [8, 12]
+All	4: [8, 11, 12, 15]
+----SMBF-----
+KO	2: [9, 13]
+KI	4: [1, 3, 5, 7]
+All	6: [1, 3, 5, 7, 9, 13]
+----Sic1-----
+KO	14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15]
+KI	2: [9, 13]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Swe1-----
+KO	2: [1, 5]
+KI	2: [9, 13]
+All	4: [1, 5, 9, 13]
+----Swi5-----
+KO	1: [15]
+KI	0: []
+All	1: [15]
+----Whi5-----
+KO	4: [1, 3, 5, 7]
+KI	2: [9, 13]
+All	6: [1, 3, 5, 7, 9, 13]
+----Yhp1-----
+KO	2: [5, 7]
+KI	0: []
+All	2: [5, 7]
+BuddingCP            			 KO:    -0.4167 | KI:     0.4167
+Size                 			 KO:        0.0 | KI:        0.0
+SpindleCP            			 KO:       1.25 | KI:    -0.4167
+Start                			 KO:    -0.4167 | KI:     0.4167
+Cdc14                			 KO:       1.25 | KI:    -0.4167
+Cdc20                			 KO:       1.25 | KI:    -0.4167
+Cdh1                 			 KO:       1.25 | KI:    -0.4167
+Clb2                 			 KO:    -0.4167 | KI:     4.5835
+Clb5                 			 KO:        0.0 | KI:     2.9168
+Cln2                 			 KO:    -0.4167 | KI:     2.9168
+Cln3                 			 KO:        0.0 | KI:     0.8334
+FEAR                 			 KO:       1.25 | KI:        0.0
+MEN                  			 KO:       1.25 | KI:        0.0
+SFF                  			 KO:       1.25 | KI:     0.4167
+SMBF                 			 KO:    -0.4167 | KI:     0.8334
+Sic1                 			 KO:     4.5835 | KI:    -0.4167
+Swe1                 			 KO:     0.4167 | KI:    -0.4167
+Swi5                 			 KO:        1.0 | KI:        0.0
+Whi5                 			 KO:     0.8334 | KI:    -0.4167
+Yhp1                 			 KO:     0.4167 | KI:        0.0
+-----KO RANKING-----
+1	Sic1
+2	SpindleCP, Cdc14, Cdc20, Cdh1, FEAR, MEN
+	SFF
+3	Swi5
+4	Whi5
+5	BuddingCP, Start, Clb2, Cln2, SMBF
+6	Swe1, Yhp1
+7	Size, Clb5, Cln3
+-----KI RANKING-----
+1	Clb2
+2	Clb5, Cln2
+3	Cln3, SMBF
+4	BuddingCP
+5	SpindleCP
+6	Start
+7	Cdc14, Cdc20, Cdh1
+8	SFF
+9	Sic1, Swe1, Whi5
+10	Size, FEAR, MEN, Swi5, Yhp1
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node Sic1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15]
+KO Calc    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [9, 13]
+KI Calc     2: [9, 13]
+
+----Report rows for node Clb5 ------
+KO Lack     0: []
+KO Extr     2: [5, 7]
+KO Real     0: []
+KO Calc     2: [5, 7]
+
+KI Lack     2: [5, 7]
+KI Extr     3: [10, 11, 14]
+KI Real    10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 12]
+KI Calc    11: [0, 1, 2, 3, 4, 6, 8, 10, 11, 12, 14]
+
+----Report rows for node Cln2 ------
+KO Lack     2: [9, 13]
+KO Extr     0: []
+KO Real     2: [9, 13]
+KO Calc     0: []
+
+KI Lack     4: [1, 3, 5, 7]
+KI Extr     3: [10, 11, 14]
+KI Real    10: [0, 1, 2, 3, 4, 5, 6, 7, 8, 12]
+KI Calc     9: [0, 2, 4, 6, 8, 10, 11, 12, 14]
+
+----Report rows for node Swi5 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     1: [15]
+KO Calc     1: [15]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node SMBF ------
+KO Lack     2: [9, 13]
+KO Extr     0: []
+KO Real     2: [9, 13]
+KO Calc     0: []
+
+KI Lack     4: [1, 3, 5, 7]
+KI Extr     5: [8, 10, 11, 12, 14]
+KI Real     4: [1, 3, 5, 7]
+KI Calc     5: [8, 10, 11, 12, 14]
+
+----Report rows for node Start ------
+KO Lack     2: [9, 13]
+KO Extr     0: []
+KO Real     2: [9, 13]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     2: [10, 14]
+KI Real     2: [8, 12]
+KI Calc     4: [8, 10, 12, 14]
+
+----Report rows for node Cdc14 ------
+KO Lack     2: [11, 15]
+KO Extr     0: []
+KO Real     2: [11, 15]
+KO Calc     0: []
+
+KI Lack     2: [9, 13]
+KI Extr     0: []
+KI Real     2: [9, 13]
+KI Calc     0: []
+
+----Report rows for node Clb2 ------
+KO Lack     2: [9, 13]
+KO Extr     0: []
+KO Real     2: [9, 13]
+KO Calc     0: []
+
+KI Lack    12: [0, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15]
+KI Extr     0: []
+KI Real    14: [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 15]
+KI Calc     2: [1, 5]
+
+----Report rows for node Cdc20 ------
+KO Lack     2: [11, 15]
+KO Extr     0: []
+KO Real     2: [11, 15]
+KO Calc     0: []
+
+KI Lack     2: [9, 13]
+KI Extr     4: [1, 3, 5, 7]
+KI Real     2: [9, 13]
+KI Calc     4: [1, 3, 5, 7]
+
+----Report rows for node MEN ------
+KO Lack     2: [11, 15]
+KO Extr     0: []
+KO Real     2: [11, 15]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node FEAR ------
+KO Lack     1: [11]
+KO Extr     0: []
+KO Real     2: [11, 15]
+KO Calc     1: [15]
+
+KI Lack     0: []
+KI Extr     4: [1, 3, 5, 7]
+KI Real     0: []
+KI Calc     4: [1, 3, 5, 7]
+
+----Report rows for node Whi5 ------
+KO Lack     4: [1, 3, 5, 7]
+KO Extr     1: [11]
+KO Real     4: [1, 3, 5, 7]
+KO Calc     1: [11]
+
+KI Lack     2: [9, 13]
+KI Extr     0: []
+KI Real     2: [9, 13]
+KI Calc     0: []
+
+----Report rows for node SpindleCP ------
+KO Lack     2: [11, 15]
+KO Extr     0: []
+KO Real     2: [11, 15]
+KO Calc     0: []
+
+KI Lack     2: [9, 13]
+KI Extr     0: []
+KI Real     2: [9, 13]
+KI Calc     0: []
+
+----Report rows for node SFF ------
+KO Lack     1: [11]
+KO Extr     4: [8, 10, 12, 14]
+KO Real     2: [11, 15]
+KO Calc     5: [8, 10, 12, 14, 15]
+
+KI Lack     2: [8, 12]
+KI Extr     4: [1, 3, 5, 7]
+KI Real     2: [8, 12]
+KI Calc     4: [1, 3, 5, 7]
+
+----Report rows for node Cdh1 ------
+KO Lack     2: [11, 15]
+KO Extr     4: [5, 7, 8, 12]
+KO Real     2: [11, 15]
+KO Calc     4: [5, 7, 8, 12]
+
+KI Lack     2: [9, 13]
+KI Extr     0: []
+KI Real     2: [9, 13]
+KI Calc     0: []
+
+----Report rows for node Swe1 ------
+KO Lack     1: [1]
+KO Extr     1: [7]
+KO Real     2: [1, 5]
+KO Calc     2: [5, 7]
+
+KI Lack     1: [13]
+KI Extr     1: [15]
+KI Real     2: [9, 13]
+KI Calc     2: [9, 15]
+
+----Report rows for node Cln3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     4: [1, 3, 5, 7]
+KI Extr     1: [11]
+KI Real     4: [1, 3, 5, 7]
+KI Calc     1: [11]
+
+----Report rows for node BuddingCP ------
+KO Lack     1: [13]
+KO Extr     1: [15]
+KO Real     2: [9, 13]
+KO Calc     2: [9, 15]
+
+KI Lack     1: [1]
+KI Extr     1: [7]
+KI Real     2: [1, 5]
+KI Calc     2: [5, 7]
+
+----Report rows for node Size ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     1: [11]
+KI Real     0: []
+KI Calc     1: [11]
+
+----Report rows for node Yhp1 ------
+KO Lack     2: [5, 7]
+KO Extr     0: []
+KO Real     2: [5, 7]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+Clb5                 - Correct: KO:        0.0 | KI :     2.9168 - Incorrect KO:     0.4167 | KI:     3.1668
+Cln2                 - Correct: KO:    -0.4167 | KI :     2.9168 - Incorrect KO:        0.0 | KI:     2.7501
+SMBF                 - Correct: KO:    -0.4167 | KI :     0.8334 - Incorrect KO:        0.0 | KI:     1.0834
+Start                - Correct: KO:    -0.4167 | KI :     0.4167 - Incorrect KO:        0.0 | KI:     0.8334
+Cdc14                - Correct: KO:       1.25 | KI :    -0.4167 - Incorrect KO:        0.0 | KI:        0.0
+Clb2                 - Correct: KO:    -0.4167 | KI :     4.5835 - Incorrect KO:        0.0 | KI:     0.4167
+Cdc20                - Correct: KO:       1.25 | KI :    -0.4167 - Incorrect KO:        0.0 | KI:     0.8334
+MEN                  - Correct: KO:       1.25 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+FEAR                 - Correct: KO:       1.25 | KI :        0.0 - Incorrect KO:        1.0 | KI:     0.8334
+Whi5                 - Correct: KO:     0.8334 | KI :    -0.4167 - Incorrect KO:       0.25 | KI:        0.0
+SpindleCP            - Correct: KO:       1.25 | KI :    -0.4167 - Incorrect KO:        0.0 | KI:        0.0
+SFF                  - Correct: KO:       1.25 | KI :     0.4167 - Incorrect KO:     1.8334 | KI:     0.8334
+Cdh1                 - Correct: KO:       1.25 | KI :    -0.4167 - Incorrect KO:     0.8334 | KI:        0.0
+Swe1                 - Correct: KO:     0.4167 | KI :    -0.4167 - Incorrect KO:     0.4167 | KI:     0.8333
+Cln3                 - Correct: KO:        0.0 | KI :     0.8334 - Incorrect KO:        0.0 | KI:       0.25
+BuddingCP            - Correct: KO:    -0.4167 | KI :     0.4167 - Incorrect KO:     0.8333 | KI:     0.4167
+Size                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:       0.25
+Yhp1                 - Correct: KO:     0.4167 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+-----KO RANKING COMPARISON-----
+1	Sic1
+2	SFF
+3	Swi5, FEAR
+4	Cdh1
+5	BuddingCP
+6	Clb5, Swe1
+7	Whi5
+8	Cln2, SMBF, Start, Cdc14, Clb2, Cdc20
+	MEN, SpindleCP, Cln3, Size, Yhp1
+REFERENCE:
+1	Sic1
+2	SpindleCP, Cdc14, Cdc20, Cdh1, FEAR, MEN
+	SFF
+3	Swi5
+4	Whi5
+5	BuddingCP, Start, Clb2, Cln2, SMBF
+6	Swe1, Yhp1
+7	Size, Clb5, Cln3
+=======
+-----KI RANKING COMPARISON-----
+1	Clb5
+2	Cln2
+3	SMBF
+4	Start, Cdc20, FEAR, SFF
+5	Swe1
+6	Sic1
+7	Clb2, BuddingCP
+8	Cln3, Size
+9	Swi5, Cdc14, MEN, Whi5, SpindleCP, Cdh1
+	Yhp1
+REFERENCE:
+1	Clb2
+2	Clb5, Cln2
+3	Cln3, SMBF
+4	BuddingCP
+5	SpindleCP
+6	Start
+7	Cdc14, Cdc20, Cdh1
+8	SFF
+9	Sic1, Swe1, Whi5
+10	Size, FEAR, MEN, Swi5, Yhp1
+============
+Relative_RMSE_KO_is  0.06989670957920693
+Relative_RMSE_KI_is  0.10672278482123673
+NDCG_KO_is  0.9648
+NDCG_KI_is  0.815
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             20.000       20.000
+Kendall tau-b                         0.332        0.446
+Spearman rho                          0.456        0.556
+Mean abs rank diff                    1.950        1.500
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.500        0.625
+         Precision@10                0.500        0.909
+         Recall@10                   1.000        0.667
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        0.000
+  Top-2  groups Jaccard            0.250        0.667
+  Top-3  groups Jaccard            0.444        0.600
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.6562
+===============MODEL information===============
+NUMBER OF INPUT: 	 4
+NUMBER OF NODES: 	 20
+NUMBER OF EDGES: 	 42
+NUMBER OF SCCs: 	 6
+NUMBER OF aFAS: 	 8
+===============TIME information===============
+TIME process heading: 0.0018090829980792478
+TIME generate input states: 0.0002765829995041713
+TIME convert to BBN (Propagation mode): 0.005187834001844749
+TIME to fully simulate original network (if Test): 0.04887083399808034
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.06340891600120813
+TIME generating table 0.0004722500016214326
+TIME calculating Shapley values for input nodes: 6.620900239795446e-05
+TIME propagate (in Propagation mode): 0.8039022080047289
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0
+TIME simulate perturbations full if Test: 1.3926077500073006
+TIME total for Propagation: 0.8751230830093846
+TIME total for FULLY Simulation: 1.4434392499970272
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0.046875
+Average error for KI values: 0.0625
+-----------TOTAL RUNNING TIME---------------
+2.4997271669999463
+
+[exit code: 0]

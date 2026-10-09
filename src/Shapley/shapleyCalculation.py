@@ -1,6 +1,6 @@
 import math
 from Shapley.exceptions import UnknownError
-from Shapley.utilities import subsets
+from Shapley.utilities import subsets, decimal_pairs
 
 def extractPhe(inputnames, outputname, outputstates, debug=False):
     """
@@ -46,6 +46,40 @@ def extractPhe(inputnames, outputname, outputstates, debug=False):
         else:
             statisticgen[frozengen] += 1
     return genphe
+
+
+def calSV4InputFromTable(table, sortedinputs, outputname, debug=False):
+    korows, kirows = dict(), dict()
+    kovalues, kivalues = dict(),dict() 
+    for input in sortedinputs:
+        koset, kiset = set(), set()
+        kovalue, kivalue = 0.0, 0.0
+        # now find all the input configuration with input presented and the corresponding configuration with input absent
+        for predec, absdec in  decimal_pairs(sortedinputs, input):
+            # print(f"Calculating Shapley value for input node {input} with pair {predec}, {absdec}")
+            if predec in table and absdec in table: 
+                vko, vki = 0.0, 0.0
+                try:
+                    vko = table[predec][outputname] - table[absdec][outputname]
+                    vki = table[absdec][outputname] - table[predec][outputname]
+                except:
+                    print(f"ERROR in calSV4InputFromTable: cannot find {outputname} in the state")
+                if vko != 0:
+                    koset.add(predec)
+                    kovalue += vko*table[predec]['PROP']
+                if vki != 0:
+                    kiset.add(absdec) 
+                    kivalue += vki*table[absdec]['PROP']
+            else:
+                if debug:
+                    print(f"Missing pair {predec}, {absdec} to calculate Shapley value for input node {input}")
+            
+        korows[input] = sorted(list(koset))
+        kirows[input] = sorted(list(kiset))
+        kovalues[input] = kovalue
+        kivalues[input] = kivalue
+        print(f"Shapley value for input node {input} is {round(kovalue, 4)}, {round(kivalue, 4)} with {len(koset)} KO rows and {len(kiset)} KI rows")
+    return korows, kirows, kovalues, kivalues 
 
 
 def calKSV4Input(genphe, inputnames, outputname, knockin=False, mode = 'Shapley', simtable = None,  debug=False):
@@ -133,7 +167,7 @@ def calKSV4Input(genphe, inputnames, outputname, knockin=False, mode = 'Shapley'
     else:
         return shaps
 
-def calKSV(intactgenphe, knockoutgenphes, outputname, numinput, mode = 'Shapley', simtable=None, inputnames=None, debug=False):
+def calKSVVanilla(intactgenphe, knockoutgenphes, outputname, numinput, mode = 'Shapley', simtable=None, inputnames=None, debug=False):
     """
     Calculate Shapley values for intermediate species based on their contributions to output species.
     Args:

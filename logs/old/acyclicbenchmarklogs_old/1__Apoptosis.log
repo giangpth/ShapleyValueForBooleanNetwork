@@ -1,0 +1,528 @@
+The expression file is data/acyclicbenchmark/1.txt
+The interested output is: 
+Apoptosis
+List of all species:
+{'cFLIP', 'BID', 'TRAF2', 'Cas7', 'Apoptosis', 'TRAF', 'RIP', 'Apaf1', 'APC', 'PI3K', 'BclX', 'Mito', 'p53', 'BAD', 'DNADamageEvent', 'Cas9', 'A20', 'Cas8', 'TRADD', 'Cas3', 'AKT', 'JNK', 'PIP2', 'TNFR1', 'MEKK1', 'IkB', 'NIK', 'Cas12', 'Cas6', 'FADD', 'IKK', 'TNFR2', 'PTEN', 'NFkB', 'PIP3', 'TNF', 'GFR', 'Mdm2', 'IAP', 'GF', 'JNKK'}
+-----Input names-----
+{'NFkB', 'TNF', 'GF'}
+----Intermediate nodes-----
+{'cFLIP', 'BID', 'TRAF2', 'Cas7', 'Apoptosis', 'TRAF', 'Apaf1', 'APC', 'PI3K', 'BclX', 'Mito', 'p53', 'BAD', 'IAP', 'DNADamageEvent', 'Cas9', 'A20', 'Cas8', 'TRADD', 'Cas3', 'AKT', 'JNK', 'PIP2', 'TNFR1', 'MEKK1', 'IkB', 'NIK', 'Cas12', 'Cas6', 'FADD', 'IKK', 'TNFR2', 'PTEN', 'PIP3', 'GFR', 'Mdm2', 'RIP', 'JNKK'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['GF', 'NFkB', 'TNF']
+Sorted input names
+['GF', 'NFkB', 'TNF']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['A20', 'AKT', 'APC', 'Apaf1', 'Apoptosis', 'BAD', 'BID', 'BclX', 'Cas12', 'Cas3', 'Cas6', 'Cas7', 'Cas8', 'Cas9', 'DNADamageEvent', 'FADD', 'GFR', 'IAP', 'IKK', 'IkB', 'JNK', 'JNKK', 'MEKK1', 'Mdm2', 'Mito', 'NIK', 'PI3K', 'PIP2', 'PIP3', 'PTEN', 'RIP', 'TNFR1', 'TNFR2', 'TRADD', 'TRAF', 'TRAF2', 'cFLIP', 'p53']
+There are 38 intermediate nodes with the range of inter: 0 274877906943
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.04755401611328125 seconds===
+----Input knockout shapley value-----
+('NFkB', -0.3333)
+('TNF', 0.3333)
+('GF', 1.6667)
+----Input knockIN shapley value-----
+('NFkB', 0.3333)
+('TNF', -1.0)
+('GF', -1.6667)
+-------Now perform the knockout procedure to original network-------
+Knockout cFLIP
+Knockout BID
+Knockout TRAF2
+Knockout Cas7
+Knockout TRAF
+Knockout Apaf1
+Knockout APC
+Knockout PI3K
+Knockout BclX
+Knockout Mito
+Knockout p53
+Knockout BAD
+Knockout IAP
+Knockout DNADamageEvent
+Knockout Cas9
+Knockout A20
+Knockout Cas8
+Knockout TRADD
+Knockout Cas3
+Knockout AKT
+Knockout JNK
+Knockout PIP2
+Knockout TNFR1
+Knockout MEKK1
+Knockout IkB
+Knockout NIK
+Knockout Cas12
+Knockout Cas6
+Knockout FADD
+Knockout IKK
+Knockout TNFR2
+Knockout PTEN
+Knockout PIP3
+Knockout GFR
+Knockout Mdm2
+Knockout RIP
+Knockout JNKK
+----KNOCKOUT VALUE for output Apoptosis----
+{'A20': 0.0, 'AKT': 0.0, 'APC': 0.0, 'Apaf1': 0.0, 'BAD': 0.0, 'BID': 0.0, 'BclX': 0.0, 'Cas12': 0.0, 'Cas3': 2.3333, 'Cas6': 0.0, 'Cas7': 0.0, 'Cas8': 0.6667, 'Cas9': 0.0, 'DNADamageEvent': 2.3333, 'FADD': 0.0, 'GFR': 0.0, 'IAP': -0.3333, 'IKK': 0.0, 'IkB': 0.0, 'JNK': 0.0, 'JNKK': 0.0, 'MEKK1': 0.0, 'Mdm2': 0.0, 'Mito': 0.0, 'NIK': 0.0, 'PI3K': 0.0, 'PIP2': 0.0, 'PIP3': 0.0, 'PTEN': 0.0, 'RIP': 0.0, 'TNFR1': 0.0, 'TNFR2': 0.0, 'TRADD': 0.0, 'TRAF': 0.0, 'TRAF2': 0.0, 'cFLIP': 0.0, 'p53': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin cFLIP
+Knockin BID
+Knockin TRAF2
+Knockin Cas7
+Knockin TRAF
+Knockin Apaf1
+Knockin APC
+Knockin PI3K
+Knockin BclX
+Knockin Mito
+Knockin p53
+Knockin BAD
+Knockin IAP
+Knockin DNADamageEvent
+Knockin Cas9
+Knockin A20
+Knockin Cas8
+Knockin TRADD
+Knockin Cas3
+Knockin AKT
+Knockin JNK
+Knockin PIP2
+Knockin TNFR1
+Knockin MEKK1
+Knockin IkB
+Knockin NIK
+Knockin Cas12
+Knockin Cas6
+Knockin FADD
+Knockin IKK
+Knockin TNFR2
+Knockin PTEN
+Knockin PIP3
+Knockin GFR
+Knockin Mdm2
+Knockin RIP
+Knockin JNKK
+----KNOCKIN VALUE for output Apoptosis----
+{'A20': 0.0, 'AKT': 0.0, 'APC': -1.0, 'Apaf1': 0.0, 'BAD': 0.0, 'BID': 0.0, 'BclX': 0.0, 'Cas12': 0.0, 'Cas3': -1.6667, 'Cas6': 0.0, 'Cas7': 0.0, 'Cas8': -1.0, 'Cas9': 0.0, 'DNADamageEvent': -1.6667, 'FADD': -1.0, 'GFR': 0.0, 'IAP': 2.3333, 'IKK': 0.0, 'IkB': 0.0, 'JNK': 0.0, 'JNKK': 0.0, 'MEKK1': 0.0, 'Mdm2': 0.0, 'Mito': 0.0, 'NIK': 0.0, 'PI3K': 0.0, 'PIP2': 0.0, 'PIP3': 0.0, 'PTEN': 0.0, 'RIP': 0.0, 'TNFR1': 0.0, 'TNFR2': 0.0, 'TRADD': 0.0, 'TRAF': 0.6667, 'TRAF2': 0.0, 'cFLIP': 0.6667, 'p53': 0.0}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 3.310619831085205 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'NFkB', 'TNF', 'GF'}
+Ordinary nodes are 
+{'cFLIP', 'BID', 'TRAF2', 'Cas7', 'Apoptosis', 'TRAF', 'RIP', 'Apaf1', 'APC', 'PI3K', 'BclX', 'Mito', 'p53', 'BAD', 'DNADamageEvent', 'Cas9', 'A20', 'Cas8', 'TRADD', 'Cas3', 'AKT', 'JNK', 'PIP2', 'TNFR1', 'MEKK1', 'IkB', 'NIK', 'Cas12', 'Cas6', 'FADD', 'IKK', 'TNFR2', 'PTEN', 'NFkB', 'PIP3', 'TNF', 'GFR', 'Mdm2', 'IAP', 'GF', 'JNKK'}
+Extranodes added after removing cycles are 
+[]
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['GF', 'NFkB', 'TNF']
+----Generate table from output----
+-----Calculated value of input nodes-----
+GF                   			 KO:     1.6667 | KI:    -1.6667
+NFkB                 			 KO:    -0.3333 | KI:     0.3333
+TNF                  			 KO:     0.3333 | KI:       -1.0
+=======PROPAGATE FOR OUTPUT Apoptosis=======
+----Master diamonds-----
+{'_XTR_1_': 'Cas3', '_XTR_20_': '_XTR_4_', 'GF': 'Cas3', 'NFkB': 'Cas3', '_XTR_26_': 'Cas3', 'TNF': 'Cas3', 'TRADD': '_XTR_4_', '_XTR_32_': 'Mito', 'JNK': '_XTR_48_', 'p53': '_XTR_48_', 'Cas8': '_XTR_4_', '_XTR_9_': '_XTR_48_', 'AKT': '_XTR_48_', 'RIP': '_XTR_48_', 'GFR': '_XTR_48_'}
+
+
+--------PROPAGATION WITH ACYCLIC NETWORK--------
+{'Apoptosis': {0, 1, 2, 3, 4, 5, 6, 7}, 'DNADamageEvent': {0, 1, 2, 3, 4, 5, 6, 7}, 'Cas3': {0, 1, 2, 3, 4, 5, 6, 7}, '_XTR_4_': {0, 2, 3, 4, 6}, '_XTR_5_': {0, 1, 2, 3}, '_XTR_2_': {0, 2, 3, 4, 6}, '_XTR_3_': {0, 2, 3}, '_XTR_1_': {1, 3, 4, 5, 6, 7}, 'Cas8': {0, 4, 6}, 'APC': {0}, 'TNF': {0, 1}, 'IAP': {1, 3, 4, 5, 6, 7}, '_XTR_21_': {0, 4, 6}, '_XTR_22_': {0}, '_XTR_49_': {0}, '_XTR_41_': {1, 3, 4, 6}, '_XTR_43_': {3}, '_XTR_20_': {4, 6}, 'FADD': {0}, '_XTR_48_': set(), '_XTR_26_': {3, 6}, '_XTR_42_': {3}, 'GF': {0, 2, 3, 4, 6, 7}, 'cFLIP': {4, 6}, 'TRADD': set(), 'Mito': set(), 'Apaf1': set(), 'NFkB': {1, 3}, 'TRAF': {4, 6}, 'TNFR1': set(), 'BID': set(), '_XTR_32_': set(), 'p53': set(), '_XTR_33_': set(), '_XTR_35_': set(), 'BclX': set(), 'JNK': set(), '_XTR_31_': set(), '_XTR_34_': set(), '_XTR_53_': set(), '_XTR_54_': set(), 'JNKK': set(), '_XTR_52_': set(), 'BAD': set(), 'MEKK1': set(), '_XTR_9_': set(), 'RIP': set(), 'AKT': set(), 'PIP3': set(), '_XTR_25_': set(), 'PI3K': set(), 'PIP2': set(), 'GFR': set()}
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+AKT                  			 KO:        0.0 | KI:        0.0
+APC                  			 KO:        0.0 | KI:       -1.0
+Apaf1                			 KO:        0.0 | KI:        0.0
+Apoptosis            			 KO:     2.3332 | KI:    -1.6666
+BAD                  			 KO:        0.0 | KI:        0.0
+BID                  			 KO:        0.0 | KI:        0.0
+BclX                 			 KO:        0.0 | KI:        0.0
+Cas3                 			 KO:     2.3332 | KI:    -1.6666
+Cas8                 			 KO:     0.6666 | KI:       -1.0
+DNADamageEvent       			 KO:     2.3332 | KI:    -1.6666
+FADD                 			 KO:        0.0 | KI:       -1.0
+GF                   			 KO:     1.6666 | KI:    -1.6666
+GFR                  			 KO:        0.0 | KI:        0.0
+IAP                  			 KO:    -0.3333 | KI:     2.3332
+JNK                  			 KO:        0.0 | KI:        0.0
+JNKK                 			 KO:        0.0 | KI:        0.0
+MEKK1                			 KO:        0.0 | KI:        0.0
+Mito                 			 KO:        0.0 | KI:        0.0
+NFkB                 			 KO:    -0.3333 | KI:     0.3333
+PI3K                 			 KO:        0.0 | KI:        0.0
+PIP2                 			 KO:        0.0 | KI:        0.0
+PIP3                 			 KO:        0.0 | KI:        0.0
+RIP                  			 KO:        0.0 | KI:        0.0
+TNF                  			 KO:     0.3333 | KI:       -1.0
+TNFR1                			 KO:        0.0 | KI:        0.0
+TRADD                			 KO:        0.0 | KI:        0.0
+TRAF                 			 KO:        0.0 | KI:     0.6666
+cFLIP                			 KO:        0.0 | KI:     0.6666
+p53                  			 KO:        0.0 | KI:        0.0
+KO RANKING OF NODES:
+1	Apoptosis, DNADamageEvent, Cas3
+2	Cas8
+3	IAP
+4	APC, FADD, cFLIP, TRADD, Mito, Apaf1
+	TRAF, TNFR1, BID, p53, BclX, JNK
+	JNKK, BAD, MEKK1, RIP, AKT, PIP3
+	PI3K, PIP2, GFR
+=======
+KI RANKING OF NODES:
+1	IAP
+2	Apoptosis, DNADamageEvent, Cas3, GF
+3	Cas8, APC, TNF, FADD
+4	cFLIP, TRAF
+5	NFkB
+6	TRADD, Mito, Apaf1, TNFR1, BID, p53
+	BclX, JNK, JNKK, BAD, MEKK1, RIP
+	AKT, PIP3, PI3K, PIP2, GFR
+=======
+NUMBER OF NODES: 41
+NUMBER OF INPUTS: 3
+NUMBER OF EDGES: 69
+TIME process heading: 0.0019137859344482422
+TIME simulate original network: 0.04755401611328125
+TIME perform original analysis process: 3.310619831085205
+TIME perform propagation: 0.39052414894104004
+{'Apoptosis': {0, 1, 2, 3, 4, 5, 6, 7}, 'DNADamageEvent': {0, 1, 2, 3, 4, 5, 6, 7}, 'Cas3': {0, 1, 2, 3, 4, 5, 6, 7}, '_XTR_4_': {0, 2, 3, 4, 6}, '_XTR_5_': {0, 1, 2, 3}, '_XTR_2_': {0, 2, 3, 4, 6}, '_XTR_3_': {0, 2, 3}, '_XTR_1_': {1, 3, 4, 5, 6, 7}, 'Cas8': {0, 4, 6}, 'APC': {0}, 'TNF': {0, 1}, 'IAP': {1, 3, 4, 5, 6, 7}, '_XTR_21_': {0, 4, 6}, '_XTR_22_': {0}, '_XTR_49_': {0}, '_XTR_41_': {1, 3, 4, 6}, '_XTR_43_': {3}, '_XTR_20_': {4, 6}, 'FADD': {0}, '_XTR_48_': set(), '_XTR_26_': {3, 6}, '_XTR_42_': {3}, 'GF': {0, 2, 3, 4, 6, 7}, 'cFLIP': {4, 6}, 'TRADD': set(), 'Mito': set(), 'Apaf1': set(), 'NFkB': {1, 3}, 'TRAF': {4, 6}, 'TNFR1': set(), 'BID': set(), '_XTR_32_': set(), 'p53': set(), '_XTR_33_': set(), '_XTR_35_': set(), 'BclX': set(), 'JNK': set(), '_XTR_31_': set(), '_XTR_34_': set(), '_XTR_53_': set(), '_XTR_54_': set(), 'JNKK': set(), '_XTR_52_': set(), 'BAD': set(), 'MEKK1': set(), '_XTR_9_': set(), 'RIP': set(), 'AKT': set(), 'PIP3': set(), '_XTR_25_': set(), 'PI3K': set(), 'PIP2': set(), 'GFR': set()}
+{'NFkB': {1, 3}, 'TNF': {0, 1}, 'GF': {0, 2, 3, 4, 6, 7}, 'cFLIP': {4, 6}, 'BID': set(), 'TRAF2': set(), 'Cas7': set(), 'TRAF': {4, 6}, 'Apaf1': set(), 'APC': {0}, 'PI3K': set(), 'BclX': set(), 'Mito': set(), 'p53': set(), 'BAD': set(), 'IAP': {1, 3, 4, 5, 6, 7}, 'DNADamageEvent': {0, 1, 2, 3, 4, 5, 6, 7}, 'Cas9': set(), 'A20': set(), 'Cas8': {0, 4, 6}, 'TRADD': set(), 'Cas3': {0, 1, 2, 3, 4, 5, 6, 7}, 'AKT': set(), 'JNK': set(), 'PIP2': set(), 'TNFR1': set(), 'MEKK1': set(), 'IkB': set(), 'NIK': set(), 'Cas12': set(), 'Cas6': set(), 'FADD': {0}, 'IKK': set(), 'TNFR2': set(), 'PTEN': set(), 'PIP3': set(), 'GFR': set(), 'Mdm2': set(), 'RIP': set(), 'JNKK': set()}
+There are 12 unreachable nodes, they are:
+{'TRAF2', 'Cas7', 'Cas9', 'A20', 'IkB', 'NIK', 'Cas12', 'Cas6', 'IKK', 'TNFR2', 'PTEN', 'Mdm2'}
+A20
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+AKT
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+APC
+Lack      0: []
+Extra     0: []
+Real      1: [0]
+Prop      1: [0]
+
+Apaf1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BAD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BID
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+BclX
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas12
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas3
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+Cas6
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas7
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cas8
+Lack      0: []
+Extra     0: []
+Real      3: [0, 4, 6]
+Prop      3: [0, 4, 6]
+
+Cas9
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+DNADamageEvent
+Lack      0: []
+Extra     0: []
+Real      8: [0, 1, 2, 3, 4, 5, 6, 7]
+Prop      8: [0, 1, 2, 3, 4, 5, 6, 7]
+
+FADD
+Lack      0: []
+Extra     0: []
+Real      1: [0]
+Prop      1: [0]
+
+GF
+Lack      0: []
+Extra     0: []
+Real      6: [0, 2, 3, 4, 6, 7]
+Prop      6: [0, 2, 3, 4, 6, 7]
+
+GFR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IAP
+Lack      0: []
+Extra     0: []
+Real      6: [1, 3, 4, 5, 6, 7]
+Prop      6: [1, 3, 4, 5, 6, 7]
+
+IKK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+IkB
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JNK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+JNKK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MEKK1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mdm2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Mito
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+NFkB
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+NIK
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PI3K
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PIP2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PIP3
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+PTEN
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+RIP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TNF
+Lack      0: []
+Extra     0: []
+Real      2: [0, 1]
+Prop      2: [0, 1]
+
+TNFR1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TNFR2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TRADD
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+TRAF
+Lack      0: []
+Extra     0: []
+Real      2: [4, 6]
+Prop      2: [4, 6]
+
+TRAF2
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+cFLIP
+Lack      0: []
+Extra     0: []
+Real      2: [4, 6]
+Prop      2: [4, 6]
+
+p53
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+-----KO RANKING COMPARISON-----
+1	DNADamageEvent, Cas3
+2	GF
+3	Cas8
+4	TNF
+5	IAP, NFkB
+6	APC, FADD, cFLIP, TRADD, Mito, Apaf1
+	TRAF, TNFR1, BID, p53, BclX, JNK
+	JNKK, BAD, MEKK1, RIP, AKT, PIP3
+	PI3K, PIP2, GFR, TRAF2, Cas7, Cas9
+	A20, IkB, NIK, Cas12, Cas6, IKK
+	TNFR2, PTEN, Mdm2
+REFERENCE:
+1	DNADamageEvent, Cas3
+2	GF
+3	Cas8
+4	NFkB
+5	TNF
+6	IAP
+7	cFLIP, BID, TRAF2, Cas7, TRAF, Apaf1
+	APC, PI3K, BclX, Mito, p53, BAD
+	Cas9, A20, TRADD, AKT, JNK, PIP2
+	TNFR1, MEKK1, IkB, NIK, Cas12, Cas6
+	FADD, IKK, TNFR2, PTEN, PIP3, GFR
+	Mdm2, RIP, JNKK
+=======
+-----KI RANKING COMPARISON-----
+1	IAP
+2	DNADamageEvent, Cas3, GF
+3	Cas8, APC, TNF, FADD
+4	cFLIP, TRAF
+5	NFkB
+6	TRADD, Mito, Apaf1, TNFR1, BID, p53
+	BclX, JNK, JNKK, BAD, MEKK1, RIP
+	AKT, PIP3, PI3K, PIP2, GFR, TRAF2
+	Cas7, Cas9, A20, IkB, NIK, Cas12
+	Cas6, IKK, TNFR2, PTEN, Mdm2
+REFERENCE:
+1	IAP
+2	GF, DNADamageEvent, Cas3
+3	TNF, APC, Cas8, FADD
+4	cFLIP, TRAF
+5	NFkB
+6	BID, TRAF2, Cas7, Apaf1, PI3K, BclX
+	Mito, p53, BAD, Cas9, A20, TRADD
+	AKT, JNK, PIP2, TNFR1, MEKK1, IkB
+	NIK, Cas12, Cas6, IKK, TNFR2, PTEN
+	PIP3, GFR, Mdm2, RIP, JNKK
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             40.000       40.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  1.0
+Average number of correct rows after binarization: 1.0 
+Average DNCG after binarization: 1.0 
+-----------TOTAL RUNNING TIME---------------
+4.020131666096859

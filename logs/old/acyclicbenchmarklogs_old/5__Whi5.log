@@ -1,0 +1,325 @@
+The expression file is data/acyclicbenchmark/5.txt
+The interested output is: 
+Whi5
+List of all species:
+{'SpindleCP', 'Cln2', 'Size', 'FEAR', 'Swi5', 'Cdh1', 'Sic1', 'Clb5', 'Whi5', 'SFF', 'Cdc14', 'Cln3', 'BuddingCP', 'Swe1', 'Yhp1', 'SMBF', 'Cdc20', 'MEN', 'Start', 'Clb2'}
+-----Input names-----
+{'Size', 'BuddingCP', 'SpindleCP', 'Start'}
+----Intermediate nodes-----
+{'Cln3', 'Swe1', 'Cln2', 'FEAR', 'Yhp1', 'Swi5', 'Cdh1', 'SMBF', 'Sic1', 'Cdc20', 'MEN', 'Clb5', 'Whi5', 'SFF', 'Cdc14', 'Clb2'}
+Now arrange layout of the original network for visualization
+INPUT NAMES LIST:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+Sorted input names
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['Cdc14', 'Cdc20', 'Cdh1', 'Clb2', 'Clb5', 'Cln2', 'Cln3', 'FEAR', 'MEN', 'SFF', 'SMBF', 'Sic1', 'Swe1', 'Swi5', 'Whi5', 'Yhp1']
+There are 16 intermediate nodes with the range of inter: 0 65535
+----Generate table from output----
+======Time for SIMULATING ORIGINAL NETWORK : 0.03252220153808594 seconds===
+----Input knockout shapley value-----
+('Size', -1.25)
+('BuddingCP', 0.4167)
+('SpindleCP', 0.0)
+('Start', -2.0833)
+----Input knockIN shapley value-----
+('Size', 0.4167)
+('BuddingCP', -0.4167)
+('SpindleCP', 0.0)
+('Start', 2.0833)
+-------Now perform the knockout procedure to original network-------
+Knockout Cln3
+Knockout Swe1
+Knockout Cln2
+Knockout FEAR
+Knockout Yhp1
+Knockout Swi5
+Knockout Cdh1
+Knockout SMBF
+Knockout Sic1
+Knockout Cdc20
+Knockout MEN
+Knockout Clb5
+Knockout SFF
+Knockout Cdc14
+Knockout Clb2
+----KNOCKOUT VALUE for output Whi5----
+{'Cdc14': 0.0, 'Cdc20': 0.0, 'Cdh1': 0.0, 'Clb2': 0.0, 'Clb5': 0.0, 'Cln2': -0.8333, 'Cln3': -1.25, 'FEAR': 0.0, 'MEN': 0.0, 'SFF': 0.0, 'SMBF': -0.4167, 'Sic1': 0.0, 'Swe1': -0.4167, 'Swi5': 0.0, 'Yhp1': 0.0}
+
+
+-------Now perform the KNOCKIN procedure to intermediate nodes-------
+Knockin Cln3
+Knockin Swe1
+Knockin Cln2
+Knockin FEAR
+Knockin Yhp1
+Knockin Swi5
+Knockin Cdh1
+Knockin SMBF
+Knockin Sic1
+Knockin Cdc20
+Knockin MEN
+Knockin Clb5
+Knockin SFF
+Knockin Cdc14
+Knockin Clb2
+----KNOCKIN VALUE for output Whi5----
+{'Cdc14': 0.0, 'Cdc20': 0.0, 'Cdh1': 0.0, 'Clb2': -0.4167, 'Clb5': 0.0, 'Cln2': 0.4167, 'Cln3': 0.4167, 'FEAR': 0.0, 'MEN': 0.0, 'SFF': 0.0, 'SMBF': 0.4167, 'Sic1': 0.0, 'Swe1': 0.0, 'Swi5': 0.0, 'Yhp1': -1.25}
+
+
+======Time for FULLY SIMULATION ANALYSIS IS : 0.9206809997558594 seconds===
+original.html
+----------WITH ACYCLIC FLAG-------------
+acyclicnetwork.html
+-------------Now convert the acyclic network to the binary network---------------
+
+
+-------WORKING WITH BINARY NETWORK-------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'Size', 'BuddingCP', 'SpindleCP', 'Start'}
+Ordinary nodes are 
+{'SpindleCP', 'Cln2', 'Size', 'FEAR', 'Swi5', 'Cdh1', 'Sic1', 'Clb5', 'Whi5', 'SFF', 'Cdc14', 'Cln3', 'BuddingCP', 'Swe1', 'Yhp1', 'SMBF', 'Cdc20', 'MEN', 'Start', 'Clb2'}
+Extranodes added after removing cycles are 
+[]
+Recycling the binary interaction network by adding edge to extra nodes
+binary.html
+----Simulate binary network----
+INPUT NAMES LIST:
+['BuddingCP', 'Size', 'SpindleCP', 'Start']
+----Generate table from output----
+-----Calculated value of input nodes-----
+BuddingCP            			 KO:     0.4167 | KI:    -0.4167
+Size                 			 KO:      -1.25 | KI:     0.4167
+SpindleCP            			 KO:        0.0 | KI:        0.0
+Start                			 KO:    -2.0833 | KI:     2.0833
+=======PROPAGATE FOR OUTPUT Whi5=======
+----Master diamonds-----
+{'Cln2': 'Whi5', 'Start': 'Whi5', 'Cln3': 'Whi5', 'SMBF': 'Whi5', 'BuddingCP': 'Whi5', 'Clb2': 'Whi5', '_XTR_51_': 'Whi5', 'Size': 'Whi5', 'SpindleCP': 'Whi5'}
+
+
+--------PROPAGATION WITH ACYCLIC NETWORK--------
+{'Whi5': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, '_XTR_36_': {1, 3, 5, 7, 9, 11, 12, 13, 14, 15}, '_XTR_39_': {1, 3, 5, 7, 13, 15}, '_XTR_35_': {1, 3, 5, 7, 9, 11, 12, 13, 14, 15}, '_XTR_38_': {1, 3, 5, 7, 13, 15}, '_XTR_33_': {9, 11, 12, 13, 14, 15}, '_XTR_34_': {1, 3, 5, 7, 9, 11, 12, 14}, '_XTR_37_': {13, 15}, 'Cln2': {1, 3, 5, 7, 9, 11}, 'Cln3': {9, 11, 13, 15}, 'SMBF': {11, 1, 3, 9}, '_XTR_49_': {13, 15}, 'Start': {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15}, '_XTR_42_': {1, 3, 9, 11}, 'Size': {9, 11, 13, 15}, 'Yhp1': {13, 15}, 'Clb2': {1, 3}, 'BuddingCP': {3, 9, 11, 1}, '_XTR_58_': {1, 3}, '_XTR_51_': {1, 3}, '_XTR_55_': {1, 3}, '_XTR_57_': set(), 'Swe1': {1, 3}, '_XTR_52_': {1, 3}, '_XTR_54_': set(), '_XTR_56_': set(), '_XTR_53_': set(), 'SpindleCP': set()}
+AVE_CORRECT_ROWS_INPUT: 1.0
+=========================
+PROPAGATED VALUES:
+BuddingCP            			 KO:     0.4167 | KI:    -0.4167
+Clb2                 			 KO:        0.0 | KI:    -0.4167
+Cln2                 			 KO:    -0.8334 | KI:     0.4167
+Cln3                 			 KO:      -1.25 | KI:     0.4167
+SMBF                 			 KO:    -0.4167 | KI:     0.4167
+Size                 			 KO:      -1.25 | KI:     0.4167
+SpindleCP            			 KO:        0.0 | KI:        0.0
+Start                			 KO:    -2.0834 | KI:     2.0834
+Swe1                 			 KO:    -0.4167 | KI:        0.0
+Whi5                 			 KO:     2.9168 | KI:    -2.0834
+Yhp1                 			 KO:        0.0 | KI:      -1.25
+KO RANKING OF NODES:
+1	Whi5
+2	Cln3
+3	Cln2
+4	SMBF, Swe1
+5	Yhp1, Clb2
+=======
+KI RANKING OF NODES:
+1	Whi5
+2	Start
+3	Yhp1
+4	Cln2, Cln3, SMBF, Size
+5	Clb2, BuddingCP
+6	Swe1, SpindleCP
+=======
+NUMBER OF NODES: 20
+NUMBER OF INPUTS: 4
+NUMBER OF EDGES: 42
+TIME process heading: 0.0012249946594238281
+TIME simulate original network: 0.03252220153808594
+TIME perform original analysis process: 0.9206809997558594
+TIME perform propagation: 0.41002917289733887
+{'Whi5': {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, '_XTR_36_': {1, 3, 5, 7, 9, 11, 12, 13, 14, 15}, '_XTR_39_': {1, 3, 5, 7, 13, 15}, '_XTR_35_': {1, 3, 5, 7, 9, 11, 12, 13, 14, 15}, '_XTR_38_': {1, 3, 5, 7, 13, 15}, '_XTR_33_': {9, 11, 12, 13, 14, 15}, '_XTR_34_': {1, 3, 5, 7, 9, 11, 12, 14}, '_XTR_37_': {13, 15}, 'Cln2': {1, 3, 5, 7, 9, 11}, 'Cln3': {9, 11, 13, 15}, 'SMBF': {11, 1, 3, 9}, '_XTR_49_': {13, 15}, 'Start': {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15}, '_XTR_42_': {1, 3, 9, 11}, 'Size': {9, 11, 13, 15}, 'Yhp1': {13, 15}, 'Clb2': {1, 3}, 'BuddingCP': {3, 9, 11, 1}, '_XTR_58_': {1, 3}, '_XTR_51_': {1, 3}, '_XTR_55_': {1, 3}, '_XTR_57_': set(), 'Swe1': {1, 3}, '_XTR_52_': {1, 3}, '_XTR_54_': set(), '_XTR_56_': set(), '_XTR_53_': set(), 'SpindleCP': set()}
+{'Size': {9, 11, 13, 15}, 'BuddingCP': {3, 9, 11, 1}, 'SpindleCP': set(), 'Start': {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15}, 'Cln3': {9, 11, 13, 15}, 'Swe1': {1, 3}, 'Cln2': {1, 3, 5, 7, 9, 11}, 'FEAR': set(), 'Yhp1': {13, 15}, 'Swi5': set(), 'Cdh1': set(), 'SMBF': {11, 1, 3, 9}, 'Sic1': set(), 'Cdc20': set(), 'MEN': set(), 'Clb5': set(), 'SFF': set(), 'Cdc14': set(), 'Clb2': {1, 3}}
+There are 9 unreachable nodes, they are:
+{'FEAR', 'Swi5', 'Cdh1', 'Sic1', 'Cdc20', 'MEN', 'Clb5', 'SFF', 'Cdc14'}
+BuddingCP
+Lack      0: []
+Extra     0: []
+Real      4: [1, 3, 9, 11]
+Prop      4: [1, 3, 9, 11]
+
+Cdc14
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cdc20
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cdh1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Clb2
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+Clb5
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Cln2
+Lack      0: []
+Extra     0: []
+Real      6: [1, 3, 5, 7, 9, 11]
+Prop      6: [1, 3, 5, 7, 9, 11]
+
+Cln3
+Lack      0: []
+Extra     0: []
+Real      4: [9, 11, 13, 15]
+Prop      4: [9, 11, 13, 15]
+
+FEAR
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+MEN
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SFF
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+SMBF
+Lack      0: []
+Extra     0: []
+Real      4: [1, 3, 9, 11]
+Prop      4: [1, 3, 9, 11]
+
+Sic1
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Size
+Lack      0: []
+Extra     0: []
+Real      4: [9, 11, 13, 15]
+Prop      4: [9, 11, 13, 15]
+
+SpindleCP
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Start
+Lack      0: []
+Extra     0: []
+Real     12: [0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15]
+Prop     12: [0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15]
+
+Swe1
+Lack      0: []
+Extra     0: []
+Real      2: [1, 3]
+Prop      2: [1, 3]
+
+Swi5
+Lack      0: []
+Extra     0: []
+Real      0: []
+Prop      0: []
+
+Yhp1
+Lack      0: []
+Extra     0: []
+Real      2: [13, 15]
+Prop      2: [13, 15]
+
+-----KO RANKING COMPARISON-----
+1	Start
+2	Cln3, Size
+3	Cln2
+4	SMBF
+5	BuddingCP
+6	Swe1
+7	Yhp1, Clb2, SpindleCP, FEAR, Swi5, Cdh1
+	Sic1, Cdc20, MEN, Clb5, SFF, Cdc14
+REFERENCE:
+1	Start
+2	Size, Cln3
+3	Cln2
+4	BuddingCP
+5	Swe1, SMBF
+6	SpindleCP, FEAR, Yhp1, Swi5, Cdh1, Sic1
+	Cdc20, MEN, Clb5, SFF, Cdc14, Clb2
+=======
+-----KI RANKING COMPARISON-----
+1	Start
+2	Yhp1
+3	Cln2, Cln3, SMBF, Size
+4	Clb2, BuddingCP
+5	Swe1, SpindleCP, FEAR, Swi5, Cdh1, Sic1
+	Cdc20, MEN, Clb5, SFF, Cdc14
+REFERENCE:
+1	Start
+2	Yhp1
+3	Size
+4	BuddingCP
+5	Cln3, Cln2, SMBF
+6	Clb2
+7	SpindleCP, Swe1, FEAR, Swi5, Cdh1, Sic1
+	Cdc20, MEN, Clb5, SFF, Cdc14
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.0
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             19.000       19.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  1.0
+Average number of correct rows after binarization: 1.0 
+Average DNCG after binarization: 1.0 
+-----------TOTAL RUNNING TIME---------------
+1.6065656250575557

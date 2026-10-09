@@ -6,6 +6,66 @@ import networkx as nx
 from Shapley.Node import Node
 from Shapley.visualization import showNetwork 
 
+def sim1stepCombined(formulas, inputstate, extranodes = None, biformulas = None, debug=False):
+    """
+    Perform one synchronous simulation step for a Boolean network, work with both original and binarized network 
+    Args:
+        formulas (dict): A dictionary with species names as keys and their boolean formulas as values.
+        inputstate (dict): A dictionary with species names as keys and their current boolean states as values.
+        extranodes (dict): A list of extra nodes added to binarize the network (optional).
+        binformulas (list): A list of binary formulas of added nodes to binarize the network (optional).
+        debug (bool): If True, print debug information.
+    Returns:
+        dict: Updated inputstate after one synchronous simulation step.
+    """
+
+    ### This part is to simulate the original network with the original formulas
+    # run command to declare all the variables 
+    for spe in inputstate.keys():
+        command = str(spe) + ' = ' + str(inputstate[spe])
+        exec (command)
+    
+    # run all the formulas with a copy of the variables 
+    for term, formula in formulas.items():
+        res = getResult(formula, inputstate, debug)
+        command = str(term) + '_tem_ = ' + str(res)
+        exec(command)
+
+    # assign new value to real variables taking from value of copy variables 
+    for term in formulas.keys():
+        command = str(term) + ' = ' + str(term) + '_tem_'
+        exec(command)
+
+    # put back to inputstate to return 
+    for spe in list(inputstate):
+        command = 'inputstate[\'' + str(spe) + '\'] = ' + str(spe)
+        exec(command)
+    ### End simulating orignal network
+
+    ### This part is to infer the values of added nodes in binary network
+    # if extranodes:
+    extravalues = copy.deepcopy(inputstate)
+    if extranodes or biformulas:
+        # first inheriting the value of extranodes added to remove cycles 
+        for node in extranodes:
+            try:
+                rootname = node.split("_to_")[0] 
+                if rootname not in inputstate:
+                    print("IN Sim1step:There is no node named {} as the root node of {}".format(rootname, node))
+                extravalues[node] = inputstate[rootname]
+            except:
+                print("IN Sim1step:Cannot find the root {} of the extra node {}".format(rootname, node)) 
+                return
+                
+        # then infering the value of nodes added to binarize the network 
+        for bi_formula in biformulas:
+            bi_node = bi_formula['term'] 
+            if bi_node not in inputstate:
+                extravalues[bi_node] = getResult(bi_formula['formula'], extravalues, debug)
+            
+    return inputstate, extravalues
+    # return inputstate, dict()
+
 def sim1step(formulas, inputstate, debug=False):
     """
     Perform one simulation step for a Boolean network.
@@ -20,9 +80,9 @@ def sim1step(formulas, inputstate, debug=False):
         command = str(spe) + ' = ' + str(inputstate[spe])
         exec (command)
     
-    for term, biformula in formulas.items():
-        # print(term, biformula)
-        res = getResult(biformula, inputstate, debug)
+    for term, formula in formulas.items():
+        # print(term, formula)
+        res = getResult(formula, inputstate, debug)
         command = str(term) + '_tem_ = ' + str(res)
         exec(command)
     
@@ -215,20 +275,29 @@ def parseNuclearTerm(toprocess, debug=False):
         Node: The root node of the binary tree representing the boolean expression.
     """
     assert len(toprocess) >= 1, "Empty parathesis"
+    strfor = ''
+    for com in toprocess:
+        if type(com) == str:
+            strfor += com + " "
+        if type(com) == Node:
+            strfor += com.val + " "
     # print(toprocess)
     andcount = 0
     orcount = 0
     for word in toprocess:
         if type(word) == str:
             if word.upper() == "AND":
+                # print("AND count plus for", word.upper())
                 andcount +=1
             if word.upper() == "OR":
+                # print("OR count plus for", word.upper())
                 orcount += 1
 
     if andcount + orcount >= 2:
-        print("More than 1 binary operator, dont allow NOT")
+        print("More than 1 binary operator, dont allow NOT in formula: " + strfor)
+
     if andcount >= 1 and orcount >= 1:
-        assert False, "Non-homogenous binary operators {}".format(toprocess)
+        assert False, "Non-homogenous binary operators {}".format(" ".join(strfor))
 
     biopelist = ["AND", "OR"]
 
@@ -247,10 +316,10 @@ def parseNuclearTerm(toprocess, debug=False):
             return node 
         else:
             if debug:
-                print("Parsing binary operator with terms {}".format(toprocess))
+                print("Parsing binary operator with terms {}".format(strfor))
             # case of A and/or not B ( and/or B ...)
             if type(toprocess[0]) == str:
-                assert toprocess[0].upper() not in biopelist, "Stand alone binary operator found {}".format((toprocess))
+                assert toprocess[0].upper() not in biopelist, "Stand alone binary operator found {}".format((strfor))
             
             
             node = Node(toprocess[1].upper())
@@ -267,13 +336,13 @@ def parseNuclearTerm(toprocess, debug=False):
                 print("Node after adding left term")
                 node.display()
 
-            assert len(toprocess) >= 3, "Uncomplete binary operator found {}".format((toprocess))
+            assert len(toprocess) >= 3, "Uncomplete binary operator found {}".format((strfor))
             
             # case of "A and/or not B"
             if type(toprocess[2]) == str and toprocess[2].upper() == "NOT":
                 if debug:
-                    print("Parsing combined binary operator with NOT operator with term {}".format(toprocess))
-                assert len(toprocess) == 4, "Confusing term found: {}, add parentheses to clarify scope of NOT operator".format((toprocess))
+                    print("Parsing combined binary operator with NOT operator with term {}".format(strfor))
+                assert len(toprocess) == 4, "Confusing term found: {}, add parentheses to clarify scope of NOT operator".format((strfor))
                 morenode = Node("NOT") 
 
 
@@ -309,7 +378,7 @@ def parseNuclearTerm(toprocess, debug=False):
                         else:
                             newnode.insert_right(Node(toprocess[idx+1]))
                     except:
-                        assert False, "Uncomplete binary operator".format(toprocess)
+                        assert False, "Uncomplete binary operator".format(strfor)
                     oldnode = newnode
                     idx += 2
                 if debug:
@@ -448,7 +517,7 @@ def parseFormula(formula, debug=False):
         for term in terms: # for now term is the opening and closing index of the parathesis 
             # print(term)
             toprocess = words[term[0] + 1 - offset: term[1] - offset] # dont take parathesis 
-            # print(toprocess) # only in the form "(not) A and/or (not) B"
+            # print("To process is: ", toprocess) # only in the form "(not) A and/or (not) B"
             curnode = parseNuclearTerm(toprocess, debug)
             # curnode.display()
 
@@ -614,10 +683,9 @@ def toBinaryFormulas(formulas, debug=False):
         nodelevel[term] = -1
     
     tobeassigned = []
-
     tosort = []
     # at first scan the biformulas once to assign layer to node that can be assign 
-    # (orignal nodes have layer 100 and extra nodes which depend on only original nodes have layer 0 
+    # (orignal nodes have layer 1000 and extra nodes which depend on only original nodes have layer 0 
     for term, formula in biformulas.items():
         form = dict()
         if '_XTR_' in term:
@@ -631,11 +699,11 @@ def toBinaryFormulas(formulas, debug=False):
             else:
                 tobeassigned.append(term)
         else: 
-            form['level'] = 100 # least level of the original node 
+            form['level'] = 1000 # least level of the original node 
             form['term'] = term 
             form['formula'] = formula
             tosort.append(form)
-            nodelevel[term] = 100
+            nodelevel[term] = 1000
 
     while tobeassigned: # while to be assigned is not empty
         toprocess = tobeassigned.pop(0)

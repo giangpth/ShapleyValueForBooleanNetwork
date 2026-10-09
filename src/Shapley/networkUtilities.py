@@ -5,7 +5,7 @@ from typing import Dict, Hashable, Iterable, Set, Literal
 from Shapley.exceptions import InforError
 from Shapley.utilities import filterrows
 from Shapley.visualization import showNetwork 
-from Shapley.booleanFormulaHandler import sim1step, sim1bistep, checkrow
+from Shapley.booleanFormulaHandler import sim1step, sim1bistep, checkrow, sim1stepCombined
 from Shapley.utilities import dict_hash, merge2states, toDecimal, filterrows
 from Shapley.speciesHandler import initSpeciesStates, genInput
 
@@ -103,6 +103,99 @@ def getOutput(formulas, inputstate, isbi = False, maxStep = 10000, debug=False, 
     # print(type(inputstate))
     print("Cannot converge after {} steps".format(maxStep))
     return inputstate, set()
+
+def getOutputCombined(formulas, inputstate, maxStep = 1000, debug=False, extranodes=None, biformulas = None, kolist = None, kilist = None):
+    """
+    Simulate the Boolean network until it converges or reaches the maximum number of steps.
+    Work with both orignal and binarized network  
+    Args:
+        formulas (dict): A dictionary with species names as keys and their boolean formulas as values.
+        inputstate (dict): A dictionary with species names as keys and their current boolean states as values.
+        maxStep (int): Maximum number of simulation steps.
+        debug (bool): If True, print debug information.
+        extranodes (dict): A list of extra nodes to be considered in the simulation.
+        bistrformulas (list): List of ordered string formulas for binarized network 
+        kolist: list of nodes to be knocked out 
+        kilist: list of nodes to be knocked in 
+    Returns:
+        inputstate (dict): The final state of the network after simulation.
+        extravalues (dict): The value of extranodes and nodes in binarized network
+    """
+    oldstate = dict()
+    numstep = 0
+    # print("New inputstate")
+    if kolist:
+        koset = set(kolist)
+    else: 
+        kolist = []
+        koset = set()
+    if kilist:
+        kiset = set(kilist)
+    else:
+        kilist = []
+        kiset = set() 
+    pertubate = False
+
+    if koset.union(kiset): # at least there is one node to pertubate
+        if koset.intersection(kiset):
+            print("CONFLICT: same node(s) to be knockin and knockout at the same simulation. Perform no pertubation")
+            print(koset.intersection(kiset))
+        else:
+            pertubate = True
+
+    # first perform knockin on the network before simulation 
+    if kilist:
+        for node in kilist:
+            inputstate[node] = True
+    
+
+    for i in range(maxStep):
+        numstep += 1
+        inputstate, extravalues = sim1stepCombined(formulas, inputstate, extranodes, biformulas, debug)
+
+        if pertubate:
+            for node in kilist:
+                inputstate[node] = True
+                extravalues[node] = True
+                # print(f"Set {node} to True as it is knocked in")
+            for node in kolist:
+                inputstate[node] = False
+                extravalues[node] = False
+                # print(f"Set {node} to False as it is knocked out")
+
+        hash = dict_hash(inputstate) 
+
+        if hash not in oldstate:
+            oldstate[hash] = numstep
+        else:
+            # if debug:
+            #     print(f"Found attractor after {i} steps")
+            # print(inputstate)
+            blinking = set()
+            # merge all the state inside the loop 
+            returnstate = copy.deepcopy(inputstate)
+            returnextravalues = copy.deepcopy(extravalues)
+            for i in range(numstep-oldstate[hash] - 1):
+                inputstate, extravalues = sim1stepCombined(formulas, inputstate, extranodes, biformulas, debug)
+                if pertubate:
+                    for node in kilist:
+                        inputstate[node] = True
+                        extravalues[node] = True
+                    for node in kolist:
+                        inputstate[node] = False
+                        extravalues[node] = False
+                returnstate, thisblink = merge2states(returnstate, inputstate)
+                returnextravalues, extrablink = merge2states(returnextravalues, extravalues)
+                blinking.update(extrablink)
+                blinking.update(thisblink)
+                
+            # if debug:
+            #     print("Attractor contains {} states ".format(numstep-oldstate[hash])) 
+            return returnstate, blinking, returnextravalues
+    # print(type(inputstate))
+    print("Cannot converge after {} steps".format(maxStep))
+    return inputstate, set(), dict()
+
 
 def processPossitiveDiamond(beg, target, infordicts, allrows, goodchilds, index, aindex, extranodes):
     """
@@ -815,7 +908,7 @@ def simulateDiamondOneStep(net, table, node, target, formulas, rowsofnode, order
         print("Rows after simulate a step for diamond {} to {} are: \n{}".format(node, target, sorted(list(newrowsofnode))))
     return newrowsofnode 
 
-def simulateOneNode(table, node, target, formulas, rowsofnode, extranodes, inputnames):
+def simulateDiamond(table, node, target, formulas, rowsofnode, extranodes, inputnames):
     """
     Simulate to decide the rows for the node of interest.
     Parameters:
@@ -841,8 +934,8 @@ def simulateOneNode(table, node, target, formulas, rowsofnode, extranodes, input
         rawrowko = copy.deepcopy(rawrow)
         rawrowki = copy.deepcopy(rawrow)
 
-        knockin, kiblinking = getKnockoutOutput(formulas, rawrowki, [node], False, 1000, False, None, True)
-        knockout, koblinking = getKnockoutOutput(formulas, rawrowko, [node], False, 1000, False, None, False)
+        knockin, kiblinking = getPertubedOutput(formulas, rawrowki, [node], False, 1000, False, None, True)
+        knockout, koblinking = getPertubedOutput(formulas, rawrowko, [node], False, 1000, False, None, False)
 
         if (oldvalue != knockin[target]) or (oldvalue !=  knockout[target]): 
             # print("Old value of node {} is {}, after knockin it is {}, after knockout it is {}".format(target, oldvalue, knockin[target], knockout[target]))
@@ -850,7 +943,7 @@ def simulateOneNode(table, node, target, formulas, rowsofnode, extranodes, input
 
     return rowstoreturn
 
-def getKnockoutOutput(formulas, inputstate, knockoutlist, isbi = False,  \
+def getPertubedOutput(formulas, inputstate, knockoutlist, isbi = False,  \
                       maxStep=1000, debug=False, extranodes = None, isKnockin=False) -> dict:
     """
     Simulate the Boolean network with certain nodes knocked out or knocked in 
@@ -996,7 +1089,7 @@ def simBinaryNetwork(biformulas, inputnames, speciesnames, sortedinput, sortedin
     """
     print("----Simulate binary network----")
     species = initSpeciesStates(speciesnames, debug) # take list the names of all the species and set them to be None 
-    inputstates = genInput(species, inputnames, debug) # each inputstate contains all species, input species are set to a certain value 
+    inputstates, maprowid2input = genInput(species, inputnames) # each inputstate contains all species, input species are set to a certain value 
 
     # if debug:
         # print("Integer version of state of Binary network")
