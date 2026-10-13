@@ -1,0 +1,2574 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_18_nfkb -e data/realbenchmark/18.txt -o nfkb -r uniform -p 30.0 -c 0.0 -k Shapley -m Simulation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_18_nfkb                                 =========
+========== EXPRESSION FILE IS data/realbenchmark/18.txt                                                        =========
+========== THE OUTPUT OF INTEREST IS: nfkb                                                                     =========
+========== SAMPLING STRATEGY IS: uniform                                                                       =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Simulation                                                                                 =========
+LIST OF ALL SPECIES:
+['Dummy', 'abl', 'akap79', 'ap1', 'bad', 'bcat', 'bcl10', 'bclxl', 'ca', 'cabin1', 'calcin', 'calpr1', 'cam', 'camk2', 'camk4', 'card11', 'card11a', 'cblb', 'ccblp1', 'ccblp2', 'ccblr', 'cd28', 'cd28_input', 'cd4', 'cd45', 'cdc42', 'cre', 'creb', 'csk', 'cyc1', 'dag', 'dgk', 'erk', 'fkhr', 'fos', 'fyn', 'gab2', 'gadd45', 'gads', 'gap', 'grb2', 'gsk3', 'hpk1', 'ikb', 'ikkab', 'ikkg', 'ip3', 'itk', 'jnk', 'jun', 'lat', 'lckp1', 'lckp2', 'lckr', 'lckr_input', 'malt1', 'mek', 'mekk1', 'mkk4', 'mlk3', 'nfat', 'nfkb', 'p21c', 'p27k', 'p38', 'p70s', 'pag', 'pdk1', 'pi3k', 'pip3', 'pkb', 'pkcth', 'plcga', 'plcgb', 'pten', 'rac1p1', 'rac1p2', 'rac1r', 'raf', 'ras', 'rasgrp', 'rlk', 'rsk', 'sh3bp2', 'ship1', 'shp1', 'shp2', 'slp76', 'sos', 'sre', 'tcrb', 'tcrlig', 'tcrlig_input', 'tcrp', 'unknown_input', 'unknown_input2', 'unknown_input3', 'vav1', 'vav3', 'xx', 'zap70']
+-----INPUT NAMES-----
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+----INTERMEDIATE NODES-----
+['Dummy', 'abl', 'akap79', 'ap1', 'bad', 'bcat', 'bcl10', 'bclxl', 'ca', 'cabin1', 'calcin', 'calpr1', 'cam', 'camk2', 'camk4', 'card11', 'card11a', 'cblb', 'ccblp1', 'ccblp2', 'ccblr', 'cd28', 'cd45', 'cdc42', 'cre', 'creb', 'csk', 'cyc1', 'dag', 'dgk', 'erk', 'fkhr', 'fos', 'fyn', 'gab2', 'gadd45', 'gads', 'gap', 'grb2', 'gsk3', 'hpk1', 'ikb', 'ikkab', 'ikkg', 'ip3', 'itk', 'jnk', 'jun', 'lat', 'lckp1', 'lckp2', 'lckr', 'malt1', 'mek', 'mekk1', 'mkk4', 'mlk3', 'nfat', 'nfkb', 'p21c', 'p27k', 'p38', 'p70s', 'pag', 'pdk1', 'pi3k', 'pip3', 'pkb', 'pkcth', 'plcga', 'plcgb', 'pten', 'rac1p1', 'rac1p2', 'rac1r', 'raf', 'ras', 'rasgrp', 'rlk', 'rsk', 'sh3bp2', 'ship1', 'shp1', 'shp2', 'slp76', 'sos', 'sre', 'tcrb', 'tcrlig', 'tcrp', 'vav1', 'vav3', 'xx', 'zap70']
+===============================================================
+Sorted input names
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+There are 7 inputs with the range of input: 0 127
+Sorted internames:
+['Dummy', 'abl', 'akap79', 'ap1', 'bad', 'bcat', 'bcl10', 'bclxl', 'ca', 'cabin1', 'calcin', 'calpr1', 'cam', 'camk2', 'camk4', 'card11', 'card11a', 'cblb', 'ccblp1', 'ccblp2', 'ccblr', 'cd28', 'cd45', 'cdc42', 'cre', 'creb', 'csk', 'cyc1', 'dag', 'dgk', 'erk', 'fkhr', 'fos', 'fyn', 'gab2', 'gadd45', 'gads', 'gap', 'grb2', 'gsk3', 'hpk1', 'ikb', 'ikkab', 'ikkg', 'ip3', 'itk', 'jnk', 'jun', 'lat', 'lckp1', 'lckp2', 'lckr', 'malt1', 'mek', 'mekk1', 'mkk4', 'mlk3', 'nfat', 'nfkb', 'p21c', 'p27k', 'p38', 'p70s', 'pag', 'pdk1', 'pi3k', 'pip3', 'pkb', 'pkcth', 'plcga', 'plcgb', 'pten', 'rac1p1', 'rac1p2', 'rac1r', 'raf', 'ras', 'rasgrp', 'rlk', 'rsk', 'sh3bp2', 'ship1', 'shp1', 'shp2', 'slp76', 'sos', 'sre', 'tcrb', 'tcrlig', 'tcrp', 'vav1', 'vav3', 'xx', 'zap70']
+There are 94 intermediate nodes with the range of inter: 0 19807040628566084398385987583
+SORTED INPUT
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+SORTED INTER
+['Dummy', 'abl', 'akap79', 'ap1', 'bad', 'bcat', 'bcl10', 'bclxl', 'ca', 'cabin1', 'calcin', 'calpr1', 'cam', 'camk2', 'camk4', 'card11', 'card11a', 'cblb', 'ccblp1', 'ccblp2', 'ccblr', 'cd28', 'cd45', 'cdc42', 'cre', 'creb', 'csk', 'cyc1', 'dag', 'dgk', 'erk', 'fkhr', 'fos', 'fyn', 'gab2', 'gadd45', 'gads', 'gap', 'grb2', 'gsk3', 'hpk1', 'ikb', 'ikkab', 'ikkg', 'ip3', 'itk', 'jnk', 'jun', 'lat', 'lckp1', 'lckp2', 'lckr', 'malt1', 'mek', 'mekk1', 'mkk4', 'mlk3', 'nfat', 'nfkb', 'p21c', 'p27k', 'p38', 'p70s', 'pag', 'pdk1', 'pi3k', 'pip3', 'pkb', 'pkcth', 'plcga', 'plcgb', 'pten', 'rac1p1', 'rac1p2', 'rac1r', 'raf', 'ras', 'rasgrp', 'rlk', 'rsk', 'sh3bp2', 'ship1', 'shp1', 'shp2', 'slp76', 'sos', 'sre', 'tcrb', 'tcrlig', 'tcrp', 'vav1', 'vav3', 'xx', 'zap70']
+More than 1 binary operator, dont allow NOT in formula: slp76 and zap70 and vav1 and itk 
+More than 1 binary operator, dont allow NOT in formula: cdc42 or hpk1 or rac1p2 
+More than 1 binary operator, dont allow NOT in formula: slp76 and zap70 and vav1 and itk 
+Now arrange layout of the original network for visualization
+THERE ARE 5 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('lckp1', 'fyn'), ('lckp1', 'shp1'), ('ccblp1', 'zap70'), ('tcrp', 'zap70'), ('abl', 'zap70')]
+orimodel_18_nfkb.html
+Generating input states using strategy: uniform
+Sample percentage: 30.0%
+7 inputs causing in total 128 combinations
+Input list:
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+Number of samples in total: 38
+-----Mapping rowid to inputs:-----
+0: []
+1: ['unknown_input3']
+3: ['unknown_input2', 'unknown_input3']
+6: ['unknown_input', 'unknown_input2']
+7: ['unknown_input', 'unknown_input2', 'unknown_input3']
+8: ['tcrlig_input']
+12: ['tcrlig_input', 'unknown_input']
+14: ['tcrlig_input', 'unknown_input', 'unknown_input2']
+26: ['lckr_input', 'tcrlig_input', 'unknown_input2']
+29: ['lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+30: ['lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+33: ['cd4', 'unknown_input3']
+42: ['cd4', 'tcrlig_input', 'unknown_input2']
+44: ['cd4', 'tcrlig_input', 'unknown_input']
+46: ['cd4', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+48: ['cd4', 'lckr_input']
+50: ['cd4', 'lckr_input', 'unknown_input2']
+52: ['cd4', 'lckr_input', 'unknown_input']
+55: ['cd4', 'lckr_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+56: ['cd4', 'lckr_input', 'tcrlig_input']
+62: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+63: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+68: ['cd28_input', 'unknown_input']
+70: ['cd28_input', 'unknown_input', 'unknown_input2']
+72: ['cd28_input', 'tcrlig_input']
+78: ['cd28_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+81: ['cd28_input', 'lckr_input', 'unknown_input3']
+84: ['cd28_input', 'lckr_input', 'unknown_input']
+85: ['cd28_input', 'lckr_input', 'unknown_input', 'unknown_input3']
+88: ['cd28_input', 'lckr_input', 'tcrlig_input']
+93: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+95: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+96: ['cd28_input', 'cd4']
+99: ['cd28_input', 'cd4', 'unknown_input2', 'unknown_input3']
+113: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input3']
+114: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input2']
+124: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input']
+125: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+Generating input states using strategy: all
+7 inputs causing in total 128 combinations
+Input list:
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+Number of samples in total: 128
+TEST: Mapping rowid to inputs:
+0: []
+1: ['unknown_input3']
+2: ['unknown_input2']
+3: ['unknown_input2', 'unknown_input3']
+4: ['unknown_input']
+5: ['unknown_input', 'unknown_input3']
+6: ['unknown_input', 'unknown_input2']
+7: ['unknown_input', 'unknown_input2', 'unknown_input3']
+8: ['tcrlig_input']
+9: ['tcrlig_input', 'unknown_input3']
+10: ['tcrlig_input', 'unknown_input2']
+11: ['tcrlig_input', 'unknown_input2', 'unknown_input3']
+12: ['tcrlig_input', 'unknown_input']
+13: ['tcrlig_input', 'unknown_input', 'unknown_input3']
+14: ['tcrlig_input', 'unknown_input', 'unknown_input2']
+15: ['tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+16: ['lckr_input']
+17: ['lckr_input', 'unknown_input3']
+18: ['lckr_input', 'unknown_input2']
+19: ['lckr_input', 'unknown_input2', 'unknown_input3']
+20: ['lckr_input', 'unknown_input']
+21: ['lckr_input', 'unknown_input', 'unknown_input3']
+22: ['lckr_input', 'unknown_input', 'unknown_input2']
+23: ['lckr_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+24: ['lckr_input', 'tcrlig_input']
+25: ['lckr_input', 'tcrlig_input', 'unknown_input3']
+26: ['lckr_input', 'tcrlig_input', 'unknown_input2']
+27: ['lckr_input', 'tcrlig_input', 'unknown_input2', 'unknown_input3']
+28: ['lckr_input', 'tcrlig_input', 'unknown_input']
+29: ['lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+30: ['lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+31: ['lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+32: ['cd4']
+33: ['cd4', 'unknown_input3']
+34: ['cd4', 'unknown_input2']
+35: ['cd4', 'unknown_input2', 'unknown_input3']
+36: ['cd4', 'unknown_input']
+37: ['cd4', 'unknown_input', 'unknown_input3']
+38: ['cd4', 'unknown_input', 'unknown_input2']
+39: ['cd4', 'unknown_input', 'unknown_input2', 'unknown_input3']
+40: ['cd4', 'tcrlig_input']
+41: ['cd4', 'tcrlig_input', 'unknown_input3']
+42: ['cd4', 'tcrlig_input', 'unknown_input2']
+43: ['cd4', 'tcrlig_input', 'unknown_input2', 'unknown_input3']
+44: ['cd4', 'tcrlig_input', 'unknown_input']
+45: ['cd4', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+46: ['cd4', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+47: ['cd4', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+48: ['cd4', 'lckr_input']
+49: ['cd4', 'lckr_input', 'unknown_input3']
+50: ['cd4', 'lckr_input', 'unknown_input2']
+51: ['cd4', 'lckr_input', 'unknown_input2', 'unknown_input3']
+52: ['cd4', 'lckr_input', 'unknown_input']
+53: ['cd4', 'lckr_input', 'unknown_input', 'unknown_input3']
+54: ['cd4', 'lckr_input', 'unknown_input', 'unknown_input2']
+55: ['cd4', 'lckr_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+56: ['cd4', 'lckr_input', 'tcrlig_input']
+57: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input3']
+58: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input2']
+59: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input2', 'unknown_input3']
+60: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input']
+61: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+62: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+63: ['cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+64: ['cd28_input']
+65: ['cd28_input', 'unknown_input3']
+66: ['cd28_input', 'unknown_input2']
+67: ['cd28_input', 'unknown_input2', 'unknown_input3']
+68: ['cd28_input', 'unknown_input']
+69: ['cd28_input', 'unknown_input', 'unknown_input3']
+70: ['cd28_input', 'unknown_input', 'unknown_input2']
+71: ['cd28_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+72: ['cd28_input', 'tcrlig_input']
+73: ['cd28_input', 'tcrlig_input', 'unknown_input3']
+74: ['cd28_input', 'tcrlig_input', 'unknown_input2']
+75: ['cd28_input', 'tcrlig_input', 'unknown_input2', 'unknown_input3']
+76: ['cd28_input', 'tcrlig_input', 'unknown_input']
+77: ['cd28_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+78: ['cd28_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+79: ['cd28_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+80: ['cd28_input', 'lckr_input']
+81: ['cd28_input', 'lckr_input', 'unknown_input3']
+82: ['cd28_input', 'lckr_input', 'unknown_input2']
+83: ['cd28_input', 'lckr_input', 'unknown_input2', 'unknown_input3']
+84: ['cd28_input', 'lckr_input', 'unknown_input']
+85: ['cd28_input', 'lckr_input', 'unknown_input', 'unknown_input3']
+86: ['cd28_input', 'lckr_input', 'unknown_input', 'unknown_input2']
+87: ['cd28_input', 'lckr_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+88: ['cd28_input', 'lckr_input', 'tcrlig_input']
+89: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input3']
+90: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input2']
+91: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input2', 'unknown_input3']
+92: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input']
+93: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+94: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+95: ['cd28_input', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+96: ['cd28_input', 'cd4']
+97: ['cd28_input', 'cd4', 'unknown_input3']
+98: ['cd28_input', 'cd4', 'unknown_input2']
+99: ['cd28_input', 'cd4', 'unknown_input2', 'unknown_input3']
+100: ['cd28_input', 'cd4', 'unknown_input']
+101: ['cd28_input', 'cd4', 'unknown_input', 'unknown_input3']
+102: ['cd28_input', 'cd4', 'unknown_input', 'unknown_input2']
+103: ['cd28_input', 'cd4', 'unknown_input', 'unknown_input2', 'unknown_input3']
+104: ['cd28_input', 'cd4', 'tcrlig_input']
+105: ['cd28_input', 'cd4', 'tcrlig_input', 'unknown_input3']
+106: ['cd28_input', 'cd4', 'tcrlig_input', 'unknown_input2']
+107: ['cd28_input', 'cd4', 'tcrlig_input', 'unknown_input2', 'unknown_input3']
+108: ['cd28_input', 'cd4', 'tcrlig_input', 'unknown_input']
+109: ['cd28_input', 'cd4', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+110: ['cd28_input', 'cd4', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+111: ['cd28_input', 'cd4', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+112: ['cd28_input', 'cd4', 'lckr_input']
+113: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input3']
+114: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input2']
+115: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input2', 'unknown_input3']
+116: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input']
+117: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input', 'unknown_input3']
+118: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input', 'unknown_input2']
+119: ['cd28_input', 'cd4', 'lckr_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+120: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input']
+121: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input3']
+122: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input2']
+123: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input2', 'unknown_input3']
+124: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input']
+125: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input3']
+126: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2']
+127: ['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node cd28_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node cd4 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node lckr_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node tcrlig_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node unknown_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node unknown_input2 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node unknown_input3 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node cd28_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node cd4 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node lckr_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node tcrlig_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node unknown_input is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node unknown_input2 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node unknown_input3 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-------Now performing pertubation simulations---------
+=========SIMULATION RESULTS=========
+-------RESULT for output nfkb--------
+Ordered input nodes:
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+----cd28_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----cd4-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckr_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrlig_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----unknown_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----unknown_input2-----
+KO	0: []
+KI	0: []
+All	0: []
+----unknown_input3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Dummy-----
+KO	0: []
+KI	0: []
+All	0: []
+----abl-----
+KO	0: []
+KI	0: []
+All	0: []
+----akap79-----
+KO	0: []
+KI	0: []
+All	0: []
+----ap1-----
+KO	0: []
+KI	0: []
+All	0: []
+----bad-----
+KO	0: []
+KI	0: []
+All	0: []
+----bcat-----
+KO	0: []
+KI	0: []
+All	0: []
+----bcl10-----
+KO	0: []
+KI	0: []
+All	0: []
+----bclxl-----
+KO	0: []
+KI	0: []
+All	0: []
+----ca-----
+KO	0: []
+KI	0: []
+All	0: []
+----cabin1-----
+KO	0: []
+KI	0: []
+All	0: []
+----calcin-----
+KO	0: []
+KI	0: []
+All	0: []
+----calpr1-----
+KO	0: []
+KI	0: []
+All	0: []
+----cam-----
+KO	0: []
+KI	0: []
+All	0: []
+----camk2-----
+KO	0: []
+KI	0: []
+All	0: []
+----camk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----card11-----
+KO	0: []
+KI	0: []
+All	0: []
+----card11a-----
+KO	0: []
+KI	0: []
+All	0: []
+----cblb-----
+KO	0: []
+KI	0: []
+All	0: []
+----ccblp1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ccblp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ccblr-----
+KO	0: []
+KI	0: []
+All	0: []
+----cd28-----
+KO	0: []
+KI	0: []
+All	0: []
+----cd45-----
+KO	0: []
+KI	0: []
+All	0: []
+----cdc42-----
+KO	0: []
+KI	0: []
+All	0: []
+----cre-----
+KO	0: []
+KI	0: []
+All	0: []
+----creb-----
+KO	0: []
+KI	0: []
+All	0: []
+----csk-----
+KO	0: []
+KI	0: []
+All	0: []
+----cyc1-----
+KO	0: []
+KI	0: []
+All	0: []
+----dag-----
+KO	0: []
+KI	0: []
+All	0: []
+----dgk-----
+KO	0: []
+KI	0: []
+All	0: []
+----erk-----
+KO	0: []
+KI	0: []
+All	0: []
+----fkhr-----
+KO	0: []
+KI	0: []
+All	0: []
+----fos-----
+KO	0: []
+KI	0: []
+All	0: []
+----fyn-----
+KO	0: []
+KI	0: []
+All	0: []
+----gab2-----
+KO	0: []
+KI	0: []
+All	0: []
+----gadd45-----
+KO	0: []
+KI	0: []
+All	0: []
+----gads-----
+KO	0: []
+KI	0: []
+All	0: []
+----gap-----
+KO	0: []
+KI	0: []
+All	0: []
+----grb2-----
+KO	0: []
+KI	0: []
+All	0: []
+----gsk3-----
+KO	0: []
+KI	0: []
+All	0: []
+----hpk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ikb-----
+KO	38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+KI	0: []
+All	38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+----ikkab-----
+KO	0: []
+KI	38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+All	38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+----ikkg-----
+KO	0: []
+KI	0: []
+All	0: []
+----ip3-----
+KO	0: []
+KI	0: []
+All	0: []
+----itk-----
+KO	0: []
+KI	0: []
+All	0: []
+----jnk-----
+KO	0: []
+KI	0: []
+All	0: []
+----jun-----
+KO	0: []
+KI	0: []
+All	0: []
+----lat-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckp1-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckr-----
+KO	0: []
+KI	0: []
+All	0: []
+----malt1-----
+KO	0: []
+KI	0: []
+All	0: []
+----mek-----
+KO	0: []
+KI	0: []
+All	0: []
+----mekk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----mkk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----mlk3-----
+KO	0: []
+KI	0: []
+All	0: []
+----nfat-----
+KO	0: []
+KI	0: []
+All	0: []
+----nfkb-----
+KO	0: []
+KI	38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+All	38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+----p21c-----
+KO	0: []
+KI	0: []
+All	0: []
+----p27k-----
+KO	0: []
+KI	0: []
+All	0: []
+----p38-----
+KO	0: []
+KI	0: []
+All	0: []
+----p70s-----
+KO	0: []
+KI	0: []
+All	0: []
+----pag-----
+KO	0: []
+KI	0: []
+All	0: []
+----pdk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----pi3k-----
+KO	0: []
+KI	0: []
+All	0: []
+----pip3-----
+KO	0: []
+KI	0: []
+All	0: []
+----pkb-----
+KO	0: []
+KI	0: []
+All	0: []
+----pkcth-----
+KO	0: []
+KI	0: []
+All	0: []
+----plcga-----
+KO	0: []
+KI	0: []
+All	0: []
+----plcgb-----
+KO	0: []
+KI	0: []
+All	0: []
+----pten-----
+KO	0: []
+KI	0: []
+All	0: []
+----rac1p1-----
+KO	0: []
+KI	0: []
+All	0: []
+----rac1p2-----
+KO	0: []
+KI	0: []
+All	0: []
+----rac1r-----
+KO	0: []
+KI	0: []
+All	0: []
+----raf-----
+KO	0: []
+KI	0: []
+All	0: []
+----ras-----
+KO	0: []
+KI	0: []
+All	0: []
+----rasgrp-----
+KO	0: []
+KI	0: []
+All	0: []
+----rlk-----
+KO	0: []
+KI	0: []
+All	0: []
+----rsk-----
+KO	0: []
+KI	0: []
+All	0: []
+----sh3bp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ship1-----
+KO	0: []
+KI	0: []
+All	0: []
+----shp1-----
+KO	0: []
+KI	0: []
+All	0: []
+----shp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----slp76-----
+KO	0: []
+KI	0: []
+All	0: []
+----sos-----
+KO	0: []
+KI	0: []
+All	0: []
+----sre-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrb-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrlig-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrp-----
+KO	0: []
+KI	0: []
+All	0: []
+----vav1-----
+KO	0: []
+KI	0: []
+All	0: []
+----vav3-----
+KO	0: []
+KI	0: []
+All	0: []
+----xx-----
+KO	0: []
+KI	0: []
+All	0: []
+----zap70-----
+KO	0: []
+KI	0: []
+All	0: []
+cd28_input           			 KO:        0.0 | KI:        0.0
+cd4                  			 KO:        0.0 | KI:        0.0
+lckr_input           			 KO:        0.0 | KI:        0.0
+tcrlig_input         			 KO:        0.0 | KI:        0.0
+unknown_input        			 KO:        0.0 | KI:        0.0
+unknown_input2       			 KO:        0.0 | KI:        0.0
+unknown_input3       			 KO:        0.0 | KI:        0.0
+Dummy                			 KO:        0.0 | KI:        0.0
+abl                  			 KO:        0.0 | KI:        0.0
+akap79               			 KO:        0.0 | KI:        0.0
+ap1                  			 KO:        0.0 | KI:        0.0
+bad                  			 KO:        0.0 | KI:        0.0
+bcat                 			 KO:        0.0 | KI:        0.0
+bcl10                			 KO:        0.0 | KI:        0.0
+bclxl                			 KO:        0.0 | KI:        0.0
+ca                   			 KO:        0.0 | KI:        0.0
+cabin1               			 KO:        0.0 | KI:        0.0
+calcin               			 KO:        0.0 | KI:        0.0
+calpr1               			 KO:        0.0 | KI:        0.0
+cam                  			 KO:        0.0 | KI:        0.0
+camk2                			 KO:        0.0 | KI:        0.0
+camk4                			 KO:        0.0 | KI:        0.0
+card11               			 KO:        0.0 | KI:        0.0
+card11a              			 KO:        0.0 | KI:        0.0
+cblb                 			 KO:        0.0 | KI:        0.0
+ccblp1               			 KO:        0.0 | KI:        0.0
+ccblp2               			 KO:        0.0 | KI:        0.0
+ccblr                			 KO:        0.0 | KI:        0.0
+cd28                 			 KO:        0.0 | KI:        0.0
+cd45                 			 KO:        0.0 | KI:        0.0
+cdc42                			 KO:        0.0 | KI:        0.0
+cre                  			 KO:        0.0 | KI:        0.0
+creb                 			 KO:        0.0 | KI:        0.0
+csk                  			 KO:        0.0 | KI:        0.0
+cyc1                 			 KO:        0.0 | KI:        0.0
+dag                  			 KO:        0.0 | KI:        0.0
+dgk                  			 KO:        0.0 | KI:        0.0
+erk                  			 KO:        0.0 | KI:        0.0
+fkhr                 			 KO:        0.0 | KI:        0.0
+fos                  			 KO:        0.0 | KI:        0.0
+fyn                  			 KO:        0.0 | KI:        0.0
+gab2                 			 KO:        0.0 | KI:        0.0
+gadd45               			 KO:        0.0 | KI:        0.0
+gads                 			 KO:        0.0 | KI:        0.0
+gap                  			 KO:        0.0 | KI:        0.0
+grb2                 			 KO:        0.0 | KI:        0.0
+gsk3                 			 KO:        0.0 | KI:        0.0
+hpk1                 			 KO:        0.0 | KI:        0.0
+ikb                  			 KO:    -2.8577 | KI:        0.0
+ikkab                			 KO:        0.0 | KI:    -2.8577
+ikkg                 			 KO:        0.0 | KI:        0.0
+ip3                  			 KO:        0.0 | KI:        0.0
+itk                  			 KO:        0.0 | KI:        0.0
+jnk                  			 KO:        0.0 | KI:        0.0
+jun                  			 KO:        0.0 | KI:        0.0
+lat                  			 KO:        0.0 | KI:        0.0
+lckp1                			 KO:        0.0 | KI:        0.0
+lckp2                			 KO:        0.0 | KI:        0.0
+lckr                 			 KO:        0.0 | KI:        0.0
+malt1                			 KO:        0.0 | KI:        0.0
+mek                  			 KO:        0.0 | KI:        0.0
+mekk1                			 KO:        0.0 | KI:        0.0
+mkk4                 			 KO:        0.0 | KI:        0.0
+mlk3                 			 KO:        0.0 | KI:        0.0
+nfat                 			 KO:        0.0 | KI:        0.0
+nfkb                 			 KO:        0.0 | KI:    -2.8577
+p21c                 			 KO:        0.0 | KI:        0.0
+p27k                 			 KO:        0.0 | KI:        0.0
+p38                  			 KO:        0.0 | KI:        0.0
+p70s                 			 KO:        0.0 | KI:        0.0
+pag                  			 KO:        0.0 | KI:        0.0
+pdk1                 			 KO:        0.0 | KI:        0.0
+pi3k                 			 KO:        0.0 | KI:        0.0
+pip3                 			 KO:        0.0 | KI:        0.0
+pkb                  			 KO:        0.0 | KI:        0.0
+pkcth                			 KO:        0.0 | KI:        0.0
+plcga                			 KO:        0.0 | KI:        0.0
+plcgb                			 KO:        0.0 | KI:        0.0
+pten                 			 KO:        0.0 | KI:        0.0
+rac1p1               			 KO:        0.0 | KI:        0.0
+rac1p2               			 KO:        0.0 | KI:        0.0
+rac1r                			 KO:        0.0 | KI:        0.0
+raf                  			 KO:        0.0 | KI:        0.0
+ras                  			 KO:        0.0 | KI:        0.0
+rasgrp               			 KO:        0.0 | KI:        0.0
+rlk                  			 KO:        0.0 | KI:        0.0
+rsk                  			 KO:        0.0 | KI:        0.0
+sh3bp2               			 KO:        0.0 | KI:        0.0
+ship1                			 KO:        0.0 | KI:        0.0
+shp1                 			 KO:        0.0 | KI:        0.0
+shp2                 			 KO:        0.0 | KI:        0.0
+slp76                			 KO:        0.0 | KI:        0.0
+sos                  			 KO:        0.0 | KI:        0.0
+sre                  			 KO:        0.0 | KI:        0.0
+tcrb                 			 KO:        0.0 | KI:        0.0
+tcrlig               			 KO:        0.0 | KI:        0.0
+tcrp                 			 KO:        0.0 | KI:        0.0
+vav1                 			 KO:        0.0 | KI:        0.0
+vav3                 			 KO:        0.0 | KI:        0.0
+xx                   			 KO:        0.0 | KI:        0.0
+zap70                			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	ikb
+2	Dummy, abl, akap79, ap1, bad, bcat
+	bcl10, bclxl, ca, cabin1, calcin, calpr1
+	cam, camk2, camk4, card11, card11a, cblb
+	ccblp1, ccblp2, ccblr, cd28, cd45, cdc42
+	cre, creb, csk, cyc1, dag, dgk
+	erk, fkhr, fos, fyn, gab2, gadd45
+	gads, gap, grb2, gsk3, hpk1, ikkab
+	ikkg, ip3, itk, jnk, jun, lat
+	lckp1, lckp2, lckr, malt1, mek, mekk1
+	mkk4, mlk3, nfat, nfkb, p21c, p27k
+	p38, p70s, pag, pdk1, pi3k, pip3
+	pkb, pkcth, plcga, plcgb, pten, rac1p1
+	rac1p2, rac1r, raf, ras, rasgrp, rlk
+	rsk, sh3bp2, ship1, shp1, shp2, slp76
+	sos, sre, tcrb, tcrlig, tcrp, vav1
+	vav3, xx, zap70, cd28_input, cd4, lckr_input
+	tcrlig_input, unknown_input, unknown_input2, unknown_input3
+-----KI RANKING-----
+1	ikkab, nfkb
+2	Dummy, abl, akap79, ap1, bad, bcat
+	bcl10, bclxl, ca, cabin1, calcin, calpr1
+	cam, camk2, camk4, card11, card11a, cblb
+	ccblp1, ccblp2, ccblr, cd28, cd45, cdc42
+	cre, creb, csk, cyc1, dag, dgk
+	erk, fkhr, fos, fyn, gab2, gadd45
+	gads, gap, grb2, gsk3, hpk1, ikb
+	ikkg, ip3, itk, jnk, jun, lat
+	lckp1, lckp2, lckr, malt1, mek, mekk1
+	mkk4, mlk3, nfat, p21c, p27k, p38
+	p70s, pag, pdk1, pi3k, pip3, pkb
+	pkcth, plcga, plcgb, pten, rac1p1, rac1p2
+	rac1r, raf, ras, rasgrp, rlk, rsk
+	sh3bp2, ship1, shp1, shp2, slp76, sos
+	sre, tcrb, tcrlig, tcrp, vav1, vav3
+	xx, zap70, cd28_input, cd4, lckr_input, tcrlig_input
+	unknown_input, unknown_input2, unknown_input3
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output nfkb--------
+Ordered input nodes:
+['cd28_input', 'cd4', 'lckr_input', 'tcrlig_input', 'unknown_input', 'unknown_input2', 'unknown_input3']
+----cd28_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----cd4-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckr_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrlig_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----unknown_input-----
+KO	0: []
+KI	0: []
+All	0: []
+----unknown_input2-----
+KO	0: []
+KI	0: []
+All	0: []
+----unknown_input3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Dummy-----
+KO	0: []
+KI	0: []
+All	0: []
+----abl-----
+KO	0: []
+KI	0: []
+All	0: []
+----akap79-----
+KO	0: []
+KI	0: []
+All	0: []
+----ap1-----
+KO	0: []
+KI	0: []
+All	0: []
+----bad-----
+KO	0: []
+KI	0: []
+All	0: []
+----bcat-----
+KO	0: []
+KI	0: []
+All	0: []
+----bcl10-----
+KO	0: []
+KI	0: []
+All	0: []
+----bclxl-----
+KO	0: []
+KI	0: []
+All	0: []
+----ca-----
+KO	0: []
+KI	0: []
+All	0: []
+----cabin1-----
+KO	0: []
+KI	0: []
+All	0: []
+----calcin-----
+KO	0: []
+KI	0: []
+All	0: []
+----calpr1-----
+KO	0: []
+KI	0: []
+All	0: []
+----cam-----
+KO	0: []
+KI	0: []
+All	0: []
+----camk2-----
+KO	0: []
+KI	0: []
+All	0: []
+----camk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----card11-----
+KO	0: []
+KI	0: []
+All	0: []
+----card11a-----
+KO	0: []
+KI	0: []
+All	0: []
+----cblb-----
+KO	0: []
+KI	0: []
+All	0: []
+----ccblp1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ccblp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ccblr-----
+KO	0: []
+KI	0: []
+All	0: []
+----cd28-----
+KO	0: []
+KI	0: []
+All	0: []
+----cd45-----
+KO	0: []
+KI	0: []
+All	0: []
+----cdc42-----
+KO	0: []
+KI	0: []
+All	0: []
+----cre-----
+KO	0: []
+KI	0: []
+All	0: []
+----creb-----
+KO	0: []
+KI	0: []
+All	0: []
+----csk-----
+KO	0: []
+KI	0: []
+All	0: []
+----cyc1-----
+KO	0: []
+KI	0: []
+All	0: []
+----dag-----
+KO	0: []
+KI	0: []
+All	0: []
+----dgk-----
+KO	0: []
+KI	0: []
+All	0: []
+----erk-----
+KO	0: []
+KI	0: []
+All	0: []
+----fkhr-----
+KO	0: []
+KI	0: []
+All	0: []
+----fos-----
+KO	0: []
+KI	0: []
+All	0: []
+----fyn-----
+KO	0: []
+KI	0: []
+All	0: []
+----gab2-----
+KO	0: []
+KI	0: []
+All	0: []
+----gadd45-----
+KO	0: []
+KI	0: []
+All	0: []
+----gads-----
+KO	0: []
+KI	0: []
+All	0: []
+----gap-----
+KO	0: []
+KI	0: []
+All	0: []
+----grb2-----
+KO	0: []
+KI	0: []
+All	0: []
+----gsk3-----
+KO	0: []
+KI	0: []
+All	0: []
+----hpk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ikb-----
+KO	128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+KI	0: []
+All	128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+----ikkab-----
+KO	0: []
+KI	128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+All	128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+----ikkg-----
+KO	0: []
+KI	0: []
+All	0: []
+----ip3-----
+KO	0: []
+KI	0: []
+All	0: []
+----itk-----
+KO	0: []
+KI	0: []
+All	0: []
+----jnk-----
+KO	0: []
+KI	0: []
+All	0: []
+----jun-----
+KO	0: []
+KI	0: []
+All	0: []
+----lat-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckp1-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----lckr-----
+KO	0: []
+KI	0: []
+All	0: []
+----malt1-----
+KO	0: []
+KI	0: []
+All	0: []
+----mek-----
+KO	0: []
+KI	0: []
+All	0: []
+----mekk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----mkk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----mlk3-----
+KO	0: []
+KI	0: []
+All	0: []
+----nfat-----
+KO	0: []
+KI	0: []
+All	0: []
+----nfkb-----
+KO	0: []
+KI	128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+All	128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+----p21c-----
+KO	0: []
+KI	0: []
+All	0: []
+----p27k-----
+KO	0: []
+KI	0: []
+All	0: []
+----p38-----
+KO	0: []
+KI	0: []
+All	0: []
+----p70s-----
+KO	0: []
+KI	0: []
+All	0: []
+----pag-----
+KO	0: []
+KI	0: []
+All	0: []
+----pdk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----pi3k-----
+KO	0: []
+KI	0: []
+All	0: []
+----pip3-----
+KO	0: []
+KI	0: []
+All	0: []
+----pkb-----
+KO	0: []
+KI	0: []
+All	0: []
+----pkcth-----
+KO	0: []
+KI	0: []
+All	0: []
+----plcga-----
+KO	0: []
+KI	0: []
+All	0: []
+----plcgb-----
+KO	0: []
+KI	0: []
+All	0: []
+----pten-----
+KO	0: []
+KI	0: []
+All	0: []
+----rac1p1-----
+KO	0: []
+KI	0: []
+All	0: []
+----rac1p2-----
+KO	0: []
+KI	0: []
+All	0: []
+----rac1r-----
+KO	0: []
+KI	0: []
+All	0: []
+----raf-----
+KO	0: []
+KI	0: []
+All	0: []
+----ras-----
+KO	0: []
+KI	0: []
+All	0: []
+----rasgrp-----
+KO	0: []
+KI	0: []
+All	0: []
+----rlk-----
+KO	0: []
+KI	0: []
+All	0: []
+----rsk-----
+KO	0: []
+KI	0: []
+All	0: []
+----sh3bp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ship1-----
+KO	0: []
+KI	0: []
+All	0: []
+----shp1-----
+KO	0: []
+KI	0: []
+All	0: []
+----shp2-----
+KO	0: []
+KI	0: []
+All	0: []
+----slp76-----
+KO	0: []
+KI	0: []
+All	0: []
+----sos-----
+KO	0: []
+KI	0: []
+All	0: []
+----sre-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrb-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrlig-----
+KO	0: []
+KI	0: []
+All	0: []
+----tcrp-----
+KO	0: []
+KI	0: []
+All	0: []
+----vav1-----
+KO	0: []
+KI	0: []
+All	0: []
+----vav3-----
+KO	0: []
+KI	0: []
+All	0: []
+----xx-----
+KO	0: []
+KI	0: []
+All	0: []
+----zap70-----
+KO	0: []
+KI	0: []
+All	0: []
+cd28_input           			 KO:        0.0 | KI:        0.0
+cd4                  			 KO:        0.0 | KI:        0.0
+lckr_input           			 KO:        0.0 | KI:        0.0
+tcrlig_input         			 KO:        0.0 | KI:        0.0
+unknown_input        			 KO:        0.0 | KI:        0.0
+unknown_input2       			 KO:        0.0 | KI:        0.0
+unknown_input3       			 KO:        0.0 | KI:        0.0
+Dummy                			 KO:        0.0 | KI:        0.0
+abl                  			 KO:        0.0 | KI:        0.0
+akap79               			 KO:        0.0 | KI:        0.0
+ap1                  			 KO:        0.0 | KI:        0.0
+bad                  			 KO:        0.0 | KI:        0.0
+bcat                 			 KO:        0.0 | KI:        0.0
+bcl10                			 KO:        0.0 | KI:        0.0
+bclxl                			 KO:        0.0 | KI:        0.0
+ca                   			 KO:        0.0 | KI:        0.0
+cabin1               			 KO:        0.0 | KI:        0.0
+calcin               			 KO:        0.0 | KI:        0.0
+calpr1               			 KO:        0.0 | KI:        0.0
+cam                  			 KO:        0.0 | KI:        0.0
+camk2                			 KO:        0.0 | KI:        0.0
+camk4                			 KO:        0.0 | KI:        0.0
+card11               			 KO:        0.0 | KI:        0.0
+card11a              			 KO:        0.0 | KI:        0.0
+cblb                 			 KO:        0.0 | KI:        0.0
+ccblp1               			 KO:        0.0 | KI:        0.0
+ccblp2               			 KO:        0.0 | KI:        0.0
+ccblr                			 KO:        0.0 | KI:        0.0
+cd28                 			 KO:        0.0 | KI:        0.0
+cd45                 			 KO:        0.0 | KI:        0.0
+cdc42                			 KO:        0.0 | KI:        0.0
+cre                  			 KO:        0.0 | KI:        0.0
+creb                 			 KO:        0.0 | KI:        0.0
+csk                  			 KO:        0.0 | KI:        0.0
+cyc1                 			 KO:        0.0 | KI:        0.0
+dag                  			 KO:        0.0 | KI:        0.0
+dgk                  			 KO:        0.0 | KI:        0.0
+erk                  			 KO:        0.0 | KI:        0.0
+fkhr                 			 KO:        0.0 | KI:        0.0
+fos                  			 KO:        0.0 | KI:        0.0
+fyn                  			 KO:        0.0 | KI:        0.0
+gab2                 			 KO:        0.0 | KI:        0.0
+gadd45               			 KO:        0.0 | KI:        0.0
+gads                 			 KO:        0.0 | KI:        0.0
+gap                  			 KO:        0.0 | KI:        0.0
+grb2                 			 KO:        0.0 | KI:        0.0
+gsk3                 			 KO:        0.0 | KI:        0.0
+hpk1                 			 KO:        0.0 | KI:        0.0
+ikb                  			 KO:    -8.0018 | KI:        0.0
+ikkab                			 KO:        0.0 | KI:    -8.0018
+ikkg                 			 KO:        0.0 | KI:        0.0
+ip3                  			 KO:        0.0 | KI:        0.0
+itk                  			 KO:        0.0 | KI:        0.0
+jnk                  			 KO:        0.0 | KI:        0.0
+jun                  			 KO:        0.0 | KI:        0.0
+lat                  			 KO:        0.0 | KI:        0.0
+lckp1                			 KO:        0.0 | KI:        0.0
+lckp2                			 KO:        0.0 | KI:        0.0
+lckr                 			 KO:        0.0 | KI:        0.0
+malt1                			 KO:        0.0 | KI:        0.0
+mek                  			 KO:        0.0 | KI:        0.0
+mekk1                			 KO:        0.0 | KI:        0.0
+mkk4                 			 KO:        0.0 | KI:        0.0
+mlk3                 			 KO:        0.0 | KI:        0.0
+nfat                 			 KO:        0.0 | KI:        0.0
+nfkb                 			 KO:        0.0 | KI:    -8.0018
+p21c                 			 KO:        0.0 | KI:        0.0
+p27k                 			 KO:        0.0 | KI:        0.0
+p38                  			 KO:        0.0 | KI:        0.0
+p70s                 			 KO:        0.0 | KI:        0.0
+pag                  			 KO:        0.0 | KI:        0.0
+pdk1                 			 KO:        0.0 | KI:        0.0
+pi3k                 			 KO:        0.0 | KI:        0.0
+pip3                 			 KO:        0.0 | KI:        0.0
+pkb                  			 KO:        0.0 | KI:        0.0
+pkcth                			 KO:        0.0 | KI:        0.0
+plcga                			 KO:        0.0 | KI:        0.0
+plcgb                			 KO:        0.0 | KI:        0.0
+pten                 			 KO:        0.0 | KI:        0.0
+rac1p1               			 KO:        0.0 | KI:        0.0
+rac1p2               			 KO:        0.0 | KI:        0.0
+rac1r                			 KO:        0.0 | KI:        0.0
+raf                  			 KO:        0.0 | KI:        0.0
+ras                  			 KO:        0.0 | KI:        0.0
+rasgrp               			 KO:        0.0 | KI:        0.0
+rlk                  			 KO:        0.0 | KI:        0.0
+rsk                  			 KO:        0.0 | KI:        0.0
+sh3bp2               			 KO:        0.0 | KI:        0.0
+ship1                			 KO:        0.0 | KI:        0.0
+shp1                 			 KO:        0.0 | KI:        0.0
+shp2                 			 KO:        0.0 | KI:        0.0
+slp76                			 KO:        0.0 | KI:        0.0
+sos                  			 KO:        0.0 | KI:        0.0
+sre                  			 KO:        0.0 | KI:        0.0
+tcrb                 			 KO:        0.0 | KI:        0.0
+tcrlig               			 KO:        0.0 | KI:        0.0
+tcrp                 			 KO:        0.0 | KI:        0.0
+vav1                 			 KO:        0.0 | KI:        0.0
+vav3                 			 KO:        0.0 | KI:        0.0
+xx                   			 KO:        0.0 | KI:        0.0
+zap70                			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	ikb
+2	cd28_input, cd4, lckr_input, tcrlig_input, unknown_input, unknown_input2
+	unknown_input3, Dummy, abl, akap79, ap1, bad
+	bcat, bcl10, bclxl, ca, cabin1, calcin
+	calpr1, cam, camk2, camk4, card11, card11a
+	cblb, ccblp1, ccblp2, ccblr, cd28, cd45
+	cdc42, cre, creb, csk, cyc1, dag
+	dgk, erk, fkhr, fos, fyn, gab2
+	gadd45, gads, gap, grb2, gsk3, hpk1
+	ikkab, ikkg, ip3, itk, jnk, jun
+	lat, lckp1, lckp2, lckr, malt1, mek
+	mekk1, mkk4, mlk3, nfat, nfkb, p21c
+	p27k, p38, p70s, pag, pdk1, pi3k
+	pip3, pkb, pkcth, plcga, plcgb, pten
+	rac1p1, rac1p2, rac1r, raf, ras, rasgrp
+	rlk, rsk, sh3bp2, ship1, shp1, shp2
+	slp76, sos, sre, tcrb, tcrlig, tcrp
+	vav1, vav3, xx, zap70
+-----KI RANKING-----
+1	ikkab, nfkb
+2	cd28_input, cd4, lckr_input, tcrlig_input, unknown_input, unknown_input2
+	unknown_input3, Dummy, abl, akap79, ap1, bad
+	bcat, bcl10, bclxl, ca, cabin1, calcin
+	calpr1, cam, camk2, camk4, card11, card11a
+	cblb, ccblp1, ccblp2, ccblr, cd28, cd45
+	cdc42, cre, creb, csk, cyc1, dag
+	dgk, erk, fkhr, fos, fyn, gab2
+	gadd45, gads, gap, grb2, gsk3, hpk1
+	ikb, ikkg, ip3, itk, jnk, jun
+	lat, lckp1, lckp2, lckr, malt1, mek
+	mekk1, mkk4, mlk3, nfat, p21c, p27k
+	p38, p70s, pag, pdk1, pi3k, pip3
+	pkb, pkcth, plcga, plcgb, pten, rac1p1
+	rac1p2, rac1r, raf, ras, rasgrp, rlk
+	rsk, sh3bp2, ship1, shp1, shp2, slp76
+	sos, sre, tcrb, tcrlig, tcrp, vav1
+	vav3, xx, zap70
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node Dummy ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node abl ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node akap79 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ap1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node bad ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node bcat ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node bcl10 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node bclxl ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ca ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cabin1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node calcin ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node calpr1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cam ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node camk2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node camk4 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node card11 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node card11a ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cblb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ccblp1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ccblp2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ccblr ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cd28 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cd45 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cdc42 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cre ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node creb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node csk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cyc1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node dag ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node dgk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node erk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node fkhr ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node fos ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node fyn ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node gab2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node gadd45 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node gads ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node gap ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node grb2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node gsk3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node hpk1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ikb ------
+KO Lack    90: [2, 4, 5, 9, 10, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 43, 45, 47, 49, 51, 53, 54, 57, 58, 59, 60, 61, 64, 65, 66, 67, 69, 71, 73, 74, 75, 76, 77, 79, 80, 82, 83, 86, 87, 89, 90, 91, 92, 94, 97, 98, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 115, 116, 117, 118, 119, 120, 121, 122, 123, 126, 127]
+KO Extr     0: []
+KO Real   128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+KO Calc    38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ikkab ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack    90: [2, 4, 5, 9, 10, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 43, 45, 47, 49, 51, 53, 54, 57, 58, 59, 60, 61, 64, 65, 66, 67, 69, 71, 73, 74, 75, 76, 77, 79, 80, 82, 83, 86, 87, 89, 90, 91, 92, 94, 97, 98, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 115, 116, 117, 118, 119, 120, 121, 122, 123, 126, 127]
+KI Extr     0: []
+KI Real   128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+KI Calc    38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+
+----Report rows for node ikkg ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ip3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node itk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node jnk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node jun ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node lat ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node lckp1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node lckp2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node lckr ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node malt1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node mek ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node mekk1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node mkk4 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node mlk3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node nfat ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node nfkb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack    90: [2, 4, 5, 9, 10, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 43, 45, 47, 49, 51, 53, 54, 57, 58, 59, 60, 61, 64, 65, 66, 67, 69, 71, 73, 74, 75, 76, 77, 79, 80, 82, 83, 86, 87, 89, 90, 91, 92, 94, 97, 98, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 115, 116, 117, 118, 119, 120, 121, 122, 123, 126, 127]
+KI Extr     0: []
+KI Real   128: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+KI Calc    38: [0, 1, 3, 6, 7, 8, 12, 14, 26, 29, 30, 33, 42, 44, 46, 48, 50, 52, 55, 56, 62, 63, 68, 70, 72, 78, 81, 84, 85, 88, 93, 95, 96, 99, 113, 114, 124, 125]
+
+----Report rows for node p21c ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node p27k ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node p38 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node p70s ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pag ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pdk1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pi3k ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pip3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pkb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pkcth ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node plcga ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node plcgb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pten ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node rac1p1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node rac1p2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node rac1r ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node raf ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ras ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node rasgrp ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node rlk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node rsk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node sh3bp2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ship1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node shp1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node shp2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node slp76 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node sos ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node sre ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node tcrb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node tcrlig ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node tcrp ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node vav1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node vav3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node xx ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node zap70 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cd28_input ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cd4 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node lckr_input ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node tcrlig_input ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node unknown_input ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node unknown_input2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node unknown_input3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+ikb                  - Correct: KO:    -8.0018 | KI :        0.0 - Incorrect KO:    -2.8577 | KI:        0.0
+ikkab                - Correct: KO:        0.0 | KI :    -8.0018 - Incorrect KO:        0.0 | KI:    -2.8577
+nfkb                 - Correct: KO:        0.0 | KI :    -8.0018 - Incorrect KO:        0.0 | KI:    -2.8577
+-----KO RANKING COMPARISON-----
+1	ikb
+2	Dummy, abl, akap79, ap1, bad, bcat
+	bcl10, bclxl, ca, cabin1, calcin, calpr1
+	cam, camk2, camk4, card11, card11a, cblb
+	ccblp1, ccblp2, ccblr, cd28, cd45, cdc42
+	cre, creb, csk, cyc1, dag, dgk
+	erk, fkhr, fos, fyn, gab2, gadd45
+	gads, gap, grb2, gsk3, hpk1, ikkab
+	ikkg, ip3, itk, jnk, jun, lat
+	lckp1, lckp2, lckr, malt1, mek, mekk1
+	mkk4, mlk3, nfat, nfkb, p21c, p27k
+	p38, p70s, pag, pdk1, pi3k, pip3
+	pkb, pkcth, plcga, plcgb, pten, rac1p1
+	rac1p2, rac1r, raf, ras, rasgrp, rlk
+	rsk, sh3bp2, ship1, shp1, shp2, slp76
+	sos, sre, tcrb, tcrlig, tcrp, vav1
+	vav3, xx, zap70, cd28_input, cd4, lckr_input
+	tcrlig_input, unknown_input, unknown_input2, unknown_input3
+REFERENCE:
+1	ikb
+2	cd28_input, cd4, lckr_input, tcrlig_input, unknown_input, unknown_input2
+	unknown_input3, Dummy, abl, akap79, ap1, bad
+	bcat, bcl10, bclxl, ca, cabin1, calcin
+	calpr1, cam, camk2, camk4, card11, card11a
+	cblb, ccblp1, ccblp2, ccblr, cd28, cd45
+	cdc42, cre, creb, csk, cyc1, dag
+	dgk, erk, fkhr, fos, fyn, gab2
+	gadd45, gads, gap, grb2, gsk3, hpk1
+	ikkab, ikkg, ip3, itk, jnk, jun
+	lat, lckp1, lckp2, lckr, malt1, mek
+	mekk1, mkk4, mlk3, nfat, nfkb, p21c
+	p27k, p38, p70s, pag, pdk1, pi3k
+	pip3, pkb, pkcth, plcga, plcgb, pten
+	rac1p1, rac1p2, rac1r, raf, ras, rasgrp
+	rlk, rsk, sh3bp2, ship1, shp1, shp2
+	slp76, sos, sre, tcrb, tcrlig, tcrp
+	vav1, vav3, xx, zap70
+=======
+-----KI RANKING COMPARISON-----
+1	ikkab, nfkb
+2	Dummy, abl, akap79, ap1, bad, bcat
+	bcl10, bclxl, ca, cabin1, calcin, calpr1
+	cam, camk2, camk4, card11, card11a, cblb
+	ccblp1, ccblp2, ccblr, cd28, cd45, cdc42
+	cre, creb, csk, cyc1, dag, dgk
+	erk, fkhr, fos, fyn, gab2, gadd45
+	gads, gap, grb2, gsk3, hpk1, ikb
+	ikkg, ip3, itk, jnk, jun, lat
+	lckp1, lckp2, lckr, malt1, mek, mekk1
+	mkk4, mlk3, nfat, p21c, p27k, p38
+	p70s, pag, pdk1, pi3k, pip3, pkb
+	pkcth, plcga, plcgb, pten, rac1p1, rac1p2
+	rac1r, raf, ras, rasgrp, rlk, rsk
+	sh3bp2, ship1, shp1, shp2, slp76, sos
+	sre, tcrb, tcrlig, tcrp, vav1, vav3
+	xx, zap70, cd28_input, cd4, lckr_input, tcrlig_input
+	unknown_input, unknown_input2, unknown_input3
+REFERENCE:
+1	ikkab, nfkb
+2	cd28_input, cd4, lckr_input, tcrlig_input, unknown_input, unknown_input2
+	unknown_input3, Dummy, abl, akap79, ap1, bad
+	bcat, bcl10, bclxl, ca, cabin1, calcin
+	calpr1, cam, camk2, camk4, card11, card11a
+	cblb, ccblp1, ccblp2, ccblr, cd28, cd45
+	cdc42, cre, creb, csk, cyc1, dag
+	dgk, erk, fkhr, fos, fyn, gab2
+	gadd45, gads, gap, grb2, gsk3, hpk1
+	ikb, ikkg, ip3, itk, jnk, jun
+	lat, lckp1, lckp2, lckr, malt1, mek
+	mekk1, mkk4, mlk3, nfat, p21c, p27k
+	p38, p70s, pag, pdk1, pi3k, pip3
+	pkb, pkcth, plcga, plcgb, pten, rac1p1
+	rac1p2, rac1r, raf, ras, rasgrp, rlk
+	rsk, sh3bp2, ship1, shp1, shp2, slp76
+	sos, sre, tcrb, tcrlig, tcrp, vav1
+	vav3, xx, zap70
+============
+Relative_RMSE_KO_is  0.03199106756349503
+Relative_RMSE_KI_is  0.04524220162308868
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                            101.000      101.000
+Kendall tau-b                         1.000        1.000
+Spearman rho                          1.000        1.000
+Mean abs rank diff                    0.000        0.000
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9791
+===============MODEL information===============
+NUMBER OF INPUT: 	 7
+NUMBER OF NODES: 	 101
+NUMBER OF EDGES: 	 158
+NUMBER OF SCCs: 	 70
+NUMBER OF aFAS: 	 5
+===============TIME information===============
+TIME process heading: 0.0043477909930516034
+TIME generate input states: 0.0016583749966230243
+TIME convert to BBN (Propagation mode): 0
+TIME to fully simulate original network (if Test): 2.3962265420123003
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.8715021249954589
+TIME generating table 0.000817624997580424
+TIME calculating Shapley values for input nodes: 0.00012629100820049644
+TIME propagate (in Propagation mode): 0
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 151.47470212500775
+TIME simulate perturbations full if Test: 442.5974598329922
+TIME total for Simulation: 152.35315433199867
+TIME total for FULLY Simulation: 445.00334941598703
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0
+Average error for KI values: 0
+-----------TOTAL RUNNING TIME---------------
+597.495982124994
+
+[exit code: 0]

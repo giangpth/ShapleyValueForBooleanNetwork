@@ -1,0 +1,574 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_2_SMO -e data/realbenchmark/2.txt -o SMO -r all -p 60.0 -c 0.0 -k Shapley -m Propagation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_2_SMO                                   =========
+========== EXPRESSION FILE IS data/realbenchmark/2.txt                                                         =========
+========== THE OUTPUT OF INTEREST IS: SMO                                                                      =========
+========== SAMPLING STRATEGY IS: all                                                                           =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Propagation                                                                                =========
+LIST OF ALL SPECIES:
+['CIA', 'CIR', 'CI_p', 'EN_p', 'HH_p', 'PH', 'PTC_p', 'SLP', 'SMO', 'WG_e', 'WG_p', 'ci', 'en', 'hh', 'hh_e', 'ptc', 'wg']
+-----INPUT NAMES-----
+['SLP', 'WG_e', 'hh_e']
+----INTERMEDIATE NODES-----
+['CIA', 'CIR', 'CI_p', 'EN_p', 'HH_p', 'PH', 'PTC_p', 'SMO', 'WG_p', 'ci', 'en', 'hh', 'ptc', 'wg']
+===============================================================
+Sorted input names
+['SLP', 'WG_e', 'hh_e']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['CIA', 'CIR', 'CI_p', 'EN_p', 'HH_p', 'PH', 'PTC_p', 'SMO', 'WG_p', 'ci', 'en', 'hh', 'ptc', 'wg']
+There are 14 intermediate nodes with the range of inter: 0 16383
+SORTED INPUT
+['SLP', 'WG_e', 'hh_e']
+SORTED INTER
+['CIA', 'CIR', 'CI_p', 'EN_p', 'HH_p', 'PH', 'PTC_p', 'SMO', 'WG_p', 'ci', 'en', 'hh', 'ptc', 'wg']
+Now arrange layout of the original network for visualization
+THERE ARE 3 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('wg', 'wg'), ('ptc', 'PTC_p'), ('PTC_p', 'PTC_p')]
+orimodel_2_SMO.html
+Generating input states using strategy: all
+3 inputs causing in total 8 combinations
+Input list:
+['SLP', 'WG_e', 'hh_e']
+Number of samples in total: 8
+-----Mapping rowid to inputs:-----
+0: []
+1: ['hh_e']
+2: ['WG_e']
+3: ['WG_e', 'hh_e']
+4: ['SLP']
+5: ['SLP', 'hh_e']
+6: ['SLP', 'WG_e']
+7: ['SLP', 'WG_e', 'hh_e']
+Generating input states using strategy: all
+3 inputs causing in total 8 combinations
+Input list:
+['SLP', 'WG_e', 'hh_e']
+Number of samples in total: 8
+TEST: Mapping rowid to inputs:
+0: []
+1: ['hh_e']
+2: ['WG_e']
+3: ['WG_e', 'hh_e']
+4: ['SLP']
+5: ['SLP', 'hh_e']
+6: ['SLP', 'WG_e']
+7: ['SLP', 'WG_e', 'hh_e']
+-------------Now convert the original network to the acyclic network---------------
+-------------Now convert the acyclic network to the binary network---------------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'WG_e', 'SLP', 'hh_e'}
+Ordinary nodes are 
+{'WG_p', 'wg', 'en', 'SLP', 'ptc', 'hh_e', 'PH', 'EN_p', 'PTC_p', 'CIR', 'hh', 'ci', 'CIA', 'SMO', 'WG_e', 'CI_p', 'HH_p'}
+Extranodes added after removing cycles are 
+['wg_to_wg', 'ptc_to_PTC_p', 'PTC_p_to_PTC_p']
+binetmodel_2_SMO.html
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node SLP is -0.3333, 0.3333 with 1 KO rows and 1 KI rows
+Shapley value for input node WG_e is 0.3333, -1.0 with 1 KO rows and 1 KI rows
+Shapley value for input node hh_e is 1.6666, -1.6666 with 3 KO rows and 3 KI rows
+Simulating original network then inferring values for extranodes and binary formulas
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node SLP is -0.3333, 0.3333 with 1 KO rows and 1 KI rows
+Shapley value for input node WG_e is 0.3333, -1.0 with 1 KO rows and 1 KI rows
+Shapley value for input node hh_e is 1.6666, -1.6666 with 3 KO rows and 3 KI rows
+-----------Now propagate within binarized network for output SMO-------------
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+At TARGET node SMO, count all rows
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node ptc: processed 7 times
+Node PTC_p: processed 4 times
+SIMULATE 0 nodes over 13 nodes
+-----Now estimate the error by comparing propagated values to simulation values of input nodes-----
+For KO values
+For KI values
+=========PROPAGATION RESULTS=========
+-------RESULT for output SMO--------
+Ordered input nodes:
+['SLP', 'WG_e', 'hh_e']
+----SLP-----
+KO	0: []
+KI	0: []
+All	0: []
+----WG_e-----
+KO	0: []
+KI	0: []
+All	0: []
+----hh_e-----
+KO	3: [1, 5, 7]
+KI	3: [0, 4, 6]
+All	6: [0, 1, 4, 5, 6, 7]
+----CIA-----
+KO	0: []
+KI	0: []
+All	0: []
+----CIR-----
+KO	0: []
+KI	0: []
+All	0: []
+----CI_p-----
+KO	0: []
+KI	0: []
+All	0: []
+----EN_p-----
+KO	0: []
+KI	0: []
+All	0: []
+----HH_p-----
+KO	0: []
+KI	0: []
+All	0: []
+----PH-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTC_p-----
+KO	3: [0, 4, 6]
+KI	1: [2]
+All	4: [0, 2, 4, 6]
+----SMO-----
+KO	5: [1, 2, 3, 5, 7]
+KI	3: [0, 4, 6]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----WG_p-----
+KO	0: []
+KI	0: []
+All	0: []
+----ci-----
+KO	0: []
+KI	0: []
+All	0: []
+----en-----
+KO	0: []
+KI	0: []
+All	0: []
+----hh-----
+KO	0: []
+KI	0: []
+All	0: []
+----ptc-----
+KO	0: []
+KI	1: [2]
+All	1: [2]
+----wg-----
+KO	0: []
+KI	0: []
+All	0: []
+SLP                  			 KO:        0.0 | KI:        0.0
+WG_e                 			 KO:        0.0 | KI:        0.0
+hh_e                 			 KO:     1.6666 | KI:    -1.6666
+CIA                  			 KO:        0.0 | KI:        0.0
+CIR                  			 KO:        0.0 | KI:        0.0
+CI_p                 			 KO:        0.0 | KI:        0.0
+EN_p                 			 KO:        0.0 | KI:        0.0
+HH_p                 			 KO:        0.0 | KI:        0.0
+PH                   			 KO:        0.0 | KI:        0.0
+PTC_p                			 KO:    -1.6666 | KI:     0.3333
+SMO                  			 KO:     2.3332 | KI:    -1.6666
+WG_p                 			 KO:        0.0 | KI:        0.0
+ci                   			 KO:        0.0 | KI:        0.0
+en                   			 KO:        0.0 | KI:        0.0
+hh                   			 KO:        0.0 | KI:        0.0
+ptc                  			 KO:        0.0 | KI:     0.3333
+wg                   			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	SMO
+2	hh_e
+3	PTC_p
+4	ptc, CIA, CIR, EN_p, CI_p, en
+	ci, WG_e, SLP, WG_p, wg, PH
+	hh, HH_p
+-----KI RANKING-----
+1	SMO, hh_e
+2	PTC_p, ptc
+3	CIA, CIR, EN_p, CI_p, en, ci
+	WG_e, SLP, WG_p, wg, PH, hh
+	HH_p
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output SMO--------
+Ordered input nodes:
+['SLP', 'WG_e', 'hh_e']
+----SLP-----
+KO	1: [6]
+KI	1: [2]
+All	2: [2, 6]
+----WG_e-----
+KO	1: [2]
+KI	1: [0]
+All	2: [0, 2]
+----hh_e-----
+KO	3: [1, 5, 7]
+KI	3: [0, 4, 6]
+All	6: [0, 1, 4, 5, 6, 7]
+----CIA-----
+KO	3: [0, 4, 6]
+KI	1: [2]
+All	4: [0, 2, 4, 6]
+----CIR-----
+KO	0: []
+KI	3: [0, 4, 6]
+All	3: [0, 4, 6]
+----CI_p-----
+KO	3: [0, 4, 6]
+KI	1: [2]
+All	4: [0, 2, 4, 6]
+----EN_p-----
+KO	1: [2]
+KI	3: [0, 4, 6]
+All	4: [0, 2, 4, 6]
+----HH_p-----
+KO	0: []
+KI	0: []
+All	0: []
+----PH-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTC_p-----
+KO	3: [0, 4, 6]
+KI	1: [2]
+All	4: [0, 2, 4, 6]
+----SMO-----
+KO	5: [1, 2, 3, 5, 7]
+KI	3: [0, 4, 6]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----WG_p-----
+KO	0: []
+KI	0: []
+All	0: []
+----ci-----
+KO	3: [0, 4, 6]
+KI	0: []
+All	3: [0, 4, 6]
+----en-----
+KO	1: [2]
+KI	3: [0, 4, 6]
+All	4: [0, 2, 4, 6]
+----hh-----
+KO	0: []
+KI	0: []
+All	0: []
+----ptc-----
+KO	3: [0, 4, 6]
+KI	1: [2]
+All	4: [0, 2, 4, 6]
+----wg-----
+KO	0: []
+KI	0: []
+All	0: []
+SLP                  			 KO:    -0.3333 | KI:     0.3333
+WG_e                 			 KO:     0.3333 | KI:       -1.0
+hh_e                 			 KO:     1.6666 | KI:    -1.6666
+CIA                  			 KO:    -1.6666 | KI:     0.3333
+CIR                  			 KO:        0.0 | KI:    -1.6666
+CI_p                 			 KO:    -1.6666 | KI:     0.3333
+EN_p                 			 KO:     0.3333 | KI:    -1.6666
+HH_p                 			 KO:        0.0 | KI:        0.0
+PH                   			 KO:        0.0 | KI:        0.0
+PTC_p                			 KO:    -1.6666 | KI:     0.3333
+SMO                  			 KO:     2.3332 | KI:    -1.6666
+WG_p                 			 KO:        0.0 | KI:        0.0
+ci                   			 KO:    -1.6666 | KI:        0.0
+en                   			 KO:     0.3333 | KI:    -1.6666
+hh                   			 KO:        0.0 | KI:        0.0
+ptc                  			 KO:    -1.6666 | KI:     0.3333
+wg                   			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	SMO
+2	hh_e
+3	CIA, CI_p, PTC_p, ci, ptc
+4	SLP
+5	WG_e, EN_p, en
+6	CIR, HH_p, PH, WG_p, hh, wg
+-----KI RANKING-----
+1	hh_e, CIR, EN_p, SMO, en
+2	WG_e
+3	SLP, CIA, CI_p, PTC_p, ptc
+4	HH_p, PH, WG_p, ci, hh, wg
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node SMO ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     5: [1, 2, 3, 5, 7]
+KO Calc     5: [1, 2, 3, 5, 7]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     3: [0, 4, 6]
+KI Calc     3: [0, 4, 6]
+
+----Report rows for node hh_e ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     3: [1, 5, 7]
+KO Calc     3: [1, 5, 7]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     3: [0, 4, 6]
+KI Calc     3: [0, 4, 6]
+
+----Report rows for node PTC_p ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     3: [0, 4, 6]
+KO Calc     3: [0, 4, 6]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     1: [2]
+KI Calc     1: [2]
+
+----Report rows for node ptc ------
+KO Lack     3: [0, 4, 6]
+KO Extr     0: []
+KO Real     3: [0, 4, 6]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     1: [2]
+KI Calc     1: [2]
+
+----Report rows for node CIA ------
+KO Lack     3: [0, 4, 6]
+KO Extr     0: []
+KO Real     3: [0, 4, 6]
+KO Calc     0: []
+
+KI Lack     1: [2]
+KI Extr     0: []
+KI Real     1: [2]
+KI Calc     0: []
+
+----Report rows for node CIR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [0, 4, 6]
+KI Extr     0: []
+KI Real     3: [0, 4, 6]
+KI Calc     0: []
+
+----Report rows for node EN_p ------
+KO Lack     1: [2]
+KO Extr     0: []
+KO Real     1: [2]
+KO Calc     0: []
+
+KI Lack     3: [0, 4, 6]
+KI Extr     0: []
+KI Real     3: [0, 4, 6]
+KI Calc     0: []
+
+----Report rows for node CI_p ------
+KO Lack     3: [0, 4, 6]
+KO Extr     0: []
+KO Real     3: [0, 4, 6]
+KO Calc     0: []
+
+KI Lack     1: [2]
+KI Extr     0: []
+KI Real     1: [2]
+KI Calc     0: []
+
+----Report rows for node en ------
+KO Lack     1: [2]
+KO Extr     0: []
+KO Real     1: [2]
+KO Calc     0: []
+
+KI Lack     3: [0, 4, 6]
+KI Extr     0: []
+KI Real     3: [0, 4, 6]
+KI Calc     0: []
+
+----Report rows for node ci ------
+KO Lack     3: [0, 4, 6]
+KO Extr     0: []
+KO Real     3: [0, 4, 6]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node WG_e ------
+KO Lack     1: [2]
+KO Extr     0: []
+KO Real     1: [2]
+KO Calc     0: []
+
+KI Lack     1: [0]
+KI Extr     0: []
+KI Real     1: [0]
+KI Calc     0: []
+
+----Report rows for node SLP ------
+KO Lack     1: [6]
+KO Extr     0: []
+KO Real     1: [6]
+KO Calc     0: []
+
+KI Lack     1: [2]
+KI Extr     0: []
+KI Real     1: [2]
+KI Calc     0: []
+
+----Report rows for node WG_p ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node wg ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PH ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node hh ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node HH_p ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+ptc                  - Correct: KO:    -1.6666 | KI :     0.3333 - Incorrect KO:        0.0 | KI:     0.3333
+CIA                  - Correct: KO:    -1.6666 | KI :     0.3333 - Incorrect KO:        0.0 | KI:        0.0
+CIR                  - Correct: KO:        0.0 | KI :    -1.6666 - Incorrect KO:        0.0 | KI:        0.0
+EN_p                 - Correct: KO:     0.3333 | KI :    -1.6666 - Incorrect KO:        0.0 | KI:        0.0
+CI_p                 - Correct: KO:    -1.6666 | KI :     0.3333 - Incorrect KO:        0.0 | KI:        0.0
+en                   - Correct: KO:     0.3333 | KI :    -1.6666 - Incorrect KO:        0.0 | KI:        0.0
+ci                   - Correct: KO:    -1.6666 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+WG_e                 - Correct: KO:     0.3333 | KI :       -1.0 - Incorrect KO:        0.0 | KI:        0.0
+SLP                  - Correct: KO:    -0.3333 | KI :     0.3333 - Incorrect KO:        0.0 | KI:        0.0
+-----KO RANKING COMPARISON-----
+1	SMO
+2	hh_e
+3	PTC_p
+4	ptc, CIA, CIR, EN_p, CI_p, en
+	ci, WG_e, SLP, WG_p, wg, PH
+	hh, HH_p
+REFERENCE:
+1	SMO
+2	hh_e
+3	CIA, CI_p, PTC_p, ci, ptc
+4	SLP
+5	WG_e, EN_p, en
+6	CIR, HH_p, PH, WG_p, hh, wg
+=======
+-----KI RANKING COMPARISON-----
+1	SMO, hh_e
+2	PTC_p, ptc
+3	CIA, CIR, EN_p, CI_p, en, ci
+	WG_e, SLP, WG_p, wg, PH, hh
+	HH_p
+REFERENCE:
+1	hh_e, CIR, EN_p, SMO, en
+2	WG_e
+3	SLP, CIA, CI_p, PTC_p, ptc
+4	HH_p, PH, WG_p, ci, hh, wg
+============
+Relative_RMSE_KO_is  0.10305346360163795
+Relative_RMSE_KI_is  0.0942556625210359
+NDCG_KO_is  0.9301
+NDCG_KI_is  0.8771
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             17.000       17.000
+Kendall tau-b                         0.543        0.372
+Spearman rho                          0.619        0.440
+Mean abs rank diff                    0.588        0.882
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.647        0.647
+         Precision@10                0.647        0.647
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        0.400
+  Top-2  groups Jaccard            0.429        0.250
+  Top-3  groups Jaccard            0.647        0.647
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.7868
+===============MODEL information===============
+NUMBER OF INPUT: 	 3
+NUMBER OF NODES: 	 17
+NUMBER OF EDGES: 	 29
+NUMBER OF SCCs: 	 14
+NUMBER OF aFAS: 	 3
+===============TIME information===============
+TIME process heading: 0.0026747079973574728
+TIME generate input states: 0.00021029099298175424
+TIME convert to BBN (Propagation mode): 0.0029984580032760277
+TIME to fully simulate original network (if Test): 0.01980191600159742
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.019677332995343022
+TIME generating table 6.208400009199977e-05
+TIME calculating Shapley values for input nodes: 2.0584004232659936e-05
+TIME propagate (in Propagation mode): 0.008560500005842187
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0
+TIME simulate perturbations full if Test: 0.44703466701321304
+TIME total for Propagation: 0.03420395799912512
+TIME total for FULLY Simulation: 0.46958020800957456
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0.08333333333333333
+Average error for KI values: 0.08333333333333333
+-----------TOTAL RUNNING TIME---------------
+0.6729343330080155
+
+[exit code: 0]

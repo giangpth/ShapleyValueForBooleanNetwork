@@ -1,0 +1,573 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_4_p70S6K -e data/realbenchmark/4.txt -o p70S6K -r uniform -p 30.0 -c 0.0 -k Shapley -m Simulation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_4_p70S6K                                =========
+========== EXPRESSION FILE IS data/realbenchmark/4.txt                                                         =========
+========== THE OUTPUT OF INTEREST IS: p70S6K                                                                   =========
+========== SAMPLING STRATEGY IS: uniform                                                                       =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Simulation                                                                                 =========
+LIST OF ALL SPECIES:
+['AKT', 'EGF', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'HRG', 'MEK1_2', 'PDK1', 'PKCa', 'PLCg', 'erlotinib', 'mTOR', 'p70S6K', 'pertuzumab', 'trastuzumab']
+-----INPUT NAMES-----
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+----INTERMEDIATE NODES-----
+['AKT', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'MEK1_2', 'PDK1', 'PKCa', 'PLCg', 'mTOR', 'p70S6K']
+===============================================================
+Sorted input names
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+There are 5 inputs with the range of input: 0 31
+Sorted internames:
+['AKT', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'MEK1_2', 'PDK1', 'PKCa', 'PLCg', 'mTOR', 'p70S6K']
+There are 11 intermediate nodes with the range of inter: 0 2047
+SORTED INPUT
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+SORTED INTER
+['AKT', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'MEK1_2', 'PDK1', 'PKCa', 'PLCg', 'mTOR', 'p70S6K']
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: EGF or PLCg or ERBB1 or ERBB2 or ERBB3 
+More than 1 binary operator, dont allow NOT in formula: pertuzumab or AKT or mTOR 
+More than 1 binary operator, dont allow NOT in formula: ERBB2 or ERBB1 or MEK1_2 or ERBB3 
+More than 1 binary operator, dont allow NOT in formula: AKT or PDK1 or ERBB3 or mTOR 
+More than 1 binary operator, dont allow NOT in formula: pertuzumab or EGF or ERK1_2 or MEK1_2 
+More than 1 binary operator, dont allow NOT in formula: MEK1_2 or PDK1 or ERBB1 or ERBB3 or ERBB2 
+More than 1 binary operator, dont allow NOT in formula: mTOR or AKT or ERK1_2 or p70S6K 
+Now arrange layout of the original network for visualization
+THERE ARE 13 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('p70S6K', 'p70S6K'), ('PLCg', 'ERBB1'), ('PLCg', 'PLCg'), ('ERBB1', 'ERBB1'), ('ERBB3', 'ERBB3'), ('MEK1_2', 'MEK1_2'), ('PKCa', 'PKCa'), ('mTOR', 'mTOR'), ('AKT', 'mTOR'), ('AKT', 'AKT'), ('ERBB2', 'ERBB2'), ('PDK1', 'PDK1'), ('ERK1_2', 'ERK1_2')]
+orimodel_4_p70S6K.html
+Generating input states using strategy: uniform
+Sample percentage: 30.0%
+5 inputs causing in total 32 combinations
+Input list:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+Number of samples in total: 9
+-----Mapping rowid to inputs:-----
+6: ['erlotinib', 'pertuzumab']
+10: ['HRG', 'pertuzumab']
+16: ['EGF']
+18: ['EGF', 'pertuzumab']
+21: ['EGF', 'erlotinib', 'trastuzumab']
+23: ['EGF', 'erlotinib', 'pertuzumab', 'trastuzumab']
+24: ['EGF', 'HRG']
+27: ['EGF', 'HRG', 'pertuzumab', 'trastuzumab']
+31: ['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+Generating input states using strategy: all
+5 inputs causing in total 32 combinations
+Input list:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+Number of samples in total: 32
+TEST: Mapping rowid to inputs:
+0: []
+1: ['trastuzumab']
+2: ['pertuzumab']
+3: ['pertuzumab', 'trastuzumab']
+4: ['erlotinib']
+5: ['erlotinib', 'trastuzumab']
+6: ['erlotinib', 'pertuzumab']
+7: ['erlotinib', 'pertuzumab', 'trastuzumab']
+8: ['HRG']
+9: ['HRG', 'trastuzumab']
+10: ['HRG', 'pertuzumab']
+11: ['HRG', 'pertuzumab', 'trastuzumab']
+12: ['HRG', 'erlotinib']
+13: ['HRG', 'erlotinib', 'trastuzumab']
+14: ['HRG', 'erlotinib', 'pertuzumab']
+15: ['HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+16: ['EGF']
+17: ['EGF', 'trastuzumab']
+18: ['EGF', 'pertuzumab']
+19: ['EGF', 'pertuzumab', 'trastuzumab']
+20: ['EGF', 'erlotinib']
+21: ['EGF', 'erlotinib', 'trastuzumab']
+22: ['EGF', 'erlotinib', 'pertuzumab']
+23: ['EGF', 'erlotinib', 'pertuzumab', 'trastuzumab']
+24: ['EGF', 'HRG']
+25: ['EGF', 'HRG', 'trastuzumab']
+26: ['EGF', 'HRG', 'pertuzumab']
+27: ['EGF', 'HRG', 'pertuzumab', 'trastuzumab']
+28: ['EGF', 'HRG', 'erlotinib']
+29: ['EGF', 'HRG', 'erlotinib', 'trastuzumab']
+30: ['EGF', 'HRG', 'erlotinib', 'pertuzumab']
+31: ['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node EGF is 0.8, -1.7 with 6 KO rows and 6 KI rows
+Shapley value for input node HRG is 0.3, -1.2 with 2 KO rows and 2 KI rows
+Shapley value for input node erlotinib is -0.2, 0.3 with 2 KO rows and 2 KI rows
+Shapley value for input node pertuzumab is 0.8, -1.7 with 6 KO rows and 6 KI rows
+Shapley value for input node trastuzumab is 0.0, 0.0 with 0 KO rows and 0 KI rows
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node EGF is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node HRG is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node erlotinib is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node pertuzumab is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node trastuzumab is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-------Now performing pertubation simulations---------
+=========SIMULATION RESULTS=========
+-------RESULT for output p70S6K--------
+Ordered input nodes:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+----EGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----HRG-----
+KO	0: []
+KI	0: []
+All	0: []
+----erlotinib-----
+KO	0: []
+KI	0: []
+All	0: []
+----pertuzumab-----
+KO	0: []
+KI	0: []
+All	0: []
+----trastuzumab-----
+KO	0: []
+KI	0: []
+All	0: []
+----AKT-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB3-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERK1_2-----
+KO	1: [21]
+KI	0: []
+All	1: [21]
+----MEK1_2-----
+KO	0: []
+KI	0: []
+All	0: []
+----PDK1-----
+KO	0: []
+KI	0: []
+All	0: []
+----PKCa-----
+KO	0: []
+KI	0: []
+All	0: []
+----PLCg-----
+KO	0: []
+KI	0: []
+All	0: []
+----mTOR-----
+KO	0: []
+KI	0: []
+All	0: []
+----p70S6K-----
+KO	9: [6, 10, 16, 18, 21, 23, 24, 27, 31]
+KI	0: []
+All	9: [6, 10, 16, 18, 21, 23, 24, 27, 31]
+EGF                  			 KO:        0.0 | KI:        0.0
+HRG                  			 KO:        0.0 | KI:        0.0
+erlotinib            			 KO:        0.0 | KI:        0.0
+pertuzumab           			 KO:        0.0 | KI:        0.0
+trastuzumab          			 KO:        0.0 | KI:        0.0
+AKT                  			 KO:        0.0 | KI:        0.0
+ERBB1                			 KO:        0.0 | KI:        0.0
+ERBB2                			 KO:        0.0 | KI:        0.0
+ERBB3                			 KO:        0.0 | KI:        0.0
+ERK1_2               			 KO:        0.1 | KI:        0.0
+MEK1_2               			 KO:        0.0 | KI:        0.0
+PDK1                 			 KO:        0.0 | KI:        0.0
+PKCa                 			 KO:        0.0 | KI:        0.0
+PLCg                 			 KO:        0.0 | KI:        0.0
+mTOR                 			 KO:        0.0 | KI:        0.0
+p70S6K               			 KO:        2.1 | KI:        0.0
+-----KO RANKING-----
+1	p70S6K
+2	ERK1_2
+3	AKT, ERBB1, ERBB2, ERBB3, MEK1_2, PDK1
+	PKCa, PLCg, mTOR, EGF, HRG, erlotinib
+	pertuzumab, trastuzumab
+-----KI RANKING-----
+1	AKT, ERBB1, ERBB2, ERBB3, ERK1_2, MEK1_2
+	PDK1, PKCa, PLCg, mTOR, p70S6K, EGF
+	HRG, erlotinib, pertuzumab, trastuzumab
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output p70S6K--------
+Ordered input nodes:
+['EGF', 'HRG', 'erlotinib', 'pertuzumab', 'trastuzumab']
+----EGF-----
+KO	6: [16, 17, 20, 21, 28, 29]
+KI	6: [0, 1, 4, 5, 12, 13]
+All	12: [0, 1, 4, 5, 12, 13, 16, 17, 20, 21, 28, 29]
+----HRG-----
+KO	2: [8, 9]
+KI	2: [0, 1]
+All	4: [0, 1, 8, 9]
+----erlotinib-----
+KO	2: [12, 13]
+KI	2: [8, 9]
+All	4: [8, 9, 12, 13]
+----pertuzumab-----
+KO	6: [2, 3, 6, 7, 14, 15]
+KI	6: [0, 1, 4, 5, 12, 13]
+All	12: [0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15]
+----trastuzumab-----
+KO	0: []
+KI	0: []
+All	0: []
+----AKT-----
+KO	0: []
+KI	6: [0, 1, 4, 5, 12, 13]
+All	6: [0, 1, 4, 5, 12, 13]
+----ERBB1-----
+KO	0: []
+KI	6: [0, 1, 4, 5, 12, 13]
+All	6: [0, 1, 4, 5, 12, 13]
+----ERBB2-----
+KO	0: []
+KI	6: [0, 1, 4, 5, 12, 13]
+All	6: [0, 1, 4, 5, 12, 13]
+----ERBB3-----
+KO	2: [8, 9]
+KI	6: [0, 1, 4, 5, 12, 13]
+All	8: [0, 1, 4, 5, 8, 9, 12, 13]
+----ERK1_2-----
+KO	4: [20, 21, 28, 29]
+KI	6: [0, 1, 4, 5, 12, 13]
+All	10: [0, 1, 4, 5, 12, 13, 20, 21, 28, 29]
+----MEK1_2-----
+KO	0: []
+KI	6: [0, 1, 4, 5, 12, 13]
+All	6: [0, 1, 4, 5, 12, 13]
+----PDK1-----
+KO	0: []
+KI	6: [0, 1, 4, 5, 12, 13]
+All	6: [0, 1, 4, 5, 12, 13]
+----PKCa-----
+KO	0: []
+KI	0: []
+All	0: []
+----PLCg-----
+KO	0: []
+KI	2: [0, 1]
+All	2: [0, 1]
+----mTOR-----
+KO	0: []
+KI	6: [0, 1, 4, 5, 12, 13]
+All	6: [0, 1, 4, 5, 12, 13]
+----p70S6K-----
+KO	26: [2, 3, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+KI	6: [0, 1, 4, 5, 12, 13]
+All	32: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+EGF                  			 KO:        0.8 | KI:       -1.7
+HRG                  			 KO:        0.3 | KI:       -1.2
+erlotinib            			 KO:       -0.2 | KI:        0.3
+pertuzumab           			 KO:        0.8 | KI:       -1.7
+trastuzumab          			 KO:        0.0 | KI:        0.0
+AKT                  			 KO:        0.0 | KI:       -1.7
+ERBB1                			 KO:        0.0 | KI:       -1.7
+ERBB2                			 KO:        0.0 | KI:       -1.7
+ERBB3                			 KO:        0.3 | KI:       -1.7
+ERK1_2               			 KO:        0.5 | KI:       -1.7
+MEK1_2               			 KO:        0.0 | KI:       -1.7
+PDK1                 			 KO:        0.0 | KI:       -1.7
+PKCa                 			 KO:        0.0 | KI:        0.0
+PLCg                 			 KO:        0.0 | KI:       -1.2
+mTOR                 			 KO:        0.0 | KI:       -1.7
+p70S6K               			 KO:        4.3 | KI:       -1.7
+-----KO RANKING-----
+1	p70S6K
+2	EGF, pertuzumab
+3	ERK1_2
+4	HRG, ERBB3
+5	erlotinib
+6	trastuzumab, AKT, ERBB1, ERBB2, MEK1_2, PDK1
+	PKCa, PLCg, mTOR
+-----KI RANKING-----
+1	EGF, pertuzumab, AKT, ERBB1, ERBB2, ERBB3
+	ERK1_2, MEK1_2, PDK1, mTOR, p70S6K
+2	HRG, PLCg
+3	erlotinib
+4	trastuzumab, PKCa
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node AKT ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node ERBB1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node ERBB2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node ERBB3 ------
+KO Lack     2: [8, 9]
+KO Extr     0: []
+KO Real     2: [8, 9]
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node ERK1_2 ------
+KO Lack     3: [20, 28, 29]
+KO Extr     0: []
+KO Real     4: [20, 21, 28, 29]
+KO Calc     1: [21]
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node MEK1_2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node PDK1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node PKCa ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PLCg ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     2: [0, 1]
+KI Extr     0: []
+KI Real     2: [0, 1]
+KI Calc     0: []
+
+----Report rows for node mTOR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node p70S6K ------
+KO Lack    17: [2, 3, 7, 8, 9, 11, 14, 15, 17, 19, 20, 22, 25, 26, 28, 29, 30]
+KO Extr     0: []
+KO Real    26: [2, 3, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+KO Calc     9: [6, 10, 16, 18, 21, 23, 24, 27, 31]
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node EGF ------
+KO Lack     6: [16, 17, 20, 21, 28, 29]
+KO Extr     0: []
+KO Real     6: [16, 17, 20, 21, 28, 29]
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node HRG ------
+KO Lack     2: [8, 9]
+KO Extr     0: []
+KO Real     2: [8, 9]
+KO Calc     0: []
+
+KI Lack     2: [0, 1]
+KI Extr     0: []
+KI Real     2: [0, 1]
+KI Calc     0: []
+
+----Report rows for node erlotinib ------
+KO Lack     2: [12, 13]
+KO Extr     0: []
+KO Real     2: [12, 13]
+KO Calc     0: []
+
+KI Lack     2: [8, 9]
+KI Extr     0: []
+KI Real     2: [8, 9]
+KI Calc     0: []
+
+----Report rows for node pertuzumab ------
+KO Lack     6: [2, 3, 6, 7, 14, 15]
+KO Extr     0: []
+KO Real     6: [2, 3, 6, 7, 14, 15]
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 4, 5, 12, 13]
+KI Extr     0: []
+KI Real     6: [0, 1, 4, 5, 12, 13]
+KI Calc     0: []
+
+----Report rows for node trastuzumab ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+AKT                  - Correct: KO:        0.0 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+ERBB1                - Correct: KO:        0.0 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+ERBB2                - Correct: KO:        0.0 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+ERBB3                - Correct: KO:        0.3 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+ERK1_2               - Correct: KO:        0.5 | KI :       -1.7 - Incorrect KO:        0.1 | KI:        0.0
+MEK1_2               - Correct: KO:        0.0 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+PDK1                 - Correct: KO:        0.0 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+PLCg                 - Correct: KO:        0.0 | KI :       -1.2 - Incorrect KO:        0.0 | KI:        0.0
+mTOR                 - Correct: KO:        0.0 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+p70S6K               - Correct: KO:        4.3 | KI :       -1.7 - Incorrect KO:        2.1 | KI:        0.0
+EGF                  - Correct: KO:        0.8 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+HRG                  - Correct: KO:        0.3 | KI :       -1.2 - Incorrect KO:        0.0 | KI:        0.0
+erlotinib            - Correct: KO:       -0.2 | KI :        0.3 - Incorrect KO:        0.0 | KI:        0.0
+pertuzumab           - Correct: KO:        0.8 | KI :       -1.7 - Incorrect KO:        0.0 | KI:        0.0
+-----KO RANKING COMPARISON-----
+1	p70S6K
+2	ERK1_2
+3	AKT, ERBB1, ERBB2, ERBB3, MEK1_2, PDK1
+	PKCa, PLCg, mTOR, EGF, HRG, erlotinib
+	pertuzumab, trastuzumab
+REFERENCE:
+1	p70S6K
+2	EGF, pertuzumab
+3	ERK1_2
+4	HRG, ERBB3
+5	erlotinib
+6	trastuzumab, AKT, ERBB1, ERBB2, MEK1_2, PDK1
+	PKCa, PLCg, mTOR
+=======
+-----KI RANKING COMPARISON-----
+1	AKT, ERBB1, ERBB2, ERBB3, ERK1_2, MEK1_2
+	PDK1, PKCa, PLCg, mTOR, p70S6K, EGF
+	HRG, erlotinib, pertuzumab, trastuzumab
+REFERENCE:
+1	EGF, pertuzumab, AKT, ERBB1, ERBB2, ERBB3
+	ERK1_2, MEK1_2, PDK1, mTOR, p70S6K
+2	HRG, PLCg
+3	erlotinib
+4	trastuzumab, PKCa
+============
+Relative_RMSE_KO_is  0.053114786599924836
+Relative_RMSE_KI_is  0.1228283581081973
+NDCG_KO_is  0.9427
+NDCG_KI_is  0.9161
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             16.000       16.000
+Kendall tau-b                         0.513          NaN
+Spearman rho                          0.625        0.000
+Mean abs rank diff                    2.125        0.625
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        0.688
+         Precision@10                1.000        0.688
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        0.688
+  Top-2  groups Jaccard            0.250        0.812
+  Top-3  groups Jaccard            0.250        0.875
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.7852
+===============MODEL information===============
+NUMBER OF INPUT: 	 5
+NUMBER OF NODES: 	 16
+NUMBER OF EDGES: 	 46
+NUMBER OF SCCs: 	 14
+NUMBER OF aFAS: 	 13
+===============TIME information===============
+TIME process heading: 0.0026132080238312483
+TIME generate input states: 0.0002716669987421483
+TIME convert to BBN (Propagation mode): 0
+TIME to fully simulate original network (if Test): 0.029050457989796996
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.00873025000328198
+TIME generating table 3.945801290683448e-05
+TIME calculating Shapley values for input nodes: 2.579099964350462e-05
+TIME propagate (in Propagation mode): 0
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0.18675249998341314
+TIME simulate perturbations full if Test: 0.6296924999915063
+TIME total for Simulation: 0.19843287402181886
+TIME total for FULLY Simulation: 0.661625249980716
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0
+Average error for KI values: 0
+-----------TOTAL RUNNING TIME---------------
+0.9508283339964692
+
+[exit code: 0]

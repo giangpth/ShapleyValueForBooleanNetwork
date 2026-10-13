@@ -1,0 +1,1773 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_19_Akt -e data/realbenchmark/19.txt -o Akt -r uniform -p 30.0 -c 0.0 -k Shapley -m Simulation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_19_Akt                                  =========
+========== EXPRESSION FILE IS data/realbenchmark/19.txt                                                        =========
+========== THE OUTPUT OF INTEREST IS: Akt                                                                      =========
+========== SAMPLING STRATEGY IS: uniform                                                                       =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Simulation                                                                                 =========
+LIST OF ALL SPECIES:
+['AKAP12', 'AP1', 'ATF2', 'Akt', 'C3G', 'CCL20', 'CDK2', 'CDKN1A', 'CDKN2A', 'CREB', 'CRKL', 'CTGF', 'Ca', 'Cdc42_Rac1', 'CellMigration', 'CyclinD', 'DAG', 'DOCK180', 'DUSP1', 'ECM', 'EGF', 'EGFR', 'EGR1', 'ETS', 'Elk1', 'Erk', 'Fak', 'Grb2', 'HBEGF', 'HGF', 'IL8', 'IP3', 'Integrins', 'JNK', 'MET', 'MLK3', 'MMP1_10', 'Mek', 'Mekk1', 'Mekk4', 'Mekk7', 'Mkk3', 'Mkk4', 'Mkk6', 'PAI_1', 'PAK1', 'PAK2', 'PAK3', 'PI3K', 'PKC', 'PLC_g', 'PTEN', 'PTGS2', 'Plasmin', 'Proliferation', 'RSK', 'Raf', 'Rap1', 'Ras', 'SOS', 'STAT3', 'Shc', 'cFOS', 'cJUN', 'cMYC', 'p38', 'uPA', 'uPAR']
+-----INPUT NAMES-----
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+----INTERMEDIATE NODES-----
+['AP1', 'ATF2', 'Akt', 'C3G', 'CCL20', 'CDK2', 'CDKN1A', 'CDKN2A', 'CREB', 'CRKL', 'CTGF', 'Ca', 'Cdc42_Rac1', 'CellMigration', 'CyclinD', 'DAG', 'DOCK180', 'ECM', 'EGFR', 'EGR1', 'ETS', 'Elk1', 'Erk', 'Fak', 'Grb2', 'HBEGF', 'IL8', 'IP3', 'Integrins', 'JNK', 'MET', 'MLK3', 'MMP1_10', 'Mek', 'Mekk1', 'Mekk4', 'Mekk7', 'Mkk3', 'Mkk4', 'Mkk6', 'PAK1', 'PAK2', 'PAK3', 'PI3K', 'PKC', 'PLC_g', 'PTGS2', 'Plasmin', 'Proliferation', 'RSK', 'Raf', 'Rap1', 'Ras', 'SOS', 'STAT3', 'Shc', 'cFOS', 'cJUN', 'cMYC', 'p38', 'uPA', 'uPAR']
+===============================================================
+Sorted input names
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['AP1', 'ATF2', 'Akt', 'C3G', 'CCL20', 'CDK2', 'CDKN1A', 'CDKN2A', 'CREB', 'CRKL', 'CTGF', 'Ca', 'Cdc42_Rac1', 'CellMigration', 'CyclinD', 'DAG', 'DOCK180', 'ECM', 'EGFR', 'EGR1', 'ETS', 'Elk1', 'Erk', 'Fak', 'Grb2', 'HBEGF', 'IL8', 'IP3', 'Integrins', 'JNK', 'MET', 'MLK3', 'MMP1_10', 'Mek', 'Mekk1', 'Mekk4', 'Mekk7', 'Mkk3', 'Mkk4', 'Mkk6', 'PAK1', 'PAK2', 'PAK3', 'PI3K', 'PKC', 'PLC_g', 'PTGS2', 'Plasmin', 'Proliferation', 'RSK', 'Raf', 'Rap1', 'Ras', 'SOS', 'STAT3', 'Shc', 'cFOS', 'cJUN', 'cMYC', 'p38', 'uPA', 'uPAR']
+There are 62 intermediate nodes with the range of inter: 0 4611686018427387903
+SORTED INPUT
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+SORTED INTER
+['AP1', 'ATF2', 'Akt', 'C3G', 'CCL20', 'CDK2', 'CDKN1A', 'CDKN2A', 'CREB', 'CRKL', 'CTGF', 'Ca', 'Cdc42_Rac1', 'CellMigration', 'CyclinD', 'DAG', 'DOCK180', 'ECM', 'EGFR', 'EGR1', 'ETS', 'Elk1', 'Erk', 'Fak', 'Grb2', 'HBEGF', 'IL8', 'IP3', 'Integrins', 'JNK', 'MET', 'MLK3', 'MMP1_10', 'Mek', 'Mekk1', 'Mekk4', 'Mekk7', 'Mkk3', 'Mkk4', 'Mkk6', 'PAK1', 'PAK2', 'PAK3', 'PI3K', 'PKC', 'PLC_g', 'PTGS2', 'Plasmin', 'Proliferation', 'RSK', 'Raf', 'Rap1', 'Ras', 'SOS', 'STAT3', 'Shc', 'cFOS', 'cJUN', 'cMYC', 'p38', 'uPA', 'uPAR']
+More than 1 binary operator, dont allow NOT in formula: CTGF and PTGS2 and CCL20 
+More than 1 binary operator, dont allow NOT in formula: EGFR or MET or Fak 
+More than 1 binary operator, dont allow NOT in formula: Mekk4 or Mekk1 or MLK3 
+Now arrange layout of the original network for visualization
+THERE ARE 5 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('Ras', 'Cdc42_Rac1'), ('Mek', 'Erk'), ('Akt', 'Cdc42_Rac1'), ('DOCK180', 'Cdc42_Rac1'), ('CRKL', 'C3G')]
+orimodel_19_Akt.html
+Generating input states using strategy: uniform
+Sample percentage: 30.0%
+6 inputs causing in total 64 combinations
+Input list:
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+Number of samples in total: 19
+-----Mapping rowid to inputs:-----
+7: ['HGF', 'PAI_1', 'PTEN']
+9: ['EGF', 'PTEN']
+16: ['DUSP1']
+17: ['DUSP1', 'PTEN']
+22: ['DUSP1', 'HGF', 'PAI_1']
+23: ['DUSP1', 'HGF', 'PAI_1', 'PTEN']
+25: ['DUSP1', 'EGF', 'PTEN']
+27: ['DUSP1', 'EGF', 'PAI_1', 'PTEN']
+28: ['DUSP1', 'EGF', 'HGF']
+29: ['DUSP1', 'EGF', 'HGF', 'PTEN']
+33: ['AKAP12', 'PTEN']
+35: ['AKAP12', 'PAI_1', 'PTEN']
+36: ['AKAP12', 'HGF']
+38: ['AKAP12', 'HGF', 'PAI_1']
+42: ['AKAP12', 'EGF', 'PAI_1']
+51: ['AKAP12', 'DUSP1', 'PAI_1', 'PTEN']
+53: ['AKAP12', 'DUSP1', 'HGF', 'PTEN']
+54: ['AKAP12', 'DUSP1', 'HGF', 'PAI_1']
+55: ['AKAP12', 'DUSP1', 'HGF', 'PAI_1', 'PTEN']
+Generating input states using strategy: all
+6 inputs causing in total 64 combinations
+Input list:
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+Number of samples in total: 64
+TEST: Mapping rowid to inputs:
+0: []
+1: ['PTEN']
+2: ['PAI_1']
+3: ['PAI_1', 'PTEN']
+4: ['HGF']
+5: ['HGF', 'PTEN']
+6: ['HGF', 'PAI_1']
+7: ['HGF', 'PAI_1', 'PTEN']
+8: ['EGF']
+9: ['EGF', 'PTEN']
+10: ['EGF', 'PAI_1']
+11: ['EGF', 'PAI_1', 'PTEN']
+12: ['EGF', 'HGF']
+13: ['EGF', 'HGF', 'PTEN']
+14: ['EGF', 'HGF', 'PAI_1']
+15: ['EGF', 'HGF', 'PAI_1', 'PTEN']
+16: ['DUSP1']
+17: ['DUSP1', 'PTEN']
+18: ['DUSP1', 'PAI_1']
+19: ['DUSP1', 'PAI_1', 'PTEN']
+20: ['DUSP1', 'HGF']
+21: ['DUSP1', 'HGF', 'PTEN']
+22: ['DUSP1', 'HGF', 'PAI_1']
+23: ['DUSP1', 'HGF', 'PAI_1', 'PTEN']
+24: ['DUSP1', 'EGF']
+25: ['DUSP1', 'EGF', 'PTEN']
+26: ['DUSP1', 'EGF', 'PAI_1']
+27: ['DUSP1', 'EGF', 'PAI_1', 'PTEN']
+28: ['DUSP1', 'EGF', 'HGF']
+29: ['DUSP1', 'EGF', 'HGF', 'PTEN']
+30: ['DUSP1', 'EGF', 'HGF', 'PAI_1']
+31: ['DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+32: ['AKAP12']
+33: ['AKAP12', 'PTEN']
+34: ['AKAP12', 'PAI_1']
+35: ['AKAP12', 'PAI_1', 'PTEN']
+36: ['AKAP12', 'HGF']
+37: ['AKAP12', 'HGF', 'PTEN']
+38: ['AKAP12', 'HGF', 'PAI_1']
+39: ['AKAP12', 'HGF', 'PAI_1', 'PTEN']
+40: ['AKAP12', 'EGF']
+41: ['AKAP12', 'EGF', 'PTEN']
+42: ['AKAP12', 'EGF', 'PAI_1']
+43: ['AKAP12', 'EGF', 'PAI_1', 'PTEN']
+44: ['AKAP12', 'EGF', 'HGF']
+45: ['AKAP12', 'EGF', 'HGF', 'PTEN']
+46: ['AKAP12', 'EGF', 'HGF', 'PAI_1']
+47: ['AKAP12', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+48: ['AKAP12', 'DUSP1']
+49: ['AKAP12', 'DUSP1', 'PTEN']
+50: ['AKAP12', 'DUSP1', 'PAI_1']
+51: ['AKAP12', 'DUSP1', 'PAI_1', 'PTEN']
+52: ['AKAP12', 'DUSP1', 'HGF']
+53: ['AKAP12', 'DUSP1', 'HGF', 'PTEN']
+54: ['AKAP12', 'DUSP1', 'HGF', 'PAI_1']
+55: ['AKAP12', 'DUSP1', 'HGF', 'PAI_1', 'PTEN']
+56: ['AKAP12', 'DUSP1', 'EGF']
+57: ['AKAP12', 'DUSP1', 'EGF', 'PTEN']
+58: ['AKAP12', 'DUSP1', 'EGF', 'PAI_1']
+59: ['AKAP12', 'DUSP1', 'EGF', 'PAI_1', 'PTEN']
+60: ['AKAP12', 'DUSP1', 'EGF', 'HGF']
+61: ['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PTEN']
+62: ['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1']
+63: ['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node AKAP12 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node DUSP1 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node EGF is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node HGF is 1.167, -2.3337 with 16 KO rows and 16 KI rows
+Shapley value for input node PAI_1 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node PTEN is -2.3337, 1.167 with 16 KO rows and 16 KI rows
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node AKAP12 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node DUSP1 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node EGF is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node HGF is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node PAI_1 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node PTEN is -0.3001, 0.1667 with 3 KO rows and 3 KI rows
+-------Now performing pertubation simulations---------
+=========SIMULATION RESULTS=========
+-------RESULT for output Akt--------
+Ordered input nodes:
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+----AKAP12-----
+KO	0: []
+KI	0: []
+All	0: []
+----DUSP1-----
+KO	0: []
+KI	0: []
+All	0: []
+----EGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----HGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAI_1-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTEN-----
+KO	3: [23, 29, 55]
+KI	3: [22, 28, 54]
+All	6: [22, 23, 28, 29, 54, 55]
+----AP1-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----ATF2-----
+KO	0: []
+KI	0: []
+All	0: []
+----Akt-----
+KO	5: [22, 28, 36, 38, 54]
+KI	14: [7, 9, 16, 17, 23, 25, 27, 29, 33, 35, 42, 51, 53, 55]
+All	19: [7, 9, 16, 17, 22, 23, 25, 27, 28, 29, 33, 35, 36, 38, 42, 51, 53, 54, 55]
+----C3G-----
+KO	0: []
+KI	0: []
+All	0: []
+----CCL20-----
+KO	0: []
+KI	0: []
+All	0: []
+----CDK2-----
+KO	0: []
+KI	0: []
+All	0: []
+----CDKN1A-----
+KO	0: []
+KI	0: []
+All	0: []
+----CDKN2A-----
+KO	0: []
+KI	0: []
+All	0: []
+----CREB-----
+KO	0: []
+KI	0: []
+All	0: []
+----CRKL-----
+KO	0: []
+KI	0: []
+All	0: []
+----CTGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----Ca-----
+KO	0: []
+KI	0: []
+All	0: []
+----Cdc42_Rac1-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----CellMigration-----
+KO	0: []
+KI	0: []
+All	0: []
+----CyclinD-----
+KO	0: []
+KI	0: []
+All	0: []
+----DAG-----
+KO	0: []
+KI	0: []
+All	0: []
+----DOCK180-----
+KO	0: []
+KI	0: []
+All	0: []
+----ECM-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----EGFR-----
+KO	0: []
+KI	0: []
+All	0: []
+----EGR1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ETS-----
+KO	0: []
+KI	0: []
+All	0: []
+----Elk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----Erk-----
+KO	0: []
+KI	0: []
+All	0: []
+----Fak-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----Grb2-----
+KO	0: []
+KI	0: []
+All	0: []
+----HBEGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL8-----
+KO	0: []
+KI	0: []
+All	0: []
+----IP3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Integrins-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----JNK-----
+KO	0: []
+KI	0: []
+All	0: []
+----MET-----
+KO	5: [22, 28, 36, 38, 54]
+KI	2: [16, 42]
+All	7: [16, 22, 28, 36, 38, 42, 54]
+----MLK3-----
+KO	0: []
+KI	0: []
+All	0: []
+----MMP1_10-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----Mek-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mekk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mekk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mekk7-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mkk3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mkk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mkk6-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAK1-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAK2-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAK3-----
+KO	0: []
+KI	0: []
+All	0: []
+----PI3K-----
+KO	5: [22, 28, 36, 38, 54]
+KI	2: [16, 42]
+All	7: [16, 22, 28, 36, 38, 42, 54]
+----PKC-----
+KO	0: []
+KI	0: []
+All	0: []
+----PLC_g-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTGS2-----
+KO	0: []
+KI	0: []
+All	0: []
+----Plasmin-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----Proliferation-----
+KO	0: []
+KI	0: []
+All	0: []
+----RSK-----
+KO	0: []
+KI	0: []
+All	0: []
+----Raf-----
+KO	0: []
+KI	0: []
+All	0: []
+----Rap1-----
+KO	0: []
+KI	0: []
+All	0: []
+----Ras-----
+KO	0: []
+KI	0: []
+All	0: []
+----SOS-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Shc-----
+KO	0: []
+KI	0: []
+All	0: []
+----cFOS-----
+KO	0: []
+KI	0: []
+All	0: []
+----cJUN-----
+KO	0: []
+KI	0: []
+All	0: []
+----cMYC-----
+KO	0: []
+KI	0: []
+All	0: []
+----p38-----
+KO	0: []
+KI	0: []
+All	0: []
+----uPA-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+----uPAR-----
+KO	0: []
+KI	1: [42]
+All	1: [42]
+AKAP12               			 KO:        0.0 | KI:        0.0
+DUSP1                			 KO:        0.0 | KI:        0.0
+EGF                  			 KO:        0.0 | KI:        0.0
+HGF                  			 KO:        0.0 | KI:        0.0
+PAI_1                			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:    -0.3001 | KI:     0.1667
+AP1                  			 KO:        0.0 | KI:      -0.05
+ATF2                 			 KO:        0.0 | KI:        0.0
+Akt                  			 KO:     0.2834 | KI:     -1.067
+C3G                  			 KO:        0.0 | KI:        0.0
+CCL20                			 KO:        0.0 | KI:        0.0
+CDK2                 			 KO:        0.0 | KI:        0.0
+CDKN1A               			 KO:        0.0 | KI:        0.0
+CDKN2A               			 KO:        0.0 | KI:        0.0
+CREB                 			 KO:        0.0 | KI:        0.0
+CRKL                 			 KO:        0.0 | KI:        0.0
+CTGF                 			 KO:        0.0 | KI:        0.0
+Ca                   			 KO:        0.0 | KI:        0.0
+Cdc42_Rac1           			 KO:        0.0 | KI:      -0.05
+CellMigration        			 KO:        0.0 | KI:        0.0
+CyclinD              			 KO:        0.0 | KI:        0.0
+DAG                  			 KO:        0.0 | KI:        0.0
+DOCK180              			 KO:        0.0 | KI:        0.0
+ECM                  			 KO:        0.0 | KI:      -0.05
+EGFR                 			 KO:        0.0 | KI:        0.0
+EGR1                 			 KO:        0.0 | KI:        0.0
+ETS                  			 KO:        0.0 | KI:        0.0
+Elk1                 			 KO:        0.0 | KI:        0.0
+Erk                  			 KO:        0.0 | KI:        0.0
+Fak                  			 KO:        0.0 | KI:      -0.05
+Grb2                 			 KO:        0.0 | KI:        0.0
+HBEGF                			 KO:        0.0 | KI:        0.0
+IL8                  			 KO:        0.0 | KI:        0.0
+IP3                  			 KO:        0.0 | KI:        0.0
+Integrins            			 KO:        0.0 | KI:      -0.05
+JNK                  			 KO:        0.0 | KI:        0.0
+MET                  			 KO:     0.2834 | KI:    -0.2167
+MLK3                 			 KO:        0.0 | KI:        0.0
+MMP1_10              			 KO:        0.0 | KI:      -0.05
+Mek                  			 KO:        0.0 | KI:        0.0
+Mekk1                			 KO:        0.0 | KI:        0.0
+Mekk4                			 KO:        0.0 | KI:        0.0
+Mekk7                			 KO:        0.0 | KI:        0.0
+Mkk3                 			 KO:        0.0 | KI:        0.0
+Mkk4                 			 KO:        0.0 | KI:        0.0
+Mkk6                 			 KO:        0.0 | KI:        0.0
+PAK1                 			 KO:        0.0 | KI:        0.0
+PAK2                 			 KO:        0.0 | KI:        0.0
+PAK3                 			 KO:        0.0 | KI:        0.0
+PI3K                 			 KO:     0.2834 | KI:    -0.2167
+PKC                  			 KO:        0.0 | KI:        0.0
+PLC_g                			 KO:        0.0 | KI:        0.0
+PTGS2                			 KO:        0.0 | KI:        0.0
+Plasmin              			 KO:        0.0 | KI:      -0.05
+Proliferation        			 KO:        0.0 | KI:        0.0
+RSK                  			 KO:        0.0 | KI:        0.0
+Raf                  			 KO:        0.0 | KI:        0.0
+Rap1                 			 KO:        0.0 | KI:        0.0
+Ras                  			 KO:        0.0 | KI:        0.0
+SOS                  			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+Shc                  			 KO:        0.0 | KI:        0.0
+cFOS                 			 KO:        0.0 | KI:        0.0
+cJUN                 			 KO:        0.0 | KI:        0.0
+cMYC                 			 KO:        0.0 | KI:        0.0
+p38                  			 KO:        0.0 | KI:        0.0
+uPA                  			 KO:        0.0 | KI:      -0.05
+uPAR                 			 KO:        0.0 | KI:      -0.05
+-----KO RANKING-----
+1	PTEN
+2	Akt, MET, PI3K
+3	AP1, ATF2, C3G, CCL20, CDK2, CDKN1A
+	CDKN2A, CREB, CRKL, CTGF, Ca, Cdc42_Rac1
+	CellMigration, CyclinD, DAG, DOCK180, ECM, EGFR
+	EGR1, ETS, Elk1, Erk, Fak, Grb2
+	HBEGF, IL8, IP3, Integrins, JNK, MLK3
+	MMP1_10, Mek, Mekk1, Mekk4, Mekk7, Mkk3
+	Mkk4, Mkk6, PAK1, PAK2, PAK3, PKC
+	PLC_g, PTGS2, Plasmin, Proliferation, RSK, Raf
+	Rap1, Ras, SOS, STAT3, Shc, cFOS
+	cJUN, cMYC, p38, uPA, uPAR, AKAP12
+	DUSP1, EGF, HGF, PAI_1
+-----KI RANKING-----
+1	Akt
+2	MET, PI3K
+3	PTEN
+4	AP1, Cdc42_Rac1, ECM, Fak, Integrins, MMP1_10
+	Plasmin, uPA, uPAR
+5	ATF2, C3G, CCL20, CDK2, CDKN1A, CDKN2A
+	CREB, CRKL, CTGF, Ca, CellMigration, CyclinD
+	DAG, DOCK180, EGFR, EGR1, ETS, Elk1
+	Erk, Grb2, HBEGF, IL8, IP3, JNK
+	MLK3, Mek, Mekk1, Mekk4, Mekk7, Mkk3
+	Mkk4, Mkk6, PAK1, PAK2, PAK3, PKC
+	PLC_g, PTGS2, Proliferation, RSK, Raf, Rap1
+	Ras, SOS, STAT3, Shc, cFOS, cJUN
+	cMYC, p38, AKAP12, DUSP1, EGF, HGF
+	PAI_1
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output Akt--------
+Ordered input nodes:
+['AKAP12', 'DUSP1', 'EGF', 'HGF', 'PAI_1', 'PTEN']
+----AKAP12-----
+KO	0: []
+KI	0: []
+All	0: []
+----DUSP1-----
+KO	0: []
+KI	0: []
+All	0: []
+----EGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----HGF-----
+KO	16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KI	16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+All	32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+----PAI_1-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTEN-----
+KO	16: [5, 7, 13, 15, 21, 23, 29, 31, 37, 39, 45, 47, 53, 55, 61, 63]
+KI	16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+All	32: [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55, 60, 61, 62, 63]
+----AP1-----
+KO	0: []
+KI	4: [10, 26, 42, 58]
+All	4: [10, 26, 42, 58]
+----ATF2-----
+KO	0: []
+KI	0: []
+All	0: []
+----Akt-----
+KO	16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KI	48: [0, 1, 2, 3, 5, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 21, 23, 24, 25, 26, 27, 29, 31, 32, 33, 34, 35, 37, 39, 40, 41, 42, 43, 45, 47, 48, 49, 50, 51, 53, 55, 56, 57, 58, 59, 61, 63]
+All	64: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+----C3G-----
+KO	0: []
+KI	0: []
+All	0: []
+----CCL20-----
+KO	0: []
+KI	0: []
+All	0: []
+----CDK2-----
+KO	0: []
+KI	0: []
+All	0: []
+----CDKN1A-----
+KO	0: []
+KI	0: []
+All	0: []
+----CDKN2A-----
+KO	0: []
+KI	0: []
+All	0: []
+----CREB-----
+KO	0: []
+KI	0: []
+All	0: []
+----CRKL-----
+KO	0: []
+KI	0: []
+All	0: []
+----CTGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----Ca-----
+KO	0: []
+KI	0: []
+All	0: []
+----Cdc42_Rac1-----
+KO	0: []
+KI	8: [2, 10, 18, 26, 34, 42, 50, 58]
+All	8: [2, 10, 18, 26, 34, 42, 50, 58]
+----CellMigration-----
+KO	0: []
+KI	0: []
+All	0: []
+----CyclinD-----
+KO	0: []
+KI	0: []
+All	0: []
+----DAG-----
+KO	0: []
+KI	0: []
+All	0: []
+----DOCK180-----
+KO	0: []
+KI	0: []
+All	0: []
+----ECM-----
+KO	0: []
+KI	8: [8, 10, 24, 26, 40, 42, 56, 58]
+All	8: [8, 10, 24, 26, 40, 42, 56, 58]
+----EGFR-----
+KO	0: []
+KI	0: []
+All	0: []
+----EGR1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ETS-----
+KO	0: []
+KI	0: []
+All	0: []
+----Elk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----Erk-----
+KO	0: []
+KI	0: []
+All	0: []
+----Fak-----
+KO	0: []
+KI	8: [8, 10, 24, 26, 40, 42, 56, 58]
+All	8: [8, 10, 24, 26, 40, 42, 56, 58]
+----Grb2-----
+KO	0: []
+KI	0: []
+All	0: []
+----HBEGF-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL8-----
+KO	0: []
+KI	0: []
+All	0: []
+----IP3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Integrins-----
+KO	0: []
+KI	8: [8, 10, 24, 26, 40, 42, 56, 58]
+All	8: [8, 10, 24, 26, 40, 42, 56, 58]
+----JNK-----
+KO	0: []
+KI	0: []
+All	0: []
+----MET-----
+KO	16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KI	16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+All	32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+----MLK3-----
+KO	0: []
+KI	0: []
+All	0: []
+----MMP1_10-----
+KO	0: []
+KI	8: [8, 10, 24, 26, 40, 42, 56, 58]
+All	8: [8, 10, 24, 26, 40, 42, 56, 58]
+----Mek-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mekk1-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mekk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mekk7-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mkk3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mkk4-----
+KO	0: []
+KI	0: []
+All	0: []
+----Mkk6-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAK1-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAK2-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAK3-----
+KO	0: []
+KI	0: []
+All	0: []
+----PI3K-----
+KO	16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KI	16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+All	32: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62]
+----PKC-----
+KO	0: []
+KI	0: []
+All	0: []
+----PLC_g-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTGS2-----
+KO	0: []
+KI	0: []
+All	0: []
+----Plasmin-----
+KO	0: []
+KI	8: [8, 10, 24, 26, 40, 42, 56, 58]
+All	8: [8, 10, 24, 26, 40, 42, 56, 58]
+----Proliferation-----
+KO	0: []
+KI	0: []
+All	0: []
+----RSK-----
+KO	0: []
+KI	0: []
+All	0: []
+----Raf-----
+KO	0: []
+KI	0: []
+All	0: []
+----Rap1-----
+KO	0: []
+KI	0: []
+All	0: []
+----Ras-----
+KO	0: []
+KI	0: []
+All	0: []
+----SOS-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT3-----
+KO	0: []
+KI	0: []
+All	0: []
+----Shc-----
+KO	0: []
+KI	0: []
+All	0: []
+----cFOS-----
+KO	0: []
+KI	0: []
+All	0: []
+----cJUN-----
+KO	0: []
+KI	0: []
+All	0: []
+----cMYC-----
+KO	0: []
+KI	0: []
+All	0: []
+----p38-----
+KO	0: []
+KI	0: []
+All	0: []
+----uPA-----
+KO	0: []
+KI	4: [10, 26, 42, 58]
+All	4: [10, 26, 42, 58]
+----uPAR-----
+KO	0: []
+KI	4: [10, 26, 42, 58]
+All	4: [10, 26, 42, 58]
+AKAP12               			 KO:        0.0 | KI:        0.0
+DUSP1                			 KO:        0.0 | KI:        0.0
+EGF                  			 KO:        0.0 | KI:        0.0
+HGF                  			 KO:      1.167 | KI:    -2.3337
+PAI_1                			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:    -2.3337 | KI:      1.167
+AP1                  			 KO:        0.0 | KI:    -0.2334
+ATF2                 			 KO:        0.0 | KI:        0.0
+Akt                  			 KO:      1.167 | KI:    -5.8344
+C3G                  			 KO:        0.0 | KI:        0.0
+CCL20                			 KO:        0.0 | KI:        0.0
+CDK2                 			 KO:        0.0 | KI:        0.0
+CDKN1A               			 KO:        0.0 | KI:        0.0
+CDKN2A               			 KO:        0.0 | KI:        0.0
+CREB                 			 KO:        0.0 | KI:        0.0
+CRKL                 			 KO:        0.0 | KI:        0.0
+CTGF                 			 KO:        0.0 | KI:        0.0
+Ca                   			 KO:        0.0 | KI:        0.0
+Cdc42_Rac1           			 KO:        0.0 | KI:    -0.5835
+CellMigration        			 KO:        0.0 | KI:        0.0
+CyclinD              			 KO:        0.0 | KI:        0.0
+DAG                  			 KO:        0.0 | KI:        0.0
+DOCK180              			 KO:        0.0 | KI:        0.0
+ECM                  			 KO:        0.0 | KI:    -0.5835
+EGFR                 			 KO:        0.0 | KI:        0.0
+EGR1                 			 KO:        0.0 | KI:        0.0
+ETS                  			 KO:        0.0 | KI:        0.0
+Elk1                 			 KO:        0.0 | KI:        0.0
+Erk                  			 KO:        0.0 | KI:        0.0
+Fak                  			 KO:        0.0 | KI:    -0.5835
+Grb2                 			 KO:        0.0 | KI:        0.0
+HBEGF                			 KO:        0.0 | KI:        0.0
+IL8                  			 KO:        0.0 | KI:        0.0
+IP3                  			 KO:        0.0 | KI:        0.0
+Integrins            			 KO:        0.0 | KI:    -0.5835
+JNK                  			 KO:        0.0 | KI:        0.0
+MET                  			 KO:      1.167 | KI:    -2.3337
+MLK3                 			 KO:        0.0 | KI:        0.0
+MMP1_10              			 KO:        0.0 | KI:    -0.5835
+Mek                  			 KO:        0.0 | KI:        0.0
+Mekk1                			 KO:        0.0 | KI:        0.0
+Mekk4                			 KO:        0.0 | KI:        0.0
+Mekk7                			 KO:        0.0 | KI:        0.0
+Mkk3                 			 KO:        0.0 | KI:        0.0
+Mkk4                 			 KO:        0.0 | KI:        0.0
+Mkk6                 			 KO:        0.0 | KI:        0.0
+PAK1                 			 KO:        0.0 | KI:        0.0
+PAK2                 			 KO:        0.0 | KI:        0.0
+PAK3                 			 KO:        0.0 | KI:        0.0
+PI3K                 			 KO:      1.167 | KI:    -2.3337
+PKC                  			 KO:        0.0 | KI:        0.0
+PLC_g                			 KO:        0.0 | KI:        0.0
+PTGS2                			 KO:        0.0 | KI:        0.0
+Plasmin              			 KO:        0.0 | KI:    -0.5835
+Proliferation        			 KO:        0.0 | KI:        0.0
+RSK                  			 KO:        0.0 | KI:        0.0
+Raf                  			 KO:        0.0 | KI:        0.0
+Rap1                 			 KO:        0.0 | KI:        0.0
+Ras                  			 KO:        0.0 | KI:        0.0
+SOS                  			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+Shc                  			 KO:        0.0 | KI:        0.0
+cFOS                 			 KO:        0.0 | KI:        0.0
+cJUN                 			 KO:        0.0 | KI:        0.0
+cMYC                 			 KO:        0.0 | KI:        0.0
+p38                  			 KO:        0.0 | KI:        0.0
+uPA                  			 KO:        0.0 | KI:    -0.2334
+uPAR                 			 KO:        0.0 | KI:    -0.2334
+-----KO RANKING-----
+1	PTEN
+2	HGF, Akt, MET, PI3K
+3	AKAP12, DUSP1, EGF, PAI_1, AP1, ATF2
+	C3G, CCL20, CDK2, CDKN1A, CDKN2A, CREB
+	CRKL, CTGF, Ca, Cdc42_Rac1, CellMigration, CyclinD
+	DAG, DOCK180, ECM, EGFR, EGR1, ETS
+	Elk1, Erk, Fak, Grb2, HBEGF, IL8
+	IP3, Integrins, JNK, MLK3, MMP1_10, Mek
+	Mekk1, Mekk4, Mekk7, Mkk3, Mkk4, Mkk6
+	PAK1, PAK2, PAK3, PKC, PLC_g, PTGS2
+	Plasmin, Proliferation, RSK, Raf, Rap1, Ras
+	SOS, STAT3, Shc, cFOS, cJUN, cMYC
+	p38, uPA, uPAR
+-----KI RANKING-----
+1	Akt
+2	HGF, MET, PI3K
+3	PTEN
+4	Cdc42_Rac1, ECM, Fak, Integrins, MMP1_10, Plasmin
+5	AP1, uPA, uPAR
+6	AKAP12, DUSP1, EGF, PAI_1, ATF2, C3G
+	CCL20, CDK2, CDKN1A, CDKN2A, CREB, CRKL
+	CTGF, Ca, CellMigration, CyclinD, DAG, DOCK180
+	EGFR, EGR1, ETS, Elk1, Erk, Grb2
+	HBEGF, IL8, IP3, JNK, MLK3, Mek
+	Mekk1, Mekk4, Mekk7, Mkk3, Mkk4, Mkk6
+	PAK1, PAK2, PAK3, PKC, PLC_g, PTGS2
+	Proliferation, RSK, Raf, Rap1, Ras, SOS
+	STAT3, Shc, cFOS, cJUN, cMYC, p38
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node AP1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [10, 26, 58]
+KI Extr     0: []
+KI Real     4: [10, 26, 42, 58]
+KI Calc     1: [42]
+
+----Report rows for node ATF2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Akt ------
+KO Lack    11: [4, 6, 12, 14, 20, 30, 44, 46, 52, 60, 62]
+KO Extr     0: []
+KO Real    16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KO Calc     5: [22, 28, 36, 38, 54]
+
+KI Lack    34: [0, 1, 2, 3, 5, 8, 10, 11, 13, 15, 18, 19, 21, 24, 26, 31, 32, 34, 37, 39, 40, 41, 43, 45, 47, 48, 49, 50, 56, 57, 58, 59, 61, 63]
+KI Extr     0: []
+KI Real    48: [0, 1, 2, 3, 5, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 21, 23, 24, 25, 26, 27, 29, 31, 32, 33, 34, 35, 37, 39, 40, 41, 42, 43, 45, 47, 48, 49, 50, 51, 53, 55, 56, 57, 58, 59, 61, 63]
+KI Calc    14: [7, 9, 16, 17, 23, 25, 27, 29, 33, 35, 42, 51, 53, 55]
+
+----Report rows for node C3G ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CCL20 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CDK2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CDKN1A ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CDKN2A ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CREB ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CRKL ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CTGF ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Ca ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Cdc42_Rac1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     7: [2, 10, 18, 26, 34, 50, 58]
+KI Extr     0: []
+KI Real     8: [2, 10, 18, 26, 34, 42, 50, 58]
+KI Calc     1: [42]
+
+----Report rows for node CellMigration ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CyclinD ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node DAG ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node DOCK180 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ECM ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     7: [8, 10, 24, 26, 40, 56, 58]
+KI Extr     0: []
+KI Real     8: [8, 10, 24, 26, 40, 42, 56, 58]
+KI Calc     1: [42]
+
+----Report rows for node EGFR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node EGR1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ETS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Elk1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Erk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Fak ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     7: [8, 10, 24, 26, 40, 56, 58]
+KI Extr     0: []
+KI Real     8: [8, 10, 24, 26, 40, 42, 56, 58]
+KI Calc     1: [42]
+
+----Report rows for node Grb2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node HBEGF ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL8 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IP3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Integrins ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     7: [8, 10, 24, 26, 40, 56, 58]
+KI Extr     0: []
+KI Real     8: [8, 10, 24, 26, 40, 42, 56, 58]
+KI Calc     1: [42]
+
+----Report rows for node JNK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node MET ------
+KO Lack    11: [4, 6, 12, 14, 20, 30, 44, 46, 52, 60, 62]
+KO Extr     0: []
+KO Real    16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KO Calc     5: [22, 28, 36, 38, 54]
+
+KI Lack    14: [0, 2, 8, 10, 18, 24, 26, 32, 34, 40, 48, 50, 56, 58]
+KI Extr     0: []
+KI Real    16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+KI Calc     2: [16, 42]
+
+----Report rows for node MLK3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node MMP1_10 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     7: [8, 10, 24, 26, 40, 56, 58]
+KI Extr     0: []
+KI Real     8: [8, 10, 24, 26, 40, 42, 56, 58]
+KI Calc     1: [42]
+
+----Report rows for node Mek ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Mekk1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Mekk4 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Mekk7 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Mkk3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Mkk4 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Mkk6 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PAK1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PAK2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PAK3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PI3K ------
+KO Lack    11: [4, 6, 12, 14, 20, 30, 44, 46, 52, 60, 62]
+KO Extr     0: []
+KO Real    16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KO Calc     5: [22, 28, 36, 38, 54]
+
+KI Lack    14: [0, 2, 8, 10, 18, 24, 26, 32, 34, 40, 48, 50, 56, 58]
+KI Extr     0: []
+KI Real    16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+KI Calc     2: [16, 42]
+
+----Report rows for node PKC ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PLC_g ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PTGS2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Plasmin ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     7: [8, 10, 24, 26, 40, 56, 58]
+KI Extr     0: []
+KI Real     8: [8, 10, 24, 26, 40, 42, 56, 58]
+KI Calc     1: [42]
+
+----Report rows for node Proliferation ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node RSK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Raf ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Rap1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Ras ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node SOS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node STAT3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Shc ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cFOS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cJUN ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cMYC ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node p38 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node uPA ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [10, 26, 58]
+KI Extr     0: []
+KI Real     4: [10, 26, 42, 58]
+KI Calc     1: [42]
+
+----Report rows for node uPAR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [10, 26, 58]
+KI Extr     0: []
+KI Real     4: [10, 26, 42, 58]
+KI Calc     1: [42]
+
+----Report rows for node AKAP12 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node DUSP1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node EGF ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node HGF ------
+KO Lack    16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KO Extr     0: []
+KO Real    16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KO Calc     0: []
+
+KI Lack    16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+KI Extr     0: []
+KI Real    16: [0, 2, 8, 10, 16, 18, 24, 26, 32, 34, 40, 42, 48, 50, 56, 58]
+KI Calc     0: []
+
+----Report rows for node PAI_1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PTEN ------
+KO Lack    13: [5, 7, 13, 15, 21, 31, 37, 39, 45, 47, 53, 61, 63]
+KO Extr     0: []
+KO Real    16: [5, 7, 13, 15, 21, 23, 29, 31, 37, 39, 45, 47, 53, 55, 61, 63]
+KO Calc     3: [23, 29, 55]
+
+KI Lack    13: [4, 6, 12, 14, 20, 30, 36, 38, 44, 46, 52, 60, 62]
+KI Extr     0: []
+KI Real    16: [4, 6, 12, 14, 20, 22, 28, 30, 36, 38, 44, 46, 52, 54, 60, 62]
+KI Calc     3: [22, 28, 54]
+
+AP1                  - Correct: KO:        0.0 | KI :    -0.2334 - Incorrect KO:        0.0 | KI:      -0.05
+Akt                  - Correct: KO:      1.167 | KI :    -5.8344 - Incorrect KO:     0.2834 | KI:     -1.067
+Cdc42_Rac1           - Correct: KO:        0.0 | KI :    -0.5835 - Incorrect KO:        0.0 | KI:      -0.05
+ECM                  - Correct: KO:        0.0 | KI :    -0.5835 - Incorrect KO:        0.0 | KI:      -0.05
+Fak                  - Correct: KO:        0.0 | KI :    -0.5835 - Incorrect KO:        0.0 | KI:      -0.05
+Integrins            - Correct: KO:        0.0 | KI :    -0.5835 - Incorrect KO:        0.0 | KI:      -0.05
+MET                  - Correct: KO:      1.167 | KI :    -2.3337 - Incorrect KO:     0.2834 | KI:    -0.2167
+MMP1_10              - Correct: KO:        0.0 | KI :    -0.5835 - Incorrect KO:        0.0 | KI:      -0.05
+PI3K                 - Correct: KO:      1.167 | KI :    -2.3337 - Incorrect KO:     0.2834 | KI:    -0.2167
+Plasmin              - Correct: KO:        0.0 | KI :    -0.5835 - Incorrect KO:        0.0 | KI:      -0.05
+uPA                  - Correct: KO:        0.0 | KI :    -0.2334 - Incorrect KO:        0.0 | KI:      -0.05
+uPAR                 - Correct: KO:        0.0 | KI :    -0.2334 - Incorrect KO:        0.0 | KI:      -0.05
+HGF                  - Correct: KO:      1.167 | KI :    -2.3337 - Incorrect KO:        0.0 | KI:        0.0
+PTEN                 - Correct: KO:    -2.3337 | KI :      1.167 - Incorrect KO:    -0.3001 | KI:     0.1667
+-----KO RANKING COMPARISON-----
+1	PTEN
+2	Akt, MET, PI3K
+3	AP1, ATF2, C3G, CCL20, CDK2, CDKN1A
+	CDKN2A, CREB, CRKL, CTGF, Ca, Cdc42_Rac1
+	CellMigration, CyclinD, DAG, DOCK180, ECM, EGFR
+	EGR1, ETS, Elk1, Erk, Fak, Grb2
+	HBEGF, IL8, IP3, Integrins, JNK, MLK3
+	MMP1_10, Mek, Mekk1, Mekk4, Mekk7, Mkk3
+	Mkk4, Mkk6, PAK1, PAK2, PAK3, PKC
+	PLC_g, PTGS2, Plasmin, Proliferation, RSK, Raf
+	Rap1, Ras, SOS, STAT3, Shc, cFOS
+	cJUN, cMYC, p38, uPA, uPAR, AKAP12
+	DUSP1, EGF, HGF, PAI_1
+REFERENCE:
+1	PTEN
+2	HGF, Akt, MET, PI3K
+3	AKAP12, DUSP1, EGF, PAI_1, AP1, ATF2
+	C3G, CCL20, CDK2, CDKN1A, CDKN2A, CREB
+	CRKL, CTGF, Ca, Cdc42_Rac1, CellMigration, CyclinD
+	DAG, DOCK180, ECM, EGFR, EGR1, ETS
+	Elk1, Erk, Fak, Grb2, HBEGF, IL8
+	IP3, Integrins, JNK, MLK3, MMP1_10, Mek
+	Mekk1, Mekk4, Mekk7, Mkk3, Mkk4, Mkk6
+	PAK1, PAK2, PAK3, PKC, PLC_g, PTGS2
+	Plasmin, Proliferation, RSK, Raf, Rap1, Ras
+	SOS, STAT3, Shc, cFOS, cJUN, cMYC
+	p38, uPA, uPAR
+=======
+-----KI RANKING COMPARISON-----
+1	Akt
+2	MET, PI3K
+3	PTEN
+4	AP1, Cdc42_Rac1, ECM, Fak, Integrins, MMP1_10
+	Plasmin, uPA, uPAR
+5	ATF2, C3G, CCL20, CDK2, CDKN1A, CDKN2A
+	CREB, CRKL, CTGF, Ca, CellMigration, CyclinD
+	DAG, DOCK180, EGFR, EGR1, ETS, Elk1
+	Erk, Grb2, HBEGF, IL8, IP3, JNK
+	MLK3, Mek, Mekk1, Mekk4, Mekk7, Mkk3
+	Mkk4, Mkk6, PAK1, PAK2, PAK3, PKC
+	PLC_g, PTGS2, Proliferation, RSK, Raf, Rap1
+	Ras, SOS, STAT3, Shc, cFOS, cJUN
+	cMYC, p38, AKAP12, DUSP1, EGF, HGF
+	PAI_1
+REFERENCE:
+1	Akt
+2	HGF, MET, PI3K
+3	PTEN
+4	Cdc42_Rac1, ECM, Fak, Integrins, MMP1_10, Plasmin
+5	AP1, uPA, uPAR
+6	AKAP12, DUSP1, EGF, PAI_1, ATF2, C3G
+	CCL20, CDK2, CDKN1A, CDKN2A, CREB, CRKL
+	CTGF, Ca, CellMigration, CyclinD, DAG, DOCK180
+	EGFR, EGR1, ETS, Elk1, Erk, Grb2
+	HBEGF, IL8, IP3, JNK, MLK3, Mek
+	Mekk1, Mekk4, Mekk7, Mkk3, Mkk4, Mkk6
+	PAK1, PAK2, PAK3, PKC, PLC_g, PTGS2
+	Proliferation, RSK, Raf, Rap1, Ras, SOS
+	STAT3, Shc, cFOS, cJUN, cMYC, p38
+============
+Relative_RMSE_KO_is  0.024253044078194046
+Relative_RMSE_KI_is  0.05474682310286088
+NDCG_KO_is  0.955
+NDCG_KI_is  0.9573
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             68.000       68.000
+Kendall tau-b                         0.891        0.929
+Spearman rho                          0.932        0.893
+Mean abs rank diff                    0.015        0.882
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        0.714
+         Precision@10                1.000        0.769
+         Recall@10                   1.000        0.909
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            0.800        0.750
+  Top-3  groups Jaccard            1.000        0.800
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9531
+===============MODEL information===============
+NUMBER OF INPUT: 	 6
+NUMBER OF NODES: 	 68
+NUMBER OF EDGES: 	 103
+NUMBER OF SCCs: 	 26
+NUMBER OF aFAS: 	 5
+===============TIME information===============
+TIME process heading: 0.0028972910076845437
+TIME generate input states: 0.0006912910030223429
+TIME convert to BBN (Propagation mode): 0
+TIME to fully simulate original network (if Test): 0.692187875014497
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.21179245799430646
+TIME generating table 0.0003447920025791973
+TIME calculating Shapley values for input nodes: 6.066699279472232e-05
+TIME propagate (in Propagation mode): 0
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 24.93590145901544
+TIME simulate perturbations full if Test: 83.78624395802035
+TIME total for Simulation: 25.151687958015827
+TIME total for FULLY Simulation: 84.48290695704054
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0
+Average error for KI values: 0
+-----------TOTAL RUNNING TIME---------------
+109.74732195798424
+
+[exit code: 0]

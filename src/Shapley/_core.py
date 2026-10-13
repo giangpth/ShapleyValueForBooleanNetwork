@@ -1363,7 +1363,8 @@ def propagateCyclicVersion1(net, simtable, index, aindex, outname, formulas, sim
                 root, des = cur.split("_to_")[0], cur.split("_to_")[1] 
 
                 if cur not in countedrowsofnode: # count all rows, should be impossible 
-                    countrows = set(range(len(simtable))) 
+                    # countrows = set(range(len(simtable))) 
+                    countrows = set(simtable.keys())
                     countedrowsofnode[cur] = countrows 
                     changed = True 
                     print("WARNING: Extra node {} not counted yet, count all rows to wire back to root node {}".format(cur, root)) 
@@ -1382,7 +1383,8 @@ def propagateCyclicVersion1(net, simtable, index, aindex, outname, formulas, sim
             else:
                 if cur not in countedrowsofnode: # count all rows, case of target node 
                     print("At TARGET node {}, count all rows".format(cur))
-                    countrows = set(range(len(simtable))) 
+                    # countrows = set(range(len(simtable))) 
+                    countrows = set(simtable.keys())
                     countedrowsofnode[cur] = countrows
                     changed = True # cur is touched for the first time
                 else: # count only rows that cur is counted

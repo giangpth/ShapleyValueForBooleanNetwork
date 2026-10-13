@@ -1,0 +1,674 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_13_IL4R -e data/realbenchmark/13.txt -o IL4R -r uniform -p 10.0 -c 0.0 -k Shapley -m Simulation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_13_IL4R                                 =========
+========== EXPRESSION FILE IS data/realbenchmark/13.txt                                                        =========
+========== THE OUTPUT OF INTEREST IS: IL4R                                                                     =========
+========== SAMPLING STRATEGY IS: uniform                                                                       =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Simulation                                                                                 =========
+LIST OF ALL SPECIES:
+['GATA3', 'IFNb', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12', 'IL12R', 'IL18', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'TCR', 'Tbet']
+-----INPUT NAMES-----
+['IFNb', 'IL12', 'IL18', 'TCR']
+----INTERMEDIATE NODES-----
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+===============================================================
+Sorted input names
+['IFNb', 'IL12', 'IL18', 'TCR']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+There are 19 intermediate nodes with the range of inter: 0 524287
+SORTED INPUT
+['IFNb', 'IL12', 'IL18', 'TCR']
+SORTED INTER
+['GATA3', 'IFNbR', 'IFNg', 'IFNgR', 'IL10', 'IL10R', 'IL12R', 'IL18R', 'IL4', 'IL4R', 'IRAK', 'JAK1', 'NFAT', 'SOCS1', 'STAT1', 'STAT3', 'STAT4', 'STAT6', 'Tbet']
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND or AND 
+Now arrange layout of the original network for visualization
+THERE ARE 5 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('GATA3', 'GATA3'), ('Tbet', 'GATA3'), ('Tbet', 'Tbet'), ('STAT6', 'GATA3'), ('JAK1', 'STAT1')]
+orimodel_13_IL4R.html
+Generating input states using strategy: uniform
+Sample percentage: 10.0%
+4 inputs causing in total 16 combinations
+Input list:
+['IFNb', 'IL12', 'IL18', 'TCR']
+Number of samples in total: 1
+-----Mapping rowid to inputs:-----
+13: ['IFNb', 'IL12', 'TCR']
+Generating input states using strategy: all
+4 inputs causing in total 16 combinations
+Input list:
+['IFNb', 'IL12', 'IL18', 'TCR']
+Number of samples in total: 16
+TEST: Mapping rowid to inputs:
+0: []
+1: ['TCR']
+2: ['IL18']
+3: ['IL18', 'TCR']
+4: ['IL12']
+5: ['IL12', 'TCR']
+6: ['IL12', 'IL18']
+7: ['IL12', 'IL18', 'TCR']
+8: ['IFNb']
+9: ['IFNb', 'TCR']
+10: ['IFNb', 'IL18']
+11: ['IFNb', 'IL18', 'TCR']
+12: ['IFNb', 'IL12']
+13: ['IFNb', 'IL12', 'TCR']
+14: ['IFNb', 'IL12', 'IL18']
+15: ['IFNb', 'IL12', 'IL18', 'TCR']
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node IFNb is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node IL12 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node IL18 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node TCR is 0.0, 0.0 with 0 KO rows and 0 KI rows
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node IFNb is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node IL12 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node IL18 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node TCR is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-------Now performing pertubation simulations---------
+=========SIMULATION RESULTS=========
+-------RESULT for output IL4R--------
+Ordered input nodes:
+['IFNb', 'IL12', 'IL18', 'TCR']
+----IFNb-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL12-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL18-----
+KO	0: []
+KI	0: []
+All	0: []
+----TCR-----
+KO	0: []
+KI	0: []
+All	0: []
+----GATA3-----
+KO	0: []
+KI	0: []
+All	0: []
+----IFNbR-----
+KO	0: []
+KI	0: []
+All	0: []
+----IFNg-----
+KO	0: []
+KI	0: []
+All	0: []
+----IFNgR-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL10-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL10R-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL12R-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL18R-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL4-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL4R-----
+KO	0: []
+KI	1: [13]
+All	1: [13]
+----IRAK-----
+KO	0: []
+KI	0: []
+All	0: []
+----JAK1-----
+KO	0: []
+KI	0: []
+All	0: []
+----NFAT-----
+KO	0: []
+KI	0: []
+All	0: []
+----SOCS1-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT1-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT3-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT4-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT6-----
+KO	0: []
+KI	0: []
+All	0: []
+----Tbet-----
+KO	0: []
+KI	0: []
+All	0: []
+IFNb                 			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+GATA3                			 KO:        0.0 | KI:        0.0
+IFNbR                			 KO:        0.0 | KI:        0.0
+IFNg                 			 KO:        0.0 | KI:        0.0
+IFNgR                			 KO:        0.0 | KI:        0.0
+IL10                 			 KO:        0.0 | KI:        0.0
+IL10R                			 KO:        0.0 | KI:        0.0
+IL12R                			 KO:        0.0 | KI:        0.0
+IL18R                			 KO:        0.0 | KI:        0.0
+IL4                  			 KO:        0.0 | KI:        0.0
+IL4R                 			 KO:        0.0 | KI:      -0.25
+IRAK                 			 KO:        0.0 | KI:        0.0
+JAK1                 			 KO:        0.0 | KI:        0.0
+NFAT                 			 KO:        0.0 | KI:        0.0
+SOCS1                			 KO:        0.0 | KI:        0.0
+STAT1                			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+STAT4                			 KO:        0.0 | KI:        0.0
+STAT6                			 KO:        0.0 | KI:        0.0
+Tbet                 			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	GATA3, IFNbR, IFNg, IFNgR, IL10, IL10R
+	IL12R, IL18R, IL4, IL4R, IRAK, JAK1
+	NFAT, SOCS1, STAT1, STAT3, STAT4, STAT6
+	Tbet, IFNb, IL12, IL18, TCR
+-----KI RANKING-----
+1	IL4R
+2	GATA3, IFNbR, IFNg, IFNgR, IL10, IL10R
+	IL12R, IL18R, IL4, IRAK, JAK1, NFAT
+	SOCS1, STAT1, STAT3, STAT4, STAT6, Tbet
+	IFNb, IL12, IL18, TCR
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output IL4R--------
+Ordered input nodes:
+['IFNb', 'IL12', 'IL18', 'TCR']
+----IFNb-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL12-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL18-----
+KO	0: []
+KI	0: []
+All	0: []
+----TCR-----
+KO	0: []
+KI	0: []
+All	0: []
+----GATA3-----
+KO	0: []
+KI	8: [0, 1, 2, 3, 4, 5, 6, 7]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----IFNbR-----
+KO	0: []
+KI	0: []
+All	0: []
+----IFNg-----
+KO	0: []
+KI	0: []
+All	0: []
+----IFNgR-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL10-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL10R-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL12R-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL18R-----
+KO	0: []
+KI	0: []
+All	0: []
+----IL4-----
+KO	0: []
+KI	8: [0, 1, 2, 3, 4, 5, 6, 7]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----IL4R-----
+KO	0: []
+KI	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----IRAK-----
+KO	0: []
+KI	0: []
+All	0: []
+----JAK1-----
+KO	0: []
+KI	0: []
+All	0: []
+----NFAT-----
+KO	0: []
+KI	0: []
+All	0: []
+----SOCS1-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT1-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT3-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT4-----
+KO	0: []
+KI	0: []
+All	0: []
+----STAT6-----
+KO	0: []
+KI	8: [0, 1, 2, 3, 4, 5, 6, 7]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----Tbet-----
+KO	0: []
+KI	0: []
+All	0: []
+IFNb                 			 KO:        0.0 | KI:        0.0
+IL12                 			 KO:        0.0 | KI:        0.0
+IL18                 			 KO:        0.0 | KI:        0.0
+TCR                  			 KO:        0.0 | KI:        0.0
+GATA3                			 KO:        0.0 | KI:    -2.5001
+IFNbR                			 KO:        0.0 | KI:        0.0
+IFNg                 			 KO:        0.0 | KI:        0.0
+IFNgR                			 KO:        0.0 | KI:        0.0
+IL10                 			 KO:        0.0 | KI:        0.0
+IL10R                			 KO:        0.0 | KI:        0.0
+IL12R                			 KO:        0.0 | KI:        0.0
+IL18R                			 KO:        0.0 | KI:        0.0
+IL4                  			 KO:        0.0 | KI:    -2.5001
+IL4R                 			 KO:        0.0 | KI:    -5.0002
+IRAK                 			 KO:        0.0 | KI:        0.0
+JAK1                 			 KO:        0.0 | KI:        0.0
+NFAT                 			 KO:        0.0 | KI:        0.0
+SOCS1                			 KO:        0.0 | KI:        0.0
+STAT1                			 KO:        0.0 | KI:        0.0
+STAT3                			 KO:        0.0 | KI:        0.0
+STAT4                			 KO:        0.0 | KI:        0.0
+STAT6                			 KO:        0.0 | KI:    -2.5001
+Tbet                 			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	IFNb, IL12, IL18, TCR, GATA3, IFNbR
+	IFNg, IFNgR, IL10, IL10R, IL12R, IL18R
+	IL4, IL4R, IRAK, JAK1, NFAT, SOCS1
+	STAT1, STAT3, STAT4, STAT6, Tbet
+-----KI RANKING-----
+1	IL4R
+2	GATA3, IL4, STAT6
+3	IFNb, IL12, IL18, TCR, IFNbR, IFNg
+	IFNgR, IL10, IL10R, IL12R, IL18R, IRAK
+	JAK1, NFAT, SOCS1, STAT1, STAT3, STAT4
+	Tbet
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node GATA3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Calc     0: []
+
+----Report rows for node IFNbR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IFNg ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IFNgR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL10 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL10R ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL12R ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL18R ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL4 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Calc     0: []
+
+----Report rows for node IL4R ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack    15: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15]
+KI Extr     0: []
+KI Real    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+KI Calc     1: [13]
+
+----Report rows for node IRAK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node JAK1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node NFAT ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node SOCS1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node STAT1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node STAT3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node STAT4 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node STAT6 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Calc     0: []
+
+----Report rows for node Tbet ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IFNb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL12 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IL18 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node TCR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+GATA3                - Correct: KO:        0.0 | KI :    -2.5001 - Incorrect KO:        0.0 | KI:        0.0
+IL4                  - Correct: KO:        0.0 | KI :    -2.5001 - Incorrect KO:        0.0 | KI:        0.0
+IL4R                 - Correct: KO:        0.0 | KI :    -5.0002 - Incorrect KO:        0.0 | KI:      -0.25
+STAT6                - Correct: KO:        0.0 | KI :    -2.5001 - Incorrect KO:        0.0 | KI:        0.0
+-----KO RANKING COMPARISON-----
+1	GATA3, IFNbR, IFNg, IFNgR, IL10, IL10R
+	IL12R, IL18R, IL4, IL4R, IRAK, JAK1
+	NFAT, SOCS1, STAT1, STAT3, STAT4, STAT6
+	Tbet, IFNb, IL12, IL18, TCR
+REFERENCE:
+1	IFNb, IL12, IL18, TCR, GATA3, IFNbR
+	IFNg, IFNgR, IL10, IL10R, IL12R, IL18R
+	IL4, IL4R, IRAK, JAK1, NFAT, SOCS1
+	STAT1, STAT3, STAT4, STAT6, Tbet
+=======
+-----KI RANKING COMPARISON-----
+1	IL4R
+2	GATA3, IFNbR, IFNg, IFNgR, IL10, IL10R
+	IL12R, IL18R, IL4, IRAK, JAK1, NFAT
+	SOCS1, STAT1, STAT3, STAT4, STAT6, Tbet
+	IFNb, IL12, IL18, TCR
+REFERENCE:
+1	IL4R
+2	GATA3, IL4, STAT6
+3	IFNb, IL12, IL18, TCR, IFNbR, IFNg
+	IFNgR, IL10, IL10R, IL12R, IL18R, IRAK
+	JAK1, NFAT, SOCS1, STAT1, STAT3, STAT4
+	Tbet
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.13402773896863096
+NDCG_KO_is  0.0
+NDCG_KI_is  0.8182
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             23.000       23.000
+Kendall tau-b                           NaN        0.528
+Spearman rho                          0.000        0.750
+Mean abs rank diff                    0.000        0.826
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        0.174
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.894
+===============MODEL information===============
+NUMBER OF INPUT: 	 4
+NUMBER OF NODES: 	 23
+NUMBER OF EDGES: 	 34
+NUMBER OF SCCs: 	 8
+NUMBER OF aFAS: 	 5
+===============TIME information===============
+TIME process heading: 0.0012928749929415062
+TIME generate input states: 0.00022862499463371933
+TIME convert to BBN (Propagation mode): 0
+TIME to fully simulate original network (if Test): 0.0462636660085991
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.001754292010446079
+TIME generating table 1.908400736283511e-05
+TIME calculating Shapley values for input nodes: 1.4542005374096334e-05
+TIME propagate (in Propagation mode): 0
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0.07847679099359084
+TIME simulate perturbations full if Test: 1.5908032919978723
+TIME total for Simulation: 0.08178620900434908
+TIME total for FULLY Simulation: 1.6385864159965422
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0
+Average error for KI values: 0
+-----------TOTAL RUNNING TIME---------------
+1.8187307920015883
+
+[exit code: 0]

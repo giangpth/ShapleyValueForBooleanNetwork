@@ -5,13 +5,13 @@ from pathlib import Path
 
 # ---------------- CONFIG (hard-coded) ----------------
 INPUT_LIST = "realbenchmark.txt"            # TAB-separated: path<TAB>out1<TAB>out2<TAB>out3
-LOG_DIR    = Path("logs/realbenchmark_propagation_2ndRun")  # where the terminal logs are saved 
+LOG_DIR    = Path("logs/realbenchmark_Prop_sample_60_3rdRun")  # where the terminal logs are saved 
 PROGRAM    = [sys.executable, "-m", "Shapley"]
 ECHO_TO_TERMINAL = True                  # also print the log live
 
 # Fixed parameters (edit freely; remove any you don't want)
 FIXED_ARGS = [
-    "-r", "all", # Sampling strategy: all, uniform, antithetic, stratified
+    "-r", "uniform", # Sampling strategy: all, uniform, antithetic, stratified
     "-p", "60.0", # Sample percentage (0-100)
     "-c", "0.0", # Percentage of nodes to be simulated (0-100)
     "-k", "Shapley", # Weighting scheme: Shapley, Uniform

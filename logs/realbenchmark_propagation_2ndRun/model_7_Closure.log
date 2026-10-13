@@ -1,0 +1,1223 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_7_Closure -e data/realbenchmark/7.txt -o Closure -r all -p 60.0 -c 0.0 -k Shapley -m Propagation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_7_Closure                               =========
+========== EXPRESSION FILE IS data/realbenchmark/7.txt                                                         =========
+========== THE OUTPUT OF INTEREST IS: Closure                                                                  =========
+========== SAMPLING STRATEGY IS: all                                                                           =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Propagation                                                                                =========
+LIST OF ALL SPECIES:
+['ABA', 'ABH1', 'ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Closure', 'Depolar', 'ERA1', 'GC', 'GCR1', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+-----INPUT NAMES-----
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+----INTERMEDIATE NODES-----
+['ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Closure', 'Depolar', 'GC', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+===============================================================
+Sorted input names
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Closure', 'Depolar', 'GC', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+There are 40 intermediate nodes with the range of inter: 0 1099511627775
+SORTED INPUT
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+SORTED INTER
+['ABI1', 'ADPRc', 'AGB1', 'Actin', 'AnionEM', 'Atrboh', 'CIS', 'Ca2_ATPase', 'Ca2_c', 'CaIM', 'Closure', 'Depolar', 'GC', 'GPA1', 'HTPase', 'InsP3', 'InsP6', 'InsPK', 'KAP', 'KEV', 'KOUT', 'Malate', 'NIA12', 'NO', 'NOS', 'OST1', 'PA', 'PEPC', 'PLC', 'PLD', 'RAC1', 'RCN1', 'ROP10', 'ROP2', 'ROS', 'S1P', 'SphK', 'cADPR', 'cGMP', 'pH']
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: ABH1 or Depolar or ERA1 or ROS 
+More than 1 binary operator, dont allow NOT in formula: NOT and NOT and NOT and NOT 
+More than 1 binary operator, dont allow NOT in formula: NOT and NOT and NOT and NOT 
+More than 1 binary operator, dont allow NOT in formula: AnionEM or KEV or AND or Ca2_c or AND 
+More than 1 binary operator, dont allow NOT in formula: Ca2_c or HTPase or KEV or AnionEM or KOUT 
+More than 1 binary operator, dont allow NOT in formula: ROS or pH or Ca2_c 
+Now arrange layout of the original network for visualization
+THERE ARE 6 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('Ca2_ATPase', 'Ca2_c'), ('CaIM', 'Ca2_c'), ('CIS', 'Ca2_c'), ('Atrboh', 'ROS'), ('Depolar', 'KOUT'), ('AGB1', 'GPA1')]
+orimodel_7_Closure.html
+Generating input states using strategy: all
+4 inputs causing in total 16 combinations
+Input list:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+Number of samples in total: 16
+-----Mapping rowid to inputs:-----
+0: []
+1: ['GCR1']
+2: ['ERA1']
+3: ['ERA1', 'GCR1']
+4: ['ABH1']
+5: ['ABH1', 'GCR1']
+6: ['ABH1', 'ERA1']
+7: ['ABH1', 'ERA1', 'GCR1']
+8: ['ABA']
+9: ['ABA', 'GCR1']
+10: ['ABA', 'ERA1']
+11: ['ABA', 'ERA1', 'GCR1']
+12: ['ABA', 'ABH1']
+13: ['ABA', 'ABH1', 'GCR1']
+14: ['ABA', 'ABH1', 'ERA1']
+15: ['ABA', 'ABH1', 'ERA1', 'GCR1']
+Generating input states using strategy: all
+4 inputs causing in total 16 combinations
+Input list:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+Number of samples in total: 16
+TEST: Mapping rowid to inputs:
+0: []
+1: ['GCR1']
+2: ['ERA1']
+3: ['ERA1', 'GCR1']
+4: ['ABH1']
+5: ['ABH1', 'GCR1']
+6: ['ABH1', 'ERA1']
+7: ['ABH1', 'ERA1', 'GCR1']
+8: ['ABA']
+9: ['ABA', 'GCR1']
+10: ['ABA', 'ERA1']
+11: ['ABA', 'ERA1', 'GCR1']
+12: ['ABA', 'ABH1']
+13: ['ABA', 'ABH1', 'GCR1']
+14: ['ABA', 'ABH1', 'ERA1']
+15: ['ABA', 'ABH1', 'ERA1', 'GCR1']
+-------------Now convert the original network to the acyclic network---------------
+-------------Now convert the acyclic network to the binary network---------------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+No node with syntac AnionEMANDActin, try ActinANDAnionEM
+Input are {'ABA', 'ABH1', 'ERA1', 'GCR1'}
+Ordinary nodes are 
+{'OST1', 'NO', 'PLC', 'PA', 'cGMP', 'Actin', 'Ca2_ATPase', 'CaIM', 'ABA', 'ROP10', 'Ca2_c', 'SphK', 'ADPRc', 'CIS', 'NOS', 'Atrboh', 'ROP2', 'KAP', 'KEV', 'Closure', 'GC', 'GPA1', 'KOUT', 'InsPK', 'Depolar', 'GCR1', 'InsP6', 'pH', 'ROS', 'Malate', 'ABI1', 'ERA1', 'RAC1', 'AnionEM', 'AGB1', 'cADPR', 'ABH1', 'PEPC', 'InsP3', 'HTPase', 'RCN1', 'S1P', 'PLD', 'NIA12'}
+Extranodes added after removing cycles are 
+['Ca2_ATPase_to_Ca2_c', 'CaIM_to_Ca2_c', 'CIS_to_Ca2_c', 'Atrboh_to_ROS', 'Depolar_to_KOUT', 'AGB1_to_GPA1']
+binetmodel_7_Closure.html
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node ABA is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node ABH1 is -1.6667, 0.8334 with 4 KO rows and 4 KI rows
+Shapley value for input node ERA1 is -1.6667, 0.8334 with 4 KO rows and 4 KI rows
+Shapley value for input node GCR1 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Simulating original network then inferring values for extranodes and binary formulas
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node ABA is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node ABH1 is -1.6667, 0.8334 with 4 KO rows and 4 KI rows
+Shapley value for input node ERA1 is -1.6667, 0.8334 with 4 KO rows and 4 KI rows
+Shapley value for input node GCR1 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-----------Now propagate within binarized network for output Closure-------------
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+At TARGET node Closure, count all rows
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node Depolar: processed 8 times
+Node CIS: processed 9 times
+Node CaIM: processed 9 times
+Node Ca2_ATPase: processed 8 times
+Node Atrboh: processed 7 times
+Node AGB1: processed 3 times
+SIMULATE 0 nodes over 39 nodes
+-----Now estimate the error by comparing propagated values to simulation values of input nodes-----
+For KO values
+For KI values
+=========PROPAGATION RESULTS=========
+-------RESULT for output Closure--------
+Ordered input nodes:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+----ABA-----
+KO	0: []
+KI	0: []
+All	0: []
+----ABH1-----
+KO	4: [4, 5, 6, 7]
+KI	2: [2, 3]
+All	6: [2, 3, 4, 5, 6, 7]
+----ERA1-----
+KO	4: [2, 3, 6, 7]
+KI	2: [4, 5]
+All	6: [2, 3, 4, 5, 6, 7]
+----GCR1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ABI1-----
+KO	2: [14, 15]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 14, 15]
+----ADPRc-----
+KO	0: []
+KI	0: []
+All	0: []
+----AGB1-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----Actin-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	0: []
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----AnionEM-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	2: [14, 15]
+All	14: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 14, 15]
+----Atrboh-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----CIS-----
+KO	6: [8, 9, 10, 11, 12, 13]
+KI	4: [6, 7, 14, 15]
+All	10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Ca2_ATPase-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	0: []
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----Ca2_c-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	4: [6, 7, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----CaIM-----
+KO	6: [0, 1, 2, 3, 4, 5]
+KI	4: [6, 7, 14, 15]
+All	10: [0, 1, 2, 3, 4, 5, 6, 7, 14, 15]
+----Closure-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	4: [6, 7, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Depolar-----
+KO	6: [0, 1, 2, 3, 4, 5]
+KI	0: []
+All	6: [0, 1, 2, 3, 4, 5]
+----GC-----
+KO	0: []
+KI	0: []
+All	0: []
+----GPA1-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----HTPase-----
+KO	0: []
+KI	0: []
+All	0: []
+----InsP3-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----InsP6-----
+KO	0: []
+KI	0: []
+All	0: []
+----InsPK-----
+KO	0: []
+KI	0: []
+All	0: []
+----KAP-----
+KO	0: []
+KI	0: []
+All	0: []
+----KEV-----
+KO	0: []
+KI	0: []
+All	0: []
+----KOUT-----
+KO	0: []
+KI	0: []
+All	0: []
+----Malate-----
+KO	6: [0, 1, 2, 3, 4, 5]
+KI	6: [8, 9, 10, 11, 12, 13]
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----NIA12-----
+KO	0: []
+KI	0: []
+All	0: []
+----NO-----
+KO	0: []
+KI	0: []
+All	0: []
+----NOS-----
+KO	0: []
+KI	0: []
+All	0: []
+----OST1-----
+KO	0: []
+KI	0: []
+All	0: []
+----PA-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----PEPC-----
+KO	6: [0, 1, 2, 3, 4, 5]
+KI	0: []
+All	6: [0, 1, 2, 3, 4, 5]
+----PLC-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----PLD-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----RAC1-----
+KO	0: []
+KI	0: []
+All	0: []
+----RCN1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ROP10-----
+KO	0: []
+KI	0: []
+All	0: []
+----ROP2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ROS-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----S1P-----
+KO	0: []
+KI	0: []
+All	0: []
+----SphK-----
+KO	0: []
+KI	0: []
+All	0: []
+----cADPR-----
+KO	0: []
+KI	0: []
+All	0: []
+----cGMP-----
+KO	0: []
+KI	0: []
+All	0: []
+----pH-----
+KO	0: []
+KI	0: []
+All	0: []
+ABA                  			 KO:        0.0 | KI:        0.0
+ABH1                 			 KO:       -0.0 | KI:     0.4167
+ERA1                 			 KO:       -0.0 | KI:     0.4167
+GCR1                 			 KO:        0.0 | KI:        0.0
+ABI1                 			 KO:      -1.25 | KI:     2.0834
+ADPRc                			 KO:        0.0 | KI:        0.0
+AGB1                 			 KO:        0.0 | KI:      -1.25
+Actin                			 KO:     3.3335 | KI:        0.0
+AnionEM              			 KO:     3.3335 | KI:      -1.25
+Atrboh               			 KO:        0.0 | KI:      -1.25
+CIS                  			 KO:     1.2501 | KI:    -1.6667
+Ca2_ATPase           			 KO:     3.3335 | KI:        0.0
+Ca2_c                			 KO:     3.3335 | KI:    -1.6667
+CaIM                 			 KO:     2.0834 | KI:    -1.6667
+Closure              			 KO:     3.3335 | KI:    -1.6667
+Depolar              			 KO:     2.0834 | KI:        0.0
+GC                   			 KO:        0.0 | KI:        0.0
+GPA1                 			 KO:        0.0 | KI:      -1.25
+HTPase               			 KO:        0.0 | KI:        0.0
+InsP3                			 KO:        0.0 | KI:      -1.25
+InsP6                			 KO:        0.0 | KI:        0.0
+InsPK                			 KO:        0.0 | KI:        0.0
+KAP                  			 KO:        0.0 | KI:        0.0
+KEV                  			 KO:        0.0 | KI:        0.0
+KOUT                 			 KO:        0.0 | KI:        0.0
+Malate               			 KO:     2.0834 | KI:     1.2501
+NIA12                			 KO:        0.0 | KI:        0.0
+NO                   			 KO:        0.0 | KI:        0.0
+NOS                  			 KO:        0.0 | KI:        0.0
+OST1                 			 KO:        0.0 | KI:        0.0
+PA                   			 KO:        0.0 | KI:      -1.25
+PEPC                 			 KO:     2.0834 | KI:        0.0
+PLC                  			 KO:        0.0 | KI:      -1.25
+PLD                  			 KO:        0.0 | KI:      -1.25
+RAC1                 			 KO:        0.0 | KI:        0.0
+RCN1                 			 KO:        0.0 | KI:        0.0
+ROP10                			 KO:        0.0 | KI:        0.0
+ROP2                 			 KO:        0.0 | KI:        0.0
+ROS                  			 KO:        0.0 | KI:      -1.25
+S1P                  			 KO:        0.0 | KI:        0.0
+SphK                 			 KO:        0.0 | KI:        0.0
+cADPR                			 KO:        0.0 | KI:        0.0
+cGMP                 			 KO:        0.0 | KI:        0.0
+pH                   			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	Closure, Actin, AnionEM, Ca2_c, Ca2_ATPase
+2	Malate, Depolar, PEPC, CaIM
+3	CIS
+4	ABI1
+5	KAP, KOUT, pH, ABA, HTPase, RAC1
+	ROS, NO, Atrboh, NOS, NIA12, KEV
+	InsP3, InsP6, cGMP, cADPR, RCN1, PLC
+	InsPK, GC, ADPRc, PA, OST1, ERA1
+	PLD, ROP2, ABH1, GPA1, AGB1, S1P
+	GCR1, SphK, ROP10
+-----KI RANKING-----
+1	ABI1
+2	Closure, Ca2_c, CIS, CaIM
+3	Malate
+4	AnionEM, ROS, Atrboh, InsP3, PLC, PA
+	PLD, GPA1, AGB1
+5	ERA1, ABH1
+6	KAP, KOUT, Depolar, Actin, PEPC, pH
+	ABA, HTPase, RAC1, NO, Ca2_ATPase, NOS
+	NIA12, KEV, InsP6, cGMP, cADPR, RCN1
+	InsPK, GC, ADPRc, OST1, ROP2, S1P
+	GCR1, SphK, ROP10
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output Closure--------
+Ordered input nodes:
+['ABA', 'ABH1', 'ERA1', 'GCR1']
+----ABA-----
+KO	0: []
+KI	0: []
+All	0: []
+----ABH1-----
+KO	4: [6, 7, 14, 15]
+KI	4: [2, 3, 10, 11]
+All	8: [2, 3, 6, 7, 10, 11, 14, 15]
+----ERA1-----
+KO	4: [6, 7, 14, 15]
+KI	4: [4, 5, 12, 13]
+All	8: [4, 5, 6, 7, 12, 13, 14, 15]
+----GCR1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ABI1-----
+KO	2: [14, 15]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 14, 15]
+----ADPRc-----
+KO	0: []
+KI	0: []
+All	0: []
+----AGB1-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----Actin-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	0: []
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----AnionEM-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	8: [0, 1, 2, 3, 4, 5, 14, 15]
+All	14: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13, 14, 15]
+----Atrboh-----
+KO	0: []
+KI	8: [0, 1, 2, 3, 4, 5, 14, 15]
+All	8: [0, 1, 2, 3, 4, 5, 14, 15]
+----CIS-----
+KO	6: [8, 9, 10, 11, 12, 13]
+KI	4: [6, 7, 14, 15]
+All	10: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Ca2_ATPase-----
+KO	0: []
+KI	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----Ca2_c-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	4: [6, 7, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----CaIM-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	4: [6, 7, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Closure-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	4: [6, 7, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----Depolar-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----GC-----
+KO	0: []
+KI	0: []
+All	0: []
+----GPA1-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----HTPase-----
+KO	6: [0, 1, 2, 3, 4, 5]
+KI	0: []
+All	6: [0, 1, 2, 3, 4, 5]
+----InsP3-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----InsP6-----
+KO	0: []
+KI	0: []
+All	0: []
+----InsPK-----
+KO	0: []
+KI	0: []
+All	0: []
+----KAP-----
+KO	0: []
+KI	0: []
+All	0: []
+----KEV-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 4, 5]
+All	6: [0, 1, 2, 3, 4, 5]
+----KOUT-----
+KO	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI	0: []
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----Malate-----
+KO	0: []
+KI	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+All	12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+----NIA12-----
+KO	0: []
+KI	0: []
+All	0: []
+----NO-----
+KO	0: []
+KI	4: [6, 7, 14, 15]
+All	4: [6, 7, 14, 15]
+----NOS-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----OST1-----
+KO	0: []
+KI	0: []
+All	0: []
+----PA-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----PEPC-----
+KO	0: []
+KI	0: []
+All	0: []
+----PLC-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----PLD-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----RAC1-----
+KO	0: []
+KI	0: []
+All	0: []
+----RCN1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ROP10-----
+KO	0: []
+KI	0: []
+All	0: []
+----ROP2-----
+KO	0: []
+KI	2: [14, 15]
+All	2: [14, 15]
+----ROS-----
+KO	0: []
+KI	8: [0, 1, 2, 3, 4, 5, 14, 15]
+All	8: [0, 1, 2, 3, 4, 5, 14, 15]
+----S1P-----
+KO	0: []
+KI	0: []
+All	0: []
+----SphK-----
+KO	0: []
+KI	0: []
+All	0: []
+----cADPR-----
+KO	0: []
+KI	0: []
+All	0: []
+----cGMP-----
+KO	0: []
+KI	0: []
+All	0: []
+----pH-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 4, 5]
+All	6: [0, 1, 2, 3, 4, 5]
+ABA                  			 KO:        0.0 | KI:        0.0
+ABH1                 			 KO:    -1.6667 | KI:     0.8334
+ERA1                 			 KO:    -1.6667 | KI:     0.8334
+GCR1                 			 KO:        0.0 | KI:        0.0
+ABI1                 			 KO:      -1.25 | KI:     2.0834
+ADPRc                			 KO:        0.0 | KI:        0.0
+AGB1                 			 KO:        0.0 | KI:      -1.25
+Actin                			 KO:     3.3335 | KI:        0.0
+AnionEM              			 KO:     3.3335 | KI:     0.8334
+Atrboh               			 KO:        0.0 | KI:     0.8334
+CIS                  			 KO:     1.2501 | KI:    -1.6667
+Ca2_ATPase           			 KO:        0.0 | KI:     3.3335
+Ca2_c                			 KO:     3.3335 | KI:    -1.6667
+CaIM                 			 KO:     3.3335 | KI:    -1.6667
+Closure              			 KO:     3.3335 | KI:    -1.6667
+Depolar              			 KO:     3.3335 | KI:     3.3335
+GC                   			 KO:        0.0 | KI:        0.0
+GPA1                 			 KO:        0.0 | KI:      -1.25
+HTPase               			 KO:     2.0834 | KI:        0.0
+InsP3                			 KO:        0.0 | KI:      -1.25
+InsP6                			 KO:        0.0 | KI:        0.0
+InsPK                			 KO:        0.0 | KI:        0.0
+KAP                  			 KO:        0.0 | KI:        0.0
+KEV                  			 KO:        0.0 | KI:     2.0834
+KOUT                 			 KO:     3.3335 | KI:        0.0
+Malate               			 KO:        0.0 | KI:     3.3335
+NIA12                			 KO:        0.0 | KI:        0.0
+NO                   			 KO:        0.0 | KI:    -1.6667
+NOS                  			 KO:        0.0 | KI:      -1.25
+OST1                 			 KO:        0.0 | KI:        0.0
+PA                   			 KO:        0.0 | KI:      -1.25
+PEPC                 			 KO:        0.0 | KI:        0.0
+PLC                  			 KO:        0.0 | KI:      -1.25
+PLD                  			 KO:        0.0 | KI:      -1.25
+RAC1                 			 KO:        0.0 | KI:        0.0
+RCN1                 			 KO:        0.0 | KI:        0.0
+ROP10                			 KO:        0.0 | KI:        0.0
+ROP2                 			 KO:        0.0 | KI:      -1.25
+ROS                  			 KO:        0.0 | KI:     0.8334
+S1P                  			 KO:        0.0 | KI:        0.0
+SphK                 			 KO:        0.0 | KI:        0.0
+cADPR                			 KO:        0.0 | KI:        0.0
+cGMP                 			 KO:        0.0 | KI:        0.0
+pH                   			 KO:        0.0 | KI:     2.0834
+-----KO RANKING-----
+1	Actin, AnionEM, Ca2_c, CaIM, Closure, Depolar
+	KOUT
+2	HTPase
+3	ABH1, ERA1
+4	CIS
+5	ABI1
+6	ABA, GCR1, ADPRc, AGB1, Atrboh, Ca2_ATPase
+	GC, GPA1, InsP3, InsP6, InsPK, KAP
+	KEV, Malate, NIA12, NO, NOS, OST1
+	PA, PEPC, PLC, PLD, RAC1, RCN1
+	ROP10, ROP2, ROS, S1P, SphK, cADPR
+	cGMP, pH
+-----KI RANKING-----
+1	Ca2_ATPase, Depolar, Malate
+2	ABI1, KEV, pH
+3	CIS, Ca2_c, CaIM, Closure, NO
+4	AGB1, GPA1, InsP3, NOS, PA, PLC
+	PLD, ROP2
+5	ABH1, ERA1, AnionEM, Atrboh, ROS
+6	ABA, GCR1, ADPRc, Actin, GC, HTPase
+	InsP6, InsPK, KAP, KOUT, NIA12, OST1
+	PEPC, RAC1, RCN1, ROP10, S1P, SphK
+	cADPR, cGMP
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node Closure ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Calc    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     4: [6, 7, 14, 15]
+KI Calc     4: [6, 7, 14, 15]
+
+----Report rows for node KAP ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Malate ------
+KO Lack     0: []
+KO Extr     6: [0, 1, 2, 3, 4, 5]
+KO Real     0: []
+KO Calc     6: [0, 1, 2, 3, 4, 5]
+
+KI Lack     6: [0, 1, 2, 3, 4, 5]
+KI Extr     0: []
+KI Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI Calc     6: [8, 9, 10, 11, 12, 13]
+
+----Report rows for node KOUT ------
+KO Lack    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Extr     0: []
+KO Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Depolar ------
+KO Lack     6: [8, 9, 10, 11, 12, 13]
+KO Extr     0: []
+KO Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Calc     6: [0, 1, 2, 3, 4, 5]
+
+KI Lack    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI Extr     0: []
+KI Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI Calc     0: []
+
+----Report rows for node Actin ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Calc    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node AnionEM ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Calc    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+KI Lack     6: [0, 1, 2, 3, 4, 5]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node Ca2_c ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Calc    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     4: [6, 7, 14, 15]
+KI Calc     4: [6, 7, 14, 15]
+
+----Report rows for node PEPC ------
+KO Lack     0: []
+KO Extr     6: [0, 1, 2, 3, 4, 5]
+KO Real     0: []
+KO Calc     6: [0, 1, 2, 3, 4, 5]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pH ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 2, 3, 4, 5]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     0: []
+
+----Report rows for node ABA ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node HTPase ------
+KO Lack     6: [0, 1, 2, 3, 4, 5]
+KO Extr     0: []
+KO Real     6: [0, 1, 2, 3, 4, 5]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CIS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     6: [8, 9, 10, 11, 12, 13]
+KO Calc     6: [8, 9, 10, 11, 12, 13]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     4: [6, 7, 14, 15]
+KI Calc     4: [6, 7, 14, 15]
+
+----Report rows for node CaIM ------
+KO Lack     6: [8, 9, 10, 11, 12, 13]
+KO Extr     0: []
+KO Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Calc     6: [0, 1, 2, 3, 4, 5]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     4: [6, 7, 14, 15]
+KI Calc     4: [6, 7, 14, 15]
+
+----Report rows for node RAC1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ROS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 2, 3, 4, 5]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node NO ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     4: [6, 7, 14, 15]
+KI Extr     0: []
+KI Real     4: [6, 7, 14, 15]
+KI Calc     0: []
+
+----Report rows for node Ca2_ATPase ------
+KO Lack     0: []
+KO Extr    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KO Real     0: []
+KO Calc    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+
+KI Lack    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI Extr     0: []
+KI Real    12: [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12, 13]
+KI Calc     0: []
+
+----Report rows for node ABI1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     2: [14, 15]
+KO Calc     2: [14, 15]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     6: [0, 1, 2, 3, 4, 5]
+
+----Report rows for node Atrboh ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 2, 3, 4, 5]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node NOS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     2: [14, 15]
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     0: []
+
+----Report rows for node NIA12 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node KEV ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     6: [0, 1, 2, 3, 4, 5]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     0: []
+
+----Report rows for node InsP3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node InsP6 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cGMP ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cADPR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node RCN1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PLC ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node InsPK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node GC ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ADPRc ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PA ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node OST1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ERA1 ------
+KO Lack     2: [14, 15]
+KO Extr     2: [2, 3]
+KO Real     4: [6, 7, 14, 15]
+KO Calc     4: [2, 3, 6, 7]
+
+KI Lack     2: [12, 13]
+KI Extr     0: []
+KI Real     4: [4, 5, 12, 13]
+KI Calc     2: [4, 5]
+
+----Report rows for node PLD ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node ROP2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     2: [14, 15]
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     0: []
+
+----Report rows for node ABH1 ------
+KO Lack     2: [14, 15]
+KO Extr     2: [4, 5]
+KO Real     4: [6, 7, 14, 15]
+KO Calc     4: [4, 5, 6, 7]
+
+KI Lack     2: [10, 11]
+KI Extr     0: []
+KI Real     4: [2, 3, 10, 11]
+KI Calc     2: [2, 3]
+
+----Report rows for node GPA1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node AGB1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [14, 15]
+KI Calc     2: [14, 15]
+
+----Report rows for node S1P ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node GCR1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node SphK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ROP10 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+Malate               - Correct: KO:        0.0 | KI :     3.3335 - Incorrect KO:     2.0834 | KI:     1.2501
+KOUT                 - Correct: KO:     3.3335 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+Depolar              - Correct: KO:     3.3335 | KI :     3.3335 - Incorrect KO:     2.0834 | KI:        0.0
+AnionEM              - Correct: KO:     3.3335 | KI :     0.8334 - Incorrect KO:     3.3335 | KI:      -1.25
+PEPC                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:     2.0834 | KI:        0.0
+pH                   - Correct: KO:        0.0 | KI :     2.0834 - Incorrect KO:        0.0 | KI:        0.0
+HTPase               - Correct: KO:     2.0834 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+CaIM                 - Correct: KO:     3.3335 | KI :    -1.6667 - Incorrect KO:     2.0834 | KI:    -1.6667
+ROS                  - Correct: KO:        0.0 | KI :     0.8334 - Incorrect KO:        0.0 | KI:      -1.25
+NO                   - Correct: KO:        0.0 | KI :    -1.6667 - Incorrect KO:        0.0 | KI:        0.0
+Ca2_ATPase           - Correct: KO:        0.0 | KI :     3.3335 - Incorrect KO:     3.3335 | KI:        0.0
+Atrboh               - Correct: KO:        0.0 | KI :     0.8334 - Incorrect KO:        0.0 | KI:      -1.25
+NOS                  - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:        0.0
+KEV                  - Correct: KO:        0.0 | KI :     2.0834 - Incorrect KO:        0.0 | KI:        0.0
+ERA1                 - Correct: KO:    -1.6667 | KI :     0.8334 - Incorrect KO:       -0.0 | KI:     0.4167
+ROP2                 - Correct: KO:        0.0 | KI :      -1.25 - Incorrect KO:        0.0 | KI:        0.0
+ABH1                 - Correct: KO:    -1.6667 | KI :     0.8334 - Incorrect KO:       -0.0 | KI:     0.4167
+-----KO RANKING COMPARISON-----
+1	Closure, Actin, AnionEM, Ca2_c, Ca2_ATPase
+2	Malate, Depolar, PEPC, CaIM
+3	CIS
+4	ABI1
+5	KAP, KOUT, pH, ABA, HTPase, RAC1
+	ROS, NO, Atrboh, NOS, NIA12, KEV
+	InsP3, InsP6, cGMP, cADPR, RCN1, PLC
+	InsPK, GC, ADPRc, PA, OST1, ERA1
+	PLD, ROP2, ABH1, GPA1, AGB1, S1P
+	GCR1, SphK, ROP10
+REFERENCE:
+1	Actin, AnionEM, Ca2_c, CaIM, Closure, Depolar
+	KOUT
+2	HTPase
+3	ABH1, ERA1
+4	CIS
+5	ABI1
+6	ABA, GCR1, ADPRc, AGB1, Atrboh, Ca2_ATPase
+	GC, GPA1, InsP3, InsP6, InsPK, KAP
+	KEV, Malate, NIA12, NO, NOS, OST1
+	PA, PEPC, PLC, PLD, RAC1, RCN1
+	ROP10, ROP2, ROS, S1P, SphK, cADPR
+	cGMP, pH
+=======
+-----KI RANKING COMPARISON-----
+1	ABI1
+2	Closure, Ca2_c, CIS, CaIM
+3	Malate
+4	AnionEM, ROS, Atrboh, InsP3, PLC, PA
+	PLD, GPA1, AGB1
+5	ERA1, ABH1
+6	KAP, KOUT, Depolar, Actin, PEPC, pH
+	ABA, HTPase, RAC1, NO, Ca2_ATPase, NOS
+	NIA12, KEV, InsP6, cGMP, cADPR, RCN1
+	InsPK, GC, ADPRc, OST1, ROP2, S1P
+	GCR1, SphK, ROP10
+REFERENCE:
+1	Ca2_ATPase, Depolar, Malate
+2	ABI1, KEV, pH
+3	CIS, Ca2_c, CaIM, Closure, NO
+4	AGB1, GPA1, InsP3, NOS, PA, PLC
+	PLD, ROP2
+5	ABH1, ERA1, AnionEM, Atrboh, ROS
+6	ABA, GCR1, ADPRc, Actin, GC, HTPase
+	InsP6, InsPK, KAP, KOUT, NIA12, OST1
+	PEPC, RAC1, RCN1, ROP10, S1P, SphK
+	cADPR, cGMP
+============
+Relative_RMSE_KO_is  0.0999174534075731
+Relative_RMSE_KI_is  0.11131236202074038
+NDCG_KO_is  0.8722
+NDCG_KI_is  0.8269
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             44.000       44.000
+Kendall tau-b                         0.585        0.552
+Spearman rho                          0.644        0.472
+Mean abs rank diff                    1.136        1.341
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.400        0.300
+         Precision@10                0.545        0.400
+         Recall@10                   0.600        0.545
+  Top-20 Jaccard                   1.000        0.545
+         Precision@20                1.000        0.545
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.500        0.000
+  Top-2  groups Jaccard            0.545        0.100
+  Top-3  groups Jaccard            0.400        0.300
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.8097
+===============MODEL information===============
+NUMBER OF INPUT: 	 4
+NUMBER OF NODES: 	 44
+NUMBER OF EDGES: 	 78
+NUMBER OF SCCs: 	 25
+NUMBER OF aFAS: 	 6
+===============TIME information===============
+TIME process heading: 0.00350625001010485
+TIME generate input states: 0.0004561669920803979
+TIME convert to BBN (Propagation mode): 0.007840082995244302
+TIME to fully simulate original network (if Test): 0.165530750004109
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.16863729200849775
+TIME generating table 0.00024212499556597322
+TIME calculating Shapley values for input nodes: 2.533399674575776e-05
+TIME propagate (in Propagation mode): 1.4547992919979151
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0
+TIME simulate perturbations full if Test: 12.261153958010254
+TIME total for Propagation: 1.6355065429961542
+TIME total for FULLY Simulation: 12.430475958026364
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0.03125
+Average error for KI values: 0.015625
+-----------TOTAL RUNNING TIME---------------
+14.250046708999434
+
+[exit code: 0]

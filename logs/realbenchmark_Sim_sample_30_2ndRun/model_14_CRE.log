@@ -1,0 +1,1068 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_14_CRE -e data/realbenchmark/14.txt -o CRE -r uniform -p 30.0 -c 0.0 -k Shapley -m Simulation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_14_CRE                                  =========
+========== EXPRESSION FILE IS data/realbenchmark/14.txt                                                        =========
+========== THE OUTPUT OF INTEREST IS: CRE                                                                      =========
+========== SAMPLING STRATEGY IS: uniform                                                                       =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Simulation                                                                                 =========
+LIST OF ALL SPECIES:
+['AP1', 'CD45', 'CD8', 'CRE', 'CREB', 'Ca', 'Calcin', 'DAG', 'ERK', 'Fos', 'Fyn', 'Gads', 'Grb2Sos', 'IKKbeta', 'IP3', 'IkB', 'Itk', 'JNK', 'Jun', 'LAT', 'Lck', 'MEK', 'NFAT', 'Nfkb', 'PAGCsk', 'PKCth', 'PLCg_act', 'PLCg_bind', 'Raf', 'Ras', 'RasGRP1', 'Rlk', 'Rsk', 'SEK', 'SLP76', 'TCRbind', 'TCRlig', 'TCRphos', 'ZAP70', 'cCbl']
+-----INPUT NAMES-----
+['CD45', 'CD8', 'TCRlig']
+----INTERMEDIATE NODES-----
+['AP1', 'CRE', 'CREB', 'Ca', 'Calcin', 'DAG', 'ERK', 'Fos', 'Fyn', 'Gads', 'Grb2Sos', 'IKKbeta', 'IP3', 'IkB', 'Itk', 'JNK', 'Jun', 'LAT', 'Lck', 'MEK', 'NFAT', 'Nfkb', 'PAGCsk', 'PKCth', 'PLCg_act', 'PLCg_bind', 'Raf', 'Ras', 'RasGRP1', 'Rlk', 'Rsk', 'SEK', 'SLP76', 'TCRbind', 'TCRphos', 'ZAP70', 'cCbl']
+===============================================================
+Sorted input names
+['CD45', 'CD8', 'TCRlig']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['AP1', 'CRE', 'CREB', 'Ca', 'Calcin', 'DAG', 'ERK', 'Fos', 'Fyn', 'Gads', 'Grb2Sos', 'IKKbeta', 'IP3', 'IkB', 'Itk', 'JNK', 'Jun', 'LAT', 'Lck', 'MEK', 'NFAT', 'Nfkb', 'PAGCsk', 'PKCth', 'PLCg_act', 'PLCg_bind', 'Raf', 'Ras', 'RasGRP1', 'Rlk', 'Rsk', 'SEK', 'SLP76', 'TCRbind', 'TCRphos', 'ZAP70', 'cCbl']
+There are 37 intermediate nodes with the range of inter: 0 137438953471
+SORTED INPUT
+['CD45', 'CD8', 'TCRlig']
+SORTED INTER
+['AP1', 'CRE', 'CREB', 'Ca', 'Calcin', 'DAG', 'ERK', 'Fos', 'Fyn', 'Gads', 'Grb2Sos', 'IKKbeta', 'IP3', 'IkB', 'Itk', 'JNK', 'Jun', 'LAT', 'Lck', 'MEK', 'NFAT', 'Nfkb', 'PAGCsk', 'PKCth', 'PLCg_act', 'PLCg_bind', 'Raf', 'Ras', 'RasGRP1', 'Rlk', 'Rsk', 'SEK', 'SLP76', 'TCRbind', 'TCRphos', 'ZAP70', 'cCbl']
+More than 1 binary operator, dont allow NOT in formula: PLCg_bind and SLP76 and ZAP70 
+More than 1 binary operator, dont allow NOT in formula: Rlk and PLCg_bind and SLP76 
+Now arrange layout of the original network for visualization
+THERE ARE 2 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('ZAP70', 'cCbl'), ('PAGCsk', 'Lck')]
+orimodel_14_CRE.html
+Generating input states using strategy: uniform
+Sample percentage: 30.0%
+3 inputs causing in total 8 combinations
+Input list:
+['CD45', 'CD8', 'TCRlig']
+Number of samples in total: 2
+-----Mapping rowid to inputs:-----
+3: ['CD8', 'TCRlig']
+5: ['CD45', 'TCRlig']
+Generating input states using strategy: all
+3 inputs causing in total 8 combinations
+Input list:
+['CD45', 'CD8', 'TCRlig']
+Number of samples in total: 8
+TEST: Mapping rowid to inputs:
+0: []
+1: ['TCRlig']
+2: ['CD8']
+3: ['CD8', 'TCRlig']
+4: ['CD45']
+5: ['CD45', 'TCRlig']
+6: ['CD45', 'CD8']
+7: ['CD45', 'CD8', 'TCRlig']
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node CD45 is 1.3333, -0.6666 with 2 KO rows and 2 KI rows
+Shapley value for input node CD8 is 1.3333, -0.6666 with 2 KO rows and 2 KI rows
+Shapley value for input node TCRlig is 0.0, 0.0 with 0 KO rows and 0 KI rows
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node CD45 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node CD8 is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node TCRlig is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-------Now performing pertubation simulations---------
+=========SIMULATION RESULTS=========
+-------RESULT for output CRE--------
+Ordered input nodes:
+['CD45', 'CD8', 'TCRlig']
+----CD45-----
+KO	0: []
+KI	0: []
+All	0: []
+----CD8-----
+KO	0: []
+KI	0: []
+All	0: []
+----TCRlig-----
+KO	0: []
+KI	0: []
+All	0: []
+----AP1-----
+KO	0: []
+KI	0: []
+All	0: []
+----CRE-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----CREB-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----Ca-----
+KO	0: []
+KI	0: []
+All	0: []
+----Calcin-----
+KO	0: []
+KI	0: []
+All	0: []
+----DAG-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----ERK-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----Fos-----
+KO	0: []
+KI	0: []
+All	0: []
+----Fyn-----
+KO	0: []
+KI	0: []
+All	0: []
+----Gads-----
+KO	0: []
+KI	0: []
+All	0: []
+----Grb2Sos-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----IKKbeta-----
+KO	0: []
+KI	0: []
+All	0: []
+----IP3-----
+KO	0: []
+KI	0: []
+All	0: []
+----IkB-----
+KO	0: []
+KI	0: []
+All	0: []
+----Itk-----
+KO	0: []
+KI	0: []
+All	0: []
+----JNK-----
+KO	0: []
+KI	0: []
+All	0: []
+----Jun-----
+KO	0: []
+KI	0: []
+All	0: []
+----LAT-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----Lck-----
+KO	0: []
+KI	1: [5]
+All	1: [5]
+----MEK-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----NFAT-----
+KO	0: []
+KI	0: []
+All	0: []
+----Nfkb-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAGCsk-----
+KO	0: []
+KI	0: []
+All	0: []
+----PKCth-----
+KO	0: []
+KI	0: []
+All	0: []
+----PLCg_act-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----PLCg_bind-----
+KO	0: []
+KI	0: []
+All	0: []
+----Raf-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----Ras-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----RasGRP1-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----Rlk-----
+KO	0: []
+KI	0: []
+All	0: []
+----Rsk-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----SEK-----
+KO	0: []
+KI	0: []
+All	0: []
+----SLP76-----
+KO	0: []
+KI	0: []
+All	0: []
+----TCRbind-----
+KO	0: []
+KI	0: []
+All	0: []
+----TCRphos-----
+KO	0: []
+KI	0: []
+All	0: []
+----ZAP70-----
+KO	0: []
+KI	2: [3, 5]
+All	2: [3, 5]
+----cCbl-----
+KO	0: []
+KI	0: []
+All	0: []
+CD45                 			 KO:        0.0 | KI:        0.0
+CD8                  			 KO:        0.0 | KI:        0.0
+TCRlig               			 KO:        0.0 | KI:        0.0
+AP1                  			 KO:        0.0 | KI:        0.0
+CRE                  			 KO:        0.0 | KI:    -0.6666
+CREB                 			 KO:        0.0 | KI:    -0.6666
+Ca                   			 KO:        0.0 | KI:        0.0
+Calcin               			 KO:        0.0 | KI:        0.0
+DAG                  			 KO:        0.0 | KI:    -0.6666
+ERK                  			 KO:        0.0 | KI:    -0.6666
+Fos                  			 KO:        0.0 | KI:        0.0
+Fyn                  			 KO:        0.0 | KI:        0.0
+Gads                 			 KO:        0.0 | KI:        0.0
+Grb2Sos              			 KO:        0.0 | KI:    -0.6666
+IKKbeta              			 KO:        0.0 | KI:        0.0
+IP3                  			 KO:        0.0 | KI:        0.0
+IkB                  			 KO:        0.0 | KI:        0.0
+Itk                  			 KO:        0.0 | KI:        0.0
+JNK                  			 KO:        0.0 | KI:        0.0
+Jun                  			 KO:        0.0 | KI:        0.0
+LAT                  			 KO:        0.0 | KI:    -0.6666
+Lck                  			 KO:        0.0 | KI:    -0.3333
+MEK                  			 KO:        0.0 | KI:    -0.6666
+NFAT                 			 KO:        0.0 | KI:        0.0
+Nfkb                 			 KO:        0.0 | KI:        0.0
+PAGCsk               			 KO:        0.0 | KI:        0.0
+PKCth                			 KO:        0.0 | KI:        0.0
+PLCg_act             			 KO:        0.0 | KI:    -0.6666
+PLCg_bind            			 KO:        0.0 | KI:        0.0
+Raf                  			 KO:        0.0 | KI:    -0.6666
+Ras                  			 KO:        0.0 | KI:    -0.6666
+RasGRP1              			 KO:        0.0 | KI:    -0.6666
+Rlk                  			 KO:        0.0 | KI:        0.0
+Rsk                  			 KO:        0.0 | KI:    -0.6666
+SEK                  			 KO:        0.0 | KI:        0.0
+SLP76                			 KO:        0.0 | KI:        0.0
+TCRbind              			 KO:        0.0 | KI:        0.0
+TCRphos              			 KO:        0.0 | KI:        0.0
+ZAP70                			 KO:        0.0 | KI:    -0.6666
+cCbl                 			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	AP1, CRE, CREB, Ca, Calcin, DAG
+	ERK, Fos, Fyn, Gads, Grb2Sos, IKKbeta
+	IP3, IkB, Itk, JNK, Jun, LAT
+	Lck, MEK, NFAT, Nfkb, PAGCsk, PKCth
+	PLCg_act, PLCg_bind, Raf, Ras, RasGRP1, Rlk
+	Rsk, SEK, SLP76, TCRbind, TCRphos, ZAP70
+	cCbl, CD45, CD8, TCRlig
+-----KI RANKING-----
+1	CRE, CREB, DAG, ERK, Grb2Sos, LAT
+	MEK, PLCg_act, Raf, Ras, RasGRP1, Rsk
+	ZAP70
+2	Lck
+3	AP1, Ca, Calcin, Fos, Fyn, Gads
+	IKKbeta, IP3, IkB, Itk, JNK, Jun
+	NFAT, Nfkb, PAGCsk, PKCth, PLCg_bind, Rlk
+	SEK, SLP76, TCRbind, TCRphos, cCbl, CD45
+	CD8, TCRlig
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output CRE--------
+Ordered input nodes:
+['CD45', 'CD8', 'TCRlig']
+----CD45-----
+KO	2: [6, 7]
+KI	2: [2, 3]
+All	4: [2, 3, 6, 7]
+----CD8-----
+KO	2: [6, 7]
+KI	2: [4, 5]
+All	4: [4, 5, 6, 7]
+----TCRlig-----
+KO	0: []
+KI	0: []
+All	0: []
+----AP1-----
+KO	0: []
+KI	0: []
+All	0: []
+----CRE-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----CREB-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----Ca-----
+KO	0: []
+KI	0: []
+All	0: []
+----Calcin-----
+KO	0: []
+KI	0: []
+All	0: []
+----DAG-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 4, 5]
+All	6: [0, 1, 2, 3, 4, 5]
+----ERK-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----Fos-----
+KO	0: []
+KI	0: []
+All	0: []
+----Fyn-----
+KO	2: [6, 7]
+KI	2: [6, 7]
+All	2: [6, 7]
+----Gads-----
+KO	0: []
+KI	0: []
+All	0: []
+----Grb2Sos-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----IKKbeta-----
+KO	0: []
+KI	0: []
+All	0: []
+----IP3-----
+KO	0: []
+KI	0: []
+All	0: []
+----IkB-----
+KO	0: []
+KI	0: []
+All	0: []
+----Itk-----
+KO	0: []
+KI	0: []
+All	0: []
+----JNK-----
+KO	0: []
+KI	0: []
+All	0: []
+----Jun-----
+KO	0: []
+KI	0: []
+All	0: []
+----LAT-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----Lck-----
+KO	2: [6, 7]
+KI	2: [4, 5]
+All	4: [4, 5, 6, 7]
+----MEK-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----NFAT-----
+KO	0: []
+KI	0: []
+All	0: []
+----Nfkb-----
+KO	0: []
+KI	0: []
+All	0: []
+----PAGCsk-----
+KO	0: []
+KI	2: [6, 7]
+All	2: [6, 7]
+----PKCth-----
+KO	0: []
+KI	0: []
+All	0: []
+----PLCg_act-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 4, 5]
+All	6: [0, 1, 2, 3, 4, 5]
+----PLCg_bind-----
+KO	0: []
+KI	0: []
+All	0: []
+----Raf-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----Ras-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----RasGRP1-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 4, 5]
+All	6: [0, 1, 2, 3, 4, 5]
+----Rlk-----
+KO	0: []
+KI	0: []
+All	0: []
+----Rsk-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----SEK-----
+KO	0: []
+KI	0: []
+All	0: []
+----SLP76-----
+KO	0: []
+KI	0: []
+All	0: []
+----TCRbind-----
+KO	0: []
+KI	2: [6, 7]
+All	2: [6, 7]
+----TCRphos-----
+KO	2: [6, 7]
+KI	0: []
+All	2: [6, 7]
+----ZAP70-----
+KO	2: [6, 7]
+KI	6: [0, 1, 2, 3, 4, 5]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----cCbl-----
+KO	1: [7]
+KI	2: [6, 7]
+All	2: [6, 7]
+CD45                 			 KO:     1.3333 | KI:    -0.6666
+CD8                  			 KO:     1.3333 | KI:    -0.6666
+TCRlig               			 KO:        0.0 | KI:        0.0
+AP1                  			 KO:        0.0 | KI:        0.0
+CRE                  			 KO:     1.3333 | KI:    -2.6665
+CREB                 			 KO:     1.3333 | KI:    -2.6665
+Ca                   			 KO:        0.0 | KI:        0.0
+Calcin               			 KO:        0.0 | KI:        0.0
+DAG                  			 KO:        0.0 | KI:    -2.6665
+ERK                  			 KO:     1.3333 | KI:    -2.6665
+Fos                  			 KO:        0.0 | KI:        0.0
+Fyn                  			 KO:     1.3333 | KI:     1.3333
+Gads                 			 KO:        0.0 | KI:        0.0
+Grb2Sos              			 KO:     1.3333 | KI:    -2.6665
+IKKbeta              			 KO:        0.0 | KI:        0.0
+IP3                  			 KO:        0.0 | KI:        0.0
+IkB                  			 KO:        0.0 | KI:        0.0
+Itk                  			 KO:        0.0 | KI:        0.0
+JNK                  			 KO:        0.0 | KI:        0.0
+Jun                  			 KO:        0.0 | KI:        0.0
+LAT                  			 KO:     1.3333 | KI:    -2.6665
+Lck                  			 KO:     1.3333 | KI:    -0.6666
+MEK                  			 KO:     1.3333 | KI:    -2.6665
+NFAT                 			 KO:        0.0 | KI:        0.0
+Nfkb                 			 KO:        0.0 | KI:        0.0
+PAGCsk               			 KO:        0.0 | KI:     1.3333
+PKCth                			 KO:        0.0 | KI:        0.0
+PLCg_act             			 KO:        0.0 | KI:    -2.6665
+PLCg_bind            			 KO:        0.0 | KI:        0.0
+Raf                  			 KO:     1.3333 | KI:    -2.6665
+Ras                  			 KO:     1.3333 | KI:    -2.6665
+RasGRP1              			 KO:        0.0 | KI:    -2.6665
+Rlk                  			 KO:        0.0 | KI:        0.0
+Rsk                  			 KO:     1.3333 | KI:    -2.6665
+SEK                  			 KO:        0.0 | KI:        0.0
+SLP76                			 KO:        0.0 | KI:        0.0
+TCRbind              			 KO:        0.0 | KI:     1.3333
+TCRphos              			 KO:     1.3333 | KI:        0.0
+ZAP70                			 KO:     1.3333 | KI:    -2.6665
+cCbl                 			 KO:        1.0 | KI:     1.3333
+-----KO RANKING-----
+1	CD45, CD8, CRE, CREB, ERK, Fyn
+	Grb2Sos, LAT, Lck, MEK, Raf, Ras
+	Rsk, TCRphos, ZAP70
+2	cCbl
+3	TCRlig, AP1, Ca, Calcin, DAG, Fos
+	Gads, IKKbeta, IP3, IkB, Itk, JNK
+	Jun, NFAT, Nfkb, PAGCsk, PKCth, PLCg_act
+	PLCg_bind, RasGRP1, Rlk, SEK, SLP76, TCRbind
+-----KI RANKING-----
+1	CRE, CREB, DAG, ERK, Grb2Sos, LAT
+	MEK, PLCg_act, Raf, Ras, RasGRP1, Rsk
+	ZAP70
+2	Fyn, PAGCsk, TCRbind, cCbl
+3	CD45, CD8, Lck
+4	TCRlig, AP1, Ca, Calcin, Fos, Gads
+	IKKbeta, IP3, IkB, Itk, JNK, Jun
+	NFAT, Nfkb, PKCth, PLCg_bind, Rlk, SEK
+	SLP76, TCRphos
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node AP1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CRE ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node CREB ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node Ca ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Calcin ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node DAG ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node ERK ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node Fos ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Fyn ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     2: [6, 7]
+KI Extr     0: []
+KI Real     2: [6, 7]
+KI Calc     0: []
+
+----Report rows for node Gads ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Grb2Sos ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node IKKbeta ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IP3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IkB ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Itk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node JNK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Jun ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node LAT ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node Lck ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     1: [4]
+KI Extr     0: []
+KI Real     2: [4, 5]
+KI Calc     1: [5]
+
+----Report rows for node MEK ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node NFAT ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Nfkb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PAGCsk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     2: [6, 7]
+KI Extr     0: []
+KI Real     2: [6, 7]
+KI Calc     0: []
+
+----Report rows for node PKCth ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PLCg_act ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node PLCg_bind ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Raf ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node Ras ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node RasGRP1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node Rlk ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Rsk ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node SEK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node SLP76 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node TCRbind ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     2: [6, 7]
+KI Extr     0: []
+KI Real     2: [6, 7]
+KI Calc     0: []
+
+----Report rows for node TCRphos ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ZAP70 ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     4: [0, 1, 2, 4]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 4, 5]
+KI Calc     2: [3, 5]
+
+----Report rows for node cCbl ------
+KO Lack     1: [7]
+KO Extr     0: []
+KO Real     1: [7]
+KO Calc     0: []
+
+KI Lack     2: [6, 7]
+KI Extr     0: []
+KI Real     2: [6, 7]
+KI Calc     0: []
+
+----Report rows for node CD45 ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     2: [2, 3]
+KI Extr     0: []
+KI Real     2: [2, 3]
+KI Calc     0: []
+
+----Report rows for node CD8 ------
+KO Lack     2: [6, 7]
+KO Extr     0: []
+KO Real     2: [6, 7]
+KO Calc     0: []
+
+KI Lack     2: [4, 5]
+KI Extr     0: []
+KI Real     2: [4, 5]
+KI Calc     0: []
+
+----Report rows for node TCRlig ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+CRE                  - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+CREB                 - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+DAG                  - Correct: KO:        0.0 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+ERK                  - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+Fyn                  - Correct: KO:     1.3333 | KI :     1.3333 - Incorrect KO:        0.0 | KI:        0.0
+Grb2Sos              - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+LAT                  - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+Lck                  - Correct: KO:     1.3333 | KI :    -0.6666 - Incorrect KO:        0.0 | KI:    -0.3333
+MEK                  - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+PAGCsk               - Correct: KO:        0.0 | KI :     1.3333 - Incorrect KO:        0.0 | KI:        0.0
+PLCg_act             - Correct: KO:        0.0 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+Raf                  - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+Ras                  - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+RasGRP1              - Correct: KO:        0.0 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+Rsk                  - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+TCRbind              - Correct: KO:        0.0 | KI :     1.3333 - Incorrect KO:        0.0 | KI:        0.0
+TCRphos              - Correct: KO:     1.3333 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+ZAP70                - Correct: KO:     1.3333 | KI :    -2.6665 - Incorrect KO:        0.0 | KI:    -0.6666
+cCbl                 - Correct: KO:        1.0 | KI :     1.3333 - Incorrect KO:        0.0 | KI:        0.0
+CD45                 - Correct: KO:     1.3333 | KI :    -0.6666 - Incorrect KO:        0.0 | KI:        0.0
+CD8                  - Correct: KO:     1.3333 | KI :    -0.6666 - Incorrect KO:        0.0 | KI:        0.0
+-----KO RANKING COMPARISON-----
+1	AP1, CRE, CREB, Ca, Calcin, DAG
+	ERK, Fos, Fyn, Gads, Grb2Sos, IKKbeta
+	IP3, IkB, Itk, JNK, Jun, LAT
+	Lck, MEK, NFAT, Nfkb, PAGCsk, PKCth
+	PLCg_act, PLCg_bind, Raf, Ras, RasGRP1, Rlk
+	Rsk, SEK, SLP76, TCRbind, TCRphos, ZAP70
+	cCbl, CD45, CD8, TCRlig
+REFERENCE:
+1	CD45, CD8, CRE, CREB, ERK, Fyn
+	Grb2Sos, LAT, Lck, MEK, Raf, Ras
+	Rsk, TCRphos, ZAP70
+2	cCbl
+3	TCRlig, AP1, Ca, Calcin, DAG, Fos
+	Gads, IKKbeta, IP3, IkB, Itk, JNK
+	Jun, NFAT, Nfkb, PAGCsk, PKCth, PLCg_act
+	PLCg_bind, RasGRP1, Rlk, SEK, SLP76, TCRbind
+=======
+-----KI RANKING COMPARISON-----
+1	CRE, CREB, DAG, ERK, Grb2Sos, LAT
+	MEK, PLCg_act, Raf, Ras, RasGRP1, Rsk
+	ZAP70
+2	Lck
+3	AP1, Ca, Calcin, Fos, Fyn, Gads
+	IKKbeta, IP3, IkB, Itk, JNK, Jun
+	NFAT, Nfkb, PAGCsk, PKCth, PLCg_bind, Rlk
+	SEK, SLP76, TCRbind, TCRphos, cCbl, CD45
+	CD8, TCRlig
+REFERENCE:
+1	CRE, CREB, DAG, ERK, Grb2Sos, LAT
+	MEK, PLCg_act, Raf, Ras, RasGRP1, Rsk
+	ZAP70
+2	Fyn, PAGCsk, TCRbind, cCbl
+3	CD45, CD8, Lck
+4	TCRlig, AP1, Ca, Calcin, Fos, Gads
+	IKKbeta, IP3, IkB, Itk, JNK, Jun
+	NFAT, Nfkb, PKCth, PLCg_bind, Rlk, SEK
+	SLP76, TCRphos
+============
+Relative_RMSE_KO_is  0.10395561956837038
+Relative_RMSE_KI_is  0.1532274602357962
+NDCG_KO_is  0.7225
+NDCG_KI_is  0.9871
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             40.000       40.000
+Kendall tau-b                           NaN        0.843
+Spearman rho                          0.000        0.895
+Mean abs rank diff                    1.225        0.625
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   0.375        1.000
+         Precision@10                0.375        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        0.500
+         Precision@20                1.000        0.500
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.375        1.000
+  Top-2  groups Jaccard            0.400        0.722
+  Top-3  groups Jaccard            1.000        0.500
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.7
+===============MODEL information===============
+NUMBER OF INPUT: 	 3
+NUMBER OF NODES: 	 40
+NUMBER OF EDGES: 	 52
+NUMBER OF SCCs: 	 34
+NUMBER OF aFAS: 	 2
+===============TIME information===============
+TIME process heading: 0.001718874991638586
+TIME generate input states: 0.00025529100093990564
+TIME convert to BBN (Propagation mode): 0
+TIME to fully simulate original network (if Test): 0.044613499980187044
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.005511082999873906
+TIME generating table 3.070800448767841e-05
+TIME calculating Shapley values for input nodes: 1.1083000572398305e-05
+TIME propagate (in Propagation mode): 0
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0.47772891700151376
+TIME simulate perturbations full if Test: 3.267138709023129
+TIME total for Simulation: 0.48525595699902624
+TIME total for FULLY Simulation: 3.3136298339813948
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0
+Average error for KI values: 0
+-----------TOTAL RUNNING TIME---------------
+3.889899208006682
+
+[exit code: 0]

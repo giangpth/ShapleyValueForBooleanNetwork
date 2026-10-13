@@ -1,0 +1,842 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_10_Spz -e data/realbenchmark/10.txt -o Spz -r uniform -p 60.0 -c 0.0 -k Shapley -m Propagation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_10_Spz                                  =========
+========== EXPRESSION FILE IS data/realbenchmark/10.txt                                                        =========
+========== THE OUTPUT OF INTEREST IS: Spz                                                                      =========
+========== SAMPLING STRATEGY IS: uniform                                                                       =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Propagation                                                                                =========
+LIST OF ALL SPECIES:
+['DAP', 'DV_patterning', 'Easter', 'Fungi', 'GNBP1', 'GNBP3', 'Gd', 'GramN_Bact', 'GramP_Bact', 'Grass', 'ModSP', 'Ndl', 'Nec', 'PGRP_SA', 'PGRP_SD', 'Pipe', 'Psh', 'SPE', 'Snk', 'Spd', 'Sphinx', 'Spirit', 'Spz', 'Viru_Fact']
+-----INPUT NAMES-----
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+----INTERMEDIATE NODES-----
+['DAP', 'Easter', 'GNBP1', 'GNBP3', 'Gd', 'Grass', 'ModSP', 'Ndl', 'PGRP_SA', 'PGRP_SD', 'Psh', 'SPE', 'Snk', 'Spd', 'Sphinx', 'Spirit', 'Spz', 'Viru_Fact']
+===============================================================
+Sorted input names
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+There are 6 inputs with the range of input: 0 63
+Sorted internames:
+['DAP', 'Easter', 'GNBP1', 'GNBP3', 'Gd', 'Grass', 'ModSP', 'Ndl', 'PGRP_SA', 'PGRP_SD', 'Psh', 'SPE', 'Snk', 'Spd', 'Sphinx', 'Spirit', 'Spz', 'Viru_Fact']
+There are 18 intermediate nodes with the range of inter: 0 262143
+SORTED INPUT
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+SORTED INTER
+['DAP', 'Easter', 'GNBP1', 'GNBP3', 'Gd', 'Grass', 'ModSP', 'Ndl', 'PGRP_SA', 'PGRP_SD', 'Psh', 'SPE', 'Snk', 'Spd', 'Sphinx', 'Spirit', 'Spz', 'Viru_Fact']
+More than 1 binary operator, dont allow NOT in formula: Sphinx or Spd or Spirit or Psh or Easter 
+More than 1 binary operator, dont allow NOT in formula: GNBP3 or GNBP1 or PGRP_SD or PGRP_SA 
+Now arrange layout of the original network for visualization
+THERE ARE 0 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[]
+orimodel_10_Spz.html
+Generating input states using strategy: uniform
+Sample percentage: 60.0%
+6 inputs causing in total 64 combinations
+Input list:
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+Number of samples in total: 38
+-----Mapping rowid to inputs:-----
+0: []
+1: ['Pipe']
+3: ['Nec', 'Pipe']
+4: ['GramP_Bact']
+6: ['GramP_Bact', 'Nec']
+7: ['GramP_Bact', 'Nec', 'Pipe']
+9: ['GramN_Bact', 'Pipe']
+11: ['GramN_Bact', 'Nec', 'Pipe']
+13: ['GramN_Bact', 'GramP_Bact', 'Pipe']
+14: ['GramN_Bact', 'GramP_Bact', 'Nec']
+18: ['Fungi', 'Nec']
+20: ['Fungi', 'GramP_Bact']
+22: ['Fungi', 'GramP_Bact', 'Nec']
+23: ['Fungi', 'GramP_Bact', 'Nec', 'Pipe']
+27: ['Fungi', 'GramN_Bact', 'Nec', 'Pipe']
+35: ['DV_patterning', 'Nec', 'Pipe']
+37: ['DV_patterning', 'GramP_Bact', 'Pipe']
+38: ['DV_patterning', 'GramP_Bact', 'Nec']
+39: ['DV_patterning', 'GramP_Bact', 'Nec', 'Pipe']
+40: ['DV_patterning', 'GramN_Bact']
+41: ['DV_patterning', 'GramN_Bact', 'Pipe']
+42: ['DV_patterning', 'GramN_Bact', 'Nec']
+43: ['DV_patterning', 'GramN_Bact', 'Nec', 'Pipe']
+45: ['DV_patterning', 'GramN_Bact', 'GramP_Bact', 'Pipe']
+46: ['DV_patterning', 'GramN_Bact', 'GramP_Bact', 'Nec']
+47: ['DV_patterning', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+48: ['DV_patterning', 'Fungi']
+50: ['DV_patterning', 'Fungi', 'Nec']
+52: ['DV_patterning', 'Fungi', 'GramP_Bact']
+53: ['DV_patterning', 'Fungi', 'GramP_Bact', 'Pipe']
+54: ['DV_patterning', 'Fungi', 'GramP_Bact', 'Nec']
+55: ['DV_patterning', 'Fungi', 'GramP_Bact', 'Nec', 'Pipe']
+56: ['DV_patterning', 'Fungi', 'GramN_Bact']
+57: ['DV_patterning', 'Fungi', 'GramN_Bact', 'Pipe']
+58: ['DV_patterning', 'Fungi', 'GramN_Bact', 'Nec']
+59: ['DV_patterning', 'Fungi', 'GramN_Bact', 'Nec', 'Pipe']
+60: ['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact']
+63: ['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+Generating input states using strategy: all
+6 inputs causing in total 64 combinations
+Input list:
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+Number of samples in total: 64
+TEST: Mapping rowid to inputs:
+0: []
+1: ['Pipe']
+2: ['Nec']
+3: ['Nec', 'Pipe']
+4: ['GramP_Bact']
+5: ['GramP_Bact', 'Pipe']
+6: ['GramP_Bact', 'Nec']
+7: ['GramP_Bact', 'Nec', 'Pipe']
+8: ['GramN_Bact']
+9: ['GramN_Bact', 'Pipe']
+10: ['GramN_Bact', 'Nec']
+11: ['GramN_Bact', 'Nec', 'Pipe']
+12: ['GramN_Bact', 'GramP_Bact']
+13: ['GramN_Bact', 'GramP_Bact', 'Pipe']
+14: ['GramN_Bact', 'GramP_Bact', 'Nec']
+15: ['GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+16: ['Fungi']
+17: ['Fungi', 'Pipe']
+18: ['Fungi', 'Nec']
+19: ['Fungi', 'Nec', 'Pipe']
+20: ['Fungi', 'GramP_Bact']
+21: ['Fungi', 'GramP_Bact', 'Pipe']
+22: ['Fungi', 'GramP_Bact', 'Nec']
+23: ['Fungi', 'GramP_Bact', 'Nec', 'Pipe']
+24: ['Fungi', 'GramN_Bact']
+25: ['Fungi', 'GramN_Bact', 'Pipe']
+26: ['Fungi', 'GramN_Bact', 'Nec']
+27: ['Fungi', 'GramN_Bact', 'Nec', 'Pipe']
+28: ['Fungi', 'GramN_Bact', 'GramP_Bact']
+29: ['Fungi', 'GramN_Bact', 'GramP_Bact', 'Pipe']
+30: ['Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec']
+31: ['Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+32: ['DV_patterning']
+33: ['DV_patterning', 'Pipe']
+34: ['DV_patterning', 'Nec']
+35: ['DV_patterning', 'Nec', 'Pipe']
+36: ['DV_patterning', 'GramP_Bact']
+37: ['DV_patterning', 'GramP_Bact', 'Pipe']
+38: ['DV_patterning', 'GramP_Bact', 'Nec']
+39: ['DV_patterning', 'GramP_Bact', 'Nec', 'Pipe']
+40: ['DV_patterning', 'GramN_Bact']
+41: ['DV_patterning', 'GramN_Bact', 'Pipe']
+42: ['DV_patterning', 'GramN_Bact', 'Nec']
+43: ['DV_patterning', 'GramN_Bact', 'Nec', 'Pipe']
+44: ['DV_patterning', 'GramN_Bact', 'GramP_Bact']
+45: ['DV_patterning', 'GramN_Bact', 'GramP_Bact', 'Pipe']
+46: ['DV_patterning', 'GramN_Bact', 'GramP_Bact', 'Nec']
+47: ['DV_patterning', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+48: ['DV_patterning', 'Fungi']
+49: ['DV_patterning', 'Fungi', 'Pipe']
+50: ['DV_patterning', 'Fungi', 'Nec']
+51: ['DV_patterning', 'Fungi', 'Nec', 'Pipe']
+52: ['DV_patterning', 'Fungi', 'GramP_Bact']
+53: ['DV_patterning', 'Fungi', 'GramP_Bact', 'Pipe']
+54: ['DV_patterning', 'Fungi', 'GramP_Bact', 'Nec']
+55: ['DV_patterning', 'Fungi', 'GramP_Bact', 'Nec', 'Pipe']
+56: ['DV_patterning', 'Fungi', 'GramN_Bact']
+57: ['DV_patterning', 'Fungi', 'GramN_Bact', 'Pipe']
+58: ['DV_patterning', 'Fungi', 'GramN_Bact', 'Nec']
+59: ['DV_patterning', 'Fungi', 'GramN_Bact', 'Nec', 'Pipe']
+60: ['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact']
+61: ['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Pipe']
+62: ['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec']
+63: ['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+-------------Now convert the original network to the acyclic network---------------
+-------------Now convert the acyclic network to the binary network---------------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'Pipe', 'GramN_Bact', 'Fungi', 'DV_patterning', 'Nec', 'GramP_Bact'}
+Ordinary nodes are 
+{'Pipe', 'Psh', 'PGRP_SD', 'Viru_Fact', 'PGRP_SA', 'SPE', 'DV_patterning', 'Easter', 'Grass', 'DAP', 'Snk', 'GNBP3', 'Nec', 'GramN_Bact', 'Fungi', 'Gd', 'GNBP1', 'ModSP', 'Ndl', 'Spz', 'Spirit', 'Spd', 'Sphinx', 'GramP_Bact'}
+Extranodes added after removing cycles are 
+[]
+binetmodel_10_Spz.html
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node DV_patterning is 0.1167, -0.2334 with 2 KO rows and 2 KI rows
+Shapley value for input node Fungi is 0.4668, -1.6335 with 6 KO rows and 6 KI rows
+Shapley value for input node GramN_Bact is 0.4668, -1.6335 with 6 KO rows and 6 KI rows
+Shapley value for input node GramP_Bact is 0.4668, -1.6335 with 6 KO rows and 6 KI rows
+Shapley value for input node Nec is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node Pipe is 0.1167, -0.2334 with 2 KO rows and 2 KI rows
+Simulating original network then inferring values for extranodes and binary formulas
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node DV_patterning is 0.05, -0.0667 with 1 KO rows and 1 KI rows
+Shapley value for input node Fungi is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node GramN_Bact is 0.1167, -0.2334 with 2 KO rows and 2 KI rows
+Shapley value for input node GramP_Bact is 0.2167, -1.0667 with 2 KO rows and 2 KI rows
+Shapley value for input node Nec is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node Pipe is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-----------Now propagate within binarized network for output Spz-------------
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+At TARGET node Spz, count all rows
+Propagation converged for all nodes.
+Counter of processed nodes:
+SIMULATE 0 nodes over 17 nodes
+-----Now estimate the error by comparing propagated values to simulation values of input nodes-----
+For KO values
+For KI values
+=========PROPAGATION RESULTS=========
+-------RESULT for output Spz--------
+Ordered input nodes:
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+----DV_patterning-----
+KO	1: [35]
+KI	2: [1, 3]
+All	3: [1, 3, 35]
+----Fungi-----
+KO	3: [18, 48, 50]
+KI	3: [0, 1, 3]
+All	6: [0, 1, 3, 18, 48, 50]
+----GramN_Bact-----
+KO	4: [9, 11, 40, 42]
+KI	3: [0, 1, 3]
+All	7: [0, 1, 3, 9, 11, 40, 42]
+----GramP_Bact-----
+KO	4: [4, 6, 7, 38]
+KI	3: [0, 1, 3]
+All	7: [0, 1, 3, 4, 6, 7, 38]
+----Nec-----
+KO	0: []
+KI	0: []
+All	0: []
+----Pipe-----
+KO	1: [35]
+KI	0: []
+All	1: [35]
+----DAP-----
+KO	4: [9, 11, 40, 42]
+KI	3: [0, 1, 3]
+All	7: [0, 1, 3, 9, 11, 40, 42]
+----Easter-----
+KO	1: [35]
+KI	3: [0, 1, 3]
+All	4: [0, 1, 3, 35]
+----GNBP1-----
+KO	0: []
+KI	3: [0, 1, 3]
+All	3: [0, 1, 3]
+----GNBP3-----
+KO	2: [18, 50]
+KI	3: [0, 1, 3]
+All	5: [0, 1, 3, 18, 50]
+----Gd-----
+KO	1: [35]
+KI	2: [1, 3]
+All	3: [1, 3, 35]
+----Grass-----
+KO	16: [6, 7, 9, 11, 14, 18, 22, 23, 27, 38, 40, 42, 46, 50, 54, 58]
+KI	3: [0, 1, 3]
+All	19: [0, 1, 3, 6, 7, 9, 11, 14, 18, 22, 23, 27, 38, 40, 42, 46, 50, 54, 58]
+----ModSP-----
+KO	16: [6, 7, 9, 11, 14, 18, 22, 23, 27, 38, 40, 42, 46, 50, 54, 58]
+KI	3: [0, 1, 3]
+All	19: [0, 1, 3, 6, 7, 9, 11, 14, 18, 22, 23, 27, 38, 40, 42, 46, 50, 54, 58]
+----Ndl-----
+KO	1: [35]
+KI	2: [1, 3]
+All	3: [1, 3, 35]
+----PGRP_SA-----
+KO	0: []
+KI	3: [0, 1, 3]
+All	3: [0, 1, 3]
+----PGRP_SD-----
+KO	4: [9, 11, 40, 42]
+KI	3: [0, 1, 3]
+All	7: [0, 1, 3, 9, 11, 40, 42]
+----Psh-----
+KO	0: []
+KI	3: [0, 1, 3]
+All	3: [0, 1, 3]
+----SPE-----
+KO	35: [4, 6, 7, 9, 11, 13, 14, 18, 20, 22, 23, 27, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 50, 52, 53, 54, 55, 56, 57, 58, 59, 60, 63]
+KI	3: [0, 1, 3]
+All	38: [0, 1, 3, 4, 6, 7, 9, 11, 13, 14, 18, 20, 22, 23, 27, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 50, 52, 53, 54, 55, 56, 57, 58, 59, 60, 63]
+----Snk-----
+KO	1: [35]
+KI	2: [1, 3]
+All	3: [1, 3, 35]
+----Spd-----
+KO	0: []
+KI	3: [0, 1, 3]
+All	3: [0, 1, 3]
+----Sphinx-----
+KO	0: []
+KI	3: [0, 1, 3]
+All	3: [0, 1, 3]
+----Spirit-----
+KO	0: []
+KI	3: [0, 1, 3]
+All	3: [0, 1, 3]
+----Spz-----
+KO	35: [4, 6, 7, 9, 11, 13, 14, 18, 20, 22, 23, 27, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 50, 52, 53, 54, 55, 56, 57, 58, 59, 60, 63]
+KI	3: [0, 1, 3]
+All	38: [0, 1, 3, 4, 6, 7, 9, 11, 13, 14, 18, 20, 22, 23, 27, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 50, 52, 53, 54, 55, 56, 57, 58, 59, 60, 63]
+----Viru_Fact-----
+KO	0: []
+KI	2: [0, 1]
+All	2: [0, 1]
+DV_patterning        			 KO:       0.05 | KI:    -0.2334
+Fungi                			 KO:     0.1834 | KI:    -1.2334
+GramN_Bact           			 KO:     0.2334 | KI:    -1.2334
+GramP_Bact           			 KO:     0.3334 | KI:    -1.2334
+Nec                  			 KO:        0.0 | KI:        0.0
+Pipe                 			 KO:       0.05 | KI:        0.0
+DAP                  			 KO:     0.2334 | KI:    -1.2334
+Easter               			 KO:       0.05 | KI:    -1.2334
+GNBP1                			 KO:        0.0 | KI:    -1.2334
+GNBP3                			 KO:     0.1167 | KI:    -1.2334
+Gd                   			 KO:       0.05 | KI:    -0.2334
+Grass                			 KO:     0.9503 | KI:    -1.2334
+ModSP                			 KO:     0.9503 | KI:    -1.2334
+Ndl                  			 KO:       0.05 | KI:    -0.2334
+PGRP_SA              			 KO:        0.0 | KI:    -1.2334
+PGRP_SD              			 KO:     0.2334 | KI:    -1.2334
+Psh                  			 KO:        0.0 | KI:    -1.2334
+SPE                  			 KO:     3.4507 | KI:    -1.2334
+Snk                  			 KO:       0.05 | KI:    -0.2334
+Spd                  			 KO:        0.0 | KI:    -1.2334
+Sphinx               			 KO:        0.0 | KI:    -1.2334
+Spirit               			 KO:        0.0 | KI:    -1.2334
+Spz                  			 KO:     3.4507 | KI:    -1.2334
+Viru_Fact            			 KO:        0.0 | KI:    -1.1667
+-----KO RANKING-----
+1	Spz, SPE
+2	Grass, ModSP
+3	GramP_Bact
+4	PGRP_SD, DAP, GramN_Bact
+5	Fungi
+6	GNBP3
+7	Easter, Snk, Pipe, Gd, Ndl, DV_patterning
+8	Psh, Spirit, Viru_Fact, Sphinx, Spd, Nec
+	PGRP_SA, GNBP1
+-----KI RANKING-----
+1	Spz, SPE, Easter, Psh, Spirit, Sphinx
+	Spd, Grass, Fungi, GramP_Bact, ModSP, PGRP_SA
+	PGRP_SD, GNBP3, GNBP1, DAP, GramN_Bact
+2	Viru_Fact
+3	Snk, Gd, Ndl, DV_patterning
+4	Pipe, Nec
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output Spz--------
+Ordered input nodes:
+['DV_patterning', 'Fungi', 'GramN_Bact', 'GramP_Bact', 'Nec', 'Pipe']
+----DV_patterning-----
+KO	2: [33, 35]
+KI	2: [1, 3]
+All	4: [1, 3, 33, 35]
+----Fungi-----
+KO	6: [16, 17, 18, 19, 48, 50]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	12: [0, 1, 2, 3, 16, 17, 18, 19, 32, 34, 48, 50]
+----GramN_Bact-----
+KO	6: [8, 9, 10, 11, 40, 42]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	12: [0, 1, 2, 3, 8, 9, 10, 11, 32, 34, 40, 42]
+----GramP_Bact-----
+KO	6: [4, 5, 6, 7, 36, 38]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	12: [0, 1, 2, 3, 4, 5, 6, 7, 32, 34, 36, 38]
+----Nec-----
+KO	0: []
+KI	0: []
+All	0: []
+----Pipe-----
+KO	2: [33, 35]
+KI	2: [32, 34]
+All	4: [32, 33, 34, 35]
+----DAP-----
+KO	6: [8, 9, 10, 11, 40, 42]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	12: [0, 1, 2, 3, 8, 9, 10, 11, 32, 34, 40, 42]
+----Easter-----
+KO	2: [33, 35]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	8: [0, 1, 2, 3, 32, 33, 34, 35]
+----GNBP1-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 32, 34]
+All	6: [0, 1, 2, 3, 32, 34]
+----GNBP3-----
+KO	3: [18, 19, 50]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	9: [0, 1, 2, 3, 18, 19, 32, 34, 50]
+----Gd-----
+KO	2: [33, 35]
+KI	2: [1, 3]
+All	4: [1, 3, 33, 35]
+----Grass-----
+KO	24: [6, 7, 8, 9, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 38, 40, 42, 46, 50, 54, 58, 62]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	30: [0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 32, 34, 38, 40, 42, 46, 50, 54, 58, 62]
+----ModSP-----
+KO	24: [6, 7, 8, 9, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 38, 40, 42, 46, 50, 54, 58, 62]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	30: [0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 32, 34, 38, 40, 42, 46, 50, 54, 58, 62]
+----Ndl-----
+KO	2: [33, 35]
+KI	2: [1, 3]
+All	4: [1, 3, 33, 35]
+----PGRP_SA-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 32, 34]
+All	6: [0, 1, 2, 3, 32, 34]
+----PGRP_SD-----
+KO	6: [8, 9, 10, 11, 40, 42]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	12: [0, 1, 2, 3, 8, 9, 10, 11, 32, 34, 40, 42]
+----Psh-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 32, 34]
+All	6: [0, 1, 2, 3, 32, 34]
+----SPE-----
+KO	58: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	64: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+----Snk-----
+KO	2: [33, 35]
+KI	2: [1, 3]
+All	4: [1, 3, 33, 35]
+----Spd-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 32, 34]
+All	6: [0, 1, 2, 3, 32, 34]
+----Sphinx-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 32, 34]
+All	6: [0, 1, 2, 3, 32, 34]
+----Spirit-----
+KO	0: []
+KI	6: [0, 1, 2, 3, 32, 34]
+All	6: [0, 1, 2, 3, 32, 34]
+----Spz-----
+KO	58: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+KI	6: [0, 1, 2, 3, 32, 34]
+All	64: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+----Viru_Fact-----
+KO	0: []
+KI	3: [0, 1, 32]
+All	3: [0, 1, 32]
+DV_patterning        			 KO:     0.1167 | KI:    -0.2334
+Fungi                			 KO:     0.4668 | KI:    -1.6335
+GramN_Bact           			 KO:     0.4668 | KI:    -1.6335
+GramP_Bact           			 KO:     0.4668 | KI:    -1.6335
+Nec                  			 KO:        0.0 | KI:        0.0
+Pipe                 			 KO:     0.1167 | KI:    -0.2334
+DAP                  			 KO:     0.4668 | KI:    -1.6335
+Easter               			 KO:     0.1167 | KI:    -1.6335
+GNBP1                			 KO:        0.0 | KI:    -1.6335
+GNBP3                			 KO:     0.1667 | KI:    -1.6335
+Gd                   			 KO:     0.1167 | KI:    -0.2334
+Grass                			 KO:     1.7505 | KI:    -1.6335
+ModSP                			 KO:     1.7505 | KI:    -1.6335
+Ndl                  			 KO:     0.1167 | KI:    -0.2334
+PGRP_SA              			 KO:        0.0 | KI:    -1.6335
+PGRP_SD              			 KO:     0.4668 | KI:    -1.6335
+Psh                  			 KO:        0.0 | KI:    -1.6335
+SPE                  			 KO:     5.3679 | KI:    -1.6335
+Snk                  			 KO:     0.1167 | KI:    -0.2334
+Spd                  			 KO:        0.0 | KI:    -1.6335
+Sphinx               			 KO:        0.0 | KI:    -1.6335
+Spirit               			 KO:        0.0 | KI:    -1.6335
+Spz                  			 KO:     5.3679 | KI:    -1.6335
+Viru_Fact            			 KO:        0.0 | KI:    -1.3334
+-----KO RANKING-----
+1	SPE, Spz
+2	Grass, ModSP
+3	Fungi, GramN_Bact, GramP_Bact, DAP, PGRP_SD
+4	GNBP3
+5	DV_patterning, Pipe, Easter, Gd, Ndl, Snk
+6	Nec, GNBP1, PGRP_SA, Psh, Spd, Sphinx
+	Spirit, Viru_Fact
+-----KI RANKING-----
+1	Fungi, GramN_Bact, GramP_Bact, DAP, Easter, GNBP1
+	GNBP3, Grass, ModSP, PGRP_SA, PGRP_SD, Psh
+	SPE, Spd, Sphinx, Spirit, Spz
+2	Viru_Fact
+3	DV_patterning, Pipe, Gd, Ndl, Snk
+4	Nec
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node Spz ------
+KO Lack    23: [5, 8, 10, 12, 15, 16, 17, 19, 21, 24, 25, 26, 28, 29, 30, 31, 33, 36, 44, 49, 51, 61, 62]
+KO Extr     0: []
+KO Real    58: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+KO Calc    35: [4, 6, 7, 9, 11, 13, 14, 18, 20, 22, 23, 27, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 50, 52, 53, 54, 55, 56, 57, 58, 59, 60, 63]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node SPE ------
+KO Lack    23: [5, 8, 10, 12, 15, 16, 17, 19, 21, 24, 25, 26, 28, 29, 30, 31, 33, 36, 44, 49, 51, 61, 62]
+KO Extr     0: []
+KO Real    58: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+KO Calc    35: [4, 6, 7, 9, 11, 13, 14, 18, 20, 22, 23, 27, 35, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 50, 52, 53, 54, 55, 56, 57, 58, 59, 60, 63]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Easter ------
+KO Lack     1: [33]
+KO Extr     0: []
+KO Real     2: [33, 35]
+KO Calc     1: [35]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Psh ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Snk ------
+KO Lack     1: [33]
+KO Extr     0: []
+KO Real     2: [33, 35]
+KO Calc     1: [35]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [1, 3]
+KI Calc     2: [1, 3]
+
+----Report rows for node Pipe ------
+KO Lack     1: [33]
+KO Extr     0: []
+KO Real     2: [33, 35]
+KO Calc     1: [35]
+
+KI Lack     2: [32, 34]
+KI Extr     0: []
+KI Real     2: [32, 34]
+KI Calc     0: []
+
+----Report rows for node Spirit ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Viru_Fact ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     1: [32]
+KI Extr     0: []
+KI Real     3: [0, 1, 32]
+KI Calc     2: [0, 1]
+
+----Report rows for node Gd ------
+KO Lack     1: [33]
+KO Extr     0: []
+KO Real     2: [33, 35]
+KO Calc     1: [35]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [1, 3]
+KI Calc     2: [1, 3]
+
+----Report rows for node Sphinx ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Spd ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Grass ------
+KO Lack     8: [8, 10, 15, 19, 26, 30, 31, 62]
+KO Extr     0: []
+KO Real    24: [6, 7, 8, 9, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 38, 40, 42, 46, 50, 54, 58, 62]
+KO Calc    16: [6, 7, 9, 11, 14, 18, 22, 23, 27, 38, 40, 42, 46, 50, 54, 58]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Fungi ------
+KO Lack     3: [16, 17, 19]
+KO Extr     0: []
+KO Real     6: [16, 17, 18, 19, 48, 50]
+KO Calc     3: [18, 48, 50]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node GramP_Bact ------
+KO Lack     2: [5, 36]
+KO Extr     0: []
+KO Real     6: [4, 5, 6, 7, 36, 38]
+KO Calc     4: [4, 6, 7, 38]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node Nec ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Ndl ------
+KO Lack     1: [33]
+KO Extr     0: []
+KO Real     2: [33, 35]
+KO Calc     1: [35]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [1, 3]
+KI Calc     2: [1, 3]
+
+----Report rows for node ModSP ------
+KO Lack     8: [8, 10, 15, 19, 26, 30, 31, 62]
+KO Extr     0: []
+KO Real    24: [6, 7, 8, 9, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 38, 40, 42, 46, 50, 54, 58, 62]
+KO Calc    16: [6, 7, 9, 11, 14, 18, 22, 23, 27, 38, 40, 42, 46, 50, 54, 58]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node DV_patterning ------
+KO Lack     1: [33]
+KO Extr     0: []
+KO Real     2: [33, 35]
+KO Calc     1: [35]
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     2: [1, 3]
+KI Calc     2: [1, 3]
+
+----Report rows for node PGRP_SA ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node PGRP_SD ------
+KO Lack     2: [8, 10]
+KO Extr     0: []
+KO Real     6: [8, 9, 10, 11, 40, 42]
+KO Calc     4: [9, 11, 40, 42]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node GNBP3 ------
+KO Lack     1: [19]
+KO Extr     0: []
+KO Real     3: [18, 19, 50]
+KO Calc     2: [18, 50]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node GNBP1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node DAP ------
+KO Lack     2: [8, 10]
+KO Extr     0: []
+KO Real     6: [8, 9, 10, 11, 40, 42]
+KO Calc     4: [9, 11, 40, 42]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+----Report rows for node GramN_Bact ------
+KO Lack     2: [8, 10]
+KO Extr     0: []
+KO Real     6: [8, 9, 10, 11, 40, 42]
+KO Calc     4: [9, 11, 40, 42]
+
+KI Lack     3: [2, 32, 34]
+KI Extr     0: []
+KI Real     6: [0, 1, 2, 3, 32, 34]
+KI Calc     3: [0, 1, 3]
+
+Spz                  - Correct: KO:     5.3679 | KI :    -1.6335 - Incorrect KO:     3.4507 | KI:    -1.2334
+SPE                  - Correct: KO:     5.3679 | KI :    -1.6335 - Incorrect KO:     3.4507 | KI:    -1.2334
+Easter               - Correct: KO:     0.1167 | KI :    -1.6335 - Incorrect KO:       0.05 | KI:    -1.2334
+Psh                  - Correct: KO:        0.0 | KI :    -1.6335 - Incorrect KO:        0.0 | KI:    -1.2334
+Snk                  - Correct: KO:     0.1167 | KI :    -0.2334 - Incorrect KO:       0.05 | KI:    -0.2334
+Pipe                 - Correct: KO:     0.1167 | KI :    -0.2334 - Incorrect KO:       0.05 | KI:        0.0
+Spirit               - Correct: KO:        0.0 | KI :    -1.6335 - Incorrect KO:        0.0 | KI:    -1.2334
+Viru_Fact            - Correct: KO:        0.0 | KI :    -1.3334 - Incorrect KO:        0.0 | KI:    -1.1667
+Gd                   - Correct: KO:     0.1167 | KI :    -0.2334 - Incorrect KO:       0.05 | KI:    -0.2334
+Sphinx               - Correct: KO:        0.0 | KI :    -1.6335 - Incorrect KO:        0.0 | KI:    -1.2334
+Spd                  - Correct: KO:        0.0 | KI :    -1.6335 - Incorrect KO:        0.0 | KI:    -1.2334
+Grass                - Correct: KO:     1.7505 | KI :    -1.6335 - Incorrect KO:     0.9503 | KI:    -1.2334
+Fungi                - Correct: KO:     0.4668 | KI :    -1.6335 - Incorrect KO:     0.1834 | KI:    -1.2334
+GramP_Bact           - Correct: KO:     0.4668 | KI :    -1.6335 - Incorrect KO:     0.3334 | KI:    -1.2334
+Ndl                  - Correct: KO:     0.1167 | KI :    -0.2334 - Incorrect KO:       0.05 | KI:    -0.2334
+ModSP                - Correct: KO:     1.7505 | KI :    -1.6335 - Incorrect KO:     0.9503 | KI:    -1.2334
+DV_patterning        - Correct: KO:     0.1167 | KI :    -0.2334 - Incorrect KO:       0.05 | KI:    -0.2334
+PGRP_SA              - Correct: KO:        0.0 | KI :    -1.6335 - Incorrect KO:        0.0 | KI:    -1.2334
+PGRP_SD              - Correct: KO:     0.4668 | KI :    -1.6335 - Incorrect KO:     0.2334 | KI:    -1.2334
+GNBP3                - Correct: KO:     0.1667 | KI :    -1.6335 - Incorrect KO:     0.1167 | KI:    -1.2334
+GNBP1                - Correct: KO:        0.0 | KI :    -1.6335 - Incorrect KO:        0.0 | KI:    -1.2334
+DAP                  - Correct: KO:     0.4668 | KI :    -1.6335 - Incorrect KO:     0.2334 | KI:    -1.2334
+GramN_Bact           - Correct: KO:     0.4668 | KI :    -1.6335 - Incorrect KO:     0.2334 | KI:    -1.2334
+-----KO RANKING COMPARISON-----
+1	Spz, SPE
+2	Grass, ModSP
+3	GramP_Bact
+4	PGRP_SD, DAP, GramN_Bact
+5	Fungi
+6	GNBP3
+7	Easter, Snk, Pipe, Gd, Ndl, DV_patterning
+8	Psh, Spirit, Viru_Fact, Sphinx, Spd, Nec
+	PGRP_SA, GNBP1
+REFERENCE:
+1	SPE, Spz
+2	Grass, ModSP
+3	Fungi, GramN_Bact, GramP_Bact, DAP, PGRP_SD
+4	GNBP3
+5	DV_patterning, Pipe, Easter, Gd, Ndl, Snk
+6	Nec, GNBP1, PGRP_SA, Psh, Spd, Sphinx
+	Spirit, Viru_Fact
+=======
+-----KI RANKING COMPARISON-----
+1	Spz, SPE, Easter, Psh, Spirit, Sphinx
+	Spd, Grass, Fungi, GramP_Bact, ModSP, PGRP_SA
+	PGRP_SD, GNBP3, GNBP1, DAP, GramN_Bact
+2	Viru_Fact
+3	Snk, Gd, Ndl, DV_patterning
+4	Pipe, Nec
+REFERENCE:
+1	Fungi, GramN_Bact, GramP_Bact, DAP, Easter, GNBP1
+	GNBP3, Grass, ModSP, PGRP_SA, PGRP_SD, Psh
+	SPE, Spd, Sphinx, Spirit, Spz
+2	Viru_Fact
+3	DV_patterning, Pipe, Gd, Ndl, Snk
+4	Nec
+============
+Relative_RMSE_KO_is  0.04355259863417011
+Relative_RMSE_KI_is  0.0244132880866974
+NDCG_KO_is  1.0
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             24.000       24.000
+Kendall tau-b                         0.985        0.981
+Spearman rho                          0.987        0.983
+Mean abs rank diff                    1.458        0.042
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        0.957
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        0.957
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        1.000
+  Top-2  groups Jaccard            1.000        1.000
+  Top-3  groups Jaccard            0.556        0.957
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9128
+===============MODEL information===============
+NUMBER OF INPUT: 	 6
+NUMBER OF NODES: 	 24
+NUMBER OF EDGES: 	 28
+NUMBER OF SCCs: 	 24
+NUMBER OF aFAS: 	 0
+===============TIME information===============
+TIME process heading: 0.001502875005826354
+TIME generate input states: 0.000597625010414049
+TIME convert to BBN (Propagation mode): 0.002365874999668449
+TIME to fully simulate original network (if Test): 0.16492758400272578
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.10337091601104476
+TIME generating table 0.0002509170153643936
+TIME calculating Shapley values for input nodes: 6.187500548548996e-05
+TIME propagate (in Propagation mode): 0.10578425001585856
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0
+TIME simulate perturbations full if Test: 5.478052624996053
+TIME total for Propagation: 0.21393433306366205
+TIME total for FULLY Simulation: 5.645165709021967
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0.010416666666666666
+Average error for KI values: 0.0078125
+-----------TOTAL RUNNING TIME---------------
+6.0185450419958215
+
+[exit code: 0]

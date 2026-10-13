@@ -1,0 +1,799 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_6_IKK -e data/realbenchmark/6.txt -o IKK -r uniform -p 10.0 -c 0.0 -k Shapley -m Simulation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_6_IKK                                   =========
+========== EXPRESSION FILE IS data/realbenchmark/6.txt                                                         =========
+========== THE OUTPUT OF INTEREST IS: IKK                                                                      =========
+========== SAMPLING STRATEGY IS: uniform                                                                       =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Simulation                                                                                 =========
+LIST OF ALL SPECIES:
+['ATP', 'BAX', 'BCL2', 'CASP3', 'CASP8', 'Cyt_c', 'DISC_FAS', 'DISC_TNF', 'FADD', 'FASL', 'IKK', 'MOMP', 'MPT', 'NFkB', 'NonACD', 'RIP1', 'RIP1k', 'RIP1ub', 'ROS', 'SMAC', 'TNF', 'TNFR', 'XIAP', 'apoptosis', 'apoptosome', 'cFLIP', 'cIAP', 'survival']
+-----INPUT NAMES-----
+['FADD', 'FASL', 'TNF']
+----INTERMEDIATE NODES-----
+['ATP', 'BAX', 'BCL2', 'CASP3', 'CASP8', 'Cyt_c', 'DISC_FAS', 'DISC_TNF', 'IKK', 'MOMP', 'MPT', 'NFkB', 'NonACD', 'RIP1', 'RIP1k', 'RIP1ub', 'ROS', 'SMAC', 'TNFR', 'XIAP', 'apoptosis', 'apoptosome', 'cFLIP', 'cIAP', 'survival']
+===============================================================
+Sorted input names
+['FADD', 'FASL', 'TNF']
+There are 3 inputs with the range of input: 0 7
+Sorted internames:
+['ATP', 'BAX', 'BCL2', 'CASP3', 'CASP8', 'Cyt_c', 'DISC_FAS', 'DISC_TNF', 'IKK', 'MOMP', 'MPT', 'NFkB', 'NonACD', 'RIP1', 'RIP1k', 'RIP1ub', 'ROS', 'SMAC', 'TNFR', 'XIAP', 'apoptosis', 'apoptosome', 'cFLIP', 'cIAP', 'survival']
+There are 25 intermediate nodes with the range of inter: 0 33554431
+SORTED INPUT
+['FADD', 'FASL', 'TNF']
+SORTED INTER
+['ATP', 'BAX', 'BCL2', 'CASP3', 'CASP8', 'Cyt_c', 'DISC_FAS', 'DISC_TNF', 'IKK', 'MOMP', 'MPT', 'NFkB', 'NonACD', 'RIP1', 'RIP1k', 'RIP1ub', 'ROS', 'SMAC', 'TNFR', 'XIAP', 'apoptosis', 'apoptosome', 'cFLIP', 'cIAP', 'survival']
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND 
+Now arrange layout of the original network for visualization
+THERE ARE 5 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('CASP3', 'NFkB'), ('cIAP', 'cIAP'), ('BAX', 'MOMP'), ('ROS', 'MPT'), ('IKK', 'NFkB')]
+orimodel_6_IKK.html
+Generating input states using strategy: uniform
+Sample percentage: 10.0%
+3 inputs causing in total 8 combinations
+Input list:
+['FADD', 'FASL', 'TNF']
+Number of samples in total: 0
+-----Mapping rowid to inputs:-----
+Generating input states using strategy: all
+3 inputs causing in total 8 combinations
+Input list:
+['FADD', 'FASL', 'TNF']
+Number of samples in total: 8
+TEST: Mapping rowid to inputs:
+0: []
+1: ['TNF']
+2: ['FASL']
+3: ['FASL', 'TNF']
+4: ['FADD']
+5: ['FADD', 'TNF']
+6: ['FADD', 'FASL']
+7: ['FADD', 'FASL', 'TNF']
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node FADD is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node FASL is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node TNF is 0.0, 0.0 with 0 KO rows and 0 KI rows
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node FADD is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node FASL is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node TNF is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-------Now performing pertubation simulations---------
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+No perturbed table provided
+=========SIMULATION RESULTS=========
+-------RESULT for output IKK--------
+Ordered input nodes:
+['FADD', 'FASL', 'TNF']
+----FADD-----
+KO	0: []
+KI	0: []
+All	0: []
+----FASL-----
+KO	0: []
+KI	0: []
+All	0: []
+----TNF-----
+KO	0: []
+KI	0: []
+All	0: []
+----ATP-----
+KO	0: []
+KI	0: []
+All	0: []
+----BAX-----
+KO	0: []
+KI	0: []
+All	0: []
+----BCL2-----
+KO	0: []
+KI	0: []
+All	0: []
+----CASP3-----
+KO	0: []
+KI	0: []
+All	0: []
+----CASP8-----
+KO	0: []
+KI	0: []
+All	0: []
+----Cyt_c-----
+KO	0: []
+KI	0: []
+All	0: []
+----DISC_FAS-----
+KO	0: []
+KI	0: []
+All	0: []
+----DISC_TNF-----
+KO	0: []
+KI	0: []
+All	0: []
+----IKK-----
+KO	0: []
+KI	0: []
+All	0: []
+----MOMP-----
+KO	0: []
+KI	0: []
+All	0: []
+----MPT-----
+KO	0: []
+KI	0: []
+All	0: []
+----NFkB-----
+KO	0: []
+KI	0: []
+All	0: []
+----NonACD-----
+KO	0: []
+KI	0: []
+All	0: []
+----RIP1-----
+KO	0: []
+KI	0: []
+All	0: []
+----RIP1k-----
+KO	0: []
+KI	0: []
+All	0: []
+----RIP1ub-----
+KO	0: []
+KI	0: []
+All	0: []
+----ROS-----
+KO	0: []
+KI	0: []
+All	0: []
+----SMAC-----
+KO	0: []
+KI	0: []
+All	0: []
+----TNFR-----
+KO	0: []
+KI	0: []
+All	0: []
+----XIAP-----
+KO	0: []
+KI	0: []
+All	0: []
+----apoptosis-----
+KO	0: []
+KI	0: []
+All	0: []
+----apoptosome-----
+KO	0: []
+KI	0: []
+All	0: []
+----cFLIP-----
+KO	0: []
+KI	0: []
+All	0: []
+----cIAP-----
+KO	0: []
+KI	0: []
+All	0: []
+----survival-----
+KO	0: []
+KI	0: []
+All	0: []
+FADD                 			 KO:        0.0 | KI:        0.0
+FASL                 			 KO:        0.0 | KI:        0.0
+TNF                  			 KO:        0.0 | KI:        0.0
+ATP                  			 KO:        0.0 | KI:        0.0
+BAX                  			 KO:        0.0 | KI:        0.0
+BCL2                 			 KO:        0.0 | KI:        0.0
+CASP3                			 KO:        0.0 | KI:        0.0
+CASP8                			 KO:        0.0 | KI:        0.0
+Cyt_c                			 KO:        0.0 | KI:        0.0
+DISC_FAS             			 KO:        0.0 | KI:        0.0
+DISC_TNF             			 KO:        0.0 | KI:        0.0
+IKK                  			 KO:        0.0 | KI:        0.0
+MOMP                 			 KO:        0.0 | KI:        0.0
+MPT                  			 KO:        0.0 | KI:        0.0
+NFkB                 			 KO:        0.0 | KI:        0.0
+NonACD               			 KO:        0.0 | KI:        0.0
+RIP1                 			 KO:        0.0 | KI:        0.0
+RIP1k                			 KO:        0.0 | KI:        0.0
+RIP1ub               			 KO:        0.0 | KI:        0.0
+ROS                  			 KO:        0.0 | KI:        0.0
+SMAC                 			 KO:        0.0 | KI:        0.0
+TNFR                 			 KO:        0.0 | KI:        0.0
+XIAP                 			 KO:        0.0 | KI:        0.0
+apoptosis            			 KO:        0.0 | KI:        0.0
+apoptosome           			 KO:        0.0 | KI:        0.0
+cFLIP                			 KO:        0.0 | KI:        0.0
+cIAP                 			 KO:        0.0 | KI:        0.0
+survival             			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	ATP, BAX, BCL2, CASP3, CASP8, Cyt_c
+	DISC_FAS, DISC_TNF, IKK, MOMP, MPT, NFkB
+	NonACD, RIP1, RIP1k, RIP1ub, ROS, SMAC
+	TNFR, XIAP, apoptosis, apoptosome, cFLIP, cIAP
+	survival, FADD, FASL, TNF
+-----KI RANKING-----
+1	ATP, BAX, BCL2, CASP3, CASP8, Cyt_c
+	DISC_FAS, DISC_TNF, IKK, MOMP, MPT, NFkB
+	NonACD, RIP1, RIP1k, RIP1ub, ROS, SMAC
+	TNFR, XIAP, apoptosis, apoptosome, cFLIP, cIAP
+	survival, FADD, FASL, TNF
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output IKK--------
+Ordered input nodes:
+['FADD', 'FASL', 'TNF']
+----FADD-----
+KO	0: []
+KI	0: []
+All	0: []
+----FASL-----
+KO	0: []
+KI	0: []
+All	0: []
+----TNF-----
+KO	0: []
+KI	0: []
+All	0: []
+----ATP-----
+KO	0: []
+KI	0: []
+All	0: []
+----BAX-----
+KO	0: []
+KI	0: []
+All	0: []
+----BCL2-----
+KO	0: []
+KI	0: []
+All	0: []
+----CASP3-----
+KO	0: []
+KI	0: []
+All	0: []
+----CASP8-----
+KO	0: []
+KI	0: []
+All	0: []
+----Cyt_c-----
+KO	0: []
+KI	0: []
+All	0: []
+----DISC_FAS-----
+KO	0: []
+KI	0: []
+All	0: []
+----DISC_TNF-----
+KO	0: []
+KI	0: []
+All	0: []
+----IKK-----
+KO	0: []
+KI	8: [0, 1, 2, 3, 4, 5, 6, 7]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----MOMP-----
+KO	0: []
+KI	0: []
+All	0: []
+----MPT-----
+KO	0: []
+KI	0: []
+All	0: []
+----NFkB-----
+KO	0: []
+KI	5: [1, 3, 5, 6, 7]
+All	5: [1, 3, 5, 6, 7]
+----NonACD-----
+KO	0: []
+KI	0: []
+All	0: []
+----RIP1-----
+KO	0: []
+KI	0: []
+All	0: []
+----RIP1k-----
+KO	0: []
+KI	0: []
+All	0: []
+----RIP1ub-----
+KO	0: []
+KI	8: [0, 1, 2, 3, 4, 5, 6, 7]
+All	8: [0, 1, 2, 3, 4, 5, 6, 7]
+----ROS-----
+KO	0: []
+KI	0: []
+All	0: []
+----SMAC-----
+KO	0: []
+KI	0: []
+All	0: []
+----TNFR-----
+KO	0: []
+KI	0: []
+All	0: []
+----XIAP-----
+KO	0: []
+KI	0: []
+All	0: []
+----apoptosis-----
+KO	0: []
+KI	0: []
+All	0: []
+----apoptosome-----
+KO	0: []
+KI	0: []
+All	0: []
+----cFLIP-----
+KO	0: []
+KI	0: []
+All	0: []
+----cIAP-----
+KO	0: []
+KI	2: [1, 3]
+All	2: [1, 3]
+----survival-----
+KO	0: []
+KI	0: []
+All	0: []
+FADD                 			 KO:        0.0 | KI:        0.0
+FASL                 			 KO:        0.0 | KI:        0.0
+TNF                  			 KO:        0.0 | KI:        0.0
+ATP                  			 KO:        0.0 | KI:        0.0
+BAX                  			 KO:        0.0 | KI:        0.0
+BCL2                 			 KO:        0.0 | KI:        0.0
+CASP3                			 KO:        0.0 | KI:        0.0
+CASP8                			 KO:        0.0 | KI:        0.0
+Cyt_c                			 KO:        0.0 | KI:        0.0
+DISC_FAS             			 KO:        0.0 | KI:        0.0
+DISC_TNF             			 KO:        0.0 | KI:        0.0
+IKK                  			 KO:        0.0 | KI:    -3.9998
+MOMP                 			 KO:        0.0 | KI:        0.0
+MPT                  			 KO:        0.0 | KI:        0.0
+NFkB                 			 KO:        0.0 | KI:    -2.3332
+NonACD               			 KO:        0.0 | KI:        0.0
+RIP1                 			 KO:        0.0 | KI:        0.0
+RIP1k                			 KO:        0.0 | KI:        0.0
+RIP1ub               			 KO:        0.0 | KI:    -3.9998
+ROS                  			 KO:        0.0 | KI:        0.0
+SMAC                 			 KO:        0.0 | KI:        0.0
+TNFR                 			 KO:        0.0 | KI:        0.0
+XIAP                 			 KO:        0.0 | KI:        0.0
+apoptosis            			 KO:        0.0 | KI:        0.0
+apoptosome           			 KO:        0.0 | KI:        0.0
+cFLIP                			 KO:        0.0 | KI:        0.0
+cIAP                 			 KO:        0.0 | KI:    -0.6666
+survival             			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	FADD, FASL, TNF, ATP, BAX, BCL2
+	CASP3, CASP8, Cyt_c, DISC_FAS, DISC_TNF, IKK
+	MOMP, MPT, NFkB, NonACD, RIP1, RIP1k
+	RIP1ub, ROS, SMAC, TNFR, XIAP, apoptosis
+	apoptosome, cFLIP, cIAP, survival
+-----KI RANKING-----
+1	IKK, RIP1ub
+2	NFkB
+3	cIAP
+4	FADD, FASL, TNF, ATP, BAX, BCL2
+	CASP3, CASP8, Cyt_c, DISC_FAS, DISC_TNF, MOMP
+	MPT, NonACD, RIP1, RIP1k, ROS, SMAC
+	TNFR, XIAP, apoptosis, apoptosome, cFLIP, survival
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node ATP ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node BAX ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node BCL2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CASP3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CASP8 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Cyt_c ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node DISC_FAS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node DISC_TNF ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node IKK ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Calc     0: []
+
+----Report rows for node MOMP ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node MPT ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node NFkB ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     5: [1, 3, 5, 6, 7]
+KI Extr     0: []
+KI Real     5: [1, 3, 5, 6, 7]
+KI Calc     0: []
+
+----Report rows for node NonACD ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node RIP1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node RIP1k ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node RIP1ub ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Extr     0: []
+KI Real     8: [0, 1, 2, 3, 4, 5, 6, 7]
+KI Calc     0: []
+
+----Report rows for node ROS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node SMAC ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node TNFR ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node XIAP ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node apoptosis ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node apoptosome ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cFLIP ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cIAP ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     2: [1, 3]
+KI Extr     0: []
+KI Real     2: [1, 3]
+KI Calc     0: []
+
+----Report rows for node survival ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node FADD ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node FASL ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node TNF ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+IKK                  - Correct: KO:        0.0 | KI :    -3.9998 - Incorrect KO:        0.0 | KI:        0.0
+NFkB                 - Correct: KO:        0.0 | KI :    -2.3332 - Incorrect KO:        0.0 | KI:        0.0
+RIP1ub               - Correct: KO:        0.0 | KI :    -3.9998 - Incorrect KO:        0.0 | KI:        0.0
+cIAP                 - Correct: KO:        0.0 | KI :    -0.6666 - Incorrect KO:        0.0 | KI:        0.0
+-----KO RANKING COMPARISON-----
+1	ATP, BAX, BCL2, CASP3, CASP8, Cyt_c
+	DISC_FAS, DISC_TNF, IKK, MOMP, MPT, NFkB
+	NonACD, RIP1, RIP1k, RIP1ub, ROS, SMAC
+	TNFR, XIAP, apoptosis, apoptosome, cFLIP, cIAP
+	survival, FADD, FASL, TNF
+REFERENCE:
+1	FADD, FASL, TNF, ATP, BAX, BCL2
+	CASP3, CASP8, Cyt_c, DISC_FAS, DISC_TNF, IKK
+	MOMP, MPT, NFkB, NonACD, RIP1, RIP1k
+	RIP1ub, ROS, SMAC, TNFR, XIAP, apoptosis
+	apoptosome, cFLIP, cIAP, survival
+=======
+-----KI RANKING COMPARISON-----
+1	ATP, BAX, BCL2, CASP3, CASP8, Cyt_c
+	DISC_FAS, DISC_TNF, IKK, MOMP, MPT, NFkB
+	NonACD, RIP1, RIP1k, RIP1ub, ROS, SMAC
+	TNFR, XIAP, apoptosis, apoptosome, cFLIP, cIAP
+	survival, FADD, FASL, TNF
+REFERENCE:
+1	IKK, RIP1ub
+2	NFkB
+3	cIAP
+4	FADD, FASL, TNF, ATP, BAX, BCL2
+	CASP3, CASP8, Cyt_c, DISC_FAS, DISC_TNF, MOMP
+	MPT, NonACD, RIP1, RIP1k, ROS, SMAC
+	TNFR, XIAP, apoptosis, apoptosome, cFLIP, survival
+============
+Relative_RMSE_KO_is  0.0
+Relative_RMSE_KI_is  0.14540003676741037
+NDCG_KO_is  0.0
+NDCG_KI_is  0.4312
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             28.000       28.000
+Kendall tau-b                           NaN          NaN
+Spearman rho                          0.000        0.000
+Mean abs rank diff                    0.000        2.679
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            1.000        0.071
+  Top-2  groups Jaccard            1.000        0.107
+  Top-3  groups Jaccard            1.000        0.143
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.8973
+===============MODEL information===============
+NUMBER OF INPUT: 	 3
+NUMBER OF NODES: 	 28
+NUMBER OF EDGES: 	 45
+NUMBER OF SCCs: 	 10
+NUMBER OF aFAS: 	 5
+===============TIME information===============
+TIME process heading: 0.001492417010013014
+TIME generate input states: 0.00018270900181960315
+TIME convert to BBN (Propagation mode): 0
+TIME to fully simulate original network (if Test): 0.03150212499895133
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 3.5840057535097003e-06
+TIME generating table 1.9583996618166566e-05
+TIME calculating Shapley values for input nodes: 9.041992598213255e-06
+TIME propagate (in Propagation mode): 0
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 8.004199480637908e-05
+TIME simulate perturbations full if Test: 1.5333423749980284
+TIME total for Simulation: 0.0017873780016088858
+TIME total for FULLY Simulation: 1.5664954170206329
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0
+Average error for KI values: 0
+-----------TOTAL RUNNING TIME---------------
+1.697400083008688
+
+[exit code: 0]

@@ -1,0 +1,774 @@
+CMD: /Users/giangpth/miniconda3/bin/python -m Shapley -n model_11_cRAF -e data/realbenchmark/11.txt -o cRAF -r all -p 60.0 -c 0.0 -k Shapley -m Propagation -t
+
+========== STARTING BOOLEAN SHAPLEY ANALYSIS VIA PROPAGATION FOR model_11_cRAF                                 =========
+========== EXPRESSION FILE IS data/realbenchmark/11.txt                                                        =========
+========== THE OUTPUT OF INTEREST IS: cRAF                                                                     =========
+========== SAMPLING STRATEGY IS: all                                                                           =========
+========== SCHEME IS: Shapley                                                                                  =========
+========== MODE IS: Propagation                                                                                =========
+LIST OF ALL SPECIES:
+['AKT', 'BAX', 'CyclinB1', 'CyclinD1', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'FoxO1_3a', 'GSKa_b', 'Nfkb', 'PRAS', 'PTEN', 'RB', 'RPS6', 'TSC2', 'cJUN', 'cRAF', 'erlotinib', 'p38', 'p53', 'p70S6K', 'pertuzumab', 'stimulus', 'trastuzumab']
+-----INPUT NAMES-----
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+----INTERMEDIATE NODES-----
+['AKT', 'BAX', 'CyclinB1', 'CyclinD1', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'FoxO1_3a', 'GSKa_b', 'Nfkb', 'PRAS', 'PTEN', 'RB', 'RPS6', 'TSC2', 'cJUN', 'cRAF', 'p38', 'p53', 'p70S6K']
+===============================================================
+Sorted input names
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+There are 4 inputs with the range of input: 0 15
+Sorted internames:
+['AKT', 'BAX', 'CyclinB1', 'CyclinD1', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'FoxO1_3a', 'GSKa_b', 'Nfkb', 'PRAS', 'PTEN', 'RB', 'RPS6', 'TSC2', 'cJUN', 'cRAF', 'p38', 'p53', 'p70S6K']
+There are 21 intermediate nodes with the range of inter: 0 2097151
+SORTED INPUT
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+SORTED INTER
+['AKT', 'BAX', 'CyclinB1', 'CyclinD1', 'ERBB1', 'ERBB2', 'ERBB3', 'ERK1_2', 'FoxO1_3a', 'GSKa_b', 'Nfkb', 'PRAS', 'PTEN', 'RB', 'RPS6', 'TSC2', 'cJUN', 'cRAF', 'p38', 'p53', 'p70S6K']
+More than 1 binary operator, dont allow NOT in formula: Nfkb or ERBB3 or RPS6 
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: RB or p53 or CyclinB1 or PTEN 
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: AND or AND or AND 
+More than 1 binary operator, dont allow NOT in formula: ERK1_2 or ERBB1 or CyclinB1 or cRAF 
+Now arrange layout of the original network for visualization
+THERE ARE 31 FEEDBACK ARCS IN THE ORIGINAL NETWORK:
+[('p70S6K', 'p70S6K'), ('cRAF', 'cRAF'), ('cRAF', 'ERK1_2'), ('FoxO1_3a', 'FoxO1_3a'), ('ERBB3', 'ERBB3'), ('ERBB3', 'AKT'), ('ERBB1', 'ERBB1'), ('CyclinB1', 'CyclinB1'), ('CyclinB1', 'AKT'), ('CyclinB1', 'p53'), ('CyclinB1', 'ERK1_2'), ('AKT', 'AKT'), ('RB', 'RB'), ('RB', 'p53'), ('p53', 'p53'), ('p53', 'GSKa_b'), ('GSKa_b', 'GSKa_b'), ('CyclinD1', 'CyclinD1'), ('ERK1_2', 'ERK1_2'), ('RPS6', 'RPS6'), ('Nfkb', 'Nfkb'), ('cJUN', 'cJUN'), ('BAX', 'ERBB2'), ('BAX', 'BAX'), ('ERBB2', 'ERBB2'), ('p38', 'p38'), ('TSC2', 'TSC2'), ('PTEN', 'PTEN'), ('PTEN', 'AKT'), ('PRAS', 'p70S6K'), ('PRAS', 'PRAS')]
+orimodel_11_cRAF.html
+Generating input states using strategy: all
+4 inputs causing in total 16 combinations
+Input list:
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+Number of samples in total: 16
+-----Mapping rowid to inputs:-----
+0: []
+1: ['trastuzumab']
+2: ['stimulus']
+3: ['stimulus', 'trastuzumab']
+4: ['pertuzumab']
+5: ['pertuzumab', 'trastuzumab']
+6: ['pertuzumab', 'stimulus']
+7: ['pertuzumab', 'stimulus', 'trastuzumab']
+8: ['erlotinib']
+9: ['erlotinib', 'trastuzumab']
+10: ['erlotinib', 'stimulus']
+11: ['erlotinib', 'stimulus', 'trastuzumab']
+12: ['erlotinib', 'pertuzumab']
+13: ['erlotinib', 'pertuzumab', 'trastuzumab']
+14: ['erlotinib', 'pertuzumab', 'stimulus']
+15: ['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+Generating input states using strategy: all
+4 inputs causing in total 16 combinations
+Input list:
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+Number of samples in total: 16
+TEST: Mapping rowid to inputs:
+0: []
+1: ['trastuzumab']
+2: ['stimulus']
+3: ['stimulus', 'trastuzumab']
+4: ['pertuzumab']
+5: ['pertuzumab', 'trastuzumab']
+6: ['pertuzumab', 'stimulus']
+7: ['pertuzumab', 'stimulus', 'trastuzumab']
+8: ['erlotinib']
+9: ['erlotinib', 'trastuzumab']
+10: ['erlotinib', 'stimulus']
+11: ['erlotinib', 'stimulus', 'trastuzumab']
+12: ['erlotinib', 'pertuzumab']
+13: ['erlotinib', 'pertuzumab', 'trastuzumab']
+14: ['erlotinib', 'pertuzumab', 'stimulus']
+15: ['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+-------------Now convert the original network to the acyclic network---------------
+-------------Now convert the acyclic network to the binary network---------------
+----THIS ONLY WORKS FOR ACYCLIC NETWORK------
+Input are {'pertuzumab', 'trastuzumab', 'erlotinib', 'stimulus'}
+Ordinary nodes are 
+{'pertuzumab', 'p70S6K', 'cRAF', 'FoxO1_3a', 'ERBB3', 'stimulus', 'ERBB1', 'CyclinB1', 'AKT', 'trastuzumab', 'RB', 'p53', 'GSKa_b', 'CyclinD1', 'ERK1_2', 'RPS6', 'Nfkb', 'cJUN', 'BAX', 'ERBB2', 'p38', 'TSC2', 'PTEN', 'erlotinib', 'PRAS'}
+Extranodes added after removing cycles are 
+['p70S6K_to_p70S6K', 'cRAF_to_cRAF', 'cRAF_to_ERK1_2', 'FoxO1_3a_to_FoxO1_3a', 'ERBB3_to_ERBB3', 'ERBB3_to_AKT', 'ERBB1_to_ERBB1', 'CyclinB1_to_CyclinB1', 'CyclinB1_to_AKT', 'CyclinB1_to_p53', 'CyclinB1_to_ERK1_2', 'AKT_to_AKT', 'RB_to_RB', 'RB_to_p53', 'p53_to_p53', 'p53_to_GSKa_b', 'GSKa_b_to_GSKa_b', 'CyclinD1_to_CyclinD1', 'ERK1_2_to_ERK1_2', 'RPS6_to_RPS6', 'Nfkb_to_Nfkb', 'cJUN_to_cJUN', 'BAX_to_ERBB2', 'BAX_to_BAX', 'ERBB2_to_ERBB2', 'p38_to_p38', 'TSC2_to_TSC2', 'PTEN_to_PTEN', 'PTEN_to_AKT', 'PRAS_to_p70S6K', 'PRAS_to_PRAS']
+binetmodel_11_cRAF.html
+----------Now simulate the original network----------
+----Generate table from output----
+Shapley value for input node erlotinib is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node pertuzumab is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node stimulus is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node trastuzumab is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Simulating original network then inferring values for extranodes and binary formulas
+----------Now generate the truth table from simulation outputs----------
+----Generate table from output----
+Shapley value for input node erlotinib is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node pertuzumab is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node stimulus is 0.0, 0.0 with 0 KO rows and 0 KI rows
+Shapley value for input node trastuzumab is 0.0, 0.0 with 0 KO rows and 0 KI rows
+-----------Now propagate within binarized network for output cRAF-------------
+
+
+--------PROPAGATION WITH CYCLIC NETWORK--------
+At TARGET node cRAF, count all rows
+Propagation converged for all nodes.
+Counter of processed nodes:
+Node cRAF: processed 29 times
+Node RPS6: processed 10 times
+Node CyclinB1: processed 42 times
+Node ERK1_2: processed 3 times
+Node RB: processed 19 times
+Node p53: processed 11 times
+Node PTEN: processed 6 times
+Node PRAS: processed 19 times
+Node BAX: processed 38 times
+Node ERBB2: processed 3 times
+Node GSKa_b: processed 3 times
+Node ERBB1: processed 3 times
+Node cJUN: processed 3 times
+Node TSC2: processed 1 times
+Node CyclinD1: processed 1 times
+SIMULATE 0 nodes over 20 nodes
+-----Now estimate the error by comparing propagated values to simulation values of input nodes-----
+For KO values
+For KI values
+=========PROPAGATION RESULTS=========
+-------RESULT for output cRAF--------
+Ordered input nodes:
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+----erlotinib-----
+KO	0: []
+KI	0: []
+All	0: []
+----pertuzumab-----
+KO	0: []
+KI	0: []
+All	0: []
+----stimulus-----
+KO	0: []
+KI	0: []
+All	0: []
+----trastuzumab-----
+KO	0: []
+KI	0: []
+All	0: []
+----AKT-----
+KO	0: []
+KI	0: []
+All	0: []
+----BAX-----
+KO	0: []
+KI	0: []
+All	0: []
+----CyclinB1-----
+KO	0: []
+KI	0: []
+All	0: []
+----CyclinD1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB3-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERK1_2-----
+KO	0: []
+KI	0: []
+All	0: []
+----FoxO1_3a-----
+KO	0: []
+KI	0: []
+All	0: []
+----GSKa_b-----
+KO	0: []
+KI	0: []
+All	0: []
+----Nfkb-----
+KO	0: []
+KI	0: []
+All	0: []
+----PRAS-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTEN-----
+KO	0: []
+KI	0: []
+All	0: []
+----RB-----
+KO	0: []
+KI	0: []
+All	0: []
+----RPS6-----
+KO	0: []
+KI	14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+All	14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----TSC2-----
+KO	0: []
+KI	0: []
+All	0: []
+----cJUN-----
+KO	0: []
+KI	0: []
+All	0: []
+----cRAF-----
+KO	0: []
+KI	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----p38-----
+KO	0: []
+KI	0: []
+All	0: []
+----p53-----
+KO	0: []
+KI	0: []
+All	0: []
+----p70S6K-----
+KO	0: []
+KI	0: []
+All	0: []
+erlotinib            			 KO:        0.0 | KI:        0.0
+pertuzumab           			 KO:        0.0 | KI:        0.0
+stimulus             			 KO:        0.0 | KI:        0.0
+trastuzumab          			 KO:        0.0 | KI:        0.0
+AKT                  			 KO:        0.0 | KI:        0.0
+BAX                  			 KO:        0.0 | KI:        0.0
+CyclinB1             			 KO:        0.0 | KI:        0.0
+CyclinD1             			 KO:        0.0 | KI:        0.0
+ERBB1                			 KO:        0.0 | KI:        0.0
+ERBB2                			 KO:        0.0 | KI:        0.0
+ERBB3                			 KO:        0.0 | KI:        0.0
+ERK1_2               			 KO:        0.0 | KI:        0.0
+FoxO1_3a             			 KO:        0.0 | KI:        0.0
+GSKa_b               			 KO:        0.0 | KI:        0.0
+Nfkb                 			 KO:        0.0 | KI:        0.0
+PRAS                 			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:        0.0 | KI:        0.0
+RB                   			 KO:        0.0 | KI:        0.0
+RPS6                 			 KO:        0.0 | KI:    -4.5835
+TSC2                 			 KO:        0.0 | KI:        0.0
+cJUN                 			 KO:        0.0 | KI:        0.0
+cRAF                 			 KO:        0.0 | KI:    -5.0002
+p38                  			 KO:        0.0 | KI:        0.0
+p53                  			 KO:        0.0 | KI:        0.0
+p70S6K               			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	cRAF, RPS6, ERK1_2, p70S6K, p53, ERBB2
+	ERBB1, PTEN, CyclinB1, TSC2, RB, trastuzumab
+	erlotinib, stimulus, PRAS, GSKa_b, BAX, pertuzumab
+	ERBB3, AKT, CyclinD1, cJUN, FoxO1_3a, Nfkb
+	p38
+-----KI RANKING-----
+1	cRAF
+2	RPS6
+3	ERK1_2, p70S6K, p53, ERBB2, ERBB1, PTEN
+	CyclinB1, TSC2, RB, trastuzumab, erlotinib, stimulus
+	PRAS, GSKa_b, BAX, pertuzumab, ERBB3, AKT
+	CyclinD1, cJUN, FoxO1_3a, Nfkb, p38
+-------In Test mode, perform knocking out with full input configurations to check accuracy
+-----Report result for TEST-----
+-------RESULT for output cRAF--------
+Ordered input nodes:
+['erlotinib', 'pertuzumab', 'stimulus', 'trastuzumab']
+----erlotinib-----
+KO	0: []
+KI	0: []
+All	0: []
+----pertuzumab-----
+KO	0: []
+KI	0: []
+All	0: []
+----stimulus-----
+KO	0: []
+KI	0: []
+All	0: []
+----trastuzumab-----
+KO	0: []
+KI	0: []
+All	0: []
+----AKT-----
+KO	0: []
+KI	0: []
+All	0: []
+----BAX-----
+KO	0: []
+KI	0: []
+All	0: []
+----CyclinB1-----
+KO	0: []
+KI	0: []
+All	0: []
+----CyclinD1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB1-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB2-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERBB3-----
+KO	0: []
+KI	0: []
+All	0: []
+----ERK1_2-----
+KO	1: [3]
+KI	0: []
+All	1: [3]
+----FoxO1_3a-----
+KO	0: []
+KI	0: []
+All	0: []
+----GSKa_b-----
+KO	0: []
+KI	0: []
+All	0: []
+----Nfkb-----
+KO	0: []
+KI	0: []
+All	0: []
+----PRAS-----
+KO	0: []
+KI	0: []
+All	0: []
+----PTEN-----
+KO	0: []
+KI	0: []
+All	0: []
+----RB-----
+KO	0: []
+KI	0: []
+All	0: []
+----RPS6-----
+KO	0: []
+KI	0: []
+All	0: []
+----TSC2-----
+KO	0: []
+KI	0: []
+All	0: []
+----cJUN-----
+KO	0: []
+KI	0: []
+All	0: []
+----cRAF-----
+KO	0: []
+KI	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+All	16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+----p38-----
+KO	0: []
+KI	0: []
+All	0: []
+----p53-----
+KO	0: []
+KI	0: []
+All	0: []
+----p70S6K-----
+KO	0: []
+KI	0: []
+All	0: []
+erlotinib            			 KO:        0.0 | KI:        0.0
+pertuzumab           			 KO:        0.0 | KI:        0.0
+stimulus             			 KO:        0.0 | KI:        0.0
+trastuzumab          			 KO:        0.0 | KI:        0.0
+AKT                  			 KO:        0.0 | KI:        0.0
+BAX                  			 KO:        0.0 | KI:        0.0
+CyclinB1             			 KO:        0.0 | KI:        0.0
+CyclinD1             			 KO:        0.0 | KI:        0.0
+ERBB1                			 KO:        0.0 | KI:        0.0
+ERBB2                			 KO:        0.0 | KI:        0.0
+ERBB3                			 KO:        0.0 | KI:        0.0
+ERK1_2               			 KO:    -0.1667 | KI:        0.0
+FoxO1_3a             			 KO:        0.0 | KI:        0.0
+GSKa_b               			 KO:        0.0 | KI:        0.0
+Nfkb                 			 KO:        0.0 | KI:        0.0
+PRAS                 			 KO:        0.0 | KI:        0.0
+PTEN                 			 KO:        0.0 | KI:        0.0
+RB                   			 KO:        0.0 | KI:        0.0
+RPS6                 			 KO:        0.0 | KI:        0.0
+TSC2                 			 KO:        0.0 | KI:        0.0
+cJUN                 			 KO:        0.0 | KI:        0.0
+cRAF                 			 KO:        0.0 | KI:    -5.0002
+p38                  			 KO:        0.0 | KI:        0.0
+p53                  			 KO:        0.0 | KI:        0.0
+p70S6K               			 KO:        0.0 | KI:        0.0
+-----KO RANKING-----
+1	ERK1_2
+2	erlotinib, pertuzumab, stimulus, trastuzumab, AKT, BAX
+	CyclinB1, CyclinD1, ERBB1, ERBB2, ERBB3, FoxO1_3a
+	GSKa_b, Nfkb, PRAS, PTEN, RB, RPS6
+	TSC2, cJUN, cRAF, p38, p53, p70S6K
+-----KI RANKING-----
+1	cRAF
+2	erlotinib, pertuzumab, stimulus, trastuzumab, AKT, BAX
+	CyclinB1, CyclinD1, ERBB1, ERBB2, ERBB3, ERK1_2
+	FoxO1_3a, GSKa_b, Nfkb, PRAS, PTEN, RB
+	RPS6, TSC2, cJUN, p38, p53, p70S6K
+-----Now compare the calculated rows with grouth truth-----
+----Report rows for node cRAF ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+KI Calc    16: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+----Report rows for node RPS6 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+KI Real     0: []
+KI Calc    14: [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+----Report rows for node ERK1_2 ------
+KO Lack     1: [3]
+KO Extr     0: []
+KO Real     1: [3]
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node p70S6K ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node p53 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ERBB2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ERBB1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PTEN ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CyclinB1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node TSC2 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node RB ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node trastuzumab ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node erlotinib ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node stimulus ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node PRAS ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node GSKa_b ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node BAX ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node pertuzumab ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node ERBB3 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node AKT ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node CyclinD1 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node cJUN ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node FoxO1_3a ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node Nfkb ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+----Report rows for node p38 ------
+KO Lack     0: []
+KO Extr     0: []
+KO Real     0: []
+KO Calc     0: []
+
+KI Lack     0: []
+KI Extr     0: []
+KI Real     0: []
+KI Calc     0: []
+
+RPS6                 - Correct: KO:        0.0 | KI :        0.0 - Incorrect KO:        0.0 | KI:    -4.5835
+ERK1_2               - Correct: KO:    -0.1667 | KI :        0.0 - Incorrect KO:        0.0 | KI:        0.0
+-----KO RANKING COMPARISON-----
+1	cRAF, RPS6, ERK1_2, p70S6K, p53, ERBB2
+	ERBB1, PTEN, CyclinB1, TSC2, RB, trastuzumab
+	erlotinib, stimulus, PRAS, GSKa_b, BAX, pertuzumab
+	ERBB3, AKT, CyclinD1, cJUN, FoxO1_3a, Nfkb
+	p38
+REFERENCE:
+1	ERK1_2
+2	erlotinib, pertuzumab, stimulus, trastuzumab, AKT, BAX
+	CyclinB1, CyclinD1, ERBB1, ERBB2, ERBB3, FoxO1_3a
+	GSKa_b, Nfkb, PRAS, PTEN, RB, RPS6
+	TSC2, cJUN, cRAF, p38, p53, p70S6K
+=======
+-----KI RANKING COMPARISON-----
+1	cRAF
+2	RPS6
+3	ERK1_2, p70S6K, p53, ERBB2, ERBB1, PTEN
+	CyclinB1, TSC2, RB, trastuzumab, erlotinib, stimulus
+	PRAS, GSKa_b, BAX, pertuzumab, ERBB3, AKT
+	CyclinD1, cJUN, FoxO1_3a, Nfkb, p38
+REFERENCE:
+1	cRAF
+2	erlotinib, pertuzumab, stimulus, trastuzumab, AKT, BAX
+	CyclinB1, CyclinD1, ERBB1, ERBB2, ERBB3, ERK1_2
+	FoxO1_3a, GSKa_b, Nfkb, PRAS, PTEN, RB
+	RPS6, TSC2, cJUN, p38, p53, p70S6K
+============
+Relative_RMSE_KO_is  0.003334
+Relative_RMSE_KI_is  0.09167
+NDCG_KO_is  0.3253
+NDCG_KI_is  1.0
+
+Ranking Comparison
+==================
+Metric                                   KO           KI
+----------------------------------------------------------
+n_common                             25.000       25.000
+Kendall tau-b                           NaN        0.715
+Spearman rho                          0.000        0.891
+Mean abs rank diff                    0.960        0.920
+----------------------------------------------------------
+
+Top-r Overlap:
+  Top-10 Jaccard                   1.000        1.000
+         Precision@10                1.000        1.000
+         Recall@10                   1.000        1.000
+  Top-20 Jaccard                   1.000        1.000
+         Precision@20                1.000        1.000
+         Recall@20                   1.000        1.000
+----------------------------------------------------------
+
+Top-group Overlap:
+  Top-1  groups Jaccard            0.040        1.000
+  Top-2  groups Jaccard            1.000        0.080
+  Top-3  groups Jaccard            1.000        1.000
+==========================================================
+AVERAGE_CORRECT_ROWS_ALL_NODES:  0.9625
+===============MODEL information===============
+NUMBER OF INPUT: 	 4
+NUMBER OF NODES: 	 25
+NUMBER OF EDGES: 	 81
+NUMBER OF SCCs: 	 11
+NUMBER OF aFAS: 	 31
+===============TIME information===============
+TIME process heading: 0.003443166002398357
+TIME generate input states: 0.0003361249982845038
+TIME convert to BBN (Propagation mode): 0.009213749988703057
+TIME to fully simulate original network (if Test): 0.0294953330012504
+TIME simulate network (with sampled method) AND INFER values of extranodes if Propagation: 0.03086070899735205
+TIME generating table 0.00027604099886957556
+TIME calculating Shapley values for input nodes: 3.1208008294925094e-05
+TIME propagate (in Propagation mode): 1.0222434589959448
+TIME simulate perturbations (with sampling percentage) in Simulation mode: 0
+TIME simulate perturbations full if Test: 1.310865666004247
+TIME total for Propagation: 1.0664044579898473
+TIME total for FULLY Simulation: 1.343997374016908
+==========ERROR ESTIMATION FROM INPUTS=========
+Average error for KO values: 0.0
+Average error for KI values: 0.0
+-----------TOTAL RUNNING TIME---------------
+2.617987165998784
+
+[exit code: 0]
