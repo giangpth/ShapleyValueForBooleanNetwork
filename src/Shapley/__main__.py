@@ -2,17 +2,19 @@ import time
 import timeit
 import copy
 import networkx as nx
-from Shapley.booleanFormulaHandler import toBinaryFormulas
-from Shapley.networkHandler import convertBiBooleanFormulas2Network, manipulateNetwork
-from Shapley.utilities import estimateErrorFromInputs, evaluation1, evaluation2, genTableFromOutput, getOrderedList, parseArgumentsAnalysis, compareOutputs, reportResults
+from ._core import simulateNetworkCombined, propagateCyclicVersion1
+from Shapley.booleanFormulaHandler import parseFormula, toBinaryFormulas, getFormula
+from Shapley.speciesHandler import getSpeciesName, getInputNames, genInput, initSpeciesStates
 from Shapley.visualization import showNetwork
-from Shapley.networkUtilities import diamondDigger, findMasterDiamond
-from Shapley.shapleyCalculation import calSV4InputFromTable
-from ._core import binarizeAndPropagate, readfile, getSpeciesName, \
-    getInputNames, getFormula, parseFormula, convertBooleanFormulas2Network, \
-    initSpeciesStates, genInput, simulateNetworkCombined, workWithOriginalNetwork, \
-    propagateCyclicVersion1, propagateAcyclic
+from Shapley.utilities import parseArgumentsAnalysis, readfile,  getOrderedList, rowstovalues, toDecimal, genTableFromOutput, evaluation1, print_ranked_keys, estimateErrorFromInputs, random_percentage_selection
+from Shapley.shapleyCalculation import extractPhe, calKSV4Input, calKSVVanilla, calSV4InputFromTable
+from Shapley.networkUtilities import diamondDigger, getOutput, getOutputCombined, getPertubedOutput, simBinaryNetwork, findMasterDiamond, processMasterDiamonds, simulateDiamond
+from Shapley.speciesHandler import getSpeciesName, getInputNames, genInput, initSpeciesStates
+from Shapley.booleanFormulaHandler import parseFormula, toBinaryFormulas, getFormula
+from Shapley.networkHandler import convertBiBooleanFormulas2Network, convertBooleanFormulas2Network, manipulateNetwork
+from Shapley.utilities import estimateErrorFromInputs, evaluation2, genTableFromOutput, getOrderedList, parseArgumentsAnalysis, compareOutputs, reportResults
 
+from benchmarker import parse_line
 def Analysis():
     """
     Perform Shapley value analysis using the propagation method.
@@ -337,10 +339,6 @@ def Analysis():
                 korows[node], kirows[node] = set(), set() 
                 kovalues[node], kivalues[node] = 0.0, 0.0      
 
-            # for node, testrows in korows.items():
-            #     print("TESSSSSSTTTTTTT")
-            #     print("Node {}".format(node))
-            #     print("KO rows: {}".format(sorted(list(testrows))))
             
             print("-----Now estimate the error by comparing propagated values to simulation values of input nodes-----")
             print("For KO values")
@@ -494,220 +492,6 @@ def Analysis():
     print("==========ERROR ESTIMATION FROM INPUTS=========")
     print(f"Average error for KO values: {avewronginputkorow}")
     print(f"Average error for KI values: {avewronginputkirow}")
-
-
-
-
-
-        
-# def runBatchTest():
-#     """
-#     Run batch test for multiple expression files in a folder.
-#     Args:
-#         None
-
-def OldVersionTest():
-    """
-    Test function to compare perfomance of standard Shapley value calculation and the propagation method.
-    Args:
-        None
-    Returns:
-        None
-    """
-    timeSimOriginalNetwork = 0 # only the time to simulate original network, lower bound 
-    timePerformOriginalAnalysis = 0 # time to perform the Knockout/Knockin of the original network 
-    timePropagation = 0 # time to propagate 
-    timeHeading = 0 # time to read, parse formulas 
-    
-    bound = 0
-    numinputs = 0
-    numnnodes = 0
-    numedges = 0
-
-    
-    parser = parseArgumentsAnalysis()
-    args= vars(parser.parse_args())
-    if len(args) < 2:
-            parser.print_help()
-
-    else:
-        headingTimeBegin = timeit.default_timer()
-        debug = args['verbose']
-        exp = args['expression']
-        strout = args['output']
-        samplingStrategy = args['sampling']
-        samplePercentage = args['samplePer']
-        simPercentage = args['simPer']
-        mode = args['mode']
-        scheme = args['scheme']
-        sysname = args['name']
-        declog = args['decimal']
-        outputname = strout
-
-        print("==========STARTING BOOLEAN SHAPLEY ANALYSIS TEST==========")
-        print(f"==========EXPRESSION FILE IS {exp}")
-        print(f"==========THE OUTPUT OF INTEREST IS: {outputname}")
-        print("===============================================================")
-        
-        lines = readfile(exp, debug)
-
-        speciesnames = getSpeciesName(lines, debug) # get species names 
-        print("List of all species:")
-        print(sorted(list(speciesnames)))
-        numnnodes = len(speciesnames)
-
-        if outputname not in speciesnames:
-            print("The list of interested output is not a subset of species")
-        
-        inputnames = getInputNames(lines, speciesnames, debug)
-        print("-----Input names-----")
-        print(sorted(list(inputnames)))
-        bound = len(inputnames) + 1
-        numinputs = len(inputnames)
-
-
-        internames = speciesnames.difference(inputnames).difference((outputname))
-        print("----Intermediate nodes-----")
-        print(sorted(list(internames)))
-
-
-        if debug:
-            print("----Getting boolean formulas-----")
-        strformulas = getFormula(lines, debug) # list of formulas in strings 
-        formulas = dict() 
-        for strformula in strformulas:
-            root = parseFormula(strformula, debug)
-            if debug:
-                print("Parsing formula for {}".format(strformula['left']))
-                root.display()
-                print("\n")
-                # root.display() 
-                # thisfor = {formula['left']: root}
-                # formulas.append(thisfor)
-            formulas[strformula['left']] = root 
-            
-            # get the network of the original model, set acyclic = True to delete all the feedback arcs 
-            # orinet, anet, aformulas, extranodes = convertBooleanFormulas2Network(formulas, inputnames, \
-            #     speciesnames, "network", acyclic=isacyclic, debug=debug)
-        orinet, orifas = convertBooleanFormulas2Network(formulas, inputnames, \
-            speciesnames, debug=debug)
-        
-        numedges = orinet.number_of_edges()
-
-        if debug:
-            print("THERE ARE {} FEEDBACK ARCS IN THE ORIGINAL NETWORK:".format(len(orifas)))
-            print(orifas)
-
-        
-        # get the input states of the original network
-        species = initSpeciesStates(speciesnames, debug)
-        inputstates, maprowid2inputs = genInput(species, inputnames)
-
-        for rowid, state in maprowid2inputs.items():
-            print(f"{rowid}: {state}")
-        
-
-        headingTimeEnd = timeit.default_timer()
-        timeHeading = headingTimeEnd - headingTimeBegin 
-
-        simrowsofnodes, oridecimalpairs, timesimori, timeori = workWithOriginalNetwork(orinet, inputnames, \
-            inputstates, outputname, internames, formulas, True, mode=mode, debug=False) 
-        if declog:
-            for indec, outdec in oridecimalpairs.items():
-                print(f"{indec}:  {outdec}") 
-
-
-        timeSimOriginalNetwork += timesimori 
-        timePerformOriginalAnalysis += timeori 
-        
-        '''
-        # print ("-----Simulation output is:----------")
-        # print(orioutputs)
-        # for row in orioutputs:
-        #     print(dict(sorted(row.items()))) 
-
-        # for outputname in outputnames:
-        #     workWithSHAP(list(inputnames), speciesnames, outputname, formulas, debug)
-        '''
-
-
-        print("----------WITH ACYCLIC FLAG-------------")
-        # get the acyclic network 
-        timeconver2acyclic = timeit.default_timer()
-        anet, aformulas, extranodes, nodes_positions = manipulateNetwork(orinet, inputnames, formulas, True, False, debug)
-        timeconver2acyclic = timeit.default_timer() - timeconver2acyclic
-
-        showNetwork(anet, None, None, None, None, "acyclicnetwork.html")
-
-        if debug:
-            for term, formula in aformulas.items():
-                print("{} = ".format(term))
-                formula.display()
-
-    # # now do the limiting procedure for each output node 
-    # adecimalpairs, ashapss = workwithAcyclicNetwork(anet, \
-    #     inputnames, internames, outputname, speciesnames, aformulas, extranodes, False, debug)
-
-    
-    # acount = 0
-    # for oriinp, oriinter in oridecimalpairs.items():
-    #     if oriinter != adecimalpairs[oriinp]:
-    #         print(oriinp, oriinter, adecimalpairs[oriinp])
-    #         acount += 1
-    # print("\n----TOTAL NUMBER OF DIFFERENCES BETWEEN ORIGNAL NETWORK AND ACYCLIC NETWORK IS {}----\n".format(acount))
-    
-
-    # convert the acyclic network to binary network 
-    print("-------------Now convert the acyclic network to the binary network---------------")
-    sortedinput, sortedinter = getOrderedList(inputnames, internames, debug)
-
-
-    prorowsofnodes, averightinrows, table,  bidecimalpairs, protime = binarizeAndPropagate(formulas, aformulas, inputnames, outputname, \
-        speciesnames, "abinetwork", sortedinput, sortedinter, extranodes, mode, 0, totest = False, debug=debug)
-    timePropagation += protime 
-    # if 1:
-    #     bicount = 0
-    #     for ainp, ainter, in adecimalpairs.items():
-    #         if ainter != bidecimalpairs[ainp]:
-    #             print(ainp, ainter, bidecimalpairs[ainp])
-    #             bicount += 1
-    #     print("\n----TOTAL NUMBER OF DIFFERENCES BETWEEN ACYCLIC NETWORK AND BINARIZED NETWORK IS {}----\n".format(bicount))
-    print(f"NUMBER OF NODES: {numnnodes}")
-    print(f"NUMBER OF INPUTS: {numinputs}")
-    print(f"NUMBER OF EDGES: {numedges}")
-    print(f"TIME process heading: {timeHeading}")
-    print(f"TIME simulate original network: {timeSimOriginalNetwork}")
-    print(f"TIME perform original analysis process: {timePerformOriginalAnalysis}")
-    print(f"TIME perform propagation: {timePropagation}")
-
-    averightrows, ave_dncg = evaluation1(prorowsofnodes, simrowsofnodes, table, outputname)
-    print(f"Average number of correct rows after binarization: {averightrows} ")
-    print(f"Average DNCG after binarization: {ave_dncg} ")
-    
-
-    '''
-    # Here is to calculate degree  
-    print("------Degree-------")
-    btness = nx.degree(orinet)
-    print(btness)
-    
-    # Here is to calculate betweenness 
-    print("------Betweenness-------")
-    btness = nx.betweenness_centrality(orinet)
-    print(btness)
-
-    # Here is to calculate pagerank 
-    for outputname in outputnames:
-        pagerankseed = dict()
-        for innode in inputnames:
-            pagerankseed[innode] = oriinputshapss[outputname][innode]
-        print("------Pagerank-------")
-        # pagerank = nx.pagerank(orinet, personalization=pagerankseed)
-        pagerank = nx.pagerank(orinet)
-        print(pagerank)
-    '''
-
-
 
 if __name__ == "__main__":
     start = timeit.default_timer()

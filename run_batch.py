@@ -5,7 +5,7 @@ from pathlib import Path
 
 # ---------------- CONFIG (hard-coded) ----------------
 INPUT_LIST = "realbenchmark.txt"            # TAB-separated: path<TAB>out1<TAB>out2<TAB>out3
-LOG_DIR    = Path("logs/realbenchmark_Prop_sample_60_3rdRun")  # where the terminal logs are saved 
+LOG_DIR    = Path("logs/realbenchmark_Prop_sample_60_3rdRun_test")  # where the terminal logs are saved 
 PROGRAM    = [sys.executable, "-m", "Shapley"]
 ECHO_TO_TERMINAL = True                  # also print the log live
 

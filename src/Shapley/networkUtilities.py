@@ -4,7 +4,6 @@ from typing import Dict, Hashable, Iterable, Set, Literal
 
 from Shapley.exceptions import InforError
 from Shapley.utilities import filterrows
-from Shapley.visualization import showNetwork 
 from Shapley.booleanFormulaHandler import sim1step, sim1bistep, checkrow, sim1stepCombined
 from Shapley.utilities import dict_hash, merge2states, toDecimal, filterrows
 from Shapley.speciesHandler import initSpeciesStates, genInput

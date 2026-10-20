@@ -191,34 +191,6 @@ def decimal_pairs(sortedinput, target):
         off = high | low
         yield off | bit, off                # (target=1, target=0)
 
-# def parseArgumentsTest():
-#     """
-#     Parse command line arguments.
-
-#     Returns:
-#         argparse.ArgumentParser: The argument parser with defined options. 
-#     """
-    
-#     parser = ap.ArgumentParser(description='Input the expression file and ')
-#     parser.add_argument('-e', '--expression', type=str, help="path to expression file", required=True)
-#     parser.add_argument('-o', '--output', type=str, help='list of interested components to examine', required=True)
-#     # parser.add_argument('-k', '--knockout', help='Perform knockout or not', \
-#                         # action='store_true')
-#     # parser.add_argument('-i', '--knockin', help='Perform knockin or not', \
-#     #                     action='store_true')
-#     # parser.add_argument('-b', '--binary', help='Work with binary network or not', \
-#     #                     action='store_true')
-#     # parser.add_argument('-a', '--acyclic', help='Extract acyclic network with respect to output node', \
-#     #                     action='store_true')
-#     # parser.add_argument('-p', '--propagate', help='Run propagation for binary network or not', \
-#     #                     action='store_true')
-#     parser.add_argument('-d', '--debug', help="Print log to debug or not", \
-#                         action='store_true')
-#     # parser.add_argument('-t', '--threshold', type=float, help="Threshold for error", default=0.6) # e.g. 0.6 mean need to simulate at least 40% of the rows
-#     parser.add_argument('-m', '--mode', type=str, help="Mode: 'Shapley' or 'Uniform' ", default='Shapley')
-
-#     return parser
-
 def genRowids2simulate(numinputs, errthreshold, mode='Shapley', debug=False):
     """
     Generate a set of row IDs to simulate based on the total number of rows and an error threshold.
@@ -348,39 +320,6 @@ def getOrderedList(inputnames, internames, debug=False):
         print("There are {} intermediate nodes with the range of inter: {} {}".format(len(sortedinter), 0,2**(len(sortedinter)) - 1))
     return sortedinput, sortedinter 
 
-# def toDecimal(state, sortedinput, sortedinter, debug=False):
-#     """
-#     Convert the state of a Boolean network to decimal representations for inputs and intermediate nodes.
-#     Args:
-#         state (dict): A dictionary with species names as keys and their boolean states as values.
-#         sortedinput (list): A sorted list of input species names.
-#         sortedinter (list): A sorted list of intermediate species names.
-#         debug (bool): If True, print debug information.
-#     Returns:   
-#         tuple: A tuple containing two integers - decimal representation of inputs and intermediate nodes.
-#     """
-#     try:
-#         inputbitstr = ''
-#         for input in sortedinput:
-#             if state[input]:
-#                 inputbitstr += '1'
-#             else:
-#                 inputbitstr += '0'
-#         try:
-#             interbitstr = ''
-#             for inter in sortedinter:
-#                 if state[inter]:
-#                     interbitstr += '1'
-#                 else:
-#                     interbitstr += '0'
-            
-#             intinputs = int(inputbitstr, 2)
-#             intinters = int(interbitstr, 2)
-#             return intinputs, intinters 
-#         except InforError:
-#             print("Cannot find intermediate node {} in the state dictionary".format(inter))
-#     except InforError:
-#         print("Cannot find input node {} in the state dictionary".format(input))
 
 def toDecimal(state, sortedinput, sortedinter=[], debug=False):
     def bits(names):
@@ -531,11 +470,6 @@ def reportResults(kovalues, kivalues, inputnames, internames, outputnames, korow
     print_ranked_keys(kivalues, orispecies)
         
 
-    
-
-
-
-
 def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputname, scheme='Shapley', debug=False):
     """
     Generate a table from simulation outputs, indexing rows by species states.
@@ -625,119 +559,6 @@ def genTableFromOutput(simoutputs, inputnames, blinkings, sortedinter, outputnam
 
         dictresult[inputid] = line
     return dictresult, index, aindex, bindex
-
-# def agreement(index, aindex, node1, node2, countedrows, debug=False):
-#     """
-#     Test function to check agreement between two nodes.
-#     Parameters:
-#         index: Dictionary mapping nodes to rows where they are True 
-#         aindex: Dictionary mapping nodes to rows where they are False
-#         node1: First node name
-#         node2: Second node name
-#     Returns:
-#         None
-#     """
-#     intersecttrue = countedrows.intersection(index[node1].intersection(index[node2]))
-#     intersectfalse = countedrows.intersection(aindex[node1].intersection(aindex[node2]))
-#     agree = intersecttrue.union(intersectfalse)
-#     disagree = countedrows.difference(agree)
-#     true1false2 = countedrows.intersection(index[node1].intersection(aindex[node2]))
-#     false1true2 = countedrows.intersection(aindex[node1].intersection(index[node2]))
-#     if debug: 
-#         print("Node {} and Node {} both TRUE on rows {}".format(node1, node2, sorted(list(intersecttrue))))
-#         print("Node {} and Node {} both FALSE on rows {}".format(node1, node2, sorted(list(intersectfalse))))
-#         # print("Node {} and Node {} DISAGREE on rows {}".format(node1, node2, sorted(list(disagree))))
-#         print("{} is TRUE while {} is FALSE on rows {}".format(node1, node2, sorted(list(index[node1].intersection(aindex[node2]).intersection(countedrows)))))
-#         print("{} is FALSE while {} is TRUE on rows {}".format(node1, node2, sorted(list(aindex[node1].intersection(index[node2]).intersection(countedrows)))))
-#     return intersecttrue, intersectfalse, true1false2, false1true2 
-
-# def partlySimulate(formulas, inputnames, internames, inputstates, errthreshold, mode='Shapley', debug=False):
-#     # sortedinput, sortedinter = getOrderedList(inputnames, internames, True)
-
-#     partlyKORes = dict()
-#     partlyKIRes = dict() 
-
-#     numinputs = len(inputnames)
-#     if debug:
-#         print("Simulate some rows to refine the results according to the ERROR THRESHOLD {}".format(errthreshold))
-#     rowids2simulate = genRowids2simulate(numinputs, errthreshold, mode, True)
-
-#     if debug:
-#         print("Rows to simulate: {}".format(sorted(list(rowids2simulate))))
-
-#     # knock out 
-#     for inter in sorted(list(internames)):
-#         partlyKORes[inter] = dict()
-#         partlyKIRes[inter] = dict()
-#         for rowid in rowids2simulate:
-#             if debug:
-#                 print("Knockout intermediate node {} for row {}".format(inter, rowid))
-#             inputstateKO = copy.deepcopy(inputstates[rowid])
-#             outputKO, blinking = getKnockoutOutput(formulas, inputstateKO, [inter], False, 1000, False)  
-#             partlyKORes[inter][rowid] = outputKO
-
-#             if debug:
-#                 print("Knockin intermediate node {} for row {}".format(inter, rowid))
-#             inputstateKI = copy.deepcopy(inputstates[rowid])
-#             outputKI, blinking = getKnockoutOutput(formulas, inputstateKI, [inter], False, 1000, False, None, True)
-#             partlyKIRes[inter][rowid] = outputKI
-
-
-#     return rowids2simulate, partlyKORes, partlyKIRes
-
-# def refineResults(formulas, simtable, countedrowsofnode, potentiallylacky, potentiallyextra, exerror = 0.2, debug=False):
-#     print("\n\n--------REFINING RESULTS--------") 
-#     print("Expected error is {}".format(exerror))
-#     for node, rows in countedrowsofnode.items(): 
-#         thispolack = potentiallylacky.difference(rows)
-#         thispoextra = potentiallyextra.intersection(rows) 
-#         if len(thispolack) > 0:
-#             print("Node {} potentially LACK rows: {}".format(node, sorted(list(thispolack)))) 
-#         if len(thispoextra) > 0:
-#             print("Node {} potentially EXTRA rows: {}".format(node, sorted(list(thispoextra)))) 
-
-# a wrapper for SHAP, taking a dataset of samples and computes the output of the model for those samples
-class BNmodel:
-    """ A wrapper class for a Boolean network model to be used with SHAP.
-    Attributes:
-        map (list): A list mapping input feature indices to species names.
-        species (dict): A dictionary with species names as keys and their boolean states as values.
-        formulas (list): A list of dictionaries, each containing 'term' and 'formula' keys for the binary formulas.
-        outputname (str): The name of the output species to be predicted.
-    Methods:
-        predict(inputs): Predict the output for a given set of input samples.
-        returns: np.ndarray: An array of predicted outputs for the input samples.
-    """
-    def __init__(self, map, species, formulas, outputname):
-        self.map = map # list of input in order 
-        self.species = species 
-        self.formulas = formulas 
-        self.outputname = outputname
-    
-    def predict(self, inputs): # input is 2 dimension numpy array 
-        # print(inputs.shape)
-        outputs = np.zeros((inputs.shape[0],1))
-        # outputs = []
-        # print(outputs.shape)
-
-        # print(len(outputs))
-        # print(len(inputs[0]))
-        for i in range(inputs.shape[0]):
-            # print(inputs[i])
-            inputstate = copy.deepcopy(self.species)
-            for j in range(inputs.shape[1]):
-                if inputs[i][j] == 1:
-                    inputstate[self.map[j]] = True
-                if inputs[i][j] == 0:
-                    inputstate[self.map[j]] = False
-            # print(inputstate)
-            output = getOutput(self.formulas, inputstate, False, 1000, False)
-            # print(output)
-            if output[self.outputname]:
-                outputs[i][0] = 1
-            else:
-                outputs[i][0] = 0
-        return outputs
 
 def filterrows(op, nodetofilter, childnode, index, aindex, extranodes, allrows):
     """

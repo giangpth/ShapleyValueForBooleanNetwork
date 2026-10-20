@@ -78,7 +78,7 @@ def calSV4InputFromTable(table, sortedinputs, outputname, debug=False):
         kirows[input] = sorted(list(kiset))
         kovalues[input] = kovalue
         kivalues[input] = kivalue
-        print(f"Shapley value for input node {input} is {round(kovalue, 4)}, {round(kivalue, 4)} with {len(koset)} KO rows and {len(kiset)} KI rows")
+        print(f"Shapley value for input node {input} is: \t {round(kovalue, 4)}, {round(kivalue, 4)} with {len(koset)} KO rows and {len(kiset)} KI rows")
     return korows, kirows, kovalues, kivalues 
 
 
