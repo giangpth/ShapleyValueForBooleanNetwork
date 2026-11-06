@@ -1,0 +1,17 @@
+AKT = PIP3
+E2F = NOT Rb
+EIF4F = mTORC1
+FOXO3 = ( NOT MAPK ) OR ( NOT AKT )
+MAPK = RAS OR PIP3
+PI3K = RTK OR RAS
+PRAS40 = NOT AKT
+Proliferation_b1 = ( Proliferation_b1 AND Proliferation_b2 ) OR ( EIF4F AND S6K ) OR E2F
+Proliferation_b2 = E2F AND EIF4F AND Proliferation_b1 AND S6K
+RAS = RTK
+RTK = ( GFs AND ( NOT MAPK ) AND ( NOT S6K ) ) OR ( FOXO3 AND GFs )
+Rb = NOT cycE
+S6K = mTORC1
+TSC = ( NOT AKT ) AND ( NOT MAPK )
+cycE = ( AKT AND ( NOT FOXO3 ) ) OR E2F
+mTORC1 = ( NOT PRAS40 ) AND  ( NOT TSC )
+PIP3 = PI3K

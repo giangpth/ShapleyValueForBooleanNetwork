@@ -306,23 +306,3 @@ def print_rank_comparison(ko_result, ki_result, name="Ranking Comparison"):
         jacc_ko, jacc_ki = ko_g.get("jaccard", float("nan")), ki_g.get("jaccard", float("nan"))
         print(f"  Top-{k:<2} groups Jaccard{'':<9}{fmt(jacc_ko):>8} {fmt(jacc_ki):>12}")
     print("=" * 58)
-
-
-# Example usage:
-# print_rank_comparison(ko_result, ki_result, name="Ranking stability between KO and KI")
-
-# # ---------- EXAMPLE USAGE ----------
-# if __name__ == "__main__":
-#     baseline = {"A": 1.6667, "B": 0.2, "C": 0.1999999, "D": 1.6668, "E": 0.05}
-#     propagated = {"A": 1.66675, "B": 0.21, "C": 0.2, "D": 1.6666, "E": 0.0499}
-
-#     results = compare_rankings(
-#         baseline, propagated,
-#         use_abs=True,
-#         atol=1e-6, rtol=1e-5,  # adjust to your numeric noise level
-#         rep="max",
-#         rank_scheme="dense",
-#         top_r_values=(3, 5),
-#         top_group_ks=(1, )
-#     )
-#     import pprint; pprint.pprint(results)

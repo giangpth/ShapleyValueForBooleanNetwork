@@ -31,8 +31,8 @@ SINGLE = {
     "NUMBER_OF_EDGES":                rf"NUMBER OF EDGES:\s+{NUM}",
     "NUMBER_OF_SCCs":                 rf"NUMBER OF SCCs:\s+{NUM}",
     "NUMBER_OF_aFAS":                 rf"NUMBER OF aFAS:\s+{NUM}",
-    "TIME_total_Propagation":         rf"TIME total for Propagation:\s+{NUM}",
-    # "TIME_total_Simulation":         rf"TIME total for Simulation:\s+{NUM}",
+    # "TIME_total_Propagation":         rf"TIME total for Propagation:\s+{NUM}",
+    "TIME_total_Simulation":         rf"TIME total for Simulation:\s+{NUM}",
     "TIME_total_FULLY_Simulation":    rf"TIME total for FULLY Simulation:\s+{NUM}",
     "Avg_error_KO":                   rf"Average error for KO values:\s+{NUM}",
     "Avg_error_KI":                   rf"Average error for KI values:\s+{NUM}",
@@ -66,7 +66,7 @@ ORDER = [
     "Top1_groups_Jaccard_KO", "Top1_groups_Jaccard_KI",
     "NUMBER_OF_INPUT", "NUMBER_OF_NODES", "NUMBER_OF_EDGES",
     "NUMBER_OF_SCCs", "NUMBER_OF_aFAS",
-    "TIME_total_Propagation", "TIME_total_FULLY_Simulation",
+    "TIME_total_Simulation", "TIME_total_FULLY_Simulation",
     "Avg_error_KO", "Avg_error_KI",
 ]
 COLUMNS = ORDER

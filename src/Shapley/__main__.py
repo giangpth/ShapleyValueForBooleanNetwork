@@ -238,10 +238,14 @@ def Analysis():
             for indec, outdec in decimalPairs.items():
                 print(f"{indec}: {outdec}") 
 
+
         timegentable = timeit.default_timer()
         print("----------Now generate the truth table from simulation outputs----------")
         table, index, aindex, bindex = genTableFromOutput(outputs, inputnames, blinkings, biinternames, outputname, scheme, debug) 
         timegentable = timeit.default_timer() - timegentable
+
+        # for row, state in table.items():
+        #     print(f"{row}: {state}")
         
         timeCalc4Input = timeit.default_timer()
         koinrows, kiinrows, koinvalues, kiinvalues = calSV4InputFromTable(table, sortedinputs, outputname, debug)
@@ -425,11 +429,18 @@ def Analysis():
                 fullinputstateclone1 = copy.deepcopy(fullinputstates)
                 gtkooutputs, _, _ = simulateNetworkCombined(fullinputstateclone1, sortedinputs, sortedinters, formulas, None, None, debug, [internode], None)
 
+                # if internode == 'E':
+                #     kotable = genTableFromOutput(gtkooutputs, inputnames, gtblinkings, sortedinters, outputname, scheme, debug)
+                #     for row, state in kotable[0].items():
+                #         print(f"{row}: {state}")
                 if debug: 
                     print(f"Knocing IN  {internode}")
                 fullinputstateclone2 = copy.deepcopy(fullinputstates)
                 gtkioutputs, _, _ = simulateNetworkCombined(fullinputstateclone2, sortedinputs, sortedinters, formulas, None, None, debug, None, [internode])
-
+                # if internode == 'E':
+                #     kitable = genTableFromOutput(gtkioutputs, inputnames, gtblinkings, sortedinters, outputname, scheme, debug)
+                #     for row, state in kitable[0].items():
+                #         print(f"{row}: {state}")
                 korow, kirow = compareOutputs(gtoutputs, outputname, inputnames, gtkooutputs, gtkioutputs, debug)
                 gtinterkorows[internode] = sorted(list(korow))
                 gtinterkirows[internode] = sorted(list(kirow))
